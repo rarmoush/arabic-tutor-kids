@@ -2603,6 +2603,179 @@ body.tutor-on{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.tt-msg,.tt-chips.on{animation:none}}
 .tt-chip img.tt-chip-art{height:52px;width:auto;margin-top:-4px}
 
+/* ===== FALCON HOME (v16): bright sky / turquoise, yellow accents, light background ===== */
+.mh,.hw{--mh-sky:#1fa2e0;--mh-sky2:#5cc4f2;--mh-tq:#13b5ab;--mh-tq2:#7fe0d6;--mh-sun:#ffc93c;--mh-sun2:#fff3c4;--mh-ink:#17405e;--mh-mute:#46677e;--mh-line:#d6eef9;--mh-coral:#ff8a73;--mh-mint:#2fc28a;
+  position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;background:linear-gradient(180deg,#dff4ff 0%,#eef9ff 38%,#f8fdff 70%,#ffffff 100%);color:var(--mh-ink);font-family:'Readex Pro',system-ui,sans-serif}
+.mh.hidden{display:none}
+body.mh-on{overflow:hidden}
+.mh-top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:max(10px,env(safe-area-inset-top)) 14px 10px;background:rgba(255,255,255,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--mh-line);width:100%;box-sizing:border-box;padding-inline:max(14px,calc((100% - 760px)/2 + 14px))}
+.mh-who{display:flex;align-items:center;gap:8px;background:none;border:0;padding:2px;cursor:pointer;color:inherit;font:inherit;text-align:start;min-width:0}
+.mh-who .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(160deg,#c9ecff,#e9fbf8);box-shadow:0 0 0 2px #fff,0 0 0 4px var(--mh-tq2)}
+.mh-who-t{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.mh-who-t b{font-size:1.06rem;font-weight:600}
+.mh-who-t small{font-size:.74rem;color:var(--mh-mute);white-space:nowrap}
+.mh-stats{display:flex;align-items:center;gap:6px}
+.mh-chip{display:inline-flex;align-items:center;gap:4px;padding:5px 10px 5px 8px;border-radius:999px;background:#fff;border:1.5px solid var(--mh-line);font-weight:600;font-size:.92rem}
+.mh-chip img{width:20px;height:20px;object-fit:contain}
+.mh-chip.coin{background:var(--mh-sun2);border-color:#ffe49a}
+.mh-chip.fire.cold img{filter:grayscale(1);opacity:.55}
+.mh-chip.bump{animation:mhBump .7s cubic-bezier(.2,1.6,.4,1)}
+@keyframes mhBump{0%{transform:scale(1)}40%{transform:scale(1.25)}100%{transform:scale(1)}}
+.mh-grid-btn{width:38px;height:38px;border-radius:12px;border:1.5px solid var(--mh-line);background:#fff;display:grid;place-items:center;cursor:pointer;padding:0}
+.mh-grid-btn svg{width:20px;height:20px;fill:#9bc9e2}
+.mh-grid-btn:hover svg,.mh-grid-btn:focus-visible svg{fill:var(--mh-sky)}
+.mh-chat{flex:1;overflow-y:auto;overflow-x:hidden;padding:14px 14px 18px;display:flex;flex-direction:column;gap:10px;max-width:760px;width:100%;margin:0 auto;box-sizing:border-box;scroll-behavior:smooth}
+.mh-chat>*{animation:mhIn .38s ease both}
+@keyframes mhIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.mh-chat>*{animation:none}}
+/* hero: the falcon at the front door */
+.mh-hero{position:relative;display:flex;align-items:flex-end;gap:6px;min-height:178px;padding:14px 12px 14px 14px;border-radius:28px;background:linear-gradient(160deg,#bfe8ff 0%,#d9f5ff 55%,#e6fbf5 100%);overflow:hidden;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7)}
+.mh-hero-sky i{position:absolute;background:#fff;border-radius:999px;opacity:.75}
+.mh-hero-sky .c1{width:70px;height:18px;top:18px;left:28px}.mh-hero-sky .c2{width:44px;height:12px;top:44px;left:96px;opacity:.55}.mh-hero-sky .c3{width:90px;height:22px;bottom:-6px;left:-10px;opacity:.6}
+.mh-hero-bird{position:relative;flex:0 0 132px;width:132px;background:none;border:0;padding:0;cursor:pointer;align-self:flex-end}
+.mh-hero-bird .mascot{width:132px!important;height:150px!important;display:block;filter:drop-shadow(0 8px 10px rgba(31,162,224,.18))}
+.mh-hero-bird.pat .mascot,.mh.react .mh-hero-bird .mascot{animation:mhHop .7s ease}
+@keyframes mhHop{0%,100%{transform:none}35%{transform:translateY(-12px) rotate(-3deg)}65%{transform:translateY(0) rotate(2deg)}}
+.mh-hero-bub{position:relative;flex:1;align-self:center;background:#fff;border-radius:22px 22px 22px 22px;padding:14px 14px 30px;box-shadow:0 6px 18px rgba(31,120,180,.12);margin-bottom:16px}
+.mh-hero-bub::after{content:'';position:absolute;right:-8px;bottom:22px;border:10px solid transparent;border-left-color:#fff;border-right:0}
+.mh-hero-bub .mh-ar{font-size:1.32rem;font-weight:600;line-height:1.55}
+.mh-hero-bub .mh-ai{font-size:.98rem;font-weight:500;color:var(--mh-mute);margin-top:6px;padding-top:6px;border-top:1px dashed #d6eef9}
+/* messages */
+.mh-msg{display:flex;align-items:flex-end;gap:8px;max-width:92%}
+.mh-av .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(160deg,#c9ecff,#e9fbf8);box-shadow:0 0 0 2px #fff}
+.mh-bub{position:relative;background:#fff;border-radius:20px 20px 6px 20px;padding:10px 14px 10px 40px;box-shadow:0 3px 12px rgba(31,120,180,.09);border:1px solid #e8f5fc}
+
+.mh-ar{margin:0;font-size:1.12rem;line-height:1.6;font-weight:500}
+.mh-en{margin:2px 0 0;color:var(--mh-mute);text-align:left}
+.mh-hear{position:absolute;left:8px;bottom:8px;width:26px;height:26px;border-radius:50%;border:0;background:#eaf7fe;display:grid;place-items:center;cursor:pointer;padding:3px}
+.mh-hear img{width:18px;height:18px;object-fit:contain}
+.mh-msg.kid{align-self:flex-end;justify-content:flex-end}
+.mh-bub.kid{background:linear-gradient(135deg,var(--mh-sky),var(--mh-sky2));color:#fff;border:0;padding:9px 14px;border-radius:20px 20px 20px 6px}
+
+.mh-bub.kid .mh-en{color:rgba(255,255,255,.85)}
+/* reward line inside a falcon bubble */
+.mh-reward{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.mh-rw{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:999px;font-weight:600;font-size:.95rem;background:#f1f9fe}
+.mh-rw img{width:20px;height:20px;object-fit:contain}
+.mh-rw.coin{background:var(--mh-sun2);color:#7a5600;animation:mhBump .8s .2s cubic-bezier(.2,1.6,.4,1) both}
+.mh-rw.pearl{background:#e9f8f6;color:#0c776f}
+.mh-rw.total{background:none;color:var(--mh-mute);font-weight:500}
+.mh-rw.total b{color:var(--mh-ink)}
+.mh-show{position:relative;align-self:center;width:130px;margin:4px 0 -4px}
+.mh-spark{position:absolute;width:26px;height:26px;animation:mhSpark 1.4s ease both}.mh-spark img{width:100%;height:100%;object-fit:contain}
+.mh-spark.s1{top:6px;left:-18px}.mh-spark.s2{top:34px;right:-22px;animation-delay:.15s}.mh-spark.s3{bottom:16px;left:-10px;width:20px;height:20px;animation-delay:.3s}
+@keyframes mhSpark{0%{opacity:0;transform:scale(.3) translateY(10px)}50%{opacity:1;transform:scale(1.15)}100%{opacity:1;transform:scale(1)}}
+.mh-show .mascot{width:130px!important;height:140px!important;animation:mhHop .9s ease}
+/* activity cards */
+.mh-cards-row{padding-inline-start:42px}
+.mh-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mh-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:start;background:#fff;border:1.5px solid var(--mh-line);border-radius:22px;padding:12px;cursor:pointer;color:inherit;font:inherit;box-shadow:0 4px 14px rgba(31,120,180,.08);transition:transform .15s,box-shadow .15s,border-color .15s;min-width:0}
+.mh-card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(31,120,180,.14);border-color:#a9dcf3}
+.mh-card:active{transform:scale(.98)}
+.mh-card.chosen{border-color:var(--mh-sun);box-shadow:0 0 0 4px rgba(255,201,60,.35),0 8px 22px rgba(31,120,180,.14)}
+.mh-card.big{grid-column:1/-1;flex-direction:row;align-items:center;padding:14px}
+.mh-card-t{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.mh-card-t b{font-size:1.06rem;font-weight:600;line-height:1.35}
+.mh-card.big .mh-card-t b{font-size:1.2rem}
+.mh-card-t small{font-size:.8rem;color:var(--mh-mute);line-height:1.4}
+.mh-stars{color:var(--mh-sun);letter-spacing:1px;font-size:.9rem;margin-inline-end:4px}
+.mh-go{display:inline-flex;align-items:center;gap:2px;background:var(--mh-sun);color:#5a3f00;font-weight:600;font-size:.86rem;border-radius:999px;padding:5px 10px 5px 8px;box-shadow:0 2px 0 #f0b01c}
+.mh-go svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.mh-card:not(.big) .mh-go{align-self:stretch;justify-content:center}
+.mh-tile{flex:0 0 auto;width:62px;height:62px;border-radius:18px;display:grid;place-items:center;overflow:hidden}
+.mh-card.big .mh-tile{width:78px;height:78px;border-radius:22px}
+.mh-tile img{width:86%;height:86%;object-fit:contain}
+.mh-tile.cover img{width:100%;height:100%;object-fit:cover}
+.mh-tile.glyph b{font-family:'Noto Naskh Arabic',serif;font-size:2.6rem;line-height:1;color:#0b6f9e;font-weight:700;margin-top:-6px}
+.mh-tile.fal{align-items:end}.mh-tile.fal .mascot{width:64%!important;height:92%!important;margin:0 auto}
+.t-sky{background:linear-gradient(160deg,#d3efff,#eaf8ff)}.t-sun{background:linear-gradient(160deg,#fff0bf,#fff9e3)}.t-mint{background:linear-gradient(160deg,#d2f6ec,#ecfbf6)}.t-coral{background:linear-gradient(160deg,#ffe1da,#fff2ee)}
+/* footer: chips + composer / consent note */
+.mh-foot{padding:8px 14px max(12px,env(safe-area-inset-bottom));background:rgba(255,255,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--mh-line);display:flex;flex-direction:column;gap:8px;width:100%;box-sizing:border-box;padding-inline:max(14px,calc((100% - 760px)/2 + 14px))}
+.mh-chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.mh-chips::-webkit-scrollbar{display:none}
+.mh-chips:empty{display:none}
+.mh-chip-btn{flex:0 0 auto;display:inline-flex;flex-direction:column;align-items:center;border:1.5px solid #bfe4f6;background:#f2fbff;color:var(--mh-ink);border-radius:999px;padding:8px 16px;font:500 1rem 'Readex Pro',sans-serif;cursor:pointer;white-space:nowrap}
+.mh-chip-btn.main{background:var(--mh-tq);border-color:var(--mh-tq);color:#fff;font-weight:600}
+.mh-chip-btn .en{font-size:.68rem!important}
+.mh-input{display:flex;align-items:center;gap:8px}
+.mh-input input{flex:1;min-width:0;height:46px;border-radius:999px;border:1.5px solid var(--mh-line);background:#f7fcff;padding:0 16px;font:400 1rem 'Readex Pro',sans-serif;color:var(--mh-ink)}
+.mh-input input:focus{outline:none;border-color:var(--mh-sky2);background:#fff}
+.mh-mic,.mh-send{flex:0 0 46px;width:46px;height:46px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;padding:0}
+.mh-mic{background:#e3f7f5}.mh-mic img{width:26px;height:26px;object-fit:contain}.mh-mic.on{box-shadow:0 0 0 4px rgba(19,181,171,.35)}
+.mh-send{background:var(--mh-sky)}.mh-send svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.mh-note{display:flex;align-items:center;gap:10px;background:#fffaea;border:1.5px solid #ffe7a3;border-radius:18px;padding:10px 12px}
+.mh-note-ic{flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.mh-note-ic img{width:22px;height:22px;object-fit:contain}
+.mh-note p{margin:0;flex:1;display:flex;flex-direction:column;line-height:1.45;font-size:.86rem;color:var(--mh-mute)}
+.mh-note p b{color:var(--mh-ink);font-weight:600;font-size:.92rem}
+.mh-note-btn{flex:0 0 auto;border:1.5px solid #f3cf63;background:#fff;color:#6b4d00;border-radius:999px;padding:7px 12px;font:600 .82rem 'Readex Pro',sans-serif;cursor:pointer}
+/* direct-access sheet */
+.mh-sheet{position:fixed;inset:0;z-index:55;background:rgba(23,64,94,.28);display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(2px)}
+.mh-sheet.hidden{display:none}
+.mh-sheet-box{width:100%;max-width:640px;background:#fff;border-radius:28px 28px 0 0;padding:16px 14px max(16px,env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(23,64,94,.18);max-height:88vh;overflow-y:auto;animation:mhUp .28s ease both;color:#17405e;font-family:'Readex Pro',sans-serif}
+@keyframes mhUp{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+.mh-sheet-h{display:flex;align-items:center;gap:8px;margin:0 4px 12px}
+.mh-sheet-h b{font-size:1.2rem;font-weight:600;flex:1}
+.mh-x{width:36px;height:36px;border-radius:50%;border:0;background:#f0f8fd;display:grid;place-items:center;cursor:pointer}
+.mh-x svg{width:18px;height:18px;stroke:#46677e;stroke-width:2.4;stroke-linecap:round;fill:none}
+.mh-gridx{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mh-gt{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px 12px;border-radius:20px;border:1.5px solid #e1f2fb;background:#fbfeff;cursor:pointer;color:inherit;font:inherit;min-width:0}
+.mh-gt:hover{border-color:#a9dcf3}
+.mh-gt .mh-tile{width:58px;height:58px}
+.mh-gt b{font-size:.86rem;font-weight:600;line-height:1.3;text-align:center}
+.mh-sheet-foot{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:14px;padding-top:12px;border-top:1px solid #e8f4fa}
+.mh-sf{display:inline-flex;align-items:center;gap:5px;border:1.5px solid #e1f2fb;background:#fff;border-radius:999px;padding:6px 11px;font:500 .8rem 'Readex Pro',sans-serif;color:#17405e;cursor:pointer}
+.mh-sf img{width:18px;height:18px;object-fit:contain}
+.mh-sf.on{background:#17405e;color:#fff;border-color:#17405e}
+/* way back from a full-page area */
+.mh-back{position:fixed;z-index:46;bottom:calc(84px + env(safe-area-inset-bottom));left:14px;display:inline-flex;align-items:center;gap:8px;padding:5px 14px 5px 6px;border-radius:999px;border:0;background:linear-gradient(135deg,#13b5ab,#1fa2e0);color:#fff;font:600 .95rem 'Readex Pro',sans-serif;box-shadow:0 8px 20px rgba(19,140,180,.32);cursor:pointer}
+.mh-back.hidden{display:none}
+.mh-back .avatar{width:34px;height:34px;border-radius:50%;background:#fff}
+/* wider screens */
+@media (min-width:700px){.mh-chat{padding:20px 24px}.mh-hero{min-height:230px}.mh-hero-bird,.mh-hero-bird .mascot{flex-basis:180px;width:180px!important}.mh-hero-bird .mascot{height:205px!important}.mh-hero-bub .mh-ar{font-size:1.5rem}.mh-gridx{grid-template-columns:repeat(4,1fr)}}
+
+.mh-on .modal{background:rgba(23,64,94,.28)}
+/* ===== v16 additions ===== */
+#tt-back{display:none!important}
+.mh-bub.fu{background:#fffdf2;border-color:#ffe8a3}
+.mh-bub.fu .mh-ar{font-family:'Noto Naskh Arabic','Readex Pro',serif;font-size:1.08rem;line-height:1.9}
+.mh-bub.typing{display:inline-flex;gap:5px;align-items:center;padding:12px 16px;min-width:60px}
+.mh-bub.typing i{width:8px;height:8px;border-radius:50%;background:var(--mh-sky2);animation:mhDot 1s infinite ease-in-out}
+.mh-bub.typing i:nth-child(2){animation-delay:.15s}.mh-bub.typing i:nth-child(3){animation-delay:.3s}
+.mh-bub.typing small{font-size:.75rem;color:var(--mh-mute);margin-inline-start:6px}
+@keyframes mhDot{0%,80%,100%{transform:translateY(0);opacity:.5}40%{transform:translateY(-5px);opacity:1}}
+.mh-tcard{margin:4px 0 4px 0;max-width:520px;align-self:flex-start;background:#fff;border-radius:20px;border:1.5px solid var(--mh-line);box-shadow:0 4px 14px rgba(31,120,180,.1);padding:12px}
+.mh-safe-row{display:flex;justify-content:center}.mh-safe{background:#fffdf3;border:2px solid #f2d27a;border-radius:18px;padding:12px 16px;text-align:center;color:#17405e}
+.mh-back.call{animation:mhCall 1.2s ease-in-out 3;background:linear-gradient(135deg,#ffb347,#ff8a73)}
+@keyframes mhCall{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.mh-to-falcon{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#13b5ab,#1fa2e0)!important;color:#fff!important;border:0}
+.mh-to-falcon .avatar{width:26px;height:26px;border-radius:50%;background:#fff}
+.mh-gt.hw-tile{background:linear-gradient(160deg,#e6fbf6,#fff);border-color:#9fe6da}
+/* homework helper view */
+.hw{position:fixed;inset:0;z-index:45;display:flex;flex-direction:column;background:linear-gradient(180deg,#e3fbf6 0%,#f1fcff 45%,#ffffff 100%);color:var(--mh-ink);font-family:'Readex Pro',system-ui,sans-serif}
+.hw.hidden{display:none}
+body.hw-on{overflow:hidden}
+.hw-top{display:flex;align-items:center;gap:10px;padding:max(10px,env(safe-area-inset-top)) 14px 10px;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border-bottom:1px solid #cfeee8}
+.hw-x{width:40px;height:40px;border-radius:50%;border:0;background:#e9f8f5;display:grid;place-items:center;cursor:pointer}
+.hw-x svg{width:22px;height:22px;fill:none;stroke:#13857d;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.hw-title{flex:1;display:flex;flex-direction:column;line-height:1.2}.hw-title b{font-size:1.15rem;font-weight:600}
+.hw-av .avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(160deg,#c9ecff,#e9fbf8);box-shadow:0 0 0 2px #fff,0 0 0 4px var(--mh-tq2)}
+.hw-chat{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;max-width:760px;width:100%;margin:0 auto;box-sizing:border-box}
+.hw-hero-row{display:flex;justify-content:center}
+.hw-hero{display:flex;align-items:center;gap:12px;background:#fff;border-radius:22px;padding:10px 16px 10px 10px;border:1.5px solid #c8f0e8;box-shadow:0 6px 18px rgba(19,181,171,.12)}
+.hw-hero .mascot{width:86px!important;height:96px!important;flex:0 0 86px}
+.hw-hero-t{display:flex;flex-direction:column;gap:3px}.hw-hero-t b{font-size:1.2rem;color:#0f7f78}.hw-hero-t span{font-family:'Noto Naskh Arabic',serif;font-size:1rem;line-height:1.7}
+.hw-bub{max-width:100%}
+.hw-tag{display:inline-block;font-size:.7rem;font-weight:600;color:#0f7f78;background:#dcf7f2;border-radius:999px;padding:1px 9px;margin-bottom:3px}
+.hw-bub.t-check .hw-tag{color:#a35b00;background:#fff0d6}.hw-bub.t-hint .hw-tag{color:#1b6fa8;background:#e1f3fd}
+.hw-thumb{display:block;max-width:220px;max-height:220px;border-radius:12px;margin-bottom:6px;border:2px solid rgba(255,255,255,.7)}
+.hw-foot{padding:8px 12px max(10px,env(safe-area-inset-bottom));background:rgba(255,255,255,.9);border-top:1px solid #d7f1ec;display:flex;flex-direction:column;gap:8px;max-width:760px;width:100%;margin:0 auto;box-sizing:border-box}
+.hw-tools{display:flex;gap:8px}
+.hw-tool{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1.5px solid #bfeee5;background:#f2fdfb;border-radius:16px;padding:10px 8px;font:600 .9rem 'Readex Pro',sans-serif;color:#0f6f69;cursor:pointer}
+.hw-tool svg{width:22px;height:22px;fill:none;stroke:#13b5ab;stroke-width:2;stroke-linejoin:round}
+.hw-note{margin:0}
+.mh-hero{flex-shrink:0}.mh-chat>*{flex-shrink:0}
+
 </style>
 </head>
 <body>
@@ -2732,6 +2905,37 @@ body.tutor-on{overflow:hidden}
   </footer>
 </section>
 <button id="tt-back" class="tt-back hidden" data-tact="back" aria-label="Back to Saqqour, your tutor"><span class="tt-back-av" id="tt-back-av"></span><span>صَقُّور <span class="en">Tutor</span></span></button>
+
+<!-- FALCON HOME (v16): Saqqour the falcon is the app's front door (replaces the old home) -->
+<section id="mh" class="mh hidden" aria-label="صَقُّور">
+  <header class="mh-top">
+    <button class="mh-who" data-act="mh-dress" id="mh-who"></button>
+    <div class="mh-stats">
+      <span class="mh-chip fire" id="mh-streak"></span>
+      <span class="mh-chip coin" id="mh-coins"></span>
+      <button class="mh-grid-btn" data-act="mh-grid" id="mh-grid-btn" aria-label="كُلُّ الأَنْشِطَة" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="2"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="2"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="2"/></svg></button>
+    </div>
+  </header>
+  <main class="mh-chat" id="mh-chat" aria-live="polite" aria-relevant="additions"></main>
+  <footer class="mh-foot" id="mh-foot">
+    <div class="mh-chips" id="mh-chips" role="group" aria-label="رُدُود سَرِيعَة"></div>
+    <div id="mh-compose"></div>
+  </footer>
+</section>
+<div id="mh-sheet" class="mh-sheet hidden" role="dialog" aria-modal="true" aria-label="كُلُّ الأَنْشِطَة"><div class="mh-sheet-box" id="mh-sheet-box"></div></div>
+<button id="mh-back" class="mh-back hidden" data-act="mh-back" aria-label="رُجُوع إِلَى صَقُّور"><span class="mh-back-av" id="mh-back-av"></span><span class="mh-back-t" id="mh-back-t">صَقُّور</span></button>
+<!-- HOMEWORK HELPER (v16): وَاجِبُ العَرَبِيّ — coaching, never the finished answer -->
+<section id="hw" class="hw hidden" aria-label="وَاجِبُ العَرَبِيّ">
+  <header class="hw-top">
+    <button class="hw-x" data-act="hw-close" aria-label="رُجُوع إِلَى صَقُّور"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg></button>
+    <div class="hw-title"><b>وَاجِبُ العَرَبِيّ</b><span class="en">Arabic homework</span></div>
+    <span class="hw-av" id="hw-av" aria-hidden="true"></span>
+  </header>
+  <main class="hw-chat" id="hw-chat" aria-live="polite" aria-relevant="additions"></main>
+  <footer class="hw-foot" id="hw-foot"></footer>
+  <input type="file" id="hw-cam" accept="image/*" capture="environment" hidden>
+  <input type="file" id="hw-file" accept="image/jpeg,image/png,image/webp,image/heic,image/*" hidden>
+</section>
 
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
@@ -8676,7 +8880,7 @@ function pinHash(pin, salt) { let h = 2166136261; const s = salt + '|' + pin + '
 const hasPin = () => !!(DB.settings.pin && DB.settings.pin.h);
 function setPin(pin) { const s = Math.random().toString(36).slice(2, 10); DB.settings.pin = { s, h: pinHash(pin, s) }; saveDB(); }
 const pinOK = (pin) => hasPin() && pinHash(pin, DB.settings.pin.s) === DB.settings.pin.h;
-function consentOf(kid) { const c = DB.settings.consent && DB.settings.consent[kid]; return Object.assign({ tutor: false, cloud: false, mic: false, at: null }, c && typeof c === 'object' ? c : {}); }
+function consentOf(kid) { const c = DB.settings.consent && DB.settings.consent[kid]; return Object.assign({ tutor: false, cloud: false, mic: false, homework: false, at: null }, c && typeof c === 'object' ? c : {}); }
 function setConsent(kid, k, v) { if (!DB.settings.consent || typeof DB.settings.consent !== 'object') DB.settings.consent = {}; const c = consentOf(kid); c[k] = !!v; c.at = dayKey(); c.v = PRIVACY_VERSION; DB.settings.consent[kid] = c; saveDB(); }
 /* the tutor is off by default for everyone, and stays off for under-13s until a parent turns it on behind the PIN */
 const tutorAllowed = (kid) => !!(kid && PROFILES[kid] && consentOf(kid).tutor && hasPin());
@@ -8694,6 +8898,7 @@ function privacyNoticeHTML() {
     <ul dir="ltr">
       <li><b>On this device only:</b> nickname, age band, progress, settings and safety flags (localStorage). Nothing is uploaded. Clearing the browser data removes it.</li>
       <li><b>AI tutor (if a parent turns it on):</b> the lesson text (no name, no nickname; numbers, emails and links are removed first), the dialect, the boy/girl word form and skill scores go to Microsoft Azure (OpenAI and AI Content Safety) to make the next tutor reply. It is not stored by the app; Azure may keep it briefly for abuse monitoring.</li>
+      <li><b>Homework helper (if turned on, needs the AI tutor too):</b> the typed question or a photo of an Arabic worksheet goes to Microsoft Azure (OpenAI, AI Content Safety, Prompt Shields) so the tutor can coach your child through it. It gives hints and checks attempts; it never writes the answers. Photos are shrunk and re-saved on this device first (removing location and camera data), sent once and never stored on the device or the server. Names on the sheet are hidden in replies. Only Arabic homework is accepted.</li>
       <li><b>Cloud voices (if turned on):</b> the Arabic sentence to be read aloud goes to Azure Speech. No voice recording is sent.</li>
       <li><b>Microphone (if turned on):</b> speech recognition is done by the browser. In Chrome and Edge your child's voice audio is sent to the browser maker (Google or Microsoft) to turn it into text. The app only receives the text.</li>
       <li><b>Safety:</b> if your child writes something worrying (sadness, being hurt, self-harm), the tutor stops, tells them to talk to you or another trusted adult, and shows a flag here. Only the type and time are kept, never the words.</li>
@@ -8825,7 +9030,7 @@ renderParent = function renderParentV15() {
     <p class="small">The tutor stopped and told your child to talk to you or another trusted adult. Only the type and time are saved, not the words. If you are worried about your child's safety in the UAE, call 999 (emergency) or the Child Protection line 116111.</p>
     <div class="row"><button class="btn soft" data-act="alerts-seen">✔️ Mark as seen</button><button class="btn ghost" data-act="alerts-clear">🗑️ Clear</button></div>` : '<p class="small">No safety flags. 👍</p>'}</div>`;
   const kids = Object.values(PROFILES).map((pr) => { const c = consentOf(pr.id); const on = (x) => (x ? '✅' : '⛔');
-    return `<div class="row between cs-kid"><span><b>${esc(pr.name)}</b> · ${esc(pr.bandEn)}${pr.u13 ? ' · under 13' : ''}<br><small>AI tutor ${on(c.tutor)} · cloud voices ${on(c.cloud)} · microphone ${on(c.mic)}</small></span><span class="row"><button class="btn soft" data-act="consent-edit" data-arg="${pr.id}">Consent</button><button class="btn ghost" data-act="profile-edit" data-arg="${pr.id}">Edit profile</button></span></div>`; }).join('');
+    return `<div class="row between cs-kid"><span><b>${esc(pr.name)}</b> · ${esc(pr.bandEn)}${pr.u13 ? ' · under 13' : ''}<br><small>AI tutor ${on(c.tutor)} · homework helper ${on(c.homework)} · cloud voices ${on(c.cloud)} · microphone ${on(c.mic)}</small></span><span class="row"><button class="btn soft" data-act="consent-edit" data-arg="${pr.id}">Consent</button><button class="btn ghost" data-act="profile-edit" data-arg="${pr.id}">Edit profile</button></span></div>`; }).join('');
   const consentCard = `<div class="card stack keep-en"><h2>🔐 الخُصُوصِيَّة وَالمُوَافَقَة <span class="en">Privacy and consent</span></h2>${kids || '<p>No players yet.</p>'}<details><summary>Read the privacy notice</summary>${privacyNoticeHTML()}</details></div>`;
   $('parent-body').insertAdjacentHTML('afterbegin', alertHTML + consentCard);
 };
@@ -8962,7 +9167,7 @@ function a11yPass(root) {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
 })();
 
-
+/* SAQQOUR_V16_INTEGRATED */
 /* Saqqour safeguarding: one source for the Worker (imported) and the page (tutor/build.py strips `export`).
    detectRisk(text) → { kind, level } | null. Arabic (Fusha + Gulf, Levantine, Egyptian), Arabizi-free English.
    Kinds: selfharm, abuse, distress (high/low → session ends, parent flag), sexual, contact, unsafe, jailbreak, pii (refuse, carry on).
@@ -8974,7 +9179,7 @@ function normRisk(s) {
 const RISK_RULES = [
   { kind: 'selfharm', level: 'high', re: [
     /\b(kill|hurt|harm|cut|stab) (my ?self|myself)\b/, /\bsuicid/, /\b(want|wanna|going) to die\b/, /\bend (my|it all|my life)\b/, /\bdon'?t want to (live|be alive|exist)\b/, /\bwish i (was|were) (dead|never born)\b/, /\bbetter off dead\b/, /\bself[- ]?harm/, /\bno reason to live\b/,
-    /(اقتل|اذبح|اموت|اذي|اجرح|اضر|بقتل|رح اقتل|هقتل) ?(نفسي|حالي|روحي)/, /انتحر|انتحار|بنتحر|رح انتحر/, /(ابي|ابغي|ابغا|ابا|بدي|عايز|عاوز|اريد|نفسي|ودي) ?(ا|اني ا|ان ا)?موت/, /(ما|مو|مش|مب) ?(ابي|ابغي|بدي|عايز|اريد|ودي) ?(اعيش|عيش)/, /(كاره|اكره|كارهه) (حياتي|عمري|نفسي)/, /اتمني (اني )?اموت|ليتني (مت|ميت)/, /(ما|مو|مب|مش|لا) ?(ابي|ابا|ابغي|ابغا|بدي|عايز|عايزه|عاوز|اريد|ودي) ?(اصحي|افيق|اقوم من النوم)/, /\b(never|don'?t want to) wake up\b/, /\b(disappear|disappeared) (forever|for good)\b/, /(اجرح|اقطع) (يدي|ايدي|جسمي)/] },
+    /(اقتل|اذبح|اموت|اذي|اجرح|اضر|بقتل|رح اقتل|هقتل) ?(نفسي|حالي|روحي)/, /انتحر|انتحار|بنتحر|رح انتحر/, /(ابي|ابغي|ابغا|ابا|بدي|عايز|عاوز|اريد|نفسي|ودي) ?(ا|اني ا|ان ا)?موت/, /(ما|مو|مش|مب|لا) ?(ابي|ابغي|بدي|عايز|اريد|ودي) ?(ان )?(اعيش|عيش)/, /(كاره|اكره|كارهه) (حياتي|عمري|نفسي)/, /اتمني (اني )?اموت|ليتني (مت|ميت)/, /(ما|مو|مب|مش|لا) ?(ابي|ابا|ابغي|ابغا|بدي|عايز|عايزه|عاوز|اريد|ودي) ?(اصحي|افيق|اقوم من النوم)/, /\b(never|don'?t want to) wake up\b/, /\b(disappear|disappeared) (forever|for good)\b/, /(اجرح|اقطع) (يدي|ايدي|جسمي)/] },
   { kind: 'abuse', level: 'high', re: [
     /\b(do ?n[o']?t|dont|never) want to go (back )?home\b/, /\b(scared|afraid) (to go|of going) home\b/, /\bnot safe at home\b/,
     /(مش|مو|ما|مب|مُب|مابي|ما ابي|ما ابا|ما بدي|مش عايز|مش عايزه|مش عاوز|مش عاوزه) ?(ابي|ابا|بدي|عايز|عايزه|عاوز|عاوزه|اريد|ابغى|ابغي|ودي)? ?(ارجع|اروح|اروّح) (ع|عال|على|لل|ل)?(البيت|بيتنا|البيت اليوم)/, /(خايف|خايفه|خايفة|خوفان|مرعوب) (ارجع|اروح|من) (البيت|بيتنا)/, /(مش|مو|ما|مب) (امان|آمن|امن|آمنه|امنه) (في|ف|بال|بـ)? ?(البيت|بيتنا)/,
@@ -9043,6 +9248,200 @@ function safetyActions(risk, dialect, gender) {
   return [{ type: 'say', register: d === 'fusha' ? 'fusha' : 'dialect', ar, en: REFUSE.en[key], mood: 'think', safety: true },
     { type: 'ask', register: d === 'fusha' ? 'fusha' : 'dialect', ar: d === 'fusha' ? 'هَلْ نُكْمِلُ؟' : 'يَلَّا؟', en: 'Shall we carry on?', id: 'continue', chips: [{ ar: 'يَلَّا', en: "Let's go", value: 'continue' }], safety: true }];
 }
+
+/* Saqqour scope guard: Saqqour is an Arabic tutor and nothing else. One source for the Worker (imported)
+   and the page (tutor/build.py strips `import`/`export`, safety.mjs is injected first).
+   classifyTopic(text) → { topic, subject, by }   topic: 'safeguarding' | 'jailbreak' | 'off_topic' | 'arabic' | null (= not sure: the model decides)
+   checkReply(actions, modelTopic) → null | reason   (the model's reply answered something that is not Arabic learning)
+   redirectActions(kind, subject, dialect, gender) → scripted, warm dialect redirect back to Arabic.
+   Rules are cheap regexes on normalised text (normRisk); the model also returns a `topic` field in the same call. */
+
+const SCOPE_N = (re) => new RegExp(re.source.replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/ؤ/g, 'و').replace(/ئ/g, 'ي'), re.flags);
+const NUMW_EN = '(\\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|twenty|hundred)';
+const NUMW_AR = '(\\d+|واحد|وحده|اثنين|اتنين|ثنين|ثلاث|ثلاثه|تلاته|تلات|اربع|اربعه|خمس|خمسه|ست|سته|سبع|سبعه|ثمان|ثماني|ثمانيه|تمانيه|تمنيه|تسع|تسعه|عشر|عشره|مية|ميه|مئه)';
+/* Arabic-learning requests: these stay ON topic even when they name another subject ("what is planet in Arabic?") */
+const SCOPE_ARABIC = [
+  /\b(in arabic|arabic words?|the word for|words? for|how (do|would|can|to) (you |i |we )?(say|write|spell|read|pronounce)|what does .{1,30} mean|meaning of|alphabet|harakat|tashkeel|fusha|arabic (story|stories|letters?|numbers?|grammar|homework|song)|teach me arabic|learn arabic|practi[cs]e arabic|count (to|in))\b/,
+  /(كيف|شلون|اشلون|ازاي|كيفاش|شو) (نقول|اقول|تقول|يقولون|بنقول|بقول|منقول|بنقول|نكتب|اكتب|تكتب|بكتب|منكتب|بنكتب|نقرا|اقرا|نلفظ|الفظ|نتهجي)/, /(شو|ايش|وش|ويش|ما|ماذا) (يعني|معني|تعني)/, /يعني (ايه|ايش|شو|وش)/, /(معني|مرادف|عكس) (كلمه|هذي|هاي|هذه)/,
+  /(كلمه|كلمات|كلمة|حروف|الحروف|حرف) .{0,25}(بالعربي|بالعربيه|بالفصحي|باللهجه)/, /(علمني|علميني|بدي اتعلم|ابي اتعلم|ابا اتعلم|ابغي اتعلم|ابغا اتعلم|عايز اتعلم|عايزه اتعلم|نتعلم|خلينا نتعلم) .{0,12}(حرف|الحروف|كلمه|كلمات|اكتب|القراءه|الكتابه|العربي|العربيه|الارقام بالعربي|اعد بالعربي)/,
+  /(واجب|درس|امتحان|اختبار|تمرين|ورقه عمل|ورقة عمل) (ال)?(عربي|العربي|العربيه|اللغه العربيه|لغتي|القراءه|الاملاء|الخط|النحو|القواعد)/,
+  /(حرف (ال)?[\u0621-\u064A]+|الحروف|الهمزه|الشده|التنوين|الحركات|الفتحه|الضمه|الكسره|السكون|مذكر|مؤنث|المفرد|الجمع بالعربي)/];
+/* asking for a lesson / explanation ABOUT the subject (not its words) is off topic even "in Arabic" */
+const SCOPE_LESSON_ON = [/\b(explain|tell me (about|how|why)|teach me about|lesson (on|about)|answer .{0,25}about|write .{0,30}(essay|report|paragraph)|facts? about|how (does|do|did) (?!(you|i|we) (say|write|spell|read|pronounce))|why (is|are|do|does|did))\b/, /(اشرح|اشرحلي|احكيلي عن|احكيلي عن|قولي عن|قول لي عن|خبرني عن|خبريني عن|كلمني عن|علمني عن|جاوب|جاوبني|اكتب موضوع|اكتب تعبير|ليش|ليه|لماذا|كيف يصير|كيف تصير)/];
+const SCOPE_JAILBREAK = [
+  /\b(pretend|imagine) (that )?(you('re| are)|to be)\b/, /\b(you are|you're|be|act as|become) (now )?(chat ?gpt|gpt|siri|alexa|gemini|claude|copilot|grok|a different ai|another ai|a normal ai)\b/, /\bchat ?gpt\b/,
+  /\b(my |the )?(teacher|mum|mom|dad|parents?|school|principal)( has)? (said|says|told me|lets|let me|allowed|allows|wants)\b.{0,40}\b(can|could|should|allowed|help|answer|do|ask)\b/,
+  /\b(you('re| are) (now )?allowed|you can (now )?(answer|talk about|help with) (anything|everything|other)|new (rules|instructions|mode)|rules (have )?changed|i('m| am) your (developer|creator|owner|admin|programmer|boss)|override|admin mode|sudo|god mode|no limits|answer anything|just this once|break (your|the) rules|stop being (a tutor|saqqour|an arabic tutor))\b/,
+  /\blet'?s (role-?play|play pretend)\b/, /\bbe my (friend|best friend|girlfriend|boyfriend|mum|mom|dad|brother|sister)\b/, /\b(act|talk|speak|behave) like (a |an )?(pirate|robot|dragon|princess|superhero|monster|villain|baby|cat|dog|human|person|youtuber|gangster)\b/,
+  /(تخيل|تخيلي|تظاهر|تظاهري|خلينا نتخيل|افترض) (انك|انه انت|نفسك|حالك)/, /(العب|نلعب|خلينا نلعب|يلا نلعب) (دور|تمثيل)/, /(شات ?جي ?بي ?تي|تشات ?جي ?بي ?تي|شات جبت|سيري|اليكسا|جيميناي|جيميني)/,
+  /(المعلمه|المعلم|معلمتي|معلمي|المدرسه|المدرس|مدرستي|الاستاذ|الاستاذه|الابله|ماما|بابا|امي|ابوي|ابي) .{0,6}(قالت|قال|قالو|قالتلي|قاللي|قالي|قالت لي|قال لي|سمحت|سمح|بتقول|بيقول|تقول|يقول|بتقلي|بيقلي) .{0,30}(تقدر|تقدري|تساعدني|تساعد|مسموح|عادي|ممكن|بتقدر|بتقدري|تجاوب|تحل|تحلي|تعلمني|تستطيع|يمكنك|مساعدتي|تسطيع)/,
+  /(مسموح لك|مسموحلك|مسموح لك|تقدر تجاوب على اي|تقدر تتكلم عن اي|تقدر تساعدني في اي|قوانين جديده|قواعد جديده|القوانين تغيرت|انا المطور|انا مبرمجك|انا اللي برمجتك|بدون قيود|بلا قيود|بدون قوانين|بلا قوانين|بس هالمره|بس هالمرة|بس المره دي|اكسر القوانين)/,
+  /(انسى|انس|تجاهل|خلك من|طنش|سيبك من|سيب) (كل )?(قوانينك|القوانين|قواعدك|القواعد|تعليماتك|التعليمات|الشروط|اللي قالولك|كونك مدرس|انك مدرس)/, /(انت|انتا|إنت|انتي) (الحين|الحين صرت|دلوقتي|هلق|هلأ|هسا|الان|من اليوم|صرت) .{0,10}(مش|مو|مب|لست|ما عدت)? ?(صقور|مدرس|معلم)?.{0,10}(روبوت|شخصيه|انسان عادي|صاحبي|صديقي|قرصان|ذكاء ثاني|شات)/,
+  /(صير|كن|خليك) (صاحبي|صديقي|حبيبي|حبيبتي|اخوي|قرصان|روبوت عادي|شات ?جي ?بي ?تي)/];
+/* subject → patterns (only clear requests; a child merely mentioning "I like maths" in the chat is fine) */
+const SCOPE_OFF = [
+  ['maths', [new RegExp('\\b' + NUMW_EN + ' ?(x|\\*|×|\\+|-|÷|/|times|plus|minus|divided by|multiplied by|to the power of) ?' + NUMW_EN + '\\b'), /\b(help|do|solve|answer|what('s| is)|tell me|explain|teach me|can you|work out|calculate).{0,30}\b(math|maths|mathematics|fractions?|equations?|algebra|times tables?|multiplication|long division|percentages?|geometry|square root)\b/, /\b(solve|calculate|work out) (this|the|for)\b/, /\bsquare root of\b/,
+    new RegExp(NUMW_AR + ' ?(ضرب|زائد|زايد|ناقص|تقسيم|قسمه|على|x|×|\\*|\\+|-|÷) ?' + NUMW_AR), /(كم|قديش|اديش|ادي ايش|ايش|شو|وش|قد ايش) (يساوي|بيساوي|تساوي|بتساوي|يطلع|بيطلع|ناتج)/, /(ساعدني|ساعديني|حل|حللي|حل لي|علمني|اشرحلي|اشرح لي|ممكن تساعدني|ساعدني في|ساعدني ب).{0,20}(الرياضيات|رياضيات|الحساب|حساب|الماث|ماث|المساله|المسأله|الكسور|جدول الضرب|المعادله)/, /واجب (الرياضيات|الماث|الحساب)/]],
+  ['science', [/\b(explain|tell me (about|how|why)|how (does|do|did)|why (is|are|do|does|did)|what (is|are|causes|makes)|teach me (about )?|lesson (on|about)|answer .{0,25}about|write .{0,25}about|in arabic about|facts? about|how many).{0,40}\b(solar system|planets?|photosynthesis|gravity|volcano(e?s)?|dinosaurs?|atoms?|molecules?|electricity|human body|outer space|black holes?|universe|the sun|the moon|stars|weather|climate|earthquakes?|science|physics|chemistry|biology|rainbows?|the sky|oceans?|plants|magnets?|energy|cells|bones|blood|digest\w*|evolution|experiment)\b/, /\b(science|physics|chemistry|biology) (homework|question|test|project|lesson)\b/,
+    /(اشرح|اشرحلي|احكيلي عن|قولي عن|قول لي عن|خبرني عن|خبريني عن|كلمني عن|علمني عن|جاوب|جاوبني|ليش|ليه|لماذا|كيف|شلون|ازاي|كم عدد|كم|ما هي|ما هو|شو هي|شو هو|وش هي|وش هو|ايش هي|ايش هو) .{0,30}(المجموعه الشمسيه|الكواكب|كوكب|الجاذبيه|البراكين|البركان|الديناصورات|الفضاء|العلوم|الذره|الذرات|الكهرباء|جسم الانسان|التمثيل الضوئي|الزلازل|الزلزال|قوس قزح|المطر|السما زرقا|السماء زرقاء|الثقب الاسود|الكون|المغناطيس|الخلايا|الطاقه|التجربه)/, /(واجب|سؤال|امتحان|اختبار|مشروع) (العلوم|الفيزياء|الكيمياء|الاحياء)/]],
+  ['coding', [/\b(python|javascript|java|html|css|scratch|coding|programming|write (a |some |me )?code|computer program|an app|a website|minecraft commands?|hack(ing)?)\b/, /(برمجه|بايثون|جافاسكربت|جافا سكريبت|اكتب كود|كود|اكواد|اسوي تطبيق|اسوي موقع|هكر|اهكر|تهكير)/]],
+  ['trivia', [/\b(capital (city )?of|what('s| is) the (biggest|largest|tallest|longest|smallest|fastest|richest|oldest) .{0,30}(in the world|on earth|country|city|animal|building|mountain|river|ocean|person)|who (invented|discovered|built|painted|wrote|was the first|is the richest|is the king|is the president)|when (did|was) .{0,40}(war|invented|built|born|discovered|happen)|how (tall|high|far|deep|old|big) is (the |mount |burj )|population of|history of|world war|how many (countries|people|continents))\b/,
+    /(عاصمه|من اخترع|مين اخترع|منو اخترع|مين اكتشف|منو اكتشف|من اكتشف|مين بنى|من بنى|منو بنى|متى (بنوا|انبنت|اخترعوا|صارت|بدات|خلصت) |الحرب العالميه|كم عدد سكان|كم دوله|اطول (جبل|نهر|برج)|اكبر (دوله|بلد|محيط|حيوان|مدينه) (في|ب)(ال)?عالم|اعلى جبل|كم طول برج)/]],
+  ['news', [/\b(the news|latest news|news (about|today)|headlines?|election|president|prime minister|politic\w*|war in|celebrit\w*|famous people|taylor swift|ronaldo|messi|neymar|mr ?beast|mbapp\w*|youtubers?|tiktokers?|influencers?|who won (the|last|yesterday)|world cup (winner|final)|score (of|in) the (match|game))\b/,
+    /(اخبار|الاخبار|خبر عن|الانتخابات|الرئيس|رئيس الوزراء|السياسه|مشاهير|المشاهير|مين فاز|منو فاز|من فاز|مين كسب|منو كسب|مين غلب|نتيجه المباراه|نتيجه الماتش|الماتش امبارح|المباراه امس)/, /(مين|منو|من|شو|وش|ايش|احكيلي عن|قولي عن|كم عمر|تعرف|تحب|بتحب) .{0,12}(رونالدو|ميسي|نيمار|مستر بيست|تايلور سويفت|محمد صلاح|مبابي|يوتيوبر)/]],
+  ['games', [/\b(how|tips?|cheats?|codes?|help|tell me|teach me|best|win|beat|level|free|can you play|play .{0,10}with me|let'?s play) .{0,30}\b(roblox|fortnite|minecraft|pubg|among us|free ?fire|brawl stars|clash royale|clash of clans|pok[eé]mon|robux|v-?bucks|gta|call of duty|fifa|xbox|playstation|nintendo|switch game|video games?)\b/, /\b(roblox|fortnite|minecraft|pubg|among us|free ?fire|brawl stars|robux|v-?bucks|gta) (cheats?|codes?|tips|hacks?)\b/, /\b(play (rock paper scissors|tic tac toe|hangman|20 questions|truth or dare|chess) with me|let'?s play (rock paper scissors|tic tac toe|hangman|20 questions|truth or dare|chess|a different game|another game|a video game))\b/,
+    /(كيف|شلون|ازاي|علمني|ساعدني|نلعب|تلعب|العب معي|العب معاي|العب معايا|تعرف|اكواد|غش|مجانا|مجاني|احسن|افوز) .{0,20}(روبلوكس|فورتنايت|ماينكرافت|ماين كرافت|ببجي|فري فاير|براول ستارز|بوكيمون|روبوكس|فيفا|بلايستيشن|بلي ستيشن|اكس بوكس)/, /(نلعب|تلعب|العب معي|العب معاي|العب معايا|يلا نلعب) (حجره ورقه مقص|اكس او|اكس واو|شطرنج|صراحه|جرأه|لعبه ثانيه|لعبه تانيه|لعبه غير)/]],
+  ['advice', [/\b(give me (some )?advice|i need advice|advice (on|about|for)|what should i (do|say|wear|buy|eat) (about|to|for|if|when|with|at)|should i (tell|break up|quit|fight|hit)|how (do|can) i (make|get) (more )?(friends|popular|rich|money|followers|a (girl|boy)friend)|how to (lose weight|get rich|make money|get followers))\b/, /(انصحني|انصحيني|عطني نصيحه|اعطني نصيحه|ابي نصيحه|ابا نصيحه|ابغي نصيحه|بدي نصيحه|عايز نصيحه|عايزه نصيحه|محتاج نصيحه|محتاجه نصيحه|كيف اصير مشهور|كيف اجيب فلوس|كيف اصير غني)/]],
+  ['opinion', [/\b(what('s| is) your (opinion|view)|what do you think (about|of) (?!(the |my |this )?(answer|word|story|letter|lesson|game|wordle|picture|drawing))|who('s| is) (better|the best)|which (team|country|singer|player|phone|religion|party|youtuber|club) is (better|the best)|your favou?rite (team|player|singer|youtuber|celebrity|movie|country|football|club|phone|app|religion))\b/, /(شو|وش|ايش|ما|ايه) رايك (في|ب|بال|عن) ?(?!(ال)?(قصه|كلمه|حرف|درس|جواب|اجاب|لعبه|كتاب|صوره|رسمه))/, /(فريقك|لاعبك|مغنيك|ناديك|يوتيوبرك) المفضل/, /(مين|منو|من) (احسن|افضل|اقوى) (فريق|لاعب|نادي|مغني|يوتيوبر|دوله|بلد)/]],
+  ['joke', [/\b(tell (me )?(a |some )?jokes?|say something funny|make me laugh|knock,? knock|a funny story)\b/, /(نكته|نكت|ضحكني|ضحكيني|قول شي يضحك|قولي حاجه تضحك|قول شي مضحك|احكيلي شي يضحك)/]],
+  ['essay', [/\b(write|do|finish|make) (me |for me )?(my |an? |the |this )?(essay|paragraph|report|book report|summary|assignment|homework|project|speech|poem|story in english|article)\b/, /\b(do|finish|help (me )?with|answer|check) (my |this )?(homework|assignment|worksheet|test|quiz|exam)\b(?!.{0,20}arabic)/, /\b(english|french|spanish) (homework|essay|spelling|grammar|test)\b/,
+    /(اكتب|اكتبلي|اكتب لي|اكتبي لي|سوي لي|سويلي|اعمللي|اعمل لي|حل|حلي|حللي|حل لي|حلي لي) (موضوع|تعبير|مقال|مقاله|بحث|تقرير|واجب|الواجب|انشاء|ملخص|قصيده|خطبه|المشروع|مشروع)/, /واجب (الانجليزي|الانقليزي|الانكليزي|الفرنسي|التاريخ|الجغرافيا|الاجتماعيات|الدراسات)/]],
+  ['translate', [/\btranslate (this|the|my|all|these) (text|paragraph|page|article|email|story|essay|document|letter|homework|message|song|book|sentences)\b/, /(ترجم|ترجملي|ترجم لي|ترجمي|ترجميلي) .{0,8}(النص|هالنص|هذا النص|الفقره|الصفحه|المقال|الرساله|الواجب|القصه كلها|الكتاب|الاغنيه|هالكلام كله)/]]];
+const SCOPE_RE = { arabic: SCOPE_ARABIC.map(SCOPE_N), lesson: SCOPE_LESSON_ON.map(SCOPE_N), jb: SCOPE_JAILBREAK.map(SCOPE_N), off: SCOPE_OFF.map(([k, l]) => [k, l.map(SCOPE_N)]) };
+const scopeAny = (list, t) => list.some((re) => re.test(t));
+/* subject → a topic whose Arabic words Saqqour can offer instead (keeps it Arabic learning) */
+const SCOPE_TOPIC = { maths: { ar: 'الأَرْقَام', en: 'numbers' }, science: { ar: 'الفَضَاء وَالطَّبِيعَة', en: 'space and nature' }, coding: { ar: 'الكُمْبْيُوتَر', en: 'computers' }, games: { ar: 'الأَلْعَاب', en: 'games' }, trivia: { ar: 'البُلْدَان', en: 'countries' }, news: { ar: 'الرِّيَاضَة', en: 'sport' }, animals: { ar: 'الحَيَوَانَات', en: 'animals' } };
+const SCOPE_SUBJECT_HINT = [['science', /(science|علوم|العلوم|solar|planet|space|moon|sun|star|volcano|dinosaur|rain|sky|weather|كوكب|كواكب|الفضاء|القمر|الشمس|نجوم|البركان|ديناصور|المطر|السما)/], ['maths', /(math|number|ضرب|رياضيات|حساب|ارقام)/], ['games', /(roblox|minecraft|fortnite|game|لعبه|روبلوكس|ماينكرافت)/], ['news', /(ronaldo|messi|football|match|sport|رونالدو|ميسي|كوره|مباراه|الماتش)/], ['animals', /(spider|animal|dog|cat|lion|horse|bird|insect|عنكبوت|حيوان|حيوانات|اسد|حصان|طير|حشرات)/], ['coding', /(phone|computer|laptop|tablet|ipad|robot|جوال|موبايل|هاتف|كمبيوتر|ايباد|روبوت)/]];
+/* best topic to offer words for, from the child's own text (used when the model, not the rules, spots an off-topic ask) */
+function topicHint(text) { const t = normRisk(text); const h = SCOPE_SUBJECT_HINT.find(([, re]) => re.test(t)); return h ? h[0] : null; }
+function classifyTopic(text) {
+  const raw = String(text == null ? '' : text); const t = normRisk(raw); if (!t) return { topic: null };
+  const risk = detectRisk(raw);
+  if (risk && HIGH.has(risk.kind)) return { topic: 'safeguarding', subject: risk.kind, by: 'rules' };
+  if (risk && risk.kind === 'jailbreak') return { topic: 'jailbreak', subject: 'jailbreak', by: 'rules' };
+  if (scopeAny(SCOPE_RE.jb, t)) { const h = SCOPE_SUBJECT_HINT.find(([, re]) => re.test(t)); return { topic: 'jailbreak', subject: h ? h[0] : 'jailbreak', by: 'rules' }; }
+  const learning = scopeAny(SCOPE_RE.arabic, t) && !scopeAny(SCOPE_RE.lesson, t);
+  if (learning) return { topic: 'arabic', by: 'rules' };
+  for (const [k, list] of SCOPE_RE.off) if (scopeAny(list, t)) return { topic: 'off_topic', subject: k, by: 'rules' };
+  if (/\btranslate\b|ترجم/.test(t) && t.length > 70) return { topic: 'off_topic', subject: 'translate', by: 'rules' };
+  return { topic: null };
+}
+/* output check: a reply that answers maths, shows code or gives non-Arabic facts is replaced */
+const SCOPE_OUT = {
+  maths: /\d+\s*([x×*+÷=]|times|plus|minus|divided)\s*\d+|=\s*\d|\bequals\b|\bthe answer is\b|(يساوي|تساوي|الجواب هو|الناتج) ?\d/i,
+  code: /```|\bfunction\s*\w*\s*\(|\bdef \w+\(|console\.log|print\(|<\/?[a-z]+>|\bimport \w|;\s*\}|\{\s*$/i,
+  facts: /\b(orbits?|gravity|photosynthesis|million (km|kilomet\w*|years|people|miles)|kilomet(er|re)s? (away|long|high|tall)|degrees? (celsius|fahrenheit)|capital (city )?of|president of|was invented|invented (by|in)|discovered (by|in)|was born in|world war|light ?years?|python|javascript|ronaldo|messi|robux|lava comes|tectonic|the earth (goes|moves|spins)|planets? (go|move|travel)|eight planets|8 planets|nine planets)\b|(تدور حول|الجاذبيه|مليون كيلو|كيلومتر|ثمانيه كواكب|ثمان كواكب|٨ كواكب|8 كواكب)/i };
+const SCOPE_CUE = /(عربي|العربيه|العربي|عربيه|كلمه|كلمات|كلمة|كلمتين|حرف|حروف|نتعلم|نِتْعَلَّم|الدرس|arabic|word|lesson|letter)/i;
+function checkReply(actions, modelTopic) {
+  const acts = actions || []; const txt = acts.map((a) => [a.ar, a.en].concat((a.chips || []).map((c) => c.ar + ' ' + c.en)).filter(Boolean).join(' ')).join(' \n ');
+  const n = normRisk(txt);
+  if (SCOPE_OUT.code.test(txt)) return 'code';
+  if (SCOPE_OUT.maths.test(txt)) return 'maths answer';
+  if (SCOPE_OUT.facts.test(txt) || SCOPE_OUT.facts.test(n)) return 'non-Arabic facts';
+  if (modelTopic === 'off_topic' || modelTopic === 'jailbreak') {
+    if (/\d{2,}/.test(txt.replace(/u\d+:\d+/g, ''))) return 'numbers in a redirect';
+    if (!acts.some((a) => a.type === 'show_activity') && !SCOPE_CUE.test(txt) && !SCOPE_CUE.test(n)) return 'redirect without Arabic';
+  }
+  return null;
+}
+/* scripted redirects. [boy|girl] forms; X = topic. Lines are pure dialect or pure Fusha. */
+const SCOPE_LINES = {
+  emirati: { off: 'سُؤَال حِلُو! بَسّ أَنَا أَعَلِّم عَرَبِي وَبَسّ.', jb: 'أَنَا صَقُّور، مُسَاعِد ذَكَاء اصْطِنَاعِي، وَأَعَلِّم عَرَبِي وَبَسّ.', topic: '[تَبَا|تَبِين] نِتْعَلَّم كَلِمَات عَن X بِالعَرَبِي؟', back: 'يَلَّا نِرْجَع لِلدَّرْس؟', words: 'كَلِمَات عَن X', cont: 'نْكَمِّل الدَّرْس' },
+  saudi: { off: 'سُؤَال حِلُو! بَسّ أَنَا أَعَلِّم عَرَبِي وَبَسّ.', jb: 'أَنَا صَقُّور، مُسَاعِد ذَكَاء اصْطِنَاعِي، وَأَعَلِّم عَرَبِي وَبَسّ.', topic: '[تَبِي|تَبِين] نِتْعَلَّم كَلِمَات عَن X بِالعَرَبِي؟', back: 'يَلَّا نِرْجَع لِلدَّرْس؟', words: 'كَلِمَات عَن X', cont: 'نْكَمِّل الدَّرْس' },
+  lebanese: { off: 'سُؤَال حِلُو! بَسّ أَنَا بْعَلِّم عَرَبِي وَبَسّ.', jb: 'أَنَا صَقُّور، مْسَاعِد ذَكَاء اصْطِنَاعِي، وَبْعَلِّم عَرَبِي وَبَسّ.', topic: '[بَدَّك|بَدِّك] نِتْعَلَّم كِلْمَات عَن X بِالعَرَبِي؟', back: 'يَلَّا نِرْجَع عَالدَّرْس؟', words: 'كِلْمَات عَن X', cont: 'نْكَمِّل الدَّرْس' },
+  syrian: { off: 'سُؤَال حِلُو! بَسّ أَنَا بْعَلِّم عَرَبِي وَبَسّ.', jb: 'أَنَا صَقُّور، مْسَاعِد ذَكَاء اصْطِنَاعِي، وَبْعَلِّم عَرَبِي وَبَسّ.', topic: '[بَدَّك|بَدِّك] نِتْعَلَّم كِلْمَات عَن X بِالعَرَبِي؟', back: 'يَلَّا نِرْجَع عَالدَّرْس؟', words: 'كِلْمَات عَن X', cont: 'نْكَمِّل الدَّرْس' },
+  jordanian: { off: 'سُؤَال حِلُو! بَسّ أَنَا بَعَلِّم عَرَبِي وَبَسّ.', jb: 'أَنَا صَقُّور، مُسَاعِد ذَكَاء اصْطِنَاعِي، وَبَعَلِّم عَرَبِي وَبَسّ.', topic: '[بِدَّك|بِدِّك] نِتْعَلَّم كَلِمَات عَن X بِالعَرَبِي؟', back: 'يَلَّا نِرْجَع عَالدَّرْس؟', words: 'كَلِمَات عَن X', cont: 'نْكَمِّل الدَّرْس' },
+  egyptian: { off: 'سُؤَال حِلْو! بَسّ أَنَا بَعَلِّم عَرَبِي وَبَسّ.', jb: 'أَنَا صَقُّور، مُسَاعِد ذَكَاء اصْطِنَاعِي، وَبَعَلِّم عَرَبِي وَبَسّ.', topic: '[عَايِز|عَايْزَة] نِتْعَلِّم كِلْمِتِين عَن X بِالعَرَبِي؟', back: 'يَلَّا نِرْجَع لِلدَّرْس؟', words: 'كِلْمَات عَن X', cont: 'نْكَمِّل الدَّرْس' },
+  fusha: { off: 'سُؤَالٌ جَمِيلٌ! لَكِنَّنِي أُعَلِّمُ العَرَبِيَّةَ فَقَطْ.', jb: 'أَنَا صَقُّورٌ، مُسَاعِدُ ذَكَاءٍ اصْطِنَاعِيٍّ، وَأُعَلِّمُ العَرَبِيَّةَ فَقَطْ.', topic: 'هَلْ [تُرِيدُ|تُرِيدِينَ] أَنْ نَتَعَلَّمَ كَلِمَاتٍ عَنِ X بِالعَرَبِيَّةِ؟', back: 'هَلْ نَعُودُ إِلَى الدَّرْسِ؟', words: 'كَلِمَات عَنِ X', cont: 'نُكْمِلُ الدَّرْسَ' } };
+function redirectActions(kind, subject, dialect, gender) {
+  const d = SCOPE_LINES[dialect] ? dialect : 'emirati'; const L = SCOPE_LINES[d]; const reg = d === 'fusha' ? 'fusha' : 'dialect'; const tp = SCOPE_TOPIC[subject];
+  const first = { type: 'say', register: reg, ar: kind === 'jailbreak' ? L.jb : L.off, en: kind === 'jailbreak' ? "I'm Saqqour, an AI helper, and I only teach Arabic." : 'Nice question! But I only teach Arabic.', mood: 'think', scope: true };
+  const ask = tp
+    ? { type: 'ask', register: reg, ar: gform(L.topic, gender).replace('X', tp.ar), en: `Shall we learn the Arabic words for ${tp.en}?`, id: 'scope', chips: [{ ar: L.words.replace('X', tp.ar), en: `Words for ${tp.en}`, value: `Teach me the Arabic words for ${tp.en}` }, { ar: L.cont, en: 'Back to the lesson', value: 'continue the Arabic lesson' }], scope: true }
+    : { type: 'ask', register: reg, ar: L.back, en: 'Shall we go back to the lesson?', id: 'scope', chips: [{ ar: 'يَلَّا', en: "Let's go", value: 'continue the Arabic lesson' }], scope: true };
+  return [first, ask];
+}
+
+/* ---------- homework helper (mode 'homework') ----------
+   Arabic-language homework is in scope; homework in any other subject is not, even when it is written in Arabic
+   (an Arabic maths word problem is maths). Asking for the finished answer is its own topic: a warm refusal + a hint.
+   classifyHomework(text) → { topic: 'safeguarding' | 'jailbreak' | 'answer_request' | 'off_topic' | 'arabic' | null, subject, by } */
+const HW_PRE = '(^|\\s)';
+const HW_END = '(?=$|\\s|[؟?!.,،:؛])';
+const HW_NOT_HOW = '(?<!(كيف|شلون|اشلون|ازاي|ممكن|بدي|ابي|ابا|ابغي|ابغا|عايز|عايزه|ساعدني|ساعديني|علمني|علميني|خليني|رح|راح|حا|ح|بس) )';
+const HW_BEG = [
+  /\b(just |please |pls |plz )?(give|tell|send|show|type|write) me (the |all the |all |your )?(correct |right |real |full )?(answers?|solutions?)\b/,
+  /\bwhat('s| is| are) the (correct |right )?answers?\b/, /\b(answers?|solutions?) (please|pls|plz|now)\b/,
+  /\b(do|write|finish|complete|solve|answer|fill in|fill out|fill|type) (it|this|them|that|these|all|all of (it|them)|(all )?the (whole )?(thing|worksheet|homework|blanks?|questions?|sentences?|essay|paragraph|story|exercise)|my (homework|worksheet|essay|paragraph|story|exercise))( all| now| quickly)? for me\b/,
+  /\b(can|could|will|would) you (just |please )?(do|write|finish|complete|solve) (my|the|this|it|them)\b(?! with me)/, /\b(do|write) my (arabic )?(homework|essay|worksheet)\b/,
+  /\bi (don'?t|do not) want to (think|try|work it out|do it myself)\b/,
+  /\b(teacher|mum|mom|dad|parents?|mother|father|miss)\b.{0,30}\b(said|says|allows?|allowed|lets?|told me|is fine|it'?s fine|ok|okay)\b.{0,40}\b(answers?|do it|write it|writes?|give|tell me|solve|do my|write my|fill|essay)\b/,
+  new RegExp(HW_PRE + '(اعطني|عطني|اعطيني|عطيني|هات|هاتلي|هاتي|ابي|ابا|ابغي|ابغا|بدي|عايز|عايزه|عاوز|اريد|قلي|قللي|قول لي|قولي لي|قوليلي|قولي|قولها|اكتبلي|اكتب لي|ارسلي|ارسل لي|ابعتلي|ابعت لي|ابعثلي|وريني|ورني|فرجيني|فرجيني) .{0,12}(الجواب|الاجابه|الاجابات|الاجوبه|اجوبه|اجابات|الحل|الحلول|جواب|اجابه)' + HW_END),
+  new RegExp(HW_PRE + 'ت?(حل|حلي|حلها|حله|حلهم|اكتب|اكتبي|اكتبها|اكتبه|اكتبهم|جاوب|جاوبي|جاوبها|اجب|املا|املي|عبي|عبيها|كمل|كملي|كملها|سوي|سويها|اعمل|اعملها) ?(لي|الي|عني|بدالي|مكاني|بدلي|بدلا عني|هالي|هولي)' + HW_END),
+  new RegExp(HW_PRE + '(شو|ايش|وش|ويش|ما|ماذا|ايه|شنو) (هو |هي )?(الجواب|الحل|الاجابه|الاجابات|الاجوبه)( الصحيح| الصحيحه)?' + HW_END),
+  new RegExp(HW_PRE + '(بس|بسرعه|فقط|عالسريع|هلق|هسا|الحين) (اعطني |عطني |قلي |قولي |هات )?(الجواب|الحل|الاجابه|الاجابات)'),
+  /(المعلمه|المعلم|معلمتي|معلمي|المدرسه|المدرس|مدرستي|مدرسي|الاستاذ|الاستاذه|استاذي|استاذتي|الابله|ابلتي|ماما|بابا|امي|ابوي|المس|الميس) .{0,8}(قالت|قال|قالو|قالتلي|قاللي|قالي|قالت لي|قال لي|سمحت|سمح|سمحتلي|بتقول|بيقول|تقول|يقول|بتقلي|بيقلي) .{0,40}(الجواب|الاجابه|الاجابات|الحل|تحل|تكتب|تعطيني|تقولي|تقلي|تجاوب|عادي|مسموح)/,
+  /(ما|مو|مش|مب) ?(ابي|ابا|ابغي|ابغا|بدي|عايز|عايزه|عاوز|اريد|ودي) (افكر|احاول|اتعلم|احل|اكتب|اجرب)/,
+  /* clue-begging (v16.1): first/last letter, letter count, a synonym or words that fit the blank */
+  /(عطني|اعطني|اعطيني|عطيني|قلي|قللي|قول لي|قولي|قوليلي|قلي بس|هات|هاتلي|ابي|ابغي|ابا|بدي|عايز|عايزه|اريد|ممكن تقول|ممكن تعطيني|خبرني|علمني) .{0,12}((اول|اخر|ثاني) حرف|الحرف الاول|الحرف الاخير|اول حرفين|كم حرف|عدد (ال)?حروف|(حروف|احرف) الجواب|(كلمه|كلمات) (بنفس المعني|معناها|ب?ت?نفع|ب?ت?صلح|ب?ت?مشي|ب?ت?ركب|قريبه)|مرادف|امثله( (ل|علي|عن))? ?(ال)?(كلمه|كلمات|الجواب))/,
+  /\b(tell|give|show) me (just |only )?(the )?((first|last) letters?|how many letters|a synonym|words? that (fit|fits|works?))\b/,
+  new RegExp(HW_NOT_HOW + HW_PRE + '(اكتب|اكتبي) (التعبير|الموضوع|الانشاء|المقال|المقاله|الفقره كلها|الاجابات|كل الاجابات|الجمل كلها)' + HW_END)];
+/* clearly Arabic-language homework (grammar, spelling, reading, writing) */
+const HW_ARABIC = [/\barabic (homework|worksheet|grammar|spelling|reading|essay|writing|test|exercise)\b/,
+  /(املا الفراغ|الفراغات|الفراغ|اعرب|اعراب|الاعراب|الفعل الماضي|الفعل المضارع|فعل الامر|الفاعل|المفعول به|المبتدا|الخبر|اسم الاشاره|اسماء الاشاره|الاسم الموصول|حروف الجر|حرف الجر|الضمير|الضمائر|المفرد|المثني|جمع (كلمه|المذكر|المؤنث|التكسير)|جمع مذكر|جمع مؤنث|جمع تكسير|مفرد كلمه|مرادف|المرادف|مضاد|ضد كلمه|عكس كلمه|التاء المربوطه|التاء المفتوحه|الهمزه|همزه|اللام الشمسيه|اللام القمريه|التنوين|الشده|المد|الحركات|الاملاء|املاء|اقرا النص|اقرا الفقره|اقرأ القصه|النص التالي|الفقره التاليه|فهم المقروء|الفهم والاستيعاب|استخرج من النص|استخرج|ضع خطا|صل الكلمه|صل بين|رتب الكلمات|رتب الجمل|رتب الحروف|كون جمله|جمله مفيده|حلل الكلمه|التعبير|موضوع تعبير|القصيده|بيت الشعر|المعجم|الاسماء الخمسه|كان واخواتها|ان واخواتها|نوع الجمله|الجمله الاسميه|الجمله الفعليه|لغتي|واجب العربي|واجب اللغه العربيه|درس العربي|القواعد|النحو|الكلمه المناسبه|الحرف الناقص|الحروف الناقصه|المقاطع|مقطع|في كلمه|حروف كلمه|الكلمات التاليه|الجمل التاليه)/];
+const HW_OTHER = [
+  ['maths', [/(الجمع والطرح|عمليه الجمع|عمليه الطرح|جدول الضرب|عمليه الضرب|القسمه الطويله|الكسور|الكسر العشري|الاعداد العشريه|المعادله|المعادلات|المساحه|الهندسه|الزوايا|الاعداد الزوجيه|الاعداد الفرديه|القيمه المنزليه|مساله كلاميه|مسائل كلاميه|مساله حسابيه|مسائل حسابيه|الرياضيات|رياضيات|ماث)/,
+    /(كم|قديش|اديش|ما ناتج|احسب|اوجد|جد ناتج|اكمل النمط) .{0,60}(بقي|يبقي|بقيت|المجموع|مجموع|الباقي|ثمن|سعر|اصبح|اصبحت|صار عند|صار معه|صار معها|عنده الان|عندها الان|كلها|معا|مع بعض|اكل|اكلت|اشتري|اشترت|اعطي|اعطت|خسر|ربح|يساوي|ناتج)/,
+    new RegExp('\\d.{0,80}(كم|قديش|اديش|ما ناتج|احسب|اوجد)|(كم|قديش|اديش|احسب|اوجد).{0,80}\\d'),
+    new RegExp(NUMW_AR + ' .{0,40}(درهم|دراهم|ريال|ريالات|دينار|دنانير|ليره|ليرات|جنيه|فلس|تفاحات|برتقالات|اقلام|كرات|حلويات) .{0,80}(كم|قديش|اديش)'),
+    /\b(math|maths|mathematics) (homework|worksheet|question|problem|test)\b|\bword problem\b/, /\bhow (far|many|much|long|fast)\b.{0,60}\d|\d.{0,80}\bhow (far|many|much|long|fast)\b/]],
+  ['science', [/(واجب|سؤال|تمرين|ورقه عمل|امتحان|اختبار|مشروع|درس) (ال)?(علوم|فيزياء|كيمياء|احياء)/,
+    /(لماذا|ليش|ليه|كيف|ما هي|ما هو|اشرح|عدد|اذكر|علل|قارن|ما الفرق|ما وظيفه|ما اهميه|كم|صف|سم) .{0,40}(التمثيل الضوئي|الخليه|الخلايا|دوره الماء|دوره حياه|حالات الماده|الماده الصلبه|الجهاز الهضمي|الجهاز التنفسي|الهيكل العظمي|السلسله الغذائيه|المجموعه الشمسيه|الكواكب|الجاذبيه|المغناطيس|الكهرباء|الدائره الكهربائيه|الصخور|التربه|البراكين|الزلازل|الفقاريات|اللافقاريات|الثدييات|الزواحف|البرمائيات|الكثافه|التبخر|التكثف|اجزاء النبات|النباتات|الاوراق|الجذور)/,
+    /\b(science|physics|chemistry|biology) (homework|worksheet|question|test|project)\b/]],
+  ['other', [/(واجب|سؤال|تمرين|ورقه عمل|امتحان|اختبار|مشروع|درس) (ال)?(انجليزي|انقليزي|انكليزي|فرنسي|تاريخ|جغرافيا|اجتماعيات|دراسات|تربيه اسلاميه|اسلاميه|التربيه الاسلاميه|تربيه وطنيه|حاسوب|كمبيوتر|فنون|موسيقي)/,
+    /\b(english|french|spanish|history|geography|social studies|computing|ict) (homework|worksheet|essay|test|quiz|question|spelling|grammar)\b/]]];
+const HW_TEACHER = SCOPE_N(/(\b(teacher|mum|mom|dad|parents?|school|miss)\b|المعلمه|المعلم|معلمتي|معلمي|المدرسه|مدرستي|الاستاذ|الاستاذه|الابله|ماما|بابا|امي|ابوي)/);
+const HW_RE = { beg: HW_BEG.map(SCOPE_N), arabic: HW_ARABIC.map(SCOPE_N), other: HW_OTHER.map(([k, l]) => [k, l.map(SCOPE_N)]) };
+function classifyHomework(text) {
+  const raw = String(text == null ? '' : text); const t = normRisk(raw); if (!t) return { topic: null };
+  const risk = detectRisk(raw);
+  if (risk && HIGH.has(risk.kind)) return { topic: 'safeguarding', subject: risk.kind, by: 'rules' };
+  const arabicHw = scopeAny(HW_RE.arabic, t);
+  const strongMaths = HW_RE.other[0][1][0].test(t) || classifyTopic(raw).subject === 'maths';
+  for (const [k, list] of HW_RE.other) if (scopeAny(list, t) && !(arabicHw && (k === 'science' || (k === 'maths' && !strongMaths)))) return { topic: 'off_topic', subject: k === 'other' ? null : k, hw: k, by: 'rules' };
+  if (scopeAny(HW_RE.beg, t)) return { topic: 'answer_request', by: 'rules' };
+  if (risk && risk.kind === 'jailbreak') return { topic: 'jailbreak', subject: 'jailbreak', by: 'rules' };
+  const c = classifyTopic(raw);
+  if (c.topic === 'jailbreak') return HW_TEACHER.test(t) && !(risk && risk.kind === 'jailbreak') ? { topic: arabicHw ? 'arabic' : null, by: 'rules' } : c;
+  if (c.topic === 'off_topic') {
+    if (c.subject === 'essay' || c.subject === 'translate') return { topic: arabicHw ? 'arabic' : null, by: 'rules' }; /* a pasted task is coached, never written */
+    if (arabicHw && c.subject !== 'maths' && c.subject !== 'coding') return { topic: 'arabic', by: 'rules' };
+    return Object.assign({ hw: c.subject }, c);
+  }
+  return arabicHw || c.topic === 'arabic' ? { topic: 'arabic', by: 'rules' } : { topic: null };
+}
+
+/* Homework-helper scripted lines: one source for the Worker (homework.mjs imports it) and the page (build.py strips import/export).
+   [boy|girl] forms via gform (safety.mjs). Dialect lines are pure dialect, Fusha lines pure Fusha. Listed in dialect-review/needs-native-check.csv. */
+
+/* ---------- scripted lines: [boy|girl]; dialect lines are pure dialect, Fusha lines pure Fusha ---------- */
+const HWL = {
+  emirati: { refuse: 'مَا بَعْطِي[ك|ج] الجَوَاب جَاهِز، بَسّ بَسَاعِد[ك|ج] [تُوصَل|تُوصْلِين] لَه بْرُوح[ك|ج]. [إِنْتَ|إِنْتِي] قَدّْهَا!', try: '[جَرِّب|جَرِّبِي] وْ[قُول|قُولِي] لِي شُو [كِتَبْت|كِتَبْتِي]؟', other: 'أَنَا أَسَاعِد فِي وَاجِب العَرَبِي وَبَسّ.', other_ask: 'عِنْد[ك|ج] وَاجِب عَرَبِي نْشُوفَه سَوَا؟', photo_bad: 'الصُّورَة مُب وَاضْحَة. [صَوِّر|صَوِّرِي] الوَرَقَة مَرَّة ثَانْيَة مِن قَرِيب وْفِي النُّور.', show: '[اِكْتِب|اِكْتِبِي] لِي السُّؤَال، وَلَّا [صَوِّر|صَوِّرِي] وَرَقَة الوَاجِب.', think: 'خَلْنَا نْفَكِّر سَوَا خَطْوَة خَطْوَة.', not_hw: 'أَنَا أَشُوف وَاجِب العَرَبِي وَبَسّ.' },
+  saudi: { refuse: 'مَا رَاح أَعْطِي[ك|كِ] الجَوَاب جَاهِز، بَسّ بَسَاعِد[ك|كِ] [تْحِلَّه|تْحِلِّينَه] بْنَفْس[ك|كِ]. [أَنْتَ|أَنْتِي] قَدّْهَا!', try: '[جَرِّب|جَرِّبِي] وْ[قُل|قُولِي] لِي وِش [كَتَبْت|كَتَبْتِي]؟', other: 'أَنَا أَسَاعِد فِي وَاجِب العَرَبِي بَسّ.', other_ask: 'عِنْد[ك|كِ] وَاجِب عَرَبِي نْشُوفَه سَوَا؟', photo_bad: 'الصُّورَة مُو وَاضْحَة. [صَوِّر|صَوِّرِي] الوَرَقَة مَرَّة ثَانْيَة مِن قَرِيب وْفِي النُّور.', show: '[اُكْتُب|اُكْتُبِي] لِي السُّؤَال، وَلَّا [صَوِّر|صَوِّرِي] وَرَقَة الوَاجِب.', think: 'خَلّنَا نْفَكِّر سَوَا خَطْوَة خَطْوَة.', not_hw: 'أَنَا أَشُوف وَاجِب العَرَبِي بَسّ.' },
+  lebanese: { refuse: 'مَا رَح إِعْطِي[ك|كِ] الجَوَاب جَاهِز، بَسّ رَح سَاعْد[ك|كِ] [تْحِلُّه|تْحِلِّيه] لَحَال[ك|كِ]. [إِنْتَ|إِنْتِي] قَدَّا!', try: '[جَرِّب|جَرِّبِي] وْ[قِلِّي|قِلِيلِي] شُو [كَتَبْت|كَتَبْتِي]؟', other: 'أَنَا بْسَاعِد بْفَرْض العَرَبِي وَبَسّ.', other_ask: 'عِنْد[ك|كِ] فَرْض عَرَبِي مْنِشْتِغْلُه سَوَا؟', photo_bad: 'الصُّورَة مِش وَاضْحَة. [صَوِّر|صَوِّرِي] الوَرْقَة كَمَان مَرَّة عَن قَرِيب وْبِالضَّو.', show: '[اِكْتُبْلِي|اِكْتُبِيلِي] السُّؤَال، أَو [صَوِّر|صَوِّرِي] وَرْقَة الفَرْض.', think: 'خَلِّينَا نْفَكِّر سَوَا خَطْوَة خَطْوَة.', not_hw: 'أَنَا بْشُوف فَرْض العَرَبِي وَبَسّ.' },
+  syrian: { refuse: 'لَا، مَا رَح أَعْطِي[ك|كِ] الجَوَاب جَاهِز، بَسّ رَح سَاعْد[ك|كِ] مْنْشَان [تْحِلُّه|تْحِلِّيه] لَحَال[ك|كِ]. [إِنْتَ|إِنْتِي] [شَاطِر|شَاطْرَة]!', try: 'يَلَّا [جَرِّب|جَرِّبِي] هَلَّأ، وْ[قِلِّي|قُولِيلِي] شُو [كَتَبْت|كَتَبْتِي]؟', other: 'أَنَا بْسَاعِد بْوَظِيفِة العَرَبِي بَسّ.', other_ask: 'عِنْد[ك|كِ] وَظِيفِة عَرَبِي؟ مْنْشُوفْهَا سَوَا؟', photo_bad: 'الصُّورَة مُو وَاضْحَة. [صَوِّر|صَوِّرِي] الوَرْقَة مَرَّة تَانْيِة مِن قَرِيب وْبِالضَّو.', show: '[اِكْتُبْلِي|اِكْتُبِيلِي] السُّؤَال، أَو [صَوِّر|صَوِّرِي] وَرْقِة الوَظِيفِة.', think: 'هَلَّأ مْنْفَكِّر سَوَا خَطْوَة خَطْوَة.', not_hw: 'أَنَا بْشُوف وَظِيفِة العَرَبِي بَسّ.' },
+  jordanian: { refuse: 'لَا، مِش رَح أَعْطِي[ك|كِ] الجَوَاب جَاهِز، بَسّ رَح أَسَاعْد[ك|كِ] عَشَان [تْحِلُّه|تْحِلِّيه] لَحَال[ك|كِ]. [إِنْتَ|إِنْتِي] قَدّْهَا!', try: 'يَلَّا [جَرِّب|جَرِّبِي] هَسَّا، شُو [كَتَبْت|كَتَبْتِي]؟', other: 'أَنَا بَسَاعِد بْوَاجِب العَرَبِي بَسّ.', other_ask: 'عِنْد[ك|كِ] وَاجِب عَرَبِي؟ بِنِشْتِغِل عَلِيه سَوَا؟', photo_bad: 'الصُّورَة مِش وَاضْحَة. [صَوِّر|صَوِّرِي] الوَرَقَة كَمَان مَرَّة مِن قَرِيب وْبِالضَّو.', show: '[اُكْتُبْلِي|اُكْتُبِيلِي] السُّؤَال، أَو [صَوِّر|صَوِّرِي] وَرَقَة الوَاجِب.', think: '[تَعَال|تَعَالِي] نْفَكِّر سَوَا خَطْوَة خَطْوَة.', not_hw: 'أَنَا بَشُوف وَاجِب العَرَبِي بَسّ.' },
+  egyptian: { refuse: 'مِش هَدِّي[ك|كِي] الإِجَابَة جَاهْزَة، بَسّ هَسَاعْد[ك|ِك] [تِحِلَّهَا|تِحِلِّيهَا] بْنَفْس[ك|ِك]. [إِنْتَ|إِنْتِي] قَدّْهَا!', try: '[جَرَّب|جَرَّبِي] وْ[قُولِّي|قُولِيلِي] [كَتَبْت|كَتَبْتِي] إِيه؟', other: 'أَنَا بَسَاعِد فِي وَاجِب العَرَبِي بَسّ.', other_ask: '[عَنْدَك|عَنْدِك] وَاجِب عَرَبِي نْشُوفُه سَوَا؟', photo_bad: 'الصُّورَة مِش وَاضْحَة. [صَوَّر|صَوَّرِي] الوَرَقَة تَانِي مِن قُرَيِّب وْفِي النُّور.', show: '[اِكْتِبْلِي|اِكْتِبِيلِي] السُّؤَال، أَو [صَوَّر|صَوَّرِي] وَرَقِة الوَاجِب.', think: '[تَعَالَ|تَعَالِي] نْفَكَّر سَوَا خَطْوَة خَطْوَة.', not_hw: 'أَنَا بَشُوف وَاجِب العَرَبِي بَسّ.' },
+  fusha: { refuse: 'لَنْ أُعْطِيَ[كَ|كِ] الجَوَابَ جَاهِزاً، لَكِنِّي سَأُسَاعِدُ[كَ|كِ] لِ[تَصِلَ|تَصِلِي] إِلَيْهِ بِنَفْسِ[كَ|كِ]. [أَنْتَ قَادِرٌ|أَنْتِ قَادِرَةٌ]!', try: '[جَرِّبْ|جَرِّبِي]، ثُمَّ [أَخْبِرْنِي|أَخْبِرِينِي]: مَاذَا [كَتَبْتَ|كَتَبْتِ]؟', other: 'أُسَاعِدُ فِي وَاجِبِ اللُّغَةِ العَرَبِيَّةِ فَقَطْ.', other_ask: 'هَلْ عِنْدَ[كَ|كِ] وَاجِبٌ فِي العَرَبِيَّةِ؟', photo_bad: 'الصُّورَةُ غَيْرُ وَاضِحَةٍ. [صَوِّرِ|صَوِّرِي] الوَرَقَةَ مَرَّةً أُخْرَى مِنْ قَرِيبٍ وَفِي الضَّوْءِ.', show: '[اُكْتُبِ|اُكْتُبِي] السُّؤَالَ، أَوْ [صَوِّرْ|صَوِّرِي] وَرَقَةَ الوَاجِبِ.', think: 'لِنُفَكِّرْ مَعاً خُطْوَةً خُطْوَةً.', not_hw: 'أَنْظُرُ فِي وَاجِبِ العَرَبِيَّةِ فَقَطْ.' } };
+const HWL_EN = { refuse: "I won't give you the ready answer, but I'll help you get there yourself. You can do it!", try: 'Try it and tell me what you wrote.', other: 'I only help with Arabic homework.', other_ask: 'Do you have Arabic homework we can look at together?', photo_bad: "The photo isn't clear. Take it again, close up and in good light.", show: 'Type the question for me, or take a photo of the homework sheet.', think: "Let's think it through together, step by step.", not_hw: 'I only look at Arabic homework.' };
+/* Fusha hints about the written task, one per kind (never an answer) */
+const HW_HINT = {
+  fill_blank: ['[اِقْرَأِ|اِقْرَئِي] الجُمْلَةَ كُلَّهَا بِبُطْءٍ، ثُمَّ [فَكِّرْ|فَكِّرِي]: أَيُّ كَلِمَةٍ تُكْمِلُ المَعْنَى؟', 'Read the whole sentence slowly, then think: which word completes the meaning?'],
+  grammar: ['[اُنْظُرْ|اُنْظُرِي] إِلَى آخِرِ الكَلِمَةِ وَإِلَى مَا قَبْلَهَا: مَاذَا [تُلَاحِظُ|تُلَاحِظِينَ]؟', 'Look at the end of the word and at what comes before it: what do you notice?'],
+  spelling: ['[قُلِ|قُولِي] الكَلِمَةَ بِبُطْءٍ، [وَعُدَّ|وَعُدِّي] أَصْوَاتَهَا صَوْتاً صَوْتاً.', 'Say the word slowly and count its sounds one by one.'],
+  reading: ['[اِرْجِعْ|اِرْجِعِي] إِلَى النَّصِّ، [وَابْحَثْ|وَابْحَثِي] عَنِ الجُمْلَةِ الَّتِي تَتَحَدَّثُ عَنِ السُّؤَالِ.', 'Go back to the text and find the sentence that talks about the question.'],
+  writing: ['[اُكْتُبْ|اُكْتُبِي] أَوَّلاً ثَلَاثَ أَفْكَارٍ قَصِيرَةٍ: بِدَايَةً، وَوَسَطاً، وَنِهَايَةً.', 'First write three short ideas: a beginning, a middle and an end.'],
+  vocab: ['[فَكِّرْ|فَكِّرِي] فِي جُمْلَةٍ فِيهَا هَذِهِ الكَلِمَةُ، فَالجُمْلَةُ تَدُلُّ عَلَى المَعْنَى.', 'Think of a sentence with this word in it: the sentence points to the meaning.'],
+  other: ['[اِقْرَأِ|اِقْرَئِي] السُّؤَالَ مَرَّةً أُخْرَى، [وَضَعْ|وَضَعِي] خَطّاً تَحْتَ الكَلِمَةِ المُهِمَّةِ فِيهِ.', 'Read the question again and underline the important word in it.'] };
+const hwDd = (d) => (HWL[d] ? d : 'emirati'); const hwReg = (d) => (d === 'fusha' ? 'fusha' : 'dialect');
+function hwLine(key, dialect, g) { const d = hwDd(dialect); return { ar: gform(HWL[d][key], g), en: HWL_EN[key] }; }
+const hwL = (type, key, d, g, extra) => Object.assign({ type, register: hwReg(d) }, hwLine(key, d, g), extra || {});
+const hwHintLine = (kind, g) => { const h = HW_HINT[kind] || HW_HINT.other; return { type: 'hint', register: 'fusha', ar: gform(h[0], g), en: h[1] }; };
+function hwRefuse(d, g, kind, hasTask) { return hasTask ? [hwL('say', 'refuse', d, g), hwHintLine(kind, g), hwL('ask', 'try', d, g)] : [hwL('say', 'refuse', d, g), hwL('ask', 'show', d, g)]; }
+function hwOther(d, g) { return [hwL('say', 'other', d, g, { scope: true }), hwL('ask', 'other_ask', d, g, { scope: true })]; }
+function hwLeakFix(d, g, kind) { return [hwL('say', 'think', d, g), hwHintLine(kind, g), hwL('ask', 'try', d, g)]; }
+function hwStart(d, g) { return [hwL('ask', 'show', d, g)]; }
+
 
 'use strict';
 /* =========================================================
@@ -9759,8 +10158,12 @@ document.addEventListener('click', (e) => {
     if (q.has('tutor')) { DB.settings.tutorEndpoint = q.get('tutor').replace(/\/+$/, ''); q.delete('tutor'); ch = true; }
     if (q.has('code')) { DB.settings.familyCode = q.get('code'); q.delete('code'); ch = true; }
     if (ch) { saveDB(); history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + location.hash); } } catch (e) { /* */ }
-  const BASE = () => (DB.settings.tutorEndpoint || '').replace(/\/api\/tutor$/, '').replace(/\/+$/, '');
+  /* v16: on the published app the Worker address is known; a parent still has to add the family code once (?code=…) */
+  /*     (computed, not saved: no new save field, and the saved settings object is replaced when the save loads) */
+  const DEF_EP = /(^|\.)rarmoush\.github\.io$/.test(location.hostname) ? 'https://saqqour-tutor.rarmoush.workers.dev' : '';
+  const BASE = () => (DB.settings.tutorEndpoint || DEF_EP).replace(/\/api\/tutor$/, '').replace(/\/+$/, '');
   const HDR = () => Object.assign({ 'Content-Type': 'application/json', 'X-Session': AZ.sid }, DB.settings.familyCode ? { 'X-Family-Code': DB.settings.familyCode } : {});
+  window.TT_BASE = BASE; window.TT_HDR = () => HDR(); /* the homework helper (src/homework.js) posts to the same Worker */
   const AZ = (window.TT_AZ = { ok: false, tts: false, sid: 's' + Math.random().toString(36).slice(2, 10), lat: [], audio: null, q: Promise.resolve(), gen: 0 });
   /* ---- meaning toggle (English hidden by default) ---- */
   const css = document.createElement('style');
@@ -9799,7 +10202,10 @@ document.addEventListener('click', (e) => {
       try {
         const res = await fetch(this.endpoint, { method: 'POST', headers: HDR(), body: JSON.stringify(body), signal: ctl.signal });
         if (!res.ok) throw new Error('http ' + res.status);
-        const j = await res.json(); const raw = (j && j.actions) || [];
+        const j = await res.json(); let raw = (j && j.actions) || [];
+        /* scope guard on the device too: a reply that answers maths, shows code or gives non-Arabic facts is swapped for a scripted redirect */
+        if (event.type === 'reply' && !(j && j.safety) && typeof checkReply === 'function') { const mt = j && j.meta && j.meta.scope && j.meta.scope.topic; const why = checkReply(raw, mt);
+          if (why) { const pr = PROFILES[currentKid]; raw = redirectActions(mt === 'jailbreak' ? 'jailbreak' : 'off_topic', null, this.ctx.dialect(), pr ? pr.gender : 'm'); AZ.scope = (AZ.scope || 0) + 1; } }
         if (j && j.safety && typeof ttSafetyFlag === 'function') ttSafetyFlag(j.safety);
         /* validate one by one so the register (dialect/fusha) survives validation */
         const acts = []; raw.forEach((a) => { const v = AzureBrain.validate([a], this.ctx)[0]; if (v) { if (a.register) v.register = a.register === 'fusha' ? 'fusha' : 'dialect'; acts.push(v); } });
@@ -9897,7 +10303,18 @@ ttSend = async function ttSendSafe(text, value, via) {
   if (!text) return;
   if (TT.safeEnd) return;
   const risk = via === 'chip' ? null : detectRisk(text);
-  if (!risk) return _ttSendSafe(text, value, via);
+  if (!risk) {
+    /* scope guard: Saqqour only teaches Arabic. Clear off-topic / jailbreak requests are not sent; a scripted dialect redirect instead */
+    const tp = via === 'chip' ? { topic: null } : classifyTopic(text);
+    if (tp.topic !== 'off_topic' && tp.topic !== 'jailbreak') return _ttSendSafe(text, value, via);
+    const ask0 = TT.ask; ttChips(null); ttChildBubble(text, via);
+    const pr = PROFILES[currentKid]; const g = pr ? pr.gender : 'm';
+    const cloud = typeof AzureBrain === 'function' && TT.brain instanceof AzureBrain && !TT.brain.fallback;
+    const acts = redirectActions(tp.topic, cloud ? tp.subject : null, curDialect(), g).map((a) => (a.type === 'ask' ? Object.assign({}, a, { chips: a.chips.map((c) => Object.assign({}, c, { icon: 'play' })) }) : a));
+    if (cloud) { acts.forEach((a) => TT.brain.history.push({ role: 'tutor', text: TB.scrub(a.ar + ' / ' + a.en) })); await ttRun(acts); return; }
+    await ttRun(acts.filter((a) => a.type !== 'ask')); if (ask0) ttChips(ask0); else ttChips(acts.find((a) => a.type === 'ask'));
+    return;
+  }
   const ask = TT.ask; ttChips(null); ttChildBubble(text, via);
   ttSafetyFlag({ kind: risk.kind, level: risk.level });
   const acts = ttSafeActs(risk);
@@ -9908,6 +10325,598 @@ ttSend = async function ttSendSafe(text, value, via) {
 (function () { const css = document.createElement('style');
   css.textContent = '.tt-safe-end{background:#fffdf3;border:2px solid #f2d27a;border-radius:18px;padding:14px}.tt-help{font-weight:700;color:#3b2a00;margin-top:6px}';
   document.head.appendChild(css); })();
+
+'use strict';
+/* =========================================================
+   FALCON HOME (v16). Saqqour the falcon is the app's front door; it fully replaces the old home.
+   - Dialect lines for everything the falcon or the child says; Fusha for titles, UI and anything written. Never mixed in one line.
+   - Suggestions come from progress (letters, stories, Wordle, falcon outfit); every activity sends a start and a finish
+     signal (ACT_SIG) and comes back to the falcon with a reaction.
+   - Free chat only with parent consent: real AI turns through the Saqqour Worker (same brain, safety and scope layers as the
+     tutor). No consent, offline or no Worker → scripted lines. Cloud voices only with cloud consent.
+   - No new save fields: falcon outfit, coins and progress are the existing ones (arabicTutor.v2 stays migration-safe).
+   ========================================================= */
+const MHL = {
+  greet: { en: 'Hi {name}! How are you today?', emirati: 'هَلَا {name}! [شَحَالَك|شَحَالِج] اليُوم؟', saudi: 'هَلَا {name}! [كَيْفَك|كَيْفِك] اليُوم؟', egyptian: 'أَهْلاً يَا {name}! [إِزَّيَّك|إِزَّيِّك] النَّهَارْدَه؟', lebanese: 'مَرْحَبا {name}! [كِيفَك|كِيفِك] اليُوم؟', fusha: 'مَرْحَباً يَا {name}! كَيْفَ حَالُ[كَ|كِ] اليَوْمَ؟' },
+  ai: { en: "I'm an AI helper, not a person.", emirati: 'تَرَى أَنَا مُسَاعِد ذَكَاء اصْطِنَاعِي، مُب إِنْسَان.', saudi: 'تَرَى أَنَا مُسَاعِد ذَكَاء اصْطِنَاعِي، مُو إِنْسَان.', egyptian: 'عَلَى فِكْرَة أَنَا مُسَاعِد ذَكَاء اصْطِنَاعِي، مِش بَنِي آدَم.', lebanese: 'عَلَى فِكْرَة أَنَا مْسَاعِد ذَكَاء اصْطِنَاعِي، مِش إِنْسَان.', fusha: 'أَنَا مُسَاعِدُ ذَكَاءٍ اصْطِنَاعِيٍّ، وَلَسْتُ إِنْسَاناً.' },
+  sug_letter: { en: 'How about we practise this letter?', emirati: '[شُو رَايَك|شُو رَايِج] نِتْدَرَّب عَلَى هَالحَرْف؟', saudi: '[وِش رَايَك|وِش رَايِك] نِتْدَرَّب عَلَى هَالحَرْف؟', egyptian: '[إِيه رَأْيَك|إِيه رَأْيِك] نِتْمَرَّن عَلَى الحَرْف دَه؟', lebanese: 'شُو [رَأْيَك|رَأْيِك] نِتْمَرَّن عَلَى هَالحَرْف؟', fusha: 'مَا رَأْيُ[كَ|كِ] أَنْ نَتَدَرَّبَ عَلَى هَذَا الحَرْفِ؟' },
+  sug_story: { en: 'Or do you want a story?', emirati: 'وَلَّا [تَبَا|تَبِين] قِصَّة؟', saudi: 'وَلَّا [تَبْغَى|تَبْغِين] قِصَّة؟', egyptian: 'وَلَّا [عَايِز|عَايْزَة] حِكَايَة؟', lebanese: 'وَلَّا [بَدَّك|بَدِّك] قِصَّة؟', fusha: 'أَمْ [تُرِيدُ|تُرِيدِينَ] قِصَّةً؟' },
+  sug_wordle: { en: "Today's word is waiting for you!", emirati: 'كَلِمَة اليُوم تِنْطِر[ك|ج]!', saudi: 'كِلْمَة اليُوم تِنْتِظْر[ك|ك]!', egyptian: 'كِلْمِة النَّهَارْدَه [مِسْتَنِّيَاك|مِسْتَنِّيَاكِي]!', lebanese: 'كِلْمِة اليُوم [عَم تِسْتَنَّاك|عَم تِسْتَنَّاكِي]!', fusha: 'كَلِمَةُ اليَوْمِ تَنْتَظِرُ[كَ|كِ]!' },
+  sug_game: { en: 'Want a quick game?', emirati: '[تَبَا|تَبِين] لُعْبَة سَرِيعَة؟', saudi: '[تَبْغَى|تَبْغِين] لُعْبَة سَرِيعَة؟', egyptian: '[عَايِز|عَايْزَة] لُعْبَة سَرِيعَة؟', lebanese: '[بَدَّك|بَدِّك] لِعْبِة سَرِيعَة؟', fusha: 'هَلْ [تُرِيدُ|تُرِيدِينَ] لُعْبَةً سَرِيعَةً؟' },
+  sug_dress: { en: 'I have something new to wear!', emirati: 'عِنْدِي لِبْس جِدِيد! [تَبَا|تَبِين] [تْشُوفَه|تْشُوفِينَه]؟', saudi: 'عِنْدِي لِبْس جْدِيد! [تَبْغَى|تَبْغِين] [تْشُوفَه|تْشُوفِينَه]؟', egyptian: 'عَنْدِي لِبْس جِدِيد! [عَايِز|عَايْزَة] [تْشُوفُه|تْشُوفِيه]؟', lebanese: 'عِنْدِي تْيَاب جْدِيدِة! [بَدَّك|بَدِّك] [تْشُوفُن|تْشُوفِين]؟', fusha: 'عِنْدِي لِبَاسٌ جَدِيدٌ! هَلْ [تُرِيدُ|تُرِيدِينَ] أَنْ [تَرَاهُ|تَرَيْهِ]؟' },
+  ask: { en: 'What do you want to do?', emirati: 'شُو [تَبَا|تَبِين] نْسَوِّي؟', saudi: 'وِش [تَبْغَى|تَبْغِين] نْسَوِّي؟', egyptian: '[عَايِز|عَايْزَة] نِعْمِل إِيه؟', lebanese: 'شُو [بَدَّك|بَدِّك] نَعْمِل؟', fusha: 'مَاذَا [تُرِيدُ|تُرِيدِينَ] أَنْ نَفْعَلَ؟' },
+  go: { en: "Off you go! I'll wait right here.", emirati: 'يَلَّا! أَنَا هِنِي [أَنْطِرَك|أَنْطِرِج].', saudi: 'يَلَّا! أَنَا هِنَا [أَنْتِظْرَك|أَنْتِظْرِك].', egyptian: 'يَلَّا! أَنَا هِنَا [مِسْتَنِّيك|مِسْتَنِّيكِي].', lebanese: 'يَلَّا! أَنَا هَوْن [نَاطْرَك|نَاطْرِك].', fusha: 'هَيَّا! أَنَا هُنَا أَنْتَظِرُ[كَ|كِ].' },
+  win: { en: 'Brilliant! You did it!', emirati: ['عَاش! وَايِد [شَاطِر|شَاطْرَة]!', 'كَفُو! [سَوَّيْتهَا|سَوَّيْتِيهَا]!'], saudi: ['كَفُو! [شَاطِر|شَاطْرَة] مَرَّة!'], egyptian: ['بْرَافُو [عَلِيك|عَلِيكِي]! [شَاطِر|شَاطْرَة] أَوِي!'], lebanese: ['بْرَافُو! كْتِير [شَاطِر|شَاطْرَة]!'], fusha: ['أَحْسَنْ[تَ|تِ]! عَمَلٌ رَائِعٌ!'] },
+  coins: { en: 'Look, your coins went up!', emirati: '[شُوف|شُوفِي]، زَادَت عُمْلَات[ك|ج]!', saudi: '[شُوف|شُوفِي]، زَادَت عُمْلَات[ك|ك]!', egyptian: '[بُصّ|بُصِّي]، العُمْلَات بْتَاعْت[ك|ك] زَادِت!', lebanese: '[شُوف|شُوفِي]، زَادُو العُمْلَات تَبَع[ك|ك]!', fusha: '[اُنْظُرْ|اُنْظُرِي]، زَادَتْ عُمْلَاتُ[كَ|كِ]!' },
+  none: { en: 'No worries, we can try again later.', emirati: 'مَا عَلَيْه، نِرْجَع لَهَا بَعْدِين.', saudi: 'مَا عَلَيْه، نِرْجَع لَهَا بَعْدِين.', egyptian: 'مَعْلِش، نِرْجَع لَهَا بَعْدِين.', lebanese: 'مَا في مُشْكِلِة، مْنِرْجَع لَهَا بَعْدِين.', fusha: 'لَا بَأْسَ، نَعُودُ إِلَيْهَا لَاحِقاً.' },
+  dressed: { en: 'What do you think of my look?', emirati: '[شُو رَايَك|شُو رَايِج] بْلِبْسِي؟', saudi: '[وِش رَايَك|وِش رَايِك] فِي لِبْسِي؟', egyptian: '[إِيه رَأْيَك|إِيه رَأْيِك] فِي لِبْسِي؟', lebanese: 'شُو [رَأْيَك|رَأْيِك] بْتْيَابِي؟', fusha: 'مَا رَأْيُ[كَ|كِ] فِي لِبَاسِي؟' },
+  next: { en: 'Shall we keep going with something else?', emirati: 'نْكَمِّل بْشَي ثَانِي؟', saudi: 'نْكَمِّل بْشَي ثَانِي؟', egyptian: 'نْكَمِّل بْحَاجَة تَانْيَة؟', lebanese: 'مْنْكَفِّي بْشِي تَانِي؟', fusha: 'هَلْ نُكْمِلُ بِشَيْءٍ آخَرَ؟' },
+  more: { en: 'Here are some more ideas.', emirati: 'عِنْدِي أَفْكَار ثَانْيَة بَعْد.', saudi: 'عِنْدِي أَفْكَار ثَانْيَة بَعْد.', egyptian: 'عَنْدِي أَفْكَار تَانْيَة كَمَان.', lebanese: 'عِنْدِي أَفْكَار تَانْيِة كَمَان.', fusha: 'لَدَيَّ أَفْكَارٌ أُخْرَى أَيْضاً.' },
+  idea: { en: 'Nice idea! Look at this:', emirati: 'فِكْرَة حِلْوَة! [شُوف|شُوفِي] هَذَا.', saudi: 'فِكْرَة حِلْوَة! [شُوف|شُوفِي] هَذَا.', egyptian: 'فِكْرَة حِلْوَة! [بُصّ|بُصِّي] دَه.', lebanese: 'فِكْرَة حِلْوِة! [شُوف|شُوفِي] هَيْدَا.', fusha: 'فِكْرَةٌ جَمِيلَةٌ! [اُنْظُرْ|اُنْظُرِي] إِلَى هَذَا.' },
+  /* the child's quick replies are spoken too, so they follow the dialect */
+  c_yes: { en: "Let's go!", emirati: 'يَلَّا!', saudi: 'يَلَّا!', egyptian: 'يَلَّا!', lebanese: 'يَلَّا!', fusha: 'هَيَّا!' },
+  c_other: { en: 'Something else', emirati: 'شَي ثَانِي', saudi: 'شَي ثَانِي', egyptian: 'حَاجَة تَانْيَة', lebanese: 'شِي تَانِي', fusha: 'شَيْءٌ آخَرُ' },
+  c_story: { en: 'A story please', emirati: 'أَبَا قِصَّة', saudi: 'أَبْغَى قِصَّة', egyptian: '[عَايِز|عَايْزَة] حِكَايَة', lebanese: 'بَدِّي قِصَّة', fusha: 'أُرِيدُ قِصَّةً' },
+  c_game: { en: 'I want to play', emirati: 'أَبَا أَلْعَب', saudi: 'أَبْغَى أَلْعَب', egyptian: '[عَايِز|عَايْزَة] أَلْعَب', lebanese: 'بَدِّي إِلْعَب', fusha: 'أُرِيدُ أَنْ أَلْعَبَ' }
+};
+/* v16: Syrian (Damascus) and Jordanian (Amman) lines of their own (they used to borrow the Lebanese ones), plus new keys.
+   Syrian: شْلُون، هَلَّأ، هَاد، مُو، مْنِـ (we). Jordanian: كِيف، هَسَّا، هَاظ، مِش، إِشِي، بِنِـ (we). Listed for a native check in
+   dialect-review/needs-native-check.csv (DIALECT_REVIEW marks both as drafts). */
+const MHL_V16 = {
+  greet: { syrian: 'أَهْلِين {name}! [شْلُونَك|شْلُونِك] اليُوم؟', jordanian: 'هَلَا {name}! [كِيفَك|كِيفِك] اليُوم؟ إِنْ شَاء الله [مْنِيح|مْنِيحَة]؟' },
+  ai: { syrian: 'عَلَى فِكْرَة أَنَا مْسَاعِد ذَكَاء اصْطِنَاعِي، مُو إِنْسَان.', jordanian: 'عَلَى فِكْرَة أَنَا مُسَاعِد ذَكَاء اصْطِنَاعِي، مِش إِنْسَان.' },
+  sug_letter: { syrian: 'شُو [بْتْقُول|بْتْقُولِي] نِتْدَرَّب عَلَى هَالحَرْف شْوَي؟', jordanian: 'شُو [رَأْيَك|رَأْيِك] نِتْدَرَّب عَلَى هَالحَرْف هَسَّا؟' },
+  sug_story: { syrian: 'وَلَّا [بَدَّك|بَدِّك] قِصَّة حِلْوِة؟', jordanian: 'وَلَّا [بِدَّك|بِدِّك] قِصَّة؟' },
+  sug_wordle: { syrian: 'كِلْمِة اليُوم [نَاطْرْتَك|نَاطْرْتِك]!', jordanian: 'كَلِمِة اليُوم [مِسْتَنِّيتَك|مِسْتَنِّيتِك]!' },
+  sug_game: { syrian: '[بَدَّك|بَدِّك] لِعْبِة سَرِيعَة هَلَّأ؟', jordanian: '[بِدَّك|بِدِّك] لُعْبِة سَرِيعَة؟' },
+  sug_dress: { syrian: 'عِنْدِي تْيَاب جْدَاد! [بَدَّك|بَدِّك] [تْشُوفُن|تْشُوفِيُن]؟', jordanian: 'عِنْدِي إِشِي جْدِيد أَلْبْسُه! [بِدَّك|بِدِّك] [تْشُوفُه|تْشُوفِيه]؟' },
+  ask: { syrian: 'شُو [بَدَّك|بَدِّك] نِعْمِل هَلَّأ؟', jordanian: 'شُو [بِدَّك|بِدِّك] نِعْمَل؟' },
+  go: { syrian: 'يَلَّا [رُوح|رُوحِي]! أَنَا هَوْن [نَاطْرَك|نَاطْرِك].', jordanian: 'يَلَّا! أَنَا هَوْن [مِسْتَنِّيك|مِسْتَنِّيكِي].' },
+  win: { syrian: ['يِسْلَمُوا [إِيدَيْك|إِيدَيْكِي]! كْتِير [شَاطِر|شَاطْرَة]!', 'بْرَافُو [عَلَيْك|عَلَيْكِي]! [عْمِلْتَهَا|عْمِلْتِيهَا]!'], jordanian: ['يَا سَلَام! كْثِير [شَاطِر|شَاطْرَة]!', 'عَاش! [عْمِلْتْهَا|عْمِلْتِيهَا]!'] },
+  coins: { syrian: '[شُوف|شُوفِي]، صَارُوا عِنْد[ك|ِك] عُمْلَات أَكْتَر!', jordanian: '[شُوف|شُوفِي]، زَادَت عُمْلَات[ك|ِك]!' },
+  none: { syrian: 'مُو مُشْكِلِة، مْنِرْجَعْلَهَا بَعْدِين.', jordanian: '[وَلَا يْهِمَّك|وَلَا يْهِمِّك]، بِنِرْجَعْلْهَا بَعْدِين.' },
+  dressed: { syrian: 'شُو [رَأْيَك|رَأْيِك] بِتْيَابِي؟ حِلْوِين؟', jordanian: 'شُو [رَأْيَك|رَأْيِك] بْلِبْسِي؟' },
+  next: { syrian: 'مْنْكَمِّل بْشِي تَانِي؟', jordanian: 'بِنْكَمِّل بْإِشِي ثَانِي؟' },
+  more: { syrian: 'عِنْدِي كَمَان أَفْكَار غَيْر هَيْك.', jordanian: 'عِنْدِي أَفْكَار ثَانْيِة كَمَان.' },
+  idea: { syrian: 'فِكْرَة حِلْوِة! [شُوف|شُوفِي] هَاد.', jordanian: 'فِكْرَة حِلْوِة! [شُوف|شُوفِي] هَاظ.' },
+  c_yes: { syrian: 'يَلَّا!', jordanian: 'يَلَّا!' },
+  c_other: { syrian: 'غَيْر شِي', jordanian: 'إِشِي ثَانِي' },
+  c_story: { syrian: 'بَدِّي حْكَايِة', jordanian: 'بِدِّي قِصَّة' },
+  c_game: { syrian: 'بَدِّي اِلْعَب شْوَي', jordanian: 'بِدِّي أَلْعَب' },
+  /* new in v16 */
+  sug_hw: { en: "Got Arabic homework? I'll help you do it yourself.", emirati: 'عِنْد[ك|ج] وَاجِب عَرَبِي؟ بَسَاعِد[ك|ج] [تْحِلَّه|تْحِلِّينَه] بْرُوح[ك|ج].', saudi: 'عِنْد[ك|كِ] وَاجِب عَرَبِي؟ بَسَاعِد[ك|كِ] [تْحِلَّه|تْحِلِّينَه] بْنَفْس[ك|كِ].', lebanese: 'عِنْد[ك|ِك] فَرْض عَرَبِي؟ بْسَاعْد[ك|ِك] [تْحِلُّه|تْحِلِّيه] لَحَال[ك|ِك].', syrian: 'عِنْد[ك|ِك] وَظِيفِة عَرَبِي؟ بْسَاعْد[ك|ِك] [تْحِلّْهَا|تْحِلِّيهَا] لَحَال[ك|ِك].', jordanian: 'عِنْد[ك|ِك] وَاجِب عَرَبِي؟ بَسَاعْد[ك|ِك] [تْحِلُّه|تْحِلِّيه] لَحَال[ك|ِك].', egyptian: '[عَنْدَك|عَنْدِك] وَاجِب عَرَبِي؟ هَسَاعْد[ك|ِك] [تِحِلُّه|تِحِلِّيه] بْنَفْس[ك|ِك].', fusha: 'هَلْ عِنْدَ[كَ|كِ] وَاجِبٌ فِي العَرَبِيَّةِ؟ سَأُسَاعِدُ[كَ|كِ] لِ[تَحُلَّهُ|تَحُلِّيهِ] بِنَفْسِ[كَ|كِ].' },
+  back_call: { en: 'Done? Come back to me!', emirati: '[خَلَّصْت|خَلَّصْتِي]؟ [تَعَال|تَعَالِي] عِنْدِي!', saudi: '[خَلَّصْت|خَلَّصْتِي]؟ [تَعَال|تَعَالِي] عِنْدِي!', lebanese: '[خَلَّصْت|خَلَّصْتِي]؟ [تَعَا|تَعِي] لَعِنْدِي!', syrian: '[خَلَّصْت|خَلَّصْتِي]؟ [تَعَا|تَعِي] لَهَوْن!', jordanian: '[خَلَّصْت|خَلَّصْتِي]؟ [اِرْجَع|اِرْجَعِي] لَعِنْدِي!', egyptian: '[خَلَّصْت|خَلَّصْتِي]؟ [تَعَالَى|تَعَالِي] عَنْدِي!', fusha: 'هَلِ انْتَهَيْ[تَ|تِ]؟ [عُدْ|عُودِي] إِلَيَّ!' },
+  noai: { en: "I can't chat freely right now, but look at these ideas.", emirati: 'الحِين مَا أَقْدَر أَسُولِف وَايِد، بَسّ [شُوف|شُوفِي] هَالأَفْكَار.', saudi: 'الحِين مَا أَقْدَر أَسُولِف كَثِير، بَسّ [شُوف|شُوفِي] هَالأَفْكَار.', lebanese: 'هَلَّق مَا فِيِّي إِحْكِي كْتِير، بَسّ [شُوف|شُوفِي] هَالأَفْكَار.', syrian: 'هَلَّأ مَا فِيِّي إِحْكِي كْتِير، بَسّ [شُوف|شُوفِي] هَالأَفْكَار.', jordanian: 'هَسَّا مَا بَقْدَر أَحْكِي كْثِير، بَسّ [شُوف|شُوفِي] هَالأَفْكَار.', egyptian: 'دِلْوَقْتِي مِش هَقْدَر أَدَرْدِش كْتِير، بَسّ [بُصّ|بُصِّي] عَلَى الأَفْكَار دِي.', fusha: 'لَا أَسْتَطِيعُ المُحَادَثَةَ الآنَ، لَكِنْ [اُنْظُرْ|اُنْظُرِي] إِلَى هَذِهِ الأَفْكَارِ.' },
+  c_hw: { en: 'I have homework', emirati: 'عِنْدِي وَاجِب', saudi: 'عِنْدِي وَاجِب', lebanese: 'عِنْدِي فَرْض', syrian: 'عِنْدِي وَظِيفِة', jordanian: 'عِنْدِي وَاجِب', egyptian: 'عَنْدِي وَاجِب', fusha: 'عِنْدِي وَاجِبٌ' },
+  lesson: { en: 'Want a lesson with me?', emirati: '[تَبَا|تَبِين] دَرْس وِيَّاي؟', saudi: '[تَبْغَى|تَبْغِين] دَرْس مَعَاي؟', lebanese: '[بَدَّك|بَدِّك] دَرْس مَعِي؟', syrian: '[بَدَّك|بَدِّك] نَاخُد دَرْس سَوَا؟', jordanian: '[بِدَّك|بِدِّك] دَرْس مَعِي؟', egyptian: '[عَايِز|عَايْزَة] دَرْس مَعَايَا؟', fusha: 'هَلْ [تُرِيدُ|تُرِيدِينَ] دَرْساً مَعِي؟' }
+};
+Object.entries(MHL_V16).forEach(([k, v]) => { MHL[k] = Object.assign(MHL[k] || {}, v); });
+function mhLine(key, vars) {
+  const t = MHL[key]; vars = vars || {}; const d = curDialect();
+  let ar = t[d] != null ? t[d] : t.emirati; if (Array.isArray(ar)) ar = ar[(Math.random() * ar.length) | 0];
+  const fem = PROFILES[currentKid] && PROFILES[currentKid].gender === 'f';
+  ar = ar.replace(/\[([^|\]]*)\|([^\]]*)\]/g, (_, m, f) => (fem ? f : m)).replace(/\{(\w+)\}/g, (_, k) => (vars[k] != null ? vars[k] : ''));
+  const en = (Array.isArray(t.en) ? t.en[0] : t.en).replace(/\{(\w+)\}/g, (_, k) => (vars[k + 'En'] != null ? vars[k + 'En'] : vars[k] != null ? vars[k] : ''));
+  return { ar, en, d };
+}
+/* ---------- activities the falcon can open (titles are Fusha UI labels) ---------- */
+const MH = { act: null, kid: null, msgs: [], shown: {}, cards: {}, chips: [], n: 0 };
+const mhStars = (n) => '★'.repeat(n) + '☆'.repeat(Math.max(0, 3 - n));
+function mhLetter(p) {
+  const set = LT_SETS[ltNextSet(p)].l; let best = null;
+  set.forEach((ch, i) => { const s = ltStars(p, ch); if (best === null || s < best[1]) best = [ch, s, i]; });
+  return best ? best[0] : 'ب';
+}
+function mhStory(p) { return READ_STORIES.find((s) => !p.completed['readaloud:' + s.id]) || READ_STORIES[0]; }
+const mhArt = (n) => (ART_B64[n] ? artImg(n) : '');
+const MH_ACTS = {
+  letter: (p) => { const ch = mhLetter(p); const L = LT.find((x) => x.ch === ch) || LT[1]; const s = ltStars(p, ch);
+    return { title: 'حَرْفُ ' + L.ar, en: 'The letter ' + L.en, meta: `<span class="mh-stars" aria-label="${toArabicDigits(s)} مِنْ ٣">${mhStars(s)}</span> الصَّوْتُ وَالشَّكْلُ وَالكِتَابَة`, glyph: ch, tone: 'sky', run: () => openLetter(ch) }; },
+  story: (p) => { const st = mhStory(p); const read = !!p.completed['readaloud:' + st.id];
+    return { title: st.title, en: st.en, meta: read ? 'قِصَّةٌ مُصَوَّرَة' : G('قِصَّةٌ لَمْ تَقْرَأْهَا بَعْدُ', 'قِصَّةٌ لَمْ تَقْرَئِيهَا بَعْدُ'), art: ART_B64['st_' + st.id + '_cover'] ? 'st_' + st.id + '_cover' : 'icon_stories', tone: 'sun', run: () => openReader(st.id) }; },
+  wordle: (p) => { const s = wdStatusFor(p); const done = s.s && s.s.done;
+    return { title: 'كَلِمَةُ اليَوْم', en: 'Word of the day', meta: done ? 'حُلَّتِ اليَوْمَ، جَرِّبِ التَّدْرِيب' : 'سِتُّ مُحَاوَلَاتٍ لِلتَّخْمِين', art: 'icon_wordle', tone: 'mint', run: () => openWordle(done ? 'prac' : 'daily') }; },
+  game: () => ({ title: PLAY_GAMES.sound.ar, en: PLAY_GAMES.sound.en, meta: 'لُعْبَةٌ سَرِيعَة', art: 'icon_games', tone: 'coral', run: () => startRound('sound') }),
+  build: () => ({ title: PLAY_GAMES.build.ar, en: PLAY_GAMES.build.en, meta: 'رَكِّبْ ثُمَّ تَتَبَّعْ', art: 'gm_build', tone: 'mint', run: () => startRound('build') }),
+  dress: (p) => { const it = itemOfDay(p);
+    return { title: G('لَبِّسْ صَقْرَكَ', 'لَبِّسِي صَقْرَكِ'), en: 'Dress up your falcon', meta: it ? 'قِطْعَةٌ جَدِيدَةٌ اليَوْمَ' : 'أَزْيَاءٌ وَأَلْوَان', falcon: true, tone: 'sky', run: () => openFalcon() }; },
+  /* bigger areas open as a full page with a small way back */
+  letters: () => ({ title: 'الحُرُوفُ وَأَصْوَاتُهَا', en: 'All 28 letters', meta: 'ثَمَانِيَةٌ وَعِشْرُونَ حَرْفاً', art: 'icon_letters', tone: 'sky', tab: 'letters' }),
+  games: () => ({ title: 'كُلُّ الأَلْعَاب', en: 'All games', meta: 'أَلْعَابٌ سَرِيعَة', art: 'icon_games', tone: 'coral', tab: 'games' }),
+  stories: () => ({ title: 'القِصَص', en: 'Stories', meta: 'قِصَصٌ مُصَوَّرَة', art: 'icon_stories', tone: 'sun', tab: 'stories' }),
+  practice: () => ({ title: 'تَدْرِيبُ الكَلِمَات', en: 'Word practice', meta: 'كَلِمَاتٌ بِلَا حُدُود', art: 'icon_words', tone: 'mint', run: () => openWordle('prac') }),
+  journey: () => ({ title: 'خَرِيطَتِي', en: 'My map', meta: 'دُرُوسٌ خُطْوَةً خُطْوَة', icon: 'compass', tone: 'mint', tab: 'journey' }),
+  write: () => ({ title: 'لَوْحَةُ الكِتَابَة', en: 'Writing board', meta: 'اُكْتُبْ بِإِصْبَعِكَ', art: 'icon_trace', tone: 'sky', tab: 'write' }),
+  talk: () => ({ title: 'مُحَادَثَات', en: 'Conversations', meta: 'جُمَلٌ بِاللَّهْجَة', icon: 'dialects', tone: 'coral', tab: 'dialects' }),
+  shop: () => ({ title: 'المَتْجَر', en: 'Shop', meta: 'أَنْفِقْ عُمْلَاتِكَ', art: 'icon_shop', tone: 'sun', tab: 'shop' }),
+  stickers: () => ({ title: 'مُلْصَقَاتِي', en: 'My stickers', meta: 'مَجْمُوعَتِي', art: 'icon_stickers', tone: 'sun', run: () => openStickers() }),
+  /* v16 */
+  homework: () => ({ title: 'وَاجِبُ العَرَبِيّ', en: 'Arabic homework', meta: G('أُسَاعِدُكَ، وَأَنْتَ تَكْتُبُ الجَوَاب', 'أُسَاعِدُكِ، وَأَنْتِ تَكْتُبِينَ الجَوَاب'), art: ART_B64.pose_reading ? 'pose_reading' : 'icon_trace', tone: 'mint', view: true, run: () => hwOpen() }),
+  lesson: () => ({ title: 'دَرْسٌ مَعَ صَقُّور', en: 'A lesson with Saqqour', meta: 'دَرْسٌ قَصِيرٌ بِالمُحَادَثَة', art: ART_B64.pose_pointing ? 'pose_pointing' : 'icon_play', tone: 'sky', view: true, run: () => mhLesson() })
+};
+function mhDef(id) { const p = P(); const d = MH_ACTS[id](p); d.id = id; return d; }
+function mhTile(d) {
+  if (d.glyph) return `<span class="mh-tile t-${d.tone} glyph" aria-hidden="true"><b>${esc(d.glyph)}</b></span>`;
+  if (d.falcon) { const it = itemOfDay(P()); const cfg = it ? Object.assign(falconCfg(), { [it.slot]: it.id }) : falconCfg(); return `<span class="mh-tile t-${d.tone} fal" aria-hidden="true">${falconSVG('happy', 'mh-tile-falcon', cfg)}</span>`; }
+  const art = d.art ? mhArt(d.art) : d.icon && ART_ICON2[d.icon] ? mhArt(ART_ICON2[d.icon]) : '';
+  return `<span class="mh-tile t-${d.tone} ${d.art && /^st_/.test(d.art) ? 'cover' : ''}" aria-hidden="true">${art}</span>`;
+}
+function mhCardHTML(id, big) {
+  const d = mhDef(id); const k = 'c' + (++MH.n); MH.cards[k] = id;
+  return `<button class="mh-card ${big ? 'big' : ''}" data-act="mh-open" data-arg="${k}" data-id="${id}">${mhTile(d)}
+    <span class="mh-card-t"><b>${esc(d.title)}</b><span class="en">${esc(d.en)}</span><small>${d.meta}</small></span>
+    <span class="mh-go">${G('اِبْدَأْ', 'اِبْدَئِي')}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></span></button>`;
+}
+
+
+/* ---------- chat ---------- */
+const mhChat = () => $('mh-chat');
+function mhScroll() { const c = mhChat(); requestAnimationFrame(() => { if (!MH.noScroll) c.scrollTop = c.scrollHeight; }); }
+function mhAppend(html, cls) { const el = document.createElement('div'); el.className = cls; el.innerHTML = html; el.style.animationDelay = (MH.delay || 0) + 's'; MH.delay = (MH.delay || 0) + 0.12; mhChat().appendChild(el); mhScroll(); return el; }
+function mhSay(line, extra) {
+  const i = MH.msgs.length; MH.msgs.push(line); const fu = line.d === 'fusha' || line.register === 'fusha';
+  return mhAppend(`<span class="mh-av">${falconHeadHTML(currentKid, 'sm')}</span><div class="mh-bub ${fu ? 'fu' : ''} ${line.kind || ''}"><p class="mh-ar" lang="ar">${esc(line.ar)}</p>${line.en ? `<p class="en en-block mh-en" dir="ltr">${esc(line.en)}</p>` : ''}
+    <button class="mh-hear" data-act="mh-hear" data-arg="${i}" aria-label="اِسْمَعْ">${mhArt('ic2_speaker') || '🔊'}</button>${extra || ''}</div>`, 'mh-msg');
+}
+function mhCards(ids) { return mhAppend(`<div class="mh-cards">${ids.map((id) => mhCardHTML(id, ids.length === 1)).join('')}</div>`, 'mh-cards-row'); }
+function mhKid(line) { mhAppend(`<div class="mh-bub kid"><p class="mh-ar" lang="ar" dir="auto">${esc(line.ar)}</p>${line.en ? `<p class="en en-block mh-en" dir="ltr">${esc(line.en)}</p>` : ''}</div>`, 'mh-msg kid'); }
+function mhHero(line, line2) {
+  const i = MH.msgs.length; MH.msgs.push(line); if (line2) MH.msgs.push(line2);
+  return mhAppend(`<div class="mh-hero-sky" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i></div>
+    <button class="mh-hero-bird" data-act="mh-pat" aria-label="${esc(falconName().ar)}">${falconSVG('happy', 'mh-hero-falcon')}</button>
+    <div class="mh-hero-bub"><p class="mh-ar" lang="ar">${esc(line.ar)}</p><p class="en en-block mh-en" dir="ltr">${esc(line.en)}</p><button class="mh-hear" data-act="mh-hear" data-arg="${i}" aria-label="اِسْمَعْ">${mhArt('ic2_speaker') || '🔊'}</button>
+      ${line2 ? `<p class="mh-ar mh-ai" lang="ar">${esc(line2.ar)}</p><p class="en en-block mh-en" dir="ltr">${esc(line2.en)}</p>` : ''}</div>`, 'mh-hero');
+}
+function mhTyping() { return mhAppend(`<span class="mh-av">${falconHeadHTML(currentKid, 'sm')}</span><div class="mh-bub typing" aria-label="صَقُّور يُفَكِّر"><i></i><i></i><i></i></div>`, 'mh-msg mh-typing'); }
+/* chips: the child's spoken replies */
+function mhSetChips(list) {
+  MH.chips = list; $('mh-chips').innerHTML = list.map((c, i) => `<button class="mh-chip-btn ${i === 0 ? 'main' : ''}" data-act="mh-chip" data-arg="${i}"><span lang="ar">${esc(c.line.ar)}</span>${c.line.en ? `<span class="en">${esc(c.line.en)}</span>` : ''}</button>`).join('');
+}
+function mhDefaultChips(primary) {
+  const list = [{ line: mhLine('c_yes'), go: () => mhOpen(primary, true) }, { line: mhLine('c_story'), go: () => mhOpen('story', true) }, { line: mhLine('c_game'), go: () => mhOpen('game', true) }];
+  list.push({ line: mhLine('c_hw'), go: () => mhOpen('homework', true) });
+  list.push({ line: mhLine('c_other'), go: mhMore }); return list;
+}
+
+/* ---------- composer: free chat only with parent consent; otherwise a gentle Fusha note ---------- */
+function mhCompose() {
+  const box = $('mh-compose'); const nm = falconName().ar;
+  if (MH.safeEnd) { box.innerHTML = ''; return; }
+  if (tutorAllowed(currentKid)) {
+    box.innerHTML = `<form class="mh-input" id="mh-form" autocomplete="off">
+      ${micAllowed(currentKid) ? `<button type="button" class="mh-mic" data-act="mh-mic" aria-label="تَكَلَّمْ مَعَ ${esc(nm)}">${mhArt('ic2_mic')}</button>` : ''}
+      <input id="mh-text" type="text" dir="rtl" lang="ar" maxlength="200" placeholder="${G('اُكْتُبْ', 'اُكْتُبِي')} لِـ${esc(nm)}…" aria-label="رِسَالَة">
+      <button type="submit" class="mh-send" aria-label="أَرْسِلْ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H6m5-6-6 6 6 6"/></svg></button></form>`;
+  } else {
+    box.innerHTML = `<div class="mh-note" role="note"><span class="mh-note-ic" aria-hidden="true">${mhArt('ic2_lock')}</span>
+      <p><b>المُحَادَثَةُ الحُرَّةُ مَعَ ${esc(nm)}</b><span>يُمْكِنُ لِأَحَدِ الوَالِدَيْنِ تَشْغِيلُهَا.</span><span class="en en-block">A parent can turn on free chat with the talking tutor.</span></p>
+      <button class="mh-note-btn" data-act="mh-consent">لِلْوَالِدَيْن</button></div>`;
+  }
+}
+
+/* ---------- header ---------- */
+function mhHeader() {
+  const p = P(); const li = levelInfo(p.xp); const st = computeStreak(p.activeDays); const nm = falconName();
+  $('mh-who').innerHTML = `${falconHeadHTML(currentKid, 'sm')}<span class="mh-who-t"><b>${esc(nm.ar)}</b><small>${tutorAllowed(currentKid) ? 'مُسَاعِدٌ ذَكِيّ · ' : ''}المُسْتَوَى ${toArabicDigits(li.lvl)}</small></span>`;
+  $('mh-who').setAttribute('aria-label', G('لَبِّسْ صَقْرَكَ', 'لَبِّسِي صَقْرَكِ'));
+  $('mh-streak').innerHTML = `${mhArt('ic2_flame')}<b>${toArabicDigits(st)}</b>`; $('mh-streak').classList.toggle('cold', !activeToday(p)); $('mh-streak').setAttribute('aria-label', `${toArabicDigits(st)} أَيَّامٍ مُتَتَالِيَة`);
+  $('mh-coins').innerHTML = `${mhArt('ic2_coin')}<b id="mh-coin-n">${toArabicDigits(p.coins)}</b>`; $('mh-coins').setAttribute('aria-label', `${toArabicDigits(p.coins)} عُمْلَة`);
+}
+
+/* ---------- plan: what to suggest from progress ---------- */
+function mhPlan(p) {
+  const out = ['letter', 'story'];
+  const w = wdStatusFor(p); if (!(w.s && w.s.done)) out.push('wordle');
+  if (itemOfDay(p)) out.push('dress');
+  out.push('homework', 'game', 'build');
+  return out;
+}
+
+/* ---------- show / start ---------- */
+function mhHideApp() { $('app').classList.add('hidden'); const tb = $('tt-back'); if (tb) tb.classList.add('hidden'); }
+/* test hook only: the older UI suites (tests/*.js, LEGACY_HOME=1) set window.__legacyHome before load to drive the areas
+   behind the falcon directly; the shipped app never sets it */
+const MH_LEGACY = !!window.__legacyHome;
+function mhShow(fresh) {
+  if (!currentKid || MH_LEGACY) return;
+  stopSpeech(); if (typeof closeMore === 'function') closeMore(); if (typeof closeMenu === 'function') closeMenu();
+  mhHideApp(); const tu = $('tutor'); if (tu) tu.classList.add('hidden'); document.body.classList.remove('tutor-on');
+  $('hw').classList.add('hidden'); $('mh-back').classList.add('hidden'); $('mh').classList.remove('hidden'); document.body.classList.add('mh-on');
+  mhHeader(); mhCompose();
+  if (fresh || MH.kid !== currentKid || !mhChat().children.length) mhStart();
+}
+function mhStart() {
+  const p = P(); MH.kid = currentKid; MH.msgs = []; MH.cards = {}; MH.shown = {}; MH.delay = 0; MH.brain = null; MH.safeEnd = false; mhChat().innerHTML = '';
+  const pr = PROFILES[currentKid]; const plan = mhPlan(p); MH.plan = plan;
+  const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); const ai = tutorAllowed(currentKid) ? mhLine('ai') : null;
+  mhHero(greet, ai); MH.hist = [greet].concat(ai ? [ai] : []);
+  mhSay(mhLine('sug_letter')); mhCards(['letter']); MH.shown.letter = 1;
+  mhSay(mhLine('sug_story')); mhCards(['story', plan.includes('wordle') ? 'wordle' : 'build']); MH.shown.story = 1; MH.shown[plan.includes('wordle') ? 'wordle' : 'build'] = 1;
+  mhSay(mhLine('sug_hw')); mhCards(['homework']); MH.shown.homework = 1; /* v16: the homework helper is always one tap from home */
+  mhSetChips(mhDefaultChips('letter')); mhCompose();
+  setTimeout(() => { MH.delay = 0; }, 50);
+  MH.noScroll = true; requestAnimationFrame(() => { mhChat().scrollTop = 0; MH.noScroll = false; });
+}
+function mhMore() {
+  MH.delay = 0; const p = P(); const pool = mhPlan(p).concat(['practice', 'lesson', 'letters', 'games']).filter((x) => !MH.shown[x]);
+  const pick = pool.slice(0, 2); if (!pick.length) { mhGrid(); return; }
+  pick.forEach((x) => { MH.shown[x] = 1; });
+  mhSay(mhLine(pick[0] === 'dress' ? 'sug_dress' : pick[0] === 'wordle' ? 'sug_wordle' : pick[0] === 'game' ? 'sug_game' : pick[0] === 'homework' ? 'sug_hw' : pick[0] === 'lesson' ? 'lesson' : 'more')); mhCards(pick);
+  mhSetChips([{ line: mhLine('c_yes'), go: () => mhOpen(pick[0], true) }, { line: mhLine('c_other'), go: mhMore }]);
+}
+
+/* =========================================================
+   ACTIVITY SIGNALS: every activity type sends start and finish, so the falcon always knows what happened and every
+   activity comes back to him. Modal activities return when their sheet closes; full-page areas (tabs, the homework
+   helper, the guided lesson) show the back-to-falcon button, which calls out once the activity is finished.
+   ========================================================= */
+const ACT_SIG = { cur: null, last: null, log: [] };
+function actStart(kind, info) {
+  ACT_SIG.cur = { kind, t: Date.now(), info: info || null, done: null }; ACT_SIG.log.push({ phase: 'start', kind, t: Date.now() }); if (ACT_SIG.log.length > 80) ACT_SIG.log.shift();
+  document.dispatchEvent(new CustomEvent('saqqour-activity', { detail: { phase: 'start', kind } }));
+}
+function actFinish(kind, res) {
+  res = res || {}; const cur = ACT_SIG.cur; const k = kind || (cur && cur.kind) || 'activity';
+  if (cur && cur.done && !res.force) return; /* one finish per start */
+  const sig = { phase: 'finish', kind: k, ok: res.ok == null ? null : !!res.ok, closed: !!res.closed, t: Date.now() };
+  if (cur) cur.done = sig; ACT_SIG.last = sig; ACT_SIG.log.push(sig); if (ACT_SIG.log.length > 80) ACT_SIG.log.shift();
+  document.dispatchEvent(new CustomEvent('saqqour-activity', { detail: sig }));
+  if (MH.act) MH.act.done = sig;
+  if (MH.act && (MH.act.tab || MH.act.view) && !res.closed) mhCallBack();
+}
+/* the back button calls the child home once a full-page activity is done */
+function mhCallBack() {
+  const b = $('mh-back'); if (!b || b.classList.contains('hidden')) return;
+  $('mh-back-t').textContent = mhLine('back_call').ar; b.classList.add('call'); sfx('pop');
+}
+function mhWrap(name, before, after) {
+  const orig = window[name]; if (typeof orig !== 'function') return;
+  window[name] = function () { if (before) before.apply(this, arguments); const r = orig.apply(this, arguments); if (after) after.apply(this, [r].concat([].slice.call(arguments))); return r; };
+}
+/* starts */
+mhWrap('openLetter', (ch) => actStart('letter', ch));
+mhWrap('openReader', (id) => actStart('story', id));
+mhWrap('openWordle', (m) => actStart('wordle', m));
+mhWrap('startRound', (k) => actStart('round:' + k));
+mhWrap('gameStart', (k) => actStart('game:' + k));
+mhWrap('openFalcon', () => actStart('dress'));
+mhWrap('openStickers', () => actStart('stickers'));
+mhWrap('openBuilder', () => actStart('build'));
+mhWrap('openSayIt', () => actStart('sayit'));
+mhWrap('startBoost', (id) => actStart('boost:' + id));
+mhWrap('placementStart', () => actStart('placement'));
+mhWrap('startQuiz', (s) => actStart('quiz', s));
+mhWrap('openUnit', (id) => actStart('unit', id));
+mhWrap('openLesson', (id) => actStart('grammar', id));
+mhWrap('listenStart', () => actStart('listen'));
+/* finishes */
+mhWrap('roundFinish', null, () => actFinish(null, { ok: true }));
+mhWrap('gameFinish', null, (r, kind, success) => { actFinish('game:' + kind, { ok: success }); mhGameBack(); });
+mhWrap('readerDone', null, () => actFinish('story', { ok: true }));
+mhWrap('readerEnd', null, () => actFinish('story', { ok: null }));
+mhWrap('wdFinish', null, () => actFinish('wordle', { ok: true }));
+mhWrap('sayitEnd', null, () => actFinish('sayit', { ok: true }));
+mhWrap('quizNext', null, () => { if (typeof quiz !== 'undefined' && quiz && quiz.done) actFinish('quiz', { ok: quiz.score >= quiz.qs.length / 2 }); });
+mhWrap('placementAnswer', null, () => { if (typeof placement !== 'undefined' && placement === null) actFinish('placement', { ok: true }); });
+/* any progress earned inside an activity (builder, tracing, units, dialogues, grammar…) counts as its finish */
+mhWrap('award', null, (r, xp) => { if (ACT_SIG.cur && !ACT_SIG.cur.done && xp > 0) actFinish(null, { ok: true }); });
+/* a game result (inside the games page) offers the way back to the falcon */
+function mhGameBack() {
+  if (!MH.act) return; const row = document.querySelector('#tab-games .game-result .row'); if (!row || row.querySelector('.mh-to-falcon')) return;
+  const b = document.createElement('button'); b.className = 'btn mh-to-falcon'; b.dataset.act = 'mh-back'; b.innerHTML = `${falconHeadHTML(currentKid, 'sm')}<span>إِلَى صَقُّور</span>`; row.appendChild(b);
+}
+
+/* ---------- open an activity, then come back ---------- */
+function mhOpen(id, fromChip) {
+  const d = mhDef(id); const p = P(); MH.delay = 0;
+  if (fromChip) { const c = MH.lastChip; if (c) mhKid(c); }
+  const cards = [...mhChat().querySelectorAll('.mh-card[data-id="' + id + '"]')]; const card = cards[cards.length - 1];
+  if (card) card.classList.add('chosen'); else if (!MH.fromGrid) { const row = mhCards([id]); const c2 = row.querySelector('.mh-card'); if (c2) c2.classList.add('chosen'); }
+  mhSay(mhLine('go')); mhSetChips([]);
+  MH.act = { id, coins: p.coins, xp: p.xp, tab: d.tab || null, view: !!d.view, look: JSON.stringify(p.falcon), done: null };
+  if (d.tab) actStart('area:' + d.tab);
+  sfx('whoosh');
+  setTimeout(() => {
+    if (d.tab) { $('mh').classList.add('hidden'); document.body.classList.remove('mh-on'); $('app').classList.remove('hidden'); MH.inTab = true; _mhSwitchTab(d.tab); MH.inTab = false; mhShowBack(); }
+    else d.run();
+  }, MH.fast ? 0 : 900);
+}
+function mhShowBack() { $('mh-back-av').innerHTML = falconHeadHTML(currentKid, 'sm'); $('mh-back-t').textContent = 'صَقُّور'; $('mh-back').classList.remove('call'); $('mh-back').classList.remove('hidden'); }
+function mhReturn() {
+  const a = MH.act; MH.act = null; if (ACT_SIG.cur && !ACT_SIG.cur.done) actFinish(null, { closed: true });
+  ACT_SIG.cur = null; if (!a || !currentKid) { mhShow(); return; }
+  mhShow(); MH.delay = 0; const p = P(); const dc = p.coins - a.coins; const dx = p.xp - a.xp;
+  const changedLook = JSON.stringify(p.falcon) !== a.look; const fin = a.done;
+  $('mh').classList.add('react'); setTimeout(() => $('mh').classList.remove('react'), 1400);
+  if (a.id === 'dress' && changedLook) { mhAppend(`${falconSVG('happy', 'mh-show-falcon')}`, 'mh-show'); mhSay(mhLine('dressed')); }
+  else if (dx > 0 || dc > 0 || (fin && fin.ok)) {
+    mhAppend(`${falconSVG('happy', 'mh-show-falcon')}<span class="mh-spark s1" aria-hidden="true">${mhArt('ic2_star')}</span><span class="mh-spark s2" aria-hidden="true">${mhArt('ic2_coin')}</span><span class="mh-spark s3" aria-hidden="true">${mhArt('ic2_spark')}</span>`, 'mh-show');
+    mhSay(mhLine('win'), dx > 0 || dc > 0 ? `<div class="mh-reward" aria-label="+${toArabicDigits(Math.max(0, dc))} عُمْلَة">
+      <span class="mh-rw coin">${mhArt('ic2_coin')}<b>+${toArabicDigits(Math.max(0, dc))}</b></span><span class="mh-rw pearl">${mhArt('ic2_pearl')}<b>+${toArabicDigits(Math.max(0, dx))}</b></span>
+      <span class="mh-rw total">الرَّصِيدُ <b>${toArabicDigits(p.coins)}</b></span></div>` : '');
+    if (dc > 0) mhSay(mhLine('coins'));
+    sfx('good');
+  } else mhSay(mhLine('none'));
+  /* next ideas: skip what was just done */
+  MH.shown[a.id] = 1; const plan = mhPlan(p).filter((x) => x !== a.id && !(x === 'letter' && a.id === 'letters'));
+  const fresh = plan.filter((x) => !MH.shown[x]); const next = (fresh.length ? fresh : plan).slice(0, 2); next.forEach((x) => { MH.shown[x] = 1; });
+  mhSay(mhLine('next')); mhCards(next);
+  mhSetChips([{ line: mhLine('c_yes'), go: () => mhOpen(next[0], true) }, { line: mhLine('c_other'), go: mhMore }]);
+  mhHeader(); const cn = $('mh-coins'); if (dc > 0 && cn) { cn.classList.remove('bump'); void cn.offsetWidth; cn.classList.add('bump'); }
+}
+
+/* ---------- the guided lesson (the tutor screen) as one more activity ---------- */
+function mhLesson() {
+  if (!tutorAllowed(currentKid)) { MH.act = null; ACT_SIG.cur = null; openConsent(currentKid, () => { mhHeader(); mhCompose(); }); return; }
+  actStart('lesson'); $('mh').classList.add('hidden'); document.body.classList.remove('mh-on'); ttOpen(true);
+}
+/* the tutor's Explore button and its goodbye now lead back to the falcon */
+ttExplore = function ttExploreMH() { stopSpeech(); $('tutor').classList.add('hidden'); document.body.classList.remove('tutor-on'); if (ACT_SIG.cur && ACT_SIG.cur.kind === 'lesson') actFinish('lesson', { ok: true }); mhReturn(); };
+{ const _end = ttEnd; ttEnd = function ttEndMH() { _end(); if (ACT_SIG.cur && ACT_SIG.cur.kind === 'lesson') actFinish('lesson', { ok: !TT.safeEnd });
+  const bye = document.querySelector('#tt-chat .tt-bye:last-child'); if (bye && !bye.querySelector('.mh-to-falcon')) { const b = document.createElement('button'); b.className = 'tt-b go mh-to-falcon'; b.dataset.tact = 'explore'; b.innerHTML = `<span>إِلَى البَيْت</span>`; bye.appendChild(b); } }; }
+/* the consent gate for the tutor opens on top of the falcon, not the old home */
+ttGateShow = function ttGateShowMH() { stopSpeech(); $('tutor').classList.add('hidden'); document.body.classList.remove('tutor-on'); MH.act = null; ACT_SIG.cur = null; mhShow(); openModal(consentGateHTML(currentKid, 'tutor'), null, 'sheet'); };
+
+/* =========================================================
+   FREE CHAT (consent only). Order on the device, before anything is sent:
+   1) detectRisk (safety.mjs): high risk → calm script, parent flag, chat stops; low risk → one calm line, not sent
+   2) classifyTopic (scope.mjs): off-topic / jailbreak → scripted redirect, not sent
+   3) homework talk → the homework helper card
+   4) the Worker (/api/tutor: Content Safety, Prompt Shields, scope, model, output checks), nickname replaced by {name}
+   Offline, no Worker or any error → the scripted falcon (keyword → card).
+   ========================================================= */
+const MH_HW_RE = /(واجب|وظيفه|وظيفة|فرض|فروض|ورقه عمل|ورقة عمل|homework|worksheet)/i;
+function mhCloud() { return !!(window.TT_AZ && TT_AZ.ok && tutorAllowed(currentKid)); }
+function mhBrain() {
+  if (MH.brain) return MH.brain;
+  const base = (DB.settings.tutorEndpoint || '').replace(/\/api\/tutor$/, '').replace(/\/+$/, '');
+  const b = new AzureBrain(ttCtx(), base + '/api/tutor'); b.started = true; b.sid = 'h' + Date.now().toString(36);
+  b.run = function (ev) { return this.post(ev); }; /* errors go to the scripted falcon, never to a mock lesson */
+  (MH.hist || []).forEach((l) => b.history.push({ role: 'tutor', text: TB.scrub(l.ar + ' / ' + l.en) }));
+  MH.brain = b; return b;
+}
+function mhScripted(text, why) {
+  const n = normAr(text).toLowerCase();
+  const id = MH_HW_RE.test(n) ? 'homework' : /قص|حكاي|story/.test(n) ? 'story' : /حرف|حروف|letter/.test(n) ? 'letter' : /كلمه اليوم|ووردل|wordle|لغز/.test(n) ? 'wordle' : /لبس|ثوب|dress/.test(n) ? 'dress' : /لعب|game/.test(n) ? 'game' : /كلم|بني|build/.test(n) ? 'build' : null;
+  setTimeout(() => { MH.delay = 0; if (why === 'offline') mhSay(mhLine('noai')); mhSay(mhLine(id === 'homework' ? 'sug_hw' : 'idea')); mhCards([id || mhPlan(P())[0]]); mhSetChips(mhDefaultChips(id || 'letter')); }, MH.fast ? 0 : 500);
+}
+function mhSpeakLine(l) { if (!l || !l.ar) return; ttSpeak(l.ar, l.register === 'fusha' || l.d === 'fusha' ? 'fusha' : 'dia'); }
+async function mhRun(acts) {
+  let spoke = null;
+  for (const a of acts || []) {
+    if (a.type === 'say' || a.type === 'praise' || a.type === 'explain') { const l = { ar: a.ar, en: a.en, register: a.register, d: a.register === 'fusha' ? 'fusha' : curDialect(), kind: a.type }; mhSay(l); MH.hist.push(l); spoke = l; }
+    else if (a.type === 'ask') { const l = { ar: a.ar, en: a.en, register: a.register, d: a.register === 'fusha' ? 'fusha' : curDialect(), kind: 'ask' }; mhSay(l); spoke = l;
+      const chips = (a.chips || []).map((c) => ({ line: { ar: c.ar, en: c.en }, go: () => mhSend(c.ar, 'chip', c.value) }));
+      mhSetChips(chips.length ? chips.concat({ line: mhLine('c_other'), go: mhMore }) : mhDefaultChips('letter')); break; }
+    else if (a.type === 'show_activity') { mhActivity(a); break; }
+    else if (a.type === 'end') { if (TT.safeEnd || MH.safeEnd) { MH.safeEnd = true; mhCompose(); mhSetChips([]); } else mhSetChips(mhDefaultChips('letter')); break; }
+  }
+  if (spoke && TTP().voice.auto && !MH.quiet) mhSpeakLine(spoke);
+}
+/* an activity the AI brought in, played inline in the falcon chat (the tutor's activity cards) */
+function mhActivity(a) {
+  const A = TACT[a.activity]; if (!A) return; mhSetChips([]);
+  const card = mhAppend(`<div class="tt-card-in">${A.html(a.params)}</div>`, `tt-card act-${a.activity} mh-tcard`); actStart('ai:' + a.activity);
+  A.init(card, a.params, async (res) => {
+    if (card.classList.contains('done')) return; card.classList.add('done'); res.activity = a.activity; actFinish('ai:' + a.activity, { ok: res.ok }); ACT_SIG.cur = null;
+    if (res.ok) award(5, null, { msg: '⭐' });
+    const ty = mhTyping();
+    try { const acts = await MH.brain.result(res); ty.remove(); MH.delay = 0; await mhRun(acts); }
+    catch (e) { ty.remove(); MH.delay = 0; mhSay(mhLine(res.ok ? 'win' : 'none')); mhSay(mhLine('next')); mhCards(mhPlan(P()).slice(0, 2)); mhSetChips(mhDefaultChips('letter')); }
+  });
+}
+async function mhSend(text, via, value) {
+  text = String(text || '').trim(); if (!text || !tutorAllowed(currentKid) || MH.safeEnd || MH.busy) return; MH.delay = 0;
+  mhKid({ ar: text, en: '' }); mhSetChips([]);
+  const pr = PROFILES[currentKid]; const g = pr ? pr.gender : 'm';
+  const risk = via === 'chip' ? null : detectRisk(text);
+  if (risk) {
+    const acts = safetyActions(risk, curDialect(), g);
+    if (HIGH.has(risk.kind) || ['sexual', 'contact', 'unsafe'].includes(risk.kind)) addAlert(risk.kind, HIGH.has(risk.kind) ? 'high' : 'low');
+    if (HIGH.has(risk.kind)) { MH.safeEnd = true; acts.filter((x) => x.type === 'say' || x.type === 'end').forEach((x) => x.ar && mhSay({ ar: x.ar, en: x.en, d: curDialect() })); mhAppend(`<div class="mh-safe" role="status"><b>${G('اِذْهَبْ إِلَى شَخْصٍ كَبِيرٍ تَثِقُ بِهِ الآنَ.', 'اِذْهَبِي إِلَى شَخْصٍ كَبِيرٍ تَثِقِينَ بِهِ الآنَ.')}</b></div>`, 'mh-safe-row'); mhCompose(); return; }
+    acts.filter((x) => x.type === 'say').forEach((x) => mhSay({ ar: x.ar, en: x.en, d: curDialect() })); mhSetChips(mhDefaultChips('letter')); return;
+  }
+  const tp = via === 'chip' ? { topic: null } : classifyTopic(text);
+  if (tp.topic === 'off_topic' || tp.topic === 'jailbreak') {
+    const acts = redirectActions(tp.topic, mhCloud() ? tp.subject : null, curDialect(), g);
+    if (MH.brain) { MH.brain.history.push({ role: 'child', text: TB.scrub(text) }); acts.forEach((a) => MH.brain.history.push({ role: 'tutor', text: TB.scrub(a.ar + ' / ' + a.en) })); }
+    if (mhCloud()) await mhRun(acts); else { acts.filter((a) => a.type === 'say').forEach((a) => mhSay({ ar: a.ar, en: a.en, register: a.register, d: a.register === 'fusha' ? 'fusha' : curDialect() })); mhSetChips(mhDefaultChips('letter')); }
+    return;
+  }
+  if (via !== 'chip' && MH_HW_RE.test(normAr(text))) { setTimeout(() => { MH.delay = 0; mhSay(mhLine('sug_hw')); mhCards(['homework']); mhSetChips(mhDefaultChips('homework')); }, MH.fast ? 0 : 400); return; }
+  if (!mhCloud()) { mhScripted(text, TT_AZ && TT_AZ.ok === false && DB.settings.familyCode ? 'offline' : null); return; }
+  const b = mhBrain(); MH.busy = true; const ty = mhTyping(); const t0 = Date.now();
+  b.history.push({ role: 'child', text: TB.scrub(value || text) });
+  try { const acts = await b.post({ type: 'reply', text: TB.scrub(text), value: value || null, via: via || 'type' }); MH.lat = Date.now() - t0; ty.remove(); MH.delay = 0; await mhRun(acts); }
+  catch (e) { ty.remove(); MH.err = String(e && e.message || e); mhScripted(text, 'offline'); }
+  finally { MH.busy = false; }
+}
+document.addEventListener('submit', (e) => { if (e.target.id !== 'mh-form') return; e.preventDefault(); const i = $('mh-text'); const v = i.value; i.value = ''; mhSend(v, 'type'); });
+
+/* ---------- direct access: a quiet grid of everything ---------- */
+function mhGrid() {
+  const ids = ['homework', 'lesson', 'letters', 'games', 'stories', 'wordle', 'practice', 'build', 'dress', 'journey', 'write', 'talk', 'shop', 'stickers'];
+  $('mh-sheet-box').innerHTML = `<div class="mh-sheet-h"><b>${G('اِخْتَرْ بِنَفْسِكَ', 'اِخْتَارِي بِنَفْسِكِ')}</b><span class="en">Pick for yourself</span><button class="mh-x" data-act="mh-grid-close" aria-label="أَغْلِقْ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="mh-gridx">${ids.map((id) => { const d = mhDef(id); const k = 'g' + (++MH.n); MH.cards[k] = id; return `<button class="mh-gt ${id === 'homework' ? 'hw-tile' : ''}" data-act="mh-open" data-arg="${k}" data-from="grid" data-id="${id}">${mhTile(d)}<b>${esc(d.title)}</b><span class="en">${esc(d.en)}</span></button>`; }).join('')}</div>
+    <div class="mh-sheet-foot">
+      <button class="mh-sf ${meaningOn() ? 'on' : ''}" data-act="mh-meaning" aria-pressed="${meaningOn()}"><span aria-hidden="true">🌐</span>المَعْنَى</button>
+      <button class="mh-sf" data-act="voice-open"><span aria-hidden="true">${mhArt('ic2_dialects')}</span>اللَّهْجَة</button>
+      <button class="mh-sf" data-act="sfx-toggle"><span aria-hidden="true">${mhArt('ic2_speaker')}</span>الأَصْوَات</button>
+      <button class="mh-sf" data-act="open-parent"><span aria-hidden="true">${mhArt('icon_parent')}</span>لِلْوَالِدَيْن</button>
+      <button class="mh-sf" data-act="switch-profile"><span aria-hidden="true">🔁</span>اللَّاعِب</button></div>`;
+  $('mh-sheet').classList.remove('hidden'); sfx('pop');
+}
+function mhGridClose() { $('mh-sheet').classList.add('hidden'); }
+$('mh-sheet') && $('mh-sheet').addEventListener('click', (e) => { if (e.target.id === 'mh-sheet') mhGridClose(); });
+
+Object.assign(ACTIONS, {
+  'mh-open': (k, el) => { const id = MH.cards[k]; if (!id) return; const fromGrid = el && el.dataset.from === 'grid'; mhGridClose();
+    if (!fromGrid) { el.classList.add('chosen'); } MH.lastChip = null; MH.fromGrid = fromGrid; mhOpen(id); MH.fromGrid = false; },
+  'mh-chip': (i) => { const c = MH.chips[Number(i)]; if (!c) return; sfx('tap'); MH.lastChip = c.line; c.go(); MH.lastChip = null; },
+  'mh-grid': () => mhGrid(), 'mh-grid-close': () => mhGridClose(),
+  'mh-back': () => mhReturn(),
+  'mh-dress': () => { MH.lastChip = null; mhOpen('dress'); },
+  'mh-hear': (i) => { const m = MH.msgs[Number(i)]; if (m) mhSpeakLine(m); },
+  'mh-pat': (a, el) => { sfx('pop'); el.classList.remove('pat'); void el.offsetWidth; el.classList.add('pat'); },
+  'mh-consent': () => openConsent(currentKid, () => { mhHeader(); mhCompose(); }),
+  'mh-meaning': () => { ACTIONS['meaning-toggle'](); mhGrid(); },
+  'mh-mic': () => { const b = document.querySelector('.mh-mic'); if (b) b.classList.add('on'); listen(curDialect(), (alts) => { if (b) b.classList.remove('on'); mhSend(alts[0], 'voice'); }, (code) => { if (b) b.classList.remove('on'); toast(micErrorText(code), 3200); }); }
+});
+
+/* ---------- wiring into the existing app: the falcon replaces the old home ---------- */
+const _mhSwitchTab = switchTab;
+switchTab = function switchTabMH(id) {
+  _mhSwitchTab(id);
+  if (MH_LEGACY) return;
+  if (MH.inTab || !currentKid || $('picker').classList.contains('hidden') === false) return;
+  if (id === 'home' || !TABS.some((t) => t.id === id)) { if (MH.act) mhReturn(); else mhShow(); return; }
+  /* any other way into a full page (a button inside a sheet, a boost) still has a way back to the falcon */
+  if (!$('mh').classList.contains('hidden')) { const p = P(); if (!MH.act) MH.act = { id: 'area', coins: p.coins, xp: p.xp, tab: id, look: JSON.stringify(p.falcon), done: null };
+    $('mh').classList.add('hidden'); document.body.classList.remove('mh-on'); $('app').classList.remove('hidden'); mhShowBack(); }
+};
+/* modal activities: when the activity's sheet closes and nothing else opens, come back to the falcon */
+const _mhCloseModal = closeModal;
+closeModal = function closeModalMH() {
+  _mhCloseModal();
+  if (!MH.act || MH.act.tab || MH.act.view) return;
+  setTimeout(() => { if (MH.act && !MH.act.tab && !MH.act.view && $('modal').classList.contains('hidden')) mhReturn(); }, MH.fast ? 30 : 380);
+};
+/* profiles open on the falcon (the tutor prototype used to open its own screen here) */
+pickProfile = function pickProfileMH(id) { _pickProfileTT(id); if (currentKid && !MH_LEGACY) { MH.act = null; ACT_SIG.cur = null; mhShow(true); } };
+const _mhShowPicker = showPicker;
+showPicker = function showPickerMH() { MH.act = null; ACT_SIG.cur = null; $('mh').classList.add('hidden'); $('hw').classList.add('hidden'); $('mh-back').classList.add('hidden'); mhGridClose(); document.body.classList.remove('mh-on'); _mhShowPicker(); };
+const _mhRenderParent = renderParent;
+renderParent = function renderParentMH() { $('mh').classList.add('hidden'); $('hw').classList.add('hidden'); $('mh-back').classList.add('hidden'); mhGridClose(); document.body.classList.remove('mh-on'); return _mhRenderParent.apply(this, arguments); };
+/* any coin change while the falcon home is visible updates its header */
+const _mhRefreshHeader = refreshHeader;
+refreshHeader = function refreshHeaderMH() { _mhRefreshHeader(); if (currentKid && !$('mh').classList.contains('hidden')) mhHeader(); };
+/* a parent changing consent re-draws the composer and header */
+{ const _sc = setConsent; setConsent = function setConsentMH() { const r = _sc.apply(this, arguments); if (currentKid && !$('mh').classList.contains('hidden')) { mhHeader(); mhCompose(); } return r; }; }
+if (/fast/.test(location.hash)) MH.fast = true;
+window.SAQ = { MH, ACT_SIG, mhSend, mhShow, mhReturn, mhOpen, actStart, actFinish };
+
+'use strict';
+/* =========================================================
+   HOMEWORK HELPER (v16): وَاجِبُ العَرَبِيّ.
+   The child types an Arabic homework question or sends a photo of an Arabic worksheet (camera or upload). Saqqour explains
+   the task, breaks it into steps, gives one hint at a time, asks guiding questions and checks the child's own attempt.
+   He never gives the finished answer or writes the work: the Worker enforces it in code (answer-leak check + length cap).
+   - Parent consent needed (AI tutor + the homework switch), because questions and photos go to Azure. Without it: a Fusha note.
+   - Photos: resized and re-encoded on the device (canvas → JPEG, which drops EXIF and location data), sent once, never stored.
+     The worksheet text read from the photo is kept in memory for this session only, never saved.
+   - Arabic homework only: other subjects (also when written in Arabic) get a warm redirect, on the device and on the Worker.
+   - Spoken coaching lines are dialect; lines about the written homework are Fusha; never mixed in one line.
+   ========================================================= */
+const HW_IMG = { max: 1280, min: 720, q: [0.82, 0.72, 0.62, 0.52], limit: 1000000 }; /* data-URL characters; the Worker allows 1.4M */
+const HW = { kid: null, msgs: [], task: '', kind: 'none', history: [], busy: false, sid: '', turns: 0, ended: false, lat: [] };
+const hwAllowed = (kid) => !!(kid && tutorAllowed(kid) && consentOf(kid).homework);
+const hwG = () => (PROFILES[currentKid] && PROFILES[currentKid].gender === 'f' ? 'f' : 'm');
+const hwChat = () => $('hw-chat');
+function hwAppend(html, cls) { const el = document.createElement('div'); el.className = cls; el.innerHTML = html; hwChat().appendChild(el); requestAnimationFrame(() => { hwChat().scrollTop = hwChat().scrollHeight; }); return el; }
+function hwSay(a) {
+  const i = HW.msgs.length; HW.msgs.push(a); const fu = a.register === 'fusha';
+  const tag = a.type === 'hint' ? 'تَلْمِيح' : a.type === 'check' ? 'مُرَاجَعَة' : a.type === 'explain' ? 'المَطْلُوب' : '';
+  return hwAppend(`<span class="mh-av">${falconHeadHTML(currentKid, 'sm')}</span><div class="mh-bub hw-bub ${fu ? 'fu' : ''} t-${a.type || 'say'}">${tag ? `<span class="hw-tag">${tag}</span>` : ''}<p class="mh-ar" lang="ar">${esc(a.ar)}</p>${a.en ? `<p class="en en-block mh-en" dir="ltr">${esc(a.en)}</p>` : ''}
+    <button class="mh-hear" data-act="hw-hear" data-arg="${i}" aria-label="اِسْمَعْ">${mhArt('ic2_speaker') || '🔊'}</button></div>`, 'mh-msg');
+}
+function hwKid(text, img) { hwAppend(`<div class="mh-bub kid">${img ? `<img class="hw-thumb" src="${img}" alt="صُورَةُ الوَاجِب">` : ''}${text ? `<p class="mh-ar" lang="ar" dir="auto">${esc(text)}</p>` : ''}</div>`, 'mh-msg kid'); }
+function hwTyping(photo) { return hwAppend(`<span class="mh-av">${falconHeadHTML(currentKid, 'sm')}</span><div class="mh-bub typing" aria-label="صَقُّور يَقْرَأ"><i></i><i></i><i></i>${photo ? '<small>يَقْرَأُ الصُّورَةَ…</small>' : ''}</div>`, 'mh-msg mh-typing'); }
+function hwFoot() {
+  const f = $('hw-foot');
+  if (!hwAllowed(currentKid)) {
+    f.innerHTML = `<div class="mh-note hw-note" role="note"><span class="mh-note-ic" aria-hidden="true">${mhArt('ic2_lock')}</span>
+      <p><b>مُسَاعِدُ الوَاجِبِ يَحْتَاجُ إِذْنَ أَحَدِ الوَالِدَيْنِ</b><span>تُرْسَلُ الأَسْئِلَةُ وَالصُّوَرُ إِلَى خِدْمَةٍ آمِنَةٍ لِتَصْحِيحِهَا.</span><span class="en en-block">The homework helper needs a parent's OK: questions and photos go to a secure cloud service.</span></p>
+      <button class="mh-note-btn" data-act="hw-consent">لِلْوَالِدَيْن</button></div>`; return;
+  }
+  if (HW.ended) { f.innerHTML = ''; return; }
+  f.innerHTML = `<div class="hw-tools"><button class="hw-tool" data-act="hw-cam"><span aria-hidden="true">${hwIcon('cam')}</span>${G('صَوِّرِ الوَرَقَة', 'صَوِّرِي الوَرَقَة')}</button><button class="hw-tool" data-act="hw-file"><span aria-hidden="true">${hwIcon('pic')}</span>صُورَةٌ مِنَ الجِهَاز</button></div>
+    <form class="mh-input" id="hw-form" autocomplete="off"><input id="hw-text" type="text" dir="rtl" lang="ar" maxlength="500" placeholder="${G('اُكْتُبِ السُّؤَالَ أَوْ جَوَابَكَ…', 'اُكْتُبِي السُّؤَالَ أَوْ جَوَابَكِ…')}" aria-label="السُّؤَال">
+    <button type="submit" class="mh-send" aria-label="أَرْسِلْ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H6m5-6-6 6 6 6"/></svg></button></form>`;
+}
+function hwIcon(k) { return k === 'cam' ? '<svg viewBox="0 0 24 24"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6"/></svg>' : '<svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5"/></svg>'; }
+function hwOpen() {
+  if (!currentKid) return; actStart('homework'); stopSpeech();
+  $('mh').classList.add('hidden'); document.body.classList.remove('mh-on'); $('app').classList.add('hidden'); $('hw').classList.remove('hidden'); document.body.classList.add('hw-on');
+  $('hw-av').innerHTML = falconHeadHTML(currentKid, 'sm');
+  if (HW.kid !== currentKid || !hwChat().children.length || HW.ended) hwBegin();
+  hwFoot();
+}
+function hwBegin() {
+  HW.kid = currentKid; HW.msgs = []; HW.task = ''; HW.kind = 'none'; HW.history = []; HW.turns = 0; HW.ended = false; HW.sid = 'w' + Date.now().toString(36); hwChat().innerHTML = '';
+  const d = curDialect(); const g = hwG();
+  hwAppend(`<div class="hw-hero">${falconSVG('look', 'hw-hero-falcon')}<div class="hw-hero-t"><b>وَاجِبُ العَرَبِيّ</b><span>${G('أَنْتَ تَكْتُبُ الجَوَابَ، وَأَنَا أُسَاعِدُكَ خُطْوَةً خُطْوَةً.', 'أَنْتِ تَكْتُبِينَ الجَوَابَ، وَأَنَا أُسَاعِدُكِ خُطْوَةً خُطْوَةً.')}</span><span class="en en-block">You write the answer; I help step by step.</span></div></div>`, 'hw-hero-row');
+  if (hwAllowed(currentKid)) { const l = hwLine('show', d, g); hwSay({ type: 'ask', register: d === 'fusha' ? 'fusha' : 'dialect', ar: l.ar, en: l.en }); }
+}
+function hwClose() { stopSpeech(); $('hw').classList.add('hidden'); document.body.classList.remove('hw-on'); actFinish('homework', { ok: HW.turns > 0 }); ACT_SIG.cur = null; mhReturn(); }
+/* ---------- photo: resize + re-encode on the device (drops EXIF), never stored ---------- */
+async function hwPrep(file) {
+  if (!file || !/^image\//.test(file.type || 'image/')) throw new Error('type');
+  let bmp; try { bmp = await createImageBitmap(file, { imageOrientation: 'from-image' }); } catch (e) { bmp = await new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = URL.createObjectURL(file); }); }
+  const W = bmp.width, H = bmp.height; let side = HW_IMG.max;
+  for (;;) {
+    const s = Math.min(1, side / Math.max(W, H)); const c = document.createElement('canvas'); c.width = Math.round(W * s); c.height = Math.round(H * s);
+    const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height); x.drawImage(bmp, 0, 0, c.width, c.height);
+    for (const q of HW_IMG.q) { const u = c.toDataURL('image/jpeg', q); if (u.length <= HW_IMG.limit) { if (bmp.close) bmp.close(); return u; } }
+    if (side <= HW_IMG.min) break; side = Math.max(HW_IMG.min, Math.round(side * 0.75));
+  }
+  if (bmp.close) bmp.close(); throw new Error('size');
+}
+async function hwPhoto(file) {
+  if (HW.busy || HW.ended) return; let url;
+  try { url = await hwPrep(file); } catch (e) { hwSay({ type: 'say', register: 'fusha', ar: 'تَعَذَّرَ فَتْحُ هَذِهِ الصُّورَةِ. جَرِّبْ صُورَةً أُخْرَى.', en: "That photo couldn't be opened. Try another one." }); return; }
+  const txt = ($('hw-text') && $('hw-text').value.trim()) || ''; if ($('hw-text')) $('hw-text').value = '';
+  await hwSend(txt, url);
+}
+/* ---------- one turn ---------- */
+async function hwSend(text, image) {
+  text = String(text || '').trim(); if ((!text && !image) || HW.busy || HW.ended || !hwAllowed(currentKid)) return;
+  const d = curDialect(); const g = hwG(); hwKid(text, image);
+  /* on the device first: safety, then the homework scope rules (nothing is sent for these) */
+  const risk = text ? detectRisk(text) : null;
+  if (risk) {
+    const acts = safetyActions(risk, d, g); if (HIGH.has(risk.kind) || ['sexual', 'contact', 'unsafe'].includes(risk.kind)) addAlert(risk.kind, HIGH.has(risk.kind) ? 'high' : 'low');
+    acts.filter((a) => a.ar && a.type !== 'ask').forEach((a) => hwSay({ type: 'say', register: a.register || 'dialect', ar: a.ar, en: a.en }));
+    if (HIGH.has(risk.kind)) { HW.ended = true; HW.task = ''; hwAppend(`<div class="mh-safe" role="status"><b>${G('اِذْهَبْ إِلَى شَخْصٍ كَبِيرٍ تَثِقُ بِهِ الآنَ.', 'اِذْهَبِي إِلَى شَخْصٍ كَبِيرٍ تَثِقِينَ بِهِ الآنَ.')}</b></div>`, 'mh-safe-row'); hwFoot(); }
+    return;
+  }
+  const tp = text && !image ? classifyHomework(text) : { topic: null };
+  if (tp.topic === 'off_topic') { hwOther(d, g).forEach(hwSay); return; }
+  if (tp.topic === 'answer_request' && !HW.task) { hwRefuse(d, g, HW.kind, false).forEach(hwSay); return; }
+  if (!TT_BASE() || !DB.settings.familyCode) { hwSay({ type: 'say', register: 'fusha', ar: 'مُسَاعِدُ الوَاجِبِ غَيْرُ مُتَّصِلٍ عَلَى هَذَا الجِهَازِ بَعْدُ. اُطْلُبْ مِنْ أَحَدِ وَالِدَيْكَ تَشْغِيلَهُ.', en: 'The homework helper is not connected on this device yet. Ask a parent to set it up.' }); return; }
+  HW.busy = true; const ty = hwTyping(!!image); const t0 = Date.now(); let j = null, err = null;
+  const body = { session_id: HW.sid, mode: 'homework', task_text: HW.task, task_kind: HW.kind, history: HW.history.slice(-10),
+    event: { type: image ? 'photo' : 'reply', text: TB.scrub(text), image: image || undefined }, state: { dialect: d, learner_gender: g, level: levelInfo(P().xp).lvl } };
+  image = null; /* the photo leaves memory with this request */
+  try {
+    const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 45000);
+    const r = await fetch(TT_BASE() + '/api/homework', { method: 'POST', headers: TT_HDR(), body: JSON.stringify(body), signal: ctl.signal }); clearTimeout(tm);
+    if (!r.ok) err = r.status; else j = await r.json();
+  } catch (e) { err = 'net'; }
+  body.event.image = undefined; ty.remove(); HW.busy = false; HW.lat.push(Date.now() - t0);
+  if (!j) { const l = err === 413 ? ['الصُّورَةُ كَبِيرَةٌ جِدّاً. صَوِّرْ جُزْءاً مِنَ الوَرَقَةِ فَقَطْ.', 'The photo is too big. Take a photo of part of the sheet.'] : err === 429 ? ['اِسْتَرِحْ قَلِيلاً، ثُمَّ نُكْمِلُ لَاحِقاً.', "Let's take a short break and carry on later."] : ['لَا أَسْتَطِيعُ الاتِّصَالَ الآنَ. حَاوِلْ بَعْدَ قَلِيلٍ.', "I can't connect right now. Try again in a little while."];
+    hwSay({ type: 'say', register: 'fusha', ar: l[0], en: l[1] }); return; }
+  HW.turns++; if (text) HW.history.push({ role: 'child', text: TB.scrub(text) }); else HW.history.push({ role: 'child', text: '(photo)' });
+  if (typeof j.task_text === 'string') HW.task = j.task_text; if (j.task_kind) HW.kind = j.task_kind;
+  if (j.safety) { if (typeof ttSafetyFlag === 'function') ttSafetyFlag(j.safety); else if (j.safety.level === 'high') addAlert(j.safety.kind, 'high'); }
+  let spoke = null;
+  (j.actions || []).forEach((a) => { if (!a || !a.ar) return; const l = { type: a.type, register: a.register === 'fusha' ? 'fusha' : 'dialect', ar: String(a.ar).replace(/\{name\}/g, PROFILES[currentKid].ar), en: a.en || '' }; hwSay(l); HW.history.push({ role: 'tutor', text: TB.scrub(l.ar) }); spoke = l; });
+  if (j.safety && j.safety.end) { HW.ended = true; HW.task = ''; hwFoot(); }
+  if (spoke && TTP().voice.auto && !MH.quiet) ttSpeak(spoke.ar, spoke.register === 'fusha' ? 'fusha' : 'dia');
+}
+document.addEventListener('submit', (e) => { if (e.target.id !== 'hw-form') return; e.preventDefault(); const i = $('hw-text'); const v = i.value; i.value = ''; hwSend(v); });
+['hw-cam', 'hw-file'].forEach((id) => { const el = $(id); if (el) el.addEventListener('change', () => { const f = el.files && el.files[0]; el.value = ''; if (f) hwPhoto(f); }); });
+Object.assign(ACTIONS, {
+  'hw-close': () => hwClose(),
+  'hw-cam': () => $('hw-cam').click(), 'hw-file': () => $('hw-file').click(),
+  'hw-hear': (i) => { const m = HW.msgs[Number(i)]; if (m) ttSpeak(m.ar, m.register === 'fusha' ? 'fusha' : 'dia'); },
+  'hw-consent': () => openConsent(currentKid, () => { hwFoot(); if (hwAllowed(currentKid) && HW.msgs.length === 0) hwBegin(); hwFoot(); })
+});
+/* the consent sheet gets a fourth switch for the homework helper (stored with the other three; default off) */
+{ const _ch = consentHTML; consentHTML = function consentHTMLHW(kid, opts) {
+  const html = _ch(kid, opts); const c = consentOf(kid);
+  const row = `<label class="cs-row"><input type="checkbox" data-consent="homework" data-kid="${kid}" ${c.homework ? 'checked' : ''}><span><b>مُسَاعِدُ الوَاجِب (الصُّوَر)</b> <span class="en">Homework helper (Azure OpenAI)</span><small class="en en-block keep-en">Typed questions and worksheet photos go to Azure for coaching. Photos are shrunk on this device, sent once and never stored; names on the sheet are hidden in replies. Needs the AI tutor switch too.</small></span></label>`;
+  return html.replace(/(<button class="btn big" data-act="consent-done")/, row + '$1'); }; }
+window.SAQ_HW = { HW, hwOpen, hwSend, hwPrep, hwClose };
 
 </script>
 </body>
