@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
+<meta name="app-version" content="v17-islands">
 <meta name="description" content="Play-first Arabic for kids: letters and sounds, word building, tracing, a word of the day, quick games, talking stories and a falcon friend. 7 dialects + Fusha.">
 <title>عَرَبِيّ · Arabic Tutor</title>
 <style>
@@ -2776,6 +2777,142 @@ body.hw-on{overflow:hidden}
 .hw-note{margin:0}
 .mh-hero{flex-shrink:0}.mh-chat>*{flex-shrink:0}
 
+/* ===== ISLANDS (v17 demo): white space, floating gouache islands, bright sky / turquoise / yellow, soft shadows ===== */
+.il,.il-nav{--il-sky:#1fa2e0;--il-sky2:#8fd6f7;--il-tq:#13b5ab;--il-tq2:#9be8df;--il-sun:#ffc93c;--il-sun2:#fff1b8;--il-coral:#ff8a73;--il-coral2:#ffd3c8;--il-mint:#2fc28a;--il-mint2:#c4f2dc;--il-ink:#17405e;--il-mute:#46677e;font-family:'Readex Pro',system-ui,sans-serif;color:var(--il-ink)}
+.il{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;background:#fff}
+.il.hidden,.il-nav.hidden{display:none}
+body.il-on{overflow:hidden}
+.il-top{display:flex;align-items:center;justify-content:space-between;padding:max(12px,env(safe-area-inset-top)) 20px 6px;width:100%;box-sizing:border-box;max-width:620px;margin:0 auto}
+.il-av{background:none;border:0;padding:0;cursor:pointer}
+.il-av .avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(160deg,#c9ecff,#e9fbf8);box-shadow:0 0 0 2px #fff,0 0 0 4px var(--il-tq2)}
+.il-coins{display:inline-flex;align-items:center;gap:6px;background:var(--il-sun2);border-radius:999px;padding:6px 14px 6px 10px;font-weight:600;font-size:1.05rem}
+.il-coins img{width:24px;height:24px}
+.il-coins.bump{animation:il-bump .6s ease}
+@keyframes il-bump{40%{transform:scale(1.18)}}
+.il-page{flex:1;overflow-y:auto;overflow-x:hidden;padding:4px 20px calc(96px + env(safe-area-inset-bottom));width:100%;box-sizing:border-box;max-width:620px;margin:0 auto;-webkit-overflow-scrolling:touch}
+/* hero: falcon + one bubble */
+.il-hero{position:relative;display:flex;align-items:flex-end;gap:10px;padding:18px 0 8px;min-height:150px}
+.il-sky{position:absolute;inset:0 -20px;pointer-events:none}
+.il-sky i{display:none}
+.il-sky .c1{width:120px;height:34px;top:14px;inset-inline-start:58%}.il-sky .c2{width:80px;height:24px;top:62px;inset-inline-start:76%}
+.il-bird{position:relative;flex:0 0 auto;background:none;border:0;padding:0;cursor:pointer;width:140px;height:160px}
+.il-bird .mascot{width:140px!important;height:160px!important;display:block;filter:drop-shadow(0 10px 12px rgba(23,64,94,.16))}
+.il-bird.pat .mascot{animation:il-hop .5s ease}
+@keyframes il-hop{40%{transform:translateY(-10px) rotate(-4deg)}}
+.il-bub{position:relative;flex:1;background:#fff;border-radius:22px 22px 22px 6px;padding:14px 16px 14px 48px;box-shadow:0 8px 26px rgba(31,162,224,.16);border:2px solid #e3f4fd;margin-bottom:36px}
+.il-bub p[lang]{margin:0;font-size:1.28rem;font-weight:600;line-height:1.55}
+.il-bub .en{display:none}
+body.show-en .il-bub .en{display:block;font-size:.8rem;margin-top:2px}
+.il-hear{position:absolute;inset-inline-end:8px;bottom:8px;width:34px;height:34px;border-radius:50%;border:0;background:#e9f7ff;cursor:pointer;padding:5px}
+.il-hear img{width:100%;height:100%}
+.il-kicker{margin:10px 2px 8px;font-size:.92rem;font-weight:600;color:var(--il-mute)}
+.il-kicker .en,.il-isle .en,.il-h2 .en,.il-h3 .en,.il-set .en,.il-brand .en{display:none}
+body.show-en .il-kicker .en,body.show-en .il-isle .en,body.show-en .il-h2 .en,body.show-en .il-h3 .en,body.show-en .il-set .en,body.show-en .il-brand .en{display:inline;font-size:.7em;margin-inline-start:6px}
+/* islands */
+.il-grid{display:grid;gap:18px;margin:16px 0 8px}
+.il-grid.four,.il-grid.two{grid-template-columns:1fr 1fr}
+.il-grid.many{grid-template-columns:1fr 1fr}
+.il-grid.three{grid-template-columns:1fr 1fr 1fr;gap:12px}
+.il-isle{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;min-height:158px;padding:14px 10px 16px;border:0;border-radius:32px;cursor:pointer;font:inherit;color:var(--il-ink);
+  background:radial-gradient(120% 90% at 50% 0%,var(--isle2) 0%,#fff 78%);box-shadow:0 14px 28px -12px var(--isle-sh),0 2px 0 rgba(255,255,255,.9) inset;transition:transform .18s ease}
+.il-isle:active{transform:scale(.96)}
+.il-isle::after{content:'';position:absolute;left:18%;right:18%;bottom:-10px;height:14px;border-radius:50%;background:radial-gradient(closest-side,var(--isle-sh),transparent);opacity:.55;z-index:-1}
+.il-isle.t-sky{--isle2:#cdeeff;--isle-sh:rgba(31,162,224,.45)}
+.il-isle.t-mint{--isle2:#c9f4e9;--isle-sh:rgba(19,181,171,.42)}
+.il-isle.t-sun{--isle2:#fff0b3;--isle-sh:rgba(242,176,30,.45)}
+.il-isle.t-coral{--isle2:#ffe0d8;--isle-sh:rgba(255,138,115,.45)}
+.il-art{display:flex;align-items:center;justify-content:center;width:92px;height:84px;animation:il-float 5s ease-in-out infinite}
+.il-isle:nth-child(2n) .il-art{animation-delay:-2.5s}
+.il-art img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 8px 8px rgba(23,64,94,.18))}
+.il-art.cover img{border-radius:16px;width:86px;height:74px;object-fit:cover}
+.il-art.glyph b{font-family:'Noto Naskh Arabic',serif;font-size:3.4rem;line-height:1;color:var(--il-sky);text-shadow:0 6px 10px rgba(31,162,224,.25)}
+.il-art.fal .mascot{width:84px!important;height:84px!important;display:block}
+@keyframes il-float{50%{transform:translateY(-5px)}}
+@media (prefers-reduced-motion:reduce){.il-art,.il-bird.pat{animation:none}}
+.il-isle-t{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.35}
+.il-isle-t b{font-size:1.08rem;font-weight:600}
+.il-main .il-isle.big{flex-direction:row;justify-content:flex-start;min-height:0;padding:16px 18px;gap:16px;border-radius:30px;width:100%;box-sizing:border-box}
+.il-main .il-isle.big .il-isle-t{align-items:flex-start;text-align:start}
+.il-main .il-isle.big .il-isle-t b{font-size:1.25rem}
+.il-main .il-isle.big .il-art{width:76px;height:70px}
+.il-grid.three .il-isle{min-height:124px;border-radius:26px;padding:10px 6px 12px}
+.il-grid.three .il-art{width:62px;height:56px}
+.il-grid.three .il-isle-t b{font-size:.92rem}
+/* page titles */
+.il-h2{margin:14px 2px 2px;font-size:1.6rem;font-weight:600}
+.il-sub{margin:2px 2px 6px;color:var(--il-mute);font-size:.98rem}
+.il-h3{margin:24px 2px 8px;font-size:1.1rem;font-weight:600}
+/* my falcon */
+.il-me{display:flex;align-items:center;gap:14px;margin-top:10px;padding:14px;border-radius:28px;background:linear-gradient(160deg,#e3f6ff,#f2fffb)}
+.il-me-bird .mascot{display:block;width:88px!important;height:96px!important;filter:drop-shadow(0 8px 10px rgba(23,64,94,.16))}
+.il-me-t{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+.il-me-t b{font-size:1.3rem}.il-me-t span{color:var(--il-mute);font-size:.95rem}
+.il-bar{display:block;height:10px;border-radius:99px;background:#fff;overflow:hidden;box-shadow:inset 0 0 0 1px #d6eef9}
+.il-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--il-tq),var(--il-sky))}
+.il-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0 4px}
+.il-stat{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border-radius:20px;background:#fff;box-shadow:0 6px 18px -10px rgba(23,64,94,.3)}
+.il-stat img{width:26px;height:26px}.il-stat b{font-size:1.15rem}.il-stat small{font-size:.74rem;color:var(--il-mute)}
+.il-sets{display:flex;flex-direction:column;gap:8px}
+.il-set{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border:0;border-radius:20px;background:#f5fbff;cursor:pointer;font:inherit;color:inherit;text-align:start}
+.il-set-ic{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}.il-set-ic img{width:30px;height:30px}
+.il-set-t{flex:1;display:flex;flex-direction:column}.il-set-t b{font-weight:600;font-size:1rem}
+.il-sw{width:46px;height:26px;border-radius:99px;background:#cfe3ee;position:relative;flex:0 0 auto;transition:background .2s}
+.il-sw i{position:absolute;top:3px;inset-inline-start:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:inset-inline-start .2s}
+.il-set.on .il-sw{background:var(--il-tq)}.il-set.on .il-sw i{inset-inline-start:23px}
+.il-brand{margin:22px 0 4px;text-align:center;color:#9bb3c3;font-size:.85rem}
+/* bottom tab bar */
+.il-nav{position:fixed;left:0;right:0;bottom:0;z-index:45;display:flex;justify-content:space-around;gap:2px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 -8px 24px -14px rgba(23,64,94,.35);border-radius:24px 24px 0 0}
+.il-tab{flex:1;max-width:120px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;border:0;background:none;border-radius:16px;cursor:pointer;font:inherit;color:var(--il-mute)}
+.il-tab-ic{width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:12px}
+.il-tab-ic svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.il-tab-ic .avatar{width:28px;height:28px;border-radius:50%}
+.il-tab-t{font-size:.78rem;font-weight:600;white-space:nowrap}
+.il-tab.on{color:var(--il-sky)}
+.il-tab.on .il-tab-ic{background:#e2f5ff}
+/* chat view: the v16 falcon chat, now a clean full view with a back arrow */
+.il-chat-back{display:none}
+body.il-chat .il-chat-back{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:0;background:#eef8ff;cursor:pointer;flex:0 0 auto}
+.il-chat-back svg{width:22px;height:22px;fill:none;stroke:#17405e;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+body.il-chat .mh-grid-btn,body.il-chat .mh-chip.fire{display:none}
+body.il-chat .mh-top{justify-content:flex-start}
+body.il-chat .mh-stats{margin-inline-start:auto}
+/* full pages opened from an island: only the new tab bar, no old top bar / old tab row / floating back pill */
+body.il-area #app .sticky,body.il-area #app nav.tabs,body.il-area #mh-back{display:none!important}
+body.il-area #app{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+/* ===== v17 inner pages (letters, stories, games, shop) under the tab bar: same calm island look ===== */
+body.il-area{background:#fff}
+body.il-area #app{--il-sky:#1fa2e0;--il-tq:#13b5ab;--il-sun2:#fff1b8;--il-ink:#17405e;font-family:'Readex Pro',system-ui,sans-serif;color:var(--il-ink)}
+body.il-area #app main,body.il-area #app .tab{padding-inline:16px;box-sizing:border-box;max-width:620px;margin-inline:auto}
+body.il-area #app .tab{padding-top:max(14px,env(safe-area-inset-top))}
+body.il-area #app .page-title,body.il-area #app .sec-h{font-size:1.5rem;font-weight:600;color:var(--il-ink);margin:12px 2px 10px}
+body.il-area #app .scene-hero{border-radius:30px;overflow:hidden;box-shadow:0 14px 28px -14px rgba(31,162,224,.45)}
+/* cards become islands: rounded, white-to-tint, soft floating shadow, no hard borders */
+body.il-area #app .lt-set,body.il-area #app .book,body.il-area #app .pg-card,body.il-area #app .game-card,body.il-area #app .shop-card,body.il-area #app .lt-door{border:0!important;border-radius:28px!important;background:radial-gradient(120% 90% at 50% 0%,#e3f5ff 0%,#fff 80%)!important;box-shadow:0 14px 26px -14px rgba(31,162,224,.42)!important}
+body.il-area #app .book:nth-child(3n+2),body.il-area #app .pg-card:nth-child(3n+2){background:radial-gradient(120% 90% at 50% 0%,#d9f7f1 0%,#fff 80%)!important;box-shadow:0 14px 26px -14px rgba(19,181,171,.42)!important}
+body.il-area #app .book:nth-child(3n),body.il-area #app .pg-card:nth-child(3n){background:radial-gradient(120% 90% at 50% 0%,#fff3c4 0%,#fff 80%)!important;box-shadow:0 14px 26px -14px rgba(242,176,30,.42)!important}
+body.il-area #app .shop-card.locked{opacity:.75}
+body.il-area #app .shop-card.on{box-shadow:0 0 0 3px #9be8df,0 14px 26px -14px rgba(19,181,171,.5)!important}
+body.il-area #app .read-shelf,body.il-area #app .games-head{background:none!important;box-shadow:none!important;border:0!important}
+body.il-area #app .lt-set,body.il-area #app .shop-sec{margin-bottom:18px}
+body.il-area #app .lt-key{border-radius:18px!important;border:0!important;background:#fff!important;box-shadow:0 6px 14px -8px rgba(23,64,94,.35)!important}
+body.il-area #app .lt-play,body.il-area #app .btn.primary{border-radius:999px!important;background:linear-gradient(180deg,#38b6ef,#1fa2e0)!important;border:0!important;box-shadow:0 8px 16px -8px rgba(31,162,224,.7)!important}
+body.il-area #app .pill,body.il-area #app .sc-tag{border-radius:999px}
+body.il-area #app .shop-grid,body.il-area #app .pg-grid{gap:14px}
+/* v17 nickname: Arabic keyboard under the field, gentle re-pick sheet */
+.prof-setup .akb,.nick-repick .akb{margin-top:6px}
+.nick-hint{margin:4px 2px 0;color:#c2410c;font-weight:600;font-size:.95rem}
+.nick-hint.shake{animation:il-shake .4s ease}
+@keyframes il-shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.nick-repick{align-items:center;text-align:center}
+.nick-bird .mascot{width:96px!important;height:104px!important;display:block;margin:0 auto}
+.nick-repick h2{margin:4px 0 0;font-size:1.4rem}
+.nick-sub{margin:0;color:#46677e;line-height:1.6}
+.nick-repick .prof-nick{text-align:center}
+.nick-btns{justify-content:center;gap:10px;width:100%}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* v17 tablet: a little wider page, tab bar grouped in the centre instead of spread edge to edge */
+@media (min-width:900px){.il-top,.il-page{max-width:760px}.il-nav{justify-content:center;gap:28px}.il-tab{flex:0 1 110px;font-size:15px}.il-tab svg{width:28px;height:28px}}
+
 </style>
 </head>
 <body>
@@ -2937,10 +3074,23 @@ body.hw-on{overflow:hidden}
   <input type="file" id="hw-file" accept="image/jpeg,image/png,image/webp,image/heic,image/*" hidden>
 </section>
 
+<!-- ISLANDS HOME (v17 demo): a calm home with Saqqour, a few big islands, and a bottom tab bar for everything else -->
+<section id="il" class="il hidden" aria-label="الرَّئِيسِيَّة">
+  <header class="il-top">
+    <button class="il-av" id="il-av" data-act="il-tab" data-arg="me"></button>
+    <span class="il-coins" id="il-coins"></span>
+  </header>
+  <main class="il-page" id="il-page"></main>
+</section>
+<nav id="il-nav" class="il-nav hidden" aria-label="الأَقْسَام"></nav>
+
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
 <script>
+/* SAQQOUR_V17_ISLANDS */
+const APP_VERSION = "v17";
+const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
    DATA
@@ -4919,7 +5069,7 @@ Object.assign(ART_B64, {
 
 'use strict';
 /* =========================================================
-   v11 · SAQQOUR, painted. The code-drawn falcon is replaced by Randa's approved painted art (art-v11.js).
+   v11 · SAQQOUR, painted. The code-drawn falcon is replaced by the approved painted art (art-v11.js).
    · moods and reactions use the pose paintings (happy, cheer, think, sleepy, oops, celebrate + listen, speak, read, point, trophy, run, surprised)
    · "you" spots (home, top bar, wardrobe, level-up) show the child's look: a painted outfit, or the painted level colour (tier)
    · small flat accessories sit on top of the look paintings as overlays at measured anchor points
@@ -6147,7 +6297,7 @@ function wbDraw() {
   ctx.save(); ctx.strokeStyle = '#ffb4d0'; ctx.lineWidth = 2.5; ctx.setLineDash([10, 6]);
   ctx.beginPath(); ctx.moveTo(16, h * 0.7); ctx.lineTo(w - 16, h * 0.7); ctx.stroke();
   ctx.strokeStyle = '#d7ccff'; ctx.beginPath(); ctx.moveTo(16, h * 0.25); ctx.lineTo(w - 16, h * 0.25); ctx.stroke(); ctx.restore();
-  ctx.save(); ctx.fillStyle = '#e879a6'; ctx.font = "700 12px 'Nunito','Segoe UI',sans-serif"; ctx.textAlign = 'left'; ctx.fillText('baseline · السطر', 18, h * 0.7 - 6); ctx.restore();
+  ctx.save(); ctx.fillStyle = '#e879a6'; ctx.font = "700 12px 'Nunito','Segoe UI',sans-serif"; ctx.textAlign = 'left'; ctx.fillText(typeof meaningOn === 'function' && meaningOn() ? 'baseline · السَّطْر' : 'السَّطْر', 18, h * 0.7 - 6); ctx.restore();
   if (WB.trace && !WB.compare) wbModel(ctx, '#a5b4fc', 0.4);
   ctx.save(); ctx.strokeStyle = '#2b1d6b'; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.lineWidth = Math.max(6, w / 95);
   WB.strokes.forEach((s) => { if (s.length < 2) return; ctx.beginPath(); ctx.moveTo(s[0].x * w, s[0].y * h); for (let i = 1; i < s.length; i++) ctx.lineTo(s[i].x * w, s[i].y * h); ctx.stroke(); });
@@ -9425,6 +9575,24 @@ const HWL = {
   fusha: { refuse: 'لَنْ أُعْطِيَ[كَ|كِ] الجَوَابَ جَاهِزاً، لَكِنِّي سَأُسَاعِدُ[كَ|كِ] لِ[تَصِلَ|تَصِلِي] إِلَيْهِ بِنَفْسِ[كَ|كِ]. [أَنْتَ قَادِرٌ|أَنْتِ قَادِرَةٌ]!', try: '[جَرِّبْ|جَرِّبِي]، ثُمَّ [أَخْبِرْنِي|أَخْبِرِينِي]: مَاذَا [كَتَبْتَ|كَتَبْتِ]؟', other: 'أُسَاعِدُ فِي وَاجِبِ اللُّغَةِ العَرَبِيَّةِ فَقَطْ.', other_ask: 'هَلْ عِنْدَ[كَ|كِ] وَاجِبٌ فِي العَرَبِيَّةِ؟', photo_bad: 'الصُّورَةُ غَيْرُ وَاضِحَةٍ. [صَوِّرِ|صَوِّرِي] الوَرَقَةَ مَرَّةً أُخْرَى مِنْ قَرِيبٍ وَفِي الضَّوْءِ.', show: '[اُكْتُبِ|اُكْتُبِي] السُّؤَالَ، أَوْ [صَوِّرْ|صَوِّرِي] وَرَقَةَ الوَاجِبِ.', think: 'لِنُفَكِّرْ مَعاً خُطْوَةً خُطْوَةً.', not_hw: 'أَنْظُرُ فِي وَاجِبِ العَرَبِيَّةِ فَقَطْ.' } };
 const HWL_EN = { refuse: "I won't give you the ready answer, but I'll help you get there yourself. You can do it!", try: 'Try it and tell me what you wrote.', other: 'I only help with Arabic homework.', other_ask: 'Do you have Arabic homework we can look at together?', photo_bad: "The photo isn't clear. Take it again, close up and in good light.", show: 'Type the question for me, or take a photo of the homework sheet.', think: "Let's think it through together, step by step.", not_hw: 'I only look at Arabic homework.' };
 /* Fusha hints about the written task, one per kind (never an answer) */
+/* v16.2: a soft effort line for a wrong or partly wrong attempt (never "كفو / شاطر / برافو" unless it is right) */
+const HW_EFFORT = { emirati: 'حِلْوَة المُحَاوَلَة! خَلْنَا نْشُوفْهَا مَرَّة ثَانْيَة.', saudi: 'مُحَاوَلَة حِلْوَة! خَلّنَا نْشُوفْهَا مَرَّة ثَانْيَة.',
+  lebanese: 'حِلْوِة المُحَاوَلِة! [تَعَا|تَعِي] نْشُوفَا مَرَّة تَانْيِة.', syrian: 'حِلْوِة المُحَاوَلِة! [تَعَا|تَعِي] نْشُوفَا كَمَان مَرَّة.',
+  jordanian: 'مُحَاوَلِة حِلْوِة! [تَعَال|تَعَالِي] نْشُوفْهَا مَرَّة ثَانْيِة.', egyptian: 'مُحَاوْلَة حِلْوَة! [تَعَالَى|تَعَالِي] نْبُصّ عَلِيهَا تَانِي.',
+  fusha: 'مُحَاوَلَةٌ جَيِّدَةٌ! لِنَنْظُرْ إِلَيْهَا مَرَّةً أُخْرَى.' };
+Object.keys(HW_EFFORT).forEach((d) => { HWL[d].effort = HW_EFFORT[d]; }); HWL_EN.effort = "Nice try! Let's look at it again.";
+/* v16.2: scripted praise for a CORRECT attempt (used only when the model's reply had to be replaced) */
+const HW_RIGHT = {
+  emirati: ['[كَفُو! جَوَابَك صَح.|كَفُو! جَوَابِج صَح.]', '[تَبَا|تَبِين] نْكَمِّل السُّؤَال اللِّي بَعْدَه؟'],
+  saudi: ['[كَفُو! جَوَابَك صَح.|كَفُو! جَوَابِك صَح.]', '[تَبِي|تَبِين] نْكَمِّل السُّؤَال اللِّي بَعْدَه؟'],
+  lebanese: ['[بْرَافُو! جَوَابَك صَحّ.|بْرَافُو! جَوَابِك صَحّ.]', '[بِدَّك|بِدِّك] نْكَفِّي عَالسُّؤَال اللِّي بَعْدُو؟'],
+  syrian: ['[بْرَافُو! جَوَابَك صَحّ.|بْرَافُو! جَوَابِك صَحّ.]', '[بِدَّك|بِدِّك] نْكَمِّل عَالسُّؤَال اللِّي بَعْدُو؟'],
+  jordanian: ['[عَفْيَة عَلَيك! جَوَابَك صَحّ.|عَفْيَة عَلَيكِي! جَوَابِك صَحّ.]', '[بِدَّك|بِدِّك] نْكَمِّل عَالسُّؤَال اللِّي بَعْدُه؟'],
+  egyptian: ['[بْرَافُو عَلِيك! إِجَابْتَك صَحّ.|بْرَافُو عَلِيكِي! إِجَابْتِك صَحّ.]', '[عَايِز|عَايْزَة] نْكَمِّل السُّؤَال اللِّي بَعْدُه؟'],
+  fusha: ['[أَحْسَنْتَ! إِجَابَتُكَ صَحِيحَةٌ.|أَحْسَنْتِ! إِجَابَتُكِ صَحِيحَةٌ.]', 'هَلْ نَنْتَقِلُ إِلَى السُّؤَالِ التَّالِي؟'] };
+Object.keys(HW_RIGHT).forEach((d) => { HWL[d].right = HW_RIGHT[d][0]; HWL[d].next = HW_RIGHT[d][1]; }); HWL_EN.right = 'Well done! Your answer is right.'; HWL_EN.next = 'Shall we go on to the next question?';
+/* scripted Fusha pointer to the mistake that never reveals the answer */
+const HW_CHECK = ['[اِقْرَأْ|اِقْرَئِي] جَوَابَ[كَ|كِ] دَاخِلَ الجُمْلَةِ بِصَوْتٍ عَالٍ: هَلْ يَسْتَقِيمُ المَعْنَى؟ [رَاجِعْ|رَاجِعِي] الكَلِمَةَ الَّتِي [اخْتَرْتَهَا|اخْتَرْتِهَا].', 'Read your answer inside the sentence out loud: does the meaning work? Check the word you chose.'];
 const HW_HINT = {
   fill_blank: ['[اِقْرَأِ|اِقْرَئِي] الجُمْلَةَ كُلَّهَا بِبُطْءٍ، ثُمَّ [فَكِّرْ|فَكِّرِي]: أَيُّ كَلِمَةٍ تُكْمِلُ المَعْنَى؟', 'Read the whole sentence slowly, then think: which word completes the meaning?'],
   grammar: ['[اُنْظُرْ|اُنْظُرِي] إِلَى آخِرِ الكَلِمَةِ وَإِلَى مَا قَبْلَهَا: مَاذَا [تُلَاحِظُ|تُلَاحِظِينَ]؟', 'Look at the end of the word and at what comes before it: what do you notice?'],
@@ -9439,6 +9607,7 @@ const hwL = (type, key, d, g, extra) => Object.assign({ type, register: hwReg(d)
 const hwHintLine = (kind, g) => { const h = HW_HINT[kind] || HW_HINT.other; return { type: 'hint', register: 'fusha', ar: gform(h[0], g), en: h[1] }; };
 function hwRefuse(d, g, kind, hasTask) { return hasTask ? [hwL('say', 'refuse', d, g), hwHintLine(kind, g), hwL('ask', 'try', d, g)] : [hwL('say', 'refuse', d, g), hwL('ask', 'show', d, g)]; }
 function hwOther(d, g) { return [hwL('say', 'other', d, g, { scope: true }), hwL('ask', 'other_ask', d, g, { scope: true })]; }
+function hwCheckLine(g) { return { type: 'check', register: 'fusha', ar: gform(HW_CHECK[0], g), en: HW_CHECK[1] }; }
 function hwLeakFix(d, g, kind) { return [hwL('say', 'think', d, g), hwHintLine(kind, g), hwL('ask', 'try', d, g)]; }
 function hwStart(d, g) { return [hwL('ask', 'show', d, g)]; }
 
@@ -10154,10 +10323,14 @@ document.addEventListener('click', (e) => {
   'use strict';
   /* endpoint: same origin by default (local server), or a hosted Worker. Set once with
      ?tutor=https://saqqour-tutor.<acct>.workers.dev&code=FAMILYCODE  (saved in DB.settings, then removed from the URL) */
-  try { const q = new URLSearchParams(location.search); let ch = false;
-    if (q.has('tutor')) { DB.settings.tutorEndpoint = q.get('tutor').replace(/\/+$/, ''); q.delete('tutor'); ch = true; }
-    if (q.has('code')) { DB.settings.familyCode = q.get('code'); q.delete('code'); ch = true; }
-    if (ch) { saveDB(); history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + location.hash); } } catch (e) { /* */ }
+  try { const q = new URLSearchParams(location.search); let ch = false; const q0 = {};
+    if (q.has('tutor')) { DB.settings.tutorEndpoint = q0.tutorEndpoint = q.get('tutor').replace(/\/+$/, ''); q.delete('tutor'); ch = true; }
+    if (q.has('code')) { DB.settings.familyCode = q0.familyCode = q.get('code'); q.delete('code'); ch = true; }
+    /* v17 fix: this runs before the save is loaded, so saveDB() here wrote an empty save over the family's progress.
+       Merge the two settings into the stored save instead (loadDB() then reads them with everything else). */
+    if (ch) { try { const raw = localStorage.getItem(STORE_KEY); const d = raw ? JSON.parse(raw) : null;
+        if (d && typeof d === 'object') { d.settings = Object.assign(d.settings || {}, q0); localStorage.setItem(STORE_KEY, JSON.stringify(d)); } else saveDB(); } catch (e) { /* */ }
+      history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + location.hash); } } catch (e) { /* */ }
   /* v16: on the published app the Worker address is known; a parent still has to add the family code once (?code=…) */
   /*     (computed, not saved: no new save field, and the saved settings object is replaced when the save loads) */
   const DEF_EP = /(^|\.)rarmoush\.github\.io$/.test(location.hostname) ? 'https://saqqour-tutor.rarmoush.workers.dev' : '';
@@ -10917,6 +11090,241 @@ Object.assign(ACTIONS, {
   const row = `<label class="cs-row"><input type="checkbox" data-consent="homework" data-kid="${kid}" ${c.homework ? 'checked' : ''}><span><b>مُسَاعِدُ الوَاجِب (الصُّوَر)</b> <span class="en">Homework helper (Azure OpenAI)</span><small class="en en-block keep-en">Typed questions and worksheet photos go to Azure for coaching. Photos are shrunk on this device, sent once and never stored; names on the sheet are hidden in replies. Needs the AI tutor switch too.</small></span></label>`;
   return html.replace(/(<button class="btn big" data-act="consent-done")/, row + '$1'); }; }
 window.SAQ_HW = { HW, hwOpen, hwSend, hwPrep, hwClose };
+
+/* =========================================================
+   ISLANDS (v17 demo). Parent feedback: "less clutter, more islands; writing, Wordle and the rest on different tabs".
+   - Home: Saqqour, ONE short dialect greeting, ONE main suggestion, 4 big islands.
+   - A bottom tab bar (Fusha labels): home · writing · games · reading · my falcon. Max ~6 islands per page.
+   - Chat with Saqqour is its own full view (the v16 falcon chat), opened from an island, with a way back.
+   - Header: coins + falcon avatar only. Settings, meaning (English) toggle and dialect live in the "my falcon" tab.
+   Everything underneath (activities, consent gate, safety, Arabic-only scope, homework helper, start/finish signals,
+   arabicTutor.v2 saves) is the v16 code, reused as is.
+   ========================================================= */
+const IL = { page: 'home', chat: false, n: 0, ids: {} };
+const IL_TABS = [
+  { id: 'home', ar: 'الرَّئِيسِيَّة', en: 'Home', ic: '<path d="M4 11.5 12 5l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5H15v-5h-6v5H5.5A1.5 1.5 0 0 1 4 19z"/>' },
+  { id: 'write', ar: 'الكِتَابَة', en: 'Writing', ic: '<path d="M5 19l1-4L15.5 5.5a2.1 2.1 0 0 1 3 3L9 18z"/><path d="M13.5 7.5l3 3"/>' },
+  { id: 'games', ar: 'الأَلْعَاب', en: 'Games', ic: '<rect x="3" y="8" width="18" height="10" rx="5"/><path d="M8 11v4M6 13h4"/><circle cx="15.5" cy="12" r="1"/><circle cx="17.5" cy="14.5" r="1"/>' },
+  { id: 'read', ar: 'القِرَاءَة', en: 'Reading', ic: '<path d="M12 7c-2-1.6-4.6-2-8-2v12c3.4 0 6 .4 8 2 2-1.6 4.6-2 8-2V5c-3.4 0-6 .4-8 2z"/><path d="M12 7v12"/>' },
+  { id: 'me', ar: 'صَقْرِي', en: 'My falcon', falcon: true }
+];
+/* islands not in the v16 list */
+const IL_EXTRA = {
+  chat: () => ({ title: G('تَحَدَّثْ مَعَ ', 'تَحَدَّثِي مَعَ ') + falconName().ar, en: 'Talk with ' + falconName().en, art: 'pose_speaking', tone: 'sky', run: () => ilChat() })
+};
+const IL_PAGES = {
+  home: { isles: ['chat', 'homework', 'letters', 'stories'] },
+  write: { title: 'الكِتَابَة', en: 'Writing', sub: 'تَتَبُّعُ الحُرُوفِ وَبِنَاءُ الكَلِمَات', isles: ['write', 'build', 'letter'] },
+  games: { title: 'الأَلْعَاب', en: 'Games', sub: 'أَلْعَابٌ قَصِيرَةٌ بِالعَرَبِيَّة', isles: ['wordle', 'game', 'practice', 'games'] },
+  read: { title: 'القِرَاءَة', en: 'Reading', sub: 'قِصَصٌ وَمُحَادَثَاتٌ وَدُرُوس', isles: ['story', 'stories', 'talk', 'lesson', 'journey'] },
+  me: { title: 'صَقْرِي', en: 'My falcon', isles: ['dress', 'stickers', 'shop'] }
+};
+/* a distinct picture per island where the v16 card reused one */
+const IL_ART = { game: 'gm_letter_match', games: 'icon_games', practice: 'gm_word_memory' };
+function ilDef(id) { const d = IL_EXTRA[id] ? IL_EXTRA[id](P()) : MH_ACTS[id](P()); d.id = id; if (IL_ART[id] && ART_B64[IL_ART[id]]) d.art = IL_ART[id]; return d; }
+function ilIsleArt(d) {
+  if (d.glyph) return `<span class="il-art glyph" aria-hidden="true"><b>${esc(d.glyph)}</b></span>`;
+  if (d.falcon) return `<span class="il-art fal" aria-hidden="true">${falconSVG('happy', 'il-fal')}</span>`;
+  const a = d.art ? mhArt(d.art) : d.icon && ART_ICON2[d.icon] ? mhArt(ART_ICON2[d.icon]) : '';
+  return `<span class="il-art ${d.art && /^st_/.test(d.art) ? 'cover' : ''}" aria-hidden="true">${a}</span>`;
+}
+function ilIsle(id, big) {
+  const d = ilDef(id); const k = 'i' + (++IL.n); IL.ids[k] = id;
+  return `<button class="il-isle t-${d.tone} ${big ? 'big' : ''}" data-act="il-open" data-arg="${k}" data-id="${id}">
+    ${ilIsleArt(d)}<span class="il-isle-t"><b>${esc(d.title)}</b><span class="en">${esc(d.en)}</span></span></button>`;
+}
+function ilHeader() {
+  const p = P(); $('il-av').innerHTML = falconHeadHTML(currentKid, 'sm'); $('il-av').setAttribute('aria-label', 'صَقْرِي');
+  $('il-coins').innerHTML = `${mhArt('ic2_coin')}<b>${toArabicDigits(p.coins)}</b>`; $('il-coins').setAttribute('aria-label', `${toArabicDigits(p.coins)} عُمْلَة`);
+}
+function ilNav() {
+  $('il-nav').innerHTML = IL_TABS.map((t) => `<button class="il-tab ${IL.page === t.id ? 'on' : ''}" data-act="il-tab" data-arg="${t.id}" aria-current="${IL.page === t.id ? 'page' : 'false'}">
+    <span class="il-tab-ic" aria-hidden="true">${t.falcon ? falconHeadHTML(currentKid, 'sm') : `<svg viewBox="0 0 24 24">${t.ic}</svg>`}</span><span class="il-tab-t">${t.ar}</span></button>`).join('');
+}
+function ilHome() {
+  const p = P(); const pr = PROFILES[currentKid]; const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); IL.greet = greet;
+  const main = mhPlan(p)[0] || 'letter';
+  return `<div class="il-hero">
+      <div class="il-sky" aria-hidden="true"><i class="c1"></i><i class="c2"></i></div>
+      <button class="il-bird" data-act="mh-pat" aria-label="${esc(falconName().ar)}">${falconSVG('happy', 'il-hero-falcon')}</button>
+      <div class="il-bub"><p lang="ar">${esc(greet.ar)}</p><p class="en en-block" dir="ltr">${esc(greet.en)}</p>
+        <button class="il-hear" data-act="il-hear" aria-label="اِسْمَعْ">${mhArt('ic2_speaker')}</button></div>
+    </div>
+    <p class="il-kicker">اِقْتِرَاحُ اليَوْم <span class="en">Today's idea</span></p>
+    <div class="il-main">${ilIsle(main, true)}</div>
+    <div class="il-grid four">${IL_PAGES.home.isles.map((id) => ilIsle(id)).join('')}</div>`;
+}
+function ilMe() {
+  const p = P(); const li = levelInfo(p.xp); const st = computeStreak(p.activeDays);
+  const row = (act, ic, ar, en, on) => `<button class="il-set ${on ? 'on' : ''}" data-act="${act}" ${on != null ? `aria-pressed="${!!on}"` : ''}><span class="il-set-ic" aria-hidden="true">${ic}</span><span class="il-set-t"><b>${ar}</b><span class="en">${en}</span></span>${on != null ? `<span class="il-sw" aria-hidden="true"><i></i></span>` : ''}</button>`;
+  return `<div class="il-me">
+      <div class="il-me-bird" aria-hidden="true">${falconSVG('happy', 'il-me-falcon')}</div>
+      <div class="il-me-t"><b>${esc(falconName().ar)}</b><span>المُسْتَوَى ${toArabicDigits(li.lvl)}</span>
+        <span class="il-bar" role="img" aria-label="${toArabicDigits(li.pct)}٪"><i style="width:${li.pct}%"></i></span></div>
+    </div>
+    <div class="il-stats"><span class="il-stat">${mhArt('ic2_flame')}<b>${toArabicDigits(st)}</b><small>أَيَّامٌ مُتَتَالِيَة</small></span>
+      <span class="il-stat">${mhArt('ic2_coin')}<b>${toArabicDigits(p.coins)}</b><small>عُمْلَة</small></span>
+      <span class="il-stat">${mhArt('ic2_pearl')}<b>${toArabicDigits(p.xp)}</b><small>لُؤْلُؤَة</small></span></div>
+    <div class="il-grid three">${IL_PAGES.me.isles.map((id) => ilIsle(id)).join('')}</div>
+    <h3 class="il-h3">الإِعْدَادَات <span class="en">Settings</span></h3>
+    <div class="il-sets">
+      ${row('il-meaning', '🌐', 'المَعْنَى بِالإِنْجِلِيزِيَّة', 'Show English meaning', meaningOn())}
+      ${row('voice-open', mhArt('ic2_dialects'), 'اللَّهْجَةُ وَالصَّوْت', 'Dialect and voice')}
+      ${row('il-sfx', mhArt('ic2_speaker'), 'الأَصْوَات', 'Sounds', sfxOn())}
+      ${row('open-parent', mhArt('icon_parent'), 'لِلْوَالِدَيْن', 'For parents')}
+      ${row('switch-profile', '🔁', 'تَغْيِيرُ اللَّاعِب', 'Switch player')}
+    </div>
+    <p class="il-brand" lang="ar">${esc(APP_BRAND.ar)} <span class="en">${esc(APP_BRAND.en)}</span></p>`;
+}
+function ilRender() {
+  IL.n = 0; IL.ids = {}; const pg = IL_PAGES[IL.page] || IL_PAGES.home; let h;
+  if (IL.page === 'home') h = ilHome();
+  else if (IL.page === 'me') h = `<h2 class="il-h2">${pg.title} <span class="en">${pg.en}</span></h2>` + ilMe();
+  else h = `<h2 class="il-h2">${pg.title} <span class="en">${pg.en}</span></h2>${pg.sub ? `<p class="il-sub">${pg.sub}</p>` : ''}<div class="il-grid ${pg.isles.length > 4 ? 'many' : 'two'}">${pg.isles.map((id) => ilIsle(id)).join('')}</div>`;
+  $('il-page').innerHTML = h; $('il').setAttribute('aria-label', IL.page === 'home' ? 'الرَّئِيسِيَّة' : pg.title); $('il-page').scrollTop = 0;
+  ilHeader(); ilNav();
+}
+/* show the islands (the new home) */
+function ilShow(page) {
+  if (!currentKid || MH_LEGACY) return;
+  stopSpeech(); if (typeof closeMore === 'function') closeMore(); if (typeof closeMenu === 'function') closeMenu();
+  IL.chat = false; if (page) IL.page = page;
+  mhHideApp(); const tu = $('tutor'); if (tu) tu.classList.add('hidden'); document.body.classList.remove('tutor-on', 'mh-on', 'hw-on');
+  $('mh').classList.add('hidden'); $('hw').classList.add('hidden'); $('mh-back').classList.add('hidden'); mhGridClose();
+  document.body.classList.remove('il-area'); $('il').classList.remove('hidden'); $('il-nav').classList.remove('hidden'); document.body.classList.add('il-on');
+  ilRender();
+}
+function ilHide() { $('il').classList.add('hidden'); $('il-nav').classList.add('hidden'); document.body.classList.remove('il-on', 'il-area'); }
+/* chat with Saqqour: its own full view (the v16 falcon chat) */
+function ilChat() { IL.chat = true; ilHide(); _ilMhShow(); document.body.classList.add('il-chat'); }
+/* open an island: same start/finish signals and way back as the falcon home, but it comes back to the island page */
+function ilOpen(id) {
+  const d = ilDef(id); const p = P();
+  if (id === 'chat') { d.run(); return; }
+  MH.act = { id, from: 'il', page: IL.page, coins: p.coins, xp: p.xp, tab: d.tab || null, view: !!d.view, look: JSON.stringify(p.falcon), done: null };
+  sfx('whoosh');
+  /* full pages keep the new tab bar (the old top bar and old tab row are hidden); the current tab is the way back */
+  if (d.tab) { actStart('area:' + d.tab); ilHide(); $('app').classList.remove('hidden'); MH.inTab = true; _mhSwitchTab(d.tab); MH.inTab = false; mhShowBack();
+    document.body.classList.add('il-area'); $('il-nav').classList.remove('hidden'); ilNav(); window.scrollTo(0, 0); return; }
+  ilHide(); d.run();
+}
+/* back from an island activity: a small reward note on the island page, never a chat dump */
+function ilReturn(a) {
+  ilShow(a.page); const p = P(); const dc = p.coins - a.coins; const dx = p.xp - a.xp; const fin = a.done;
+  if (dx > 0 || dc > 0 || (fin && fin.ok)) {
+    const l = mhLine('win'); IL.greet = l; const bub = document.querySelector('.il-bub p[lang]');
+    toast(`${l.ar}${dc > 0 ? `  +${toArabicDigits(dc)}` : ''}`, 2400); if (bub) bub.textContent = l.ar; sfx('good');
+    const c = $('il-coins'); if (dc > 0 && c) { c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); }
+  }
+}
+/* ---------- wiring: the islands are the home; the v16 falcon chat becomes the chat view ---------- */
+const _ilMhShow = mhShow;
+mhShow = function mhShowIL(fresh) { if (IL.chat) { document.body.classList.add('il-chat'); return _ilMhShow(fresh); } ilShow(); };
+const _ilMhReturn = mhReturn;
+mhReturn = function mhReturnIL() {
+  const a = MH.act;
+  if (a && a.from === 'il') { MH.act = null; if (ACT_SIG.cur && !ACT_SIG.cur.done) actFinish(null, { closed: true }); ACT_SIG.cur = null; ilReturn(a); return; }
+  return _ilMhReturn();
+};
+/* the chat view opens clean: greeting (+ the AI disclosure), one question and reply chips; no wall of cards */
+const _ilMhStart = mhStart;
+mhStart = function mhStartIL() {
+  const p = P(); MH.kid = currentKid; MH.msgs = []; MH.cards = {}; MH.shown = {}; MH.delay = 0; MH.brain = null; MH.safeEnd = false; mhChat().innerHTML = '';
+  const pr = PROFILES[currentKid]; MH.plan = mhPlan(p);
+  const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); const ai = tutorAllowed(currentKid) ? mhLine('ai') : null;
+  mhHero(greet, ai); MH.hist = [greet].concat(ai ? [ai] : []);
+  mhSay(mhLine('ask')); mhSetChips(mhDefaultChips(MH.plan[0] || 'letter')); mhCompose();
+  setTimeout(() => { MH.delay = 0; }, 50);
+};
+{ const _sp = showPicker; showPicker = function showPickerIL() { ilHide(); IL.chat = false; IL.page = 'home'; document.body.classList.remove('il-chat'); return _sp.apply(this, arguments); }; }
+{ const _rp = renderParent; renderParent = function renderParentIL() { ilHide(); return _rp.apply(this, arguments); }; }
+{ const _rh = refreshHeader; refreshHeader = function refreshHeaderIL() { _rh(); if (currentKid && !$('il').classList.contains('hidden')) ilHeader(); }; }
+{ const _sc = setConsent; setConsent = function setConsentIL() { const r = _sc.apply(this, arguments); if (currentKid && !$('il').classList.contains('hidden')) ilRender(); return r; }; }
+/* a chat back button in the chat view header */
+{ const top = document.querySelector('#mh .mh-top'); if (top && !$('il-chat-back')) { const b = document.createElement('button'); b.id = 'il-chat-back'; b.className = 'il-chat-back'; b.dataset.act = 'il-home'; b.setAttribute('aria-label', 'رُجُوع'); b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg>'; top.insertBefore(b, top.firstChild); } }
+Object.assign(ACTIONS, {
+  'il-tab': (id) => { if (!IL_PAGES[id]) return; sfx('tap');
+    if (MH.act && MH.act.from === 'il') { MH.act = null; if (ACT_SIG.cur && !ACT_SIG.cur.done) actFinish(null, { closed: true }); ACT_SIG.cur = null; }
+    IL.page = id; ilShow(id); },
+  'il-open': (k) => { const id = IL.ids[k]; if (id) ilOpen(id); },
+  'il-home': () => { IL.chat = false; document.body.classList.remove('il-chat'); stopSpeech(); ilShow(IL.page || 'home'); },
+  'il-hear': () => { if (IL.greet) mhSpeakLine(IL.greet); },
+  'il-meaning': () => { ACTIONS['meaning-toggle'](); ilRender(); },
+  'il-sfx': () => { ACTIONS['sfx-toggle'](); ilRender(); }
+});
+window.SAQ = Object.assign(window.SAQ || {}, { IL, ilShow, ilOpen, ilChat });
+/* ---------- v17: Arabic-Indic digits in the app pages, sheets and the old top bar (English meaning lines keep theirs) ---------- */
+const IL_DIG = /[0-9]/;
+function ilDigits(root) {
+  if (!root) return; const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); const todo = [];
+  while (w.nextNode()) { const n = w.currentNode; if (!IL_DIG.test(n.nodeValue)) continue; const el = n.parentElement;
+    if (!el || el.closest('.en,.keep-en,[lang="en"],[dir="ltr"],script,style,textarea,code,.no-ar-digits')) continue; todo.push(n); }
+  todo.forEach((n) => { const v = toArabicDigits(n.nodeValue); if (v !== n.nodeValue) n.nodeValue = v; });
+}
+{ let q = false; const run = () => { q = false; ['app', 'modal', 'picker'].forEach((id) => ilDigits($(id))); };
+  const mo = new MutationObserver(() => { if (!q) { q = true; requestAnimationFrame(run); } });
+  ['app', 'modal', 'picker'].forEach((id) => { const e = $(id); if (e) mo.observe(e, { childList: true, subtree: true, characterData: true }); }); run(); }
+/* any other way into the guided lesson, the homework helper or a full page (e.g. from the chat view or a deep link)
+   never leaves the islands drawn on top */
+{ const _tto = ttOpen; ttOpen = function ttOpenIL() { $('il').classList.add('hidden'); $('il-nav').classList.add('hidden'); document.body.classList.remove('il-on', 'il-area'); return _tto.apply(this, arguments); }; }
+{ const _hwo = hwOpen; hwOpen = function hwOpenIL() { $('il').classList.add('hidden'); $('il-nav').classList.add('hidden'); document.body.classList.remove('il-on', 'il-area'); return _hwo.apply(this, arguments); }; }
+{ const _sb = mhShowBack; mhShowBack = function mhShowBackIL() { $('il').classList.add('hidden'); document.body.classList.remove('il-on'); return _sb.apply(this, arguments); }; }
+
+/* =========================================================
+   v17: nicknames in Arabic letters only, typed with the on-screen Arabic keyboard (a device Arabic keyboard also works;
+   anything that is not an Arabic letter is dropped). An existing Latin nickname is kept on file (progress is under the
+   profile id, so nothing is lost), shown as "صَدِيقِي / صَدِيقَتِي" in the app, and the child is gently asked to pick an
+   Arabic one. The parent's picker still shows the old nickname until it is re-picked, so siblings can tell profiles apart.
+   ========================================================= */
+const NICK_AR = /^[\u0621-\u063A\u0641-\u064A\u064B-\u0652\u0670 ]+$/;
+const nickIsArabic = (s) => { s = String(s || '').trim(); return !!s && NICK_AR.test(s) && /[\u0621-\u064A]/.test(s); };
+const nickClean = (s) => String(s || '').replace(/[^\u0621-\u063A\u0641-\u064A\u064B-\u0652\u0670 ]/g, '').replace(/\s+/g, ' ').replace(/^\s+/, '').slice(0, 16);
+const NICK_FALLBACK = { m: 'صَدِيقِي', f: 'صَدِيقَتِي' };
+/* the learning UI never shows a Latin nickname */
+{ const _sync = syncProfiles; syncProfiles = function syncProfilesV17() { _sync.apply(this, arguments);
+  Object.values(PROFILES).forEach((pr) => { if (!nickIsArabic(pr.ar)) { pr.latinNick = true; pr.ar = NICK_FALLBACK[pr.gender === 'f' ? 'f' : 'm']; } }); };
+  if (window.DB && DB.profiles) syncProfiles(); /* the app's start-up sync may already have run */ }
+/* saving: Arabic letters only */
+/* an empty field on an existing profile keeps the old nickname (a migrated save can finish setup; the gentle re-pick comes after) */
+{ const _save = saveProfile; saveProfile = function saveProfileV17(id, nick, band, g) {
+  const n = nickClean(nick).trim(); const old = DB.profiles && DB.profiles[id] && DB.profiles[id].nick;
+  if (!String(nick || '').trim() && old) return _save(id, old, band, g);
+  if (!nickIsArabic(n)) { nickError(); return false; } return _save(id, n, band, g); }; }
+function nickError() { const e = $('nick-err'); if (e) { e.hidden = false; e.classList.remove('shake'); void e.offsetWidth; e.classList.add('shake'); } sfx('tap'); }
+const NICK_KB = (id) => `<p class="nick-hint" id="nick-err" hidden role="alert">اُكْتُبِ الاسْمَ بِالحُرُوفِ العَرَبِيَّة <span class="en">Use Arabic letters</span></p>${akbHTML(id)}`;
+AKB_TARGETS['prof-nick'] = { max: 16, get: () => ($('prof-nick') ? $('prof-nick').value : ''), set: (v) => { if ($('prof-nick')) $('prof-nick').value = v; }, done: () => {} };
+AKB_TARGETS['nick-new'] = { max: 16, get: () => ($('nick-new') ? $('nick-new').value : ''), set: (v) => { if ($('nick-new')) $('nick-new').value = v; }, done: () => nickRepickSave() };
+/* the profile form: Arabic placeholder, Arabic keyboard under the field */
+{ const _html = profileSetupHTML; profileSetupHTML = function profileSetupHTMLV17(id) {
+  let h = _html(id); const r = (DB.profiles && DB.profiles[id]) || {};
+  if (!nickIsArabic(r.nick)) { h = h.replace(/(<input id="prof-nick"[^>]*value=")[^"]*(")/, '$1$2'); if (r.nick) h = h.replace(/(<input id="prof-nick"[^>]*?) required/, '$1'); } /* empty keeps the old nickname */
+  h = h.replace('placeholder="صَقْر · Falcon"', 'placeholder="صَقْر" lang="ar" dir="rtl" inputmode="none" autocapitalize="off" spellcheck="false"');
+  return h.replace(/(<input id="prof-nick"[^>]*>)/, `$1${NICK_KB('prof-nick')}`); }; }
+/* a device keyboard can still be used: drop non-Arabic characters as they are typed */
+document.addEventListener('input', (e) => { if (!e.target || !['prof-nick', 'nick-new'].includes(e.target.id)) return; const v = nickClean(e.target.value); if (v !== e.target.value) { e.target.value = v; nickError(); } });
+/* gentle re-pick for an existing Latin nickname (once per session per profile; "later" is fine) */
+const NICK_ASKED = {};
+function nickRepickHTML(id) {
+  const pr = PROFILES[id]; const f = pr && pr.gender === 'f';
+  return `<form class="stack nick-repick" id="nick-form" data-kid="${id}" autocomplete="off">
+    <div class="nick-bird" aria-hidden="true">${falconSVG('happy', 'nick-falcon')}</div>
+    <h2>${f ? 'اِخْتَارِي اسْمًا بِالعَرَبِيَّة' : 'اِخْتَرِ اسْمًا بِالعَرَبِيَّة'}</h2>
+    <p class="nick-sub">${f ? 'اُكْتُبِي اسْمَكِ المُسْتَعَارَ بِالحُرُوفِ العَرَبِيَّةِ. نُجُومُكِ وَعُمْلَاتُكِ تَبْقَى كَمَا هِيَ.' : 'اُكْتُبِ اسْمَكَ المُسْتَعَارَ بِالحُرُوفِ العَرَبِيَّةِ. نُجُومُكَ وَعُمْلَاتُكَ تَبْقَى كَمَا هِيَ.'}</p>
+    <label for="nick-new" class="sr-only">الاسْمُ المُسْتَعَار</label>
+    <input id="nick-new" class="prof-nick" maxlength="16" lang="ar" dir="rtl" inputmode="none" autocapitalize="off" spellcheck="false" placeholder="صَقْر">
+    ${NICK_KB('nick-new')}
+    <div class="row nick-btns"><button type="submit" class="btn big">حِفْظ</button><button type="button" class="btn soft" data-act="nick-later">لَاحِقًا</button></div></form>`;
+}
+function nickRepick(id) { if (!PROFILES[id] || !PROFILES[id].latinNick || NICK_ASKED[id]) return; NICK_ASKED[id] = 1; openModal(nickRepickHTML(id), null, 'sheet'); }
+function nickRepickSave() {
+  const f = $('nick-form'); if (!f) return; const id = f.dataset.kid; const n = nickClean($('nick-new').value).trim();
+  if (!nickIsArabic(n)) { nickError(); return; }
+  DB.profiles[id] = Object.assign(DB.profiles[id] || {}, { nick: n }); syncProfiles(); saveDB(); /* progress (DB.kids[id]) untouched */
+  sfx('good'); closeModal(); if (typeof ilShow === 'function' && currentKid === id) ilShow(); if (typeof renderPicker === 'function' && !$('picker').classList.contains('hidden')) renderPicker();
+}
+document.addEventListener('submit', (e) => { if (e.target && e.target.id === 'nick-form') { e.preventDefault(); nickRepickSave(); } });
+Object.assign(ACTIONS, { 'nick-later': () => closeModal() });
+{ const _pick = pickProfile; pickProfile = function pickProfileV17(id) { const r = _pick.apply(this, arguments); if (currentKid === id && !MH_LEGACY) setTimeout(() => nickRepick(id), MH.fast ? 0 : 500); return r; }; }
 
 </script>
 </body>
