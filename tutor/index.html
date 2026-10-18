@@ -2931,9 +2931,41 @@ body.il-area #app .shop-grid,body.il-area #app .pg-grid{gap:14px}
 .privacy-note ul{padding-inline-start:1.1em}.privacy-note li{margin:.35em 0}.privacy-note small.en-block{display:block;opacity:.8;font-size:.78rem;text-align:left;unicode-bidi:plaintext}
 .cs-limits{font-size:.85rem;opacity:.85}
 
+/* v18b: falcon thinking */
+.mh-bub.typing.think{display:inline-flex;flex-direction:column;align-items:flex-start;gap:6px;background:linear-gradient(135deg,#fff7d6,#ffe9a8)}
+.think-dots{display:inline-flex;gap:5px}.think-dots i{width:8px;height:8px;border-radius:50%;background:#ffb020;animation:mhDot 1s infinite ease-in-out}
+.think-dots i:nth-child(2){animation-delay:.15s}.think-dots i:nth-child(3){animation-delay:.3s}
+.mh-bub.typing .think-line{font-size:.9rem;color:#7a4a00;margin:0;transition:opacity .3s}
+.think-bob{animation:thinkBob 1.4s ease-in-out infinite;display:inline-block;transform-origin:50% 90%}
+@keyframes thinkBob{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(-4px) rotate(-6deg)}60%{transform:translateY(0) rotate(5deg)}}
+@media (prefers-reduced-motion:reduce){.think-bob,.think-dots i{animation:none}}
+/* v18b: first-visit welcome / loading splash */
+html{background:#fff3c4}
+.intro{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 20%,#fff9d9,#ffd86b 55%,#ff9f45);transition:opacity .35s}
+.intro.bye{opacity:0;pointer-events:none}
+.intro-card{text-align:center;padding:24px;max-width:420px}
+.intro-falcon{width:min(52vw,220px);height:auto;border-radius:28%;box-shadow:0 10px 30px rgba(160,80,0,.25);animation:thinkBob 2.4s ease-in-out infinite}
+.intro-t{font-size:2.2rem;margin:.4em 0 .1em;color:#5a2d00}
+.intro-line{font-size:1.25rem;color:#5a2d00;margin:.2em 0 1em;visibility:hidden}
+.intro-go{visibility:hidden;font-size:1.3rem;padding:14px 34px;border-radius:999px;background:#2bb673;color:#fff;border:0;box-shadow:0 6px 0 #1d8a55}
+.intro.on .intro-line,.intro.on .intro-go{visibility:visible}
+@media (prefers-reduced-motion:reduce){.intro-falcon{animation:none}}
+/* v18b: offline note */
+.offline-note{position:fixed;inset-inline:10px;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:9000;background:#fff1c1;border:2px solid #ffb020;border-radius:14px;padding:8px 12px;font-size:.9rem;color:#5a3a00;box-shadow:0 4px 14px rgba(0,0,0,.12);text-align:center}
+.offline-note .en{font-size:.75rem;opacity:.8}
+
 </style>
 </head>
 <body>
+<div id="intro" class="intro" role="dialog" aria-modal="true" aria-labelledby="intro-t">
+  <div class="intro-card">
+    <img class="intro-falcon" src="../icon-512.png" width="200" height="200" alt="">
+    <h1 id="intro-t" class="intro-t" lang="ar">عَرَبِيّ</h1>
+    <p class="intro-line" lang="ar">هَلَا! أَنَا صَقُّور، يَلَّا نِلْعَب وِنِتْعَلَّم عَرَبِي!</p>
+    <button type="button" id="intro-go" class="btn big intro-go">هَيَّا نَبْدَأ <span class="en">Let's start</span></button>
+  </div>
+</div>
+
 <noscript><p style="padding:20px;text-align:center">Please turn on JavaScript to use the Arabic tutor.</p></noscript>
 <svg id="svg-defs" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false"><defs>
   <linearGradient id="g-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eab070"/><stop offset="1" stop-color="#d08f52"/></linearGradient>
@@ -10724,7 +10756,21 @@ function mhHero(line, line2) {
     <div class="mh-hero-bub"><p class="mh-ar" lang="ar">${esc(line.ar)}</p><p class="en en-block mh-en" dir="ltr">${esc(line.en)}</p><button class="mh-hear" data-act="mh-hear" data-arg="${i}" aria-label="اِسْمَعْ">${mhArt('ic2_speaker') || '🔊'}</button>
       ${line2 ? `<p class="mh-ar mh-ai" lang="ar">${esc(line2.ar)}</p><p class="en en-block mh-en" dir="ltr">${esc(line2.en)}</p>` : ''}</div>`, 'mh-hero');
 }
-function mhTyping() { return mhAppend(`<span class="mh-av">${falconHeadHTML(currentKid, 'sm')}</span><div class="mh-bub typing" aria-label="صَقُّور يُفَكِّر"><i></i><i></i><i></i></div>`, 'mh-msg mh-typing'); }
+/* v18b: the wait for the AI. Replies are not streamed: the Worker's safety checks need the whole reply before the child sees
+   any of it, so instead the falcon bobs and says one soft line in the child's dialect while it waits. */
+const THINK_LINES = {
+  emirati: ['لَحْظَة، خَلّنِي أَفَكِّر…', 'صَقُّور يْدَوِّر عَلَى أَحْلَى جَوَاب…'], saudi: ['لَحْظَة، خَلّنِي أَفَكِّر…', 'ثَوَانِي بَس…'],
+  lebanese: ['لَحْظَة، خَلّينِي فَكِّر…', 'عَم فَكِّر شْوَي…'], syrian: ['لَحْظَة، خَلّينِي فَكِّر…', 'عَم فَكِّر شْوَي…'],
+  jordanian: ['لَحْظَة، خَلّينِي أَفَكِّر…', 'بَفَكِّر شْوَي…'], egyptian: ['ثَانْيَة، سِيبْنِي أَفَكَّر…', 'بَفَكَّر أَهُوه…'],
+  fusha: ['لَحْظَة، دَعْنِي أُفَكِّر…', 'أُفَكِّرُ فِي جَوَابٍ جَمِيل…']
+};
+function thinkLines() { const d = typeof curDialect === 'function' ? curDialect() : 'emirati'; return THINK_LINES[d] || THINK_LINES.emirati; }
+function thinkBubble(label, extra) {
+  const L = thinkLines();
+  return `<span class="mh-av think-bob">${falconHeadHTML(currentKid, 'sm')}</span><div class="mh-bub typing think" role="status" aria-label="${label}"><span class="think-dots"><i></i><i></i><i></i></span><small class="think-line" lang="ar">${extra || L[0]}</small></div>`;
+}
+function thinkRotate(el) { if (!el) return el; const L = thinkLines(); let i = 0; const t = setInterval(() => { const s = el.isConnected && el.querySelector('.think-line'); if (!s) return clearInterval(t); if (el.dataset.fixed) return; i = (i + 1) % L.length; s.textContent = L[i]; }, 2600); return el; }
+function mhTyping() { return thinkRotate(mhAppend(thinkBubble('صَقُّور يُفَكِّر'), 'mh-msg mh-typing')); }
 /* chips: the child's spoken replies */
 function mhSetChips(list) {
   MH.chips = list; $('mh-chips').innerHTML = list.map((c, i) => `<button class="mh-chip-btn ${i === 0 ? 'main' : ''}" data-act="mh-chip" data-arg="${i}"><span lang="ar">${esc(c.line.ar)}</span>${c.line.en ? `<span class="en">${esc(c.line.en)}</span>` : ''}</button>`).join('');
@@ -11078,7 +11124,7 @@ function hwSay(a) {
     <button class="mh-hear" data-act="hw-hear" data-arg="${i}" aria-label="اِسْمَعْ">${mhArt('ic2_speaker') || '🔊'}</button></div>`, 'mh-msg');
 }
 function hwKid(text, img) { hwAppend(`<div class="mh-bub kid">${img ? `<img class="hw-thumb" src="${img}" alt="صُورَةُ الوَاجِب">` : ''}${text ? `<p class="mh-ar" lang="ar" dir="auto">${esc(text)}</p>` : ''}</div>`, 'mh-msg kid'); }
-function hwTyping(photo) { return hwAppend(`<span class="mh-av">${falconHeadHTML(currentKid, 'sm')}</span><div class="mh-bub typing" aria-label="صَقُّور يَقْرَأ"><i></i><i></i><i></i>${photo ? '<small>يَقْرَأُ الصُّورَةَ…</small>' : ''}</div>`, 'mh-msg mh-typing'); }
+function hwTyping(photo) { const el = hwAppend(thinkBubble('صَقُّور يَقْرَأ', photo ? 'يَقْرَأُ الصُّورَةَ…' : ''), 'mh-msg mh-typing'); if (photo && el) el.dataset.fixed = '1'; return thinkRotate(el); }
 function hwFoot() {
   const f = $('hw-foot');
   if (!hwAllowed(currentKid)) {
@@ -11459,6 +11505,37 @@ function guiFix(root) {
 { let q = null; const mo = new MutationObserver(() => { if (q) return; q = requestAnimationFrame(() => { q = null; guiFix(document.body); }); });
   document.addEventListener('DOMContentLoaded', () => { mo.observe(document.body, { childList: true, subtree: true, characterData: false }); guiFix(document.body); }); }
 window.SAQ = Object.assign(window.SAQ || {}, { gUI, guiFix });
+
+/* v18b: first-visit welcome. The splash is in the HTML so the page is never a plain white screen while it loads; on a first
+   visit (no players yet) it shows one line and a start button, otherwise it is removed straight away. */
+(function introV18b() {
+  const el = document.getElementById('intro'); if (!el) return;
+  let fresh = false; try { const d = JSON.parse(localStorage.getItem('arabicTutor.v2') || 'null'); const has = (o) => !!(o && typeof o === 'object' && Object.keys(o).length); fresh = !(d && (has(d.profiles) || has(d.kids) || (d.settings && d.settings.introSeen))); /* an older save (players, progress) is never a first visit */ } catch (e) { fresh = false; }
+  if (!fresh) { el.remove(); return; }
+  el.classList.add('on'); const go = document.getElementById('intro-go');
+  go.addEventListener('click', () => { try { DB.settings.introSeen = dayKey(); saveDB(); } catch (e) { /* still continue */ } el.classList.add('bye'); setTimeout(() => el.remove(), 350); });
+  setTimeout(() => go.focus(), 60);
+}());
+
+/* v18b: offline. A service worker (sw.js at the site root) keeps the app shell and the art it has shown, so the app opens
+   without a connection. The AI features (tutor, homework helper, cloud voices) need the internet; while offline a small
+   note says so, and the games and lessons keep working. */
+(function offlineV18b() {
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname))) {
+    const root = /\/tutor\/?/.test(location.pathname) ? '../' : './';
+    window.addEventListener('load', () => { navigator.serviceWorker.register(root + 'sw.js').catch(() => { /* the app still works online */ }); });
+  }
+  let note = null;
+  function show() {
+    if (navigator.onLine) { if (note) { note.remove(); note = null; } return; }
+    if (note) return;
+    note = document.createElement('div'); note.id = 'offline-note'; note.className = 'offline-note'; note.setAttribute('role', 'status');
+    note.innerHTML = '<span lang="ar">📴 لَا يُوجَدُ اتِّصَالٌ بِالإِنْتَرْنِت. صَقُّور الذَّكِيُّ يَحْتَاجُ إِلَى الإِنْتَرْنِت، وَالأَلْعَابُ تَعْمَلُ.</span> <span class="en en-block keep-en">Offline: the AI falcon needs the internet; games and lessons still work.</span>';
+    document.body.appendChild(note);
+  }
+  window.addEventListener('online', show); window.addEventListener('offline', show); show();
+  window.SAQ = Object.assign(window.SAQ || {}, { offlineCheck: show });
+}());
 
 </script>
 </body>
