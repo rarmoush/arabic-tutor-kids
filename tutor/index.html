@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#ffc83d">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https: http://localhost:* http://127.0.0.1:*; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="عَرَبِيّ">
 <meta name="app-version" content="v17-islands">
 <meta name="description" content="An AI Arabic tutor for kids: a painted falcon tutor talks with your child in their dialect and brings in word cards, tracing, Wordle, stories and listening at the right moment.">
 <title>عَرَبِيّ · Arabic Tutor</title>
@@ -2912,6 +2919,12 @@ body.il-area #app .shop-grid,body.il-area #app .pg-grid{gap:14px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* v17 tablet: a little wider page, tab bar grouped in the centre instead of spread edge to edge */
 @media (min-width:900px){.il-top,.il-page{max-width:760px}.il-nav{justify-content:center;gap:28px}.il-tab{flex:0 1 110px;font-size:15px}.il-tab svg{width:28px;height:28px}}
+/* v18b: nickname warning (Arabic first) + dialect picker in the player sheet */
+.nick-warn{background:#fff6d6;border:2px solid #ffd76a;border-radius:14px;padding:8px 12px;font-weight:700;margin:0}
+.dialect-seg button{font-size:.95rem}
+/* v18b: RTL punctuation: English notes inside Arabic sheets keep their full stop at the end */
+.consent-gate .en, .privacy-note .en, .consent-gate small, .prof-setup .en, .parent-country .en{unicode-bidi:isolate}
+.consent-gate .en-block, .consent-gate small.en-block, .prof-setup .en-block, .cs-noai .en-block{unicode-bidi:plaintext}
 
 </style>
 </head>
@@ -3206,7 +3219,7 @@ const sightWords = [
   { word: 'نَعَمْ', en: 'yes', example: 'نَعَمْ، أَنَا جَاهِزٌ.', exEn: "Yes, I'm ready." }
 ];
 
-/* Grammar topics (based on the AlefBaTa grammar list), each with a short English explanation and one check question. */
+/* Grammar topics (standard primary-school Arabic grammar), each with a short English explanation and one check question. */
 const grammarTopics = [
   { id: 1, title: 'النَّكِرَةُ وَالمَعْرِفَةُ', en: 'Indefinite & definite nouns', level: 'مبتدئ', levelEn: 'Beginner',
     explain: 'A noun is definite ("the ...") when it has ال, is a name, is a pronoun, or is followed by another noun (idafa). Indefinite nouns often end in tanween (ـٌ ـً ـٍ).',
@@ -3258,19 +3271,8 @@ const grammarTopics = [
     q: 'What is the passive of كَتَبَ (he wrote)?', opts: ['كُتِبَ', 'كَاتَبَ', 'يَكْتُبُ'] }
 ];
 
-/* Story titles from the AlefBaTa graded library. The full books live on AlefBaTa; here we keep the summary + skills. */
-const stories = [
-  { level: 1, title: 'نِقَاطٌ مِنْ حَوْلِنَا', en: 'Dots Around Us', desc: 'قصة للتعرف على الأشكال الدائرية والألوان والأضداد في الطبيعة.', descEn: 'Spot round shapes, colours and opposites in nature.', skills: ['الألوان', 'الأشكال', 'الأضداد'] },
-  { level: 1, title: 'هَذَا جِسْمِي', en: 'This Is My Body', desc: 'أجزاء الجسم ووظائف الحواس الخمس بأسلوب ممتع.', descEn: 'Body parts and the five senses.', skills: ['أعضاء الجسم', 'الحواس الخمس'] },
-  { level: 1, title: 'أَيْنَ الخَرُوفُ الأَخْضَرُ؟', en: 'Where Is the Green Sheep?', desc: 'البحث عن الخروف مع أدوات الاستفهام وظروف المكان (فوق، تحت، خلف).', descEn: 'Question words and place words: on, under, behind.', skills: ['ظروف المكان', 'أدوات الاستفهام'] },
-  { level: 2, title: 'فِي السِّيرْكِ', en: 'At the Circus', desc: 'مغامرة في السيرك لتعلم أفعال الحركة والصفات.', descEn: 'Action verbs and describing words.', skills: ['أفعال الحركة', 'الوصف'] },
-  { level: 2, title: 'المَلِكُ فِي السُّوقِ', en: 'The King at the Market', desc: 'أسماء الفواكه والخضراوات والعملات والتسوق.', descEn: 'Fruit, vegetables, money and shopping.', skills: ['الأسماء', 'الأرقام'] },
-  { level: 3, title: 'الفَارِسُ الصَّغِيرُ', en: 'The Little Knight', desc: 'قصة عن الشجاعة مع تركيب الجمل وأسماء الإشارة.', descEn: 'Courage, building sentences, هذا / هذه.', skills: ['أسماء الإشارة', 'تركيب الجمل'] },
-  { level: 3, title: 'سِمْسِمٌ وَالأَلْوَانُ', en: 'Simsim and the Colours', desc: 'خلط الألوان واستكشاف الطبيعة مع الأسماء الموصولة.', descEn: 'Mixing colours, plus الذي / التي.', skills: ['الأسماء الموصولة', 'القراءة'] },
-  { level: 4, title: 'مَكْتَبَةُ سِمْسِم', en: "Simsim's Library", desc: 'حماية الكتب وتنظيم المكتبة مع المفردات والمترادفات.', descEn: 'Looking after books; new words and synonyms.', skills: ['المفردات', 'الترادف'] },
-  { level: 4, title: 'الأَرْنَبُ وَالسُّلَحْفَاةُ', en: 'The Hare and the Tortoise', desc: 'القصة الشهيرة مع الفعل الماضي والمضارع.', descEn: 'The classic race, with past and present verbs.', skills: ['الأفعال', 'الحكمة'] },
-  { level: 5, title: 'لَبِيبَةُ وَالظَّلَامُ', en: 'Labiba and the Dark', desc: 'قصة اكتشاف علمي (إديسون) مع إعراب الجمل الطويلة.', descEn: 'A science discovery story (Edison) with harder grammar.', skills: ['الإعراب', 'فهم المقروء'] }
-];
+/* v18b: the old school-library title list (third-party books) is gone; the app's own read-along stories are READ_STORIES (skills.js). */
+const stories = [];
 
 /* Al-Mutanabbi verse */
 const poem = {
@@ -3343,7 +3345,7 @@ const QUIZ_SETS = {
    Structure (not content) aligned with:
    - Adam wa Mishmish topic order for early learners (greetings, numbers, colours & shapes, animals, body, senses, days, seasons, transport, thank-you)
    - Kaleela's levelled, topic-based path (greetings → basics → family → numbers → food → calendar/time/weather → routine → transport/shopping → introduce yourself → feelings/health → past tense / travel → plans)
-   - Alef Bata's levelled readers + sight words + primary grammar strand
+   - original read-along stories + sight words + a primary grammar strand
    - Twinkl Arabic (UAE / Arabic as an additional language, KS2–KS3) topics: family, hobbies & sport, healthy food, UAE culture & National Day, weather, describing yourself, environment
    All text below is written for this app. Each unit: vocab (Fusha + Gulf/Emirati), a short kid dialogue in Gulf with Fusha line-by-line, a tip, and an auto-built quiz.
    ========================================================= */
@@ -3428,7 +3430,7 @@ const UNITS = [
     dialogue: [['s','شُو بِتْسَوِّين آخِر الأُسْبُوع؟','مَاذَا سَتَفْعَلِينَ فِي نِهَايَةِ الأُسْبُوعِ؟','What will you do at the weekend?'],['n','بَنَظِّف الشَّاطِئ مَع رَبِيعَاتِي.','سَأُنَظِّفُ الشَّاطِئَ مَعَ صَدِيقَاتِي.','I\'ll clean the beach with my friends.'],['s','فِكْرَة زَيْنَة! بَيِي وِيَّاكُم.','فِكْرَةٌ جَيِّدَةٌ! سَآتِي مَعَكُنَّ.','Good idea! I\'ll come with you.'],['n','لَازِم نِحَافِظ عَلَى البِيئَة.','يَجِبُ أَنْ نُحَافِظَ عَلَى البِيئَةِ.','We must look after the environment.']] }
 ];
 
-/* Extra grammar topics so the grammar strand covers every Alef Bata primary grammar group (18 groups / 67 exercises there). */
+/* Extra grammar topics so the grammar strand covers the usual primary grammar groups. */
 grammarTopics.push(
   { id: 13, title: 'العَدَدُ المُفْرَدُ', en: 'Numbers 3–10 with nouns', level: 'متوسط', levelEn: 'Intermediate',
     explain: 'Numbers 3–10 take the OPPOSITE gender of the noun: a masculine noun gets a number with ة, a feminine noun gets a number without ة. The noun after them is plural.',
@@ -3455,7 +3457,7 @@ grammarTopics.push(
     example: 'الوَلَدُ كَالأَسَدِ فِي الشَّجَاعَةِ.', exEn: 'The boy is like a lion in bravery.',
     q: 'In «البِنْتُ كَالقَمَرِ», what is the simile tool (أداة التشبيه)?', opts: ['كَـ', 'البِنْتُ', 'القَمَرِ'] }
 );
-/* Order topics the same way the Alef Bata grammar strand does */
+/* Order topics from simple to harder */
 (function orderGrammar() {
   const order = [1, 2, 3, 13, 4, 5, 6, 7, 14, 8, 15, 11, 12, 16, 9, 10, 17, 18];
   grammarTopics.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
@@ -4205,7 +4207,7 @@ const BADGES = [
   { id: 'dialects', icon: '🌍', ar: 'رَحَّالَة اللَّهَجَات', en: 'Dialect explorer', how: 'Practise a dialogue in all 7 dialects', test: (p) => DIALECT_ORDER.every((d) => countPrefix(p, 'dlg:' + d + ':') > 0) },
   { id: 'grammar', icon: '🧩', ar: 'مُحَقِّق القَوَاعِد', en: 'Grammar detective', how: 'Solve 6 grammar checks', test: (p) => countPrefix(p, 'lesson:') >= 6 },
   { id: 'poet', icon: '🪶', ar: 'صَدِيق المُتَنَبِّي', en: 'Poetry friend', how: 'Explore every word of the poem', test: (p) => countPrefix(p, 'poem:') >= poem.tokens.length },
-  { id: 'reader', icon: '📚', ar: 'قَارِئ نَهِم', en: 'Bookworm', how: 'Mark 5 stories as read', test: (p) => countPrefix(p, 'story:') >= 5 },
+  { id: 'reader', icon: '📚', ar: 'قَارِئ نَهِم', en: 'Bookworm', how: 'Mark 5 stories as read', test: (p) => countPrefix(p, 'story:') + countPrefix(p, 'readaloud:') >= 5 },
   { id: 'gamer', icon: '🎲', ar: 'لَاعِب ذَكِي', en: 'Game star', how: 'Play 10 mini-games', test: (p) => p.stats.games >= 10 },
   { id: 'talker', icon: '🗣️', ar: 'صَوْتِي عَالٍ', en: 'Chatterbox', how: 'Say 15 phrases out loud', test: (p) => (p.talk || {}).says >= 15 },
   { id: 'readaloud', icon: '📖', ar: 'قَارِئ بِصَوْت', en: 'Read-aloud star', how: 'Read 3 stories out loud', test: (p) => countPrefix(p, 'readaloud:') >= 3 },
@@ -4516,7 +4518,7 @@ function voiceSheetHTML() {
     <div class="row vs-opts"><div class="seg" role="group" aria-label="Speed presets"><button class="${s.rate === 'slow' ? 'on' : ''}" data-act="voice-rate" data-arg="slow">${turtleHTML()}<span class="en">Slow</span></button><button class="${s.rate !== 'slow' ? 'on' : ''}" data-act="voice-rate" data-arg="normal"><span class="en">Normal</span></button></div></div>
     <p class="en en-block small vs-note">${esc(note)}</p>
     ${DIALECT_REVIEW[d] ? '<p class="en en-block small vs-note">✎ Words and dialogues in this dialect are a first draft. A teacher should check them.</p>' : ''}
-    <div class="row vs-try"><button class="btn big gold grow" data-act="voice-try" data-arg="${esc(s.uri || '')}">🔊 جَرِّب <span class="en">Try it: “${esc(SAMPLE[d])}”</span></button><button class="btn big soft vs-slow" data-act="voice-try-slow" aria-label="Hear it slower">${turtleHTML()}<span class="en">slower</span></button></div>
+    <div class="row vs-try"><button class="btn big gold grow" data-act="voice-try" data-arg="${esc(s.uri || '')}">🔊 ${G('جَرِّبْ', 'جَرِّبِي')} <span class="en">Try it: “${esc(SAMPLE[d])}”</span></button><button class="btn big soft vs-slow" data-act="voice-try-slow" aria-label="Hear it slower">${turtleHTML()}<span class="en">slower</span></button></div>
   </div>`;
 }
 let voiceSheetOpen = false;
@@ -5349,8 +5351,8 @@ function focusSkill(p) {
 const BOOST = {
   letters: { icon: '🔠', ar: 'لُعْبَة الحُرُوف', en: 'Letter match' },
   vocab: { icon: '🧠', ar: 'ذَاكِرَة الكَلِمَات', en: 'Word memory' },
-  reading: { icon: '📖', ar: 'اِقْرَأْ مَعِي', en: 'Read along' },
-  listening: { icon: '👂', ar: 'اِسْمَعْ وَاخْتَرْ', en: 'Listen & tap' },
+  reading: { icon: '📖', ar: 'القِرَاءَةُ مَعًا', en: 'Read along' },
+  listening: { icon: '👂', ar: 'الاسْتِمَاعُ وَالاخْتِيَار', en: 'Listen & tap' },
   spelling: { icon: '🎧', ar: 'الإِمْلَاء', en: 'Dictation' },
   grammar: { icon: '🧩', ar: 'لُغْز القَوَاعِد', en: 'Grammar puzzle' },
   speaking: { icon: '🎤', ar: 'قُلْهَا بِصَوْت', en: 'Say it out loud' }
@@ -5383,7 +5385,7 @@ function placementBuild() {
 }
 function placementPrompt(q) {
   if (q.kind === 'letter') return `<div class="center"><div class="em-tile big letter-tile"><span class="em ar-letter">${q.a[0]}</span></div><h3 class="pl-q">مَا اسْمُ هَذَا الحَرْف؟</h3><p class="en en-block center">What is this letter called?</p></div>`;
-  if (q.kind === 'reading') return `<div class="center"><div class="pl-read">${esc(q.l[2])}</div><h3 class="pl-q">اِقْرَأْ: مَاذَا تَعْنِي؟</h3><p class="en en-block center">Read it. What does it mean?</p></div>`;
+  if (q.kind === 'reading') return `<div class="center"><div class="pl-read">${esc(q.l[2])}</div><h3 class="pl-q">${G('اِقْرَأْ', 'اِقْرَئِي')}: مَاذَا تَعْنِي؟</h3><p class="en en-block center">Read it. What does it mean?</p></div>`;
   if (q.kind === 'grammar') return `<div class="center"><div class="em-tile big"><span class="em">🧩</span></div><h3 class="pl-q en" dir="ltr">${esc(q.g.q)}</h3><p class="en en-block center">A little grammar puzzle. Guessing is fine!</p></div>`;
   return `<div class="center"><div class="em-tile big"><span class="em">${q.v[3]}</span></div><h3 style="font-size:1.5rem;font-weight:800">"${esc(q.v[2])}"</h3><p class="en en-block center">Which Arabic word means this? It's fine to guess.</p></div>`;
 }
@@ -5481,7 +5483,7 @@ const READ_STORIES = [
 function nextReadStory(p) { const done = (s) => p.completed['readaloud:' + s.id]; return READ_STORIES.find((s) => !done(s)) || READ_STORIES[hashStr(p.today.d) % READ_STORIES.length]; }
 function readShelfHTML() {
   const p = P();
-  return `<div class="read-shelf"><div class="row between"><h2 class="page-title sm">📖 اِقْرَأْ مَعِي <span class="en">Read along</span></h2><span class="pill good">⏱️ ${Math.round(((p.talk || {}).readSecs || 0) / 60)} <span class="en" style="color:inherit">min read</span></span></div>
+  return `<div class="read-shelf"><div class="row between"><h2 class="page-title sm">📖 ${G('اِقْرَأْ مَعِي', 'اِقْرَئِي مَعِي')} <span class="en">Read along</span></h2><span class="pill good">⏱️ ${Math.round(((p.talk || {}).readSecs || 0) / 60)} <span class="en" style="color:inherit">min read</span></span></div>
     <div class="shelf">${READ_STORIES.map((s, i) => { const d = !!p.completed['readaloud:' + s.id]; return `<button class="book ${d ? 'done' : ''}" data-act="read-open" data-arg="${s.id}" style="--bk:${s.bg};animation-delay:${i * 0.05}s"><span class="bk-ic">${s.icon}</span><span class="bk-t">${esc(s.title)}</span><span class="en bk-en">${esc(s.en)}</span><span class="bk-st">${'★'.repeat(s.stars)}<i>${'★'.repeat(3 - s.stars)}</i></span>${d ? '<span class="bk-done">✓</span>' : ''}</button>`; }).join('')}</div></div>`;
 }
 let reader = null;
@@ -5942,16 +5944,16 @@ RENDER.words = function renderWords() {
 };
 
 /* =========================================================
-   GRAMMAR (Alef Bata strand) with a real lesson + check question
+   GRAMMAR strand with a real lesson + check question
    ========================================================= */
 RENDER.grammar = function renderGrammar() {
   const p = P(); const n = countPrefix(p, 'lesson:');
   $('tab-grammar').innerHTML = `<div class="card stack">
-    <div class="section-title row between"><div><h2>🧩 قَوَاعِدُ اللُّغَة</h2><p class="en en-block">${grammarTopics.length} grammar topics in the same order as the Alef Bata primary grammar strand. Open a topic, read the short explanation, then solve the check question.</p></div><span class="pill acc">${n}/${grammarTopics.length} <span class="en" style="color:inherit">solved</span></span></div>
+    <div class="section-title row between"><div><h2>🧩 قَوَاعِدُ اللُّغَة</h2><p class="en en-block">${grammarTopics.length} grammar topics, from simple to harder. Open a topic, read the short explanation, then solve the check question.</p></div><span class="pill acc">${n}/${grammarTopics.length} <span class="en" style="color:inherit">solved</span></span></div>
     <div class="grid g2">${grammarTopics.map((t, idx) => { const done = !!p.completed['lesson:' + t.id]; return `<div class="dlg ${done ? 'done' : ''} stack">
       <div class="row between"><span class="pill good">${esc(t.level)} <span class="en" style="color:inherit">${esc(t.levelEn)}</span></span><span class="muted small">درس ${toArabicDigits(idx + 1)}</span></div>
       <h3 style="font-size:1.3rem;font-weight:800">${esc(t.title)}</h3><span class="en">${esc(t.en)}</span>
-      <button class="btn ${done ? 'done' : ''}" data-act="lesson-open" data-arg="${t.id}">${done ? '✅ <span class="en">Review</span>' : 'اِبْدَأ اللُّغْز ← <span class="en">Start puzzle</span>'}</button></div>`; }).join('')}</div></div>`;
+      <button class="btn ${done ? 'done' : ''}" data-act="lesson-open" data-arg="${t.id}">${done ? '✅ <span class="en">Review</span>' : G('اِبْدَأِ اللُّغْزَ', 'اِبْدَئِي اللُّغْزَ') + ' ← <span class="en">Start puzzle</span>'}</button></div>`; }).join('')}</div></div>`;
 };
 let lessonState = null;
 function openLesson(id) {
@@ -5975,22 +5977,9 @@ function lessonAnswer(oi) {
 }
 
 /* =========================================================
-   STORIES (Alef Bata graded levels)
+   STORIES: the app's own read-along stories (v18b: no third-party book list)
    ========================================================= */
-RENDER.stories = function renderStories() {
-  const p = P();
-  const list = stories.map((s, i) => Object.assign({ i }, s)).filter((s) => s.level === currentStoryLevel);
-  $('tab-stories').innerHTML = `${readShelfHTML()}<div class="card stack">
-    <div class="section-title"><h2>📚 مَكْتَبَةُ القِصَص</h2><p>قِصَصٌ فِي خَمْسَةِ مُسْتَوَيَات. اِقْرَأِ الكِتَابَ، ثُمَّ ارْجِعْ وَاضْغَطْ «قَرَأْتُهَا».</p><p class="en en-block">Graded stories in 5 levels (the full books are in your Alef Bata account). Read the book, then come back and mark it as read.</p></div>
-    <div class="row">${[1, 2, 3, 4, 5].map((l) => `<button class="lvl-btn ${l === currentStoryLevel ? 'active' : ''}" data-act="story-level" data-arg="${l}" aria-pressed="${l === currentStoryLevel}">المستوى ${toArabicDigits(l)} <span class="en" style="color:inherit;font-size:.75rem">L${l}</span></button>`).join('')}</div>
-    <div class="grid g2">${list.map((s) => { const done = !!p.completed['story:' + s.i]; return `<div class="dlg ${done ? 'done' : ''} stack">
-      <div class="row between"><span class="pill">المستوى ${toArabicDigits(s.level)}</span><button class="mini" data-act="say" data-text="${esc(s.title + '. ' + s.desc)}" data-lang="ar-SA">🔊 اِسْتَمِعْ <span class="en">Listen</span></button></div>
-      <h3 class="ar-big" style="font-size:1.4rem">${esc(s.title)}</h3><span class="en" style="font-weight:700">${esc(s.en)}</span>
-      <p>${esc(s.desc)}</p><span class="en en-block">${esc(s.descEn)}</span>
-      <div class="row" style="gap:6px">${s.skills.map((k) => `<span class="pill acc">${esc(k)}</span>`).join('')}</div>
-      <button class="btn ${done ? 'done' : 'soft'}" data-act="story-done" data-arg="${s.i}" ${done ? 'disabled' : ''}>${done ? '✅ قَرَأْتُهَا <span class="en">Read</span>' : '📖 قَرَأْتُهَا <span class="en">I read it (+10 XP)</span>'}</button></div>`; }).join('')}</div>
-    <p class="small">الكُتُبُ فِي مَوْقِعِ أَلِف بَاء تَاء. <span class="en">Find the books at alefbata.com → Stories (school login).</span></p></div>`;
-};
+RENDER.stories = function renderStories() { $('tab-stories').innerHTML = readShelfHTML(); };
 
 /* =========================================================
    POEM (Al-Mutanabbi)
@@ -6030,7 +6019,7 @@ RENDER.quiz = function renderQuiz() {
     const pct = Math.round(100 * quiz.score / quiz.qs.length);
     $('tab-quiz').innerHTML = `<div class="card stack">${head}<div class="result stack">${mascotSVG(pct >= 70 ? 'cheer lg' : 'think lg')}<div class="big-stars">${pct === 100 ? '🏆' : pct >= 70 ? '🌟' : '💪'}</div>
       <h3 class="ar-big">${toArabicDigits(quiz.score)} / ${toArabicDigits(quiz.qs.length)}</h3><p class="en en-block center">${pct === 100 ? 'Perfect score!' : pct >= 70 ? 'Great job!' : 'Good practice. Try again to beat your score!'} (${pct}%)</p>
-      <button class="btn" data-act="quiz-restart">🔁 اِلْعَبْ مَرَّةً أُخْرَى <span class="en">Play again</span></button></div></div>`;
+      <button class="btn" data-act="quiz-restart">🔁 ${G('اِلْعَبْ', 'اِلْعَبِي')} مَرَّةً أُخْرَى <span class="en">Play again</span></button></div></div>`;
     return;
   }
   const q = quiz.qs[quiz.i]; const a = quiz.answered;
@@ -6145,7 +6134,7 @@ function renderParent() {
         <div class="stat"><b>${p.xp}</b><span class="en">XP</span></div><div class="stat"><b>🔥 ${st}</b><span class="en">current streak</span></div><div class="stat"><b>${bestStreak(p.activeDays)}</b><span class="en">best streak</span></div>
         <div class="stat"><b>${new Set(p.activeDays).size}</b><span class="en">days active</span></div><div class="stat"><b>${q.length}</b><span class="en">quizzes done</span></div><div class="stat"><b>${avg === null ? '–' : avg + '%'}</b><span class="en">avg quiz score</span></div>
         <div class="stat"><b>${unitsDone(p)}/${UNITS.length}</b><span class="en">Journey units</span></div><div class="stat"><b>${countPrefix(p, 'word:')}/${sightWords.length}</b><span class="en">sight words</span></div><div class="stat"><b>${countPrefix(p, 'lesson:')}/${grammarTopics.length}</b><span class="en">grammar topics</span></div>
-        <div class="stat"><b>${countPrefix(p, 'story:')}/${stories.length}</b><span class="en">stories read</span></div><div class="stat"><b>${Object.keys(p.writeBest).length}</b><span class="en">letters self-checked</span></div><div class="stat"><b>${p.stats.dictation}</b><span class="en">dictation correct</span></div>
+        <div class="stat"><b>${countPrefix(p, 'readaloud:')}/${READ_STORIES.length}</b><span class="en">stories read</span></div><div class="stat"><b>${Object.keys(p.writeBest).length}</b><span class="en">letters self-checked</span></div><div class="stat"><b>${p.stats.dictation}</b><span class="en">dictation correct</span></div>
         <div class="stat"><b><i class="ci"></i> ${p.coins}</b><span class="en">coins now</span></div><div class="stat"><b>${badges.length}/${BADGES.length}</b><span class="en">badges</span></div><div class="stat"><b>${p.weekly.c.xp}</b><span class="en">XP this week</span></div>
       </div>
       ${parentSkillsHTML(p)}
@@ -7093,7 +7082,7 @@ function storyCoverHTML(st, cls) {
 function readShelfHTML() {
   const p = P();
   return `<div class="read-shelf"><div class="row between"><h2 class="page-title sm">قِصَص بِصَوْت <span class="en">Stories that talk</span></h2><span class="pill good">${ICON('clock')} ${Math.round(((p.talk || {}).readSecs || 0) / 60)} <span class="en" style="color:inherit">min</span></span></div>
-    <p class="muted-note">اِخْتَرْ قِصَّةً: أَسْمَعُهَا أَوَّلاً، ثُمَّ أَقْرَؤُهَا أَنَا. <span class="en en-block">Tap a story. It reads to you, then it's your turn.</span></p>
+    <p class="muted-note">${G('اِخْتَرْ', 'اِخْتَارِي')} قِصَّةً: أَسْمَعُهَا أَوَّلاً، ثُمَّ أَقْرَؤُهَا أَنَا. <span class="en en-block">Tap a story. It reads to you, then it's your turn.</span></p>
     <div class="shelf v8">${READ_STORIES.map((s, i) => { const d = !!p.completed['readaloud:' + s.id]; return `<button class="book v8 ${d ? 'done' : ''}" data-act="read-open" data-arg="${s.id}" style="--bk:${s.bg};animation-delay:${i * 0.05}s">${storyCoverHTML(s)}<span class="bk-t">${esc(s.title)}</span><span class="en bk-en">${esc(s.en)}</span><span class="bk-st">${'★'.repeat(s.stars)}<i>${'★'.repeat(3 - s.stars)}</i></span>${d ? `<span class="bk-done">${ICON('check')}</span>` : ''}</button>`; }).join('')}</div></div>`;
 }
 /* ---------- challenges: daily, weekly mystery gift, sibling + high scores ---------- */
@@ -7126,7 +7115,7 @@ function stickersHTML(inSheet) {
   const p = P(); const n = Object.keys(p.play.stickers).length;
   return `<div class="stk-book"><div class="row between"><h3 class="fc-sub">مُلْصَقَاتِي <span class="en">My stickers · ${n}/${STICKERS.length}</span></h3></div>
     <p class="en en-block small muted-note">Win stickers from round gifts. Tap one to hear its word. Your sticker words pop up in games too!</p>
-    <div class="stk-grid">${STICKERS.map((s) => { const got = !!p.play.stickers[s.id]; return got ? `<button class="stk-cell ${s.rare ? 'rare' : ''}" data-act="stk-say" data-arg="${s.id}" aria-label="${esc(s.en)}">${stickerSVG(s.id)}<b>${esc(s.ar)}</b></button>` : `<span class="stk-cell empty" aria-label="Not found yet"><span>?</span></span>`; }).join('')}</div></div>`;
+    <div class="stk-grid">${STICKERS.map((s) => { const got = !!p.play.stickers[s.id]; return got ? `<button class="stk-cell ${s.rare ? 'rare' : ''}" data-act="stk-say" data-arg="${s.id}" aria-label="${esc(s.en)}">${stickerSVG(s.id)}<b>${esc(s.ar)}</b></button>` : `<span class="stk-cell empty" aria-label="لَمْ تُكْتَشَفْ بَعْدُ Not found yet"><span lang="ar">؟</span></span>`; }).join('')}</div></div>`;
 }
 function openStickers() { openModal(`<div class="stack"><div class="row between"><h2 class="m-title">${ICON('sticker')} مُلْصَقَاتِي <span class="en">Sticker book</span></h2>${closeBtn()}</div>${stickersHTML()}</div>`, null, 'sheet'); }
 /* ---------- games hub: falcon games first, with high scores ---------- */
@@ -7172,16 +7161,7 @@ Object.assign(ACTIONS, {
     const b = $('h8-bubble'); if (b) b.innerHTML = `<b>${l[0]}</b><span class="en">${esc(l[1])}</span>`; const bird = document.querySelector('.h8-bird'); if (bird) bump(bird, 'hop'); sfx('pop'); speak(l[0], curDialect(), { quiet: true }); },
   'open-challenge': () => { sfx('pop'); openChallenge(); }
 });
-/* stories: the talking stories first; the school book list folds away for grown-ups */
-const _renderStoriesOld = RENDER.stories;
-RENDER.stories = function renderStoriesV8() {
-  _renderStoriesOld();
-  const card = $('tab-stories').querySelector('.card'); if (!card) return;
-  const d = document.createElement('details'); d.className = 'school-books'; if (window._schoolOpen) d.open = true;
-  d.addEventListener('toggle', () => { window._schoolOpen = d.open; });
-  d.innerHTML = '<summary>كُتُبُ مَكْتَبَةِ المَدْرَسَة <span class="en">School library books (for grown-ups to help)</span></summary>';
-  card.parentNode.insertBefore(d, card); d.appendChild(card);
-};
+/* stories: only the app's own talking stories (v18b: the school book list is removed) */
 
 'use strict';
 /* =========================================================
@@ -7747,7 +7727,7 @@ function padInit(guide) {
 window.addEventListener('resize', () => { if (BW && BW.pad && document.body.contains(BW.pad.c)) padLayout(BW.pad); });
 function padReplay() {
   const pad = BW.pad; if (!pad || pad.anim) return; const m = padMetrics(pad); const n = m.cl.length; const per = n === 1 ? 1400 : 700; const t0 = performance.now();
-  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches; pad.anim = true; BW.buddy = ['شُوف!', 'Watch: right to left, one letter at a time.']; const bud = $('rd-buddy'); if (bud) bud.outerHTML = bwBuddy();
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches; pad.anim = true; BW.buddy = [G('شُوف!', 'شُوفِي!'), 'Watch: right to left, one letter at a time.']; const bud = $('rd-buddy'); if (bud) bud.outerHTML = bwBuddy();
   const step = (now) => { if (!BW || BW.pad !== pad) return; const t = reduce ? n : Math.min(n, (now - t0) / per); const i = Math.min(n - 1, Math.floor(t)); const f = t - i; const x = t >= n ? m.xs[n] : m.xs[i] - (m.xs[i] - m.xs[i + 1]) * f;
     padDraw(pad, { reveal: Math.max(0, x - 2), noDots: true }); if (t < n) requestAnimationFrame(step); else setTimeout(() => { pad.anim = false; if (BW && BW.pad === pad) padDraw(pad); }, 900); };
   requestAnimationFrame(step); ltSpeak(BW.w.ar);
@@ -8599,7 +8579,7 @@ Object.assign(ACTIONS, {
   'wd-view': (a) => { if (!WD) return; WD.view = a; sfx('tap'); renderWD(); },
   'wd-pic': () => { const c = wdCtx(); if (!c) return; const g = c.g; g.pic = !g.pic; if (g.pic && c.ctx === 'modal') { WD.buddy = ['تَلْمِيح!', "Here's a clue: what could it be?"]; WD.mood = 'think'; } wdSaveDaily(g); sfx('flip'); wdRerender(c.ctx); },
   'wd-reveal': () => { const c = wdCtx(); if (!c) return; const g = c.g; const p = P(); if (p.coins < WD_REVEAL_COST || g.rev.length >= Math.min(2, g.n - 1)) return; const i = wdRevealLetter(g); if (i < 0) return; p.coins -= WD_REVEAL_COST; refreshHeader();
-    if (c.ctx === 'modal') { WD.buddy = ['شُوف!', 'I put one letter in its spot for you (the faint one).']; WD.mood = 'cheer'; } wdSaveDaily(g); saveDB(); sfx('coin'); wdRerender(c.ctx); },
+    if (c.ctx === 'modal') { WD.buddy = [G('شُوف!', 'شُوفِي!'), 'I put one letter in its spot for you (the faint one).']; WD.mood = 'cheer'; } wdSaveDaily(g); saveDB(); sfx('coin'); wdRerender(c.ctx); },
   'wd-ideas': () => { const c = wdCtx(); if (!c || c.ctx !== 'modal') return; const g = c.g; g.ideas = !g.ideas; if (g.ideas) g.ideaList = wdIdeas(g); sfx('tap'); renderWD(); },
   'wd-idea': (a) => { const c = wdCtx(); if (!c) return; const g = c.g; const w = wdData().valid.get(a); if (!w || g.done || g.busy) return; g.cur = w.letters.slice(0, g.n); g.pop = -1; g.ideas = false; g.msg = null; sfx('pop'); wdRerender(c.ctx); },
   'wd-say': () => { if (WD) ltSpeak(WD.g.w.ar); },
@@ -9112,20 +9092,22 @@ function consentGateHTML(kid, what) {
     <button class="btn ghost" data-act="modal-close">${what === 'mic' ? 'حَسَنًا' : 'اِسْتَكْشِف التَّطْبِيق'} <span class="en">${what === 'mic' ? 'OK' : 'Explore the app instead'}</span></button></div>`;
 }
 /* ---------- nickname setup (on the device) ---------- */
-let setupSel = { band: null, g: null };
+let setupSel = { band: null, g: null, d: null };
 function profileSetupHTML(id) {
   const r = (DB.profiles && DB.profiles[id]) || {}; const b = setupSel.band || r.band; const g = setupSel.g || r.g;
+  const d = setupSel.d || (DB.kids && DB.kids[id] && DB.kids[id].dialect) || 'emirati';
   return `<form class="stack prof-setup" id="prof-form" data-kid="${id}" autocomplete="off">
     <div class="row between"><h2>${r.nick ? 'مَلَفِّي' : 'لَاعِب جَدِيد'} <span class="en en-block">${r.migrated ? 'Check this profile' : 'New player'}</span></h2>${DB.profiles && DB.profiles[id] && !r.needsSetup ? '<button type="button" class="icon-btn" data-act="modal-close" aria-label="إِغْلَاق Close">✖️</button>' : ''}</div>
-    <p class="en en-block small keep-en">Use a nickname, not a real full name. It stays on this device.</p>
+    <p class="nick-warn" lang="ar">🙈 اسْمٌ مُسْتَعَارٌ فَقَطْ، لَا الاسْمُ الحَقِيقِيُّ. يَبْقَى عَلَى هَذَا الجِهَازِ. <span class="en en-block small keep-en">Use a nickname, not a real full name. It stays on this device.</span></p>
     <label for="prof-nick"><b>الاسْمُ المُسْتَعَار</b> <span class="en">Nickname</span></label>
     <input id="prof-nick" class="prof-nick" maxlength="16" dir="auto" value="${esc(r.nick || '')}" placeholder="صَقْر · Falcon" required>
     <fieldset class="seg-f"><legend><b>العُمْر</b> <span class="en">Age band</span></legend><div class="seg wrap" role="group">${AGE_BANDS.map((x) => `<button type="button" data-ps="band" data-v="${x.id}" class="${b === x.id ? 'on' : ''}" aria-pressed="${b === x.id}">${x.ar}</button>`).join('')}</div></fieldset>
     <fieldset class="seg-f"><legend><b>كَيْفَ نُنَادِيك؟</b> <span class="en">How should Saqqour talk to you? (Arabic grammar)</span></legend><div class="seg" role="group"><button type="button" data-ps="g" data-v="m" class="${g === 'm' ? 'on' : ''}" aria-pressed="${g === 'm'}">أَنْتَ <span class="en">boy words</span></button><button type="button" data-ps="g" data-v="f" class="${g === 'f' ? 'on' : ''}" aria-pressed="${g === 'f'}">أَنْتِ <span class="en">girl words</span></button></div></fieldset>
+    <fieldset class="seg-f"><legend><b>لَهْجَةُ صَقُّور</b> <span class="en">Saqqour's dialect</span></legend><div class="seg wrap dialect-seg" role="group">${Object.keys(DIALECT_INFO).map((k) => `<button type="button" data-ps="d" data-v="${k}" class="${d === k ? 'on' : ''}" aria-pressed="${d === k}">${DIALECT_INFO[k].flag} ${DIALECT_INFO[k].ar}</button>`).join('')}</div></fieldset>
     <button type="submit" class="btn big" ${b && g ? '' : 'disabled'}>حِفْظ <span class="en">Save</span></button></form>`;
 }
 function openProfileSetup(id, after) {
-  const r = (DB.profiles && DB.profiles[id]) || {}; setupSel = { band: r.band || null, g: r.g || null };
+  const r = (DB.profiles && DB.profiles[id]) || {}; setupSel = { band: r.band || null, g: r.g || null, d: (DB.kids && DB.kids[id] && DB.kids[id].dialect) || 'emirati' };
   openModal(profileSetupHTML(id), null, 'sheet'); profileSetupAfter = after || null;
 }
 let profileSetupAfter = null;
@@ -9136,6 +9118,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('submit', (e) => {
   if (!e.target || e.target.id !== 'prof-form') return; e.preventDefault();
   const id = e.target.dataset.kid; if (!saveProfile(id, $('prof-nick').value, setupSel.band, setupSel.g)) { $('prof-nick').focus(); return; }
+  if (setupSel.d && DIALECT_INFO[setupSel.d] && DB.kids[id]) { if (DB.kids[id].dialect !== setupSel.d && DB.kids[id].voice) DB.kids[id].voice.uri = null; DB.kids[id].dialect = setupSel.d; saveDB(); } /* v18b: dialect picked at setup */
   modalOnClose = null; closeModal(); renderPicker(); const a = profileSetupAfter; profileSetupAfter = null; if (a) a();
 });
 
@@ -9269,11 +9252,11 @@ placementBuild = function placementBuildV15() {
 const plHear = (t) => `<button type="button" class="mini say-btn pl-hear" data-act="say" data-text="${esc(t)}" data-lang="fusha" aria-label="اِسْتَمِعْ Listen">🔊</button>`;
 const plPic = (e) => (typeof objArtHTML === 'function' && objArtHTML(e, '', 'pa-mid')) || `<span class="emo">${e}</span>`;
 placementPrompt = function placementPromptV15(q) {
-  if (q.kind === 'word') return `<div class="center"><div class="pl-read" lang="ar">${esc(q.v[0])} ${plHear(q.v[0])}</div><h3 class="pl-q">اِخْتَرِ الصُّورَةَ <span class="en en-block">Pick the picture</span></h3></div>`;
+  if (q.kind === 'word') return `<div class="center"><div class="pl-read" lang="ar">${esc(q.v[0])} ${plHear(q.v[0])}</div><h3 class="pl-q">${G('اِخْتَرِ الصُّورَةَ', 'اِخْتَارِي الصُّورَةَ')} <span class="en en-block">Pick the picture</span></h3></div>`;
   if (q.kind === 'sound') return `<div class="center"><div class="pl-big">${plPic(q.v[3])} ${plHear(q.v[0])}</div><h3 class="pl-q">بِأَيِّ حَرْفٍ تَبْدَأُ الكَلِمَةُ؟ <span class="en en-block">Which letter does the word start with?</span></h3></div>`;
   if (q.kind === 'letter') return `<div class="center"><div class="pl-read" lang="ar">«${AR_LETTER_NAME[q.l]}» ${plHear(AR_LETTER_NAME[q.l])}</div><h3 class="pl-q">أَيْنَ هَذَا الحَرْفُ؟ <span class="en en-block">Find this letter</span></h3></div>`;
   if (q.kind === 'sentence') return `<div class="center"><div class="pl-read" lang="ar">${esc(q.s.s)} ${plHear(q.s.s)}</div><h3 class="pl-q">${esc(q.s.q)} <span class="en en-block">Read, then pick the picture</span></h3></div>`;
-  if (q.kind === 'grammar') return `<div class="center"><div class="pl-big">${plPic(q.g[2])}</div><div class="pl-read" lang="ar">… ${esc(q.g[1])}</div><h3 class="pl-q">اِخْتَرِ الكَلِمَةَ المُنَاسِبَةَ <span class="en en-block">Which word fits?</span></h3></div>`;
+  if (q.kind === 'grammar') return `<div class="center"><div class="pl-big">${plPic(q.g[2])}</div><div class="pl-read" lang="ar">… ${esc(q.g[1])}</div><h3 class="pl-q">${G('اِخْتَرِ', 'اِخْتَارِي')} الكَلِمَةَ المُنَاسِبَةَ <span class="en en-block">Which word fits?</span></h3></div>`;
   return '';
 };
 function plOptHTML(q, o, i) {
@@ -10041,7 +10024,7 @@ const TACT = {
   /* ---------- listening: hear the word, tap the picture ---------- */
   listen: {
     html(p) {
-      return `<div class="ls-top">${tBtn('ls-play', `${tIcon('speaker')}<span>اِسْمَع <span class="en">Play</span></span>`, 'play big')}${tSlowBtn(p.item.dia)}</div>
+      return `<div class="ls-top">${tBtn('ls-play', `${tIcon('speaker')}<span>${typeof G === 'function' ? G('اِسْمَع', 'اِسْمَعِي') : 'اِسْمَع'} <span class="en">Play</span></span>`, 'play big')}${tSlowBtn(p.item.dia)}</div>
         <div class="ls-opts">${p.options.map((o, i) => `<button type="button" class="ls-opt" data-tact="ls-pick" data-i="${i}" aria-label="${esc(o.en)}">${tPic(o.em)}<span class="en">${esc(o.en)}</span></button>`).join('')}</div>`;
     },
     init(c, p, done) {
@@ -10151,7 +10134,7 @@ const TACT = {
           <p class="sr-ar" lang="ar" dir="rtl">${s[0].split(' ').map((w, j) => `<span class="sr-w" data-j="${j}">${esc(w)}</span>`).join(' ')}</p>
           ${en ? `<p class="sr-en">${esc(s[1])}</p>` : ''}
           <div class="sr-fb" aria-live="polite"></div>
-          <div class="tt-row">${tBtn('sr-listen', `${tIcon('speaker')}<span>اِسْمَع <span class="en">Listen</span></span>`, 'play')}${tBtn('sr-mic', `${tIcon('mic')}<span>أَقْرَأ <span class="en">I'll read</span></span>`, 'mic')}${tBtn('sr-en', '<span class="en">EN</span>', 'soft sm', `aria-pressed="${en}"`)}</div>
+          <div class="tt-row">${tBtn('sr-listen', `${tIcon('speaker')}<span>${typeof G === 'function' ? G('اِسْمَع', 'اِسْمَعِي') : 'اِسْمَع'} <span class="en">Listen</span></span>`, 'play')}${tBtn('sr-mic', `${tIcon('mic')}<span>أَقْرَأ <span class="en">I'll read</span></span>`, 'mic')}${tBtn('sr-en', '<span class="en">EN</span>', 'soft sm', `aria-pressed="${en}"`)}</div>
           <div class="sr-nav"><span class="sr-dots">${st.s.map((_, j) => `<i class="${j === i ? 'on' : j < i ? 'seen' : ''}"></i>`).join('')}</span>${tBtn('sr-next', i < st.s.length - 1 ? `<span>التَّالِي <span class="en">Next</span></span>${ICON('arrow')}` : `${ICON('check')}<span>خَلَصْت <span class="en">The end</span></span>`, 'go')}</div>`;
       };
       const hi = (j) => c.querySelectorAll('.sr-w').forEach((w) => w.classList.toggle('hi', Number(w.dataset.j) === j));
@@ -10658,7 +10641,7 @@ const MH_ACTS = {
   story: (p) => { const st = mhStory(p); const read = !!p.completed['readaloud:' + st.id];
     return { title: st.title, en: st.en, meta: read ? 'قِصَّةٌ مُصَوَّرَة' : G('قِصَّةٌ لَمْ تَقْرَأْهَا بَعْدُ', 'قِصَّةٌ لَمْ تَقْرَئِيهَا بَعْدُ'), art: ART_B64['st_' + st.id + '_cover'] ? 'st_' + st.id + '_cover' : 'icon_stories', tone: 'sun', run: () => openReader(st.id) }; },
   wordle: (p) => { const s = wdStatusFor(p); const done = s.s && s.s.done;
-    return { title: 'كَلِمَةُ اليَوْم', en: 'Word of the day', meta: done ? 'حُلَّتِ اليَوْمَ، جَرِّبِ التَّدْرِيب' : 'سِتُّ مُحَاوَلَاتٍ لِلتَّخْمِين', art: 'icon_wordle', tone: 'mint', run: () => openWordle(done ? 'prac' : 'daily') }; },
+    return { title: 'كَلِمَةُ اليَوْم', en: 'Word of the day', meta: done ? G('حُلَّتِ اليَوْمَ، جَرِّبِ التَّدْرِيب', 'حُلَّتِ اليَوْمَ، جَرِّبِي التَّدْرِيب') : 'سِتُّ مُحَاوَلَاتٍ لِلتَّخْمِين', art: 'icon_wordle', tone: 'mint', run: () => openWordle(done ? 'prac' : 'daily') }; },
   game: () => ({ title: PLAY_GAMES.sound.ar, en: PLAY_GAMES.sound.en, meta: 'لُعْبَةٌ سَرِيعَة', art: 'icon_games', tone: 'coral', run: () => startRound('sound') }),
   build: () => ({ title: PLAY_GAMES.build.ar, en: PLAY_GAMES.build.en, meta: 'رَكِّبْ ثُمَّ تَتَبَّعْ', art: 'gm_build', tone: 'mint', run: () => startRound('build') }),
   dress: (p) => { const it = itemOfDay(p);
@@ -10669,9 +10652,9 @@ const MH_ACTS = {
   stories: () => ({ title: 'القِصَص', en: 'Stories', meta: 'قِصَصٌ مُصَوَّرَة', art: 'icon_stories', tone: 'sun', tab: 'stories' }),
   practice: () => ({ title: 'تَدْرِيبُ الكَلِمَات', en: 'Word practice', meta: 'كَلِمَاتٌ بِلَا حُدُود', art: 'icon_words', tone: 'mint', run: () => openWordle('prac') }),
   journey: () => ({ title: 'خَرِيطَتِي', en: 'My map', meta: 'دُرُوسٌ خُطْوَةً خُطْوَة', icon: 'compass', tone: 'mint', tab: 'journey' }),
-  write: () => ({ title: 'لَوْحَةُ الكِتَابَة', en: 'Writing board', meta: 'اُكْتُبْ بِإِصْبَعِكَ', art: 'icon_trace', tone: 'sky', tab: 'write' }),
+  write: () => ({ title: 'لَوْحَةُ الكِتَابَة', en: 'Writing board', meta: G('اُكْتُبْ بِإِصْبَعِكَ', 'اُكْتُبِي بِإِصْبَعِكِ'), art: 'icon_trace', tone: 'sky', tab: 'write' }),
   talk: () => ({ title: 'مُحَادَثَات', en: 'Conversations', meta: 'جُمَلٌ بِاللَّهْجَة', icon: 'dialects', tone: 'coral', tab: 'dialects' }),
-  shop: () => ({ title: 'المَتْجَر', en: 'Shop', meta: 'أَنْفِقْ عُمْلَاتِكَ', art: 'icon_shop', tone: 'sun', tab: 'shop' }),
+  shop: () => ({ title: 'المَتْجَر', en: 'Shop', meta: G('أَنْفِقْ عُمْلَاتِكَ', 'أَنْفِقِي عُمْلَاتِكِ'), art: 'icon_shop', tone: 'sun', tab: 'shop' }),
   stickers: () => ({ title: 'مُلْصَقَاتِي', en: 'My stickers', meta: 'مَجْمُوعَتِي', art: 'icon_stickers', tone: 'sun', run: () => openStickers() }),
   /* v16 */
   homework: () => ({ title: 'وَاجِبُ العَرَبِيّ', en: 'Arabic homework', meta: G('أُسَاعِدُكَ، وَأَنْتَ تَكْتُبُ الجَوَاب', 'أُسَاعِدُكِ، وَأَنْتِ تَكْتُبِينَ الجَوَاب'), art: ART_B64.pose_reading ? 'pose_reading' : 'icon_trace', tone: 'mint', view: true, run: () => hwOpen() }),
@@ -11107,7 +11090,7 @@ async function hwPrep(file) {
 }
 async function hwPhoto(file) {
   if (HW.busy || HW.ended) return; let url;
-  try { url = await hwPrep(file); } catch (e) { hwSay({ type: 'say', register: 'fusha', ar: 'تَعَذَّرَ فَتْحُ هَذِهِ الصُّورَةِ. جَرِّبْ صُورَةً أُخْرَى.', en: "That photo couldn't be opened. Try another one." }); return; }
+  try { url = await hwPrep(file); } catch (e) { hwSay({ type: 'say', register: 'fusha', ar: 'تَعَذَّرَ فَتْحُ هَذِهِ الصُّورَةِ. ' + (hwG() === 'f' ? 'جَرِّبِي' : 'جَرِّبْ') + ' صُورَةً أُخْرَى.', en: "That photo couldn't be opened. Try another one." }); return; }
   const txt = ($('hw-text') && $('hw-text').value.trim()) || ''; if ($('hw-text')) $('hw-text').value = '';
   await hwSend(txt, url);
 }
@@ -11388,7 +11371,7 @@ const NICK_FALLBACK = { m: 'صَدِيقِي', f: 'صَدِيقَتِي' };
   if (!String(nick || '').trim() && old) return _save(id, old, band, g);
   if (!nickIsArabic(n)) { nickError(); return false; } return _save(id, n, band, g); }; }
 function nickError() { const e = $('nick-err'); if (e) { e.hidden = false; e.classList.remove('shake'); void e.offsetWidth; e.classList.add('shake'); } sfx('tap'); }
-const NICK_KB = (id) => `<p class="nick-hint" id="nick-err" hidden role="alert">اُكْتُبِ الاسْمَ بِالحُرُوفِ العَرَبِيَّة <span class="en">Use Arabic letters</span></p>${akbHTML(id)}`;
+const NICK_KB = (id) => `<p class="nick-hint" id="nick-err" hidden role="alert">الاسْمُ بِالحُرُوفِ العَرَبِيَّةِ فَقَطْ <span class="en">Use Arabic letters</span></p>${akbHTML(id)}`;
 AKB_TARGETS['prof-nick'] = { max: 16, get: () => ($('prof-nick') ? $('prof-nick').value : ''), set: (v) => { if ($('prof-nick')) $('prof-nick').value = v; }, done: () => {} };
 AKB_TARGETS['nick-new'] = { max: 16, get: () => ($('nick-new') ? $('nick-new').value : ''), set: (v) => { if ($('nick-new')) $('nick-new').value = v; }, done: () => nickRepickSave() };
 /* the profile form: Arabic placeholder, Arabic keyboard under the field */
@@ -11422,6 +11405,28 @@ function nickRepickSave() {
 document.addEventListener('submit', (e) => { if (e.target && e.target.id === 'nick-form') { e.preventDefault(); nickRepickSave(); } });
 Object.assign(ACTIONS, { 'nick-later': () => closeModal() });
 { const _pick = pickProfile; pickProfile = function pickProfileV17(id) { const r = _pick.apply(this, arguments); if (currentKid === id && !MH_LEGACY) setTimeout(() => nickRepick(id), MH.fast ? 0 : 500); return r; }; }
+
+/* v18b: boy/girl forms in fixed UI text. Many screen labels were written once in the boy form (اِضْغَطْ, اِسْمَعْ, تَتَبَّعْ …)
+   while the line next to them already switched (تَسْمَعِين). For a girl, these exact vowelled imperatives are switched in the
+   visible text. Lesson content (grammar, dialogues, poem, words) is left exactly as written. */
+const GUI_F = [['لِتَسْمَعَهُ', 'لِتَسْمَعِيهِ'], ['اِضْغَطْ', 'اِضْغَطِي'], ['اِضْغَطِ', 'اِضْغَطِي'], ['اِسْمَعْ', 'اِسْمَعِي'], ['تَتَبَّعْهَا', 'تَتَبَّعِيهَا'], ['تَتَبَّعْ', 'تَتَبَّعِي'], ['اُكْتُبْهَا', 'اُكْتُبِيهَا'], ['اُكْتُبْ', 'اُكْتُبِي'],
+  ['اِقْرَأْ', 'اِقْرَئِي'], ['جَرِّبْ', 'جَرِّبِي'], ['رَكِّبْ', 'رَكِّبِي'], ['تَخَطَّ', 'تَخَطَّيْ'], ['اِبْنِ', 'اِبْنِي'], ['قَارِنْهُ', 'قَارِنِيهِ'], ['لِتَسْمَعَهَا', 'لِتَسْمَعِيهَا'], ['لِتَسْمَعَ', 'لِتَسْمَعِي'],
+  ['اِخْتَرْ', 'اِخْتَارِي'], ['اِخْتَرِ', 'اِخْتَارِي'], ['اِلْعَبْ', 'اِلْعَبِي'], ['اِرْسُمْ', 'اِرْسُمِي'], ['اِبْدَأْ', 'اِبْدَئِي'], ['قُلْهَا', 'قُولِيهَا'], ['أَعِدْ', 'أَعِيدِي'], ['اِلْبَسْ', 'اِلْبَسِي']];
+GUI_F.slice().forEach(([m, f]) => { if (/^ا[\u0650\u064F]/.test(m)) GUI_F.push(['ا' + m.slice(2), 'ا' + f.slice(2)]); }); /* after وَ / فَ the first vowel drops: وَاخْتَرْ */
+const GUI_RE = new RegExp('(^|[\\s«(،.!؟:\\-–—])(وَ|فَ)?(' + GUI_F.map((x) => x[0]).join('|') + ')(?=$|[\\s»)،.!؟:\\-–—])', 'g');
+const GUI_MAP = Object.fromEntries(GUI_F);
+function gUI(t) { return String(t).replace(GUI_RE, (m, a, pre, w) => a + (pre || '') + GUI_MAP[w]); }
+const GUI_SKIP = '#tab-grammar, #tab-dialects, #tab-poem, #tab-words, .no-g, script, style, textarea, input, [contenteditable]';
+function guiIsGirl() { return !!(currentKid && PROFILES[currentKid] && PROFILES[currentKid].gender === 'f'); }
+function guiFix(root) {
+  if (!guiIsGirl() || !root) return; const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); const todo = [];
+  for (let n = w.nextNode(); n; n = w.nextNode()) { if (!/[\u064E-\u0652]/.test(n.nodeValue)) continue; const el = n.parentElement; if (!el || el.closest(GUI_SKIP)) continue; GUI_RE.lastIndex = 0; if (GUI_RE.test(n.nodeValue)) todo.push(n); }
+  todo.forEach((n) => { GUI_RE.lastIndex = 0; n.nodeValue = gUI(n.nodeValue); });
+  if (root.querySelectorAll) root.querySelectorAll('[aria-label]').forEach((el) => { if (!el.closest(GUI_SKIP)) { const v = el.getAttribute('aria-label'); const f = gUI(v); if (f !== v) el.setAttribute('aria-label', f); } });
+}
+{ let q = null; const mo = new MutationObserver(() => { if (q) return; q = requestAnimationFrame(() => { q = null; guiFix(document.body); }); });
+  document.addEventListener('DOMContentLoaded', () => { mo.observe(document.body, { childList: true, subtree: true, characterData: false }); guiFix(document.body); }); }
+window.SAQ = Object.assign(window.SAQ || {}, { gUI, guiFix });
 
 </script>
 </body>
