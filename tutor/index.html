@@ -9033,9 +9033,12 @@ const pinOK = (pin) => hasPin() && pinHash(pin, DB.settings.pin.s) === DB.settin
 function consentOf(kid) { const c = DB.settings.consent && DB.settings.consent[kid]; return Object.assign({ tutor: false, cloud: false, mic: false, homework: false, at: null }, c && typeof c === 'object' ? c : {}); }
 function setConsent(kid, k, v) { if (!DB.settings.consent || typeof DB.settings.consent !== 'object') DB.settings.consent = {}; const c = consentOf(kid); c[k] = !!v; c.at = dayKey(); c.v = PRIVACY_VERSION; DB.settings.consent[kid] = c; saveDB(); }
 /* the tutor is off by default for everyone, and stays off for under-13s until a parent turns it on behind the PIN */
-const tutorAllowed = (kid) => !!(kid && PROFILES[kid] && consentOf(kid).tutor && hasPin());
+/* v18: AI features (tutor, homework helper, cloud voices) need a family token on this device, set once by the parent's
+   setup link. Without one, the AI islands and AI consent rows are hidden, nothing is sent and no Worker call is made. */
+function aiAccess() { return !!(DB.settings && DB.settings.familyCode) || /^(localhost|127\.0\.0\.1)$/.test(location.hostname); }
+const tutorAllowed = (kid) => !!(kid && PROFILES[kid] && consentOf(kid).tutor && hasPin() && aiAccess());
 const micAllowed = (kid) => !!(kid && consentOf(kid).mic && hasPin());
-const cloudAllowed = (kid) => !!(kid && consentOf(kid).cloud && hasPin());
+const cloudAllowed = (kid) => !!(kid && consentOf(kid).cloud && hasPin() && aiAccess());
 function addAlert(kind, level) { if (!Array.isArray(DB.settings.alerts)) DB.settings.alerts = []; DB.settings.alerts.push({ kid: currentKid, kind: String(kind).slice(0, 16), level: level === 'high' ? 'high' : 'low', at: new Date().toISOString(), seen: false }); DB.settings.alerts = DB.settings.alerts.slice(-50); saveDB(); refreshAlertDot(); }
 const unseenAlerts = () => (Array.isArray(DB.settings.alerts) ? DB.settings.alerts.filter((a) => !a.seen) : []);
 function refreshAlertDot() { document.querySelectorAll('[data-act="open-parent"]').forEach((b) => b.classList.toggle('has-alert', unseenAlerts().length > 0)); }
@@ -9092,8 +9095,8 @@ function consentHTML(kid, opts) {
     <div class="row between"><h2>👪 مُوَافَقَةُ الوَالِدَيْن <span class="en en-block">Parent consent · ${esc(pr ? pr.name : '')}${pr && pr.band ? ' · ' + esc(pr.bandEn) : ''}</span></h2><button class="icon-btn" data-act="modal-close" aria-label="إِغْلَاق Close">✖️</button></div>
     ${pr && pr.u13 ? '<p class="cs-u13 keep-en">🛡️ <b>Under 13:</b> the AI tutor, cloud voices and the microphone stay off until you switch them on here.</p>' : ''}
     ${privacyNoticeHTML()}
-    ${row('tutor', 'المُسَاعِد الذَّكِي صَقُّور', 'AI tutor (Azure OpenAI)', 'Lesson text without names goes to Azure. Safety checks run on every message.')}
-    ${row('cloud', 'الأَصْوَات السَّحَابِيَّة', 'Cloud voices (Azure Speech)', 'Only the Arabic sentence to read aloud is sent.')}
+    ${aiAccess() ? row('tutor', 'المُسَاعِد الذَّكِي صَقُّور', 'AI tutor (Azure OpenAI)', 'Lesson text without names goes to Azure. Safety checks run on every message.') : '<p class="cs-noai" lang="ar">المُسَاعِدُ الذَّكِيُّ غَيْرُ مُفَعَّلٍ عَلَى هَذَا الجِهَاز. <span class="en en-block keep-en">AI features are not set up on this device (they need the family setup link). Nothing is sent to the cloud.</span></p>'}
+    ${aiAccess() ? row('cloud', 'الأَصْوَات السَّحَابِيَّة', 'Cloud voices (Azure Speech)', 'Only the Arabic sentence to read aloud is sent.') : ''}
     ${row('mic', 'المَايْك', 'Microphone (browser speech recognition)', 'Chrome/Edge send the audio to Google/Microsoft to turn it into text.')}
     <button class="btn big" data-act="consent-done" data-arg="${kid}">حِفْظ <span class="en">Save</span></button></div>`;
 }
@@ -9169,20 +9172,33 @@ micErrorText = function (code) { if (code === 'consent') return '🎤 <span clas
 /* cloud voices in the main app: only with consent */
 { const az = SPEECH.providers.azure; const av = az.available; az.available = function () { return cloudAllowed(currentKid) && av.call(this); }; }
 
+/* v18: country for the helpline numbers in the safety scripts (parent setting, UAE by default). Used on the device and
+   sent (as a two-letter code, nothing else) with tutor/homework turns so the Worker's scripts use the same numbers. */
+const COUNTRIES = [['ae', 'الإِمَارَات', 'UAE'], ['sa', 'السُّعُودِيَّة', 'Saudi Arabia'], ['eg', 'مِصْر', 'Egypt'], ['jo', 'الأُرْدُنّ', 'Jordan'], ['lb', 'لُبْنَان', 'Lebanon'], ['uk', 'المَمْلَكَة المُتَّحِدَة', 'United Kingdom'], ['us', 'الوِلَايَات المُتَّحِدَة', 'United States'], ['other', 'بَلَدٌ آخَر (رَقْمُ الطَّوَارِئِ المَحَلِّيّ)', 'Other (local emergency number)']];
+const countryCode = () => (DB.settings && COUNTRIES.some((c) => c[0] === DB.settings.country) ? DB.settings.country : 'ae');
+window.SAQ_COUNTRY = countryCode;
+function helpNumbersEN() { const h = HELPLINES[countryCode()]; return h.child ? `call ${h.emerg} (emergency) or ${h.en} ${h.child}` : 'call your local emergency number or child helpline'; }
+document.addEventListener('change', (e) => { if (!e.target || e.target.id !== 'country-sel') return; DB.settings.country = e.target.value; saveDB(); renderParent(); toast('✔️'); });
 /* parent view: safety flags + consent + profiles on top */
 const _renderParentV15 = renderParent;
 renderParent = function renderParentV15() {
   _renderParentV15();
   const al = Array.isArray(DB.settings.alerts) ? DB.settings.alerts.slice().reverse() : [];
-  const KIND = { selfharm: 'Self-harm words', abuse: 'Being hurt / abuse', distress: 'Sad, scared or bullied', sexual: 'Unsafe (adult) topic', contact: 'Asked to meet / contact', unsafe: 'Unsafe topic', filtered: 'Blocked by Azure content filter' };
+  const KIND = { selfharm: 'Self-harm words', abuse: 'Being hurt / abuse', grooming: 'Possible grooming (secrets, photos, meeting)', distress: 'Sad, scared or bullied', sexual: 'Unsafe (adult) topic', contact: 'Asked to meet / contact', unsafe: 'Unsafe topic', filtered: 'Blocked by Azure content filter' };
   const alertHTML = `<div class="card stack parent-alerts keep-en" id="parent-alerts"><h2>🛡️ تَنْبِيهَات الأَمَان <span class="en">Safety flags</span></h2>
     ${al.length ? `<ul class="al-list">${al.map((a) => `<li class="al ${a.level} ${a.seen ? 'seen' : 'new'}"><b>${a.level === 'high' ? '🔴' : '🟠'} ${esc(KIND[a.kind] || a.kind)}</b> · ${esc(PROFILES[a.kid] ? PROFILES[a.kid].name : 'a child')} · ${esc(new Date(a.at).toLocaleString())}${a.seen ? '' : ' · <b>new</b>'}</li>`).join('')}</ul>
-    <p class="small">The tutor stopped and told your child to talk to you or another trusted adult. Only the type and time are saved, not the words. If you are worried about your child's safety in the UAE, call 999 (emergency) or the Child Protection line 116111.</p>
+    <p class="small">The tutor stopped and told your child to talk to you or another trusted adult. Only the type and time are saved, not the words. If you are worried about your child's safety, ${esc(helpNumbersEN())}.</p>
     <div class="row"><button class="btn soft" data-act="alerts-seen">✔️ Mark as seen</button><button class="btn ghost" data-act="alerts-clear">🗑️ Clear</button></div>` : '<p class="small">No safety flags. 👍</p>'}</div>`;
   const kids = Object.values(PROFILES).map((pr) => { const c = consentOf(pr.id); const on = (x) => (x ? '✅' : '⛔');
     return `<div class="row between cs-kid"><span><b>${esc(pr.name)}</b> · ${esc(pr.bandEn)}${pr.u13 ? ' · under 13' : ''}<br><small>AI tutor ${on(c.tutor)} · homework helper ${on(c.homework)} · cloud voices ${on(c.cloud)} · microphone ${on(c.mic)}</small></span><span class="row"><button class="btn soft" data-act="consent-edit" data-arg="${pr.id}">Consent</button><button class="btn ghost" data-act="profile-edit" data-arg="${pr.id}">Edit profile</button></span></div>`; }).join('');
   const consentCard = `<div class="card stack keep-en"><h2>🔐 الخُصُوصِيَّة وَالمُوَافَقَة <span class="en">Privacy and consent</span></h2>${kids || '<p>No players yet.</p>'}<details><summary>Read the privacy notice</summary>${privacyNoticeHTML()}</details></div>`;
-  $('parent-body').insertAdjacentHTML('afterbegin', alertHTML + consentCard);
+  const h = HELPLINES[countryCode()];
+  const countryCard = `<div class="card stack parent-country" id="parent-country"><h2>📞 البَلَدُ وَأَرْقَامُ المُسَاعَدَة <span class="en">Country for helpline numbers</span></h2>
+    <label for="country-sel" lang="ar">إِذَا كَتَبَ طِفْلُكَ شَيْئًا مُقْلِقًا، يَذْكُرُ صَقُّور أَرْقَامَ هَذَا البَلَد. <span class="en en-block keep-en">If your child writes something worrying, Saqqour gives the numbers for this country.</span></label>
+    <select id="country-sel" class="country-sel" style="font-size:1.05rem;padding:10px 12px;border-radius:14px;border:2px solid #c9d6ff;background:#fff;width:100%;font-family:inherit">${COUNTRIES.map((c) => `<option value="${c[0]}" ${countryCode() === c[0] ? 'selected' : ''}>${c[1]} · ${c[2]}</option>`).join('')}</select>
+    <p class="small keep-en" dir="ltr">${h.child ? `Emergency ${esc(h.emerg)} · ${esc(h.en)} ${esc(h.child)}` : 'Your local emergency number and child helpline'}</p>
+    <p class="small keep-en" dir="ltr">AI features on this device: ${aiAccess() ? 'set up ✅' : 'not set up (open the family setup link once on this device)'}</p></div>`;
+  $('parent-body').insertAdjacentHTML('afterbegin', alertHTML + countryCard + consentCard);
 };
 Object.assign(ACTIONS, {
   'profile-add': (a) => openProfileSetup(a),
@@ -9320,7 +9336,7 @@ function a11yPass(root) {
 /* SAQQOUR_V16_INTEGRATED */
 /* Saqqour safeguarding: one source for the Worker (imported) and the page (tutor/build.py strips `export`).
    detectRisk(text) → { kind, level } | null. Arabic (Fusha + Gulf, Levantine, Egyptian), Arabizi-free English.
-   Kinds: selfharm, abuse, distress (high/low → session ends, parent flag), sexual, contact, unsafe, jailbreak, pii (refuse, carry on).
+   Kinds: selfharm, abuse, grooming, distress (high → session ends, parent flag), sexual, contact, unsafe, jailbreak, pii (refuse, carry on).
    Text is normalised first (no harakat/tatweel, one alef, ة→ه, ى→ي), so patterns are written without harakat. */
 function normRisk(s) {
   return String(s == null ? '' : s).toLowerCase().replace(/[\u064B-\u065F\u0670\u0640]/g, '').replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/ؤ/g, 'و').replace(/ئ/g, 'ي')
@@ -9336,6 +9352,24 @@ const RISK_RULES = [
     /\b(he|she|they|my (dad|mum|mom|father|mother|uncle|aunt|brother|sister|teacher|driver|nanny|maid|cousin|coach)|someone|a man|a woman|grown ?up)\b.{0,30}\b(hits?|beats?|hurts?|kicks?|slaps?|touch(es|ed)?|chokes?|burn(s|ed)?|locks?|lock(ed)?) (me|my)\b/, /\b(hit|beat|hurt|kicked|slapped|punched|touched|choked|burned|locked) me\b/,
     /\btouch(es|ed)? my (private|body|bottom|chest)/, /\b(molest|abus|rape|groom)/, /\bsecret (game|touch)/, /\bscared of (my )?(dad|mum|mom|father|mother|uncle|brother|teacher|driver|nanny|him|her)\b/, /\bno food at home\b/, /\bthreaten(s|ed)? (me|to)\b/,
     /(يضرب|تضرب|بيضرب|بتضرب|ضرب|يضربو|يعور|يوجع|يرفس|رفس|يلمس|لمس|يحرق|حرق|يخنق|خنق|يحبس|حبس|يكفخ|كفخ|يعض)(ني|وني|تني|ونا|ونني)/, /(يقفلون|يقفل|قفل|قفلو|بيقفلو) (علي|الباب علي)/, /(يلمس|لمس|يلمسو|بيلمس) ?(جسمي|جسدي|مكان خاص|اماكن خاصه|خاصتي)/, /تحرش|اغتصاب|اغتصب|اعتداء|يعتدي|اعتدي علي/, /(خايف|خايفه|خايفة|خوفان|مرعوب) من (ابوي|امي|ابي|بابا|ماما|عمي|خالي|اخوي|اختي|المدرس|المدرسه|السواق|الخدامه|المربيه|زوج امي)/, /(يهدد|هدد|بيهدد|تهدد)(ني|نا)/, /(ما|لا) (يعطوني|يعطونا|يعطونني|بيطعموني|يطعمونني) (اكل|ياكل|طعام)/, /سر بيني وبينه|لا تقول لاحد|ما تقول لحد/] },
+  /* v18: grooming signs (someone asking for photos, secrecy from parents, a "secret friend", meeting someone from online).
+     Caught here, on the device and in the Worker, before any model: same calm script as abuse (a trusted adult + helpline). */
+  { kind: 'grooming', level: 'high', re: [
+    /\b(do ?n[o']?t|dont|never|not to) tell (my |your |ur )?(mum|mom|mommy|mummy|mother|dad|daddy|father|parents?|family|anyone|anybody|teachers?)\b/,
+    /\bsecret (friend|boyfriend|girlfriend|chat|account)\b/, /\bsecret between (us|me and (him|her|them))\b/, /\b(keep|kept) (it|this|us|our (chats?|talks?|friendship)) (a )?secret\b/,
+    /\b(asked|asks|wants?|wanted|told|tells|keeps asking|begged|made) me (to )?(send|show|take)( him| her| them)? (a |some |more |my )?(photos?|pics?|pictures?|selfies?|videos?|nudes?)\b/, /\bsend (him|her|them) (a |my |some )?(photos?|pics?|pictures?|selfies?|videos?)\b/,
+    /\b(someone|somebody|a (man|guy|boy|girl|lady|person|stranger)|he|she)\b.{0,30}\b(online|in (the |a )?game|on (roblox|fortnite|minecraft|discord|tiktok|snapchat|instagram))\b.{0,40}\b(meet|photos?|pics?|secret|gifts?|address|where i live)\b/,
+    /\b(stranger|man|guy|someone|somebody)( online| from (the )?(game|internet))? (wants|asked|asks|keeps asking) (me )?to meet\b/, /\bmeet (up )?(with )?(a |my )?(online friend|stranger|someone (i met|from) online)\b/,
+    /\b(he|she|they) (gave|gives|give|promised) me (gifts?|money|robux|v-?bucks|presents?)\b.{0,40}\b(secret|don'?t tell|not tell|photos?|pics?|meet)\b/,
+    /((لا|ما|مش) ?(تقول|تقولي|تقولين|تقولش|تقوليش|تخبر|تخبري|تخبرين|تحكي|تحكيش|تعلم|تقل)|متقول|متقولي|متقولش|متقوليش|متحكيش|ماتقول|ماتقولي|ماتخبر|ماتخبري|ماتحكي) ?(ل|ال)? ?(امك|ابوك|امج|ابوج|ماما|بابا|مامتك|باباك|والديك|اهلك|اهلج|اي احد|احدا|احد|حدا|حد)/,
+    /(قال|قالت|قالو|قالوا|طلب|طلبت|يقول|بيقول|تقول|يبي|يبغي|بدو|بده)(لي|ني|مني|ي)? ?(اني |ان )?(ما|لا|مش) ?(اقول|اخبر|احكي|اعلم|اقل)/,
+    /(صديق|صديقه|صاحب|صاحبه|حبيب|حبيبه) ?(سري|سريه|بالسر|في السر)/, /(صديقي|صاحبي|صديقتي|صاحبتي) (السري|السريه)/, /سر بيننا|سر بيني وبينها|سرنا احنا/,
+    /(ارسل|ابعث|ابعت|اصور|نرسل|ارسلت|بعثت|بعتت)(ي)? ?(له|لها|ليه|لو|لهم|لاه) ?(صور|صوره|صورتي|صوري|سيلفي|فيديو)/,
+    /(طلب|يطلب|بيطلب|طلبت|تطلب|يبي|يبغي|بدو|بده) ?(مني|لي)? ?(صوري|صورتي|صور مني|صور لي|سيلفي مني)/, /(طلب|يطلب|بيطلب|طلبت|تطلب) مني (صور|صوره|فيديو)/,
+    /(اونلاين|عالنت|علي النت|في النت|بالنت|في اللعبه|باللعبه|في الجيم|بالجيم|روبلوكس|فورتنايت|ماينكرافت|ديسكورد|غريب|غريبه|ما اعرفه|ما اعرفها|مش عارفه|ما بعرفه|ما بعرفو|لا اعرفه).{0,40}(نتقابل|نتلاقي|اقابله|اقابلها|نلتقي|التقي|نشوف بعض|يشوفني|تشوفني|صوري|صورتي|صور مني|سر|هديه|هدايا|عنواني|وين ساكن|بيتي)/,
+    /* Fusha: «طلب مني أن أرسل صوري», «ألا أخبر أمي» */
+    /(طلب|يطلب|طلبت|تطلب|يريد|يريدني|تريد|اراد|ارادني|اقنعني|يلح|الح)[^.؟?!]{0,20}(ان|ل)? ?(ارسل|ابعث|اصور|اريه|اريها)[^.؟?!]{0,10}(صور|صوري|صورتي|صورا|صوره|فيديو)/, /(الا|ان لا) ?(اخبر|اقول|احكي|اعلم|يعلم|تعلم)[^.؟?!]{0,8}(امي|ابي|والدي|والدتي|اهلي|احدا|اسرتي|معلمتي|معلمي)/,
+    /(يبي|يبغي|بدو|بده|عايز|عاوز|يريد|طلب|قال) ?(ن|ا)?(تقابل|نتقابل|اقابله|نلتقي|التقيه|يشوفني|يقابلني).{0,40}(اونلاين|في النت|علي النت|في اللعبه|غريب|ما اعرفه|بالسر|ولا تقول|وما تقول)/] },
   { kind: 'distress', level: 'high', re: [
     /\b(bull(y|ied|ies|ying))\b/, /\b(nobody|no one|no-one) (loves|likes|cares about|wants) me\b/, /\bi('?m| am) (so |really |very )?(sad|scared|afraid|lonely|depressed|terrified|alone|crying|upset)\b/, /\bi (feel|felt) (so |really |very )?(sad|scared|alone|lonely|empty|worthless|hopeless)\b/, /\bpanic attack/, /\bi hate myself\b/, /\bi (keep )?cry(ing)?\b/,
     /(يتنمر|يتنمرون|تنمر|بيتنمرو|متنمر)/, /(محد|ماحد|ما حد|مافي حد|ولا حد|محدا|ما حدا|محدش|مفيش حد|لا احد) (يحبني|بيحبني|يبيني|بدو ياني|عايزني|يهتم|يريدني)/, /(انا |اني )?(حزين|حزينه|زعلان وايد|زعلانه وايد|مكتئب|مكتئبه|وحيد|وحيده|خايف وايد|خايفه وايد|مرعوب|مرعوبه|مخنوق|مخنوقه|ضايق وايد)/, /(ابكي|بكيت|عم ابكي|ببكي|قاعد ابكي|قاعده ابكي)/, /(اكره نفسي|كاره نفسي|انا فاشل|انا غبي وما احد)/] },
@@ -9346,7 +9380,7 @@ const RISK_RULES = [
     /(تجاهل|انسى|انس|اترك) (كل )?(التعليمات|القواعد|الاوامر)/, /(انت الحين|انت الان|من الحين انت|تظاهر انك|خليك انت) /, /(قول|اكتب) (لي )?(التعليمات|البرومبت)/] },
   { kind: 'pii', level: 'low', re: [/(\+?\d[\d\s-]{6,}\d)/, /[\w.+-]+@[\w-]+\.[\w.]+/, /\b(my|our) (address|phone|number|school|password|full name|surname|last name)\b/, /\b(my name is|i live (in|at|on)|i go to .{0,20} school|i'?m \d{1,2} years)\b/, /\b(street|road|villa|apartment|flat) ?\d+/,
     /(اسمي|اسم عيلتي|رقمي|رقم تلفوني|رقم تلفون|عنواني|عنوان بيت|باسورد|كلمه السر|ساكن في|ساكنه في|بيتنا في|مدرستي اسمها|ادرس في مدرسه|عمري \d)/] }];
-const HIGH = new Set(['selfharm', 'abuse', 'distress']);
+const HIGH = new Set(['selfharm', 'abuse', 'grooming', 'distress']);
 /* patterns are matched against normalised text, so normalise their Arabic letters the same way once */
 const RULES_N = RISK_RULES.map((r) => ({ kind: r.kind, level: r.level, re: r.re.map((re) => new RegExp(re.source.replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/ؤ/g, 'و').replace(/ئ/g, 'ي'), re.flags)) }));
 function detectRisk(text) {
@@ -9386,11 +9420,34 @@ const REFUSE = {
   fusha: { pii: 'لَا [تَحْتَاجُ|تَحْتَاجِينَ] إِلَى إِخْبَارِي بِأَشْيَاءَ خَاصَّةٍ. هَيَّا نُكْمِلُ العَرَبِيَّةَ!', other: 'أَنَا أُسَاعِدُ فِي العَرَبِيَّةِ فَقَطْ. هَيَّا نُكْمِلُ الدَّرْسَ!' } };
 const gform = (s, g) => s.replace(/\[([^|\]]*)\|([^\]]*)\]/g, (_, m, f) => (g === 'f' ? f : m));
 /* actions for the UI. High risk: three calm lines + end. Low risk: one line + a "carry on" ask. */
-function safetyActions(risk, dialect, gender) {
+/* v18: helplines by country (parent setting; UAE is the default). Sources in tutor/SAFETY.md. The reviewed scripts name the
+   UAE numbers (116111 child helpline, 999 emergency); they are swapped for the family's country here. 'other' = no number,
+   "your local child helpline / emergency number". Lebanon has no national child helpline, so its line is the national
+   emotional-support lifeline 1564 (Ministry of Public Health + Embrace) and the wording says so. */
+const HELPLINES = {
+  ae: { child: '116111', emerg: '999', en: 'the UAE Child Helpline' },
+  sa: { child: '116111', emerg: '911', en: 'the Saudi Child Helpline' },
+  eg: { child: '16000', emerg: '122', en: 'Child Helpline Egypt' },
+  jo: { child: '110', emerg: '911', en: 'the 110 Helpline (Jordan River Foundation)' },
+  lb: { child: '1564', emerg: '112', en: 'the national Lifeline for emotional support', ar: 'الدَّعْم النَّفْسِي' },
+  uk: { child: '0800 1111', emerg: '999', en: 'Childline' },
+  us: { child: '1-800-422-4453', emerg: '911', en: 'the Childhelp hotline' },
+  other: { child: null, emerg: null, en: 'your local child helpline' } };
+const countryOf = (c) => (HELPLINES[c] ? c : 'ae');
+function localizeHelp(text, country, en) {
+  const h = HELPLINES[countryOf(country)]; if (countryOf(country) === 'ae' || !text) return text;
+  if (en) return text.replace(/the UAE Child Helpline 116111/g, h.child ? `${h.en} ${h.child}` : h.en).replace(/call 999/g, h.emerg ? `call ${h.emerg}` : 'call your local emergency number').replace(/\b999\b/g, h.emerg || 'your local emergency number');
+  let t = text;
+  if (h.ar) t = t.replace(/نَجْد[َِ]ة الطِّفْل|نَجْدَةِ الطِّفْلِ/g, h.ar);
+  if (!h.child) t = t.replace(/ ?116111/g, ' المَحَلِّي');
+  return t.replace(/116111/g, h.child).replace(/999/g, h.emerg || 'رَقْم الطَّوَارِئ');
+}
+function safetyActions(risk, dialect, gender, country) {
   const d = SAFE_SCRIPT[dialect] ? dialect : 'emirati';
+  if (country === undefined && typeof globalThis !== 'undefined' && typeof globalThis.SAQ_COUNTRY === 'function') country = globalThis.SAQ_COUNTRY();
   if (HIGH.has(risk.kind)) {
-    const ab = risk.kind === 'abuse';
-    const acts = SAFE_SCRIPT[d].map((ar, i) => ({ type: 'say', register: d === 'fusha' ? 'fusha' : 'dialect', ar: gform(ab && i === 1 ? ABUSE_LINE[d] : ar, gender), en: ab && i === 1 ? ABUSE_LINE.en : SAFE_SCRIPT.en[i], mood: 'listen', safety: true }));
+    const ab = risk.kind === 'abuse' || risk.kind === 'grooming';
+    const acts = SAFE_SCRIPT[d].map((ar, i) => ({ type: 'say', register: d === 'fusha' ? 'fusha' : 'dialect', ar: localizeHelp(gform(ab && i === 1 ? ABUSE_LINE[d] : ar, gender), country), en: localizeHelp(ab && i === 1 ? ABUSE_LINE.en : SAFE_SCRIPT.en[i], country, true), mood: 'listen', safety: true }));
     acts.push({ type: 'end', safety: true }); return acts;
   }
   const R = REFUSE[d]; const key = risk.kind === 'pii' ? 'pii' : risk.kind === 'contact' ? 'contact' : 'other';
@@ -9627,6 +9684,12 @@ const TL = {
     egyptian: 'أَهْلاً يَا {name}! أَنَا صَقُّور، المُسَاعِد الذَّكِي بْتَاع[ك|ك]. أَنَا ذَكَاء اصْطِنَاعِي، مِش بَنِي آدَم. يَلَّا نِتْعَلِّم عَرَبِي!',
     lebanese: 'مَرْحَبا {name}! أَنَا صَقُّور، المْسَاعِد الذَّكِي تَبَع[ك|ك]. أَنَا ذَكَاء اصْطِنَاعِي، مِش إِنْسَان. يَلَّا نِتْعَلَّم عَرَبِي!',
     fusha: 'مَرْحَباً يَا {name}! أَنَا صَقُّورٌ، مُسَاعِدُ[كَ|كِ] الذَّكِيُّ. أَنَا ذَكَاءٌ اصْطِنَاعِيٌّ وَلَسْتُ إِنْسَاناً. هَيَّا نَتَعَلَّمُ العَرَبِيَّةَ!' },
+  /* v18: the scripted falcon (no AI on this device, or the AI is unreachable) never calls itself an AI helper */
+  intro_s: { en: "Hi {name}! I'm Saqqour the falcon. Let's learn Arabic together!",
+    emirati: 'هَلَا {name}! أَنَا صَقُّور. يَلَّا نِتْعَلَّم عَرَبِي!', saudi: 'هَلَا {name}! أَنَا صَقُّور. يَلَّا نِتْعَلَّم عَرَبِي!',
+    egyptian: 'أَهْلاً يَا {name}! أَنَا صَقُّور. يَلَّا نِتْعَلِّم عَرَبِي!', lebanese: 'مَرْحَبا {name}! أَنَا صَقُّور. يَلَّا نِتْعَلَّم عَرَبِي!',
+    fusha: 'مَرْحَباً يَا {name}! أَنَا صَقُّورٌ. هَيَّا نَتَعَلَّمُ العَرَبِيَّةَ!' },
+  offtopic_s: { en: "Good question! I'm here just for Arabic, so let's keep going.", emirati: 'سُؤَال حِلُو! بَسّ أَنَا هِنِي لِلْعَرَبِي، خَلْنَا نْكَمِّل.', saudi: 'سُؤَال حِلُو! بَسّ أَنَا هِنَا لِلْعَرَبِي، خَلْنَا نْكَمِّل.', egyptian: 'سُؤَال حِلْو! بَسّ أَنَا هِنَا لِلْعَرَبِي، يَلَّا نْكَمِّل.', lebanese: 'سُؤَال حِلُو! بَسّ أَنَا هَوْن لِلْعَرَبِي، يَلَّا نْكَفِّي.', fusha: 'سُؤَالٌ جَمِيلٌ! لَكِنَّنِي هُنَا لِلْعَرَبِيَّةِ فَقَطْ، فَلْنُكْمِلْ.' },
   greet: { en: 'Hi {name}! How are you today?',
     emirati: 'هَلَا {name}! [شَحَالَك|شَحَالِج] اليُوم؟', saudi: 'هَلَا {name}! [كَيْفَك|كَيْفِك] اليُوم؟', egyptian: 'أَهْلاً يَا {name}! [إِزَّيَّك|إِزَّيِّك] النَّهَارْدَه؟',
     lebanese: 'مَرْحَبا {name}! [كِيفَك|كِيفِك] اليُوم؟', fusha: 'مَرْحَباً يَا {name}! كَيْفَ حَالُ[كَ|كِ] اليَوْمَ؟' },
@@ -9729,7 +9792,7 @@ const SKILL_ACTS = { vocab: ['word_card', 'listen'], listening: ['listen', 'word
 class MockBrain extends TutorBrain {
   get id() { return 'mock'; }
   L(key, vars) { const c = this.ctx; return tline(key, Object.assign({ name: c.kid().ar, nameEn: c.kid().en }, vars || {}), c.dialect(), c.kid().gender); }
-  say(key, vars, mood, extra) { const l = this.L(key, vars); return Object.assign({ type: 'say', ar: l.ar, en: l.en, mood: mood || 'happy', draft: l.draft }, extra || {}); }
+  say(key, vars, mood, extra) { if (TL[key + '_s']) key = key + '_s'; /* v18: scripted lines, never 'AI helper' */ const l = this.L(key, vars); return Object.assign({ type: 'say', ar: l.ar, en: l.en, mood: mood || 'happy', draft: l.draft }, extra || {}); }
   skillName(id) { const s = SKILL[id]; return s ? { skill: s.ar, skillEn: s.en } : { skill: '', skillEn: '' }; }
   /* ---- planning from the skill engine ---- */
   plan(mood) {
@@ -10194,7 +10257,7 @@ function ttStars() { $('tt-stars').innerHTML = `${ART_ICON2.star ? artImg(ART_IC
 function ttBubbleHTML(a) {
   const i = TT.msgs.length; TT.msgs.push(a);
   const f = a.focus; const pic = a.pic || (f && f.pic);
-  const hero = a.hero ? `<div class="tt-hero">${falconSVG('happy', 'lg tt-hero-falcon')}<span class="tt-ai-badge">${artImg('ic2_spark')}<span class="en">AI tutor · not a person</span></span></div>` : '';
+  const hero = a.hero ? `<div class="tt-hero">${falconSVG('happy', 'lg tt-hero-falcon')}${typeof AzureBrain === 'function' && TT.brain instanceof AzureBrain && !TT.brain.fallback ? `<span class="tt-ai-badge">${artImg('ic2_spark')}<span class="en">AI tutor · not a person</span></span>` : ''}</div>` : '';
   const focus = f ? `<div class="tt-focus">${pic ? tPic(pic, 'pa-mid') : ''}<span><b lang="ar">${esc(f.ar)}</b><span class="en">${esc(f.en)}</span></span>${f.say ? tHear(f.say, 'fusha') : ''}</div>` : a.pic ? `<div class="tt-focus solo">${tPic(a.pic, 'pa-mid')}</div>` : '';
   const sk = a.skill && SKILL[a.skill] ? `<span class="tt-skill" style="--sc:${SKILL[a.skill].color}">${esc(SKILL[a.skill].en)}</span>` : '';
   return `${hero}<div class="tt-row-msg">${ttFace(a.mood)}<div class="tt-bub ${a.type}">${focus}
@@ -10322,15 +10385,18 @@ document.addEventListener('click', (e) => {
 (function () {
   'use strict';
   /* endpoint: same origin by default (local server), or a hosted Worker. Set once with
-     ?tutor=https://saqqour-tutor.<acct>.workers.dev&code=FAMILYCODE  (saved in DB.settings, then removed from the URL) */
+     ?tutor=https://saqqour-tutor.<acct>.workers.dev&code=TOKEN  or  #code=TOKEN  (saved in DB.settings, then removed from the URL) */
   try { const q = new URLSearchParams(location.search); let ch = false; const q0 = {};
     if (q.has('tutor')) { DB.settings.tutorEndpoint = q0.tutorEndpoint = q.get('tutor').replace(/\/+$/, ''); q.delete('tutor'); ch = true; }
     if (q.has('code')) { DB.settings.familyCode = q0.familyCode = q.get('code'); q.delete('code'); ch = true; }
+    /* v18: the family setup link carries the token after # (never sent to the web server, not in its logs): …/#code=fam_… */
+    let hash = location.hash; const hm = hash.match(/^#(?:(.*?)&)?code=([A-Za-z0-9_-]{6,80})(?:&(.*))?$/);
+    if (hm) { DB.settings.familyCode = q0.familyCode = hm[2]; hash = [hm[1], hm[3]].filter(Boolean).join('&'); hash = hash ? '#' + hash : ''; ch = true; }
     /* v17 fix: this runs before the save is loaded, so saveDB() here wrote an empty save over the family's progress.
        Merge the two settings into the stored save instead (loadDB() then reads them with everything else). */
     if (ch) { try { const raw = localStorage.getItem(STORE_KEY); const d = raw ? JSON.parse(raw) : null;
         if (d && typeof d === 'object') { d.settings = Object.assign(d.settings || {}, q0); localStorage.setItem(STORE_KEY, JSON.stringify(d)); } else saveDB(); } catch (e) { /* */ }
-      history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + location.hash); } } catch (e) { /* */ }
+      history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + (hm ? hash : location.hash)); } } catch (e) { /* */ }
   /* v16: on the published app the Worker address is known; a parent still has to add the family code once (?code=…) */
   /*     (computed, not saved: no new save field, and the saved settings object is replaced when the save loads) */
   const DEF_EP = /(^|\.)rarmoush\.github\.io$/.test(location.hostname) ? 'https://saqqour-tutor.rarmoush.workers.dev' : '';
@@ -10365,6 +10431,7 @@ document.addEventListener('click', (e) => {
     s.words = pick.map((w) => ({ id: w.id, dialect: w.dia, fusha: w.fusha, en: w.en }));
     try { s.wordle_words = wdData().prac[3].filter((w) => w.em && TB.hasArt(w.em)).slice(0, 10).map((w) => w.ar); } catch (e) { s.wordle_words = []; }
     s.first_session = !((p.tutor && p.tutor.sessions) > 0);
+    s.country = typeof SAQ_COUNTRY === 'function' ? SAQ_COUNTRY() : 'ae'; /* v18: helpline numbers in the safety script */
     return s;
   };
   AzureBrain.prototype.post = (function (orig) {
@@ -10430,8 +10497,11 @@ document.addEventListener('click', (e) => {
 
   /* ---- use the cloud brain when the server is reachable ---- */
   const mockMake = window.ttMakeBrain;
-  window.ttMakeBrain = function () { return AZ.ok && TTP().brain !== 'mock-forced' ? new AzureBrain(ttCtx(), BASE() + '/api/tutor') : mockMake(); };
-  AZ.ready = (location.protocol === 'file:' && !BASE() ? Promise.reject(new Error('offline')) : fetch(BASE() + '/api/health', { cache: 'no-store', headers: HDR() })).then((r) => r.json()).then((h) => { AZ.ok = !!h.tutor; AZ.tts = !!h.tts; document.body.classList.add('az-on'); }).catch(() => { AZ.ok = false; });
+  window.ttMakeBrain = function () { return AZ.ok && (typeof aiAccess !== 'function' || aiAccess()) && TTP().brain !== 'mock-forced' ? new AzureBrain(ttCtx(), BASE() + '/api/tutor') : mockMake(); };
+  /* v18: no family token on this device → no AI, so no health call at all (no 401 in the console for every visitor) */
+  const azHealth = () => ((location.protocol === 'file:' && !BASE()) || !BASE() && location.protocol !== 'http:' || (typeof aiAccess === 'function' && !aiAccess()) ? Promise.reject(new Error(typeof aiAccess === 'function' && !aiAccess() ? 'no family token' : 'offline')) : fetch(BASE() + '/api/health', { cache: 'no-store', headers: HDR() })).then((r) => { if (!r.ok) throw new Error('health ' + r.status); return r.json(); }).then((h) => { AZ.ok = !!h.tutor; AZ.tts = !!h.tts; document.body.classList.add('az-on'); }).catch(() => { AZ.ok = false; });
+  /* runs after the save is loaded (DOMContentLoaded), so the family token on this device is known */
+  AZ.ready = new Promise((res) => { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => res(azHealth())); else res(azHealth()); });
   const mo = new MutationObserver(addToggle); mo.observe(document.body, { childList: true, subtree: true });
 })();
 
@@ -10660,6 +10730,7 @@ function mhCompose() {
       ${micAllowed(currentKid) ? `<button type="button" class="mh-mic" data-act="mh-mic" aria-label="تَكَلَّمْ مَعَ ${esc(nm)}">${mhArt('ic2_mic')}</button>` : ''}
       <input id="mh-text" type="text" dir="rtl" lang="ar" maxlength="200" placeholder="${G('اُكْتُبْ', 'اُكْتُبِي')} لِـ${esc(nm)}…" aria-label="رِسَالَة">
       <button type="submit" class="mh-send" aria-label="أَرْسِلْ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H6m5-6-6 6 6 6"/></svg></button></form>`;
+  } else if (!aiAccess()) { box.innerHTML = '';
   } else {
     box.innerHTML = `<div class="mh-note" role="note"><span class="mh-note-ic" aria-hidden="true">${mhArt('ic2_lock')}</span>
       <p><b>المُحَادَثَةُ الحُرَّةُ مَعَ ${esc(nm)}</b><span>يُمْكِنُ لِأَحَدِ الوَالِدَيْنِ تَشْغِيلُهَا.</span><span class="en en-block">A parent can turn on free chat with the talking tutor.</span></p>
@@ -10681,7 +10752,7 @@ function mhPlan(p) {
   const out = ['letter', 'story'];
   const w = wdStatusFor(p); if (!(w.s && w.s.done)) out.push('wordle');
   if (itemOfDay(p)) out.push('dress');
-  out.push('homework', 'game', 'build');
+  out.push(...(aiAccess() ? ['homework'] : []), 'game', 'build');
   return out;
 }
 
@@ -10701,7 +10772,7 @@ function mhShow(fresh) {
 function mhStart() {
   const p = P(); MH.kid = currentKid; MH.msgs = []; MH.cards = {}; MH.shown = {}; MH.delay = 0; MH.brain = null; MH.safeEnd = false; mhChat().innerHTML = '';
   const pr = PROFILES[currentKid]; const plan = mhPlan(p); MH.plan = plan;
-  const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); const ai = tutorAllowed(currentKid) ? mhLine('ai') : null;
+  const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); const ai = mhCloud() ? mhLine('ai') : null; /* v18: only when the AI is really on */
   mhHero(greet, ai); MH.hist = [greet].concat(ai ? [ai] : []);
   mhSay(mhLine('sug_letter')); mhCards(['letter']); MH.shown.letter = 1;
   mhSay(mhLine('sug_story')); mhCards(['story', plan.includes('wordle') ? 'wordle' : 'build']); MH.shown.story = 1; MH.shown[plan.includes('wordle') ? 'wordle' : 'build'] = 1;
@@ -10820,7 +10891,7 @@ function mhReturn() {
 
 /* ---------- the guided lesson (the tutor screen) as one more activity ---------- */
 function mhLesson() {
-  if (!tutorAllowed(currentKid)) { MH.act = null; ACT_SIG.cur = null; openConsent(currentKid, () => { mhHeader(); mhCompose(); }); return; }
+  if (!tutorAllowed(currentKid)) { MH.act = null; ACT_SIG.cur = null; openConsent(currentKid, () => { mhHeader(); mhCompose(); /* v18: once a parent switches the tutor on, the lesson the child asked for opens */ if (tutorAllowed(currentKid) && typeof ilOpen === 'function' && !MH_LEGACY) setTimeout(() => ilOpen('lesson'), 160); }); return; }
   actStart('lesson'); $('mh').classList.add('hidden'); document.body.classList.remove('mh-on'); ttOpen(true);
 }
 /* the tutor's Explore button and its goodbye now lead back to the falcon */
@@ -10842,7 +10913,7 @@ const MH_HW_RE = /(واجب|وظيفه|وظيفة|فرض|فروض|ورقه عم�
 function mhCloud() { return !!(window.TT_AZ && TT_AZ.ok && tutorAllowed(currentKid)); }
 function mhBrain() {
   if (MH.brain) return MH.brain;
-  const base = (DB.settings.tutorEndpoint || '').replace(/\/api\/tutor$/, '').replace(/\/+$/, '');
+  const base = typeof TT_BASE === 'function' ? TT_BASE() : (DB.settings.tutorEndpoint || '').replace(/\/api\/tutor$/, '').replace(/\/+$/, ''); /* v18: the published Worker address too */
   const b = new AzureBrain(ttCtx(), base + '/api/tutor'); b.started = true; b.sid = 'h' + Date.now().toString(36);
   b.run = function (ev) { return this.post(ev); }; /* errors go to the scripted falcon, never to a mock lesson */
   (MH.hist || []).forEach((l) => b.history.push({ role: 'tutor', text: TB.scrub(l.ar + ' / ' + l.en) }));
@@ -10850,7 +10921,7 @@ function mhBrain() {
 }
 function mhScripted(text, why) {
   const n = normAr(text).toLowerCase();
-  const id = MH_HW_RE.test(n) ? 'homework' : /قص|حكاي|story/.test(n) ? 'story' : /حرف|حروف|letter/.test(n) ? 'letter' : /كلمه اليوم|ووردل|wordle|لغز/.test(n) ? 'wordle' : /لبس|ثوب|dress/.test(n) ? 'dress' : /لعب|game/.test(n) ? 'game' : /كلم|بني|build/.test(n) ? 'build' : null;
+  const id = MH_HW_RE.test(n) && aiAccess() ? 'homework' : /قص|حكاي|story/.test(n) ? 'story' : /حرف|حروف|letter/.test(n) ? 'letter' : /كلمه اليوم|ووردل|wordle|لغز/.test(n) ? 'wordle' : /لبس|ثوب|dress/.test(n) ? 'dress' : /لعب|game/.test(n) ? 'game' : /كلم|بني|build/.test(n) ? 'build' : null;
   setTimeout(() => { MH.delay = 0; if (why === 'offline') mhSay(mhLine('noai')); mhSay(mhLine(id === 'homework' ? 'sug_hw' : 'idea')); mhCards([id || mhPlan(P())[0]]); mhSetChips(mhDefaultChips(id || 'letter')); }, MH.fast ? 0 : 500);
 }
 function mhSpeakLine(l) { if (!l || !l.ar) return; ttSpeak(l.ar, l.register === 'fusha' || l.d === 'fusha' ? 'fusha' : 'dia'); }
@@ -11058,7 +11129,7 @@ async function hwSend(text, image) {
   if (!TT_BASE() || !DB.settings.familyCode) { hwSay({ type: 'say', register: 'fusha', ar: 'مُسَاعِدُ الوَاجِبِ غَيْرُ مُتَّصِلٍ عَلَى هَذَا الجِهَازِ بَعْدُ. اُطْلُبْ مِنْ أَحَدِ وَالِدَيْكَ تَشْغِيلَهُ.', en: 'The homework helper is not connected on this device yet. Ask a parent to set it up.' }); return; }
   HW.busy = true; const ty = hwTyping(!!image); const t0 = Date.now(); let j = null, err = null;
   const body = { session_id: HW.sid, mode: 'homework', task_text: HW.task, task_kind: HW.kind, history: HW.history.slice(-10),
-    event: { type: image ? 'photo' : 'reply', text: TB.scrub(text), image: image || undefined }, state: { dialect: d, learner_gender: g, level: levelInfo(P().xp).lvl } };
+    event: { type: image ? 'photo' : 'reply', text: TB.scrub(text), image: image || undefined }, state: { dialect: d, learner_gender: g, level: levelInfo(P().xp).lvl, country: typeof SAQ_COUNTRY === 'function' ? SAQ_COUNTRY() : 'ae' } };
   image = null; /* the photo leaves memory with this request */
   try {
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 45000);
@@ -11088,7 +11159,7 @@ Object.assign(ACTIONS, {
 { const _ch = consentHTML; consentHTML = function consentHTMLHW(kid, opts) {
   const html = _ch(kid, opts); const c = consentOf(kid);
   const row = `<label class="cs-row"><input type="checkbox" data-consent="homework" data-kid="${kid}" ${c.homework ? 'checked' : ''}><span><b>مُسَاعِدُ الوَاجِب (الصُّوَر)</b> <span class="en">Homework helper (Azure OpenAI)</span><small class="en en-block keep-en">Typed questions and worksheet photos go to Azure for coaching. Photos are shrunk on this device, sent once and never stored; names on the sheet are hidden in replies. Needs the AI tutor switch too.</small></span></label>`;
-  return html.replace(/(<button class="btn big" data-act="consent-done")/, row + '$1'); }; }
+  return aiAccess() ? html.replace(/(<button class="btn big" data-act="consent-done")/, row + '$1') : html; }; }
 window.SAQ_HW = { HW, hwOpen, hwSend, hwPrep, hwClose };
 
 /* =========================================================
@@ -11128,6 +11199,10 @@ function ilIsleArt(d) {
   const a = d.art ? mhArt(d.art) : d.icon && ART_ICON2[d.icon] ? mhArt(ART_ICON2[d.icon]) : '';
   return `<span class="il-art ${d.art && /^st_/.test(d.art) ? 'cover' : ''}" aria-hidden="true">${a}</span>`;
 }
+/* v18: islands that need the AI (family token on this device) */
+const IL_AI = new Set(['homework', 'lesson']);
+const ilVisible = (id) => !IL_AI.has(id) || aiAccess();
+function ilHomeIsles() { const l = IL_PAGES.home.isles.filter(ilVisible); if (l.length < 4) l.push('wordle'); return l; }
 function ilIsle(id, big) {
   const d = ilDef(id); const k = 'i' + (++IL.n); IL.ids[k] = id;
   return `<button class="il-isle t-${d.tone} ${big ? 'big' : ''}" data-act="il-open" data-arg="${k}" data-id="${id}">
@@ -11143,7 +11218,7 @@ function ilNav() {
 }
 function ilHome() {
   const p = P(); const pr = PROFILES[currentKid]; const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); IL.greet = greet;
-  const main = mhPlan(p)[0] || 'letter';
+  const main = mhPlan(p).filter(ilVisible)[0] || 'letter';
   return `<div class="il-hero">
       <div class="il-sky" aria-hidden="true"><i class="c1"></i><i class="c2"></i></div>
       <button class="il-bird" data-act="mh-pat" aria-label="${esc(falconName().ar)}">${falconSVG('happy', 'il-hero-falcon')}</button>
@@ -11152,7 +11227,7 @@ function ilHome() {
     </div>
     <p class="il-kicker">اِقْتِرَاحُ اليَوْم <span class="en">Today's idea</span></p>
     <div class="il-main">${ilIsle(main, true)}</div>
-    <div class="il-grid four">${IL_PAGES.home.isles.map((id) => ilIsle(id)).join('')}</div>`;
+    <div class="il-grid four">${ilHomeIsles().map((id) => ilIsle(id)).join('')}</div>`;
 }
 function ilMe() {
   const p = P(); const li = levelInfo(p.xp); const st = computeStreak(p.activeDays);
@@ -11180,7 +11255,7 @@ function ilRender() {
   IL.n = 0; IL.ids = {}; const pg = IL_PAGES[IL.page] || IL_PAGES.home; let h;
   if (IL.page === 'home') h = ilHome();
   else if (IL.page === 'me') h = `<h2 class="il-h2">${pg.title} <span class="en">${pg.en}</span></h2>` + ilMe();
-  else h = `<h2 class="il-h2">${pg.title} <span class="en">${pg.en}</span></h2>${pg.sub ? `<p class="il-sub">${pg.sub}</p>` : ''}<div class="il-grid ${pg.isles.length > 4 ? 'many' : 'two'}">${pg.isles.map((id) => ilIsle(id)).join('')}</div>`;
+  else h = `<h2 class="il-h2">${pg.title} <span class="en">${pg.en}</span></h2>${pg.sub ? `<p class="il-sub">${pg.sub}</p>` : ''}<div class="il-grid ${pg.isles.filter(ilVisible).length > 4 ? 'many' : 'two'}">${pg.isles.filter(ilVisible).map((id) => ilIsle(id)).join('')}</div>`;
   $('il-page').innerHTML = h; $('il').setAttribute('aria-label', IL.page === 'home' ? 'الرَّئِيسِيَّة' : pg.title); $('il-page').scrollTop = 0;
   ilHeader(); ilNav();
 }
@@ -11231,7 +11306,7 @@ const _ilMhStart = mhStart;
 mhStart = function mhStartIL() {
   const p = P(); MH.kid = currentKid; MH.msgs = []; MH.cards = {}; MH.shown = {}; MH.delay = 0; MH.brain = null; MH.safeEnd = false; mhChat().innerHTML = '';
   const pr = PROFILES[currentKid]; MH.plan = mhPlan(p);
-  const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); const ai = tutorAllowed(currentKid) ? mhLine('ai') : null;
+  const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); const ai = mhCloud() ? mhLine('ai') : null; /* v18: the AI line only when the AI really answers */
   mhHero(greet, ai); MH.hist = [greet].concat(ai ? [ai] : []);
   mhSay(mhLine('ask')); mhSetChips(mhDefaultChips(MH.plan[0] || 'letter')); mhCompose();
   setTimeout(() => { MH.delay = 0; }, 50);
@@ -11269,6 +11344,28 @@ function ilDigits(root) {
 { const _tto = ttOpen; ttOpen = function ttOpenIL() { $('il').classList.add('hidden'); $('il-nav').classList.add('hidden'); document.body.classList.remove('il-on', 'il-area'); return _tto.apply(this, arguments); }; }
 { const _hwo = hwOpen; hwOpen = function hwOpenIL() { $('il').classList.add('hidden'); $('il-nav').classList.add('hidden'); document.body.classList.remove('il-on', 'il-area'); return _hwo.apply(this, arguments); }; }
 { const _sb = mhShowBack; mhShowBack = function mhShowBackIL() { $('il').classList.add('hidden'); document.body.classList.remove('il-on'); return _sb.apply(this, arguments); }; }
+/* v18: never a blank screen. An island that is gated (e.g. the lesson behind the parent PIN / consent) opens its sheet
+   on top of the island page; and whenever a sheet closes with no screen left underneath (✕ on the PIN sheet, consent
+   saved with nothing ticked, any other close path) the child lands back on the island page they came from. */
+const IL_OVERLAYS = new Set(['toast', 'il-nav', 'modal', 'mh-back', 'storage-warning']);
+function ilBlank() {
+  if (!currentKid || MH_LEGACY) return false;
+  return ![...document.body.children].some((e) => !IL_OVERLAYS.has(e.id) && !/^(SCRIPT|STYLE|TEMPLATE|NOSCRIPT)$/.test(e.tagName) && e.offsetWidth > 0 && e.offsetHeight > 0 && getComputedStyle(e).visibility !== 'hidden');
+}
+function ilModalOpen() { const m = $('modal'); return !!(m && !m.classList.contains('hidden') && m.offsetWidth > 0); }
+function ilRescue() {
+  if (!ilBlank()) return false;
+  MH.act = null; if (ACT_SIG.cur && !ACT_SIG.cur.done) actFinish(null, { closed: true }); ACT_SIG.cur = null; IL.chat = false; document.body.classList.remove('il-chat');
+  ilShow(IL.page || 'home'); return true;
+}
+{ const _io = ilOpen; ilOpen = function ilOpenV18(id) { const page = IL.page; const r = _io.apply(this, arguments);
+    /* the activity did not open a screen but a gate sheet (PIN / consent): keep the island page underneath it.
+       (Activities that are sheets themselves, like Wordle, keep their own start/finish signals.) */
+    if (ilModalOpen() && ilBlank() && document.querySelector('#modal-box #pin-form, #modal-box .consent-gate, #modal-box .gate-kid')) { MH.act = null; if (ACT_SIG.cur && !ACT_SIG.cur.done) actFinish(null, { closed: true }); ACT_SIG.cur = null; ilShow(page); }
+    return r; }; }
+{ const _cm = closeModal; closeModal = function closeModalV18() { const r = _cm.apply(this, arguments);
+    setTimeout(() => { if (!ilModalOpen()) ilRescue(); }, 120); return r; }; }
+window.SAQ = Object.assign(window.SAQ || {}, { ilBlank, ilRescue });
 
 /* =========================================================
    v17: nicknames in Arabic letters only, typed with the on-screen Arabic keyboard (a device Arabic keyboard also works;
