@@ -2926,6 +2926,11 @@ body.il-area #app .shop-grid,body.il-area #app .pg-grid{gap:14px}
 .consent-gate .en, .privacy-note .en, .consent-gate small, .prof-setup .en, .parent-country .en{unicode-bidi:isolate}
 .consent-gate .en-block, .consent-gate small.en-block, .prof-setup .en-block, .cs-noai .en-block{unicode-bidi:plaintext}
 
+/* v18b: legal links + adult check */
+.legal-links{text-align:center;font-size:.9rem;margin:10px 0 0}.legal-links a{color:#0b5cad;font-weight:600}
+.privacy-note ul{padding-inline-start:1.1em}.privacy-note li{margin:.35em 0}.privacy-note small.en-block{display:block;opacity:.8;font-size:.78rem;text-align:left;unicode-bidi:plaintext}
+.cs-limits{font-size:.85rem;opacity:.85}
+
 </style>
 </head>
 <body>
@@ -9023,27 +9028,52 @@ function addAlert(kind, level) { if (!Array.isArray(DB.settings.alerts)) DB.sett
 const unseenAlerts = () => (Array.isArray(DB.settings.alerts) ? DB.settings.alerts.filter((a) => !a.seen) : []);
 function refreshAlertDot() { document.querySelectorAll('[data-act="open-parent"]').forEach((b) => b.classList.toggle('has-alert', unseenAlerts().length > 0)); }
 
-/* ---------- privacy notice (Arabic + English, always both: it is for parents) ---------- */
+/* ---------- privacy notice (v18b: Arabic first, small English; full policy at /privacy/) ---------- */
+const LEGAL_BASE = /\/tutor\/?/.test(location.pathname) ? '../' : './';
+function legalLinksHTML() { return `<p class="legal-links" lang="ar"><a href="${LEGAL_BASE}privacy/" target="_blank" rel="noopener">سِيَاسَةُ الخُصُوصِيَّة <span class="en">Privacy</span></a> · <a href="${LEGAL_BASE}terms/" target="_blank" rel="noopener">شُرُوطُ الاسْتِخْدَام <span class="en">Terms</span></a></p>`; }
 function privacyNoticeHTML() {
-  return `<div class="privacy-note keep-en" dir="auto">
-    <h3>الخُصُوصِيَّة <span class="en-keep">Privacy notice</span></h3>
-    <p lang="ar" dir="rtl">كُلُّ التَّقَدُّمِ يُحْفَظُ عَلَى هَذَا الجِهَازِ فَقَطْ. لَا نَطْلُبُ اسْماً حَقِيقِيّاً. صَقُّور مُسَاعِدُ ذَكَاءٍ اصْطِنَاعِيٍّ وَلَيْسَ إِنْسَاناً.</p>
-    <ul dir="ltr">
-      <li><b>On this device only:</b> nickname, age band, progress, settings and safety flags (localStorage). Nothing is uploaded. Clearing the browser data removes it.</li>
-      <li><b>AI tutor (if a parent turns it on):</b> the lesson text (no name, no nickname; numbers, emails and links are removed first), the dialect, the boy/girl word form and skill scores go to Microsoft Azure (OpenAI and AI Content Safety) to make the next tutor reply. It is not stored by the app; Azure may keep it briefly for abuse monitoring.</li>
-      <li><b>Homework helper (if turned on, needs the AI tutor too):</b> the typed question or a photo of an Arabic worksheet goes to Microsoft Azure (OpenAI, AI Content Safety, Prompt Shields) so the tutor can coach your child through it. It gives hints and checks attempts; it never writes the answers. Photos are shrunk and re-saved on this device first (removing location and camera data), sent once and never stored on the device or the server. Names on the sheet are hidden in replies. Only Arabic homework is accepted.</li>
-      <li><b>Cloud voices (if turned on):</b> the Arabic sentence to be read aloud goes to Azure Speech. No voice recording is sent.</li>
-      <li><b>Microphone (if turned on):</b> speech recognition is done by the browser. In Chrome and Edge your child's voice audio is sent to the browser maker (Google or Microsoft) to turn it into text. The app only receives the text.</li>
-      <li><b>Safety:</b> if your child writes something worrying (sadness, being hurt, self-harm), the tutor stops, tells them to talk to you or another trusted adult, and shows a flag here. Only the type and time are kept, never the words.</li>
-      <li>No ads, no tracking, no accounts. Questions or a deletion request: contact the family member who set up this app.</li>
-    </ul></div>`;
+  const li = (ar, en) => `<li><span lang="ar">${ar}</span> <small class="en en-block keep-en" lang="en" dir="ltr">${en}</small></li>`;
+  return `<div class="privacy-note keep-en" dir="rtl">
+    <h3>الخُصُوصِيَّة <span class="en">Privacy</span></h3>
+    <ul>
+      ${li('<b>عَلَى هَذَا الجِهَازِ فَقَط:</b> الاسْمُ المُسْتَعَارُ وَالعُمْرُ وَالتَّقَدُّمُ وَالإِعْدَادَات. لَا شَيْءَ يُرْفَعُ. مَسْحُ بَيَانَاتِ المُتَصَفِّحِ يَحْذِفُهَا.', 'On this device only: nickname, age band, progress, settings. Nothing is uploaded; clearing browser data deletes it.')}
+      ${li('<b>المُعَلِّمُ الذَّكِيّ:</b> بِمُوَافَقَتِكُمْ وَرَمْزِ العَائِلَةِ فَقَط. يُرْسَلُ نَصُّ الدَّرْسِ بِلَا اسْمٍ إِلَى مَايْكْرُوسُوفْت أَزُور. قَدْ يُحْفَظُ حَتَّى ٣٠ يَوْمًا لِرَصْدِ الإِسَاءَة.', 'AI tutor: only with your consent and the family token. Lesson text, without names, goes to Microsoft Azure; Azure may keep it up to 30 days for abuse monitoring.')}
+      ${li('<b>مُسَاعِدُ الوَاجِبَات:</b> السُّؤَالُ أَوْ صُورَةُ الوَرَقَةِ تُرْسَلُ مَرَّةً وَاحِدَةً وَلَا تُحْفَظ. تَلْمِيحَاتٌ لَا إِجَابَات.', 'Homework helper: the question or worksheet photo is sent once and never stored. Hints, not answers.')}
+      ${li('<b>الأَصْوَات:</b> الجُمْلَةُ العَرَبِيَّةُ فَقَطْ، بِلَا تَسْجِيلٍ صَوْتِيّ. <b>المَايْك:</b> المُتَصَفِّحُ يُحَوِّلُ الكَلَامَ إِلَى نَصّ.', 'Cloud voices: only the Arabic sentence, no recording. Microphone: the browser turns speech into text (Chrome/Edge send the audio to Google/Microsoft).')}
+      ${li('<b>السَّلَامَة:</b> إِذَا كَتَبَ الطِّفْلُ شَيْئًا مُقْلِقًا يَتَوَقَّفُ صَقُّور وَيَظْهَرُ تَنْبِيهٌ هُنَا، بِلَا الكَلِمَات.', 'Safety: if your child writes something worrying, Saqqour stops and a flag shows here (type and time only).')}
+      ${li('صَقُّور ذَكَاءٌ اصْطِنَاعِيٌّ وَلَيْسَ إِنْسَانًا. لَا إِعْلَانَات، لَا تَتَبُّع، لَا حِسَابَات.', 'Saqqour is an AI, not a person. No ads, no tracking, no accounts.')}
+    </ul>${legalLinksHTML()}</div>`;
 }
+/* ---------- adult check before a parent PIN is first set (v18b) ----------
+   Honest limits: this is a speed bump, not identity verification. A determined older child can pass it; it stops
+   young children from setting the PIN themselves. AI features also need the family token from the setup link. */
+let adultQ = null;
+function newAdultQ() { adultQ = { a: 12 + Math.floor(Math.random() * 8), b: 6 + Math.floor(Math.random() * 4) }; }
+const enDigits = (t) => String(t || '').replace(/[٠-٩]/g, (d) => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, (d) => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/\D/g, '');
+function adultHTML(err) {
+  if (!adultQ) newAdultQ();
+  return `<form class="stack pin-gate adult-gate" id="adult-form" autocomplete="off">
+    <div class="row between"><h2>🧑‍🦱 لِلْكِبَارِ فَقَط <span class="en en-block">Grown-ups only</span></h2><button type="button" class="icon-btn" data-act="modal-close" aria-label="إِغْلَاق Close">✖️</button></div>
+    <p lang="ar">قَبْلَ اخْتِيَارِ الرَّقْمِ السِّرِّيِّ، أَجِبْ عَنْ سُؤَالَيْن. <span class="en en-block small keep-en">Before you set the parent PIN, answer two questions.</span></p>
+    <label for="adult-yr"><b>سَنَةُ مِيلَادِك</b> <span class="en">Year you were born</span></label>
+    <input id="adult-yr" class="pin-in" inputmode="numeric" maxlength="4" required dir="ltr">
+    <label for="adult-mx"><b>كَمْ يُسَاوِي <span dir="ltr">${toArabicDigits(adultQ.a)} × ${toArabicDigits(adultQ.b)}</span>؟</b> <span class="en">What is ${adultQ.a} × ${adultQ.b}?</span></label>
+    <input id="adult-mx" class="pin-in" inputmode="numeric" maxlength="4" required dir="ltr">
+    ${err ? `<p class="pin-err" role="alert">${err} <span class="en">Not quite. Please ask a parent.</span></p>` : ''}
+    <button type="submit" class="btn big">مُتَابَعَة <span class="en">Continue</span></button></form>`;
+}
+document.addEventListener('submit', (e) => {
+  if (!e.target || e.target.id !== 'adult-form') return; e.preventDefault();
+  const y = +enDigits($('adult-yr').value); const m = +enDigits($('adult-mx').value); const age = new Date().getFullYear() - y;
+  if (!(age >= 18 && age <= 110) || m !== adultQ.a * adultQ.b) { newAdultQ(); $('modal-box').innerHTML = adultHTML('لَيْسَ تَمَامًا. اُطْلُبُوا مِنْ أَحَدِ الوَالِدَيْن.'); return; }
+  DB.settings.adultOK = dayKey(); saveDB(); adultQ = null; pinStage = 'new'; $('modal-box').innerHTML = pinHTML(''); setTimeout(() => $('pin-in') && $('pin-in').focus(), 30);
+});
 /* ---------- parent PIN gate ---------- */
 let pinCb = null; let pinStage = null; let pinFirst = '';
 function parentGate(cb, why) {
-  pinCb = cb; pinStage = hasPin() ? 'enter' : 'new'; pinFirst = '';
-  openModal(pinHTML(why), () => { pinCb = null; }, 'sheet');
-  setTimeout(() => { const i = $('pin-in'); if (i) i.focus(); }, 60);
+  pinCb = cb; pinStage = hasPin() ? 'enter' : DB.settings.adultOK ? 'new' : 'adult'; pinFirst = '';
+  openModal(pinStage === 'adult' ? adultHTML() : pinHTML(why), () => { pinCb = null; }, 'sheet');
+  setTimeout(() => { const i = $('pin-in') || $('adult-yr'); if (i) i.focus(); }, 60);
 }
 function pinHTML(why, err) {
   const t = pinStage === 'new' ? ['اِخْتَرْ رَقْمًا سِرِّيًّا لِلْوَالِدَيْن', 'Parents: choose a 4-digit PIN'] : pinStage === 'again' ? ['أَعِدْ كِتَابَةَ الرَّقْم', 'Type the PIN again'] : ['رَقْمُ الوَالِدَيْن', 'Parents: enter your PIN'];
@@ -9073,8 +9103,9 @@ function consentHTML(kid, opts) {
   const row = (k, ar, en, note) => `<label class="cs-row"><input type="checkbox" data-consent="${k}" data-kid="${kid}" ${c[k] ? 'checked' : ''}><span><b>${ar}</b> <span class="en">${en}</span><small class="en en-block keep-en">${note}</small></span></label>`;
   return `<div class="stack consent-gate">
     <div class="row between"><h2>👪 مُوَافَقَةُ الوَالِدَيْن <span class="en en-block">Parent consent · ${esc(pr ? pr.name : '')}${pr && pr.band ? ' · ' + esc(pr.bandEn) : ''}</span></h2><button class="icon-btn" data-act="modal-close" aria-label="إِغْلَاق Close">✖️</button></div>
-    ${pr && pr.u13 ? '<p class="cs-u13 keep-en">🛡️ <b>Under 13:</b> the AI tutor, cloud voices and the microphone stay off until you switch them on here.</p>' : ''}
+    ${pr && pr.u13 ? '<p class="cs-u13" lang="ar">🛡️ <b>أَقَلُّ مِنْ ١٣ سَنَة:</b> المُعَلِّمُ الذَّكِيُّ وَالأَصْوَاتُ وَالمَايْك مُطْفَأَةٌ حَتَّى تُشَغِّلُوهَا هُنَا. <span class="en en-block keep-en">Under 13: the AI tutor, cloud voices and microphone stay off until you switch them on here.</span></p>' : ''}
     ${privacyNoticeHTML()}
+    <p class="cs-limits small" lang="ar">الرَّقْمُ السِّرِّيُّ وَسُؤَالُ الكِبَارِ يُبْعِدَانِ الصِّغَارَ، لَكِنَّهُمَا لَيْسَا تَحَقُّقًا مِنَ الهُوِيَّة. <span class="en en-block keep-en">The PIN and grown-up check keep young children out; they are not identity verification. AI also needs the family setup link.</span></p>
     ${aiAccess() ? row('tutor', 'المُسَاعِد الذَّكِي صَقُّور', 'AI tutor (Azure OpenAI)', 'Lesson text without names goes to Azure. Safety checks run on every message.') : '<p class="cs-noai" lang="ar">المُسَاعِدُ الذَّكِيُّ غَيْرُ مُفَعَّلٍ عَلَى هَذَا الجِهَاز. <span class="en en-block keep-en">AI features are not set up on this device (they need the family setup link). Nothing is sent to the cloud.</span></p>'}
     ${aiAccess() ? row('cloud', 'الأَصْوَات السَّحَابِيَّة', 'Cloud voices (Azure Speech)', 'Only the Arabic sentence to read aloud is sent.') : ''}
     ${row('mic', 'المَايْك', 'Microphone (browser speech recognition)', 'Chrome/Edge send the audio to Google/Microsoft to turn it into text.')}
@@ -11232,6 +11263,7 @@ function ilMe() {
       ${row('open-parent', mhArt('icon_parent'), 'لِلْوَالِدَيْن', 'For parents')}
       ${row('switch-profile', '🔁', 'تَغْيِيرُ اللَّاعِب', 'Switch player')}
     </div>
+    ${typeof legalLinksHTML === 'function' ? legalLinksHTML() : ''}
     <p class="il-brand" lang="ar">${esc(APP_BRAND.ar)} <span class="en">${esc(APP_BRAND.en)}</span></p>`;
 }
 function ilRender() {
