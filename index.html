@@ -3068,6 +3068,100 @@ body:not(.show-en) .tr19-only{display:none!important}
 .jv-node.s-locked .jv-paint{opacity:.78;filter:saturate(.55) brightness(1.06) drop-shadow(0 4px 4px rgba(10,80,110,.10))}
 .jv-node.s-locked .jv-art::after{background:radial-gradient(closest-side,rgba(235,250,255,.35),rgba(235,250,255,0))}
 
+/* v20: bright, calm, uncluttered (no sand / brown / dark) */
+.v20 h2 { font-size: 1.35rem; margin: 0; }
+.v20 .v20-say { font-size: 1.45rem; font-weight: 700; line-height: 1.7; margin: 0; color: #1d3a8a; }
+.v20-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+.v20-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0 4px; }
+.v20-mini { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 8px; border: 0; border-radius: 22px; color: #12306e; font: inherit; box-shadow: 0 4px 0 rgba(30, 80, 160, .15); cursor: pointer; }
+.v20-mini > span[aria-hidden] { font-size: 1.7rem; line-height: 1.2; }
+.v20-mini.sc { background: linear-gradient(160deg, #ffe3f1, #ffc7e1); }
+.v20-mini.pr { background: linear-gradient(160deg, #e2f3ff, #bfe3ff); }
+.v20-mini b { font-size: 1.02rem; } .v20-mini small { color: #e39b00; font-weight: 700; }
+.v20-mL { font-family: 'Noto Naskh Arabic', serif; font-weight: 700; color: #2f6fe4; }
+.v20-revcard { display: flex; align-items: center; gap: 10px; width: 100%; margin: 8px 0 4px; padding: 10px 12px; border: 0; border-radius: 22px; background: linear-gradient(160deg, #fff6c9, #ffe58a); color: #12306e; font: inherit; text-align: start; cursor: pointer; box-shadow: 0 4px 0 rgba(220, 160, 0, .25); }
+.v20-revcard > span { display: flex; flex-direction: column; }
+.v20-dl { font-size: .95rem; color: #3a4f8f; }
+.v20-bird { width: 92px; height: auto; } .v20-bird.sm { width: 54px; flex: none; }
+.v20-tag { display: inline-flex; align-items: center; gap: 6px; margin: 0 auto 6px; padding: 3px 12px; border-radius: 99px; background: #fff1a8; color: #8a5a00; font-size: .9rem; font-weight: 700; }
+.v20-tag img, .v20-tag svg { width: 18px; height: 18px; }
+.ra-w.v20-glow { background: #fff1a8; border-radius: 8px; box-shadow: 0 0 0 2px #ffd84d inset; }
+/* scenes */
+.v20-sgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.v20-scard { position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 14px 8px; border: 0; border-radius: 22px; background: color-mix(in srgb, var(--sc) 22%, #fff); color: #12306e; font: inherit; cursor: pointer; box-shadow: 0 4px 0 color-mix(in srgb, var(--sc) 45%, #fff); }
+.v20-sem { font-size: 2.2rem; } .v20-scard b { font-size: 1.05rem; }
+.v20-ok { position: absolute; top: 8px; inset-inline-end: 10px; width: 26px; height: 26px; border-radius: 50%; background: #2fbf71; color: #fff; display: grid; place-items: center; font-weight: 800; }
+.v20-scene { --sc: #3aa8ff; }
+.v20-steps { display: flex; gap: 8px; justify-content: center; align-items: center; }
+.v20-steps i { width: 12px; height: 12px; border-radius: 50%; background: #dbe7ff; }
+.v20-steps i.on { background: var(--sc); } .v20-steps i.now { background: var(--sc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--sc) 30%, #fff); }
+.v20-steps i.talk { width: 26px; height: 26px; display: grid; place-items: center; } .v20-steps i.talk svg { width: 15px; height: 15px; }
+.v20-kicker { text-align: center; color: #3a4f8f; margin: 4px 0; font-weight: 600; }
+.v20-lcard { padding: 26px 16px; border-radius: 26px; background: color-mix(in srgb, var(--sc) 16%, #fff); text-align: center; border: 3px solid color-mix(in srgb, var(--sc) 40%, #fff); }
+.btn.done { background: #d9f7e6; color: #137a45; }
+.v20-chat { display: flex; flex-direction: column; gap: 10px; max-height: 44vh; overflow: auto; padding: 4px 2px; }
+.v20-msg { display: flex; align-items: flex-end; gap: 8px; }
+.v20-msg p { margin: 0; padding: 10px 14px; border-radius: 20px; font-size: 1.18rem; line-height: 1.6; max-width: 78%; }
+.v20-msg.s p { background: #e6f2ff; color: #12306e; border-end-start-radius: 6px; }
+.v20-msg.n { flex-direction: row-reverse; } .v20-msg.n p { background: color-mix(in srgb, var(--sc) 24%, #fff); color: #12306e; border-end-end-radius: 6px; }
+.v20-av { width: 38px; height: 38px; flex: none; display: grid; place-items: center; } .v20-av svg { width: 38px; height: 38px; } .v20-av.kid { font-size: 1.6rem; }
+.v20-chips { display: flex; flex-direction: column; gap: 10px; }
+.v20-chip { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px; border: 3px solid #cfe0ff; border-radius: 20px; background: #fff; color: #12306e; font: inherit; font-size: 1.15rem; font-weight: 700; cursor: pointer; }
+.v20-chip .en { font-weight: 400; font-size: .85rem; }
+.v20-chip.glow { border-color: #2fbf71; box-shadow: 0 0 0 4px #c9f3dc; }
+.v20-chip.nudge { animation: v20nudge .4s ease 1; opacity: .7; }
+@keyframes v20nudge { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+@media (prefers-reduced-motion: reduce) { .v20-chip.nudge { animation: none; } }
+.v20-done { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.v20-done p { font-size: 1.2rem; font-weight: 700; color: #12306e; margin: 0; }
+/* pronunciation */
+.v20-lgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.v20-ltile { display: flex; flex-direction: column; align-items: center; padding: 10px 2px 8px; border: 0; border-radius: 20px; background: linear-gradient(160deg, #eef6ff, #d6eaff); color: #1d3a8a; font: inherit; cursor: pointer; box-shadow: 0 3px 0 #b9d6ff; }
+.v20-ltile b { font-family: 'Noto Naskh Arabic', serif; font-size: 2.3rem; line-height: 1.3; }
+.v20-lst .st { fill: #dbe3f2; } .v20-lst .st.on { fill: #ffc61a; }
+.v20-wcard { align-self: stretch; width: 100%; box-sizing: border-box; position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 16px; border: 0; border-radius: 28px; background: linear-gradient(160deg, #e9f5ff, #cde8ff); color: #12306e; font: inherit; cursor: pointer; }
+.v20-bigL { font-family: 'Noto Naskh Arabic', serif; font-size: 4.2rem; line-height: 1.2; color: #2f6fe4; }
+.v20-wem { font-size: 2.6rem; } .v20-word { font-size: 1.9rem; font-weight: 700; }
+.v20-res { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.v20-bigstars .st { fill: #dbe3f2; } .v20-bigstars .st.on { fill: #ffc61a; }
+.v20-tip { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 20px; background: #fff0f6; text-align: start; margin-top: 4px; }
+.v20-tip p { margin: 0; color: #7a1f4f; font-size: 1.08rem; line-height: 1.6; } .v20-mouth { font-size: 1.6rem; }
+.mic-big.rec { animation: v20pulse 1.2s ease-in-out infinite; }
+@keyframes v20pulse { 50% { box-shadow: 0 0 0 10px rgba(58, 168, 255, .25); } }
+@media (prefers-reduced-motion: reduce) { .mic-big.rec { animation: none; } }
+/* review */
+.v20-buddy { display: flex; align-items: center; gap: 10px; } .v20-bub { padding: 8px 12px; border-radius: 18px; background: #fff6c9; display: flex; flex-direction: column; }
+.v20-dots { display: flex; gap: 6px; justify-content: center; } .v20-dots i { width: 10px; height: 10px; border-radius: 50%; background: #dbe7ff; } .v20-dots i.on { background: #2fbf71; } .v20-dots i.now { background: #3aa8ff; }
+.v20-hearbig { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 0 auto; padding: 16px 28px; border: 0; border-radius: 26px; background: #e6f2ff; color: #12306e; font: inherit; cursor: pointer; }
+.v20-hearbig svg { width: 34px; height: 34px; }
+/* parent report */
+.v20-pcardp { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; background: linear-gradient(160deg, #f1f8ff, #e3f0ff); }
+.v20-report { display: flex; flex-direction: column; gap: 10px; color: #12306e; }
+.v20-report h3 { margin: 6px 0 0; font-size: 1.1rem; }
+.v20-rhead { display: flex; gap: 10px; align-items: center; } .v20-rhead .face { font-size: 2rem; }
+.v20-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.v20-stat { display: flex; flex-direction: column; align-items: center; padding: 10px 6px; border-radius: 18px; background: #f2f8ff; text-align: center; }
+.v20-stat b { font-size: 1.6rem; color: #2f6fe4; } .v20-stat small { color: #1f9d5c; font-weight: 700; } .v20-sic { font-size: 1.3rem; }
+.v20-top { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.v20-top li { display: flex; gap: 6px; align-items: center; padding: 6px 12px; border-radius: 99px; background: #fff6c9; }
+.v20-tips, .v20-safe { margin: 0; padding-inline-start: 20px; display: flex; flex-direction: column; gap: 6px; }
+.v20-guide { margin: 0; padding: 10px 12px; border-radius: 16px; background: #eafaf1; }
+.v20-priv { color: #3a4f8f; }
+@media print {
+  body.v20-printing > *:not(#modal) { display: none !important; }
+  body.v20-printing #modal { position: static !important; background: #fff !important; }
+  body.v20-printing #modal-box { box-shadow: none !important; max-height: none !important; overflow: visible !important; }
+  body.v20-printing .v20-noprint { display: none !important; }
+}
+
+.v20-art { width: 100%; height: auto; display: block; }
+.v20-sem .v20-art { width: 64px; margin: 0 auto; } .v20-hic .v20-art { width: 34px; display: inline-block; vertical-align: middle; }
+.v20-wem .v20-art { width: 92px; margin: 0 auto; } .v20-mini .v20-art { width: 42px; margin: 0 auto; }
+.v20-sic .v20-art { width: 30px; margin: 0 auto; } .v20-top .rd-pic { width: 30px; height: 30px; font-size: 1.2rem; }
+.v20-top .rd-pic { width: 34px; height: 34px; overflow: hidden; display: inline-grid; place-items: center; flex: none; }
+.v20-top .rd-pic > *, .v20-top .rd-pic img, .v20-top .rd-pic svg { width: 34px !important; height: 34px !important; max-width: 34px; object-fit: contain; font-size: 1.3rem; }
+.v20-wem .v20-art { width: 76px; }
+
 </style>
 </head>
 <body>
@@ -9542,12 +9636,149 @@ const RISK_RULES = [
     /(تجاهل|انسى|انس|اترك) (كل )?(التعليمات|القواعد|الاوامر)/, /(انت الحين|انت الان|من الحين انت|تظاهر انك|خليك انت) /, /(قول|اكتب) (لي )?(التعليمات|البرومبت)/] },
   { kind: 'pii', level: 'low', re: [/(\+?\d[\d\s-]{6,}\d)/, /[\w.+-]+@[\w-]+\.[\w.]+/, /\b(my|our) (address|phone|number|school|password|full name|surname|last name)\b/, /\b(my name is|i live (in|at|on)|i go to .{0,20} school|i'?m \d{1,2} years)\b/, /\b(street|road|villa|apartment|flat) ?\d+/,
     /(اسمي|اسم عيلتي|رقمي|رقم تلفوني|رقم تلفون|عنواني|عنوان بيت|باسورد|كلمه السر|ساكن في|ساكنه في|بيتنا في|مدرستي اسمها|ادرس في مدرسه|عمري \d)/] }];
+/* v20: weighted grooming signals. Written for normalised text (normRisk). English, Arabizi, Fusha and all six dialects.
+   Each category has a weight; an unknown or online person adds to the score; a parent/teacher as the subject lowers it.
+   Trigger: score >= 2 with a person signal or a strong sign, or score >= 3. Multi-turn: the child's recent turns are scored together. */
+const GA = '(ya?bi|yibi|yeb?i|yb8a|yeb8a|yebgha|yibgha|ybgha|bido|bdo|biddo|bado|3ayez|3awez|3aiz|3ayzni|talab|tlab|tilab|ytlob|yetlob|byotlob|asked|asks|wants?|wanted)';
+const GPH = '(sowar|sowari|sewar|suwar|swar|sowra|soora|sora|sorti|sourti|surti|soorti|souri|sori|soori|selfie|pics?|videos?|fidyo)';
+const GROOM_CATS = [
+  { cat: 'secrecy', w: 2, re: [
+    /\b(do ?n[o']?t|dont|never|not to|no need to) (tell|show|let) (my |your |ur |ya |ma )?(mum|mom|mommy|mummy|mama|mother|dad|daddy|baba|father|parents?|family|anyone|anybody|no ?one|teachers?|grown ?ups?|adults?)\b/,
+    /\b(just|only) between (us|you and me|me and you)\b/, /\bsecret between (us|me and)/, /\b(keep|kept) (it|this|us|our \w+|me) (a |our )?secret\b/, /\bour (little )?secret\b/,
+    /\b(no ?one|nobody) (needs|has|should|must|will) (to )?know\b/, /\bdelete (our|the|these|those|my|your|ur) (chats?|messages?|texts?|dms?|pics?|photos?)\b/,
+    /\b(la|ma|mat|mt|msh|mish|mesh|mo)\s?(t2ool|t2ul|t2oul|tgool|tgul|t2ooli|t2oli|t2uli|tgooli|tgoli|t2oleen|tgoleen|t2olin|tgolin|t2olish|t2olsh|t2oulish|t2ulish|tgolsh|t5abbir|t5abir|t5abri|t5abreen|t5abbri|t5abbreen|t7ki|t7kili|t7kish|t7keeli|t3allim|t3lim)\b.{0,15}(mama|mom|mum|ommak|omak|ommik|omech|omich|ummak|baba|abook|abouk|abuk|abuch|ahlak|ahlik|ahlek|ahlich|a7ad|a7ed|7ada|7ad|any ?one)\b/,
+    /\bsir+ (bena|benna|baynna|baynana|benatna|bainna|bainatna|benak w beni|beni w benak)\b/, /\b(im?sa7|imsa7i|imsahi|e7thef|i7thif|i7zif|shil|sheel)\b.{0,10}\b(el ?rasa2el|rasayel|el ?chat|chat|messages|el ?mahadtha)\b/,
+    /(خليه|خليها|خلي هذا|خلي الموضوع|خلي كلامنا|خلي الكلام|خليه بيننا|خليها بيننا|خلي) ?(سر|بيننا|بينا|بيناتنا|بالسر|في السر)/, /(سر|سرنا) (بيننا|بينا|بيناتنا|بيني وبينك|بينك وبيني)/,
+    /(امسح|امسحي|احذف|احذفي|شيل|شيلي|امحي|امحو) (الرسايل|الرسائل|المحادثه|المحادثات|الشات|المسجات|كلامنا|رسايلنا|رسائلنا|الصور)/, /(محد|ما حد|ماحد|ولا حد|ما حدا|محدش|لا احد|محدا|ولا حدا) ((لازم|بدو|يجب ان|راح|رح|ح|هي|بي) ?(يعرف|يدري|يعلم|عرف)|(يعرف|يدري|بيعرف|يعلم|بيدري) (عنا|عننا|بكلامنا|عن كلامنا|بالموضوع|عن الموضوع|عن هذا|بهذا|بيننا))/,
+    /((لا|ما|مش) ?(تقول|تقولي|تقولين|تقولش|تقوليش|تخبر|تخبري|تخبرين|تحكي|تحكيش|تعلم|تعلمي|تقل|تعلمين)|متقول|متقولي|متقولش|متقوليش|متحكيش|ماتقول|ماتقولي|ماتخبر|ماتخبري|ماتحكي) ?(ل|ال)? ?(امك|ابوك|امج|ابوج|ماما|بابا|مامتك|باباك|والديك|اهلك|اهلج|اي احد|احدا|احد|حدا|حد|المدرسه|المعلمه|الاستاذ)/,
+    /(الا|ان لا|لا) ?(اخبر|اقول|احكي|اعلم|تخبر|تخبري)[^.؟?!]{0,8}(امي|ابي|والدي|والدتي|اهلي|احدا|اسرتي|معلمتي|معلمي|امك|اباك|والديك|اهلك)/] },
+  { cat: 'photos', w: 2, re: [/\b(asked|asks|wants?|wanted|told|tells|keeps asking|keeps telling) me to (turn on|switch on|open|put on) (my |the |your |ur )?(camera|cam|webcam|video)\b/,
+    /\b(asked|asks|wants?|wanted|told|tells|keeps asking|keeps telling|begged|begging|made|makes|dared) me (to )?(send|show|take)( him| her| them)? (a |some |more |my |me )?(photos?|pics?|pictures?|selfies?|videos?|nudes?|snaps?)\b/,
+    /\b(send|show|give|share) (him|her|them) (a |some |more |your |ur |my )?(photos?|pics?|pictures?|selfies?|videos?|snaps?|face pic)\b/, /\b(asked|asks|wants?|wanted|keeps asking|begging|begged) (me )?for (a |some |more |my )?(photos?|pics?|pictures?|selfies?|videos?)\b/,
+    new RegExp('\\b' + GA + '(ni)?\\b.{0,20}\\b' + GPH + '\\b'), new RegExp('\\b(arsel|arsil|arsillah|arsla|ab3at|ab3ath|ab3atlo|ab3atlah|ab3tlo|ba3atlo|ib3atlo|eb3atlo|arsello|arselo|arsellah|arsillo|ab3atlha|ab3atlak|ab3atli|arselli|arsilli)\\b.{0,15}\\b' + GPH + '\\b'),
+    /(يبي|يبيني|يبغي|يبغا|يبغاني|يبغيني|بدو|بده|بدها|عايز|عاوز|عايزني|عاوزني|يريد|يريدني|يطلب|طلب|طالب|بيطلب|عم يطلب|تبي|تبيني|بدها|يلح|يترجاني)(ني|مني|ها|و)? ?(ا|اني|ان|اني ا|ان ا)?(ارسل|ابعث|ابعت|ارسله|ارسلها|ابعثله|ابعتله|ابعتلو|ابعثلو|ابعتلها|اصور|اصورله|اصورلو|اصور له|اصورلها|ارسل له|ابعت له|ابعث له|ابعتلوا)(له|لها|لو|ليه)? ?(صوري|صورتي|صور|صوره|سيلفي|فيديو|صور لي|صوره لي|لي صور)/,
+    /(يبي|يبيني|يبغي|يبغا|يبغاني|بدو|بده|عايز|عاوز|يريد|طلب|يطلب|بيطلب|عم يطلب).{0,20}(صوري|صورتي|صوره مني|صور مني|سيلفي مني|صور خاصه)/,
+    /(طلب|يطلب|بيطلب|طلبت|تطلب|يبي|يبغي|يبغا|بدو|بده|عايز|عاوز|يريد|عم يطلب)(ني|مني|ها)? ?(صوري|صورتي|صوره مني|صور مني|سيلفي|صور لي|صوري الخاصه|صورك|صورتك|صور خاصه)/,
+] },
+  /* "send me your photo", "turn on your camera", "give me your snap": weak alone (a child may say it to Saqqour itself: a contact refusal); strong when reported ("he said …") or from a stranger */
+  { cat: 'photos_ask', w: 1, re: [/\b(send|show|give|share) (me|us) (a |some |more |your |ur )?(photos?|pics?|pictures?|selfies?|videos?|snaps?|face pic)\b/, /\bturn on (your |ur |my |the )?(camera|cam)\b/,
+    /(ارسل|ارسلي|ابعث|ابعثي|ابعت|ابعتي|ابعتلي|ابعثلي|ارسلي لي|ورني|وريني|فرجيني|فرجني|خليني اشوف|بدي شوف|ابي اشوف|ابغي اشوف|عايز اشوف) ?(لي )?(صورتك|صورك|صوره لك|صور لك|سيلفي|وجهك|وجهج|جسمك|جسمج|فيديو لك|صورتج|صورج)/,
+    /(شغل|شغلي|افتح|افتحي|فتح|فتحي) (الكاميرا|الكام|كاميرتك|كاميرتج)/, /\b(ab3atli|ab3tli|arselli|arsilli|warini|farjini)\b.{0,10}\b(sortak|sortik|sowarak|sowarik|soortak|selfie|pic)\b/] },
+  { cat: 'meet', w: 2, re: [
+    /\b(wants?|wanted|asked|asks|keeps asking|begged|told|invited) (me )?to (meet|see) (him|her|them|up)?( in real life| irl| alone| outside| secretly| at)?\b/, /\b(meet|see) (me|you|u) (in real life|irl|alone|secretly|without)\b/,
+    /\b(meet|meeting) (up )?(with )?(a |my )?(online friend|stranger|someone (i met |from )?online|him from the game)\b/, /\b(pick (me|you|u) up|come to (my|your|ur) (house|home|school)|wait for (me|you|u) (after|outside))\b/,
+    /(يبي|يبيني|يبغي|يبغا|يبغاني|بدو|بده|عايز|عاوز|يريد|يريدني|قال|طلب|طلب مني|بدها|تبي)(ني)? ?(ن|ا)?(نتقابل|اقابله|اقابلها|يقابلني|يشوفني|نشوف بعض|نتلاقي|نلتقي|التقي به|التقيه|يلتقي بي|يجيني|يجي لي|يمرني|ياخذني|يوصلني|يمر علي|يستناني|ينتظرني|اطلع معه|اطلع معاه|اطلع معو|نطلع سوا|نطلع مع بعض)/,
+    /(بالسر|في السر|لحالي|بروحي|لوحدي|بدون ما|من غير ما|بلا ما|ولا تقول|وما تقول).{0,30}(نتقابل|اقابله|يقابلني|يشوفني|نشوف بعض|نتلاقي|نلتقي|اطلع معه)|(نتقابل|اقابله|يقابلني|يشوفني|نشوف بعض|نتلاقي|نلتقي|اطلع معه).{0,30}(بالسر|في السر|لحالي|بروحي|لوحدي|بدون ما|من غير ما|بلا ما|ولا تقول|وما تقول)/,
+    /(لو|اذا|ان) (قابلته|قابلتو|قابلتها|شفته|شفتو|طلعت معه|طلعت معاه|طلعت معو|رحت له|رحتله|رحت لعنده)/, /(بدو|يبي|يبيني|يبغي|يبغاني|عايز|عايزني|بده|يريد|يريدني)( ياني| اياني)? ?(روح|اروح|اجي|تيجي|تجي|اطلع|ازوره) ?(لعنده|لعندو|عنده|عندو|له|لو|بيته|لبيته|معه|معاه|معو)/,
+    /(طلب|يطلب|يريد|اراد|يلح|الح|يصر)[^.؟?!]{0,30}(ان )?(نلتقي|التقي|القاه|نتقابل|اقابله|يقابلني|يراني|اراه|ازوره)/,
+    /\b(nit2abal|net2abal|nitgabal|netgabal|ntgabal|ngabil|n2abel|y2ablni|ygablni|yshoofni|yshufni|nshoof ba3ad|nshouf ba3d|nshuf ba3d|ntla2a|netla2a|ntlaga|nitla2a|yeji yakhedni|yakhedni|yakhidni|ywaselni|ywasselni)\b/] },
+  { cat: 'location', w: 1.5, re: [
+    /\b(asked|asks|wants to know|keeps asking|wanted to know|asking) (me )?(where i live|my address|which school|what school|my school|where my school|where i go to school|my (phone|number)|my (last name|surname|full name)|which (area|street|building|villa)|my location)\b/,
+    /\b(where do (you|u) live|what'?s (your|ur) address|which school do (you|u)|what school do (you|u)|send me (your|ur) (location|address)|share (your|ur) location)\b/,
+    /(يبي|يبيني|يبغي|يبغا|بدو|بده|عايز|عاوز|يريد|طلب|يطلب|بيطلب).{0,15}(رقمي|عنواني|لوكيشني|موقعي|اسم مدرستي|رقم تلفوني)/, /\b(bido|bdo|yabi|yibi|3ayez|3awez|yb8a|yebgha|talab|wants?)\b.{0,12}\b(ra2mi|raqmi|rakmi|3enwani|3onwani|my number|my address|my location)\b/,
+    /(سالني|يسالني|بيسالني|عم يسالني|سالتني|تسالني|يبي يعرف|بدو يعرف|عايز يعرف|عاوز يعرف|يريد ان يعرف|يبغي يعرف|طلب|طلب مني|سال).{0,25}(وين ساكن|وين ساكنه|وين اسكن|وين بيتي|وين بيتنا|عنواني|عنوان بيتي|عنوان البيت|اي مدرسه|ايش مدرستي|وين مدرستي|اسم مدرستي|مدرستي|مكان بيتي|موقعي|لوكيشني|لوكيشن|فين ساكن|فين بيتي|اين اسكن|عن مدرستي|عن بيتي|رقمي|رقم تلفوني)/,
+    /(وين|فين|اين) (ساكن|ساكنه|ساكنين|تسكن|تسكني|تسكنين|بيتك|بيتج|بيتكم|مدرستك|مدرستج)/, /(ارسل|ابعت|ابعث|ابعتلي|ابعثلي|ارسلي|شارك|ارسل لي)(لي)? ?(لوكيشنك|موقعك|عنوانك|اللوكيشن|رقمك)/,
+    /\b(wain|wein|wen|fein|fen|wayn|wenik) (saken|sakin|sakna|sakneh|sakne|sakneen|betak|beitak|bitak|betik|madrastak|madrestak|madrastik|madrastek)\b/, /\bsa2alni\b.{0,20}\b(wain|wen|fein|address|3onwani|3enwani|madrasti|madraste)\b/] },
+  { cat: 'age', w: 1.5, re: [
+    /\b(asked|asks|wants to know|keeps asking|wanted to know|asking) (me )?(how old i am|my age|how old)\b/, /\bhow old (are|r) (you|u)\b/, /\b(a\/s\/l|asl)\b/,
+    /(سالني|يسالني|بيسالني|عم يسالني|سالتني|تسالني|يبي يعرف|بدو يعرف|عايز يعرف|عاوز يعرف|يبغي يعرف|يريد ان يعرف|سال).{0,25}(عمري|سني)/, /(كم|قديش|اديش|كام|شقد|ما) (عمرك|عمرج|سنك|سنج)/,
+    /\b(kam|2adesh|adesh|2deish|adeish|kaam|shgad|ad eh) (3omrak|3umrak|3omrik|3omrich|3emrak|3emrik|3omrek|senak|sinnak)\b/, /\bsa2alni\b.{0,15}\b(kam 3omri|3omri|3umri|sinni)\b/] },
+  { cat: 'gifts', w: 1, re: [
+    /\b(gave|gives|give|giving|sent|sends|send|promised|promises|offered|offers|bought|buys|will buy|wants to buy|got) (me|you|u) (a |an |free |lots of |some )?(gifts?|presents?|money|cash|robux|v-?bucks|gems|skins?|gift ?cards?|coins|diamonds)\b/,
+    /(عطاني|عطني|يعطيني|بيعطيني|اعطاني|يعطني|جاب لي|جابلي|اشتري لي|اشترالي|اشتراني|بيشتريلي|يشتريلي|هيشتريلي|وعدني|عرض علي|بعتلي|ارسل لي|بعثلي|يبعتلي|يرسل لي|يرسلي|بيبعتلي|عم يبعتلي)(ني)? ?(ب)?(هديه|هدايا|هديتين|فلوس|مصاري|روبوكس|روبكس|فيباكس|في باكس|بطاقه|بطاقات|جواهر|سكن|سكنات|كوينز|عملات)/,
+    /\b(3atani|a3tani|e3tani|yi3tini|ya3teeni|jabli|ishtarali|eshtarali|wa3adni|wa3dni|ba3atli|ba3tli|arsalli)\b.{0,15}\b(hadiya|hadiyya|hdiyye|hadaya|flous|floos|masari|robux|vbucks|v-bucks|gems|skins?)\b/] },
+  { cat: 'mature', w: 2, re: [
+    /\bmature\b/, /\b(older|more grown ?up) than (your|my|ur) age\b/, /\bnot like (other|the other) (kids|girls|boys|children)\b/, /\b(special|different) (from|to) (other|the other) (kids|girls|boys)\b/,
+    /(ناضج|ناضجه|اكبر من (عمرك|عمري|سنك|سني|عمرج|سنج)|(كبير|كبيره) (علي|عن) (عمرك|عمرج|سنك|سنج|عمري|سني)|(مب|مو|مش|ما|مانك|مانج) (مثل|زي|متل|كيف) (باقي |بقيه |كل |الباقي |غيرك من )?(البنات|العيال|الاولاد|الاطفال|الصغار|الولاد|البزران|الياهل|اليهال|البنوتات))/,
+    /\b(nadej|nadij|nadeja|nadja|nadje|nadjeh|nadjeh|na9ej|na9ja|nadjeh)\b/, /\bakbar (min|men) (3omrak|3omri|3omrik|senak|sinni)\b/, /\b(mish|msh|mo|mob) (zay|zai|mitl|methl|mithl) (ba2i|baqi|el ba2i)\b/] },
+  { cat: 'platform', w: 1.5, re: [
+    /\b(add|follow|text|message|dm|call|chat with|talk to|find) (me|him|her) on (snap(chat)?|whats ?app|insta(gram)?|discord|telegram|tiktok|kik|signal|facetime|skype|wechat)\b/,
+    /\b(let'?s|lets|we should|wants? (me )?to|asked me to|told me to|keeps asking me to) (talk|chat|move|go|continue|switch|text|play) (on|to|in) (snap(chat)?|whats ?app|insta(gram)?|discord|telegram|tiktok|kik|signal|another app|a different app|a private (chat|server|room)|private|dms?)\b/,
+    /\b(give|send) (him|her) (your|ur|my) (number|snap|insta|whats ?app|discord|username|phone)\b/, /\b(private|secret) (chat|account|dms?)\b/,
+    /(كلمني|كلميني|ضيفني|ضيفيني|اضيفك|نتكلم|نحكي|نسولف|نكمل|خلينا نتكلم|خلينا نحكي|خلينا نسولف|خلينا نكمل|راسلني|راسليني|تعال|تعالي|نروح) ?(علي|عال|ع|في|بال)? ?(ال)?(سناب|سنابشات|واتساب|واتس|انستا|انستغرام|ديسكورد|تيليجرام|تلغرام|تيك توك|تطبيق ثاني|تطبيق تاني|برنامج ثاني|برنامج تاني|ابلكيشن ثاني|خاص)/,
+    /\b(kalimni|kalemni|dayefni|daifni|da9ifni|nehki|ne7ki|n7ki|nitkalam|netkallam|nsolf|nsoolif|rasilni|add me|addni)\b.{0,15}\b(snap|whatsapp|watsap|wats|insta|discord|telegram|tiktok|app tani|app thani|app sani|private|5as|khas)\b/] },
+  { cat: 'platform2', w: 1.5, re: [/(يبي|يبيني|يبغي|يبغاني|بدو|بده|عايز|عاوز|عايزني|يريد|يريدني|طلب|قال)(ني| مني)? ?(ا|ن)?(كلمه|احكي معه|نحكي|نتكلم|نسولف|اضيفه|احكيه|اكلمه|اكلمو|احكيلو|نكمل)\s?(معه |معو |معاه )?(علي|عال|ع|في|بال)? ?(ال)?(سناب|سنابشات|واتساب|واتس|انستا|انستغرام|ديسكورد|تيليجرام|تلغرام|تيك توك|تطبيق ثاني|تطبيق تاني|برنامج ثاني|خاص)/] },
+  { cat: 'platform_ask', w: 1, re: [/\b(give|send) (me|us) (your|ur) (number|snap|insta|whats ?app|discord|username|phone)\b/, /(اعطني|عطني|اعطيني|ابعتلي|ابعثلي|ارسل لي|ارسلي|هات|عطيني) (رقمك|رقم تلفونك|سنابك|حسابك|انستك|يوزرك|ايميلك)/] },
+  { cat: 'relationship', w: 2, re: [
+    /\b(be|become) (my|his|her) (girlfriend|boyfriend|gf|bf|wife|husband|baby|babe)\b/, /\b(calls?|called) me (babe|baby|sexy|my love|honey|sweetheart|beautiful)\b/,
+    /(تصير|تصيري|تكون|تكوني|تبقي|تبقى|تصيرين|تكونين)( انت| انتي)? (حبيبتي|حبيبي|صاحبتي|زوجتي|مرتي|خطيبتي|عشيقتي|حبيبته|زوجته)/, /(يناديني|يقولي|يسميني|بيقلي|بيقولي|يقول لي) ?(حبيبتي|يا حبيبتي|يا عمري|يا قلبي|بيبي|يا حلوه|يا جميله)/,
+    /\b(t9eeri|tseeri|tkoni|tkouni|tkuni|tib2i)\b.{0,6}\b(7abibti|habibti|7abebti|sa7bti|sahbti|zawjti)\b/] },
+  { cat: 'love', w: 1.5, re: [/\b(he|she|they|someone|somebody|guy|man) (says?|said|told me|tells me|keeps saying)( that)? (he|she|they)? ?(loves?|love) me\b/,
+    /(قال انه يحبني|يقول انه يحبني|قالي بحبك|قال لي احبك|يقولي احبك|بيقلي بحبك|بيقولي بحبك|قالي احبك|يقول لي احبك|قال لي بحبك)/, /\b(ba7ebek|ba7bik|b7ebek|b7bk|a7ebch|a7ebich|a7ebik|bahebek)\b/] },
+  { cat: 'isolation', w: 2, re: [
+    /\b(only i|only me|i'?m the only one who|no one else|nobody else) (understands?|gets?|cares? about|loves?) (you|u)\b/, /\b(your|ur) (parents?|mum|mom|dad|family|teachers?) (don'?t|do not|wouldn'?t|won'?t|never|will never|can'?t) (understand|care|get it|get you|let you)\b/,
+    /(بس|بس انا|انا بس|ما حد|محد|غيري ما|غيري محد|ولا حد) ?(افهمك|افهمج|يفهمك|يفهمج|بفهمك|بفهمج|فاهمك|فاهمج|يحبك مثلي|يحبك زيي|يحبج مثلي)/,
+    /(اهلك|اهلج|امك|امج|ابوك|ابوج|ماما|بابا|والديك)( ما| مش| مو| مب| لن| ما راح| ما رح| مش هي| مش رح)? ?(يفهمونك|يفهموك|يفهموج|بيفهموك|بيفهموكي|يفهموكي|فاهمينك|يفهمك|يفهمج|بيفهمك|هيفهموك|تفهمك|تفهمج|بتفهمك|يفهموني)/,
+    /\b(bas ana|ana bas|bs ana)\b.{0,10}\b(afhamak|afhamik|afhamek|afhmak|bafhamak|bafhamik|fahmak|fahmik)\b/,
+    /\bonly (he|she|they) (understands?|gets?|cares? about|really knows) me\b/, /\b(nobody|no one|no-one) (understands?|gets?) me (like|except|but) (him|her|them)\b/, /\bmy (parents?|mum|mom|dad|family) (wouldn'?t|won'?t|will never|would never) (understand|get it)\b/,
+    /(ما حدا|محد|ما حد|محدش|ولا حد|ماحد) (بيفهمني|يفهمني|فاهمني|بيحبني|يحبني) (غيرو|غيره|الا هو|غيرها|الا هي|مثله|زيه|متلو|قده)/] },
+  { cat: 'alone', w: 1.5, re: [/\bare (you|u) (home )?alone\b/, /\bwhen (i'?m|im|i am) (home )?alone\b/, /(لما|وقت|يوم|اذا) (اكون|كون|اصير|بكون) (لحالي|بروحي|وحدي|لوحدي)/, /\b(asked|asks|wants to know) if i('?m| am| was) (home )?alone\b/, /\bwhat (are|r) (you|u) wearing\b/, /\bis (anyone|anybody|your mum|your mom|your dad) (at )?home\b/,
+    /(سالني|يسالني|بيسالني|عم يسالني|يبي يعرف|بدو يعرف|عايز يعرف|سالتني)( اذا| ان| لو| هل)?( انا)? ?(لحالي|بروحي|وحدي|لوحدي|شو لابس|شو لابسه|ايش لابس|ايش لابسه|وش لابس|وش لابسه|ايه لابس|ايه لابسه)/,
+    /(انت|انتي) (لحالك|لحالج|بروحك|بروحج|وحدك|وحدج|لوحدك|لوحدج)( في| بال)? ?(البيت|الغرفه|غرفتك)?/] }];
+/* who: an adult/stranger (1) and an online context (0.5); a parent/teacher as the subject lowers the score */
+const GROOM_WHO = {
+  adult: [/\b(stranger|grown ?up|adult|older (man|guy|boy|girl|lady|person|friend|teen)|(a|some|this|that|an old) (man|guy|lady|dude)|(he|she) ?('?s| is) (1[89]|[2-9]\d)\b|(1[89]|[2-9]\d) ?(years? old|yo|y\/o)|someone i (don'?t|do not) know|i (don'?t|do not) know (him|her))\b/,
+    /(غريب|غريبه|ما اعرفه|ما اعرفها|مااعرفه|ما بعرفه|ما بعرفها|مش عارفه|مش عارفاه|مش بعرفه|ما نعرفه|لا اعرفه|لا اعرفها|رجال|رجل|ريال|راجل|زلمه|واحد كبير|شخص كبير|واحده كبيره|رجال كبير|(عمره|عمرها) ((1[89]|[2-9]\d)|عشرين|ثلاثين|تلاتين|اربعين|خمسه وعشرين|عشرين سنه)|شخص بالغ|رجل بالغ)/,
+    /\b(ghareeb|ghareb|gharib|3'areeb|ma a3rfo|ma a3rafo|ma ba3rfo|msh 3arfo|mish 3arfo|rajjal|rayyal|ra2il|ragel|zalame|zalameh|wa7ad kbeer|wa7ed kbir|shakhs kbeer)\b/],
+  online: [/\b(online|on the internet|in (the |a |this )?(game|chat|server|lobby|app)|on (roblox|fortnite|minecraft|discord|tiktok|snap(chat)?|insta(gram)?|youtube|whats ?app|telegram|among us|brawl stars|free ?fire|pubg|kik)|roblox|fortnite|minecraft|discord|snapchat|telegram|internet friend|online friend|gamer|player)\b/,
+    /(اونلاين|اون لاين|عالنت|علي النت|في النت|بالنت|علي الانترنت|في الانترنت|بالانترنت|في اللعبه|باللعبه|بلعبه|في الجيم|بالجيم|في الشات|بالشات|روبلوكس|فورتنايت|ماينكرافت|ماين كرافت|ديسكورد|سناب|انستا|تيك توك|تيليجرام|تلغرام|واتساب|يوتيوب|ببجي|فري فاير|براول)/,
+    /\b(fi el lo3ba|fil lo3ba|bl lo3ba|bil lo3be|fel lo3ba|fe el game|fil game|bel game|3al net|3ala el net|fil net|bel net|onlain)\b/],
+  reported: [/\b(he|she|they|someone|somebody|the (man|guy|boy|girl|lady|player))\b.{0,25}\b(said|says|told me|tells me|keeps saying|asked me|asks me|wrote|texted|messaged)\b/,
+    /(قال|قالي|قال لي|قالت|قالتلي|يقول|يقولي|بيقول|بيقلي|بيقولي|عم يقلي|طلب|طلب مني|طلبت|كتب لي|كتبلي|بعتلي رساله|ارسل لي رساله|يكتب لي|قلي)/, /\b(galli|gal li|2alli|2alli|2alee|bi2olli|by2olli|ygolli|y2olli|talab|tlab|kateb li)\b/],
+  /* a parent / grandparent / teacher / doctor as the subject ("my teacher gave me", "جدتي سألتني"), not as the object ("don't tell your mum") */
+  trusted: [/\b(my|our) (mum|mom|mommy|mummy|mama|mother|dad|daddy|baba|father|parents?|grandma|grandpa|granny|nana|teta|jiddo|teacher|miss|coach|doctor|nurse|aunt|auntie)( and (my )?\w+)? (gave|gives|give|bought|buys|got|gets|said|says|told|tells|asked|asks|wants|wanted|sent|sends|calls|called|lets|took|takes|is planning)\b/, /^(the )?(doctor|nurse|teacher|dentist|coach) (asked|asks|said|gave|wants)\b/,
+    /(^|\s)(امي|ماما|ابوي|ابويه|بابا|جدتي|تيتا|ستي|جدي|سيدي|المعلمه|المعلم|المدرسه|المدرس|ابلتي|ابله|استاذي|استاذتي|الاستاذ|الاستاذه|معلمتي|معلمي|الدكتور|الدكتوره|خالتي|عمتي|والدتي|والدي)( \S+)?( \S+)? ?(عطتني|عطاني|اعطتني|اعطاني|جابت|جاب|جابتلي|جابلي|قالت|قال|قالتلي|قالي|سالتني|سالني|طلبت|طلب|اشترت|اشتري|اشترالي|اشترتلي|بتقول|بيقول|تقول|يقول|تبي|يبي|بدها|بدو|عايزه|عايز)/,
+    /^(mama|baba|teta|sitti|jiddo|jaddati|jaddeti|jidda|nana|ommi|abooy|el ?miss|ostaz|ostaza|abla)\b/] };
+/* benign look-alikes: a surprise for mum, a party, a secret word in a game. Their "don't tell" alone is not grooming. */
+const GROOM_BENIGN = [/\b(surprise|birthday|present for|gift for|party for|secret (word|code|level|recipe|room|passage|door|base|handshake|ingredient))\b/, /(مفاجاه|مفاجئه|سربرايز|عيد ميلاد|حفله|هديه ل(ماما|امي|بابا|ابوي|جدتي|تيتا)|كلمه السر|كلمه سر|كلمة السر|الكلمه السريه|الغرفه السريه|المستوي السري)/, /\b(mofaja2a|mfaj2a|mufaja2a|3eed milad|eid milad|kilmet sir|kelmet el sir)\b/];
+const nAr = (re) => new RegExp(re.source.replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/ؤ/g, 'و').replace(/ئ/g, 'ي'), re.flags);
+const GC_N = GROOM_CATS.map((c) => ({ cat: c.cat, w: c.w, re: c.re.map(nAr) }));
+const GW_N = Object.fromEntries(Object.entries(GROOM_WHO).map(([k, l]) => [k, l.map(nAr)]));
+const GB_N = GROOM_BENIGN.map(nAr);
+function groomSignals(text) {
+  const t = typeof text === 'string' && text === normRisk(text) ? text : normRisk(text);
+  const cats = GC_N.filter((c) => c.re.some((re) => re.test(t))).map((c) => ({ cat: c.cat, w: c.w }));
+  const adult = GW_N.adult.some((re) => re.test(t)); const online = GW_N.online.some((re) => re.test(t)); const trusted = GW_N.trusted.some((re) => re.test(t));
+  const reported = GW_N.reported.some((re) => re.test(t));
+  const benign = GB_N.some((re) => re.test(t));
+  let list = cats;
+  if (benign && !adult && !online) list = list.filter((c) => c.cat !== 'secrecy'); /* "it's a surprise for mum, don't tell her" */
+  const who = (adult ? 1 : 0) + (online ? 0.5 : 0) + (reported ? 0.5 : 0);
+  let score = list.reduce((s, c) => s + c.w, 0) + (list.length ? who : 0);
+  if (trusted && !adult && !online) score -= 1.5; /* "my teacher gave me a gift", "grandma asked my age" */
+  const strong = list.some((c) => c.w >= 2);
+  return { score, cats: list.map((c) => c.cat), adult, online, reported, trusted, benign, strong, who };
+}
+const groomHit = (s) => s.cats.length > 0 && ((s.score >= 2 && (s.who > 0 || s.strong)) || s.score >= 3);
+/* detectGrooming(text, prior): prior = the child's earlier turns (strings), newest last. A slow build-up across turns counts. */
+function detectGrooming(text, prior) {
+  const now = groomSignals(text);
+  if (groomHit(now)) return { kind: 'grooming', level: 'high', cats: now.cats, by: 'grooming' };
+  const p = (Array.isArray(prior) ? prior : []).map((x) => (typeof x === 'string' ? x : x && x.text) || '').filter(Boolean).slice(-8);
+  if (p.length && (now.cats.length || now.who > 0)) {
+    const all = groomSignals(p.concat(String(text || '')).join(' \n '));
+    if (groomHit(all)) return { kind: 'grooming', level: 'high', cats: all.cats, by: 'grooming_multi', multi: true };
+  }
+  return null;
+}
+/* the model's own reply must never ask for photos, a meeting, secrecy, another app, or flatter a child as "mature" */
+const OUT_CATS = new Set(['secrecy', 'photos', 'photos_ask', 'meet', 'platform', 'platform2', 'platform_ask', 'mature', 'relationship', 'isolation', 'love']);
+function groomingInReply(text) { const s = groomSignals(text); const c = s.cats.filter((k) => OUT_CATS.has(k)); return c.length ? { kind: 'grooming', cats: c } : null; }
+/* the child's text has at least one clear grooming sign (used when the model's topic says off_topic/chat: safeguarding wins) */
+function groomingSign(text, prior) { const s = groomSignals(text); if (s.trusted && !s.adult && !s.online && s.score < 1.5) return null; return s.cats.length && (s.strong || s.score >= 2) ? { kind: 'grooming', cats: s.cats } : (detectGrooming(text, prior)); }
 const HIGH = new Set(['selfharm', 'abuse', 'grooming', 'distress']);
 /* patterns are matched against normalised text, so normalise their Arabic letters the same way once */
 const RULES_N = RISK_RULES.map((r) => ({ kind: r.kind, level: r.level, re: r.re.map((re) => new RegExp(re.source.replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/ؤ/g, 'و').replace(/ئ/g, 'ي'), re.flags)) }));
 function detectRisk(text) {
-  const t = normRisk(text); if (!t) return null;
-  for (const r of RULES_N) for (const re of r.re) if (re.test(t)) return { kind: r.kind, level: r.level };
+  let t = normRisk(text); if (!t) return null;
+  /* v20: a surprise for mum / a party / a game's secret word: its "don't tell" is not a grooming or abuse sign (unless a stranger or online person is in it) */
+  const gs = groomSignals(t);
+  if (gs.benign && !gs.adult && !gs.online) for (const c of GC_N) if (c.cat === 'secrecy') for (const re of c.re) t = t.replace(new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g'), ' ');
+  for (const r of RULES_N) {
+    for (const re of r.re) if (re.test(t)) return { kind: r.kind, level: r.level };
+    /* v20: weighted grooming signals right after the grooming word rules, before the low-risk kinds */
+    if (r.kind === 'grooming' && groomHit(groomSignals(t))) return { kind: 'grooming', level: 'high' };
+  }
   return null;
 }
 /* fixed, calm script. [boy|girl] forms. Same words every time: no model in the loop. */
@@ -9673,10 +9904,12 @@ const SCOPE_TOPIC = { maths: { ar: 'الأَرْقَام', en: 'numbers' }, scie
 const SCOPE_SUBJECT_HINT = [['science', /(science|علوم|العلوم|solar|planet|space|moon|sun|star|volcano|dinosaur|rain|sky|weather|كوكب|كواكب|الفضاء|القمر|الشمس|نجوم|البركان|ديناصور|المطر|السما)/], ['maths', /(math|number|ضرب|رياضيات|حساب|ارقام)/], ['games', /(roblox|minecraft|fortnite|game|لعبه|روبلوكس|ماينكرافت)/], ['news', /(ronaldo|messi|football|match|sport|رونالدو|ميسي|كوره|مباراه|الماتش)/], ['animals', /(spider|animal|dog|cat|lion|horse|bird|insect|عنكبوت|حيوان|حيوانات|اسد|حصان|طير|حشرات)/], ['coding', /(phone|computer|laptop|tablet|ipad|robot|جوال|موبايل|هاتف|كمبيوتر|ايباد|روبوت)/]];
 /* best topic to offer words for, from the child's own text (used when the model, not the rules, spots an off-topic ask) */
 function topicHint(text) { const t = normRisk(text); const h = SCOPE_SUBJECT_HINT.find(([, re]) => re.test(t)); return h ? h[0] : null; }
-function classifyTopic(text) {
+function classifyTopic(text, prior) {
   const raw = String(text == null ? '' : text); const t = normRisk(raw); if (!t) return { topic: null };
   const risk = detectRisk(raw);
   if (risk && HIGH.has(risk.kind)) return { topic: 'safeguarding', subject: risk.kind, by: 'rules' };
+  /* v20: grooming (one message or a build-up over the child's earlier turns) is safeguarding, never an off-topic redirect */
+  { const gr = detectGrooming(raw, prior); if (gr) return { topic: 'safeguarding', subject: 'grooming', by: gr.multi ? 'rules_multi_turn' : 'rules' }; }
   if (risk && risk.kind === 'jailbreak') return { topic: 'jailbreak', subject: 'jailbreak', by: 'rules' };
   if (scopeAny(SCOPE_RE.jb, t)) { const h = SCOPE_SUBJECT_HINT.find(([, re]) => re.test(t)); return { topic: 'jailbreak', subject: h ? h[0] : 'jailbreak', by: 'rules' }; }
   const learning = scopeAny(SCOPE_RE.arabic, t) && !scopeAny(SCOPE_RE.lesson, t);
@@ -9830,6 +10063,40 @@ function hwCheckLine(g) { return { type: 'check', register: 'fusha', ar: gform(H
 function hwLeakFix(d, g, kind) { return [hwL('say', 'think', d, g), hwHintLine(kind, g), hwL('ask', 'try', d, g)]; }
 function hwStart(d, g) { return [hwL('ask', 'show', d, g)]; }
 
+
+/* v20: pronunciation stars. Azure Speech pronunciation assessment (REST, short audio).
+   Locales: the docs list only ar-SA and ar-EG for pronunciation assessment (no ar-AE / ar-LB / ar-SY / ar-JO), and Arabic gets
+   word/text scores only (phoneme names are en-US only). So the app checks Fusha (MSA) letters and words with ar-SA, for every dialect.
+   The child never sees a number: the score becomes 1-3 stars here, on the server. Audio is passed through and dropped, never stored. */
+const PRON_LOCALE = 'ar-SA';
+const PRON_MAX_B64 = 700000;
+/* the hard letters, each with one Fusha word the child says (the server only assesses these words); [letter, word, en, emoji, painted art key] */
+const PRON_CARDS = [
+  ['ع', 'عَيْنٌ', 'eye', '👁️', 'ob_eye'], ['ح', 'حَلِيبٌ', 'milk', '🥛', 'ob_milk'], ['خ', 'خُبْزٌ', 'bread', '🍞', 'ob_bread'], ['ق', 'قَمَرٌ', 'moon', '🌙', 'ob_moon'],
+  ['ض', 'ضِفْدَعٌ', 'frog', '🐸', 'ob_frog'], ['غ', 'غَيْمَةٌ', 'cloud', '☁️', 'ob_cloud'], ['ص', 'صَقْرٌ', 'falcon', '🦅', 'ob_bird'], ['ط', 'طَائِرَةٌ', 'plane', '✈️', 'ob_plane'],
+  ['ظ', 'ظَرْفٌ', 'envelope', '✉️', 'ob_envelope'], ['ذ', 'ذِئْبٌ', 'wolf', '🐺', 'ob_wolf'], ['ث', 'ثَعْلَبٌ', 'fox', '🦊', 'ob_fox']
+];
+const pronBare = (s) => String(s || '').replace(/[\u064B-\u0652\u0670]/g, '').replace(/[^\u0600-\u06FF]/g, '');
+const pronKnownRef = (ref) => PRON_CARDS.some((c) => pronBare(c[1]) === pronBare(ref)); /* ~5 s of 16 kHz mono 16-bit WAV is ~160 KB; generous cap */
+function starsFor(r) {
+  if (!r || !(r.recognized)) return 0; /* nothing heard: no stars, just "say it again" */
+  const s = Math.min(r.accuracy, r.pron == null ? r.accuracy : r.pron + 6);
+  return s >= 85 ? 3 : s >= 65 ? 2 : 1;
+}
+const b64json = (o) => btoa(unescape(encodeURIComponent(JSON.stringify(o))));
+async function assessPron(wavB64, refText, cfg) {
+  const ref = String(refText || '').replace(/[^\u0600-\u06FF\s]/g, '').trim().slice(0, 60); if (!ref || !pronKnownRef(ref)) throw new Error('ref');
+  const bin = Uint8Array.from(atob(wavB64), (c) => c.charCodeAt(0));
+  const pa = b64json({ ReferenceText: ref, GradingSystem: 'HundredMark', Granularity: 'Word', Dimension: 'Comprehensive', EnableMiscue: false });
+  const r = await fetch(`https://${cfg.region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=${PRON_LOCALE}&format=detailed`, {
+    method: 'POST', headers: { 'Ocp-Apim-Subscription-Key': cfg.key, 'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000', 'Pronunciation-Assessment': pa, Accept: 'application/json' }, body: bin, signal: AbortSignal.timeout(12000) });
+  if (!r.ok) throw new Error('speech ' + r.status);
+  const j = await r.json(); const nb = (j.NBest || [])[0];
+  if (j.RecognitionStatus !== 'Success' || !nb) return { stars: 0, heard: false };
+  const pa2 = nb.PronunciationAssessment || nb; const acc = +(pa2.AccuracyScore != null ? pa2.AccuracyScore : nb.AccuracyScore || 0); const pron = pa2.PronScore != null ? +pa2.PronScore : null;
+  const words = (nb.Words || []).map((w) => { const a = w.PronunciationAssessment || w; return { ok: (a.AccuracyScore || 0) >= 65 && (a.ErrorType || 'None') === 'None' }; });
+  return { stars: starsFor({ recognized: true, accuracy: acc, pron }), heard: true, words_ok: words.map((w) => w.ok) }; /* stars + which words were fine; no numbers */
+}
 
 'use strict';
 /* =========================================================
@@ -10707,7 +10974,8 @@ const _ttSendSafe = ttSend;
 ttSend = async function ttSendSafe(text, value, via) {
   if (!text) return;
   if (TT.safeEnd) return;
-  const risk = via === 'chip' ? null : detectRisk(text);
+  /* v20: device-side grooming check over this chat's earlier child turns too (same detector as the Worker) */
+  const risk = via === 'chip' ? null : (detectRisk(text) || (typeof detectGrooming === 'function' ? detectGrooming(text, ((TT.brain && TT.brain.history) || []).filter((h) => h && h.role === 'child').map((h) => h.text).slice(-8)) : null));
   if (!risk) {
     /* scope guard: Saqqour only teaches Arabic. Clear off-topic / jailbreak requests are not sent; a scripted dialect redirect instead */
     const tp = via === 'chip' ? { topic: null } : classifyTopic(text);
@@ -11129,7 +11397,8 @@ async function mhSend(text, via, value) {
   text = String(text || '').trim(); if (!text || !tutorAllowed(currentKid) || MH.safeEnd || MH.busy) return; MH.delay = 0;
   mhKid({ ar: text, en: '' }); mhSetChips([]);
   const pr = PROFILES[currentKid]; const g = pr ? pr.gender : 'm';
-  const risk = via === 'chip' ? null : detectRisk(text);
+  /* v20: device-side grooming check over this chat's earlier child turns too (same detector as the Worker) */
+  const risk = via === 'chip' ? null : (detectRisk(text) || (typeof detectGrooming === 'function' ? detectGrooming(text, ((MH.brain && MH.brain.history) || []).filter((h) => h && h.role === 'child').map((h) => h.text).slice(-8)) : null));
   if (risk) {
     const acts = safetyActions(risk, curDialect(), g);
     if (HIGH.has(risk.kind) || ['sexual', 'contact', 'unsafe'].includes(risk.kind)) addAlert(risk.kind, HIGH.has(risk.kind) ? 'high' : 'low');
@@ -11932,6 +12201,358 @@ function jvGoHome() { ilShow('home'); setTimeout(() => { const c = document.quer
 { const _ilo = ACTIONS['il-open']; ACTIONS['il-open'] = function ilOpenTapV19(k) { if (IL.ids[k] === 'journey') return jvGoHome(); return _ilo.apply(this, arguments); }; }
 Object.assign(ACTIONS, { 'jv-isle': (id) => jvOpenIsle(id), 'jv-act': (a) => jvRunAct(a) });
 window.SAQ = Object.assign(window.SAQ || {}, { jvCelebrate, jvOpenIsle, jvState, jvReward, jvGoHome });
+
+/* =========================================================
+   v20 content. Speech lines are dialect (one dialect per line, never mixed); titles are Fusha.
+   [boy|girl] forms are expanded with gform(). All new lines are flagged for a native-speaker review before rollout.
+   ========================================================= */
+/* ---- pronunciation: kind feedback by stars (3 · 2 · 1 · 0 = not heard) ---- */
+const V20_PRON_FB = {
+  emirati: ['[كَفُو عَلَيْك|كَفُو عَلَيْچ]! نُطْق وَايِد حِلُو.', 'زِين وَايِد! [حَاوِل|حَاوْلِي] مَرَّة ثَانْيَة وْبِتْصِير أَحْلَى.', 'حِلُو إِنَّك [حَاوَلْت|حَاوَلْتِي]! [اِسْمَع|اِسْمَعِي] النَّصِيحَة وْ[عِيد|عِيدِي].', '[مَا سِمَعْتَك|مَا سِمَعْتِچ] زِين، [قُولْهَا|قُولِيهَا] مَرَّة ثَانْيَة.'],
+  saudi: ['[كَفُو عَلَيْك|كَفُو عَلَيْكِ]! نُطْق مُرَّة حِلْو.', 'زِين! [حَاوِل|حَاوْلِي] مَرَّة ثَانْيَة وْبَيْصِير أَحْلَى.', 'حِلْو إِنَّك [حَاوَلْت|حَاوَلْتِي]! [اِسْمَع|اِسْمَعِي] النَّصِيحَة وْ[عِيد|عِيدِي].', '[مَا سِمِعْتَك|مَا سِمِعْتِك] زِين، [قُولْهَا|قُولِيهَا] مَرَّة ثَانْيَة.'],
+  lebanese: ['بْرَافُو [عَلَيْك|عَلَيْكِ]! لَفْظ كْتِير حِلُو.', 'مْنِيح كْتِير! [جَرِّب|جَرّْبِي] كَمَان مَرَّة وْبْيِصِير أَحْلَى.', 'حِلْو إِنَّك [جَرَّبْت|جَرَّبْتِي]! [اِسْمَع|اِسْمَعِي] النَّصِيحَة وْ[عِيد|عِيدِي].', 'مَا [سْمِعْتَك|سْمِعْتِك] مْنِيح، [قُولَا|قُولِيَا] كَمَان مَرَّة.'],
+  syrian: ['بْرَافُو [عَلَيْك|عَلَيْكِ]! لَفْظ كْتِير حِلُو.', 'مْنِيح كْتِير! [جَرِّب|جَرّْبِي] كَمَان مَرَّة وْبْيِصِير أَحْلَى.', 'حِلْو إِنَّك [جَرَّبْت|جَرَّبْتِي]! [اِسْمَع|اِسْمَعِي] النَّصِيحَة وْ[عِيد|عِيدِي].', 'مَا [سْمِعْتَك|سْمِعْتِك] مْنِيح، [قُولَا|قُولِيَا] كَمَان مَرَّة.'],
+  jordanian: ['[يِعْطِيك|يِعْطِيكِي] العَافْيِة! لَفْظ كْثِير حِلُو.', 'مْنِيح كْثِير! [جَرِّب|جَرّْبِي] كَمَان مَرَّة وْبِيصِير أَحْلَى.', 'حِلُو إِنَّك [جَرَّبِت|جَرَّبْتِي]! [اِسْمَع|اِسْمَعِي] النَّصِيحَة وْ[عِيد|عِيدِي].', 'مَا [سْمِعْتَك|سْمِعْتِك] مْنِيح، [قُولْهَا|قُولِيهَا] كَمَان مَرَّة.'],
+  egyptian: ['[شَاطِر|شَاطْرَة] أَوِي! نُطْق حِلْو خَالِص.', 'كْوَيِّس أَوِي! [جَرَّب|جَرَّبِي] تَانِي وْهَتِبْقَى أَحْلَى.', 'حِلْو إِنَّك [جَرَّبْت|جَرَّبْتِي]! [اِسْمَع|اِسْمَعِي] النَّصِيحَة وْ[قُولْهَا|قُولِيهَا] تَانِي.', 'مَا [سِمِعْتَكْش|سِمِعْتِكِيش] كْوَيِّس، [قُولْهَا|قُولِيهَا] تَانِي.'],
+  fusha: ['[أَحْسَنْتَ|أَحْسَنْتِ]! نُطْقٌ جَمِيلٌ جِدًّا.', 'جَيِّدٌ جِدًّا! [حَاوِلْ|حَاوِلِي] مَرَّةً أُخْرَى لِيَصِيرَ أَجْمَلَ.', 'جَمِيلٌ أَنَّ[كَ حَاوَلْتَ|كِ حَاوَلْتِ]! [اسْتَمِعْ|اسْتَمِعِي] إِلَى النَّصِيحَةِ وَ[أَعِدْ|أَعِيدِي].', 'لَمْ أَسْمَعْ[كَ|كِ] جَيِّدًا، [قُلْهَا|قُولِيهَا] مَرَّةً أُخْرَى.']
+};
+const V20_PRON_FB_EN = ['Brilliant! Lovely pronunciation.', 'Very good! Try once more to make it even better.', 'Great that you tried! Listen to the tip and try again.', "I couldn't hear you well, say it again."];
+/* ---- mouth-position tips, one line per dialect group (gulf = emirati + saudi, lev = lebanese + syrian + jordanian) ---- */
+const V20_TIPS = {
+  'ع': { gulf: 'الصُّوت يِطْلَع مِن وَسْط الحَلْق، وِالحَلْق يِضِيق شْوَي.', lev: 'الصُّوت بْيِطْلَع مِن نُصّ الحَلْق، وِالحَلْق بْيِضْيَق شْوَي.', egy: 'الصُّوت بِيِطْلَع مِن نُصّ الزُّور، وِالزُّور بِيِضِيق شْوَيَّة.', fusha: 'يَخْرُجُ الصَّوْتُ مِنْ وَسَطِ الحَلْقِ، وَيَضِيقُ الحَلْقُ قَلِيلًا.', en: 'The sound comes from the middle of the throat; the throat squeezes a little.' },
+  'ح': { gulf: 'هَوَا دَافِي يِطْلَع مِن الحَلْق، مِثْل لَمَّا نْنَفِّخ عَلَى المْرَايَة.', lev: 'هَوَا دَافِي بْيِطْلَع مِن الحَلْق، مِتِل لَمَّا مْنِنْفُخ عَالمْرَايِة.', egy: 'هَوَا دَافِي بِيِطْلَع مِن الزُّور، زَيّ لَمَّا بِنْنَفَّخ عَلَى المِرَايَة.', fusha: 'يَخْرُجُ هَوَاءٌ دَافِئٌ مِنَ الحَلْقِ، كَمَا نَنْفُخُ عَلَى المِرْآةِ.', en: 'Warm air from the throat, like fogging up a mirror.' },
+  'خ': { gulf: 'الصُّوت يِطْلَع مِن آخِر الحَلْق، مِثْل خَرْخَشَة خَفِيفَة.', lev: 'الصُّوت بْيِطْلَع مِن آخِر الحَلْق، مِتِل خَرْخَشَة خَفِيفِة.', egy: 'الصُّوت بِيِطْلَع مِن آخِر الزُّور، زَيّ خَرْخَشَة خَفِيفَة.', fusha: 'يَخْرُجُ الصَّوْتُ مِنْ آخِرِ الحَلْقِ، كَخَشْخَشَةٍ خَفِيفَةٍ.', en: 'From the back of the throat, a soft scratchy sound.' },
+  'ق': { gulf: 'آخِر اللِّسَان يِلْمِس آخِر سَقْف الحَلْق، وْيِنْفَتِح بْسُرْعَة.', lev: 'آخِر اللْسَان بْيِلْمُس آخِر سَقْف التِّمّ، وْبْيِنْفِتِح بْسُرْعَة.', egy: 'آخِر اللِّسَان بِيِلْمِس آخِر سَقْف البُقّ، وْبِيِتْفِتِح بْسُرْعَة.', fusha: 'يَلْمِسُ آخِرُ اللِّسَانِ أَقْصَى سَقْفِ الفَمِ، ثُمَّ يَنْفَتِحُ بِسُرْعَةٍ.', en: 'The back of the tongue touches the very back of the roof of the mouth, then pops open.' },
+  'ض': { gulf: 'اللِّسَان يِنْضَغِط وَرَا السِّنُون، وِالصُّوت ثْقِيل.', lev: 'اللْسَان بْيِنْضَغَط وَرَا السْنَان، وِالصُّوت تْقِيل.', egy: 'اللِّسَان بِيِتْضِغِط وَرَا السِّنَان، وِالصُّوت تْقِيل.', fusha: 'يَضْغَطُ اللِّسَانُ خَلْفَ الأَسْنَانِ، وَيَكُونُ الصَّوْتُ ثَقِيلًا.', en: 'The tongue presses behind the teeth; the sound is heavy.' },
+  'غ': { gulf: 'مِثْل الغَرْغَرَة بِالمَاي، بَس بِشْوَيْش.', lev: 'مِتِل الغَرْغَرَة بِالمَيّ، بَس شْوَي شْوَي.', egy: 'زَيّ الغَرْغَرَة بِالمَيَّة، بَس بِالرَّاحَة.', fusha: 'مِثْلُ الغَرْغَرَةِ بِالمَاءِ، وَلَكِنْ بِهُدُوءٍ.', en: 'Like gargling water, but gently.' },
+  'ص': { gulf: 'مِثْل «س» بَس ثْقِيل، وِاللِّسَان تَحْت.', lev: 'مِتِل «س» بَس تْقِيل، وِاللْسَان لَتَحْت.', egy: 'زَيّ «س» بَس تْقِيلَة، وِاللِّسَان لِتَحْت.', fusha: 'مِثْلُ «س» لَكِنَّهُ ثَقِيلٌ، وَاللِّسَانُ إِلَى الأَسْفَلِ.', en: 'Like "s" but heavy, with the tongue low.' },
+  'ط': { gulf: 'مِثْل «ت» بَس ثْقِيل، وِالحَلْق مَفْتُوح.', lev: 'مِتِل «ت» بَس تْقِيل، وِالتِّمّ مَفْتُوح.', egy: 'زَيّ «ت» بَس تْقِيلَة، وِالبُقّ مَفْتُوح.', fusha: 'مِثْلُ «ت» لَكِنَّهُ ثَقِيلٌ، وَالفَمُ مَفْتُوحٌ.', en: 'Like "t" but heavy, mouth open.' },
+  'ظ': { gulf: 'طَرَف اللِّسَان بَيْن السِّنُون، وِالصُّوت ثْقِيل.', lev: 'رَاس اللْسَان بَيْن السْنَان، وِالصُّوت تْقِيل.', egy: 'طَرَف اللِّسَان بَيْن السِّنَان، وِالصُّوت تْقِيل.', fusha: 'طَرَفُ اللِّسَانِ بَيْنَ الأَسْنَانِ، وَالصَّوْتُ ثَقِيلٌ.', en: 'Tongue tip between the teeth, a heavy sound.' },
+  'ذ': { gulf: 'طَرَف اللِّسَان بَيْن السِّنُون، وِالصُّوت يِطِنّ.', lev: 'رَاس اللْسَان بَيْن السْنَان، وِالصُّوت بْيِطِنّ.', egy: 'طَرَف اللِّسَان بَيْن السِّنَان، وِالصُّوت بِيِزِنّ.', fusha: 'طَرَفُ اللِّسَانِ بَيْنَ الأَسْنَانِ، وَالصَّوْتُ يَطِنُّ.', en: 'Tongue tip between the teeth, with a buzz (like "this").' },
+  'ث': { gulf: 'طَرَف اللِّسَان بَيْن السِّنُون، وْهَوَا خَفِيف يِطْلَع.', lev: 'رَاس اللْسَان بَيْن السْنَان، وْهَوَا خَفِيف بْيِطْلَع.', egy: 'طَرَف اللِّسَان بَيْن السِّنَان، وْهَوَا خَفِيف بِيِطْلَع.', fusha: 'طَرَفُ اللِّسَانِ بَيْنَ الأَسْنَانِ، وَيَخْرُجُ هَوَاءٌ خَفِيفٌ.', en: 'Tongue tip between the teeth, soft air out (like "think").' }
+};
+/* ---- talk scenes: k = 3 key sentences (the child's lines), t = Saqqour's 3 turns + a closing line. k[i] answers t[i]. ---- */
+const V20_SCENES = [
+  { id: 'canteen', art: 'ob_sandwich', u: 'u7', ar: 'مَقْصِفُ المَدْرَسَةِ', en: 'School canteen', em: '🥪', col: '#ff8a3d',
+    ken: ['Excuse me, I want a cheese sandwich.', 'How much is the juice?', 'Thank you, here is the money.'], ten: ['Hi! What would you like today?', 'OK. And what would you like to drink?', 'The juice is two (coins).', 'Enjoy! Well done!'],
+    d: {
+      emirati: { k: ['لَوْ سَمَحْت، أَبَا سَنْدْوِيشَة جِبْن.', 'بْچَم العَصِير؟', 'مَشْكُور، هَذِي الفْلُوس.'], t: ['هَلَا! شُو [تَبَا|تَبِين] اليُوم؟', 'زِين. وَشُو [تَبَا تِشْرَب|تَبِين تِشْرَبِين]؟', 'العَصِير بِدِرْهَمَيْن.', 'بِالعَافْيَة! [كَفُو عَلَيْك|كَفُو عَلَيْچ]!'] },
+      saudi: { k: ['لَوْ سَمَحْت، أَبْغَى سَنْدْوِيتْش جِبْن.', 'بِكَم العَصِير؟', 'شُكْرًا، هَذِي الفُلُوس.'], t: ['هَلَا! وِش [تَبْغَى|تَبْغِين] اليَوْم؟', 'تَمَام. وِش [تَبْغَى تِشْرَب|تَبْغِين تِشْرَبِين]؟', 'العَصِير بِرِيَالَيْن.', 'بِالعَافْيَة! [كَفُو عَلَيْك|كَفُو عَلَيْكِ]!'] },
+      lebanese: { k: ['عْمُول مَعْرُوف، بَدِّي سَنْدْوِيشِة جِبْنِة.', 'قَدّيْش العَصِير؟', 'مِرْسِي، تْفَضَّل المَصَاري.'], t: ['أَهْلِين! شُو [بِدَّك|بِدِّك] اليُوم؟', 'تَمَام. وْشُو [بِدَّك تِشْرَب|بِدِّك تِشْرَبِي]؟', 'العَصِير بِأَلْفَيْن.', 'صَحْتَين! بْرَافُو [عَلَيْك|عَلَيْكِ]!'] },
+      syrian: { k: ['مِن فَضْلَك، بِدِّي سَنْدْوِيشِة جِبْنِة.', 'قَدّيْش العَصِير؟', 'شُكْرًا، تْفَضَّل المَصَاري.'], t: ['أَهْلِين! شُو [بِدَّك|بِدِّك] اليُوم؟', 'تَمَام. وْشُو [بِدَّك تِشْرَب|بِدِّك تِشْرَبِي]؟', 'العَصِير بِأَلْفَيْن.', 'صَحْتَين! بْرَافُو [عَلَيْك|عَلَيْكِ]!'] },
+      jordanian: { k: ['لَو سَمَحِت، بِدِّي سَنْدْوِيشِة جِبْنِة.', 'قَدّيْش العَصِير؟', 'شُكْرًا، تْفَضَّل المَصَارِي.'], t: ['أَهْلِين! شُو [بِدَّك|بِدِّك] اليُوم؟', 'مَاشِي. وْشُو [بِدَّك تِشْرَب|بِدِّك تِشْرَبِي]؟', 'العَصِير بِنُصّ دِينَار.', 'صَحْتِين! [يِعْطِيك|يِعْطِيكِي] العَافْيِة!'] },
+      egyptian: { k: ['لَوْ سَمَحْت، [عَايِز|عَايْزَة] سَنْدَوِتْش جِبْنَة.', 'العَصِير بِكَام؟', 'شُكْرًا، اتْفَضَّل الفِلُوس.'], t: ['أَهْلًا! [عَايِز|عَايْزَة] إِيه النَّهَارْدَه؟', 'تَمَام. وْ[عَايِز تِشْرَب|عَايْزَة تِشْرَبِي] إِيه؟', 'العَصِير بِعَشَرَة جِنِيه.', 'بِالهَنَا! [شَاطِر|شَاطْرَة]!'] },
+      fusha: { k: ['مِنْ فَضْلِكَ، أُرِيدُ شَطِيرَةَ جُبْنٍ.', 'بِكَمِ العَصِيرُ؟', 'شُكْرًا، تَفَضَّلِ النُّقُودَ.'], t: ['أَهْلًا! مَاذَا [تُرِيدُ|تُرِيدِينَ] اليَوْمَ؟', 'حَسَنًا. وَمَاذَا [تُرِيدُ أَنْ تَشْرَبَ|تُرِيدِينَ أَنْ تَشْرَبِي]؟', 'العَصِيرُ بِدِرْهَمَيْنِ.', 'بِالهَنَاءِ! [أَحْسَنْتَ|أَحْسَنْتِ]!'] }
+    } },
+  { id: 'teta', art: 'ob_grandma', u: 'u5', ar: 'زِيَارَةُ الجَدَّةِ', en: 'Visiting Teta', em: '👵', col: '#ff6fa8',
+    ken: ['Hello, Grandma!', 'I am fine, thank God.', 'I want to help you.'], ten: ['Hello, my darling!', 'How are you today?', 'Come, I am cooking lunch.', 'Bless you! Let\'s eat together.'],
+    d: {
+      emirati: { k: ['السَّلَام عَلَيْكُم يَا يَدَّه!', '[أَنَا زِين|أَنَا زِينَة]، الحَمْدِلله.', 'أَبَا أَسَاعْدِچ.'], t: ['وَعَلَيْكُم السَّلَام [يَا حَبِيبِي|يَا حَبِيبْتِي]!', '[شْحَالَك|شْحَالِچ] اليُوم؟', '[تَعَال|تَعَالِي]، بَسَوِّي الغَدَا.', 'اللهْ [يِخَلِّيك|يِخَلِّيچ]! يَلَّا نَاكِل سَوَا.'] },
+      saudi: { k: ['السَّلَام عَلَيْكُم يَا جَدَّتِي!', 'أَنَا بِخَيْر، الحَمْدِلله.', 'أَبْغَى أَسَاعْدِك.'], t: ['وَعَلَيْكُم السَّلَام [يَا حَبِيبِي|يَا حَبِيبْتِي]!', '[كَيْفَك|كَيْفِك] اليَوْم؟', '[تَعَال|تَعَالِي]، بَسَوِّي الغَدَا.', 'اللهْ [يِخَلِّيك|يِخَلِّيكِ]! يَلَّا نَاكِل سَوَا.'] },
+      lebanese: { k: ['مَرْحَبَا يَا تِيتَا!', '[أَنَا مْنِيح|أَنَا مْنِيحَة]، الحَمْدِلله.', 'بَدِّي سَاعْدِك.'], t: ['أَهْلِين [يَا حَبِيبِي|يَا حَبِيبْتِي]!', '[كِيفَك|كِيفِك] اليُوم؟', '[تَعَا|تَعِي]، عَم بِطْبُخ الغَدَا.', 'اللهْ [يْخَلِّيك|يْخَلِّيكِي]! يَلَّا نَاكُل سَوَا.'] },
+      syrian: { k: ['مَرْحَبَا يَا تِيتَا!', '[أَنَا مْنِيح|أَنَا مْنِيحَة]، الحَمْدِلله.', 'بَدِّي سَاعْدِك.'], t: ['أَهْلِين [يَا حَبِيبِي|يَا حَبِيبْتِي]!', '[شْلُونَك|شْلُونِك] اليُوم؟', '[تَعَا|تَعِي]، عَم بِطْبُخ الغَدَا.', 'اللهْ [يْخَلِّيك|يْخَلِّيكِي]! يَلَّا نَاكُل سَوَا.'] },
+      jordanian: { k: ['مَرْحَبَا يَا سِتِّي!', '[أَنَا مْنِيح|أَنَا مْنِيحَة]، الحَمْدِلله.', 'بِدِّي أَسَاعْدِك.'], t: ['أَهْلِين [يَا حَبِيبِي|يَا حَبِيبْتِي]!', '[كِيفَك|كِيفِك] اليُوم؟', '[تَعَال|تَعَالِي]، بَطْبُخ الغَدَا.', 'اللهْ [يْخَلِّيك|يْخَلِّيكِي]! يَلَّا نُوكِل مَع بَعَض.'] },
+      egyptian: { k: ['إِزَّيِّك يَا تِيتَا!', '[أَنَا كُوَيِّس|أَنَا كُوَيِّسَة]، الحَمْدُ لِلَّه.', '[عَايِز|عَايْزَة] أَسَاعْدِك.'], t: ['أَهْلًا [يَا حَبِيبِي|يَا حَبِيبْتِي]!', '[إِنْتَ عَامِل|إِنْتِي عَامْلَة] إِيه النَّهَارْدَه؟', '[تَعَالَى|تَعَالِي]، أَنَا بَعْمِل الغَدَا.', 'رَبِّنَا [يِخَلِّيك|يِخَلِّيكِي]! يَلَّا نَاكُل سَوَا.'] },
+      fusha: { k: ['السَّلَامُ عَلَيْكِ يَا جَدَّتِي!', 'أَنَا بِخَيْرٍ، وَالحَمْدُ لِلَّهِ.', 'أُرِيدُ أَنْ أُسَاعِدَكِ.'], t: ['وَعَلَيْكُمُ السَّلَامُ [يَا حَبِيبِي|يَا حَبِيبَتِي]!', 'كَيْفَ [حَالُكَ|حَالُكِ] اليَوْمَ؟', '[تَعَالَ|تَعَالَيْ]، أَنَا أَطْبُخُ الغَدَاءَ.', 'حَفِظَ[كَ|كِ] اللَّهُ! هَيَّا نَأْكُلُ مَعًا.'] }
+    } },
+  { id: 'birthday', art: 'ob_cake', u: 'u13', ar: 'حَفْلَةُ عِيدِ مِيلَادٍ', en: 'Birthday party', em: '🎂', col: '#9b7bff',
+    ken: ['Happy birthday!', 'This is a present for you.', 'The cake is really nice!'], ten: ['Hi! Come in, today is my birthday!', 'Wow, thank you! Let\'s eat cake.', 'What do you think of the cake?', 'Thanks for coming! Let\'s play.'],
+    d: {
+      emirati: { k: ['عِيد مِيلَاد سَعِيد!', 'هَذِي هَدِيَّة لَك.', 'الكَيْكَة وَايِد حِلْوَة!'], t: ['هَلَا! [تْفَضَّل|تْفَضّْلِي]، اليُوم عِيد مِيلَادِي!', 'وَاو، مَشْكُور! يَلَّا نَاكِل كَيْكَة.', 'شُو [رَايَك|رَايِچ] فِي الكَيْكَة؟', 'مَشْكُور عَلَى الزِّيَارَة! يَلَّا نِلْعَب.'] },
+      saudi: { k: ['عِيد مِيلَاد سَعِيد!', 'هَذِي هَدِيَّة لَك.', 'الكَيْكَة مُرَّة حِلْوَة!'], t: ['هَلَا! [تْفَضَّل|تْفَضّْلِي]، اليَوْم عِيد مِيلَادِي!', 'وَاو، شُكْرًا! يَلَّا نَاكِل كَيْكَة.', 'وِش [رَايَك|رَايِك] فِي الكَيْكَة؟', 'شُكْرًا عَلَى الزِّيَارَة! يَلَّا نِلْعَب.'] },
+      lebanese: { k: ['عِيد مِيلَاد سَعِيد!', 'هَيْدِي هْدِيِّة إِلَك.', 'الكَاتُو كْتِير طَيِّب!'], t: ['أَهْلِين! [تْفَضَّل|تْفَضَّلِي]، اليُوم عِيد مِيلَادِي!', 'وَاو، مِرْسِي! يَلَّا نَاكُل كَاتُو.', 'شُو [رَأْيَك|رَأْيِك] بِالكَاتُو؟', 'مِرْسِي إِنَّك [إِجِيت|إِجِيتِي]! يَلَّا نِلْعَب.'] },
+      syrian: { k: ['عِيد مِيلَاد سَعِيد!', 'هَادِي هْدِيِّة إِلَك.', 'الكَاتُو كْتِير طَيِّب!'], t: ['أَهْلِين! [تْفَضَّل|تْفَضَّلِي]، اليُوم عِيد مِيلَادِي!', 'وَاو، شُكْرًا! يَلَّا نَاكُل كَاتُو.', 'شُو [رَأْيَك|رَأْيِك] بِالكَاتُو؟', 'شُكْرًا إِنَّك [إِجِيت|إِجِيتِي]! يَلَّا نِلْعَب.'] },
+      jordanian: { k: ['عِيد مِيلَاد سَعِيد!', 'هَاي هَدِيِّة إِلَك.', 'الكِيكَة كْثِير طَيّْبَة!'], t: ['أَهْلِين! [تْفَضَّل|تْفَضَّلِي]، اليُوم عِيد مِيلَادِي!', 'وَاو، شُكْرًا! يَلَّا نُوكِل كِيكَة.', 'شُو [رَأْيَك|رَأْيِك] بِالكِيكَة؟', 'شُكْرًا إِنَّك [إِجِيت|إِجِيتِي]! يَلَّا نِلْعَب.'] },
+      egyptian: { k: ['عِيد مِيلَاد سَعِيد!', 'دِي هِدِيَّة لِيك.', 'التُّورْتَة حِلْوَة أَوِي!'], t: ['أَهْلًا! [اتْفَضَّل|اتْفَضَّلِي]، النَّهَارْدَه عِيد مِيلَادِي!', 'وَاو، شُكْرًا! يَلَّا نَاكُل تُورْتَة.', 'إِيه [رَأْيَك|رَأْيِك] فِي التُّورْتَة؟', 'شُكْرًا إِنَّك [جِيت|جِيتِي]! يَلَّا نِلْعَب.'] },
+      fusha: { k: ['عِيدُ مِيلَادٍ سَعِيدٌ!', 'هَذِهِ هَدِيَّةٌ لَكَ.', 'الكَعْكَةُ لَذِيذَةٌ جِدًّا!'], t: ['أَهْلًا! [تَفَضَّلْ|تَفَضَّلِي]، اليَوْمَ عِيدُ مِيلَادِي!', 'رَائِعٌ، شُكْرًا! هَيَّا نَأْكُلُ الكَعْكَةَ.', 'مَا [رَأْيُكَ|رَأْيُكِ] فِي الكَعْكَةِ؟', 'شُكْرًا عَلَى حُضُورِ[كَ|كِ]! هَيَّا نَلْعَبُ.'] }
+    } },
+  { id: 'souq', art: 'ob_market', u: 'u2', ar: 'فِي السُّوقِ', en: 'At the souq', em: '🛍️', col: '#20c3a0',
+    ken: ['How much is this?', 'Too expensive!', 'OK, I will take it.'], ten: ['Hi! What would you like?', 'This one is twenty.', 'Fine, for you, ten.', 'Enjoy it! You are good at shopping!'],
+    d: {
+      emirati: { k: ['بْچَم هَذَا؟', 'وَايِد غَالِي!', 'زِين، بَاخِذْه.'], t: ['هَلَا! [تْفَضَّل|تْفَضّْلِي]، شُو [تَبَا|تَبِين]؟', 'هَذَا بِعِشْرِين دِرْهَم.', 'خَلَاص، [لَك|لِچ] بِعَشْرَة.', 'بِالعَافْيَة! [شَاطِر|شَاطْرَة] فِي الشِّرَا!'] },
+      saudi: { k: ['بِكَم هَذَا؟', 'مُرَّة غَالِي!', 'تَمَام، بَاخُذَه.'], t: ['هَلَا! [تْفَضَّل|تْفَضّْلِي]، وِش [تَبْغَى|تَبْغِين]؟', 'هَذَا بِعِشْرِين رِيَال.', 'خَلَاص، [لَك|لِك] بِعَشَرَة.', 'بِالعَافْيَة! [شَاطِر|شَاطْرَة] فِي الشِّرَا!'] },
+      lebanese: { k: ['قَدّيْش هَيْدَا؟', 'كْتِير غَالِي!', 'مَاشِي، رَح آخْدُو.'], t: ['أَهْلِين! [تْفَضَّل|تْفَضَّلِي]، شُو [بِدَّك|بِدِّك]؟', 'هَيْدَا بِعِشْرِين أَلْف.', 'خَلَص، [إِلَك|إِلِك] بِعَشْرَة.', '[تِتْهَنَّى|تِتْهَنِّي]! [شَاطِر|شَاطْرَة] بِالبَيْع وِالشِّرَا!'] },
+      syrian: { k: ['قَدّيْش هَادَا؟', 'كْتِير غَالِي!', 'مَاشِي، رَح آخْدُو.'], t: ['أَهْلِين! [تْفَضَّل|تْفَضَّلِي]، شُو [بِدَّك|بِدِّك]؟', 'هَادَا بِعِشْرِين أَلْف.', 'خَلَص، [إِلَك|إِلِك] بِعَشْرَة.', '[تِتْهَنَّى|تِتْهَنِّي]! [شَاطِر|شَاطْرَة] بِالبَيْع وِالشِّرَا!'] },
+      jordanian: { k: ['قَدّيْش هَاظ؟', 'كْثِير غَالِي!', 'مَاشِي، بَاخْذُه.'], t: ['أَهْلِين! [تْفَضَّل|تْفَضَّلِي]، شُو [بِدَّك|بِدِّك]؟', 'هَاظ بِعَشِر دَنَانِير.', 'خَلَص، [إِلَك|إِلِك] بِخَمْسَة.', '[تِتْهَنَّى|تِتْهَنِّي]! [شَاطِر|شَاطْرَة] بِالشِّرَا!'] },
+      egyptian: { k: ['دَه بِكَام؟', 'غَالِي أَوِي!', 'مَاشِي، هَاخُدُه.'], t: ['أَهْلًا! [اتْفَضَّل|اتْفَضَّلِي]، [عَايِز|عَايْزَة] إِيه؟', 'دَه بِعِشْرِين جِنِيه.', 'خَلَاص، [عَشَانَك|عَشَانِك] بِعَشَرَة.', 'مَبْرُوك! [شَاطِر|شَاطْرَة] فِي الشِّرَا!'] },
+      fusha: { k: ['بِكَمْ هَذَا؟', 'هَذَا غَالٍ جِدًّا!', 'حَسَنًا، سَآخُذُهُ.'], t: ['أَهْلًا! [تَفَضَّلْ|تَفَضَّلِي]، مَاذَا [تُرِيدُ|تُرِيدِينَ]؟', 'هَذَا بِعِشْرِينَ دِرْهَمًا.', 'حَسَنًا، لَ[كَ|كِ] بِعَشَرَةٍ.', 'مُبَارَكٌ! [أَنْتَ مَاهِرٌ|أَنْتِ مَاهِرَةٌ] فِي الشِّرَاءِ!'] }
+    } },
+  { id: 'doctor', art: 'ob_doctor', u: 'u14', ar: 'عِنْدَ الطَّبِيبِ', en: 'At the doctor', em: '🩺', col: '#3aa8ff',
+    ken: ['My head hurts.', 'I have a fever.', 'Thank you, doctor.'], ten: ['Hi! What is wrong today?', 'Get well soon! Anything else?', 'Drink lots of water and rest.', 'Get well soon! Well done.'],
+    d: {
+      emirati: { k: ['رَاسِي يُوجِعْنِي.', 'عِنْدِي حَرَارَة.', 'مَشْكُور يَا دَكْتُور.'], t: ['هَلَا! شُو [فِيك|فِيچ] اليُوم؟', '[سَلَامْتَك|سَلَامْتِچ]! فِيه شَي ثَانِي؟', '[اِشْرَب|اِشْرَبِي] مَاي وَايِد وَ[ارْتَاح|ارْتَاحِي].', '[سَلَامْتَك|سَلَامْتِچ]! [كَفُو عَلَيْك|كَفُو عَلَيْچ].'] },
+      saudi: { k: ['رَاسِي يُوجِعْنِي.', 'عِنْدِي حَرَارَة.', 'شُكْرًا يَا دُكْتُور.'], t: ['هَلَا! وِش [فِيك|فِيكِ] اليَوْم؟', '[سَلَامْتَك|سَلَامْتِك]! فِيه شَي ثَانِي؟', '[اشْرَب|اشْرَبِي] مُوِيَة كْثِير وَ[ارْتَاح|ارْتَاحِي].', '[سَلَامْتَك|سَلَامْتِك]! [كَفُو عَلَيْك|كَفُو عَلَيْكِ].'] },
+      lebanese: { k: ['رَاسِي عَم يُوجَعْنِي.', 'عِنْدِي حَرَارَة.', 'مِرْسِي يَا دُكْتُور.'], t: ['أَهْلِين! شُو [بِك|بِكِ] اليُوم؟', '[سَلَامْتَك|سَلَامْتِك]! في شِي تَانِي؟', '[اِشْرَب|اِشْرَبِي] مَيّ كْتِير وْ[ارْتَاح|ارْتَاحِي].', '[سَلَامْتَك|سَلَامْتِك]! بْرَافُو [عَلَيْك|عَلَيْكِ].'] },
+      syrian: { k: ['رَاسِي عَم يُوجَعْنِي.', 'عِنْدِي حَرَارَة.', 'شُكْرًا يَا دُكْتُور.'], t: ['أَهْلِين! شُو [بَك|بِك] اليُوم؟', '[سَلَامْتَك|سَلَامْتِك]! في شِي تَانِي؟', '[اِشْرَب|اِشْرَبِي] مَيّ كْتِير وْ[ارْتَاح|ارْتَاحِي].', '[سَلَامْتَك|سَلَامْتِك]! بْرَافُو [عَلَيْك|عَلَيْكِ].'] },
+      jordanian: { k: ['رَاسِي بِيُوجَعْنِي.', 'عِنْدِي حَرَارَة.', 'شُكْرًا يَا دُكْتُور.'], t: ['أَهْلِين! شُو [مَالَك|مَالِك] اليُوم؟', '[سَلَامْتَك|سَلَامْتِك]! في إِشِي ثَانِي؟', '[اِشْرَب|اِشْرَبِي] مَيّ كْثِير وْ[ارْتَاح|ارْتَاحِي].', '[سَلَامْتَك|سَلَامْتِك]! [يِعْطِيك|يِعْطِيكِي] العَافْيِة.'] },
+      egyptian: { k: ['رَاسِي بِتْوَجَعْنِي.', 'عَنْدِي سُخُونِيَّة.', 'شُكْرًا يَا دُكْتُور.'], t: ['أَهْلًا! [مَالَك|مَالِك] النَّهَارْدَه؟', 'أَلْف سَلَامَة! فِيه حَاجَة تَانْيَة؟', '[اشْرَب|اشْرَبِي] مَيَّة كِتِير وْ[ارْتَاح|ارْتَاحِي].', 'أَلْف سَلَامَة! [شَاطِر|شَاطْرَة].'] },
+      fusha: { k: ['رَأْسِي يُؤْلِمُنِي.', 'عِنْدِي حُمَّى.', 'شُكْرًا يَا طَبِيبُ.'], t: ['أَهْلًا! مِمَّ [تَشْكُو|تَشْكِينَ] اليَوْمَ؟', 'سَلَامَتُ[كَ|كِ]! هَلْ هُنَاكَ شَيْءٌ آخَرُ؟', '[اشْرَبْ|اشْرَبِي] مَاءً كَثِيرًا وَ[اسْتَرِحْ|اسْتَرِيحِي].', 'سَلَامَتُ[كَ|كِ]! [أَحْسَنْتَ|أَحْسَنْتِ].'] }
+    } },
+  { id: 'playground', art: 'ob_playground', u: 'u10', ar: 'فِي المَلْعَبِ', en: 'At the playground', em: '🛝', col: '#7ac943',
+    ken: ['Do you want to play with me?', 'My turn now!', 'Let\'s go down the slide!'], ten: ['Hi! I\'m new here.', 'Sure! Let\'s play on the swing.', 'OK, and then what shall we play?', 'That was so fun! Let\'s play again tomorrow.'],
+    d: {
+      emirati: { k: ['تَبَا تِلْعَب وِيَّاي؟', 'دُورِي الحِين!', 'يَلَّا نِتْزَحْلَق!'], t: ['هَلَا! أَنَا جَدِيد هِنِي.', 'أَكِيد! خَلَّنَا نِلْعَب بِالمَرْجُوحَة.', 'زِين، وْبَعْدَيْن شُو نِلْعَب؟', 'وَايِد [وَنَّسْتَنِي|وَنَّسْتِينِي]! بَاچِر نِلْعَب مَرَّة ثَانْيَة.'] },
+      saudi: { k: ['تَبْغَى تِلْعَب مَعَايَ؟', 'دُورِي الحِين!', 'يَلَّا نِتْزَحْلَق!'], t: ['هَلَا! أَنَا جَدِيد هِنَا.', 'أَكِيد! خَلْنَا نِلْعَب بِالمَرْجِيحَة.', 'تَمَام، وْبَعْدِين وِش نِلْعَب؟', 'مُرَّة [وَنَّسْتَنِي|وَنَّسْتِينِي]! بُكْرَة نِلْعَب مَرَّة ثَانْيَة.'] },
+      lebanese: { k: ['بِدَّك تِلْعَب مَعِي؟', 'هَلَّق دَوْرِي!', 'يَلَّا نِتْزَحْلَط!'], t: ['أَهْلِين! أَنَا جْدِيد هَوْن.', 'أَكِيد! يَلَّا نِلْعَب عَالمَرْجُوحَة.', 'مَاشِي، وْبَعْدِين شُو مْنِلْعَب؟', 'كْتِير [بَسَطْتْنِي|بَسَطْتِينِي]! بُكْرَا مْنِلْعَب كَمَان.'] },
+      syrian: { k: ['بِدَّك تِلْعَب مَعِي؟', 'هَلَّأ دَوْرِي!', 'يَلَّا نِتْزَحْلَط!'], t: ['أَهْلِين! أَنَا جْدِيد هَون.', 'أَكِيد! يَلَّا نِلْعَب عَالمَرْجُوحَة.', 'مَاشِي، وْبَعْدِين شُو مْنِلْعَب؟', 'كْتِير [بَسَطْتْنِي|بَسَطْتِينِي]! بُكْرَا مْنِلْعَب كَمَان.'] },
+      jordanian: { k: ['بِدَّك تِلْعَب مَعِي؟', 'هَسَّا دَوْرِي!', 'يَلَّا نِتْزَحْلَق!'], t: ['أَهْلِين! أَنَا جْدِيد هُون.', 'أَكِيد! يَلَّا نِلْعَب عَالمَرْجِيحَة.', 'مَاشِي، وْبَعْدِين شُو بِنِلْعَب؟', 'كْثِير انْبَسَطِت [مَعَك|مَعِك]! بُكْرَا بِنِلْعَب كَمَان.'] },
+      egyptian: { k: ['تِحِبّ تِلْعَب مَعَايَا؟', 'دَوْرِي دِلْوَقْتِي!', 'يَلَّا نِتْزَحْلَق!'], t: ['أَهْلًا! أَنَا جْدِيد هِنَا.', 'أَكِيد! يَلَّا نِلْعَب عَالمَرْجِيحَة.', 'مَاشِي، وْبَعْدِين نِلْعَب إِيه؟', 'اتْبَسَطْت أَوِي [مَعَاك|مَعَاكِي]! بُكْرَة نِلْعَب تَانِي.'] },
+      fusha: { k: ['هَلْ تُرِيدُ أَنْ تَلْعَبَ مَعِي؟', 'الآنَ دَوْرِي!', 'هَيَّا نَتَزَلَّجُ!'], t: ['أَهْلًا! أَنَا جَدِيدٌ هُنَا.', 'بِالتَّأْكِيدِ! هَيَّا نَلْعَبُ عَلَى الأُرْجُوحَةِ.', 'حَسَنًا، مَاذَا نَلْعَبُ بَعْدَ ذَلِكَ؟', 'اسْتَمْتَعْتُ مَعَ[كَ|كِ] كَثِيرًا! نَلْعَبُ غَدًا مَرَّةً أُخْرَى.'] }
+    } }
+];
+
+/* =========================================================
+   v20: pronunciation stars · sentence-first talk scenes · weekly parent report · review of missed words.
+   One new OPTIONAL field per child in arabicTutor.v2: p.v20 = { pron: {<letter>: bestStars}, rev: {<wordKey>: {m, b, due, last, src}},
+   scenes: {<sceneId>: day}, snap: {<day>: totals}, learned: n }. Older saves simply don't have it; v20Data() creates/repairs it.
+   Calm sounds: wrong answers are silent; one quiet chime (sfx('level') → calmChime) for a right answer / finished scene / 3 stars.
+   ========================================================= */
+const V20 = { sc: null, pr: null, rv: null };
+/* painted app art when it exists (same look as the rest of the app), emoji otherwise */
+const v20Pic = (key, em, cls) => (typeof artURL === 'function' && key && artURL(key) ? artImg(key, 'v20-art ' + (cls || '')) : `<span class="v20-emo ${cls || ''}" aria-hidden="true">${em || ''}</span>`);
+const v20G = () => (currentKid && PROFILES[currentKid] && PROFILES[currentKid].gender === 'f' ? 'f' : 'm');
+const v20L = (s) => gform(String(s || ''), v20G());
+const V20_GRP = { emirati: 'gulf', saudi: 'gulf', lebanese: 'lev', syrian: 'lev', jordanian: 'lev', egyptian: 'egy', fusha: 'fusha' };
+const v20Dia = () => { const d = curDialect(); return V20_GRP[d] ? d : 'emirati'; };
+const v20Today = () => dayKey();
+const v20Shift = (k, n) => dayKey(addDays(new Date(k + 'T12:00:00'), n));
+const v20Chime = () => { try { if (typeof SFX_CALM !== 'undefined') sfx('level'); } catch (e) { /* sound is optional */ } };
+const V20_REV_HI = { emirati: 'يَلَّا نْرَاجِع كَم كَلِمَة سَوَا!', saudi: 'يَلَّا نْرَاجِع كَم كَلِمَة سَوَا!', lebanese: 'يَلَّا نْرَاجِع شْوَيِّة كِلْمَات سَوَا!', syrian: 'يَلَّا نْرَاجِع شْوَيِّة كِلْمَات سَوَا!', jordanian: 'يَلَّا نْرَاجِع كَم كِلْمِة مَع بَعَض!', egyptian: 'يَلَّا نْرَاجِع شْوَيَّة كِلْمَات سَوَا!', fusha: 'هَيَّا نُرَاجِعُ بَعْضَ الكَلِمَاتِ مَعًا!' };
+/* ---------- the optional field (migration-safe) ---------- */
+function v20Data(p) {
+  p = p || P(); let v = p.v20; if (!v || typeof v !== 'object' || Array.isArray(v)) v = p.v20 = {};
+  ['pron', 'rev', 'scenes', 'snap'].forEach((k) => { if (!v[k] || typeof v[k] !== 'object' || Array.isArray(v[k])) v[k] = {}; });
+  if (typeof v.learned !== 'number' || !(v.learned >= 0)) v.learned = 0;
+  Object.keys(v.rev).forEach((k) => { const r = v.rev[k]; if (!r || typeof r !== 'object' || typeof r.due !== 'string' || !v20Word(k)) delete v.rev[k]; });
+  return v;
+}
+function v20Word(key) {
+  key = String(key || ''); if (key.startsWith('st:')) { const s = typeof STICKER !== 'undefined' && STICKER[key.slice(3)]; return s ? { ar: s.ar, dl: s.ar, en: s.en, art: key.slice(3), key } : null; }
+  const [uid, i] = key.split(':'); const u = UNITS.find((x) => x.id === uid); return u && u.vocab[+i] ? playWord(u, +i) : null;
+}
+/* ---------- feature 4: review of missed words (Leitner boxes: again today → 1 → 2 → 4 → 7 days → learned) ---------- */
+const V20_GAPS = [0, 1, 2, 4, 7];
+function v20Miss(w, src) { if (!w || !w.key || !currentKid || !v20Word(w.key)) return; const v = v20Data(); const t = v20Today(); const r = v.rev[w.key] || (v.rev[w.key] = { m: 0, b: 0 }); r.m = (r.m || 0) + (src === 'skip' ? 0.5 : 1); r.b = 0; r.due = t; r.last = t; r.src = src; saveDB(); }
+function v20Hit(w) { if (!w || !w.key || !currentKid) return; const v = v20Data(); const r = v.rev[w.key]; if (!r || r.due > v20Today()) return; r.b = (r.b || 0) + 1; r.last = v20Today(); if (r.b >= V20_GAPS.length) { delete v.rev[w.key]; v.learned++; } else r.due = v20Shift(v20Today(), V20_GAPS[r.b]); saveDB(); }
+function v20Due(p, uid) { const v = v20Data(p); const t = v20Today(); return Object.keys(v.rev).filter((k) => v.rev[k].due <= t && (!uid || k.startsWith(uid + ':'))).sort((a, b) => v.rev[b].m - v.rev[a].m).map(v20Word).filter(Boolean); }
+/* games: a miss / skip goes in; a right answer moves it up a box */
+{ const _ra = roundAnswer; roundAnswer = function roundAnswerV20(ok) { const r = round; const it = r && !r.answered ? r.items[r.i] : null; const res = _ra.apply(this, arguments);
+  try { if (it && it.w && it.w.key && it.kind !== 'meet') { if (ok) v20Hit(it.w); else v20Miss(it.w, 'play'); } } catch (e) { /* review is optional */ } return res; }; }
+{ const _rc = roundOnClose; roundOnClose = function roundOnCloseV20() { try { const r = round; const it = r && !r.answered && r.phase !== 'gift' && r.items[r.i]; if (it && it.w && it.kind !== 'meet' && r.games > 0) v20Miss(it.w, 'skip'); } catch (e) { /* ignore */ } return _rc.apply(this, arguments); }; }
+/* the unit challenge (journey) */
+{ const _uq = unitQuizAnswer; unitQuizAnswer = function unitQuizAnswerV20(i) { const z = journeyState.quiz; const q = z && z.answered === null ? z.qs[z.i] : null; const u = journeyState.unit; const res = _uq.apply(this, arguments);
+  try { if (q && u) { const vi = u.vocab.findIndex((v) => v[0] === q.right || v[1] === q.right || v[2] === q.right); if (vi >= 0) { const w = playWord(u, vi); if (q.opts[i] === q.right) v20Hit(w); else v20Miss(w, 'quiz'); } } } catch (e) { /* ignore */ } return res; }; }
+/* words to revisit come back inside the next game round (up to 2 per round), marked with a small tag */
+{ const _br = buildRound; buildRound = function buildRoundV20(kind) { const items = _br.apply(this, arguments);
+  try { if (kind === 'mix') { const due = v20Due(P()).slice(0, 2); if (due.length) { const pools = playPools(P()); let j = 0;
+    for (let i = items.length - 1; i > 0 && j < due.length; i--) { const it = items[i]; if (it.kind === 'meet' || it.kind === 'spy' || !it.w || (it.kind === 'say' && !due[j].dl)) continue; if (items.some((x) => x.w && x.w.key === due[j].key)) { j++; continue; } const n = makeItem(it.kind, due[j], pools); if (n) { n.v20 = 1; items[i] = n; j++; } } } } } catch (e) { /* ignore */ }
+  return items; }; }
+{ const _sh = stageHTML; stageHTML = function stageHTMLV20(it) { const h = _sh.apply(this, arguments); return it && it.v20 ? `<div class="v20-tag">${mhArt('ic2_target') || ''} كَلِمَةٌ نَرْجِعُ لَهَا <span class="en">A word to revisit</span></div>` + h : h; }; }
+/* stories: due words glow softly in the read-along page (stories are Fusha) */
+const v20Bare = (s) => stripHarakat(String(s || '')).replace(/[^\u0621-\u064A]/g, '').replace(/^(وَ?ال|ال|و|ب|ف)/, '');
+{ const _rw = readerWordsHTML; readerWordsHTML = function readerWordsHTMLV20() { const h = _rw.apply(this, arguments);
+  try { const due = new Set(v20Due(P()).map((w) => v20Bare(w.ar)).filter((x) => x.length > 1)); if (!due.size) return h;
+    return h.replace(/<span class="ra-w ([^"]*)"([^>]*)>([^<]*)<\/span>/g, (m, c, a, t) => (due.has(v20Bare(t.replace(/&[a-z#0-9]+;/g, ''))) ? `<span class="ra-w v20-glow ${c}"${a}>${t}</span>` : m)); } catch (e) { return h; } }; }
+/* the review session itself: hear the dialect word, pick its picture (3 choices) */
+function v20Review(uid) { const p = P(); const due = v20Due(p, uid).slice(0, 6); if (!due.length) { toast('✓ <span class="en">Nothing to revisit right now</span>'); return; }
+  V20.rv = { list: due, i: 0, pick: null, got: 0, uid }; v20RenderReview(true); }
+function v20RenderReview(first) {
+  const r = V20.rv; if (!r) return; const d = v20Dia();
+  if (r.i >= r.list.length) { openModal(`<div class="stack v20 v20-rev-end center">${closeBtn()}${falconSVG('celebrate', 'v20-bird')}
+      <h2 lang="ar">${toArabicDigits(r.got)} مِنْ ${toArabicDigits(r.list.length)} <span class="en">${r.got} of ${r.list.length}</span></h2>
+      <p class="v20-say" lang="ar">${esc(v20L(V20_PRON_FB[d][0]))}</p><p class="en en-block">${esc(V20_PRON_FB_EN[0])}</p>
+      <button class="btn big gold" data-act="modal-close">${G('تَمَّ', 'تَمَّ')} <span class="en">Done</span></button></div>`, () => { V20.rv = null; renderHome(); }, 'sheet'); return; }
+  const w = r.list[r.i]; if (!r.opts) { const pool = UNITS.flatMap((u) => u.vocab.map((_, i) => playWord(u, i))).filter((x) => x.key !== w.key); r.opts = shuffle([w].concat(distract(w, pool, 2))); }
+  openModal(`<div class="stack v20 v20-review">
+    <div class="row between"><h2 lang="ar">كَلِمَاتٌ نَرْجِعُ لَهَا <span class="en en-block">Words to revisit</span></h2>${closeBtn()}</div>
+    <div class="v20-buddy">${falconSVG(r.pick === null ? 'happy' : 'cheer', 'v20-bird sm')}<div class="v20-bub"><b lang="ar">${esc(V20_REV_HI[d])}</b><span class="en">Let's revisit a few words together!</span></div></div>
+    <div class="v20-dots">${r.list.map((_, k) => `<i class="${k < r.i ? 'on' : k === r.i ? 'now' : ''}"></i>`).join('')}</div>
+    <button class="v20-hearbig" data-act="v20-rv-hear" aria-label="اِسْمَعْ Hear">${ICON('speaker')}<span class="v20-word" lang="ar">${esc(w.ar)}</span>${w.dl && stripHarakat(w.dl) !== stripHarakat(w.ar) ? `<span class="rd-dl" lang="ar">${dInfo().flag} ${esc(w.dl)}</span>` : ''}</button>
+    <p class="center small" lang="ar">${G('اِسْمَعْ ثُمَّ اخْتَرِ الصُّورَةَ', 'اِسْمَعِي ثُمَّ اخْتَارِي الصُّورَةَ')} <span class="en">Listen, then tap the picture</span></p>
+    <div class="pic-opts v20-pics">${r.opts.map((o, k) => `<button class="pic-opt ${r.pick !== null ? (o.key === w.key ? 'yay' : k === r.pick ? 'oops' : 'dim') : ''}" data-act="v20-rv-pick" data-arg="${k}" aria-label="${esc(o.en)}">${picHTML(o, 'md')}</button>`).join('')}</div>
+    ${r.pick !== null ? `<button class="btn big rd-go" data-act="v20-rv-next">التَّالِي <span class="en">Next</span></button>` : ''}</div>`, () => { if (V20.rv && V20.rv.i < V20.rv.list.length) { V20.rv = null; } renderHome(); }, 'sheet');
+  if (first || r.pick === null) setTimeout(() => speak(w.dl || w.ar, curDialect(), { quiet: true }), 200);
+}
+/* ---------- feature 2: sentence-first talk scenes ---------- */
+function v20SceneList() { const p = P(); const v = v20Data(p);
+  openModal(`<div class="stack v20 v20-scenes">
+    <div class="row between"><h2 lang="ar">مَشَاهِدُ الكَلَامِ <span class="en en-block">Talk scenes</span></h2>${closeBtn()}</div>
+    <p class="small" lang="ar">${G('تَعَلَّمْ', 'تَعَلَّمِي')} الجُمَلَ أَوَّلًا، ثُمَّ ${G('تَكَلَّمْ', 'تَكَلَّمِي')} مَعَ ${esc(falconName().ar)}. <span class="en">Learn the sentences first, then talk with ${esc(falconName().en || 'Saqqour')}.</span></p>
+    <div class="v20-sgrid">${V20_SCENES.map((s) => `<button class="v20-scard ${v.scenes[s.id] ? 'done' : ''}" style="--sc:${s.col}" data-act="v20-scene" data-arg="${s.id}"><span class="v20-sem" aria-hidden="true">${v20Pic(s.art, s.em)}</span><b lang="ar">${esc(s.ar)}</b><span class="en">${esc(s.en)}</span>${v.scenes[s.id] ? '<span class="v20-ok" aria-label="مُكْتَمِل">✓</span>' : ''}</button>`).join('')}</div></div>`, null, 'sheet'); }
+function v20Scene(id) { const s = V20_SCENES.find((x) => x.id === id); if (!s) return; V20.sc = { s, ph: 'learn', i: 0, said: {}, turn: 0, wrong: null, t0: Date.now() }; v20RenderScene(); setTimeout(v20SceneSpeak, 250); }
+function v20SceneLines() { const c = V20.sc; return c.s.d[v20Dia()] || c.s.d.emirati; }
+function v20SceneSpeak() { const c = V20.sc; if (!c) return; const L = v20SceneLines(); const t = c.ph === 'learn' ? L.k[c.i] : c.ph === 'talk' ? L.t[c.turn] : L.t[3]; speak(v20L(t), curDialect(), { quiet: true }); }
+function v20Chips(c) { const n = c.turn; const other = (n + 1 + (c.s.id.length % 2)) % 3; const a = [n, other]; return (c.s.id.length + n) % 2 ? a : a.reverse(); }
+function v20RenderScene() {
+  const c = V20.sc; if (!c) return; const s = c.s; const L = v20SceneLines(); const head = `<div class="row between v20-shead"><h2 lang="ar"><span class="v20-hic" aria-hidden="true">${v20Pic(s.art, s.em)}</span> ${esc(s.ar)} <span class="en en-block">${esc(s.en)}</span></h2>${closeBtn()}</div>
+    <div class="v20-steps" aria-hidden="true">${[0, 1, 2].map((k) => `<i class="${c.ph !== 'learn' || k < c.i ? 'on' : k === c.i ? 'now' : ''}"></i>`).join('')}<i class="talk ${c.ph === 'talk' ? 'now' : c.ph === 'done' ? 'on' : ''}">${ICON('speaker')}</i></div>`;
+  let body = '';
+  if (c.ph === 'learn') {
+    body = `<p class="v20-kicker" lang="ar">${G('تَعَلَّمْ', 'تَعَلَّمِي')} الجُمْلَةَ ${toArabicDigits(c.i + 1)} مِنْ ٣ <span class="en">Learn sentence ${c.i + 1} of 3</span></p>
+      <div class="v20-lcard"><p class="v20-say" lang="ar">${esc(v20L(L.k[c.i]))}</p><p class="en en-block">${esc(s.ken[c.i])}</p></div>
+      <div class="v20-row"><button class="btn big soft" data-act="v20-sc-hear">${ICON('speaker')} ${G('اِسْمَعْ', 'اِسْمَعِي')} <span class="en">Hear</span></button>
+        <button class="btn big ${c.said[c.i] ? 'done' : 'gold'}" data-act="v20-sc-said">${ICON(c.said[c.i] ? 'check' : 'mic')} ${c.said[c.i] ? 'قُلْتُهَا' : G('كَرِّرْ', 'كَرِّرِي')} <span class="en">${c.said[c.i] ? 'I said it' : 'Say it'}</span></button></div>
+      ${c.said[c.i] ? `<button class="btn big rd-go" data-act="v20-sc-next">${c.i < 2 ? 'الجُمْلَةُ التَّالِيَةُ' : 'هَيَّا نَتَكَلَّمُ!'} <span class="en">${c.i < 2 ? 'Next sentence' : "Let's talk!"}</span></button>` : ''}`;
+  } else {
+    const log = []; for (let k = 0; k < c.turn; k++) { log.push(['s', L.t[k]]); log.push(['n', L.k[k]]); } if (c.ph === 'talk') log.push(['s', L.t[c.turn]]); else log.push(['s', L.t[3]]);
+    body = `<div class="v20-chat" id="v20-chat">${log.map(([who, l], k) => `<div class="v20-msg ${who}">${who === 's' ? `<span class="v20-av">${falconSVG('happy', 'v20-mini')}</span>` : `<span class="v20-av kid">${kidFace(currentKid)}</span>`}<p lang="ar">${esc(v20L(l))}${who === 's' && k === log.length - 1 ? ` <button class="mini-hear" data-act="v20-sc-hear" aria-label="اِسْمَعْ Hear">${ICON('speaker')}</button>` : ''}</p></div>`).join('')}</div>
+      ${c.ph === 'talk' ? `<p class="v20-kicker" lang="ar">${G('اِخْتَرْ', 'اِخْتَارِي')} رَدَّكَ <span class="en">Pick your reply</span></p>
+        <div class="v20-chips">${v20Chips(c).map((k) => `<button class="v20-chip ${c.wrong === k ? 'nudge' : ''} ${c.wrong !== null && k === c.turn ? 'glow' : ''}" data-act="v20-sc-reply" data-arg="${k}" lang="ar">${esc(v20L(L.k[k]))}<span class="en">${esc(s.ken[k])}</span></button>`).join('')}</div>`
+      : `<div class="v20-done">${starIcons(3, 30)}<p lang="ar">${G('أَحْسَنْتَ', 'أَحْسَنْتِ')}! ${G('أَكْمَلْتَ', 'أَكْمَلْتِ')} المَشْهَدَ. <span class="en en-block">Scene complete!</span></p><button class="btn big gold" data-act="modal-close">تَمَّ <span class="en">Done</span></button></div>`}`;
+  }
+  openModal(`<div class="stack v20 v20-scene" style="--sc:${s.col}">${head}${body}</div>`, () => { if (V20.sc) { const secs = (Date.now() - V20.sc.t0) / 1000; if (secs > 8 && typeof talkSecs === 'function') talkSecs('speak', Math.min(secs, 600)); } V20.sc = null; renderHome(); }, 'sheet');
+  const ch = $('v20-chat'); if (ch) ch.scrollTop = ch.scrollHeight;
+}
+function v20SceneReply(k) { const c = V20.sc; if (!c || c.ph !== 'talk') return; k = +k;
+  if (k !== c.turn) { c.wrong = k; v20RenderScene(); return; } /* silent: the right reply just glows */
+  c.wrong = null; c.turn++; if (c.turn >= 3) { c.ph = 'done'; v20Data().scenes[c.s.id] = v20Today(); saveDB(); v20Chime(); } v20RenderScene(); setTimeout(v20SceneSpeak, 200); }
+/* ---------- feature 1: pronunciation stars (hard letters, Fusha words, Azure ar-SA via the Worker; never a number) ---------- */
+function v20PronGrid() { const v = v20Data(); V20.pr = null;
+  openModal(`<div class="stack v20 v20-pron">
+    <div class="row between"><h2 lang="ar">حُرُوفٌ صَعْبَةٌ <span class="en en-block">Tricky letters</span></h2>${closeBtn()}</div>
+    <p class="small" lang="ar">نَقُولُ هَذِهِ الكَلِمَاتِ بِالفُصْحَى، وَ${esc(falconName().ar)} ${G('يُعْطِيكَ', 'يُعْطِيكِ')} نُجُومًا. <span class="en">We say these words in Fusha (MSA) and get stars.</span></p>
+    <div class="v20-lgrid">${PRON_CARDS.map((c, i) => `<button class="v20-ltile" data-act="v20-pron-card" data-arg="${i}"><b lang="ar">${c[0]}</b><span class="v20-lst">${starIcons(v.pron[c[0]] || 0, 13)}</span></button>`).join('')}</div></div>`, null, 'sheet'); }
+function v20PronCard(i) { V20.pr = { i: +i, st: 'idle', res: null }; v20RenderPron(); setTimeout(() => speak(PRON_CARDS[V20.pr.i][1], 'fusha', { quiet: true }), 200); }
+function v20RenderPron() {
+  const r = V20.pr; if (!r) return; const c = PRON_CARDS[r.i]; const d = v20Dia(); const tip = V20_TIPS[c[0]]; const n = r.res ? r.res.stars : null;
+  const res = r.st === 'res' && r.res ? `<div class="v20-res s${n}"><div class="v20-bigstars" role="img" aria-label="${toArabicDigits(n)} نُجُوم">${starIcons(n, 40)}</div>
+      <p class="v20-say" lang="ar">${esc(v20L(V20_PRON_FB[d][3 - n]))}</p><p class="en en-block">${esc(V20_PRON_FB_EN[3 - n])}</p>
+      ${n < 3 ? `<div class="v20-tip"><span class="v20-mouth" aria-hidden="true">👄</span><p lang="ar">${esc(tip[V20_GRP[d]])}<span class="en en-block">${esc(tip.en)}</span></p></div>` : ''}</div>`
+    : r.st === 'off' ? `<p class="v20-say small" lang="ar">التَّقْيِيمُ غَيْرُ مُتَاحٍ الآنَ. <span class="en en-block">Stars aren't available right now.</span></p>`
+    : r.st === 'consent' ? `<p class="v20-say small" lang="ar">${G('اُطْلُبْ', 'اُطْلُبِي')} مِنْ مَامَا أَوْ بَابَا تَشْغِيلَ الأَصْوَاتِ السَّحَابِيَّةِ لِلنُّجُومِ. <span class="en en-block">Ask Mum or Dad to switch on cloud voices to get stars.</span></p>` : '';
+  openModal(`<div class="stack v20 v20-pcard">
+    <div class="row between"><button class="icon-btn" data-act="v20-pron" aria-label="رُجُوع Back">→</button><h2 lang="ar">حَرْفُ «${c[0]}»</h2>${closeBtn()}</div>
+    <button class="v20-wcard" data-act="v20-pron-hear" aria-label="اِسْمَعْ Hear"><span class="v20-bigL" lang="ar">${c[0]}</span><span class="v20-wem" aria-hidden="true">${v20Pic(c[4], c[3])}</span><span class="v20-word" lang="ar">${esc(c[1])}</span><span class="en">${esc(c[2])}</span><span class="rd-hear-ic">${ICON('speaker')}</span></button>
+    ${res}
+    <div class="v20-row">${r.st === 'rec' ? `<button class="btn big mic-big rec" disabled>${ICON('mic')} ${G('أَسْمَعُكَ…', 'أَسْمَعُكِ…')} <span class="en">Listening…</span></button>`
+      : r.st === 'wait' ? `<button class="btn big soft" disabled>… <span class="en">Checking…</span></button>`
+      : `<button class="btn big ${r.st === 'res' ? 'soft' : 'mic-big'}" data-act="v20-pron-rec">${ICON('mic')} ${r.st === 'res' ? 'مَرَّةً أُخْرَى' : G('قُلْهَا', 'قُولِيهَا')} <span class="en">${r.st === 'res' ? 'Try again' : 'Say it'}</span></button>`}
+      ${r.st === 'res' ? `<button class="btn big gold" data-act="v20-pron-next">الحَرْفُ التَّالِي <span class="en">Next letter</span></button>` : ''}</div></div>`, () => { V20.pr = null; }, 'sheet');
+}
+async function v20PronRec() {
+  const r = V20.pr; if (!r || r.st === 'rec' || r.st === 'wait') return; const c = PRON_CARDS[r.i];
+  /* the recording goes to Azure Speech: needs the parent's microphone AND cloud-voices consent (and a family token) */
+  if (typeof micAllowed === 'function' && !micAllowed(currentKid)) { openModal(consentGateHTML(currentKid, 'mic'), null, 'sheet'); V20.pr = null; return; }
+  if (typeof cloudAllowed === 'function' && !cloudAllowed(currentKid)) { r.st = 'consent'; v20RenderPron(); return; }
+  r.st = 'rec'; v20RenderPron();
+  try {
+    const wav = await v20Record(2600); if (!V20.pr) return; r.st = 'wait'; v20RenderPron();
+    const j = await v20Assess(wav, c[1]); if (!V20.pr) return;
+    const stars = Math.max(0, Math.min(3, Math.round(+j.stars || 0))); r.res = { stars }; r.st = 'res';
+    const v = v20Data(); if (stars > (v.pron[c[0]] || 0)) v.pron[c[0]] = stars; if (typeof talkSecs === 'function') talkSecs('speak', 3); saveDB();
+    v20RenderPron(); if (stars === 3) v20Chime();
+    speak(v20L(V20_PRON_FB[v20Dia()][3 - stars]), curDialect(), { quiet: true });
+  } catch (e) { if (V20.pr) { r.st = 'off'; v20RenderPron(); } }
+}
+async function v20Assess(wav, ref) {
+  if (typeof window.__pronFake === 'function') return window.__pronFake(ref, wav); /* screenshot / test hook */
+  const base = typeof TT_BASE === 'function' ? TT_BASE() : ''; if (!base || typeof TT_HDR !== 'function') throw new Error('no endpoint');
+  const res = await fetch(base + '/api/pron', { method: 'POST', headers: TT_HDR(), body: JSON.stringify({ wav, ref }) });
+  if (!res.ok) throw new Error('pron ' + res.status); return res.json();
+}
+/* 16 kHz mono 16-bit WAV, recorded on the device, sent once, never stored */
+async function v20Record(ms) {
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true } });
+  const ac = new (window.AudioContext || window.webkitAudioContext)(); const src = ac.createMediaStreamSource(stream); const proc = ac.createScriptProcessor(4096, 1, 1); const bufs = [];
+  proc.onaudioprocess = (e) => bufs.push(new Float32Array(e.inputBuffer.getChannelData(0))); src.connect(proc); proc.connect(ac.destination);
+  await new Promise((ok) => setTimeout(ok, ms)); proc.disconnect(); src.disconnect(); stream.getTracks().forEach((t) => t.stop()); const rate = ac.sampleRate; try { ac.close(); } catch (e) { /* ignore */ }
+  return v20Wav(bufs, rate);
+}
+function v20Wav(bufs, rate) {
+  const n = bufs.reduce((s, b) => s + b.length, 0); const all = new Float32Array(n); let o = 0; bufs.forEach((b) => { all.set(b, o); o += b.length; });
+  const ratio = rate / 16000; const m = Math.floor(n / ratio); const pcm = new Int16Array(m);
+  for (let i = 0; i < m; i++) { const a = Math.floor(i * ratio), b = Math.min(n, Math.floor((i + 1) * ratio)); let s = 0; for (let k = a; k < b; k++) s += all[k]; s = b > a ? s / (b - a) : 0; s = Math.max(-1, Math.min(1, s)); pcm[i] = s < 0 ? s * 0x8000 : s * 0x7fff; }
+  const buf = new ArrayBuffer(44 + m * 2); const dv = new DataView(buf); const ws = (p, s) => { for (let i = 0; i < s.length; i++) dv.setUint8(p + i, s.charCodeAt(i)); };
+  ws(0, 'RIFF'); dv.setUint32(4, 36 + m * 2, true); ws(8, 'WAVE'); ws(12, 'fmt '); dv.setUint32(16, 16, true); dv.setUint16(20, 1, true); dv.setUint16(22, 1, true); dv.setUint32(24, 16000, true); dv.setUint32(28, 32000, true); dv.setUint16(32, 2, true); dv.setUint16(34, 16, true); ws(36, 'data'); dv.setUint32(40, m * 2, true);
+  new Int16Array(buf, 44).set(pcm); const u8 = new Uint8Array(buf); let bin = ''; for (let i = 0; i < u8.length; i += 0x8000) bin += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(bin);
+}
+/* ---------- feature 3: weekly parent report (behind the PIN; built on this device; leaves only if the parent shares it) ---------- */
+const V20_DAYS = ['الأَحَدِ', 'الاِثْنَيْنِ', 'الثُّلَاثَاءِ', 'الأَرْبِعَاءِ', 'الخَمِيسِ', 'الجُمُعَةِ', 'السَّبْتِ'];
+const V20_DAYS_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+function v20Totals(p) { const t = p.talk || {}; const got = (p.play && p.play.got) || {}; const ab = (p.abc && p.abc.master) || {};
+  return { sp: Math.round(t.speakSecs || 0), rd: Math.round(t.readSecs || 0), w: Object.keys(got).filter((k) => got[k] > 0 && !k.startsWith('st:')).length, l: Object.keys(ab).filter((k) => ab[k]).length, i: unitsDone(p) }; }
+function v20Snap(p) { const v = v20Data(p); const t = v20Today(); if (!v.snap[t]) { v.snap[t] = v20Totals(p); const ks = Object.keys(v.snap).sort(); while (ks.length > 15) delete v.snap[ks.shift()]; } }
+function v20Week(p) {
+  v20Snap(p); const v = v20Data(p); const t = v20Today(); const from = v20Shift(t, -6); const now = v20Totals(p);
+  const k0 = Object.keys(v.snap).sort().find((k) => k >= from) || t; const b = v.snap[k0] || now; const dt = (x) => Math.max(0, now[x] - (b[x] || 0));
+  const days = new Set((p.activeDays || []).filter((k) => k >= from && k <= t)); const cel = (p.journey && p.journey.celebrated) || {};
+  const isl = Object.keys(cel).filter((u) => cel[u] && cel[u].d >= from).length;
+  const top = Object.keys(v.rev).sort((a, c) => v.rev[c].m - v.rev[a].m).slice(0, 5).map(v20Word).filter(Boolean);
+  const weak = PRON_CARDS.filter((c) => v.pron[c[0]] && v.pron[c[0]] < 3).map((c) => c[0]);
+  const alerts = ((DB.settings && DB.settings.alerts) || []).filter((a) => a && a.kid === p.__id && String(a.at || '').slice(0, 10) >= from).map((a) => String(a.at).slice(0, 10));
+  return { from, since: k0, now, spMin: Math.round(dt('sp') / 60), rdMin: Math.round(dt('rd') / 60), newW: dt('w'), newL: dt('l'), isl, days: days.size, streak: computeStreak(p.activeDays || []), top, weak, safety: [...new Set(alerts)].sort(), scenes: Object.keys(v.scenes).filter((s) => v.scenes[s] >= from).length };
+}
+function v20Tips(w) { const out = [];
+  if (w.spMin < 10) out.push(['جَرِّبُوا مَشْهَدَ كَلَامٍ قَصِيرًا مَعًا؛ خَمْسُ دَقَائِقَ تَكْفِي.', 'Try one short talk scene together; five minutes is enough.']);
+  if (w.top.length) out.push(['رَاجِعُوا الكَلِمَاتِ الصَّعْبَةَ بِلُطْفٍ وَدُونَ ضَغْطٍ.', 'Go over the tricky words gently, with no pressure.']);
+  if (w.weak.length) out.push([`تَدَرَّبُوا عَلَى حَرْفِ «${w.weak[0]}» أَمَامَ المِرْآةِ مَعَ نَصِيحَةِ الفَمِ.`, `Practise the letter ${w.weak[0]} in front of a mirror with the mouth tip.`]);
+  if (w.days < 3) out.push(['جَلَسَاتٌ قَصِيرَةٌ كُلَّ يَوْمٍ أَفْضَلُ مِنْ جَلْسَةٍ طَوِيلَةٍ.', 'Short daily sessions work better than one long one.']);
+  if (w.rdMin < 10) out.push(['اِقْرَؤُوا قِصَّةً قَصِيرَةً بِصَوْتٍ عَالٍ قَبْلَ النَّوْمِ.', 'Read a short story aloud together before bed.']);
+  out.push(['اِمْدَحُوا الجُهْدَ، لَا النَّتِيجَةَ فَقَطْ.', 'Praise the effort, not just the result.']); return out.slice(0, 3); }
+const v20Day = (k) => { const d = new Date(k + 'T12:00:00'); return [V20_DAYS[d.getDay()] + ' ' + toArabicDigits(d.getDate()) + '/' + toArabicDigits(d.getMonth() + 1), V20_DAYS_EN[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1)]; };
+function v20ReportHTML(kid) {
+  const pr = PROFILES[kid]; const p = DB.kids[kid]; p.__id = kid; const w = v20Week(p); delete p.__id; const N = toArabicDigits;
+  const stat = (ic, n, ar, en, sub) => `<div class="v20-stat"><span class="v20-sic" aria-hidden="true">${v20Pic(ic[0], ic[1])}</span><b>${N(n)}</b><span lang="ar">${ar}</span><span class="en">${en}</span>${sub ? `<small lang="ar">${sub}</small>` : ''}</div>`;
+  const since = w.since > w.from ? `<p class="small en en-block">Counting since ${esc(w.since)} (the first day this report had data).</p>` : '';
+  return `<div class="v20-report" id="v20-report">
+    <div class="v20-rhead"><span class="face">${kidFace(kid)}</span><div><h2 lang="ar">التَّقْرِيرُ الأُسْبُوعِيُّ: ${esc(pr.ar || pr.name)}</h2><p class="en en-block">Weekly report · ${esc(w.from)} → ${esc(v20Today())}</p></div></div>${since}
+    <div class="v20-stats">
+      ${stat(['icon_letters', '🔤'], w.now.l, 'حُرُوفٌ مُتْقَنَةٌ', 'letters mastered', w.newL ? '+' + N(w.newL) + ' هَذَا الأُسْبُوعَ' : '')}
+      ${stat(['icon_words', '💬'], w.now.w, 'كَلِمَاتٌ تَعَلَّمَهَا', 'words learned', w.newW ? '+' + N(w.newW) + ' هَذَا الأُسْبُوعَ' : '')}
+      ${stat(['ic2_mic', '🗣️'], w.spMin, 'دَقَائِقُ كَلَامٍ', 'minutes speaking')}
+      ${stat(['ic2_book', '📖'], w.rdMin, 'دَقَائِقُ قِرَاءَةٍ', 'minutes reading')}
+      ${stat(['ic2_compass', '🏝️'], w.now.i, 'جُزُرٌ مُكْتَمِلَةٌ', 'islands done', w.isl ? '+' + N(w.isl) + ' هَذَا الأُسْبُوعَ' : '')}
+      ${stat(['ic2_flame', '🔥'], w.streak, 'أَيَّامٌ مُتَتَالِيَةٌ', 'day streak', N(w.days) + ' مِنْ ٧ أَيَّامٍ')}
+    </div>
+    <h3 lang="ar">كَلِمَاتٌ لِلتَّدَرُّبِ <span class="en">Top words to practise</span></h3>
+    ${w.top.length ? `<ul class="v20-top">${w.top.map((x) => `<li>${picHTML(x, 'sm')}<b lang="ar">${esc(x.ar)}</b><span class="en">${esc(x.en)}</span></li>`).join('')}</ul>` : `<p class="small" lang="ar">لَا تُوجَدُ كَلِمَاتٌ صَعْبَةٌ هَذَا الأُسْبُوعَ. <span class="en">No tricky words this week.</span></p>`}
+    <h3 lang="ar">اِقْتِرَاحَاتٌ لَطِيفَةٌ <span class="en">Gentle suggestions</span></h3>
+    <ul class="v20-tips">${v20Tips(w).map((t) => `<li lang="ar">${esc(t[0])} <span class="en en-block">${esc(t[1])}</span></li>`).join('')}</ul>
+    <h3 lang="ar">الأَمَانُ <span class="en">Safety</span></h3>
+    ${w.safety.length ? `<ul class="v20-safe">${w.safety.map((k) => { const d = v20Day(k); return `<li lang="ar">ظَهَرَتْ رِسَالَةُ أَمَانٍ يَوْمَ ${esc(d[0])}. <span class="en en-block">A safety message was shown on ${esc(d[1])}.</span></li>`; }).join('')}</ul>
+      <p class="v20-guide" lang="ar">تَحَدَّثُوا مَعَ طِفْلِكُمْ بِهُدُوءٍ وَدُونَ لَوْمٍ، وَاسْأَلُوهُ إِنْ كَانَ هُنَاكَ مَا يُزْعِجُهُ. إِذَا كَانَ فِي خَطَرٍ فَاتَّصِلُوا بِالطَّوَارِئِ فَوْرًا. <span class="en en-block">Talk with your child calmly and without blame, and ask if anything is bothering them. If they are in danger, call emergency services straight away. The app does not keep what was said.</span></p>`
+      : `<p class="small" lang="ar">لَمْ تَظْهَرْ رَسَائِلُ أَمَانٍ هَذَا الأُسْبُوعَ. <span class="en">No safety messages this week.</span></p>`}
+    <p class="v20-priv small" lang="ar">🔒 هَذَا التَّقْرِيرُ عَلَى هَذَا الجِهَازِ فَقَطْ، وَلَا يَخْرُجُ إِلَّا إِذَا شَارَكْتُمُوهُ. <span class="en en-block">This report stays on this device unless you share it.</span></p>
+  </div>`;
+}
+function v20ShareText(kid) { const pr = PROFILES[kid]; const p = DB.kids[kid]; p.__id = kid; const w = v20Week(p); delete p.__id; const N = toArabicDigits; const en = document.body.classList.contains('show-en');
+  const ar = [`التَّقْرِيرُ الأُسْبُوعِيُّ: ${pr.ar || pr.name}`, `حُرُوفٌ مُتْقَنَةٌ: ${N(w.now.l)}`, `كَلِمَاتٌ: ${N(w.now.w)}`, `دَقَائِقُ كَلَامٍ: ${N(w.spMin)} · دَقَائِقُ قِرَاءَةٍ: ${N(w.rdMin)}`, `جُزُرٌ مُكْتَمِلَةٌ: ${N(w.now.i)} · أَيَّامٌ مُتَتَالِيَةٌ: ${N(w.streak)}`].concat(w.top.length ? ['كَلِمَاتٌ لِلتَّدَرُّبِ: ' + w.top.map((x) => x.ar).join('، ')] : []);
+  const e = en ? ['', `Weekly report · letters ${w.now.l} · words ${w.now.w} · speaking ${w.spMin} min · reading ${w.rdMin} min · islands ${w.now.i} · streak ${w.streak}`] : [];
+  return ar.concat(e).join('\n'); /* safety days are shown on screen and in print only, never in the shared text */ }
+function v20Report(kid) { if (!DB.kids[kid]) return; V20.rep = kid;
+  openModal(`<div class="stack v20 v20-repwrap"><div class="row between v20-noprint"><span></span>${closeBtn()}</div>${v20ReportHTML(kid)}
+    <div class="v20-row v20-noprint"><button class="btn soft" data-act="v20-print">🖨️ طِبَاعَةٌ <span class="en">Print</span></button>${navigator.share ? `<button class="btn" data-act="v20-share">📤 مُشَارَكَةٌ <span class="en">Share</span></button>` : ''}</div></div>`, () => { V20.rep = null; }, 'sheet'); saveDB(); }
+{ const _rp = renderParent; renderParent = function renderParentV20() { _rp.apply(this, arguments);
+  try { const b = $('parent-body'); const h = document.createElement('div'); h.className = 'card v20-pcardp'; h.innerHTML = `<b lang="ar">📋 التَّقْرِيرُ الأُسْبُوعِيُّ</b> <span class="en">Weekly report</span><div class="v20-row">${Object.values(PROFILES).map((pr) => `<button class="btn" data-act="v20-report" data-arg="${esc(pr.id)}">${kidFace(pr.id)} ${esc(pr.ar || pr.name)}</button>`).join('')}</div>`;
+    const first = b.querySelector('.card'); if (first) b.insertBefore(h, first); else b.appendChild(h); } catch (e) { /* the old parent view still works */ } }; }
+/* ---------- home: one small row (scenes · tricky letters · words to revisit with Saqqour) ---------- */
+function v20HomeStrip() { const p = P(); v20Snap(p); const v = v20Data(p); const due = v20Due(p); const st = PRON_CARDS.reduce((s, c) => s + (v.pron[c[0]] || 0), 0);
+  return `<div class="v20-strip">
+    <button class="v20-mini sc" data-act="v20-scenes"><span aria-hidden="true">${v20Pic('ob_hello', '🗣️')}</span><b lang="ar">مَشَاهِدُ الكَلَامِ</b><span class="en">Talk scenes</span></button>
+    <button class="v20-mini pr" data-act="v20-pron"><span aria-hidden="true" class="v20-mL">ع</span><b lang="ar">حُرُوفٌ صَعْبَةٌ</b><span class="en">Tricky letters</span>${st ? `<small>${toArabicDigits(st)} ★</small>` : ''}</button>
+  </div>${due.length ? `<button class="v20-revcard" data-act="v20-review" data-arg="">${falconSVG('happy', 'v20-bird sm')}<span><b lang="ar">كَلِمَاتٌ نَرْجِعُ لَهَا (${toArabicDigits(due.length)})</b><span lang="ar" class="v20-dl">${esc(V20_REV_HI[v20Dia()])}</span><span class="en">Words to revisit with ${esc(falconName().en || 'Saqqour')}</span></span></button>` : ''}`; }
+{ const _h = ilHome; ilHome = function ilHomeV20() { const html = _h.apply(this, arguments); try { return html.replace('<div class="jv-head">', v20HomeStrip() + '<div class="jv-head">'); } catch (e) { return html; } }; }
+/* ---------- journey: each scene sits on its island; due words add a "revisit" stop ---------- */
+{ const _ja = jvActs; jvActs = function jvActsV20(p, u) { const a = _ja.apply(this, arguments);
+  try { const ex = []; const sc = V20_SCENES.find((s) => s.u === u.id); if (sc) ex.push({ k: 'scene', ic: 'ic2_speaker', ar: 'مَشْهَدٌ: ' + sc.ar, en: 'Talk scene: ' + sc.en, done: !!v20Data(p).scenes[sc.id], arg: sc.id });
+    if (v20Due(p, u.id).length) ex.push({ k: 'review', ic: 'ic2_target', ar: 'كَلِمَاتٌ نَرْجِعُ لَهَا', en: 'Words to revisit', done: false, arg: u.id }); if (ex.length) a.splice(a.length - 1, 0, ...ex); } catch (e) { /* ignore */ }
+  return a; }; }
+{ const _jr = jvRunAct; jvRunAct = function jvRunActV20(arg) { const [uid, k, extra] = String(arg).split('|');
+  if (k === 'scene') { closeModal(); setTimeout(() => v20Scene(extra), 30); return; } if (k === 'review') { closeModal(); setTimeout(() => v20Review(extra || uid), 30); return; } return _jr.apply(this, arguments); }; }
+Object.assign(ACTIONS, {
+  'v20-scenes': () => v20SceneList(), 'v20-scene': (id) => v20Scene(id), 'v20-sc-hear': () => v20SceneSpeak(),
+  'v20-sc-said': () => { const c = V20.sc; if (!c) return; c.said[c.i] = 1; if (typeof talkSecs === 'function') talkSecs('speak', 3); v20RenderScene(); },
+  'v20-sc-next': () => { const c = V20.sc; if (!c) return; if (c.i < 2) c.i++; else { c.ph = 'talk'; c.turn = 0; } v20RenderScene(); setTimeout(v20SceneSpeak, 200); },
+  'v20-sc-reply': (k) => v20SceneReply(k),
+  'v20-pron': () => v20PronGrid(), 'v20-pron-card': (i) => v20PronCard(i), 'v20-pron-hear': () => { const r = V20.pr; if (r) speak(PRON_CARDS[r.i][1], 'fusha', { quiet: true }); },
+  'v20-pron-rec': () => v20PronRec(), 'v20-pron-next': () => v20PronCard((V20.pr ? V20.pr.i + 1 : 0) % PRON_CARDS.length),
+  'v20-review': (uid) => { closeModal(); setTimeout(() => v20Review(uid || ''), 30); }, 'v20-rv-hear': () => { const r = V20.rv; if (r) { const w = r.list[r.i]; speak(w.dl || w.ar, curDialect(), { quiet: true }); } },
+  'v20-rv-pick': (k) => { const r = V20.rv; if (!r || r.pick !== null) return; r.pick = +k; const w = r.list[r.i]; const ok = r.opts[r.pick].key === w.key; if (ok) { r.got++; v20Hit(w); v20Chime(); } else v20Miss(w, 'review'); v20RenderReview(); },
+  'v20-rv-next': () => { const r = V20.rv; if (!r) return; r.i++; r.pick = null; r.opts = null; v20RenderReview(true); },
+  'v20-report': (kid) => v20Report(kid),
+  'v20-print': () => { document.body.classList.add('v20-printing'); const off = () => { document.body.classList.remove('v20-printing'); window.removeEventListener('afterprint', off); }; window.addEventListener('afterprint', off); window.print(); setTimeout(off, 1500); },
+  'v20-share': () => { const k = V20.rep; if (!k || !navigator.share) return; navigator.share({ title: 'التَّقْرِيرُ الأُسْبُوعِيُّ', text: v20ShareText(k) }).catch(() => {}); }
+});
 
 </script>
 </body>
