@@ -13700,9 +13700,9 @@ function v21ReportPart(kid) {
   const seen = Object.keys(sk).filter((k) => v21Info(k) && !V21_BASE[k] && sk[k].n).sort((a, b) => String(sk[b].last).localeCompare(String(sk[a].last))).slice(0, 8);
   const ks = Object.keys(V21_BASE).concat(seen); const sh = ks.map((k) => [k, v21Shown(p, k)]);
   const strong = sh.filter((x) => x[1].s >= 3).length; const back = sh.filter((x) => x[1].back || x[1].due).length;
-  const row = ([k, s]) => { const i = v21Info(k); return `<li class="v21-endrow"><span class="v21-sk" lang="ar"><i class="emo" aria-hidden="true">${i.em}</i>${esc(i.ar)}</span>${v21Feathers(s.s, 'sm', s.back)}<small lang="ar">${esc(V21_STAGE[s.s][0])}${s.due ? ' · ↻' : ''}</small><span class="en">${esc(i.en)} · ${esc(V21_STAGE[s.s][1])}</span></li>`; };
+  const row = ([k, s]) => { const i = v21Info(k); return `<li class="v21-endrow"><span class="v21-sk" lang="ar"><i class="emo" aria-hidden="true">${i.em}</i>${esc(i.ar)}</span>${v21Feathers(s.s, 'sm', s.back)}<small lang="ar">${esc(V21_STAGE[s.s][0])}${s.due ? ' ↻' : ''}</small><span class="en">${esc(i.en)} · ${esc(V21_STAGE[s.s][1])}</span></li>`; };
   return `<h3 lang="ar">🪶 الرِّيشَاتُ (المَهَارَاتُ) <span class="en">Feathers (skills)</span></h3>
-    <p class="small" lang="ar">${v21N(strong)} مَهَارَاتٍ قَوِيَّةٌ أَوْ مُتْقَنَةٌ، وَ${v21N(back)} تَعُودُ لِلْمُرَاجَعَةِ. <span class="en en-block">${strong} skills strong or mastered, ${back} coming back for a check. Four feathers = mastered; there are no percentages.</span></p>
+    <p class="small" lang="ar">مَهَارَاتٌ قَوِيَّةٌ أَوْ مُتْقَنَةٌ: ${v21N(strong)}، وَمَهَارَاتٌ تَعُودُ لِلْمُرَاجَعَةِ: ${v21N(back)}. <span class="en en-block">${strong} skills strong or mastered, ${back} coming back for a check. Four feathers = mastered; there are no percentages.</span></p>
     <ul class="v21-endlist v21-rep">${sh.map(row).join('')}</ul>`;
 }
 { const _rh = v20ReportHTML; v20ReportHTML = function v20ReportHTMLV21(kid) { const h = _rh.apply(this, arguments);
