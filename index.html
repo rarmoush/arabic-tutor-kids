@@ -2980,6 +2980,94 @@ body:not(.show-en) .tr19-only{display:none!important}
 .wd-rules .wd-rl-ar{text-align:start;padding-inline-start:20px}
 .tr19-ar{color:inherit}
 
+/* v19 demo: journey home. Sea = sky blue → turquoise; islands green; yellow accents. No sand/brown. */
+.jv-hero{min-height:0}
+.jv-minis{display:flex;gap:10px;justify-content:center;margin:6px 12px 2px}
+.jv-mini{display:flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border-radius:999px;border:0;background:#fff;box-shadow:0 3px 0 rgba(20,90,140,.12),0 4px 14px rgba(20,90,140,.10);font:inherit;font-size:.95rem;color:#14476b;cursor:pointer}
+.jv-mini .il-art{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center}.jv-mini .il-art img{width:34px;height:34px;object-fit:contain}
+.jv-head{display:flex;align-items:center;justify-content:space-between;margin:12px 16px 4px}
+.jv-head h2{margin:0;font-size:1.3rem;color:#0d4f73}.jv-count{display:inline-flex;gap:4px;align-items:center;background:#fff6c7;color:#7a5200;border-radius:999px;padding:3px 10px;font-weight:700}
+.jv-count .st.on polygon,.jv-stars .st.on polygon{fill:#ffc61a}
+.jv-sea{margin:4px 10px 18px;border-radius:28px;padding:6px 6px 18px;background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.55),transparent 40%),radial-gradient(circle at 85% 60%,rgba(255,255,255,.35),transparent 35%),linear-gradient(180deg,#7fd7f7 0%,#48c6e8 40%,#2bc0c9 100%);box-shadow:inset 0 0 0 3px rgba(255,255,255,.35)}
+.jv-world{position:relative}
+.jv-wt{margin:10px auto 2px;width:max-content;max-width:90%;background:rgba(255,255,255,.88);color:#0d4f73;border-radius:999px;padding:4px 14px;font-size:.95rem}
+.jv-path{list-style:none;margin:0;padding:0;position:relative}
+.jv-route{position:absolute;inset:0;pointer-events:none;z-index:0}.jv-node{z-index:1}
+.jv-node{position:relative;display:flex;justify-content:center;padding:4px 0}
+.jv-node.side-r{justify-content:flex-start;padding-inline-start:8%}.jv-node.side-l{justify-content:flex-end;padding-inline-end:8%}
+.jv-isle{position:relative;border:0;background:none;padding:0;width:160px;margin-block:-6px;display:flex;flex-direction:column;align-items:center;cursor:pointer;font:inherit;color:#083a56}
+.jv-svg{width:140px;height:auto;display:block;filter:drop-shadow(0 6px 6px rgba(10,80,110,.18))}
+.jv-num{position:absolute;top:4px;inset-inline-end:26px;background:#ffd23f;color:#5a3c00;font-weight:800;border-radius:12px;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:.9rem;box-shadow:0 2px 0 #e6a800}
+.jv-name{margin-top:-6px;background:rgba(255,255,255,.95);border-radius:14px;padding:4px 10px;display:flex;flex-direction:column;align-items:center;gap:2px;max-width:170px;text-align:center;box-shadow:0 2px 8px rgba(10,80,110,.12)}
+.jv-name b{font-size:.9rem;line-height:1.35}.jv-prog{font-size:.8rem;color:#0a7a62;font-weight:700}
+.jv-node.s-current .jv-svg{animation:jvGlow 1.8s ease-in-out infinite}
+@keyframes jvGlow{0%,100%{filter:drop-shadow(0 0 6px #fff59a) drop-shadow(0 6px 6px rgba(10,80,110,.18))}50%{filter:drop-shadow(0 0 18px #ffe14d) drop-shadow(0 6px 6px rgba(10,80,110,.18))}}
+.jv-node.s-current .jv-name{background:#fff6c7;box-shadow:0 0 0 3px #ffd23f}
+.jv-perch{position:absolute;top:-6px;inset-inline-start:30px;width:44px;height:44px;animation:thinkBob 1.6s ease-in-out infinite}.jv-perch>*{width:44px;height:44px}
+.jv-node.s-locked .jv-svg{opacity:.5;filter:saturate(.45) drop-shadow(0 4px 4px rgba(10,80,110,.12))}.jv-node.s-locked .jv-name{opacity:.75}
+.jv-lock{position:absolute;top:30px;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.jv-lock svg{width:20px;height:20px;fill:#5b7f95;stroke:#5b7f95}
+/* island sheet */
+.jv-sheet h2{margin:0}.jv-sheet-top{display:flex;gap:12px;align-items:center;background:linear-gradient(180deg,#8adcf7,#3cc5d6);border-radius:20px;padding:8px}
+.jv-sheet-isle .jv-svg{width:120px}.jv-sheet-isle.dim .jv-svg{opacity:.5;filter:saturate(.4)}.jv-sheet.locked .jv-sheet-isle{display:flex;justify-content:center;background:linear-gradient(180deg,#8adcf7,#3cc5d6);border-radius:20px}
+.jv-sheet-meta{display:flex;flex-direction:column;gap:6px;flex:1}.jv-wtag{align-self:flex-start;background:#fff;color:#0d4f73;border-radius:999px;padding:2px 10px;font-size:.85rem}
+.jv-bar{height:10px;border-radius:6px;background:rgba(255,255,255,.6);overflow:hidden}.jv-bar i{display:block;height:100%;background:#ffd23f}
+.jv-sheet-meta .jv-prog{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+.jv-acts{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.jv-act{width:100%;display:flex;align-items:center;gap:10px;border:0;border-radius:16px;padding:10px 12px;background:#f2fbff;font:inherit;color:#0d3b57;text-align:start;cursor:pointer;box-shadow:0 2px 0 rgba(13,79,115,.12)}
+.jv-act.next{background:#fff6c7;box-shadow:0 0 0 3px #ffd23f}.jv-act.done{background:#e6faf1}
+.jv-act-ic{width:36px;height:36px;display:inline-flex}.jv-act-ic img{width:36px;height:36px;object-fit:contain}
+.jv-act-t{flex:1;display:flex;flex-direction:column}.jv-act-st{font-weight:800;color:#0a8a5a;font-size:1.1rem}.jv-act.next .jv-act-st{color:#c98a00}
+.jv-reward{font-size:.9rem;color:#0d4f73;text-align:center;margin:2px 0 0}
+/* completion */
+.jv-cele{position:fixed;inset:0;z-index:9500;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 35%,#fff9cf,#8fe0f5 55%,#3cc5d6);transition:opacity .25s;padding:20px}
+.jv-cele.bye{opacity:0}
+.jv-skip{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);inset-inline-end:14px;border:0;background:rgba(255,255,255,.85);border-radius:50%;width:40px;height:40px;font-size:1rem}
+.jv-c1,.jv-c2{display:none;flex-direction:column;align-items:center;text-align:center;gap:10px;max-width:380px}
+.stage-chest .jv-c1,.stage-fly .jv-c2{display:flex}
+.jv-c1 h2{margin:0;font-size:1.6rem;color:#0d4f73}.jv-c-sub{margin:0;color:#0d4f73;font-weight:700}
+.jv-chest{width:230px}.jv-chest svg{width:100%;overflow:visible}
+.jv-lid{transform-origin:30px 62px;animation:jvLid .7s .25s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes jvLid{to{transform:rotate(-16deg) translate(-2px,-8px)}}
+.jv-coins{opacity:0;animation:jvCoins .8s .55s ease-out forwards}@keyframes jvCoins{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(-22px)}}
+.jv-glow{opacity:0;animation:jvCoins .6s .5s ease-out forwards}
+.jv-loot{display:flex;gap:12px;align-items:center;justify-content:center;opacity:0;animation:jvPop .5s .9s ease-out forwards}
+@keyframes jvPop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
+.jv-loot>span{display:flex;align-items:center;gap:6px;background:#fff;border-radius:16px;padding:8px 12px;box-shadow:0 3px 0 rgba(13,79,115,.12);font-size:1.15rem;color:#5a3c00}
+.jv-loot img{width:30px;height:30px}.jv-loot .stk{width:42px;height:42px}
+.jv-go{background:#2bb673;color:#fff;border:0;border-radius:999px;padding:12px 30px;box-shadow:0 5px 0 #1d8a55}
+.jv-flymap{position:relative;width:320px;height:200px}
+.jv-fa,.jv-fb{position:absolute;width:130px}.jv-fa{bottom:0;right:0}.jv-fb{top:0;left:0}.jv-fa .jv-svg,.jv-fb .jv-svg{width:130px}
+.jv-fb{animation:jvUnlock 1.2s 1.1s ease-out both}@keyframes jvUnlock{from{opacity:.45;filter:saturate(.4)}to{opacity:1;filter:drop-shadow(0 0 14px #ffe14d)}}
+.jv-flyer{position:absolute;width:76px;height:76px;right:28px;bottom:40px;animation:jvFly 1.3s ease-in-out forwards}
+.jv-flyer svg,.jv-flyer img{width:76px;height:76px}
+@keyframes jvFly{0%{transform:translate(0,0) rotate(0)}40%{transform:translate(-90px,-90px) rotate(-8deg)}100%{transform:translate(-200px,-120px) rotate(0)}}
+.jv-cheer p{margin:0;background:#fff;border-radius:18px;padding:10px 14px;font-size:1.15rem;color:#0d4f73;box-shadow:0 3px 0 rgba(13,79,115,.12)}
+.jv-unlock{margin:0;color:#0d4f73}
+@media (prefers-reduced-motion:reduce){.jv-lid,.jv-coins,.jv-glow,.jv-loot,.jv-fb,.jv-flyer,.jv-node.s-current .jv-svg,.jv-perch{animation-duration:.01s}}
+.jv-act-st svg{display:block}
+.jv-sea{position:relative}
+
+/* v19 painted sample */
+.jv-art{position:relative;display:block}
+.jv-art::before{content:"";position:absolute;inset:auto -10% -6% -10%;height:46%;border-radius:50%;background:radial-gradient(closest-side,rgba(205,248,255,.95),rgba(110,220,236,.45) 60%,rgba(92,214,230,0));z-index:-1}
+.jv-paint{width:132px;height:auto}
+.jv-sheet-isle .jv-paint{width:104px}.jv-fa .jv-paint,.jv-fb .jv-paint{width:120px}
+.jv-node.s-locked .jv-paint{opacity:.62;filter:saturate(.35) brightness(1.12) contrast(.85) drop-shadow(0 4px 4px rgba(10,80,110,.10))}
+.jv-node.s-locked .jv-art::after{content:"";position:absolute;inset:8% 4%;border-radius:45%;background:radial-gradient(closest-side,rgba(235,250,255,.55),rgba(235,250,255,0));pointer-events:none}
+.jv-sheet-isle.dim .jv-paint{opacity:.62;filter:saturate(.35) brightness(1.12)}
+.jv-chest-p{position:relative;width:170px;display:flex;justify-content:center}
+.jv-chest-p img{width:150px;height:auto;position:relative;animation:jvChestIn .7s .1s cubic-bezier(.3,1.6,.5,1) both}
+.jv-glow-p{position:absolute;inset:-14%;border-radius:50%;background:radial-gradient(closest-side,#fff6b3,rgba(255,246,179,0));opacity:0;animation:jvCoins .6s .5s ease-out forwards}
+@keyframes jvChestIn{from{opacity:0;transform:scale(.6) rotate(-6deg)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.jv-chest-p img,.jv-glow-p{animation-duration:.01s}}
+/* v19 painted-16: unique islands, capped height so the path stays compact */
+.jv-paint{width:auto;height:auto;max-width:138px;max-height:112px}
+.jv-sheet-isle .jv-paint{max-width:110px;max-height:92px}.jv-fa .jv-paint,.jv-fb .jv-paint{max-width:124px;max-height:104px}
+.jv-isle{margin-block:-2px}
+.jv-node.s-locked .jv-paint{opacity:.78;filter:saturate(.55) brightness(1.06) drop-shadow(0 4px 4px rgba(10,80,110,.10))}
+.jv-node.s-locked .jv-art::after{background:radial-gradient(closest-side,rgba(235,250,255,.35),rgba(235,250,255,0))}
+
 </style>
 </head>
 <body>
@@ -11666,6 +11754,184 @@ function trFill(root) {
   });
 }
 { const _af19b = arabicFirst; arabicFirst = function arabicFirstV19b(root) { try { trFill(root); } catch (e) { /* label helper only */ } return _af19b.apply(this, arguments); }; }
+
+/* v19 painted-16: one unique gouache island per unit (Higgsfield), versioned names so the SW caches them (cache-first /art/*.webp) */
+const JV_ISLE_ART = {"u1": ["isle_u1.a57a05f3.webp", 260, 216], "u2": ["isle_u2.d960ba59.webp", 260, 230], "u3": ["isle_u3.3b993192.webp", 260, 232], "u4": ["isle_u4.24b8ba16.webp", 260, 200], "u5": ["isle_u5.85fe2149.webp", 260, 249], "u6": ["isle_u6.9c009f76.webp", 260, 207], "u7": ["isle_u7.eac14589.webp", 260, 197], "u8": ["isle_u8.7343b736.webp", 260, 193], "u9": ["isle_u9.d9b7f4bf.webp", 260, 241], "u10": ["isle_u10.9b0ef5c5.webp", 260, 184], "u11": ["isle_u11.3e4f7790.webp", 260, 201], "u12": ["isle_u12.a30f08eb.webp", 260, 283], "u13": ["isle_u13.393ca026.webp", 260, 189], "u14": ["isle_u14.d16502bc.webp", 260, 236], "u15": ["isle_u15.ddef95ae.webp", 260, 285], "u16": ["isle_u16.51196efd.webp", 260, 358]};
+const JV_CHEST_ART = 'chest_v19.27295bbe.webp';
+
+/* =========================================================
+   v19 · the journey is the heart of the home screen (painted: one unique gouache island per unit, art/isle_uN.<hash>.webp).
+   Islands = the 16 existing journey units (curriculum.js UNITS, 4 worlds). Progress comes from what the app already saves:
+   an island is finished when its unit challenge has stars (p.units[id].stars > 0), exactly as the old map counted it, so
+   no progress is lost. Activities per island are existing ones: the unit's words, its dialogue, one read-along story and
+   the unit challenge. The only new field is optional: p.journey = { celebrated: { <unitId>: day } } (one-time rewards).
+   ========================================================= */
+const JV = { pending: null };
+const JV_WORLDS = [['جُزُرُ البِدَايَة', 'Starter isles'], ['جُزُرُ النَّخِيل', 'Palm isles'], ['جُزُرُ اللُّؤْلُؤ', 'Pearl isles'], ['جُزُرُ النُّجُوم', 'Star isles']];
+const JV_HILLS = [['#5fd08a', '#2fae6a'], ['#7ad96b', '#3cb15a'], ['#4fd1b5', '#1ea98f'], ['#8fdc5c', '#4dba3a']];
+const jvJ = (p) => (p.journey && typeof p.journey === 'object' ? p.journey : null);
+function jvState(p, u, rec) {
+  const r = p.units[u.id]; if (r && r.stars > 0) return 'done'; if (u.id === rec.id) return 'current';
+  const start = p.placement ? p.placement.level : 1; if (u.level < start) return 'open';
+  return UNITS.indexOf(u) < UNITS.indexOf(rec) ? 'open' : 'locked';
+}
+function jvActs(p, u) {
+  const i = UNITS.indexOf(u); const st = READ_STORIES[i % READ_STORIES.length]; const r = p.units[u.id];
+  return [
+    { k: 'learn', ic: 'ic2_grammar', ar: 'كَلِمَاتُ الجَزِيرَة', en: 'Island words', done: !!p.completed['unit-learn:' + u.id] },
+    { k: 'talk', ic: 'ic2_speaker', ar: 'مُحَادَثَةٌ قَصِيرَة', en: 'A short chat', done: !!p.completed['unit-talk:' + u.id] },
+    { k: 'story', ic: 'ic2_book', ar: 'قِصَّة: ' + st.title, en: 'Story: ' + st.en, done: !!p.completed['readaloud:' + st.id], arg: st.id },
+    { k: 'quiz', ic: 'ic2_target', ar: 'التَّحَدِّي الأَخِير', en: 'Final challenge', done: !!(r && r.stars > 0), last: true }
+  ];
+}
+/* v19 painted-16: a unique gouache island per unit (JV_ISLE_ART in journey-art-v19.js); ?drawn=1 shows the old SVG */
+function jvPainted() { try { return typeof JV_ISLE_ART !== 'undefined' && !/[?&]drawn=1/.test(location.search) && localStorage.getItem('jvDrawn') !== '1'; } catch (e) { return true; } }
+function jvUnitAt(i) { const order = LEVELS.flatMap((L) => UNITS.filter((u) => u.level === L.n)); return order[i]; }
+function jvIslandArt(i, st, eager) {
+  const u = jvUnitAt(i); const a = u && jvPainted() && JV_ISLE_ART[u.id];
+  if (!a) return jvIslandSVG(i, st);
+  return `<span class="jv-art"><img class="jv-svg jv-paint" src="art/${a[0]}" width="${a[1] / 2}" height="${a[2] / 2}" alt="" ${eager ? '' : 'loading="lazy" '}decoding="async"></span>`;
+}
+/* warm the SW cache (idle, online only) with the current + next world's islands, so they work offline */
+function jvWarmArt(p) {
+  if (!jvPainted() || !navigator.onLine || (navigator.connection && navigator.connection.saveData)) return;
+  const rec = nextUnitFor(p); const lv = rec ? rec.level : 1; const go = () => UNITS.filter((u) => u.level === lv || u.level === lv + 1).forEach((u) => { const a = JV_ISLE_ART[u.id]; if (a) { const im = new Image(); im.src = 'art/' + a[0]; } });
+  (window.requestIdleCallback || ((f) => setTimeout(f, 3000)))(go, { timeout: 8000 });
+}
+function jvIslandSVG(i, st) {
+  const h = JV_HILLS[i % JV_HILLS.length]; const id = 'jvg' + i;
+  return `<svg class="jv-svg" viewBox="0 0 120 92" aria-hidden="true"><defs>
+      <radialGradient id="${id}s" cx="50%" cy="55%" r="55%"><stop offset="0" stop-color="#bff3ff"/><stop offset="1" stop-color="#5cd6e6" stop-opacity="0"/></radialGradient>
+      <linearGradient id="${id}h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${h[0]}"/><stop offset="1" stop-color="${h[1]}"/></linearGradient>
+      <filter id="${id}f"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="${i + 3}"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .16 0"/><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="soft-light"/></filter></defs>
+    <ellipse cx="60" cy="60" rx="58" ry="28" fill="url(#${id}s)"/>
+    <path d="M14 62c4-16 18-26 34-28 8-12 26-14 36-4 14 0 24 10 24 22 0 10-12 16-26 16H34c-12 0-21-2-20-6z" fill="url(#${id}h)" filter="url(#${id}f)"/>
+    <path d="M30 60c10-6 22-8 34-6" stroke="#ffffff" stroke-opacity=".35" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M78 34v-20" stroke="#7a5a2a" stroke-width="2.4" stroke-linecap="round"/><path d="M78 14l14 5-14 5z" fill="#ffd23f"/>
+    <path d="M44 46c-1-8 0-14 3-18" stroke="#3d8f4a" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M47 28c-6-4-13-3-17 1 6-1 11 0 17-1zm0 0c4-6 11-8 17-6-5 1-10 3-17 6zm0 0c-2-6-1-11 3-14-1 5-2 9-3 14zm0 0c6-1 12 2 14 7-5-3-9-5-14-7z" fill="#24a35a"/><circle cx="62" cy="50" r="4" fill="#ff9fb8"/><circle cx="68" cy="47" r="3" fill="#ffe066"/><path d="M8 80c6-3 10 3 16 0M96 82c6-3 10 3 16 0M50 88c5-2 9 2 14 0" stroke="#ffffff" stroke-opacity=".8" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    ${st === 'done' ? '<circle cx="96" cy="52" r="5" fill="#ffd23f"/>' : ''}</svg>`;
+}
+function jvPathHTML(p) {
+  const rec = nextUnitFor(p); let n = 0;
+  return LEVELS.map((L, w) => {
+    const us = UNITS.filter((u) => u.level === L.n);
+    const rows = us.map((u) => { const st = jvState(p, u, rec); const i = n++; const r = p.units[u.id]; const side = ['r', 'c', 'l', 'c'][i % 4]; const acts = jvActs(p, u); const dn = acts.filter((a) => a.done).length;
+      return `<li class="jv-node s-${st} side-${side}"><button class="jv-isle" data-act="jv-isle" data-arg="${u.id}" aria-label="${esc(u.ar)}: ${st === 'done' ? 'مُكْتَمِلَة' : st === 'locked' ? 'مُقْفَلَة' : 'مَفْتُوحَة'}">
+        ${jvIslandArt(i, st)}
+        <span class="jv-num">${toArabicDigits(i + 1)}</span>
+        ${st === 'current' ? `<span class="jv-perch" aria-hidden="true">${falconHeadHTML(currentKid, 'sm')}</span>` : ''}
+        ${st === 'locked' ? '<span class="jv-lock" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke-width="2.4"/></svg></span>' : ''}
+        <span class="jv-name"><b>${esc(u.ar)}</b><span class="en">${esc(u.en)}</span>${st === 'done' ? `<span class="jv-stars">${starIcons(r.stars, 15)}</span>` : st === 'current' ? `<span class="jv-prog">${toArabicDigits(dn)} مِنْ ${toArabicDigits(acts.length)}<span class="en">${dn} of ${acts.length} done</span></span>` : ''}</span></button></li>`; }).join('');
+    return `<section class="jv-world"><h3 class="jv-wt">${esc(JV_WORLDS[w][0])} <span class="en">${esc(JV_WORLDS[w][1])}</span></h3><ol class="jv-path">${rows}</ol></section>`;
+  }).join('');
+}
+/* the home: greeting, two small islands (chat + homework), the journey */
+ilHome = function ilHomeV19() {
+  const p = P(); const pr = PROFILES[currentKid]; const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); IL.greet = greet;
+  const small = ['chat'].concat(aiAccess() ? ['homework'] : []).map((id) => { const d = ilDef(id); const k = 'i' + (++IL.n); IL.ids[k] = id;
+    return `<button class="jv-mini t-${d.tone}" data-act="il-open" data-arg="${k}" data-id="${id}">${ilIsleArt(d)}<b>${esc(id === 'chat' ? 'تَحَدَّثْ مَعِي' : 'الوَاجِب')}</b><span class="en">${id === 'chat' ? 'Talk with me' : 'Homework'}</span></button>`; }).join('');
+  const done = unitsDone(p);
+  return `<div class="il-hero jv-hero">
+      <div class="il-sky" aria-hidden="true"><i class="c1"></i><i class="c2"></i></div>
+      <button class="il-bird" data-act="mh-pat" aria-label="${esc(falconName().ar)}">${falconSVG('happy', 'il-hero-falcon')}</button>
+      <div class="il-bub"><p lang="ar">${esc(greet.ar)}</p><p class="en en-block" dir="ltr">${esc(greet.en)}</p>
+        <button class="il-hear" data-act="il-hear" aria-label="اِسْمَعْ">${mhArt('ic2_speaker')}</button></div>
+    </div>
+    <div class="jv-minis">${small}</div>
+    <div class="jv-head"><h2>رِحْلَتِي <span class="en">My journey</span></h2><span class="jv-count">${toArabicDigits(done)} / ${toArabicDigits(UNITS.length)} <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><polygon points="${STAR8}" fill="#ffc61a"/></svg></span></div>
+    <div class="jv-sea">${jvPathHTML(p)}</div>`;
+};
+/* scroll the current island into view on the home */
+{ const _r = ilRender; ilRender = function ilRenderV19() { _r.apply(this, arguments); if (IL.page !== 'home') return;
+  jvCurves(); try { jvWarmArt(P()); } catch (e) {} const c = document.querySelector('#il-page .jv-node.s-current'); if (c) { const pg = $('il-page'); setTimeout(() => { const top = c.getBoundingClientRect().top - pg.getBoundingClientRect().top + pg.scrollTop - pg.clientHeight * 0.62; if (top > 0) pg.scrollTop = top; }, 80); }
+  if (JV.pending) { const u = JV.pending; JV.pending = null; setTimeout(() => jvCelebrate(u), 250); } }; }
+/* a curved dotted route between the islands of each world */
+function jvCurves() {
+  document.querySelectorAll('#il-page .jv-path').forEach((ol) => {
+    const old = ol.querySelector('.jv-route'); if (old) old.remove(); const box = ol.getBoundingClientRect(); if (!box.width) return;
+    const pts = [...ol.querySelectorAll('.jv-svg')].map((s) => { const r = s.getBoundingClientRect(); return [r.left + r.width / 2 - box.left, r.top + r.height * 0.62 - box.top]; });
+    if (pts.length < 2) return; let d = `M${pts[0][0]} ${pts[0][1]}`; for (let i = 1; i < pts.length; i++) { const a = pts[i - 1], b = pts[i]; const my = (a[1] + b[1]) / 2; d += ` C${a[0]} ${my} ${b[0]} ${my} ${b[0]} ${b[1]}`; }
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('class', 'jv-route'); svg.setAttribute('aria-hidden', 'true'); svg.setAttribute('width', box.width); svg.setAttribute('height', box.height);
+    svg.innerHTML = `<path d="${d}" fill="none" stroke="#ffffff" stroke-opacity=".85" stroke-width="5" stroke-dasharray="2 12" stroke-linecap="round"/>`; ol.prepend(svg);
+  });
+}
+/* island sheet */
+function jvOpenIsle(id) {
+  if (jvPainted() && !window.__jvChestPre) { window.__jvChestPre = new Image(); window.__jvChestPre.src = 'art/' + JV_CHEST_ART; }
+  const p = P(); const u = UNITS.find((x) => x.id === id); if (!u) return; const rec = nextUnitFor(p); const st = jvState(p, u, rec); const i = UNITS.indexOf(u);
+  if (st === 'locked') { openModal(`<div class="stack jv-sheet locked"><div class="row between"><h2>${esc(u.ar)} <span class="en en-block">${esc(u.en)}</span></h2><button class="icon-btn" data-act="modal-close" aria-label="إِغْلَاق Close">✖️</button></div>
+      <div class="jv-sheet-isle dim">${jvIslandArt(i, st, 1)}</div><p class="center" lang="ar">🔒 تُفْتَحُ بَعْدَ إِكْمَالِ الجَزِيرَةِ الحَالِيَّة. <span class="en en-block">Opens after the current island.</span></p></div>`, null, 'sheet'); return; }
+  const acts = jvActs(p, u); const dn = acts.filter((a) => a.done).length; const next = acts.find((a) => !a.done);
+  openModal(`<div class="stack jv-sheet">
+    <div class="row between"><h2>${esc(u.ar)} <span class="en en-block">${esc(u.en)}</span></h2><button class="icon-btn" data-act="modal-close" aria-label="إِغْلَاق Close">✖️</button></div>
+    <div class="jv-sheet-top"><div class="jv-sheet-isle">${jvIslandArt(i, st, 1)}</div>
+      <div class="jv-sheet-meta"><span class="jv-wtag">${esc(JV_WORLDS[u.level - 1][0])}<span class="en">${esc(JV_WORLDS[u.level - 1][1])}</span></span><span class="jv-bar" role="img" aria-label="${toArabicDigits(dn)} مِنْ ${toArabicDigits(acts.length)}"><i style="width:${Math.round(100 * dn / acts.length)}%"></i></span>
+      <span class="jv-prog">${st === 'done' ? starIcons(p.units[u.id].stars, 16) : toArabicDigits(dn) + ' مِنْ ' + toArabicDigits(acts.length) + `<span class="en">${dn} of ${acts.length} done</span>`}</span></div></div>
+    <ol class="jv-acts">${acts.map((a) => `<li><button class="jv-act ${a.done ? 'done' : ''} ${next === a ? 'next' : ''}" data-act="jv-act" data-arg="${u.id}|${a.k}|${a.arg || ''}">
+      <span class="jv-act-ic" aria-hidden="true">${mhArt(a.ic) || ''}</span><span class="jv-act-t"><b>${esc(a.ar)}</b><span class="en">${esc(a.en)}</span></span>
+      <span class="jv-act-st" aria-hidden="true">${a.done ? '✓' : next === a ? '<svg viewBox="0 0 24 24" width="22" height="22"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</span></button></li>`).join('')}</ol>
+    <p class="jv-reward" lang="ar">🎁 كَنْزُ الجَزِيرَة: عُمْلَاتٌ وَمُلْصَقٌ جَدِيد <span class="en en-block">Island treasure: coins and a new sticker</span></p></div>`, null, 'sheet');
+}
+function jvRunAct(arg) {
+  const [uid, k, extra] = String(arg).split('|'); closeModal();
+  if (k === 'story') { if (typeof openReader === 'function') openReader(extra); return; }
+  ilOpen('journey'); setTimeout(() => { openUnit(uid); if (k !== 'learn') { journeyState.step = k; journeyState.quiz = null; renderUnit(); } }, 30);
+}
+/* the island is finished when its challenge first earns stars → celebrate back on the home */
+{ const _q = unitQuizNext; unitQuizNext = function unitQuizNextV19() { const u = journeyState.unit; const p = P(); const before = u && p.units[u.id] ? p.units[u.id].stars : 0;
+  const r = _q.apply(this, arguments); if (u && !before && p.units[u.id] && p.units[u.id].stars > 0) JV.pending = u.id; return r; }; }
+/* ---------- completion moment: chest → falcon flies → next island ---------- */
+const JV_CHEER = {
+  emirati: ['كَفُو عَلَيْك! يَلَّا نِطِير لِلْجَزِيرَة اليَايَّة!', 'كَفُو عَلَيْچ! يَلَّا نِطِير لِلْجَزِيرَة اليَايَّة!'],
+  saudi: ['كَفُو عَلَيْك! يَلَّا نِطِير لِلْجَزِيرَة الجَايَّة!', 'كَفُو عَلَيْكِ! يَلَّا نِطِير لِلْجَزِيرَة الجَايَّة!'],
+  lebanese: ['بْرَافُو عَلَيْك! يَلَّا نْطِير عَالجَزِيرَة الجَايِة!', 'بْرَافُو عَلَيْكِ! يَلَّا نْطِير عَالجَزِيرَة الجَايِة!'],
+  syrian: ['يِسْلَمُو إِيدَيْك! يَلَّا نْطِير عَالجَزِيرَة الجَايِة!', 'يِسْلَمُو إِيدَيْكِ! يَلَّا نْطِير عَالجَزِيرَة الجَايِة!'],
+  jordanian: ['يِعْطِيك العَافْيِة! يَلَّا نْطِير عَالجَزِيرَة الجَايِة!', 'يِعْطِيكِ العَافْيِة! يَلَّا نْطِير عَالجَزِيرَة الجَايِة!'],
+  egyptian: ['جَدَع! يَلَّا نِطِير عَلَى الجَزِيرَة اللِّي جَايَّة!', 'جَدْعَة! يَلَّا نِطِير عَلَى الجَزِيرَة اللِّي جَايَّة!'],
+  fusha: ['أَحْسَنْتَ! هَيَّا نَطِيرُ إِلَى الجَزِيرَةِ التَّالِيَة!', 'أَحْسَنْتِ! هَيَّا نَطِيرُ إِلَى الجَزِيرَةِ التَّالِيَة!']
+};
+/* v19 calm sounds: the chest uses the app's one quiet reward chime (sfx('level') → calmChime, effects off by default, throttled) */
+function jvChime() { if (typeof SFX_CALM === 'undefined') return; /* builds without the calm sounds stay silent */ try { if (typeof sfx === 'function') sfx('level'); } catch (e) { /* audio is optional */ } }
+function jvReward(p, uid) {
+  if (!p.journey || typeof p.journey !== 'object') p.journey = {}; if (!p.journey.celebrated) p.journey.celebrated = {};
+  if (p.journey.celebrated[uid]) return p.journey.celebrated[uid].r || null;
+  const left = STICKERS.filter((s) => !p.play.stickers[s.id]); const s = left.length ? left[UNITS.findIndex((u) => u.id === uid) % left.length] : null;
+  if (s) p.play.stickers[s.id] = dayKey(); p.coins += 25; const r = { coins: 25, sticker: s ? s.id : null };
+  p.journey.celebrated[uid] = { d: dayKey(), r }; saveDB(); if (typeof ilHeader === 'function') ilHeader(); return r;
+}
+function jvCelebrate(uid) {
+  const p = P(); const u = UNITS.find((x) => x.id === uid); if (!u) return; const i = UNITS.indexOf(u); const nu = UNITS[i + 1];
+  const r = jvReward(p, uid) || { coins: 25, sticker: null }; const s = r.sticker && STICKER[r.sticker];
+  const g = PROFILES[currentKid] && PROFILES[currentKid].gender === 'f' ? 1 : 0; const d = curDialect(); const cheer = (JV_CHEER[d] || JV_CHEER.emirati)[g];
+  const old = document.getElementById('jv-cele'); if (old) old.remove();
+  const el = document.createElement('div'); el.id = 'jv-cele'; el.className = 'jv-cele stage-chest'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', 'كَنْزُ الجَزِيرَة');
+  el.innerHTML = `<button class="jv-skip" data-jv="close" aria-label="تَخَطٍّ Skip">✖️</button>
+    <div class="jv-c1"><h2 lang="ar">${G('أَكْمَلْتَ', 'أَكْمَلْتِ')} الجَزِيرَة! <span class="en en-block">Island complete!</span></h2><p class="jv-c-sub" lang="ar">${esc(u.ar)} <span class="en en-block">${esc(u.en)}</span></p>
+      ${jvPainted() ? '<div class="jv-chest jv-chest-p" aria-hidden="true"><span class="jv-glow-p"></span><img src="art/' + JV_CHEST_ART + '" width="140" height="156" alt="" decoding="async"></div>' : `<div class="jv-chest" aria-hidden="true"><svg viewBox="0 0 160 130"><defs><linearGradient id="jvch" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb43d"/><stop offset="1" stop-color="#f08a24"/></linearGradient></defs>
+        <g class="jv-glow"><circle cx="80" cy="66" r="52" fill="#fff6b3" opacity=".75"/></g>
+        <rect x="26" y="62" width="108" height="56" rx="10" fill="url(#jvch)"/><rect x="26" y="80" width="108" height="8" fill="#ffd23f"/><rect x="72" y="74" width="16" height="20" rx="4" fill="#ffd23f"/>
+        <g class="jv-lid"><path d="M26 64c0-22 20-34 54-34s54 12 54 34z" fill="#ffa52e"/><rect x="26" y="56" width="108" height="10" rx="4" fill="#ffd23f"/></g>
+        <g class="jv-coins"><circle cx="62" cy="58" r="8" fill="#ffd23f" stroke="#f0a020" stroke-width="2"/><circle cx="84" cy="50" r="8" fill="#ffd23f" stroke="#f0a020" stroke-width="2"/><circle cx="102" cy="60" r="8" fill="#ffd23f" stroke="#f0a020" stroke-width="2"/></g></svg></div>`}
+      <div class="jv-loot"><span class="jv-loot-c">${mhArt('ic2_coin')}<b>+${toArabicDigits(r.coins)}</b></span>${s ? `<span class="jv-loot-s">${stickerSVG(s.id)}<b lang="ar">${esc(s.ar)}</b><span class="en">${esc(s.en || '')}</span></span>` : ''}</div>
+      <button class="btn big jv-go" data-jv="fly">التَّالِي <span class="en">Next</span></button></div>
+    <div class="jv-c2">
+      <div class="jv-flymap" aria-hidden="true"><div class="jv-fa">${jvIslandArt(i, 'done', 1)}</div><div class="jv-fb">${nu ? jvIslandArt(i + 1, 'current', 1) : ''}</div><div class="jv-flyer">${falconSVG('happy', 'jv-fly-falcon')}</div></div>
+      <div class="jv-cheer"><p lang="ar">${esc(cheer)} <span class="en en-block">Well done! Let's fly to the next island!</span></p></div>
+      ${nu ? `<p class="jv-unlock" lang="ar">🔓 جَزِيرَةٌ جَدِيدَة: <b>${esc(nu.ar)}</b> <span class="en en-block">New island: ${esc(nu.en)}</span></p>` : `<p class="jv-unlock" lang="ar">🏆 ${G('أَنْهَيْتَ', 'أَنْهَيْتِ')} كُلَّ الجُزُر! <span class="en en-block">You finished every island!</span></p>`}
+      <button class="btn big jv-go" data-jv="close">هَيَّا <span class="en">Let's go</span></button></div>`;
+  document.body.appendChild(el); jvChime();
+  const fly = () => { el.className = 'jv-cele stage-fly'; if (typeof speak === 'function' && DB.settings.sound) { try { speak(cheer, d, { quiet: true }); } catch (e) { /* */ } } };
+  const close = () => { el.classList.add('bye'); setTimeout(() => { el.remove(); if (IL.page === 'home' && typeof ilRender === 'function') ilRender(); }, 250); };
+  el.addEventListener('click', (e) => { const b = e.target.closest('[data-jv]'); if (!b) return; if (b.dataset.jv === 'fly') fly(); else close(); });
+  el.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  setTimeout(() => { const b = el.querySelector('.jv-c1 .jv-go'); if (b) b.focus(); }, 60);
+  return { fly, close };
+}
+/* 'My map' on the Reading tab no longer opens a second map: it takes the child to the home journey, centred on the current island */
+function jvGoHome() { ilShow('home'); setTimeout(() => { const c = document.querySelector('#il-page .jv-node.s-current'); const pg = $('il-page'); if (c && pg) pg.scrollTop = Math.max(0, c.getBoundingClientRect().top - pg.getBoundingClientRect().top + pg.scrollTop - pg.clientHeight * 0.45); }, 120); }
+{ const _ilo = ACTIONS['il-open']; ACTIONS['il-open'] = function ilOpenTapV19(k) { if (IL.ids[k] === 'journey') return jvGoHome(); return _ilo.apply(this, arguments); }; }
+Object.assign(ACTIONS, { 'jv-isle': (id) => jvOpenIsle(id), 'jv-act': (a) => jvRunAct(a) });
+window.SAQ = Object.assign(window.SAQ || {}, { jvCelebrate, jvOpenIsle, jvState, jvReward, jvGoHome });
 
 </script>
 </body>

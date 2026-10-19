@@ -1,6 +1,6 @@
 /* v18b service worker: the app opens offline. Pages: network first, cached copy when offline. Art and icons (file names
    carry a content hash): cache first. Requests to other sites (the AI Worker) are never touched or cached. */
-const VER = '1f26c97ba0';
+const VER = 'c78eac312c';
 const SHELL = 'shell-' + VER; const ART = 'art-v1';
 const CORE = ['./', './manifest.webmanifest', './icon-192.png', './icon-512.png', './favicon-32.png', './privacy/', './terms/'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(SHELL).then((c) => c.addAll(CORE)).then(() => self.skipWaiting())); });
