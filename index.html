@@ -2954,7 +2954,7 @@ html{background:#fff3c4}
 .offline-note{position:fixed;inset-inline:10px;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:9000;background:#fff1c1;border:2px solid #ffb020;border-radius:14px;padding:8px 12px;font-size:.9rem;color:#5a3a00;box-shadow:0 4px 14px rgba(0,0,0,.12);text-align:center}
 .offline-note .en{font-size:.75rem;opacity:.8}
 
-/* ---------- v19 English translation line (Randa: "put the option of having English translation under each instruction") ----------
+/* ---------- v19 English translation line (family request: "put the option of having English translation under each instruction") ----------
    One setting (DB.settings.showEn, off by default). When on, every English helper sits on its OWN line UNDER the Arabic:
    smaller, lighter, never on the same line as the Arabic. Arabic always stays the main text. The parent view keeps its own English. */
 body.show-en .en:not(#parent .en):not(.keep-en .en):not(.en-same),
@@ -3204,6 +3204,97 @@ body:not(.show-en) .tr19-only{display:none!important}
 /* the writing board page sits above the fixed bottom tab bar */
 #tab-write .v20b-nextbar { bottom: calc(var(--v20b-tabh, 84px) + env(safe-area-inset-bottom)); }
 
+/* v21 demo: grammar + adaptivity. Bright, calm, uncluttered (no sand / brown / dark). */
+.v21 { gap: 12px; }
+.v21 h2 { font-size: 1.25rem; }
+.v21-fe { display: inline-flex; gap: 2px; align-items: center; position: relative; vertical-align: middle; }
+.v21-fe svg { width: 17px; height: 17px; fill: #eef3fb; stroke: #a9bbdb; stroke-width: 1.3; }
+.v21-fe svg .q { fill: none; stroke: #ffffff; stroke-width: 1.2; }
+.v21-fe svg.on { fill: #33c4ff; stroke: #149fe0; }
+.v21-fe.s2 svg.on { fill: #3fd28a; stroke: #20ad69; }
+.v21-fe.s3 svg.on { fill: #ff7aa8; stroke: #ef4f86; }
+.v21-fe.s4 svg.on { fill: #ffc61a; stroke: #f0a400; filter: drop-shadow(0 0 3px rgba(255, 198, 26, .7)); }
+.v21-fe.sm svg { width: 16px; height: 16px; } .v21-fe.xs svg { width: 11px; height: 11px; }
+.v21-fe.isle { margin-top: 3px; justify-content: center; background: rgba(255,255,255,.92); border-radius: 999px; padding: 2px 7px; box-shadow: 0 1px 4px rgba(40,90,160,.15); }
+.v21-fe.isle svg { width: 13px; height: 13px; }
+.v21-fe.back svg.on { opacity: .55; }
+.v21-bk { font-style: normal; font-size: 11px; font-weight: 700; color: #fff; background: #7c5cff; border-radius: 999px; width: 16px; height: 16px; display: inline-grid; place-items: center; margin-inline-start: 3px; }
+.v21-fe.rose { animation: v21pop .6s ease; } @keyframes v21pop { 50% { transform: scale(1.18); } }
+.v21-lv { display: inline-flex; align-items: center; gap: 3px; font-size: .78rem; color: #4a5a7a; }
+.v21-lv i { width: 9px; height: 9px; border-radius: 50%; background: #dfe7f5; } .v21-lv i.on { background: var(--gc, #2f8cff); }
+.v21-lv b { font-weight: 500; margin-inline-start: 4px; }
+.v21-skrow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: space-between; background: #f3f8ff; border-radius: 14px; padding: 8px 12px; }
+.v21-sk { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: #233; } .v21-sk i { font-style: normal; }
+.v21-ins { margin: 0; text-align: center; color: #3b4a66; font-size: .98rem; } .v21-ins-en { text-align: center; }
+.v21-q { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; text-align: center; font-family: 'Noto Naskh Arabic', serif; font-size: 1.6rem; line-height: 1.9; background: #fff; border: 2px solid #e6eefc; border-radius: 18px; padding: 14px 12px; min-height: 84px; }
+.v21-q.big { font-size: 2.6rem; } .v21-q.say { font-family: 'Readex Pro', sans-serif; font-size: 1.15rem; background: #f0fbff; }
+.v21-read { font-size: 2.2rem; }
+.v21-blank { display: inline-block; min-width: 72px; border-bottom: 3px dashed var(--gc, #2f8cff); color: var(--gc, #2f8cff); line-height: 1.2; margin: 0 4px; }
+.v21-hear { border: 0; background: #e8f6ff; border-radius: 999px; width: 46px; height: 46px; display: grid; place-items: center; cursor: pointer; }
+.v21-hear.sm { width: 34px; height: 34px; flex: none; } .v21-hear svg { width: 22px; height: 22px; }
+.v21-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } .v21-opts.three { grid-template-columns: 1fr; }
+.v21-opt, .v21-endc, .v21-chip, .v21-tile, .v21-wd { font-family: 'Noto Naskh Arabic', serif; font-size: 1.35rem; border: 2px solid #dbe6f7; background: #fff; border-radius: 16px; padding: 10px 14px; cursor: pointer; color: #1f2d4a; }
+.v21-opt.yay, .v21-endc.yay, .v21-chip.yay, .v21-wd.yay, .pic-opt.yay { border-color: #20c46f; background: #e9fbf1; }
+.v21-opt.oops, .v21-endc.oops, .v21-chip.oops { border-color: #ffb3c7; background: #fff5f8; }
+.v21-opt.dim, .v21-endc.dim { opacity: .5; }
+.v21-tray { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; min-height: 54px; }
+.v21-chip.sel, .v21-endc.sel, .v21-wd.sel { border-color: var(--gc, #2f8cff); background: #eef6ff; box-shadow: 0 0 0 3px rgba(47,140,255,.15); }
+.v21-baskets { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.v21-bask { border: 3px dashed #bfe3ff; background: #f3fbff; border-radius: 20px; min-height: 150px; padding: 10px 6px; display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; }
+.v21-bask.b1 { border-color: #ffc4dc; background: #fff6fa; }
+.v21-bask b { font-size: 1.05rem; } .v21-in { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; } .v21-in .v21-chip { font-size: 1.1rem; padding: 4px 9px; }
+.v21-glue { display: flex; justify-content: center; align-items: center; gap: 0; font-family: 'Noto Naskh Arabic', serif; font-size: 2.3rem; }
+.v21-stem { background: #fff; border: 2px solid #dbe6f7; border-radius: 16px 0 0 16px; padding: 4px 16px; } 
+.v21-slot { width: 64px; height: 62px; border: 3px dashed var(--gc, #2f8cff); border-radius: 0 16px 16px 0; border-inline-start: 0; background: #f6fbff; }
+.v21-glue .v21-stem:only-child { border-radius: 16px; border-color: #20c46f; }
+.v21-ends { display: flex; gap: 10px; justify-content: center; } .v21-endc { min-width: 74px; font-size: 1.7rem; }
+.v21-ask { text-align: center; margin: 0; font-weight: 600; }
+.v21-sent { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; background: #fff; border-radius: 18px; padding: 14px 8px; border: 2px solid #e6eefc; }
+.v21-line { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; min-height: 66px; border-radius: 18px; padding: 10px; background: #f3f8ff; border: 2px dashed #bcd6f7; }
+.v21-line.yay { border: 2px solid #20c46f; background: #e9fbf1; } .v21-line.oops { border-color: #ffb3c7; background: #fff8fa; }
+.v21-ph { color: #9fb2cf; font-size: 1.4rem; } .v21-right { text-align: center; font-family: 'Noto Naskh Arabic', serif; font-size: 1.2rem; color: #148a52; margin: 0; }
+.v21-tile.in { background: #fff; border-color: var(--gc, #2f8cff); }
+.v21-backtag { background: #f1edff; color: #5a3fd6; border-radius: 12px; padding: 7px 12px; font-size: .92rem; text-align: center; }
+.v21-up { display: flex; align-items: center; gap: 10px; background: linear-gradient(90deg, #fff7d6, #ffe9f3); border-radius: 18px; padding: 10px 12px; animation: v21pop .6s ease; }
+.v21-up b { display: block; font-size: 1.1rem; color: #d2366f; } .v21-upbird { width: 64px; height: 64px; flex: none; }
+.v21-buddy .v20-bub { display: flex; align-items: center; gap: 8px; } .v21-dl { font-weight: 500; line-height: 1.7; }
+.v21-fu { margin: 0; font-size: .85rem; color: #5b6b8a; text-align: center; }
+.v21-egs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } .v21-egs.six { grid-template-columns: 1fr 1fr 1fr; }
+.v21-eg { border: 2px solid #e2ecfb; background: #fff; border-radius: 18px; padding: 10px 6px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
+.v21-eg i { font-style: normal; font-size: 1.7rem; } .v21-eg b { font-family: 'Noto Naskh Arabic', serif; font-size: 1.35rem; font-weight: 600; color: #1f2d4a; }
+.v21-egs.six .v21-eg b { font-size: 1.15rem; }
+.v21-eg mark { background: none; color: var(--gc, #ff4f8b); text-decoration: underline 3px; text-underline-offset: 6px; }
+.v21-tic { font-size: 1.3rem; }
+.v21-endlist { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; text-align: start; }
+.v21-endrow { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: center; background: #f6f9ff; border-radius: 14px; padding: 8px 12px; } .v21-endrow small { color: #5b6b8a; min-width: 52px; }
+.v21-say { font-size: 1.1rem; margin: 0; }
+.v21-mixcard { display: flex; align-items: center; gap: 10px; width: calc(100% - 24px); margin: 6px 12px 10px; padding: 10px 12px; border: 0; border-radius: 22px; background: linear-gradient(110deg, #e9f6ff 0%, #f3ecff 60%, #ffeef6 100%); box-shadow: 0 3px 12px rgba(80, 110, 200, .14); cursor: pointer; text-align: start; position: relative; font: inherit; color: #1f2d4a; }
+.v21-mixcard.done { background: linear-gradient(110deg, #eafbf2, #f3fff9); }
+.v21-mixbird { width: 58px; height: 58px; flex: none; } .v21-mixt { display: flex; flex-direction: column; gap: 2px; } .v21-mixt b { font-size: 1.08rem; } .v21-mixs { font-size: .85rem; color: #4a5a7a; }
+.v21-mixchips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; } .v21-mixchips i { font-style: normal; font-size: .78rem; background: #fff; border-radius: 999px; padding: 2px 8px; color: #33456a; } .v21-mixchips i.back { background: #efe9ff; color: #5a3fd6; }
+.v21-mixbk { position: absolute; top: 8px; inset-inline-end: 10px; background: #7c5cff; color: #fff; border-radius: 999px; width: 22px; height: 22px; display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+.v21-mapbtn { border: 0; background: #fff; border-radius: 999px; width: 34px; height: 34px; box-shadow: 0 1px 5px rgba(60,90,160,.18); font-size: 17px; cursor: pointer; margin-inline-end: 6px; }
+.jv-head { align-items: center; }
+.v21-isk { list-style: none; padding: 0; margin: 0 0 4px; display: grid; gap: 6px; }
+.v21-isk li { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: center; background: #f6f9ff; border-radius: 12px; padding: 6px 12px; font-size: .95rem; } .v21-isk small { color: #5b6b8a; }
+.v21-wt { font-size: 1rem; margin: 6px 0 0; color: #33456a; } .v21-sub { margin: 0; color: #4a5a7a; font-size: .92rem; }
+.v21-tgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.v21-tcard { border: 0; border-radius: 18px; background: #fff; box-shadow: inset 0 0 0 2px #e6eefc; border-top: 5px solid var(--gc); padding: 10px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; font: inherit; color: #1f2d4a; }
+.v21-tcard i { font-style: normal; font-size: 1.6rem; } .v21-tcard b { font-size: .95rem; text-align: center; } .v21-tcard small { font-size: .72rem; background: #fff1f7; color: #c7306b; border-radius: 999px; padding: 1px 8px; }
+.v21-tcard.locked { opacity: .55; }
+.v21-legend { display: flex; justify-content: space-around; gap: 6px; background: #f6f9ff; border-radius: 14px; padding: 8px; } .v21-legend > span { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: .78rem; }
+.v21-next, .v21 .rd-go { margin-top: 2px; }
+
+.v21 .emo, .v21-mixcard .emo { font-family: 'Noto Color Emoji', 'Apple Color Emoji', sans-serif; font-style: normal; }
+.v21-em .pic-art, .v21 i.emo .pic-art { width: 1.25em; height: 1.25em; display: inline-block; vertical-align: middle; }
+.v21-eg i.emo .pic-art { width: 46px; height: 46px; }
+.v21-up { box-sizing: border-box; width: 100%; max-width: 100%; margin: 0; }
+.v21-up > div { min-width: 0; flex: 1; }
+.v21-next { align-self: stretch; }
+.v21-rep { margin: 4px 0 10px; }
+.v21-rep .v21-endrow .en { flex-basis: 100%; }
+@media print { .v21-fe svg.on path { fill: #2bb673 !important; } }
+
 </style>
 </head>
 <body>
@@ -3389,7 +3480,7 @@ body:not(.show-en) .tr19-only{display:none!important}
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v20b";
+const APP_VERSION = "v21";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -11977,7 +12068,7 @@ window.SAQ = Object.assign(window.SAQ || {}, { gUI, guiFix });
   window.SAQ = Object.assign(window.SAQ || {}, { offlineCheck: show });
 }());
 
-/* ---------- v19 calm sounds (Randa: "the sounds when you do something correct or wrong are very annoying") ----------
+/* ---------- v19 calm sounds (family request: "the sounds when you do something correct or wrong are very annoying") ----------
    - wrong answers: no sound at all (the screens keep their soft visual cue + calm try-again line)
    - taps, flips, whooshes, pops, coins: no sound
    - correct / reward (good, correct, level, badge, streak): ONE very quiet, very short rounded sine (~110 ms, gain 0.06),
@@ -12983,6 +13074,639 @@ function v20wWbNext() { v20wCancel(); WB.idx = (WB.idx + 1) % LETTERS.length; wb
 { const _wr = wbRate; wbRate = function wbRateV20b(n) { const r = _wr.apply(this, arguments); if (Number(n) >= 2) v20wCalm(v20wWbNext, 2000); return r; }; }
 ACTIONS['v20b-wb-next'] = () => v20wWbNext();
 window.SAQ_V20W = { V20W, v20wCalm, v20wCancel };
+
+/* =========================================================
+   v21 DEMO · القَوَاعِد (grammar strand) content. Original lines written for this app (no textbook / Atom Learning text).
+   One topic per island (matches the unit theme). Saqqour explains in DIALECT (gulf lines; fusha lines when the child
+   picked Fusha); the examples are always FUSHA and sit on their own cards, never on the same line as dialect.
+   [m|f] = boy / girl form for the child (gform). {x} in an example = the coloured part.
+   Game items: t = pick | sort | end | fix | tap | build ; lv = 1 · 2 · 3 (adaptive level).
+     pick  {q, o:[right, ...wrong]}            sort {b:[basket0, basket1], w:[[word, basket], ...]}
+     end   {q (has ___), s: stem shown, c:[[chip, fullWord], ...] first is right}
+     fix   {w:[words], bad: index, o:[right, ...wrong]}   tap {q, w:[words], a: index}
+     build {w:[words in the right order]}
+   ========================================================= */
+const GR_TOPICS = [
+  { id: 'pron', u: 'u1', ar: 'الضَّمَائِرُ', en: 'Pronouns', col: '#ff7aa8', em: '🙋',
+    gulf: ['هَلَا [يَا بَطَل|يَا بَطَلَة]! اليُوم بَنِلْعَب بْكَلْمَات صْغَار تِنُوب عَن الأَسَامِي.', '[شُوف|شُوفِي] الكُرُوت: كِل كَلْمَة تَأشِّر عَلَى حَد.', '[لَاحِظ|لَاحْظِي]: لِلوَلَد كَلْمَة، وِلِلبِنْت كَلْمَة غَيْرهَا. يَلَّا نْجَرِّب!'],
+    fusha: ['مَرْحَبًا [يَا بَطَلُ|يَا بَطَلَةُ]! سَنَلْعَبُ اليَوْمَ بِكَلِمَاتٍ صَغِيرَةٍ تَنُوبُ عَنِ الأَسْمَاءِ.', '[اُنْظُرْ|اُنْظُرِي] إِلَى البِطَاقَاتِ: كُلُّ كَلِمَةٍ تُشِيرُ إِلَى شَخْصٍ.', '[لَاحِظْ|لَاحِظِي]: لِلْوَلَدِ كَلِمَةٌ، وَلِلْبِنْتِ كَلِمَةٌ أُخْرَى. هَيَّا نُجَرِّبُ!'],
+    eg: [['🙋', 'أَنَا'], ['👦', 'أَنْتَ'], ['👧', 'أَنْتِ'], ['👨', 'هُوَ'], ['👩', 'هِيَ'], ['👨‍👩‍👧', 'نَحْنُ']],
+    items: [
+      { t: 'pick', lv: 1, q: '👧 ___ بِنْتٌ.', o: ['هِيَ', 'هُوَ'] },
+      { t: 'pick', lv: 1, q: '👨 ___ مُعَلِّمٌ.', o: ['هُوَ', 'هِيَ'] },
+      { t: 'sort', lv: 1, b: ['لِلْوَلَدِ 👦', 'لِلْبِنْتِ 👧'], w: [['هُوَ', 0], ['هِيَ', 1], ['أَنْتَ', 0], ['أَنْتِ', 1]] },
+      { t: 'pick', lv: 2, q: '___ أُحِبُّ الرَّسْمَ. 🎨', o: ['أَنَا', 'هُوَ', 'نَحْنُ'] },
+      { t: 'pick', lv: 2, q: '___ نَلْعَبُ مَعًا. ⚽', o: ['نَحْنُ', 'أَنَا', 'هِيَ'] },
+      { t: 'fix', lv: 2, w: ['أَنْتِ', 'وَلَدٌ', 'ذَكِيٌّ'], bad: 0, o: ['أَنْتَ', 'هِيَ', 'نَحْنُ'] },
+      { t: 'pick', lv: 3, q: '___ تَكْتُبِينَ قِصَّةً جَمِيلَةً.', o: ['أَنْتِ', 'أَنْتَ', 'هِيَ'] },
+      { t: 'build', lv: 3, w: ['أَنَا', '[طَالِبٌ|طَالِبَةٌ]', 'فِي', 'الصَّفِّ', 'الخَامِسِ'] }
+    ] },
+  { id: 'num', u: 'u2', ar: 'المُفْرَدُ وَالمُثَنَّى وَالجَمْعُ', en: 'One, two, many', col: '#3db4ff', em: '📘',
+    gulf: ['وَاحِد، ثْنِين، وَايِد! الكَلْمَة تِتْغَيَّر عَلَى حَسَب العَدَد.', 'لِلثْنِين نْزِيد فِي آخِر الكَلْمَة حَرْفَيْن صْغَار. [شُوف|شُوفِي] اللُّون.', 'وِلِلوَايِد أَحْيَانًا الكَلْمَة كِلْهَا تِغَيِّر شَكِلْهَا. يَلَّا!'],
+    fusha: ['وَاحِدٌ، اِثْنَانِ، كَثِيرٌ! تَتَغَيَّرُ الكَلِمَةُ حَسَبَ العَدَدِ.', 'لِلِاثْنَيْنِ نَزِيدُ حَرْفَيْنِ فِي آخِرِ الكَلِمَةِ. [اُنْظُرْ|اُنْظُرِي] إِلَى اللَّوْنِ.', 'وَلِلْكَثِيرِ قَدْ يَتَغَيَّرُ شَكْلُ الكَلِمَةِ كُلُّهُ. هَيَّا!'],
+    eg: [['📘', 'كِتَابٌ'], ['📘📘', 'كِتَابَ{انِ}'], ['📚', 'كُتُبٌ'], ['🧑‍🏫', 'مُعَلِّمٌ'], ['🧑‍🏫🧑‍🏫', 'مُعَلِّمَ{انِ}'], ['🧑‍🏫🧑‍🏫🧑‍🏫', 'مُعَلِّمُ{ونَ}']],
+    items: [
+      { t: 'sort', lv: 1, b: ['وَاحِدٌ ☝️', 'اِثْنَانِ ✌️'], w: [['قَلَمٌ', 0], ['قَلَمَانِ', 1], ['بَابٌ', 0], ['بَابَانِ', 1]] },
+      { t: 'pick', lv: 1, q: '🍎🍎 ___', o: ['تُفَّاحَتَانِ', 'تُفَّاحَةٌ'] },
+      { t: 'end', lv: 2, q: '✏️✏️ ___', s: 'قَلَم', c: [['ـَانِ', 'قَلَمَانِ'], ['ـٌ', 'قَلَمٌ'], ['ـُونَ', 'قَلَمُونَ']] },
+      { t: 'end', lv: 2, q: '🧑‍🏫🧑‍🏫🧑‍🏫 ___', s: 'مُعَلِّم', c: [['ـُونَ', 'مُعَلِّمُونَ'], ['ـَانِ', 'مُعَلِّمَانِ'], ['ـَةٌ', 'مُعَلِّمَةٌ']] },
+      { t: 'end', lv: 2, q: '👩‍🏫👩‍🏫👩‍🏫 ___', s: 'مُعَلِّم', c: [['ـَاتٌ', 'مُعَلِّمَاتٌ'], ['ـُونَ', 'مُعَلِّمُونَ'], ['ـَتَانِ', 'مُعَلِّمَتَانِ']] },
+      { t: 'pick', lv: 3, q: 'فِي حَقِيبَتِي ثَلَاثَةُ ___ 📚', o: ['كُتُبٍ', 'كِتَابٍ', 'كِتَابَانِ'] },
+      { t: 'fix', lv: 3, w: ['عِنْدِي', 'قَلَمَانِ', 'وَخَمْسَةُ', 'كِتَابٍ'], bad: 3, o: ['كُتُبٍ', 'كِتَابَانِ', 'كِتَابٌ'] }
+    ] },
+  { id: 'adj', u: 'u3', ar: 'الصِّفَةُ وَالمَوْصُوفُ', en: 'Describing words agree', col: '#ff5d5d', em: '🎈',
+    gulf: ['الأَلْوَان وِالأَوْصَاف يِمْشُون وَرَا الكَلْمَة وِيِلْبَسُون نَفْس لِبَاسْهَا!', 'إِذَا الكَلْمَة لِلبِنْت، الوَصْف بَعَد يْصِير لِلبِنْت.', 'وِالأَلْوَان لْهُم شَكِل خَاص لِلبِنْت. [شُوف|شُوفِي] الأَحْمَر. يَلَّا نْلَوِّن!'],
+    fusha: ['تَأْتِي الصِّفَةُ بَعْدَ الكَلِمَةِ وَتَلْبَسُ مِثْلَ لِبَاسِهَا!', 'إِذَا كَانَتِ الكَلِمَةُ مُؤَنَّثَةً، تَكُونُ الصِّفَةُ مُؤَنَّثَةً أَيْضًا.', 'وَلِلْأَلْوَانِ شَكْلٌ خَاصٌّ لِلْمُؤَنَّثِ. [اُنْظُرْ|اُنْظُرِي] إِلَى الأَحْمَرِ. هَيَّا!'],
+    eg: [['🎈', 'بَالُونٌ أَحْمَرُ'], ['🚗', 'سَيَّارَةٌ حَمْرَ{اءُ}'], ['🏠', 'بَيْتٌ صَغِيرٌ'], ['🌼', 'زَهْرَةٌ صَغِيرَ{ةٌ}']],
+    items: [
+      { t: 'pick', lv: 1, q: '🌹 وَرْدَةٌ ___', o: ['حَمْرَاءُ', 'أَحْمَرُ'] },
+      { t: 'pick', lv: 1, q: '👕 قَمِيصٌ ___', o: ['أَزْرَقُ', 'زَرْقَاءُ'] },
+      { t: 'end', lv: 2, q: '👧 بِنْتٌ ___', s: 'سَعِيد', c: [['ـَةٌ', 'سَعِيدَةٌ'], ['ـٌ', 'سَعِيدٌ'], ['ـَانِ', 'سَعِيدَانِ']] },
+      { t: 'sort', lv: 2, b: ['قِطَّةٌ…', 'قِطٌّ…'], w: [['بَيْضَاءُ', 0], ['أَبْيَضُ', 1], ['سَرِيعَةٌ', 0], ['سَرِيعٌ', 1], ['صَغِيرَةٌ', 0], ['كَبِيرٌ', 1]] },
+      { t: 'fix', lv: 3, w: ['اِشْتَرَيْتُ', 'حَقِيبَةً', 'جَدِيدًا'], bad: 2, o: ['جَدِيدَةً', 'جَدِيدٌ', 'جُدُدٌ'] },
+      { t: 'build', lv: 3, w: ['رَأَيْتُ', 'سَمَكَةً', 'صَفْرَاءَ', 'جَمِيلَةً'] }
+    ] },
+  { id: 'gen', u: 'u4', ar: 'المُذَكَّرُ وَالمُؤَنَّثُ', en: 'Boy words and girl words', col: '#b56dff', em: '🐱',
+    gulf: ['فِي العَرَبِي كِل كَلْمَة يَا وَلَد يَا بِنْت، حَتَّى الحَيَوَانَات!', 'وَايِد مَرَّات نْزِيد حَرْف صْغِير فِي الآخِر وِتْصِير الكَلْمَة لِلبِنْت. [شُوف|شُوفِي] الحَرْف الوَرْدِي.', 'بَس فِي كَلْمَات تِتْغَيَّر كِلْهَا، مِثِل الأَسَد. يَلَّا!'],
+    fusha: ['فِي العَرَبِيَّةِ كُلُّ اسْمٍ مُذَكَّرٌ أَوْ مُؤَنَّثٌ، حَتَّى الحَيَوَانَاتُ!', '[اُنْظُرْ|اُنْظُرِي]: كَثِيرًا مَا نَزِيدُ تَاءً مَرْبُوطَةً فِي آخِرِ الكَلِمَةِ فَتَصِيرُ مُؤَنَّثَةً.', 'وَبَعْضُ الكَلِمَاتِ تَتَغَيَّرُ كُلُّهَا، مِثْلَ الأَسَدِ. هَيَّا!'],
+    eg: [['🐱', 'قِطٌّ'], ['🐱', 'قِطَّ{ةٌ}'], ['🧑‍⚕️', 'طَبِيبٌ'], ['👩‍⚕️', 'طَبِيبَ{ةٌ}'], ['🦁', 'أَسَدٌ'], ['🦁', '{لَبُؤَةٌ}']],
+    items: [
+      { t: 'sort', lv: 1, b: ['مُذَكَّرٌ 👦', 'مُؤَنَّثٌ 👧'], w: [['قِطٌّ', 0], ['قِطَّةٌ', 1], ['طَبِيبٌ', 0], ['طَبِيبَةٌ', 1]] },
+      { t: 'end', lv: 1, q: '👩‍🏫 ___', s: 'مُعَلِّم', c: [['ـَةٌ', 'مُعَلِّمَةٌ'], ['ـٌ', 'مُعَلِّمٌ']] },
+      { t: 'end', lv: 2, q: '👧 ___ وَفِيَّةٌ', s: 'صَدِيق', c: [['ـَةٌ', 'صَدِيقَةٌ'], ['ـٌ', 'صَدِيقٌ'], ['ـُونَ', 'صَدِيقُونَ']] },
+      { t: 'sort', lv: 2, b: ['مُذَكَّرٌ 👦', 'مُؤَنَّثٌ 👧'], w: [['بِنْتٌ', 1], ['أَبٌ', 0], ['أُمٌّ', 1], ['جَمَلٌ', 0], ['نَاقَةٌ', 1], ['حِصَانٌ', 0]] },
+      { t: 'pick', lv: 3, q: '🦁 أُنْثَى الأَسَدِ:', o: ['لَبُؤَةٌ', 'أَسَدَةٌ', 'أُسُودٌ'] },
+      { t: 'fix', lv: 3, w: ['الطَّبِيبَةُ', 'لَطِيفٌ', 'جِدًّا'], bad: 1, o: ['لَطِيفَةٌ', 'لُطَفَاءُ', 'لَطِيفَانِ'] }
+    ] },
+  { id: 'dem', u: 'u5', ar: 'اسْمُ الإِشَارَةِ', en: 'This (boy/girl)', col: '#ff9f1c', em: '👉',
+    gulf: ['لَمَّا [تْأَشِّر|تْأَشْرِين] عَلَى شَي قَرِيب، فِي كَلْمَة لِلوَلَد وِكَلْمَة لِلبِنْت.', '[شُوف|شُوفِي] عَايِلْتِي: لِلأَبُو وِالأَخُو كَلْمَة، وِلِلأُم وِالأُخْت كَلْمَة.', 'وِلِلشَّي البَعِيد كَلْمَات ثَانْيَة، بْنِتْعَلَّمْهَا بَعْدِين. يَلَّا!'],
+    fusha: ['عِنْدَمَا [تُشِيرُ|تُشِيرِينَ] إِلَى شَيْءٍ قَرِيبٍ، نَقُولُ كَلِمَةً لِلْمُذَكَّرِ وَكَلِمَةً لِلْمُؤَنَّثِ.', '[اُنْظُرْ|اُنْظُرِي] إِلَى عَائِلَتِي: لِلْأَبِ وَالأَخِ كَلِمَةٌ، وَلِلْأُمِّ وَالأُخْتِ كَلِمَةٌ.', 'وَلِلْبَعِيدِ كَلِمَاتٌ أُخْرَى سَنَتَعَلَّمُهَا لَاحِقًا. هَيَّا!'],
+    eg: [['👨', '{هَذَا} أَبِي'], ['👩', '{هَذِهِ} أُمِّي'], ['👦', '{هَذَا} أَخِي'], ['👧', '{هَذِهِ} أُخْتِي']],
+    items: [
+      { t: 'pick', lv: 1, q: '👩 ___ أُمِّي.', o: ['هَذِهِ', 'هَذَا'] },
+      { t: 'pick', lv: 1, q: '👴 ___ جَدِّي.', o: ['هَذَا', 'هَذِهِ'] },
+      { t: 'sort', lv: 2, b: ['هَذَا', 'هَذِهِ'], w: [['بَيْتٌ', 0], ['سَيَّارَةٌ', 1], ['قَلَمٌ', 0], ['مَدْرَسَةٌ', 1], ['شَمْسٌ', 1], ['كُرْسِيٌّ', 0]] },
+      { t: 'fix', lv: 2, w: ['هَذَا', 'أُخْتِي', 'الصَّغِيرَةُ'], bad: 0, o: ['هَذِهِ', 'ذَلِكَ', 'هَذَانِ'] },
+      { t: 'pick', lv: 3, q: '🏔️ (بَعِيدٌ) ___ جَبَلٌ عَالٍ.', o: ['ذَلِكَ', 'تِلْكَ', 'هَذِهِ'] },
+      { t: 'pick', lv: 3, q: '⭐ (بَعِيدَةٌ) ___ نَجْمَةٌ لَامِعَةٌ.', o: ['تِلْكَ', 'ذَلِكَ', 'هَذَا'] }
+    ] },
+  { id: 'al', u: 'u6', ar: 'ال وَالحُرُوفُ الشَّمْسِيَّةُ وَالقَمَرِيَّةُ', en: 'ال with sun and moon letters', col: '#ffc61a', em: '☀️',
+    gulf: ['[شُوف|شُوفِي] الحَرْفَيْن اللِّي فِي أَوَّل الكَلْمَة، يْخَلُّونْهَا مَعْرُوفَة.', 'مَع بَعْض الحُرُوف اللَّام تِنْقِرِي وَاضْحَة، مِثِل القَمَر.', 'وِمَع غَيْرهَا اللَّام تِخْتِفِي وِالحَرْف اللِّي بَعْدهَا يِتْشَدَّد، مِثِل الشَّمْس. يَلَّا نْفَرِّز!'],
+    fusha: ['[اُنْظُرْ|اُنْظُرِي] إِلَى الحَرْفَيْنِ فِي أَوَّلِ الكَلِمَةِ، إِنَّهُمَا يَجْعَلَانِهَا مَعْرِفَةً.', 'مَعَ بَعْضِ الحُرُوفِ تُقْرَأُ اللَّامُ وَاضِحَةً، مِثْلَ القَمَرِ.', 'وَمَعَ غَيْرِهَا تَخْتَفِي اللَّامُ وَيُشَدَّدُ الحَرْفُ بَعْدَهَا، مِثْلَ الشَّمْسِ. هَيَّا نُفَرِّزُ!'],
+    eg: [['🌙', 'ا{لْ}قَمَرُ'], ['☀️', 'ا{ل}شَّمْسُ'], ['📖', 'ا{لْ}كِتَابُ'], ['🐟', 'ا{ل}سَّمَكُ']],
+    items: [
+      { t: 'sort', lv: 1, b: ['قَمَرِيَّةٌ 🌙', 'شَمْسِيَّةٌ ☀️'], w: [['القَمَرُ', 0], ['الشَّمْسُ', 1], ['البَابُ', 0], ['النُّورُ', 1]] },
+      { t: 'pick', lv: 1, q: 'أَيُّ كَلِمَةٍ نَسْمَعُ فِيهَا اللَّامَ؟ 👂', o: ['القَمَرُ', 'الشَّمْسُ'] },
+      { t: 'sort', lv: 2, b: ['قَمَرِيَّةٌ 🌙', 'شَمْسِيَّةٌ ☀️'], w: [['الوَلَدُ', 0], ['الدَّرْسُ', 1], ['الجَمَلُ', 0], ['التُّفَّاحُ', 1], ['العَيْنُ', 0], ['الزَّهْرَةُ', 1]] },
+      { t: 'pick', lv: 2, q: 'أَيُّ كَلِمَةٍ لَا نَسْمَعُ فِيهَا اللَّامَ؟', o: ['الطَّائِرَةُ', 'البَحْرُ', 'المَطَرُ'] },
+      { t: 'fix', lv: 3, w: ['الشَّمْسُ', 'جَمِيلَةٌ', 'فِي', 'صَّبَاحِ'], bad: 3, o: ['الصَّبَاحِ', 'صَبَاحَانِ', 'صُبْحٌ'] },
+      { t: 'build', lv: 3, w: ['الشَّمْسُ', 'حَارَّةٌ', 'وَالقَمَرُ', 'مُنِيرٌ'] }
+    ] },
+  { id: 'q', u: 'u7', ar: 'أَدَوَاتُ الاسْتِفْهَامِ', en: 'Question words', col: '#22c58b', em: '❓',
+    gulf: ['كِل سُؤَال لَه كَلْمَة تِفْتَحَه، مِثِل المِفْتَاح!', 'لِلأَكِل كَلْمَة، وِلِلمَكَان كَلْمَة، وِلِلعَدَد كَلْمَة. [شُوف|شُوفِي] الصُّوَر.', 'وِالكَلْمَة دَايْمًا فِي أَوَّل السُّؤَال. يَلَّا نِسْأَل!'],
+    fusha: ['لِكُلِّ سُؤَالٍ كَلِمَةٌ تَفْتَحُهُ، مِثْلَ المِفْتَاحِ!', 'لِلطَّعَامِ كَلِمَةٌ، وَلِلْمَكَانِ كَلِمَةٌ، وَلِلْعَدَدِ كَلِمَةٌ. [اُنْظُرْ|اُنْظُرِي] إِلَى الصُّوَرِ.', 'وَتَأْتِي الكَلِمَةُ فِي أَوَّلِ السُّؤَالِ. هَيَّا نَسْأَلُ!'],
+    eg: [['🍽️', '{مَاذَا} تَأْكُلُ؟'], ['📍', '{أَيْنَ} المَطْعَمُ؟'], ['🔢', '{كَمْ} تُفَّاحَةً؟'], ['⏰', '{مَتَى} الغَدَاءُ؟'], ['👤', '{مَنْ} طَبَخَ الأَرُزَّ؟'], ['✅', '{هَلْ} تُحِبُّ السَّمَكَ؟']],
+    items: [
+      { t: 'pick', lv: 1, q: '___ تَأْكُلُ؟ 🥪 آكُلُ خُبْزًا.', o: ['مَاذَا', 'أَيْنَ'] },
+      { t: 'pick', lv: 1, q: '___ المَطْعَمُ؟ 📍 فِي السُّوقِ.', o: ['أَيْنَ', 'مَاذَا'] },
+      { t: 'pick', lv: 2, q: '___ تُفَّاحَةً فِي السَّلَّةِ؟ 🍎 ثَلَاثٌ.', o: ['كَمْ', 'مَتَى', 'مَنْ'] },
+      { t: 'pick', lv: 2, q: '___ مَوْعِدُ الغَدَاءِ؟ ⏰ فِي السَّاعَةِ الوَاحِدَةِ.', o: ['مَتَى', 'أَيْنَ', 'كَمْ'] },
+      { t: 'fix', lv: 3, w: ['أَيْنَ', 'تُفَّاحَةً', 'فِي', 'السَّلَّةِ؟'], bad: 0, o: ['كَمْ', 'مَتَى', 'مَاذَا'] },
+      { t: 'build', lv: 3, w: ['مَاذَا', '[تَشْرَبُ|تَشْرَبِينَ]', 'فِي', 'الصَّبَاحِ؟'] }
+    ] },
+  { id: 'prep', u: 'u8', ar: 'حُرُوفُ الجَرِّ', en: 'Little place words', col: '#2f8cff', em: '🎒',
+    gulf: ['هَالكَلْمَات الصْغَار [يْقُولُون لَك|يْقُولُون لِج] وَيْن الشَّي بِالضَّبْط.', 'فُوق، دَاخِل، رَايِح، رَاجِع… [شُوف|شُوفِي] الصُّوَر.', 'وِالكَلْمَة اللِّي بَعْدَهُم تِلْبَس كَسْرَة تَحْت آخِرْهَا. يَلَّا!'],
+    fusha: ['هَذِهِ الكَلِمَاتُ الصَّغِيرَةُ تُخْبِرُ[كَ|كِ] أَيْنَ الشَّيْءُ بِالضَّبْطِ.', 'فَوْقَ، دَاخِلَ، ذَهَابًا، رُجُوعًا… [اُنْظُرْ|اُنْظُرِي] إِلَى الصُّوَرِ.', 'وَالكَلِمَةُ بَعْدَهَا تَلْبَسُ كَسْرَةً فِي آخِرِهَا. هَيَّا!'],
+    eg: [['📚', 'الكِتَابُ {عَلَى} الطَّاوِلَةِ'], ['🎒', 'القَلَمُ {فِي} الحَقِيبَةِ'], ['🚌', 'ذَهَبْتُ {إِلَى} المَدْرَسَةِ'], ['🏠', 'رَجَعْتُ {مِنَ} المَدْرَسَةِ']],
+    items: [
+      { t: 'pick', lv: 1, q: '📚 الكِتَابُ ___ الطَّاوِلَةِ.', o: ['عَلَى', 'فِي'] },
+      { t: 'pick', lv: 1, q: '🐟 السَّمَكَةُ ___ المَاءِ.', o: ['فِي', 'عَلَى'] },
+      { t: 'pick', lv: 2, q: '🚌 أَذْهَبُ ___ المَدْرَسَةِ بِالحَافِلَةِ.', o: ['إِلَى', 'عَلَى', 'فِي'] },
+      { t: 'build', lv: 2, w: ['القَلَمُ', 'فِي', 'الحَقِيبَةِ'] },
+      { t: 'pick', lv: 3, q: 'رَجَعَ أَبِي ___ العَمَلِ مَسَاءً.', o: ['مِنَ', 'إِلَى', 'عَلَى'] },
+      { t: 'fix', lv: 3, w: ['جَلَسْتُ', 'عَلَى', 'الكُرْسِيُّ'], bad: 2, o: ['الكُرْسِيِّ', 'الكُرْسِيَّ', 'كُرْسِيٌّ'] }
+    ] },
+  { id: 'pres', u: 'u9', ar: 'الفِعْلُ المُضَارِعُ', en: 'Verbs now (present)', col: '#14b8a6', em: '✍️',
+    gulf: ['هَذَا الفِعْل حَق الشَّي اللِّي يْصِير الحِين، مِثِل اللِّي [تْسَوِّيه|تْسَوِّينَه] كِل يُوم.', 'أَوَّل حَرْف يِتْغَيَّر عَلَى حَسَب مِنُو يْسَوِّي الشَّي. [شُوف|شُوفِي] الحَرْف المْلَوَّن.', 'حَرْف لِي، وِحَرْف لَه، وِحَرْف لْهَا، وِحَرْف لْنَا. يَلَّا!'],
+    fusha: ['هَذَا الفِعْلُ لِمَا يَحْدُثُ الآنَ، مِثْلَ مَا [تَفْعَلُهُ|تَفْعَلِينَهُ] كُلَّ يَوْمٍ.', 'يَتَغَيَّرُ الحَرْفُ الأَوَّلُ حَسَبَ مَنْ يَقُومُ بِالفِعْلِ. [اُنْظُرْ|اُنْظُرِي] إِلَى الحَرْفِ المُلَوَّنِ.', 'حَرْفٌ لِي، وَحَرْفٌ لَهُ، وَحَرْفٌ لَهَا، وَحَرْفٌ لَنَا. هَيَّا!'],
+    eg: [['🙋', 'أَنَا {أَ}كْتُبُ'], ['👦', 'هُوَ {يَ}كْتُبُ'], ['👧', 'هِيَ {تَ}كْتُبُ'], ['👨‍👩‍👧', 'نَحْنُ {نَ}كْتُبُ']],
+    items: [
+      { t: 'pick', lv: 1, q: '⚽ هُوَ ___ الكُرَةَ.', o: ['يَلْعَبُ', 'تَلْعَبُ'] },
+      { t: 'pick', lv: 1, q: '💧 أَنَا ___ المَاءَ.', o: ['أَشْرَبُ', 'يَشْرَبُ'] },
+      { t: 'end', lv: 2, q: 'نَحْنُ ___ الدَّرْسَ.', s: 'ـكْتُبُ', c: [['نَـ', 'نَكْتُبُ'], ['أَ', 'أَكْتُبُ'], ['يَـ', 'يَكْتُبُ']] },
+      { t: 'end', lv: 2, q: 'هِيَ ___ قِصَّةً.', s: 'ـقْرَأُ', c: [['تَـ', 'تَقْرَأُ'], ['يَـ', 'يَقْرَأُ'], ['أَ', 'أَقْرَأُ']] },
+      { t: 'fix', lv: 3, w: ['البِنْتُ', 'يَنَامُ', 'مُبَكِّرًا'], bad: 1, o: ['تَنَامُ', 'أَنَامُ', 'نَنَامُ'] },
+      { t: 'build', lv: 3, w: ['أَسْتَيْقِظُ', 'فِي', 'السَّاعَةِ', 'السَّابِعَةِ'] }
+    ] },
+  { id: 'sent', u: 'u10', ar: 'الجُمْلَةُ الاسْمِيَّةُ وَالفِعْلِيَّةُ', en: 'Two kinds of sentence', col: '#ff6b9a', em: '🚂',
+    gulf: ['الجُمْلَة مِثِل القِطَار، وِالعَرَبَة الأُولَى هِي اللِّي تْسَمِّيه!', 'إِذَا بِدَت بِشَي [تْسَوِّيه|تْسَوِّينَه]، نْسَمِّيهَا جُمْلَة فِعْلِيَّة.', 'وِإِذَا بِدَت بِاسْم، نْسَمِّيهَا جُمْلَة اسْمِيَّة. يَلَّا نْفَرِّز القُطَارَات!'],
+    fusha: ['الجُمْلَةُ مِثْلُ القِطَارِ، وَالعَرَبَةُ الأُولَى تُعْطِيهِ اسْمَهُ!', 'إِذَا [رَأَيْتَ|رَأَيْتِ] الجُمْلَةَ تَبْدَأُ بِفِعْلٍ، فَهِيَ جُمْلَةٌ فِعْلِيَّةٌ.', 'وَإِذَا بَدَأَتْ بِاسْمٍ، فَهِيَ جُمْلَةٌ اسْمِيَّةٌ. هَيَّا نُفَرِّزُ!'],
+    eg: [['⚽', '{يَلْعَبُ} الوَلَدُ الكُرَةَ.'], ['🏊', '{السِّبَاحَةُ} مُمْتِعَةٌ.']],
+    items: [
+      { t: 'sort', lv: 1, b: ['فِعْلِيَّةٌ 🏃', 'اسْمِيَّةٌ 🏷️'], w: [['يَسْبَحُ الوَلَدُ.', 0], ['الكُرَةُ كَبِيرَةٌ.', 1], ['رَكَضَتِ البِنْتُ.', 0], ['الفَرِيقُ قَوِيٌّ.', 1]] },
+      { t: 'pick', lv: 2, q: 'أَيُّ جُمْلَةٍ فِعْلِيَّةٌ؟', o: ['يَرْسُمُ أَخِي لَوْحَةً.', 'أَخِي رَسَّامٌ.', 'اللَّوْحَةُ جَمِيلَةٌ.'] },
+      { t: 'build', lv: 2, w: ['يَلْعَبُ', 'الأَطْفَالُ', 'فِي', 'الحَدِيقَةِ'] },
+      { t: 'pick', lv: 3, q: '[اِجْعَلْهَا|اِجْعَلِيهَا] اسْمِيَّةً: يَقْرَأُ الوَلَدُ.', o: ['الوَلَدُ يَقْرَأُ.', 'قَرَأَ الوَلَدُ.', 'يَقْرَأُ الأَوْلَادُ.'] },
+      { t: 'build', lv: 3, w: ['الرِّيَاضَةُ', 'مُفِيدَةٌ', 'لِلْجِسْمِ'] }
+    ] },
+  { id: 'neg', u: 'u11', ar: 'النَّفْيُ', en: 'Saying no', col: '#7c5cff', em: '🙅',
+    gulf: ['لَمَّا مَا [تْحِب|تْحِبِّين] شَي، نْزِيد كَلْمَة صْغِيرَة قَبِل الفِعْل.', 'وِقَبِل الاسْم فِي كَلْمَة ثَانْيَة، وِهِي تْغَيِّر آخِر الوَصْف. [شُوف|شُوفِي] السَّطْر الثَّانِي.', 'وِلِلشَّي اللِّي مَا صَار أَمْس فِي كَلْمَة ثَالْثَة. يَلَّا!'],
+    fusha: ['عِنْدَمَا لَا [تُحِبُّ|تُحِبِّينَ] شَيْئًا، نَضَعُ كَلِمَةً صَغِيرَةً قَبْلَ الفِعْلِ.', 'وَقَبْلَ الاسْمِ كَلِمَةٌ أُخْرَى تُغَيِّرُ آخِرَ الصِّفَةِ. [اُنْظُرْ|اُنْظُرِي] إِلَى السَّطْرِ الثَّانِي.', 'وَلِمَا لَمْ يَحْدُثْ أَمْسِ كَلِمَةٌ ثَالِثَةٌ. هَيَّا!'],
+    eg: [['🙅', '{لَا} أُحِبُّ البَصَلَ.'], ['🍋', '{لَيْسَ} اللَّيْمُونُ حُلْوًا.'], ['🍰', '{لَمْ} آكُلِ الكَعْكَةَ.']],
+    items: [
+      { t: 'pick', lv: 1, q: '🙅 ___ أُحِبُّ البَصَلَ.', o: ['لَا', 'هَلْ'] },
+      { t: 'pick', lv: 1, q: '🥤 ___ أَشْرَبُ المَشْرُوبَاتِ الغَازِيَّةَ.', o: ['لَا', 'مَتَى'] },
+      { t: 'pick', lv: 2, q: '___ العَصِيرُ بَارِدًا.', o: ['لَيْسَ', 'لَيْسَتِ', 'لَمْ'] },
+      { t: 'pick', lv: 2, q: '___ السَّلَطَةُ مَالِحَةً.', o: ['لَيْسَتِ', 'لَيْسَ', 'لَمْ'] },
+      { t: 'fix', lv: 3, w: ['لَمْ', 'آكُلُ', 'الحَلْوَى', 'اليَوْمَ'], bad: 1, o: ['آكُلِ', 'آكُلَ', 'أَكَلْتُ'] },
+      { t: 'build', lv: 3, w: ['لَيْسَ', 'الطَّعَامُ', 'السَّرِيعُ', 'مُفِيدًا'] }
+    ] },
+  { id: 'poss', u: 'u12', ar: 'الضَّمَائِرُ المُتَّصِلَةُ', en: 'My, your, his, her', col: '#00b386', em: '🇦🇪',
+    gulf: ['فِي العَرَبِي نِلْصِق ذِيل صْغِير فِي آخِر الكَلْمَة عَشَان نْقُول حَق مِنُو.', 'ذِيل لِي، وِذِيل [لَك|لِج]، وِذِيل لَه، وِذِيل لْهَا. [شُوف|شُوفِي] الذِّيل المْلَوَّن.', 'يَلَّا نِلْصِق الذِّيُول!'],
+    fusha: ['فِي العَرَبِيَّةِ نُلْصِقُ ذَيْلًا صَغِيرًا فِي آخِرِ الكَلِمَةِ لِنَقُولَ لِمَنْ هِيَ.', 'ذَيْلٌ لِي، وَذَيْلٌ [لَكَ|لَكِ]، وَذَيْلٌ لَهُ، وَذَيْلٌ لَهَا. [اُنْظُرْ|اُنْظُرِي] إِلَى الذَّيْلِ المُلَوَّنِ.', 'هَيَّا نُلْصِقُ الذُّيُولَ!'],
+    eg: [['🇦🇪', 'بَلَدِ{ي}'], ['👦', 'بَيْتُ{كَ}'], ['👧', 'بَيْتُ{كِ}'], ['👨', 'عَلَمُ{هُ}'], ['👩', 'عَلَمُ{هَا}'], ['👨‍👩‍👧', 'وَطَنُ{نَا}']],
+    items: [
+      { t: 'end', lv: 1, q: '🙋 أَنَا: ___', s: 'بَيْت', c: [['ـِي', 'بَيْتِي'], ['ـُكَ', 'بَيْتُكَ']] },
+      { t: 'end', lv: 1, q: '👩 هِيَ: ___', s: 'قَلَم', c: [['ـُهَا', 'قَلَمُهَا'], ['ـُهُ', 'قَلَمُهُ']] },
+      { t: 'end', lv: 2, q: '👨‍👩‍👧 نَحْنُ: ___', s: 'عَلَم', c: [['ـُنَا', 'عَلَمُنَا'], ['ـُكَ', 'عَلَمُكَ'], ['ـِي', 'عَلَمِي']] },
+      { t: 'pick', lv: 2, q: 'هَذِهِ حَقِيبَةُ أُخْتِي. هَذِهِ ___', o: ['حَقِيبَتُهَا', 'حَقِيبَتُهُ', 'حَقِيبَتُنَا'] },
+      { t: 'fix', lv: 3, w: ['يُحِبُّ', 'الوَلَدُ', 'وَطَنَهَا'], bad: 2, o: ['وَطَنَهُ', 'وَطَنُهُ', 'وَطَنِهَا'] },
+      { t: 'build', lv: 3, w: ['نُحِبُّ', 'بَلَدَنَا', 'الإِمَارَاتِ'] }
+    ] },
+  { id: 'mub', u: 'u13', ar: 'المُبْتَدَأُ وَالخَبَرُ', en: 'Subject and news (إعراب)', col: '#e8509a', em: '🏷️', older: 1,
+    gulf: ['[كْبِرْت|كْبِرْتِي] وِ[صِرْت|صِرْتِي] [مُحَقِّق|مُحَقِّقَة] جُمَل! بْنِعْرِف أَسَامِي أَجْزَاء الجُمْلَة.', 'الجُمْلَة اللِّي تِبْدَا بِاسْم فِيهَا جُزْئِين: اللِّي نِتْكَلَّم عَنَّه، وِالخَبَر عَنَّه.', 'وِالثْنِين يِلْبَسُون ضَمَّة فِي الآخِر. [شُوف|شُوفِي] الضَّمَّة!'],
+    fusha: ['[كَبِرْتَ|كَبِرْتِ] وَ[صِرْتَ مُحَقِّقَ|صِرْتِ مُحَقِّقَةَ] جُمَلٍ! سَنَعْرِفُ أَسْمَاءَ أَجْزَاءِ الجُمْلَةِ.', 'الجُمْلَةُ الاسْمِيَّةُ جُزْآنِ: المُبْتَدَأُ الَّذِي نَتَحَدَّثُ عَنْهُ، وَالخَبَرُ الَّذِي يُخْبِرُ عَنْهُ.', 'وَكِلَاهُمَا مَرْفُوعٌ بِالضَّمَّةِ. [اُنْظُرْ|اُنْظُرِي] إِلَى الضَّمَّةِ!'],
+    eg: [['🏷️', '{الطَّقْسُ} جَمِيلٌ.'], ['📣', 'الطَّقْسُ {جَمِيلٌ}.'], ['🙋', 'أَنَا [طَالِبٌ|طَالِبَةٌ].']],
+    items: [
+      { t: 'tap', lv: 1, q: '[اُنْقُرْ|اُنْقُرِي] عَلَى المُبْتَدَأِ:', w: ['الشَّمْسُ', 'سَاطِعَةٌ.'], a: 0 },
+      { t: 'tap', lv: 1, q: '[اُنْقُرْ|اُنْقُرِي] عَلَى الخَبَرِ:', w: ['الجَوُّ', 'حَارٌّ.'], a: 1 },
+      { t: 'end', lv: 2, q: '___ سَعِيدٌ.', s: 'الوَلَد', c: [['ـُ', 'الوَلَدُ'], ['ـَ', 'الوَلَدَ'], ['ـِ', 'الوَلَدِ']] },
+      { t: 'pick', lv: 2, q: 'أَنَا ___ فِي الصَّفِّ السَّادِسِ.', o: ['[طَالِبٌ|طَالِبَةٌ]', '[طَالِبًا|طَالِبَةً]', '[طَالِبٍ|طَالِبَةٍ]'] },
+      { t: 'pick', lv: 3, q: 'المُعَلِّمُونَ نَشِيطُونَ. عَلَامَةُ رَفْعِ المُبْتَدَأِ:', o: ['الوَاوُ', 'الضَّمَّةُ', 'الأَلِفُ'] },
+      { t: 'fix', lv: 3, w: ['البَيْتَ', 'كَبِيرٌ.'], bad: 0, o: ['البَيْتُ', 'البَيْتِ', 'بَيْتًا'] }
+    ] },
+  { id: 'fail', u: 'u14', ar: 'الفَاعِلُ وَالمَفْعُولُ بِهِ', en: 'Who did it, and to what (إعراب)', col: '#ff8a3d', em: '🔍', older: 1,
+    gulf: ['فِي الجُمْلَة اللِّي تِبْدَا بِفِعْل، فِي وَاحِد يْسَوِّي الشَّي، وِشَي يْصِير عَلَيْه.', 'اللِّي يْسَوِّي يِلْبَس ضَمَّة، وِاللِّي يْصِير عَلَيْه يِلْبَس فَتْحَة.', 'تِخَيَّل [إِنَّك مُحَقِّق|إِنِّج مُحَقِّقَة]! يَلَّا نْدَوِّر عَلَيْهُم.'],
+    fusha: ['فِي الجُمْلَةِ الفِعْلِيَّةِ مَنْ يَقُومُ بِالفِعْلِ، وَمَا يَقَعُ عَلَيْهِ الفِعْلُ.', 'الفَاعِلُ مَرْفُوعٌ بِالضَّمَّةِ، وَالمَفْعُولُ بِهِ مَنْصُوبٌ بِالفَتْحَةِ.', '[تَخَيَّلْ أَنَّكَ مُحَقِّقٌ|تَخَيَّلِي أَنَّكِ مُحَقِّقَةٌ]! هَيَّا نَبْحَثُ عَنْهُمَا.'],
+    eg: [['🥛', 'شَرِبَ {الطِّفْلُ} الحَلِيبَ.'], ['🥛', 'شَرِبَ الطِّفْلُ {الحَلِيبَ}.']],
+    items: [
+      { t: 'tap', lv: 1, q: 'مَنْ قَامَ بِالفِعْلِ؟', w: ['قَرَأَتِ', 'البِنْتُ', 'القِصَّةَ.'], a: 1 },
+      { t: 'tap', lv: 1, q: 'مَاذَا أَكَلَ القِطُّ؟', w: ['أَكَلَ', 'القِطُّ', 'السَّمَكَةَ.'], a: 2 },
+      { t: 'end', lv: 2, q: '⚽ رَكَلَ اللَّاعِبُ ___', s: 'الكُرَة', c: [['ـَ', 'الكُرَةَ'], ['ـُ', 'الكُرَةُ'], ['ـِ', 'الكُرَةِ']] },
+      { t: 'sort', lv: 2, b: ['فَاعِلٌ', 'مَفْعُولٌ بِهِ'], w: [['الطَّبِيبَةُ', 0], ['المَرِيضَ', 1], ['اللَّاعِبُ', 0], ['الكُرَةَ', 1]] },
+      { t: 'fix', lv: 3, w: ['فَتَحَ', 'المُعَلِّمَ', 'البَابَ.'], bad: 1, o: ['المُعَلِّمُ', 'المُعَلِّمِ', 'مُعَلِّمًا'] },
+      { t: 'build', lv: 3, w: ['يُسَاعِدُ', 'الطَّبِيبُ', 'المَرْضَى'] }
+    ] },
+  { id: 'past', u: 'u15', ar: 'الفِعْلُ المَاضِي', en: 'Verbs that already happened', col: '#3db4ff', em: '✈️',
+    gulf: ['هَذَا الفِعْل حَق الشَّي اللِّي صَار وِخَلَص، مِثِل سَفْرَة العُطْلَة!', 'آخِر الفِعْل يِتْغَيَّر عَلَى حَسَب مِنُو سَوَّاه. [شُوف|شُوفِي] الذِّيل المْلَوَّن.', 'يَلَّا نْسَافِر فِي الزَّمَن!'],
+    fusha: ['هَذَا الفِعْلُ لِمَا حَدَثَ وَانْتَهَى، مِثْلَ رِحْلَةِ العُطْلَةِ!', 'يَتَغَيَّرُ آخِرُ الفِعْلِ حَسَبَ مَنْ قَامَ بِهِ. [اُنْظُرْ|اُنْظُرِي] إِلَى الذَّيْلِ المُلَوَّنِ.', 'هَيَّا نُسَافِرُ فِي الزَّمَنِ!'],
+    eg: [['🙋', 'سَافَرْ{تُ} أَمْسِ.'], ['👦', 'سَافَرَ أَخِي.'], ['👧', 'سَافَرَ{تْ} أُخْتِي.'], ['👨‍👩‍👧', 'سَافَرْ{نَا} مَعًا.']],
+    items: [
+      { t: 'pick', lv: 1, q: '🏖️ أَمْسِ ___ إِلَى البَحْرِ.', o: ['ذَهَبْتُ', 'أَذْهَبُ'] },
+      { t: 'sort', lv: 1, b: ['أَمْسِ ⏪', 'الآنَ ▶️'], w: [['لَعِبْتُ', 0], ['أَلْعَبُ', 1], ['سَبَحَ', 0], ['يَسْبَحُ', 1]] },
+      { t: 'end', lv: 2, q: '✈️ نَحْنُ ___ الطَّائِرَةَ.', s: 'رَكِب', c: [['ـْنَا', 'رَكِبْنَا'], ['ـَتْ', 'رَكِبَتْ'], ['ـَ', 'رَكِبَ']] },
+      { t: 'end', lv: 2, q: '👧 أُخْتِي ___ صُورَةً.', s: 'رَسَم', c: [['ـَتْ', 'رَسَمَتْ'], ['ـْتُ', 'رَسَمْتُ'], ['ـَ', 'رَسَمَ']] },
+      { t: 'fix', lv: 3, w: ['أَمْسِ', 'تَزُورُ', 'أُخْتِي', 'جَدَّتَهَا.'], bad: 1, o: ['زَارَتْ', 'زَارَ', 'سَتَزُورُ'] },
+      { t: 'build', lv: 3, w: ['سَافَرْنَا', 'إِلَى', 'الجِبَالِ', 'فِي', 'العُطْلَةِ'] }
+    ] },
+  { id: 'fut', u: 'u16', ar: 'المُسْتَقْبَلُ: سَـ وَسَوْفَ', en: 'Verbs for tomorrow', col: '#22c55e', em: '🌱',
+    gulf: ['عِنْدِي خِطَط وَايِد حَق بَاكِر! وِالفِعْل اللِّي حَق بَاكِر لَه عَلَامَة.', 'نِلْصِق حَرْف صْغِير قَبِل الفِعْل، أَو نْحُط كَلْمَة قِدَّامَه. [شُوف|شُوفِي] اللُّون.', 'يَلَّا نْخَطِّط حَق البِيئَة!'],
+    fusha: ['عِنْدِي خُطَطٌ كَثِيرَةٌ لِلْغَدِ! وَلِلْفِعْلِ الَّذِي يَحْدُثُ غَدًا عَلَامَةٌ.', 'نُلْصِقُ حَرْفًا صَغِيرًا قَبْلَ الفِعْلِ، أَوْ نَضَعُ كَلِمَةً قَبْلَهُ. [اُنْظُرْ|اُنْظُرِي] إِلَى اللَّوْنِ.', 'هَيَّا نُخَطِّطُ لِلْبِيئَةِ!'],
+    eg: [['🌱', '{سَ}أَزْرَعُ شَجَرَةً.'], ['♻️', '{سَوْفَ} نُنَظِّفُ الشَّاطِئَ.']],
+    items: [
+      { t: 'sort', lv: 1, b: ['أَمْسِ ⏪', 'غَدًا ⏩'], w: [['زَرَعْتُ', 0], ['سَأَزْرَعُ', 1], ['نَظَّفْنَا', 0], ['سَوْفَ نُنَظِّفُ', 1]] },
+      { t: 'pick', lv: 1, q: '💡 غَدًا ___ الأَضْوَاءَ.', o: ['سَأُطْفِئُ', 'أَطْفَأْتُ'] },
+      { t: 'pick', lv: 2, q: '💧 سَوْفَ ___ المَاءَ.', o: ['نُوَفِّرُ', 'وَفَّرْنَا', 'وَفِّرُوا'] },
+      { t: 'pick', lv: 2, q: '🏖️ غَدًا ___ الشَّاطِئَ.', o: ['سَنُنَظِّفُ', 'نَظَّفْنَا', 'نَظِّفُوا'] },
+      { t: 'fix', lv: 3, w: ['سَوْفَ', 'زَرَعْتُ', 'وَرْدَةً', 'غَدًا.'], bad: 1, o: ['أَزْرَعُ', 'زَرَعَ', 'زَرَعْنَا'] },
+      { t: 'build', lv: 3, w: ['سَأُعِيدُ', 'تَدْوِيرَ', 'العُلَبِ', 'غَدًا'] }
+    ] }
+];
+const GR = Object.fromEntries(GR_TOPICS.map((t) => [t.id, t]));
+const GR_BY_UNIT = Object.fromEntries(GR_TOPICS.map((t) => [t.u, t]));
+/* game-type names + the instruction (boy / girl form) */
+const GR_GAMES = {
+  pick: ['الشَّكْلُ الصَّحِيحُ', '[اِخْتَرِ|اِخْتَارِي] الشَّكْلَ الصَّحِيحَ', 'Pick the right form'],
+  sort: ['سِلَالُ الفَرْزِ', '[ضَعْ|ضَعِي] كُلَّ كَلِمَةٍ فِي سَلَّتِهَا', 'Sort into the baskets'],
+  end: ['أَلْصِقِ النِّهَايَةَ', '[اِسْحَبِ|اِسْحَبِي] النِّهَايَةَ المُنَاسِبَةَ إِلَى الكَلِمَةِ', 'Drag the right ending onto the word'],
+  fix: ['جُمْلَةٌ فِيهَا خَطَأٌ', '[اُنْقُرِ|اُنْقُرِي] الكَلِمَةَ الخَطَأَ ثُمَّ [أَصْلِحْهَا|أَصْلِحِيهَا]', 'Fix the sentence'],
+  tap: ['أَيْنَ الكَلِمَةُ؟', '[اُنْقُرِ|اُنْقُرِي] الكَلِمَةَ المَطْلُوبَةَ', 'Find the word'],
+  build: ['بِنَاءُ الجُمْلَةِ', '[رَتِّبِ|رَتِّبِي] الكَلِمَاتِ [لِتَبْنِيَ|لِتَبْنِي] جُمْلَةً', 'Build the sentence'],
+  pic: ['الكَلِمَةُ وَالصُّورَةُ', '[اِخْتَرِ|اِخْتَارِي] الصُّورَةَ', 'Pick the picture']
+};
+
+/* v21 · Saqqour's grammar explanations in every dialect the app offers (Emirati = GR_TOPICS[].gulf, Fusha = GR_TOPICS[].fusha).
+   Original lines, [m|f] = boy / girl form. Dialect only — the Fusha examples stay on their own cards. Not native-checked yet. */
+const GR_DL = {
+  saudi: {
+    pron: ['هَلَا [يَا بَطَل|يَا بَطَلَة]! اليَوْم بِنِلْعَب بِكَلِمَات صْغِيرَة تِنُوب عَن الأَسَامِي.', '[شُف|شُوفِي] الكُرُوت: كُل كَلْمَة تْأَشِّر عَلَى وَاحِد.', '[انْتَبِه|انْتَبْهِي]: لِلوَلَد كَلْمَة، وِلِلبِنْت كَلْمَة ثَانْيَة. يَلَّا نْجَرِّب!'],
+    num: ['وَاحِد، اثْنَيْن، كِثِير! الكَلْمَة تِتْغَيَّر عَلَى حَسَب العَدَد.', 'لِلاثْنَيْن نْزِيد حَرْفَيْن صْغَار فِي آخِر الكَلْمَة. [شُف|شُوفِي] اللَّوْن.', 'وِلِلكِثِير أَحْيَانًا الكَلْمَة كُلَّهَا يِتْغَيَّر شَكْلَهَا. يَلَّا!'],
+    adj: ['الأَلْوَان وِالأَوْصَاف يِجُون بَعْد الكَلْمَة وِيِلْبَسُون زَيَّهَا بِالضَّبْط!', 'إِذَا الكَلْمَة لِلبِنْت، الوَصْف بَعَد يْصِير لِلبِنْت.', 'وِالأَلْوَان لَهَا شَكْل خَاص لِلبِنْت. [شُف|شُوفِي] الأَحْمَر. يَلَّا نْلَوِّن!'],
+    gen: ['فِي العَرَبِي كُل كَلْمَة يَا وَلَد يَا بِنْت، حَتَّى الحَيَوَانَات!', 'كِثِير نْزِيد حَرْف صْغِير فِي الآخِر وِتْصِير الكَلْمَة لِلبِنْت. [شُف|شُوفِي] الحَرْف الوَرْدِي.', 'بَس فِيه كَلِمَات تِتْغَيَّر كُلَّهَا، زَي الأَسَد. يَلَّا!'],
+    dem: ['لَمَّا [تْأَشِّر|تْأَشِّرِين] عَلَى شَي قَرِيب، فِيه كَلْمَة لِلوَلَد وِكَلْمَة لِلبِنْت.', '[شُف|شُوفِي] عَايِلَتِي: لِلأَب وِالأَخ كَلْمَة، وِلِلأُم وِالأُخْت كَلْمَة.', 'وِلِلشَّي البَعِيد كَلِمَات ثَانْيَة، بِنِتْعَلَّمْهَا بَعْدِين. يَلَّا!'],
+    al: ['[شُف|شُوفِي] الحَرْفَيْن اللِّي فِي أَوَّل الكَلْمَة، يْخَلُّونْهَا مَعْرُوفَة.', 'مَع بَعْض الحُرُوف اللَّام تِنْقَرَا وَاضْحَة، زَي القَمَر.', 'وِمَع غَيْرَهَا اللَّام تِخْتَفِي وِالحَرْف اللِّي بَعْدَهَا يِنْشَدّ، زَي الشَّمْس. يَلَّا نْفَرِّز!'],
+    q: ['كُل سُؤَال لَه كَلْمَة تِفْتَحَه، زَي المُفْتَاح!', 'لِلأَكِل كَلْمَة، وِلِلمَكَان كَلْمَة، وِلِلعَدَد كَلْمَة. [شُف|شُوفِي] الصُّوَر.', 'وِالكَلْمَة دَايِم فِي أَوَّل السُّؤَال. يَلَّا نِسْأَل!'],
+    prep: ['هَالكَلِمَات الصْغِيرَة [تْقُول لَك|تْقُول لِك] وِين الشَّي بِالضَّبْط.', 'فُوق، دَاخِل، رَايِح، رَاجِع… [شُف|شُوفِي] الصُّوَر.', 'وِالكَلْمَة اللِّي بَعْدَهَا تِلْبَس كَسْرَة تَحْت آخِرْهَا. يَلَّا!'],
+    pres: ['هَذَا الفِعْل لِلشَّي اللِّي يْصِير الحِين، زَي اللِّي [تْسَوِّيه|تْسَوِّينَه] كُل يَوْم.', 'أَوَّل حَرْف يِتْغَيَّر عَلَى حَسَب مِين يْسَوِّي الشَّي. [شُف|شُوفِي] الحَرْف المْلَوَّن.', 'حَرْف لِي، وِحَرْف لَه، وِحَرْف لَهَا، وِحَرْف لَنَا. يَلَّا!'],
+    sent: ['الجُمْلَة زَي القِطَار، وِالعَرَبَة الأُولَى هِي اللِّي تْسَمِّيه!', 'إِذَا بَدَت بِشَي [تْسَوِّيه|تْسَوِّينَه]، نْسَمِّيهَا جُمْلَة فِعْلِيَّة.', 'وِإِذَا بَدَت بِاسْم، نْسَمِّيهَا جُمْلَة اسْمِيَّة. يَلَّا نْفَرِّز القِطَارَات!'],
+    neg: ['لَمَّا مَا [تْحِب|تْحِبِّين] شَي، نْزِيد كَلْمَة صْغِيرَة قَبْل الفِعْل.', 'وِقَبْل الاسْم فِيه كَلْمَة ثَانْيَة، وِتْغَيِّر آخِر الوَصْف. [شُف|شُوفِي] السَّطْر الثَّانِي.', 'وِلِلشَّي اللِّي مَا صَار أَمْس فِيه كَلْمَة ثَالْثَة. يَلَّا!'],
+    poss: ['فِي العَرَبِي نِلْصِق ذَيْل صْغِير فِي آخِر الكَلْمَة عَشَان نْقُول لِمِين.', 'ذَيْل لِي، وِذَيْل [لَك|لِك]، وِذَيْل لَه، وِذَيْل لَهَا. [شُف|شُوفِي] الذَّيْل المْلَوَّن.', 'يَلَّا نِلْصِق الذُّيُول!'],
+    mub: ['[كِبِرْت|كِبِرْتِي] وِ[صِرْت مُحَقِّق|صِرْتِي مُحَقِّقَة] جُمَل! بِنْعَرِف أَسَامِي أَجْزَاء الجُمْلَة.', 'الجُمْلَة اللِّي تِبْدَا بِاسْم فِيهَا جُزْئَيْن: اللِّي نِتْكَلَّم عَنَّه، وِالخَبَر عَنَّه.', 'وِالاثْنَيْن يِلْبَسُون ضَمَّة فِي الآخِر. [شُف|شُوفِي] الضَّمَّة!'],
+    fail: ['فِي الجُمْلَة اللِّي تِبْدَا بِفِعْل، فِيه وَاحِد يْسَوِّي الشَّي، وِشَي يْصِير عَلَيْه.', 'اللِّي يْسَوِّي يِلْبَس ضَمَّة، وِاللِّي يْصِير عَلَيْه يِلْبَس فَتْحَة.', '[تْخَيَّل إِنَّك مُحَقِّق|تْخَيَّلِي إِنِّك مُحَقِّقَة]! يَلَّا نْدَوِّر عَلَيْهُم.'],
+    past: ['هَذَا الفِعْل لِلشَّي اللِّي صَار وِخِلِص، زَي سَفْرَة الإِجَازَة!', 'آخِر الفِعْل يِتْغَيَّر عَلَى حَسَب مِين سَوَّاه. [شُف|شُوفِي] الذَّيْل المْلَوَّن.', 'يَلَّا نْسَافِر فِي الزَّمَن!'],
+    fut: ['عِنْدِي خُطَط كِثِيرَة لِبُكْرَة! وِالفِعْل اللِّي لِبُكْرَة لَه عَلَامَة.', 'نِلْصِق حَرْف صْغِير قَبْل الفِعْل، أَو نْحُط كَلْمَة قِدَّامَه. [شُف|شُوفِي] اللَّوْن.', 'يَلَّا نْخَطِّط لِلبِيئَة!']
+  },
+  lebanese: {
+    pron: ['أَهْلِين [يَا بَطَل|يَا بَطَلِة]! اليُوم رَح نِلْعَب بِكِلْمَات زْغَار بْتَاخُد مَحَلّ الأَسَامِي.', '[تْطَلَّع|تْطَلَّعِي] عَالكُرُوت: كِلّ كِلْمِة بِتْدِلّ عَلَى حَدَا.', '[اِنْتِبِه|اِنْتِبْهِي]: لِلصَّبِي كِلْمِة، وْلِلبِنْت كِلْمِة غَيْرَا. يَلَّا نْجَرِّب!'],
+    num: ['وَاحَد، تْنَيْن، كْتِير! الكِلْمِة بْتِتْغَيَّر حَسَب العَدَد.', 'لِلتْنَيْن مِنْزِيد حَرْفَيْن زْغَار بْآخِر الكِلْمِة. [تْطَلَّع|تْطَلَّعِي] عَاللَّوْن.', 'وْلِلكْتِير أَوْقَات الكِلْمِة كِلَّا بْتِتْغَيَّر. يَلَّا!'],
+    adj: ['الأَلْوَان وِالأَوْصَاف بْيِمْشُوا وَرَا الكِلْمِة وْبْيِلْبْسُوا مِتِل تْيَابَا!', 'إِذَا الكِلْمِة لِلبِنْت، الوَصْف كَمَان بْيِصِير لِلبِنْت.', 'وِالأَلْوَان إِلُن شَكِل خَاصّ لِلبِنْت. [تْطَلَّع|تْطَلَّعِي] عَالأَحْمَر. يَلَّا نْلَوِّن!'],
+    gen: ['بِالعَرَبِي كِلّ كِلْمِة يَا صَبِي يَا بِنْت، حَتَّى الحَيْوَانَات!', 'كْتِير مَرَّات مِنْزِيد حَرْف زْغِير بِالآخِر وْبِتْصِير الكِلْمِة لِلبِنْت. [تْطَلَّع|تْطَلَّعِي] عَالحَرْف الزَّهْرِي.', 'بَسّ فِي كِلْمَات بْتِتْغَيَّر كِلَّا، مِتِل الأَسَد. يَلَّا!'],
+    dem: ['لَمَّا [تْأَشِّر|تْأَشّْرِي] عَلَى شِي قْرِيب، فِي كِلْمِة لِلصَّبِي وْكِلْمِة لِلبِنْت.', '[تْطَلَّع|تْطَلَّعِي] عَعَيْلْتِي: لِلبَيّ وِالخَيّ كِلْمِة، وْلِلإِمّ وِالأُخْت كِلْمِة.', 'وْلِلشِّي البْعِيد فِي كِلْمَات تَانْيِة، مِنِتْعَلَّمُن بَعْدِين. يَلَّا!'],
+    al: ['[تْطَلَّع|تْطَلَّعِي] عَالحَرْفَيْن بْأَوَّل الكِلْمِة، بْيِعْمْلُوهَا مَعْرُوفِة.', 'مَع بَعْض الحْرُوف اللَّام بْتِنْقَرَا وَاضْحَة، مِتِل القَمَر.', 'وْمَع غَيْرُن اللَّام بْتِخْتِفِي وِالحَرْف يَلِّي بَعْدَا بْيِتْشَدَّد، مِتِل الشَّمْس. يَلَّا نْفَرِّز!'],
+    q: ['كِلّ سُؤَال إِلُو كِلْمِة بْتِفْتَحُو، مِتِل المِفْتَاح!', 'لِلأَكِل كِلْمِة، وْلِلمَحَلّ كِلْمِة، وْلِلعَدَد كِلْمِة. [تْطَلَّع|تْطَلَّعِي] عَالصُّوَر.', 'وِالكِلْمِة دَايْمًا بْأَوَّل السُّؤَال. يَلَّا نِسْأَل!'],
+    prep: ['هَالكِلْمَات الزْغَار [بِيْقُلُّولَك|بِيْقُلُّولِك] وَيْن الشِّي بِالزَّبْط.', 'فُوق، جُوَّا، رَايِح، رَاجِع… [تْطَلَّع|تْطَلَّعِي] عَالصُّوَر.', 'وِالكِلْمِة يَلِّي بَعْدُن بْتِلْبُس كَسْرَة تَحْت آخِرْهَا. يَلَّا!'],
+    pres: ['هَيْدَا الفِعْل لِلشِّي يَلِّي عَم يْصِير هَلَّق، مِتِل يَلِّي [بْتَعْمْلُو|بْتَعْمْلِيه] كِلّ يُوم.', 'أَوَّل حَرْف بْيِتْغَيَّر حَسَب مِين عَم يَعْمِل الشِّي. [تْطَلَّع|تْطَلَّعِي] عَالحَرْف المْلَوَّن.', 'حَرْف إِلِي، وْحَرْف إِلُو، وْحَرْف إِلَا، وْحَرْف إِلْنَا. يَلَّا!'],
+    sent: ['الجِمْلِة مِتِل القِطَار، وِالعَرَبِيِّة الأُولَى هِيِّ يَلِّي بِتْسَمِّيه!', 'إِذَا بَلَّشِت بْشِي [بْتَعْمْلُو|بْتَعْمْلِيه]، مِنْسَمِّيهَا جِمْلِة فِعْلِيِّة.', 'وْإِذَا بَلَّشِت بِاسْم، مِنْسَمِّيهَا جِمْلِة اسْمِيِّة. يَلَّا نْفَرِّز القِطَارَات!'],
+    neg: ['لَمَّا مَا [بِتْحِبّ|بِتْحِبِّي] شِي، مِنْزِيد كِلْمِة زْغِيرِة قَبِل الفِعْل.', 'وْقَبِل الاسِم فِي كِلْمِة تَانْيِة، وْبِتْغَيِّر آخِر الوَصْف. [تْطَلَّع|تْطَلَّعِي] عَالسَّطِر التَّانِي.', 'وْلِلشِّي يَلِّي مَا صَار مْبَارِح فِي كِلْمِة تَالْتِة. يَلَّا!'],
+    poss: ['بِالعَرَبِي مِنْلِزِّق دَنَب زْغِير بْآخِر الكِلْمِة لَنْقُول لِمِين هِيِّ.', 'دَنَب إِلِي، وْدَنَب [إِلَك|إِلِك]، وْدَنَب إِلُو، وْدَنَب إِلَا. [تْطَلَّع|تْطَلَّعِي] عَالدَّنَب المْلَوَّن.', 'يَلَّا نْلَزِّق الدّْنَاب!'],
+    mub: ['[كْبِرْت|كْبِرْتِي] وْ[صِرْت مُحَقِّق|صِرْتِي مُحَقِّقَة] جِمَل! رَح نِعْرَف أَسَامِي أَجْزَاء الجِمْلِة.', 'الجِمْلِة يَلِّي بْتِبْلُش بِاسِم فِيَا جِزْئَيْن: يَلِّي عَم نِحْكِي عَنُّو، وِالخَبَر عَنُّو.', 'وِالتْنَيْن بْيِلْبْسُوا ضَمَّة بِالآخِر. [تْطَلَّع|تْطَلَّعِي] عَالضَّمَّة!'],
+    fail: ['بِالجِمْلِة يَلِّي بْتِبْلُش بْفِعْل، فِي حَدَا عَم يَعْمِل الشِّي، وْشِي عَم يْصِير فِيه.', 'يَلِّي بْيَعْمِل بْيِلْبُس ضَمَّة، وْيَلِّي بْيِصِير فِيه بْيِلْبُس فَتْحَة.', '[تْخَيَّل إِنَّك مُحَقِّق|تْخَيَّلِي إِنِّك مُحَقِّقَة]! يَلَّا نْفَتِّش عَلَيْهُن.'],
+    past: ['هَيْدَا الفِعْل لِلشِّي يَلِّي صَار وْخِلِص، مِتِل سَفْرِة العُطْلِة!', 'آخِر الفِعْل بْيِتْغَيَّر حَسَب مِين عِمْلُو. [تْطَلَّع|تْطَلَّعِي] عَالدَّنَب المْلَوَّن.', 'يَلَّا نْسَافِر بِالزَّمَن!'],
+    fut: ['عِنْدِي خِطَط كْتِير لَبُكْرَا! وِالفِعْل يَلِّي لَبُكْرَا إِلُو عَلَامِة.', 'مِنْلَزِّق حَرْف زْغِير قَبِل الفِعْل، أَو مِنْحُطّ كِلْمِة قَبْلُو. [تْطَلَّع|تْطَلَّعِي] عَاللَّوْن.', 'يَلَّا نْخَطِّط لِلبِيئَة!']
+  },
+  syrian: {
+    pron: ['أَهْلَين [يَا بَطَل|يَا بَطَلِة]! اليُوم رَح نِلْعَب بِكِلْمَات زْغِيرِة بْتَاخُد مَحَلّ الأَسَامِي.', '[اتْطَلَّع|اتْطَلَّعِي] عَالكَرْتَات: كِلّ كِلْمِة بِتْأَشِّر عَلَى حَدَا.', '[انْتِبِه|انْتِبْهِي]: لِلصَّبِي كِلْمِة، وْلِلبِنْت كِلْمِة تَانْيِة. يَلَّا نْجَرِّب!'],
+    num: ['وَاحِد، تْنَيْن، كْتِير! الكِلْمِة بْتِتْغَيَّر حَسَب العَدَد.', 'لِلتْنَيْن مِنْزِيد حَرْفَيْن زْغَار بْآخِر الكِلْمِة. [اتْطَلَّع|اتْطَلَّعِي] عَاللَّون.', 'وْلِلكْتِير أَحْيَانًا الكِلْمِة كِلّْهَا بْيِتْغَيَّر شَكِلْهَا. يَلَّا!'],
+    adj: ['الأَلْوَان وِالأَوْصَاف بِيمْشُوا وَرَا الكِلْمِة وْبِيلْبْسُوا مِتِل تْيَابْهَا!', 'إِذَا الكِلْمِة لِلبِنْت، الوَصْف كَمَان بْيِصِير لِلبِنْت.', 'وِالأَلْوَان إِلْهُن شَكِل خَاصّ لِلبِنْت. [اتْطَلَّع|اتْطَلَّعِي] عَالأَحْمَر. يَلَّا نْلَوِّن!'],
+    gen: ['بِالعَرَبِي كِلّ كِلْمِة يَا صَبِي يَا بِنْت، حَتَّى الحَيَوَانَات!', 'كْتِير مَرَّات مِنْزِيد حَرْف زْغِير بِالآخِر وْبِتْصِير الكِلْمِة لِلبِنْت. [اتْطَلَّع|اتْطَلَّعِي] عَالحَرْف الزَّهْرِي.', 'بَسّ فِي كِلْمَات بْتِتْغَيَّر كِلّْهَا، مِتِل الأَسَد. يَلَّا!'],
+    dem: ['لَمَّا [تْأَشِّر|تْأَشّْرِي] عَلَى شِي قْرِيب، فِي كِلْمِة لِلصَّبِي وْكِلْمِة لِلبِنْت.', '[اتْطَلَّع|اتْطَلَّعِي] عَلَى عِيلْتِي: لِلبَابَا وِالأَخ كِلْمِة، وْلِلمَامَا وِالأُخْت كِلْمِة.', 'وْلِلشِّي البْعِيد فِي كِلْمَات تَانْيِة، رَح نِتْعَلَّمْهُن بَعْدِين. يَلَّا!'],
+    al: ['[اتْطَلَّع|اتْطَلَّعِي] عَالحَرْفَيْن بْأَوَّل الكِلْمِة، بِيخَلُّوهَا مَعْرُوفِة.', 'مَع بَعْض الحْرُوف اللَّام بْتِنْقِرِي وَاضْحَة، مِتِل القَمَر.', 'وْمَع غَيْرْهَا اللَّام بْتِخْتِفِي وِالحَرْف يَلِّي بَعْدْهَا بْيِتْشَدَّد، مِتِل الشَّمْس. يَلَّا نْفَرِّز!'],
+    q: ['كِلّ سُؤَال إِلُه كِلْمِة بْتِفْتَحُه، مِتِل المِفْتَاح!', 'لِلأَكِل كِلْمِة، وْلِلمَكَان كِلْمِة، وْلِلعَدَد كِلْمِة. [اتْطَلَّع|اتْطَلَّعِي] عَالصُّوَر.', 'وِالكِلْمِة دَايْمًا بْأَوَّل السُّؤَال. يَلَّا نِسْأَل!'],
+    prep: ['هَالكِلْمَات الزْغِيرِة [بِتْقِلَّك|بِتْقِلِّك] وَيْن الشِّي بِالضَّبْط.', 'فُوق، جُوَّا، رَايِح، رَاجِع… [اتْطَلَّع|اتْطَلَّعِي] عَالصُّوَر.', 'وِالكِلْمِة يَلِّي بَعْدْهَا بْتِلْبِس كَسْرَة تَحْت آخِرْهَا. يَلَّا!'],
+    pres: ['هَاد الفِعْل لِلشِّي يَلِّي عَم يْصِير هَلَّأ، مِتِل يَلِّي [بْتَعْمْلُه|بْتَعْمْلِيه] كِلّ يُوم.', 'أَوَّل حَرْف بْيِتْغَيَّر حَسَب مِين عَم يَعْمِل الشِّي. [اتْطَلَّع|اتْطَلَّعِي] عَالحَرْف المْلَوَّن.', 'حَرْف إِلِي، وْحَرْف إِلُه، وْحَرْف إِلْهَا، وْحَرْف إِلْنَا. يَلَّا!'],
+    sent: ['الجِمْلِة مِتِل القِطَار، وِالعَرَبِيِّة الأُولَى هِيِّ يَلِّي بِتْعَطِّيه اسْمُه!', 'إِذَا ابْتَدِت بْشِي [بْتَعْمْلُه|بْتَعْمْلِيه]، مِنْسَمِّيهَا جِمْلِة فِعْلِيِّة.', 'وْإِذَا ابْتَدِت بِاسِم، مِنْسَمِّيهَا جِمْلِة اسْمِيِّة. يَلَّا نْفَرِّز القِطَارَات!'],
+    neg: ['لَمَّا [مَا بْتْحِبّ|مَا بْتْحِبِّي] شِي، مِنْحُطّ كِلْمِة زْغِيرِة قَبْل الفِعْل.', 'وْقَبْل الاسِم فِي كِلْمِة تَانْيِة، وْبِتْغَيِّر آخِر الوَصْف. [اتْطَلَّع|اتْطَلَّعِي] عَالسَّطِر التَّانِي.', 'وْلِلشِّي يَلِّي مَا صَار مْبَارِح فِي كِلْمِة تَالْتِة. يَلَّا!'],
+    poss: ['بِالعَرَبِي مِنْلَزِّق دَنَب زْغِير بْآخِر الكِلْمِة مِنْشَان نْقُول لِمِين هِيِّ.', 'دَنَب إِلِي، وْدَنَب [إِلَك|إِلِك]، وْدَنَب إِلُه، وْدَنَب إِلْهَا. [اتْطَلَّع|اتْطَلَّعِي] عَالدَّنَب المْلَوَّن.', 'يَلَّا نْلَزِّق الدّْنَاب!'],
+    mub: ['[كْبِرْت|كْبِرْتِي] وْ[صِرْت مُحَقِّق|صِرْتِي مُحَقِّقَة] جِمَل! رَح نِعْرِف أَسَامِي أَجْزَاء الجِمْلِة.', 'الجِمْلِة يَلِّي بْتِبْتِدِي بِاسِم فِيهَا جِزْئَيْن: يَلِّي عَم نِحْكِي عَنُّه، وِالخَبَر عَنُّه.', 'وِالتْنَيْن بِيلْبْسُوا ضَمَّة بِالآخِر. [اتْطَلَّع|اتْطَلَّعِي] عَالضَّمَّة!'],
+    fail: ['بِالجِمْلِة يَلِّي بْتِبْتِدِي بْفِعْل، فِي حَدَا عَم يَعْمِل الشِّي، وْشِي عَم يْصِير عَلَيْه.', 'يَلِّي بْيَعْمِل بْيِلْبِس ضَمَّة، وْيَلِّي بْيِصِير عَلَيْه بْيِلْبِس فَتْحَة.', '[تْخَيَّل حَالَك مُحَقِّق|تْخَيَّلِي حَالِك مُحَقِّقَة]! يَلَّا نْدَوِّر عَلَيْهُن.'],
+    past: ['هَاد الفِعْل لِلشِّي يَلِّي صَار وْخِلِص، مِتِل سَفْرِة العُطْلِة!', 'آخِر الفِعْل بْيِتْغَيَّر حَسَب مِين عِمْلُه. [اتْطَلَّع|اتْطَلَّعِي] عَالدَّنَب المْلَوَّن.', 'يَلَّا نْسَافِر بِالزَّمَن!'],
+    fut: ['عِنْدِي خِطَط كْتِير لَبُكْرَا! وِالفِعْل يَلِّي لَبُكْرَا إِلُه عَلَامِة.', 'مِنْلَزِّق حَرْف زْغِير قَبْل الفِعْل، أَو مِنْحُطّ كِلْمِة قَبْلُه. [اتْطَلَّع|اتْطَلَّعِي] عَاللَّون.', 'يَلَّا نْخَطِّط مِنْشَان البِيئَة!']
+  },
+  jordanian: {
+    pron: ['أَهْلِين [يَا بَطَل|يَا بَطَلِة]! اليُوم رَح نِلْعَب بِكَلْمَات صْغِيرِة بِتِيجِي بَدَل الأَسَامِي.', '[اطَّلَّع|اطَّلَّعِي] عَالكُرُوت: كُلّ كَلْمِة بِتْأَشِّر عَلَى حَدَا.', '[انْتِبِه|انْتِبْهِي]: لِلوَلَد كَلْمِة، وْلِلبِنْت كَلْمِة ثَانْيِة. يَلَّا نْجَرِّب!'],
+    num: ['وَاحَد، ثْنَيْن، كْثِير! الكَلْمِة بِتْتَغَيَّر حَسَب العَدَد.', 'لِلثْنَيْن بِنْزِيد حَرْفَيْن صْغَار بْآخِر الكَلْمِة. [اطَّلَّع|اطَّلَّعِي] عَاللُّون.', 'وْلِلكْثِير أَحْيَانًا الكَلْمِة كُلْهَا بِيِتْغَيَّر شَكِلْهَا. يَلَّا!'],
+    adj: ['الأَلْوَان وِالأَوْصَاف بِيمْشُوا وَرَا الكَلْمِة وْبِيلْبْسُوا زَيّ أَوَاعِيهَا!', 'إِذَا الكَلْمِة لِلبِنْت، الوَصْف كَمَان بِصِير لِلبِنْت.', 'وِالأَلْوَان إِلْهُم شَكِل خَاصّ لِلبِنْت. [اطَّلَّع|اطَّلَّعِي] عَالأَحْمَر. يَلَّا نْلَوِّن!'],
+    gen: ['بِالعَرَبِي كُلّ كَلْمِة يَا وَلَد يَا بِنْت، حَتَّى الحَيَوَانَات!', 'كْثِير مَرَّات بِنْزِيد حَرْف صْغِير بِالآخِر وْبِتْصِير الكَلْمِة لِلبِنْت. [اطَّلَّع|اطَّلَّعِي] عَالحَرْف الزَّهْرِي.', 'بَسّ فِي كَلْمَات بِتْتَغَيَّر كُلْهَا، زَيّ الأَسَد. يَلَّا!'],
+    dem: ['لَمَّا [تْأَشِّر|تْأَشّْرِي] عَلَى إِشِي قَرِيب، فِي كَلْمِة لِلوَلَد وْكَلْمِة لِلبِنْت.', '[اطَّلَّع|اطَّلَّعِي] عَلَى عِيلْتِي: لِلأَبُو وِالأَخُو كَلْمِة، وْلِلإِمّ وِالأُخْت كَلْمِة.', 'وْلِلإِشِي البَعِيد فِي كَلْمَات ثَانْيِة، رَح نِتْعَلَّمْهَا بَعْدِين. يَلَّا!'],
+    al: ['[اطَّلَّع|اطَّلَّعِي] عَالحَرْفَيْن اللِّي بْأَوَّل الكَلْمِة، بِيخَلُّوهَا مَعْرُوفِة.', 'مَع بَعْض الحُرُوف اللَّام بْتِنْقَرَا وَاضْحَة، زَيّ القَمَر.', 'وْمَع غَيْرْهَا اللَّام بِتْغِيب وِالحَرْف اللِّي بَعِدْهَا بِيِتْشَدَّد، زَيّ الشَّمْس. يَلَّا نْفَرِّز!'],
+    q: ['كُلّ سُؤَال إِلُه كَلْمِة بِتْفَتْحُه، زَيّ المِفْتَاح!', 'لِلأَكِل كَلْمِة، وْلِلمَكَان كَلْمِة، وْلِلعَدَد كَلْمِة. [اطَّلَّع|اطَّلَّعِي] عَالصُّوَر.', 'وِالكَلْمِة دَايْمًا بْأَوَّل السُّؤَال. يَلَّا نِسْأَل!'],
+    prep: ['هَالكَلْمَات الصْغِيرِة [بِتْقُلَّك|بِتْقُلِّك] وِين الإِشِي بِالزَّبْط.', 'فُوق، جُوَّا، رَايِح، رَاجِع… [اطَّلَّع|اطَّلَّعِي] عَالصُّوَر.', 'وِالكَلْمِة اللِّي بَعِدْهَا بِتِلْبَس كَسْرَة تَحِت آخِرْهَا. يَلَّا!'],
+    pres: ['هَاد الفِعْل لِلإِشِي اللِّي بِصِير هَسَّا، زَيّ اللِّي [بْتَعْمَلُه|بْتَعْمَلِيه] كُلّ يُوم.', 'أَوَّل حَرْف بِيِتْغَيَّر حَسَب مِين بِيِعْمَل الإِشِي. [اطَّلَّع|اطَّلَّعِي] عَالحَرْف المْلَوَّن.', 'حَرْف إِلِي، وْحَرْف إِلُه، وْحَرْف إِلْهَا، وْحَرْف إِلْنَا. يَلَّا!'],
+    sent: ['الجُمْلِة زَيّ القِطَار، وِالعَرَبَة الأُولَى هِيّ اللِّي بِتْسَمِّيه!', 'إِذَا بَلَّشَت بْإِشِي [بْتَعْمَلُه|بْتَعْمَلِيه]، بِنْسَمِّيهَا جُمْلِة فِعْلِيِّة.', 'وْإِذَا بَلَّشَت بِاسِم، بِنْسَمِّيهَا جُمْلِة اسْمِيِّة. يَلَّا نْفَرِّز القِطَارَات!'],
+    neg: ['لَمَّا [مَا بِتْحِبّ|مَا بِتْحِبِّي] إِشِي، بِنْحُطّ كَلْمِة صْغِيرِة قَبِل الفِعْل.', 'وْقَبِل الاسِم فِي كَلْمِة ثَانْيِة، وْبِتْغَيِّر آخِر الوَصِف. [اطَّلَّع|اطَّلَّعِي] عَالسَّطِر الثَّانِي.', 'وْلِلإِشِي اللِّي مَا صَار مْبَارِح فِي كَلْمِة ثَالْثِة. يَلَّا!'],
+    poss: ['بِالعَرَبِي بِنْلَزِّق ذَنَب صْغِير بْآخِر الكَلْمِة عَشَان نْقُول لِمِين.', 'ذَنَب إِلِي، وْذَنَب [إِلَك|إِلِك]، وْذَنَب إِلُه، وْذَنَب إِلْهَا. [اطَّلَّع|اطَّلَّعِي] عَالذَّنَب المْلَوَّن.', 'يَلَّا نْلَزِّق الذّْنَاب!'],
+    mub: ['[كْبِرِت|كْبِرْتِي] وْ[صِرِت مُحَقِّق|صِرْتِي مُحَقِّقَة] جُمَل! رَح نِعْرِف أَسَامِي أَجْزَاء الجُمْلِة.', 'الجُمْلِة اللِّي بِتِبْدَا بِاسِم فِيهَا جُزْئَيْن: اللِّي بِنِحْكِي عَنُّه، وِالخَبَر عَنُّه.', 'وِالثْنَيْن بِيلْبْسُوا ضَمَّة بِالآخِر. [اطَّلَّع|اطَّلَّعِي] عَالضَّمَّة!'],
+    fail: ['بِالجُمْلِة اللِّي بِتِبْدَا بْفِعِل، فِي حَدَا بِيِعْمَل الإِشِي، وْإِشِي بِصِير عَلَيْه.', 'اللِّي بِيِعْمَل بِيِلْبَس ضَمَّة، وِاللِّي بِصِير عَلَيْه بِيِلْبَس فَتْحَة.', '[تْخَيَّل حَالَك مُحَقِّق|تْخَيَّلِي حَالِك مُحَقِّقَة]! يَلَّا نْدَوِّر عَلَيْهُم.'],
+    past: ['هَاد الفِعِل لِلإِشِي اللِّي صَار وْخِلِص، زَيّ سَفْرِة العُطْلِة!', 'آخِر الفِعِل بِيِتْغَيَّر حَسَب مِين عِمْلُه. [اطَّلَّع|اطَّلَّعِي] عَالذَّنَب المْلَوَّن.', 'يَلَّا نْسَافِر بِالزَّمَن!'],
+    fut: ['عِنْدِي خُطَط كْثِير لَبُكْرَة! وِالفِعِل اللِّي لَبُكْرَة إِلُه عَلَامِة.', 'بِنْلَزِّق حَرْف صْغِير قَبِل الفِعِل، أَو بِنْحُطّ كَلْمِة قَبْلُه. [اطَّلَّع|اطَّلَّعِي] عَاللُّون.', 'يَلَّا نْخَطِّط عَشَان البِيئَة!']
+  },
+  egyptian: {
+    pron: ['أَهْلًا [يَا بَطَل|يَا بَطَلَة]! النَّهَارْدَه هَنِلْعَب بِكِلْمَات صُغَيَّرَة بْتِيجِي بَدَل الأَسَامِي.', '[بُصّ|بُصِّي] عَالكُرُوت: كُلّ كِلْمَة بِتْشَاوِر عَلَى حَد.', '[خُد بَالَك|خُدِي بَالِك]: لِلوَلَد كِلْمَة، وِلِلبِنْت كِلْمَة تَانْيَة. يَلَّا نْجَرَّب!'],
+    num: ['وَاحِد، اتْنِين، كْتِير! الكِلْمَة بِتِتْغَيَّر عَلَى حَسَب العَدَد.', 'لِلاتْنِين بِنْزَوِّد حَرْفِين صُغَيَّرِين فِي آخِر الكِلْمَة. [بُصّ|بُصِّي] عَاللُّون.', 'وِلِلكْتِير سَاعَات الكِلْمَة كُلَّهَا بِتِتْغَيَّر. يَلَّا!'],
+    adj: ['الأَلْوَان وِالأَوْصَاف بِيِمْشُوا وَرَا الكِلْمَة وِبْيِلْبِسُوا زَيّ هُدُومْهَا!', 'لَوْ الكِلْمَة لِلبِنْت، الوَصْف كَمَان بِيِبْقَى لِلبِنْت.', 'وِالأَلْوَان لِيهَا شَكْل مَخْصُوص لِلبِنْت. [بُصّ|بُصِّي] عَالأَحْمَر. يَلَّا نْلَوِّن!'],
+    gen: ['فِي العَرَبِي كُلّ كِلْمَة يَا وَلَد يَا بِنْت، حَتَّى الحَيَوَانَات!', 'كْتِير بِنْزَوِّد حَرْف صُغَيَّر فِي الآخِر وِالكِلْمَة تِبْقَى لِلبِنْت. [بُصّ|بُصِّي] عَالحَرْف البَمْبِي.', 'بَسّ فِيه كِلْمَات بِتِتْغَيَّر خَالِص، زَيّ الأَسَد. يَلَّا!'],
+    dem: ['لَمَّا [تْشَاوِر|تْشَاوْرِي] عَلَى حَاجَة قُرَيَّبَة، فِيه كِلْمَة لِلوَلَد وِكِلْمَة لِلبِنْت.', '[بُصّ|بُصِّي] عَلَى عِيلْتِي: لِلأَب وِالأَخ كِلْمَة، وِلِلأُمّ وِالأُخْت كِلْمَة.', 'وِلِلحَاجَة البَعِيدَة فِيه كِلْمَات تَانْيَة، هَنِتْعَلِّمْهَا بَعْدِين. يَلَّا!'],
+    al: ['[بُصّ|بُصِّي] عَالحَرْفِين اللِّي فِي أَوِّل الكِلْمَة، بِيْخَلُّوهَا مَعْرُوفَة.', 'مَع شْوَيَّة حُرُوف اللَّام بِتِتْقِرِي وَاضْحَة، زَيّ القَمَر.', 'وِمَع البَاقْيِين اللَّام بِتِسْتَخَبَّى وِالحَرْف اللِّي بَعْدَهَا بْيِتْشَدّ، زَيّ الشَّمْس. يَلَّا نْفَرَّز!'],
+    q: ['كُلّ سُؤَال لِيه كِلْمَة بِتِفْتَحُه، زَيّ المُفْتَاح!', 'لِلأَكْل كِلْمَة، وِلِلمَكَان كِلْمَة، وِلِلعَدَد كِلْمَة. [بُصّ|بُصِّي] عَالصُّوَر.', 'وِالكِلْمَة دَايْمًا فِي أَوِّل السُّؤَال. يَلَّا نِسْأَل!'],
+    prep: ['الكِلْمَات الصُّغَيَّرَة دِي [بِتْقُولَّك|بِتْقُولِّك] الحَاجَة فِين بِالظَّبْط.', 'فُوق، جُوَّه، رَايِح، رَاجِع… [بُصّ|بُصِّي] عَالصُّوَر.', 'وِالكِلْمَة اللِّي بَعْدَهَا بِتِلْبِس كَسْرَة تَحْت آخِرْهَا. يَلَّا!'],
+    pres: ['الفِعْل دَه لِلحَاجَة اللِّي بِتِحْصَل دِلْوَقْتِي، زَيّ اللِّي [بِتِعْمِلُه|بِتِعْمِلِيه] كُلّ يُوم.', 'أَوِّل حَرْف بِيِتْغَيَّر عَلَى حَسَب مِين بِيِعْمِل الحَاجَة. [بُصّ|بُصِّي] عَالحَرْف المِلَوِّن.', 'حَرْف لِيَّا، وِحَرْف لِيه، وِحَرْف لِيهَا، وِحَرْف لِينَا. يَلَّا!'],
+    sent: ['الجُمْلَة زَيّ القَطْر، وِالعَرَبِيَّة الأُولَانِيَّة هِيَّ اللِّي بِتْسَمِّيه!', 'لَوْ ابْتَدِت بِحَاجَة [بِتِعْمِلْهَا|بِتِعْمِلِيهَا]، نْسَمِّيهَا جُمْلَة فِعْلِيَّة.', 'وِلَوْ ابْتَدِت بِاسْم، نْسَمِّيهَا جُمْلَة اسْمِيَّة. يَلَّا نْفَرَّز الجُمَل!'],
+    neg: ['لَمَّا [مَا بِتْحِبِّش|مَا بِتْحِبِّيش] حَاجَة، بِنْحُطّ كِلْمَة صُغَيَّرَة قَبْل الفِعْل.', 'وِقَبْل الاسْم فِيه كِلْمَة تَانْيَة، وِبِتْغَيَّر آخِر الوَصْف. [بُصّ|بُصِّي] عَالسَّطْر التَّانِي.', 'وِلِلحَاجَة اللِّي مَا حَصَلِتْش امْبَارِح فِيه كِلْمَة تَالْتَة. يَلَّا!'],
+    poss: ['فِي العَرَبِي بِنْلَزَّق دِيل صُغَيَّر فِي آخِر الكِلْمَة عَشَان نْقُول بِتَاعِة مِين.', 'دِيل لِيَّا، وِدِيل [لِيك|لِيكِي]، وِدِيل لِيه، وِدِيل لِيهَا. [بُصّ|بُصِّي] عَالدِّيل المِلَوِّن.', 'يَلَّا نْلَزَّق الدِّيُول!'],
+    mub: ['[كِبِرْت|كِبِرْتِي] وِ[بَقِيت مُحَقِّق|بَقِيتِي مُحَقِّقَة] جُمَل! هَنِعْرَف أَسَامِي حِتَت الجُمْلَة.', 'الجُمْلَة اللِّي بِتِبْتِدِي بِاسْم فِيهَا حِتِّتِين: اللِّي بِنِتْكَلِّم عَنُّه، وِالخَبَر عَنُّه.', 'وِالاتْنِين بِيِلْبِسُوا ضَمَّة فِي الآخِر. [بُصّ|بُصِّي] عَالضَّمَّة!'],
+    fail: ['فِي الجُمْلَة اللِّي بِتِبْتِدِي بِفِعْل، فِيه حَدّ بِيِعْمِل الحَاجَة، وِحَاجَة بِتِحْصَل لَهَا.', 'اللِّي بِيِعْمِل بِيِلْبِس ضَمَّة، وِاللِّي بِيِحْصَل لُه بِيِلْبِس فَتْحَة.', '[تَخَيَّل إِنَّك مُحَقِّق|تَخَيَّلِي إِنِّك مُحَقِّقَة]! يَلَّا نْدَوَّر عَلِيهُم.'],
+    past: ['الفِعْل دَه لِلحَاجَة اللِّي حَصَلِت وِخِلْصِت، زَيّ سَفْرِيَّة الأَجَازَة!', 'آخِر الفِعْل بِيِتْغَيَّر عَلَى حَسَب مِين عَمَلُه. [بُصّ|بُصِّي] عَالدِّيل المِلَوِّن.', 'يَلَّا نْسَافِر فِي الزَّمَن!'],
+    fut: ['عَنْدِي خُطَط كْتِير لِبُكْرَة! وِالفِعْل اللِّي بِتَاع بُكْرَة لِيه عَلَامَة.', 'بِنْلَزَّق حَرْف صُغَيَّر قَبْل الفِعْل، أَوْ نْحُطّ كِلْمَة قُدَّامُه. [بُصّ|بُصِّي] عَاللُّون.', 'يَلَّا نْخَطَّط عَشَان البِيئَة!']
+  }
+};
+/* small Saqqour lines around the games, per dialect */
+const GR_SMALL = {
+  end: { emirati: '[كَفُو عَلَيْك|كَفُو عَلَيْج]! رِيشَة وَرَا رِيشَة.', saudi: 'كَفُو يَا [بَطَل|بَطَلَة]! رِيشَة وَرَا رِيشَة.', lebanese: '[بْرَافُو عَلَيْك|بْرَافُو عَلَيْكِي]! رِيشِة وَرَا رِيشِة.', syrian: '[يِسْلَمُو إِيدَيْك|يِسْلَمُو إِيدَيْكِي]! رِيشِة وَرَا رِيشِة.', jordanian: '[يَا عِينِي عَلَيْك|يَا عِينِي عَلَيْكِي]! رِيشِة وَرَا رِيشِة.', egyptian: '[بْرَافُو عَلِيك|بْرَافُو عَلِيكِي]! رِيشَة وَرَا رِيشَة.', fusha: '[أَحْسَنْتَ|أَحْسَنْتِ]! رِيشَةً بَعْدَ رِيشَةٍ.' },
+  done: { emirati: '[خَلَّصْت|خَلَّصْتِي] مَزِيج اليُوم! [رِيشَك|رِيشِج] يِكْبَر.', saudi: '[خَلَّصْت|خَلَّصْتِي] مَزِيج اليَوْم! [رِيشَك|رِيشِك] قَاعِد يِكْبَر.', lebanese: '[خَلَّصْت|خَلَّصْتِي] مَزِيج اليُوم! [رِيشَاتَك|رِيشَاتِك] عَم تِكْبَر.', syrian: '[خْلِصْت|خْلِصْتِي] مِن مَزِيج اليُوم! [رِيشَاتَك|رِيشَاتِك] عَم تْصِير أَكْبَر.', jordanian: '[خَلَّصِت|خَلَّصْتِي] مَزِيج اليُوم! [رِيشَاتَك|رِيشَاتِك] بِتِكْبَر.', egyptian: '[خَلَّصْت|خَلَّصْتِي] مَزِيج النَّهَارْدَه! [رِيشَك|رِيشِك] بِيِكْبَر.', fusha: '[أَنْهَيْتَ|أَنْهَيْتِ] مَزِيجَ اليَوْمِ! [رِيشُكَ|رِيشُكِ] يَكْبُرُ.' },
+  reply: { emirati: 'شُو [تْرُدّ|تْرُدِّين]؟', saudi: 'وِش [تْرُدّ|تْرُدِّين]؟', lebanese: 'شُو [بِتْرُدّ|بِتْرُدِّي]؟', syrian: 'شُو [بِتْجَاوِب|بِتْجَاوْبِي]؟', jordanian: '[شُو بِدَّك تْرُدّ|شُو بِدِّك تْرُدِّي]؟', egyptian: '[هَتْرُدّ|هَتْرُدِّي] تْقُول إِيه؟', fusha: '[بِمَاذَا تَرُدُّ|بِمَاذَا تَرُدِّينَ]؟' }
+};
+/* lines for a topic in the child's dialect: Emirati = .gulf, Fusha = .fusha, others = GR_DL (every offered dialect has its own) */
+function grLines(t, d) { if (d === 'fusha') return t.fusha; if (d === 'emirati') return t.gulf; return (GR_DL[d] && GR_DL[d][t.id]) || null; }
+
+/* =========================================================
+   v21 · adaptivity + grammar strand.
+   ONE new OPTIONAL field per child in arabicTutor.v2:  p.v21 = { sk: { <skillKey>: rec }, mix: { d, done, n } }
+     rec = { n, ok, h: [last 10 results 1/0], lv: 1..3, st: right-streak, ms: miss-streak, bx: 0..5 (skill box), due: day, last: day, td: {d,n,ok,sch} }
+   Skill keys: letters · sounds · reading · spelling · speaking · vocab:<unit> · gram:<topic>.
+   Older saves don't have p.v21: viewing never writes it; v21Data() creates / repairs it on the first answer.
+   - Mastery stage 0..4 (shown as feathers, never %): 0 new · 1 started · 2 growing · 3 strong · 4 mastered.
+   - Adaptive level 1..3 per skill: up after 3 right in a row (2 of them quick) or 4 in a row; down after 2 misses in a row.
+   - Skill-level spaced repetition: after 3+ answers in a skill on a day, a good day (≥ 75%) moves the skill up a box
+     (next check in 1 · 3 · 7 · 14 · 30 days), a hard day brings it back tomorrow. A mastered skill whose check is due
+     shows a little "coming back" mark, fades to "strong" until it is retested, and drops a box + a level if the retest is hard.
+   - Saqqour's mix: once a day, 3 skills (due first, then weakest, then the next new grammar stop) × 3 questions, interleaved.
+   Calm sounds: wrong = silent, right = one quiet chime (v20Chime → calm sfx).
+   ========================================================= */
+const V21 = { s: null };
+const V21_GAPS = [0, 1, 3, 7, 14, 30];
+const V21_STAGE = [['جَدِيدَةٌ', 'New'], ['بَدَأْنَا', 'Started'], ['تَنْمُو', 'Growing'], ['قَوِيَّةٌ', 'Strong'], ['مُتْقَنَةٌ', 'Mastered']];
+const V21_BASE = { letters: ['الحُرُوفُ', 'Letters', '🔤'], sounds: ['الأَصْوَاتُ', 'Sounds', '👂'], reading: ['القِرَاءَةُ', 'Reading', '📖'], spelling: ['الإِمْلَاءُ', 'Spelling', '✍️'], speaking: ['المُحَادَثَةُ', 'Speaking', '🗣️'] };
+const v21L = (s) => gform(String(s || ''), v20G());
+const v21N = (n) => toArabicDigits(n);
+/* emoji become the app's painted pictures (or stay as a picture) inside .emo; elsewhere min.js would strip them */
+const v21E = (t) => esc(String(t || '')).replace(PIC_RE, (m) => `<span class="emo v21-em">${m}</span>`);
+function v21Data(p) {
+  p = p || P(); let v = p.v21; if (!v || typeof v !== 'object' || Array.isArray(v)) v = p.v21 = {};
+  if (!v.sk || typeof v.sk !== 'object' || Array.isArray(v.sk)) v.sk = {};
+  if (!v.mix || typeof v.mix !== 'object' || Array.isArray(v.mix)) v.mix = {};
+  Object.keys(v.sk).forEach((k) => { const r = v.sk[k]; if (!r || typeof r !== 'object' || !v21Info(k)) { delete v.sk[k]; return; }
+    r.n = r.n > 0 ? r.n | 0 : 0; r.ok = r.ok > 0 ? Math.min(r.ok | 0, r.n) : 0; if (!Array.isArray(r.h)) r.h = []; r.h = r.h.slice(-10).map((x) => (x ? 1 : 0));
+    r.lv = [1, 2, 3].includes(r.lv) ? r.lv : 1; r.st = r.st > 0 ? r.st | 0 : 0; r.ms = r.ms > 0 ? r.ms | 0 : 0; r.bx = r.bx >= 0 && r.bx <= 5 ? r.bx | 0 : 0;
+    if (typeof r.due !== 'string') r.due = ''; if (typeof r.last !== 'string') r.last = ''; if (!r.td || typeof r.td !== 'object') r.td = {}; });
+  return v;
+}
+/* read-only view (no write when an old save is only being looked at) */
+const v21Peek = (p) => (p.v21 && typeof p.v21 === 'object' && p.v21.sk && typeof p.v21.sk === 'object' ? p.v21.sk : {});
+function v21Info(k) {
+  k = String(k || ''); if (V21_BASE[k]) return { k, ar: V21_BASE[k][0], en: V21_BASE[k][1], em: V21_BASE[k][2], kind: k };
+  const [a, b] = k.split(':'); if (a === 'vocab') { const u = UNITS.find((x) => x.id === b); return u ? { k, ar: 'كَلِمَاتُ ' + u.ar, en: u.en + ' words', em: u.icon, kind: 'vocab', u } : null; }
+  if (a === 'gram') { const t = GR[b]; return t ? { k, ar: t.ar, en: 'Grammar: ' + t.en, em: t.em, kind: 'gram', t, u: UNITS.find((x) => x.id === t.u) } : null; }
+  return null;
+}
+function v21Acc(r) { const h = (r.h || []).slice(-8); return h.length ? h.reduce((s, x) => s + x, 0) / h.length : 0; }
+/* the stage the record has earned */
+function v21Earned(r) {
+  if (!r || !r.n) return 0; const a = v21Acc(r); let s = 1;
+  if (r.n >= 4 && a >= 0.6) s = 2; if (r.n >= 6 && a >= 0.8 && r.lv >= 2) s = 3; if (s === 3 && r.lv === 3 && r.bx >= 3) s = 4; return s;
+}
+/* what the child sees: decay = a mastered skill whose check is due shows as "strong" with a coming-back mark */
+function v21Shown(p, k) {
+  const r = v21Peek(p)[k]; const t = dayKey();
+  if (!r || !r.n) { /* soft prior from older progress (never written) */ const i = v21Info(k); let s = 0;
+    if (i && i.kind === 'vocab' && p.units && p.units[i.u.id] && p.units[i.u.id].stars > 0) s = p.units[i.u.id].stars >= 3 ? 2 : 1;
+    if (i && V21_BASE[k] && typeof skillScore === 'function') { const map = { letters: 'letters', sounds: 'listening', reading: 'reading', spelling: 'spelling', speaking: 'speaking' }; const sc = skillScore(p, map[k]); if (sc != null) s = sc >= 0.8 ? 2 : 1; }
+    return { s, due: false, back: false, lv: 1 }; }
+  const e = v21Earned(r); const due = !!r.due && r.due <= t && r.bx > 0;
+  if (e === 4 && due) return { s: 3, due: true, back: true, lv: r.lv };
+  return { s: e, due, back: false, lv: r.lv };
+}
+/* ---------- one answer: adaptivity + mastery + skill-level spacing ---------- */
+function v21Answer(k, ok, ms) {
+  if (!currentKid || !v21Info(k)) return {}; const v = v21Data(); const t = dayKey(); const r = v.sk[k] || (v.sk[k] = { n: 0, ok: 0, h: [], lv: 1, st: 0, ms: 0, bx: 0, due: '', last: '', td: {} });
+  const before = v21Earned(r); const wasBack = v21Earned(r) === 4 && r.due && r.due <= t;
+  r.n++; if (ok) r.ok++; r.h.push(ok ? 1 : 0); if (r.h.length > 10) r.h = r.h.slice(-10); r.last = t;
+  const fast = ms > 0 && ms < 7000; let up = false, down = false;
+  if (ok) { r.ms = 0; r.st++; r.fq = (r.fq || 0) + (fast ? 1 : 0); if (r.lv < 3 && ((r.st >= 3 && r.fq >= 2) || r.st >= 4)) { r.lv++; r.st = 0; r.fq = 0; up = true; } }
+  else { r.st = 0; r.fq = 0; r.ms++; if (r.ms >= 2 && r.lv > 1) { r.lv--; r.ms = 0; down = true; } }
+  if (!r.td || r.td.d !== t) r.td = { d: t, n: 0, ok: 0, sch: 0 }; r.td.n++; if (ok) r.td.ok++;
+  if (r.td.n >= 3 && !r.td.sch) { r.td.sch = 1; const good = r.td.ok / r.td.n >= 0.75;
+    if (good) { r.bx = Math.min(5, r.bx + 1); r.due = v20Shift(t, V21_GAPS[r.bx]); }
+    else { if (wasBack || r.bx >= 3) { r.bx = 1; r.lv = Math.max(1, r.lv - 1); } else r.bx = Math.max(0, r.bx - 1); r.due = v20Shift(t, 1); } }
+  else if (!r.due) r.due = v20Shift(t, 1);
+  if (!r.due || r.due < t) r.due = t;
+  saveDB(); const after = v21Earned(r); return { up, down, lv: r.lv, stage: after, rose: after > before };
+}
+/* existing activities feed the model too (games, unit challenge, old per-skill tracker) */
+{ const _ra = roundAnswer; roundAnswer = function roundAnswerV21(ok) { const r = round; const it = r && !r.answered ? r.items[r.i] : null; const res = _ra.apply(this, arguments);
+  try { if (it && it.w && it.w.uid && it.kind !== 'meet') v21Answer('vocab:' + it.w.uid, !!ok, 0); } catch (e) { /* optional */ } return res; }; }
+{ const _uq = unitQuizAnswer; unitQuizAnswer = function unitQuizAnswerV21(i) { const z = journeyState.quiz; const q = z && z.answered === null ? z.qs[z.i] : null; const u = journeyState.unit; const res = _uq.apply(this, arguments);
+  try { if (q && u) v21Answer('vocab:' + u.id, q.opts[i] === q.right, 0); } catch (e) { /* optional */ } return res; }; }
+{ const _sh = skillHit; skillHit = function skillHitV21(id, ok, w) { const res = _sh.apply(this, arguments);
+  try { const m = { letters: 'letters', listening: 'sounds', reading: 'reading', spelling: 'spelling', speaking: 'speaking' }[id]; if (m && !(w && w < 1)) v21Answer(m, !!ok, 0); } catch (e) { /* optional */ } return res; }; }
+/* ---------- feathers (4 stages, no numbers, no %) ---------- */
+const V21_FE = '<path d="M12 2c4.5 3.2 6.6 7.4 5.6 12.2-.6 2.9-2.5 5-5.6 7.8-3.1-2.8-5-4.9-5.6-7.8C5.4 9.4 7.5 5.2 12 2z"/><path d="M12 6v16" class="q"/>';
+function v21Feathers(s, cls, back) {
+  return `<span class="v21-fe ${cls || ''} s${s} ${back ? 'back' : ''}" role="img" aria-label="${esc(V21_STAGE[s][0])}">${[1, 2, 3, 4].map((i) => `<svg viewBox="0 0 24 24" class="${i <= s ? 'on' : ''}" aria-hidden="true">${V21_FE}</svg>`).join('')}${back ? '<i class="v21-bk" aria-hidden="true">↻</i>' : ''}</span>`;
+}
+function v21LvPips(lv) { return `<span class="v21-lv" aria-label="المُسْتَوَى ${v21N(lv)}">${[1, 2, 3].map((i) => `<i class="${i <= lv ? 'on' : ''}"></i>`).join('')}<b>المُسْتَوَى ${v21N(lv)}</b><span class="en">Level ${lv}</span></span>`; }
+const v21IsleKeys = (u) => ['vocab:' + u.id].concat(GR_BY_UNIT[u.id] ? ['gram:' + GR_BY_UNIT[u.id].id] : []);
+function v21IsleStage(p, u) { const ks = v21IsleKeys(u); const sh = ks.map((k) => v21Shown(p, k)); return { s: Math.min(...sh.map((x) => x.s)), back: sh.some((x) => x.back), due: sh.some((x) => x.due) }; }
+/* ---------- which skills are open to this child ---------- */
+function v21Open(p) {
+  const rec = nextUnitFor(p); const ri = UNITS.indexOf(rec); const ks = Object.keys(V21_BASE);
+  UNITS.forEach((u, i) => { const open = i <= ri || (p.units[u.id] && p.units[u.id].stars > 0); if (open) { ks.push('vocab:' + u.id); if (GR_BY_UNIT[u.id]) ks.push('gram:' + GR_BY_UNIT[u.id].id); } });
+  return ks;
+}
+/* Saqqour's mix: due first (mastered coming back), then weakest seen skills, then the next new grammar stop */
+function v21MixPick(p) {
+  const sk = v21Peek(p); const t = dayKey(); const open = v21Open(p);
+  const sc = open.map((k) => { const r = sk[k]; const sh = v21Shown(p, k); let w = 0;
+    if (r && r.n) { if (sh.due) w = 5 + (sh.back ? 2 : 0) + Math.min(3, (Date.parse(t) - Date.parse(r.due)) / 864e5 * 0.3); else if (sh.s < 4) w = 3.5 - sh.s * 0.6 - v21Acc(r); else w = -9; }
+    else w = k.startsWith('gram:') ? 1.2 : k.startsWith('vocab:') ? 0.6 : 0.4;
+    return { k, w, sh }; }).filter((x) => x.w > -1).sort((a, b) => b.w - a.w);
+  const out = []; const kinds = {}; for (const x of sc) { const kind = x.k.split(':')[0]; if ((kinds[kind] || 0) >= 2) continue; out.push(x.k); kinds[kind] = (kinds[kind] || 0) + 1; if (out.length === 3) break; }
+  return out;
+}
+/* ---------- question makers (normalised items) ---------- */
+const v21Pool = () => UNITS.flatMap((u) => u.vocab.map((_, i) => playWord(u, i)));
+function v21GramItem(t, lv, used) {
+  let c = t.items.map((it, i) => ({ it, i })).filter((x) => x.it.lv === lv && !(used || []).includes(t.id + x.i));
+  if (!c.length) c = t.items.map((it, i) => ({ it, i })).filter((x) => x.it.lv === lv); if (!c.length) { const near = [lv, lv - 1, lv + 1, 1, 2, 3].find((l) => t.items.some((x) => x.lv === l)); c = t.items.map((it, i) => ({ it, i })).filter((x) => x.it.lv === near); }
+  const x = c[Math.floor(Math.random() * c.length)]; if (used) used.push(t.id + x.i); return Object.assign({ id: t.id + x.i }, x.it);
+}
+function v21Item(k, lv, used) {
+  const i = v21Info(k); if (!i) return null; const lim = lv === 1 ? 2 : 3;
+  if (i.kind === 'gram') return v21GramItem(i.t, lv, used);
+  if (i.kind === 'vocab' || i.kind === 'reading') { const pool = v21Pool(); const src = i.kind === 'vocab' ? i.u.vocab.map((_, n) => playWord(i.u, n)) : pool.filter((w) => w.em && stripHarakat(w.ar).length <= (lv === 1 ? 5 : 9));
+    const fresh = src.filter((w) => !(used || []).includes(w.key)); const w = (fresh.length ? fresh : src)[Math.floor(Math.random() * (fresh.length ? fresh : src).length)]; if (used) used.push(w.key);
+    const opts = [w].concat(distract(w, pool.filter((x) => x.key !== w.key && x.em !== w.em), lim - 1));
+    if (i.kind === 'vocab' && lv === 3) return { t: 'pick', q: w.em, big: 1, o: [w.ar].concat(opts.slice(1).map((x) => x.ar)), hint: '[اِقْرَأْ وَاخْتَرِ|اِقْرَئِي وَاخْتَارِي] الكَلِمَةَ' };
+    return { t: 'pic', w, o: opts, hear: i.kind === 'vocab' ? w.dl || w.ar : null, read: i.kind === 'reading' ? (lv === 3 ? stripHarakat(w.ar) : w.ar) : null }; }
+  if (i.kind === 'letters' || i.kind === 'spelling' || i.kind === 'sounds') {
+    const L = LETTERS.filter((x) => x.word && !(used || []).includes('L' + x.l)); const x = L[Math.floor(Math.random() * L.length)] || LETTERS[0]; if (used) used.push('L' + x.l);
+    const look = { 'ب': 'تثن', 'ت': 'بثن', 'ث': 'بتن', 'ن': 'بتي', 'ج': 'حخ', 'ح': 'جخه', 'خ': 'حج', 'د': 'ذر', 'ذ': 'دز', 'ر': 'زد', 'ز': 'رذ', 'س': 'شص', 'ش': 'سص', 'ص': 'ضس', 'ض': 'صظ', 'ط': 'ظت', 'ظ': 'طذ', 'ع': 'غء', 'غ': 'عق', 'ف': 'قث', 'ق': 'فك', 'ك': 'قل', 'ه': 'حة', 'ت': 'طد' };
+    const all = LETTERS.map((y) => y.l).filter((y) => y !== x.l); const near = (lv === 3 && look[x.l] ? look[x.l].split('').filter((y) => all.includes(y)) : []);
+    const wrong = shuffle(near).concat(shuffle(all)).filter((y, j, a) => a.indexOf(y) === j).slice(0, lim - 1);
+    if (i.kind === 'letters') return { t: 'pick', q: x.word, big: 1, o: [x.l].concat(wrong), hint: 'بِأَيِّ حَرْفٍ تَبْدَأُ؟' };
+    if (i.kind === 'sounds') return { t: 'pick', q: '🔊', big: 1, hear: x.v, o: [x.l].concat(wrong), hint: '[اِسْمَعْ وَاخْتَرِ|اِسْمَعِي وَاخْتَارِي] الحَرْفَ' };
+    const bare = x.word; const pos = lv === 3 ? Math.min(2, [...stripHarakat(bare)].length - 1) : 0; const letters = [...stripHarakat(bare)]; const gap = letters[pos];
+    const shown = letters.map((ch, j) => (j === pos ? '___' : ch)).join(''); const wr = shuffle(all.filter((y) => y !== gap)).slice(0, lim - 1);
+    return { t: 'pick', q: shown, big: 1, o: [gap].concat(wr), hint: 'مَا الحَرْفُ النَّاقِصُ؟' }; }
+  if (i.kind === 'speaking') { const sc = V20_SCENES[Math.floor(Math.random() * V20_SCENES.length)]; const L = sc.d[v20Dia()] || sc.d.emirati; const n = Math.floor(Math.random() * 3);
+    return { t: 'pick', q: v20L(L.t[n]), say: 1, o: [v20L(L.k[n])].concat(shuffle([0, 1, 2].filter((j) => j !== n)).slice(0, lim - 1).map((j) => v20L(L.k[j]))), hint: GR_SMALL.reply[v21Reg()] }; }
+  return null;
+}
+/* ---------- sessions ---------- */
+function v21Start(mode, arg) {
+  const p = P(); let keys;
+  if (mode === 'gram') keys = Array(6).fill('gram:' + arg);
+  else { const pick = v21MixPick(p); if (!pick.length) return; keys = []; for (let r = 0; r < 3; r++) pick.forEach((k) => keys.push(k)); }
+  const back = {}; keys.forEach((k) => { if (v21Shown(p, k).back) back[k] = 1; });
+  V21.s = { mode, arg, keys, back, i: 0, got: 0, used: [], it: null, ans: null, up: null, t0: 0, sel: null, placed: {}, line: [], stage0: Object.fromEntries([...new Set(keys)].map((k) => [k, v21Shown(p, k).s])) };
+  if (mode === 'mix') { const v = v21Data(p); v.mix = { d: dayKey(), done: 0, n: keys.length }; saveDB(); }
+  v21Next(true);
+}
+function v21Next(first) {
+  const s = V21.s; if (!s) return; if (!first) s.i++; s.ans = null; s.up = null; s.sel = null; s.placed = {}; s.line = []; s.fixAt = null;
+  if (s.i >= s.keys.length) { v21End(); return; }
+  const k = s.keys[s.i]; const lv = (v21Peek(P())[k] || {}).lv || 1; s.lv = lv; s.it = v21Item(k, lv, s.used);
+  if (s.it && s.it.t === 'pick') s.it.order = shuffle(s.it.o.map((_, j) => j));
+  if (s.it && s.it.t === 'build') s.it.order = (() => { let o; do { o = shuffle(s.it.w.map((_, j) => j)); } while (s.it.w.length > 1 && o.every((x, j) => x === j)); return o; })();
+  if (s.it && s.it.t === 'sort') s.it.order = shuffle(s.it.w.map((_, j) => j));
+  if (s.it && s.it.t === 'end') s.it.order = shuffle(s.it.c.map((_, j) => j));
+  s.t0 = Date.now(); v21Render(); if (s.it && s.it.hear) setTimeout(() => speak(s.it.hear, s.it.t === 'pic' ? curDialect() : 'fusha', { quiet: true }), 250);
+}
+function v21Done(ok) {
+  const s = V21.s; if (!s || s.ans) return; const k = s.keys[s.i]; const r = v21Answer(k, ok, Date.now() - s.t0); s.ans = { ok }; if (ok) { s.got++; v20Chime(); }
+  if (r.up) s.up = r.lv; if (s.mode === 'mix') { const v = v21Data(); v.mix.done = s.i + 1; saveDB(); } v21Render();
+}
+const v21Blank = (q) => v21E(v21L(q)).replace('___', '<span class="v21-blank" aria-label="فَرَاغٌ">؟</span>');
+function v21Body(it) {
+  const s = V21.s; const a = s.ans; const g = GR_GAMES[it.t] || GR_GAMES.pick;
+  const hint = `<p class="v21-ins" lang="ar">${esc(v21L(it.hint || g[1]))}</p><p class="en en-block v21-ins-en">${esc(g[2])}</p>`;
+  if (it.t === 'pick') return `${hint}<div class="v21-q ${it.big ? 'big' : ''} ${it.say ? 'say' : ''}" lang="ar">${it.hear ? `<button class="v21-hear" data-act="v21-hear" aria-label="اِسْمَعْ">${ICON('speaker')}</button>` : ''}${v21Blank(it.q)}</div>
+    <div class="v21-opts ${it.o.length > 2 ? 'three' : ''}">${it.order.map((j) => `<button class="v21-opt ${a ? (j === 0 ? 'yay' : s.sel === j ? 'oops' : 'dim') : ''}" data-act="v21-pick" data-arg="${j}" lang="ar">${esc(v21L(it.o[j]))}</button>`).join('')}</div>`;
+  if (it.t === 'pic') return `${hint}<div class="v21-q" lang="ar">${it.hear ? `<button class="v21-hear" data-act="v21-hear" aria-label="اِسْمَعْ">${ICON('speaker')}</button><span>${esc(it.w.ar)}</span>` : `<span class="v21-read">${esc(it.read)}</span>`}</div>
+    <div class="pic-opts v21-pics">${it.o.map((o, j) => `<button class="pic-opt ${a ? (j === 0 ? 'yay' : s.sel === j ? 'oops' : 'dim') : ''}" data-act="v21-pick" data-arg="${j}" style="order:${(j * 7 + s.i) % it.o.length}" aria-label="${esc(o.en)}">${picHTML(o, 'md')}</button>`).join('')}</div>`;
+  if (it.t === 'sort') { const left = it.order.filter((j) => !(j in s.placed));
+    const bask = (b) => `<button class="v21-bask b${b}" data-act="v21-bask" data-arg="${b}"><b lang="ar">${v21E(it.b[b])}</b><span class="v21-in">${Object.keys(s.placed).filter((j) => s.placed[j] === b).map((j) => `<span class="v21-chip ${a ? (it.w[j][1] === b ? 'yay' : 'oops') : ''}" lang="ar">${esc(v21L(it.w[j][0]))}</span>`).join('')}</span></button>`;
+    return `${hint}<div class="v21-tray">${left.map((j) => `<button class="v21-chip ${s.sel === j ? 'sel' : ''}" data-act="v21-chip" data-arg="${j}" lang="ar">${esc(v21L(it.w[j][0]))}</button>`).join('') || '<span class="v21-empty">✓</span>'}</div><div class="v21-baskets">${bask(0)}${bask(1)}</div>`; }
+  if (it.t === 'end') { const pick = s.sel; return `${hint}<div class="v21-q" lang="ar">${v21Blank(it.q)}</div>
+    <div class="v21-glue" lang="ar"><span class="v21-stem">${esc(pick != null ? it.c[pick][1] : it.s)}</span>${pick == null ? '<span class="v21-slot" aria-label="مَكَانُ النِّهَايَةِ"></span>' : ''}</div>
+    <div class="v21-ends">${it.order.map((j) => `<button class="v21-endc ${a ? (j === 0 ? 'yay' : pick === j ? 'oops' : 'dim') : pick === j ? 'sel' : ''}" data-act="v21-end" data-arg="${j}" draggable="true" lang="ar">${esc(it.c[j][0])}</button>`).join('')}</div>`; }
+  if (it.t === 'fix' || it.t === 'tap') { const tgt = it.t === 'fix' ? it.bad : it.a;
+    const words = it.w.map((w, j) => `<button class="v21-wd ${s.fixAt === j || (a && j === tgt) ? (a && !a.ok && it.t === 'tap' ? 'yay' : 'sel') : ''} ${a && a.ok && j === tgt ? 'yay' : ''}" data-act="v21-word" data-arg="${j}" lang="ar">${esc(v21L(a && it.t === 'fix' && j === tgt ? it.o[0] : w))}</button>`).join(' ');
+    const q = it.t === 'tap' ? `<p class="v21-ask" lang="ar">${esc(v21L(it.q))}</p>` : '';
+    const fixer = it.t === 'fix' && s.fixAt != null && !a ? `<div class="v21-opts three">${it.order2.map((j) => `<button class="v21-opt" data-act="v21-fixpick" data-arg="${j}" lang="ar">${esc(v21L(it.o[j]))}</button>`).join('')}</div>` : '';
+    return `${hint}${q}<div class="v21-sent" lang="ar">${words}</div>${fixer}`; }
+  if (it.t === 'build') { const left = it.order.filter((j) => !s.line.includes(j));
+    return `${hint}<div class="v21-line ${a ? (a.ok ? 'yay' : 'oops') : ''}" lang="ar">${s.line.map((j, n) => `<button class="v21-tile in" data-act="v21-unbuild" data-arg="${n}">${esc(v21L(it.w[j]))}</button>`).join('') || '<span class="v21-ph">…</span>'}</div>
+      ${a && !a.ok ? `<p class="v21-right" lang="ar">${esc(v21L(it.w.join(' ')))}</p>` : ''}
+      <div class="v21-tray">${left.map((j) => `<button class="v21-tile" data-act="v21-build" data-arg="${j}">${esc(v21L(it.w[j]))}</button>`).join('')}</div>`; }
+  return '';
+}
+function v21Render() {
+  const s = V21.s; if (!s) return; const it = s.it; const k = s.keys[s.i]; const info = v21Info(k); const sh = v21Shown(P(), k); const g = GR_GAMES[it.t] || GR_GAMES.pick;
+  const head = s.mode === 'mix'
+    ? `<div class="row between"><h2 lang="ar">${esc(v21MixTitle())} <span class="en en-block">${esc(falconName().en || 'Saqqour')}'s mix</span></h2>${closeBtn()}</div>`
+    : `<div class="row between"><h2 lang="ar">${esc(info.ar)} <span class="en en-block">${esc(info.en)}</span></h2>${closeBtn()}</div>`;
+  const skillRow = `<div class="v21-skrow"><span class="v21-sk" lang="ar"><i class="emo" aria-hidden="true">${info.em}</i>${s.mode === 'mix' ? esc(info.ar) : esc(g[0])}</span>${v21Feathers(sh.s, 'sm', sh.back)}${v21LvPips(s.up || s.lv)}</div>`;
+  const back = s.back[k] ? `<div class="v21-backtag" lang="ar">↻ ${esc(v21L('مَهَارَةٌ [أَتْقَنْتَهَا|أَتْقَنْتِهَا] تَعُودُ لِلْمُرَاجَعَةِ'))} <span class="en">A mastered skill is back for a check</span></div>` : '';
+  const up = s.up ? `<div class="v21-up" role="status">${falconSVG('celebrate', 'v21-upbird')}<div><b lang="ar">${esc(v21L('[اِرْتَقَيْتَ|اِرْتَقَيْتِ]'))} إِلَى المُسْتَوَى ${['', 'الأَوَّلِ', 'الثَّانِي', 'الثَّالِثِ'][s.up]}!</b>${v21LvPips(s.up)}<span class="en">Level up! Questions get a little harder now.</span></div></div>` : '';
+  const dots = `<div class="v20-dots v21-dots">${s.keys.map((_, n) => `<i class="${n < s.i ? 'on' : n === s.i ? 'now' : ''}"></i>`).join('')}</div>`;
+  const next = s.ans ? `<button class="btn big gold v21-next" data-act="v21-next">${s.i + 1 >= s.keys.length ? 'النَّتِيجَةُ' : 'التَّالِي'} <span class="en">Next</span></button>` : (it.t === 'sort' || it.t === 'build') && v21Ready() ? `<button class="btn big rd-go" data-act="v21-check">${esc(v21L('[تَحَقَّقْ|تَحَقَّقِي]'))} <span class="en">Check</span></button>` : '';
+  openModal(`<div class="stack v21 v21-game ${s.mode}" style="--gc:${info.t ? info.t.col : '#2f8cff'}">${head}${dots}${skillRow}${back}${v21Body(it)}${up}${next}</div>`, () => { V21.s = null; try { renderHome(); } catch (e) { /* ignore */ } if (IL && IL.page === 'home') ilRender(); }, 'sheet');
+}
+function v21Ready() { const s = V21.s; const it = s.it; return it.t === 'sort' ? Object.keys(s.placed).length === it.w.length : it.t === 'build' ? s.line.length === it.w.length : false; }
+/* every dialect the app offers has its own lines (grammar-v21-dialects.js); no Gulf fallback */
+const v21Reg = () => { const d = curDialect(); return GR_SMALL.end[d] ? d : 'emirati'; };
+const v21Kind = (reg) => (reg === 'fusha' ? 'fusha' : reg);
+function v21End() {
+  const s = V21.s; const p = P(); const ks = [...new Set(s.keys)]; const reg = v21Reg();
+  const rows = ks.map((k) => { const i = v21Info(k); const sh = v21Shown(p, k); const rose = sh.s > (s.stage0[k] || 0); return `<li class="v21-endrow"><span class="v21-sk" lang="ar"><i class="emo" aria-hidden="true">${i.em}</i>${esc(i.ar)}</span>${v21Feathers(sh.s, rose ? 'rose' : '', sh.back)}<small lang="ar">${esc(V21_STAGE[sh.s][0])}${rose ? ' ✨' : ''}</small></li>`; }).join('');
+  const mode = s.mode; const arg = s.arg; V21.s = null;
+  openModal(`<div class="stack v21 v21-end center">${closeBtn()}${falconSVG('celebrate', 'v20-bird')}
+    <h2 lang="ar">${v21N(s.got)} مِنْ ${v21N(s.keys.length)} <span class="en">${s.got} of ${s.keys.length}</span></h2>
+    <p class="v21-say" lang="ar">${esc(v21L(GR_SMALL.end[reg]))}</p><ul class="v21-endlist">${rows}</ul>
+    ${mode === 'gram' ? `<button class="btn big rd-go" data-act="v21-gram-play" data-arg="${esc(arg)}">${esc(v21L('[اِلْعَبْ|اِلْعَبِي] مَرَّةً أُخْرَى'))} <span class="en">Play again</span></button>` : ''}
+    <button class="btn big gold" data-act="modal-close">تَمَّ <span class="en">Done</span></button></div>`, () => { if (IL && IL.page === 'home') ilRender(); }, 'sheet');
+}
+function v21MixTitle() { return 'مَزِيجُ ' + (falconName().ar || 'صَقُّور'); }
+/* ---------- grammar topic: 1-minute explanation (dialect bubble · Fusha example cards, separate lines) ---------- */
+function v21Topic(id, step) {
+  const t = GR[id]; if (!t) return; step = +step || 0; const reg = v21Reg(); const lines = grLines(t, reg); const sh = v21Shown(P(), 'gram:' + id);
+  const showEg = step >= 1; const eg = step === 0 ? t.eg.slice(0, 2) : t.eg;
+  const card = (e) => `<button class="v21-eg" data-act="v21-eg" data-arg="${esc(id)}|${t.eg.indexOf(e)}" lang="ar"><i class="emo" aria-hidden="true">${e[0]}</i><b>${v21L(esc(e[1])).replace(/\{([^}]*)\}/g, '<mark>$1</mark>')}</b></button>`;
+  openModal(`<div class="stack v21 v21-topic" style="--gc:${t.col}">
+    <div class="row between"><h2 lang="ar"><span class="v21-tic emo" aria-hidden="true">${t.em}</span> ${esc(t.ar)} <span class="en en-block">${esc(t.en)}</span></h2>${closeBtn()}</div>
+    <div class="v21-skrow"><span class="v21-sk" lang="ar">القَوَاعِدُ${t.older ? '، لِلْكِبَارِ' : ''}</span>${v21Feathers(sh.s, 'sm', sh.back)}</div>
+    <div class="v20-buddy v21-buddy">${falconSVG(step === 2 ? 'cheer' : 'happy', 'v20-bird sm')}<div class="v20-bub"><b lang="${reg === 'fusha' ? 'ar' : 'ar'}" class="v21-dl">${esc(v21L(lines[step]))}</b><button class="v21-hear sm" data-act="v21-tp-hear" data-arg="${esc(id)}|${step}" aria-label="اِسْمَعْ">${ICON('speaker')}</button></div></div>
+    <p class="v21-fu" lang="ar">${showEg ? 'أَمْثِلَةٌ بِالفُصْحَى' : 'مِثَالٌ بِالفُصْحَى'} <span class="en">Examples in Fusha</span></p>
+    <div class="v21-egs ${eg.length > 4 ? 'six' : ''}">${eg.map(card).join('')}</div>
+    <div class="v20-dots v21-steps">${[0, 1, 2].map((n) => `<i class="${n < step ? 'on' : n === step ? 'now' : ''}"></i>`).join('')}</div>
+    ${step < 2 ? `<button class="btn big rd-go" data-act="v21-topic" data-arg="${esc(id)}|${step + 1}">التَّالِي <span class="en">Next</span></button>` : `<button class="btn big gold" data-act="v21-gram-play" data-arg="${esc(id)}">${esc(v21L('يَلَّا [نِلْعَب|نِلْعَب]!'))} 🎮 <span class="en">Let's play</span></button>`}
+  </div>`, () => { if (IL && IL.page === 'home') ilRender(); }, 'sheet');
+  setTimeout(() => speak(v21L(lines[step]), v21Kind(reg), { quiet: true }), 250);
+}
+/* grammar hub (Writing tab island + "My skills" sheet) */
+function v21GrammarHub() {
+  const p = P(); const open = new Set(v21Open(p));
+  const rows = LEVELS.map((L, w) => { const ts = GR_TOPICS.filter((t) => UNITS.find((u) => u.id === t.u).level === L.n);
+    return `<h3 class="v21-wt">${esc(JV_WORLDS[w][0])} <span class="en">${esc(JV_WORLDS[w][1])}</span></h3><div class="v21-tgrid">${ts.map((t) => { const k = 'gram:' + t.id; const sh = v21Shown(p, k); const ok = open.has(k);
+      return `<button class="v21-tcard ${ok ? '' : 'locked'}" style="--gc:${t.col}" data-act="${ok ? 'v21-topic' : 'v21-locked'}" data-arg="${esc(t.id)}|0"><i class="emo" aria-hidden="true">${ok ? t.em : '🔒'}</i><b lang="ar">${esc(t.ar)}</b><span class="en">${esc(t.en)}</span>${t.older ? '<small lang="ar">لِلْكِبَارِ</small>' : ''}${v21Feathers(sh.s, 'sm', sh.back)}</button>`; }).join('')}</div>`; }).join('');
+  openModal(`<div class="stack v21 v21-hub"><div class="row between"><h2 lang="ar">🧩 القَوَاعِدُ <span class="en en-block">Grammar</span></h2>${closeBtn()}</div>
+    <p class="v21-sub" lang="ar">دَرْسٌ قَصِيرٌ فِي كُلِّ جَزِيرَةٍ، ثُمَّ أَلْعَابٌ. <span class="en">One short lesson per island, then games.</span></p>${rows}</div>`, null, 'sheet');
+}
+function v21SkillMap() {
+  const p = P(); const ks = v21Open(p); const row = (k) => { const i = v21Info(k); const sh = v21Shown(p, k); return `<li class="v21-endrow"><span class="v21-sk" lang="ar"><i class="emo" aria-hidden="true">${i.em}</i>${esc(i.ar)}</span>${v21Feathers(sh.s, '', sh.back)}<small lang="ar">${esc(V21_STAGE[sh.s][0])}</small></li>`; };
+  openModal(`<div class="stack v21 v21-map"><div class="row between"><h2 lang="ar">🪶 رِيشَاتِي <span class="en en-block">My feathers (skills)</span></h2>${closeBtn()}</div>
+    <div class="v21-legend">${[1, 2, 3, 4].map((s) => `<span>${v21Feathers(s, 'xs')}<small lang="ar">${esc(V21_STAGE[s][0])}</small></span>`).join('')}</div>
+    <ul class="v21-endlist">${ks.map(row).join('')}</ul></div>`, null, 'sheet');
+}
+/* ---------- home: Saqqour's mix card ---------- */
+function v21MixCard() {
+  const p = P(); const v = v21Peek(p); const m = (p.v21 && p.v21.mix) || {}; const today = m.d === dayKey(); const done = today && m.done >= m.n && m.n > 0;
+  const pick = v21MixPick(p); if (!pick.length) return ''; const backN = pick.filter((k) => v21Shown(p, k).back).length;
+  return `<button class="v21-mixcard ${done ? 'done' : ''}" data-act="${done ? 'v21-map' : 'v21-mix'}">${falconSVG(done ? 'cheer' : 'happy', 'v21-mixbird')}
+    <span class="v21-mixt"><b lang="ar">${esc(v21MixTitle())}${done ? ' ✓' : ''}</b><span lang="ar" class="v21-mixs">${done ? esc(v21L(GR_SMALL.done[v21Reg()])) : '٩ أَسْئِلَةٍ مِنْ ٣ مَهَارَاتٍ'}</span><span class="en">${done ? "Today's mix is done" : '9 questions · 3 skills picked for you'}</span>
+    ${done ? '' : `<span class="v21-mixchips">${pick.map((k) => { const i = v21Info(k); return `<i lang="ar" class="${v21Shown(p, k).back ? 'back' : ''}"><span class="emo v21-em">${i.em}</span> ${esc(i.ar.replace(/^كَلِمَاتُ /, ''))}</i>`; }).join('')}</span>`}</span>
+    ${backN && !done ? '<span class="v21-mixbk" aria-hidden="true">↻</span>' : ''}</button>`;
+}
+{ const _h = ilHome; ilHome = function ilHomeV21() { const html = _h.apply(this, arguments); try { return html.replace('<div class="jv-head">', v21MixCard() + '<div class="jv-head">').replace('<div class="jv-head"><h2>', '<div class="jv-head"><button class="v21-mapbtn" data-act="v21-map" aria-label="رِيشَاتِي My feathers">🪶</button><h2>'); } catch (e) { return html; } }; }
+/* feathers on every island of the journey */
+{ const _r = ilRender; ilRender = function ilRenderV21() { _r.apply(this, arguments); if (IL.page !== 'home') return;
+  try { const p = P(); document.querySelectorAll('#il-page .jv-isle').forEach((b) => { const u = UNITS.find((x) => x.id === b.dataset.arg); if (!u || b.closest('.s-locked')) return; const st = v21IsleStage(p, u); const n = b.querySelector('.jv-name'); if (n && !n.querySelector('.v21-fe')) n.insertAdjacentHTML('beforeend', v21Feathers(st.s, 'isle', st.back)); }); } catch (e) { /* optional */ } }; }
+/* island sheet: mastery per skill + the grammar stop */
+{ const _ja = jvActs; jvActs = function jvActsV21(p, u) { const a = _ja.apply(this, arguments);
+  try { const t = GR_BY_UNIT[u.id]; if (t) a.splice(Math.max(0, a.length - 1), 0, { k: 'gram', ic: 'ic2_grammar', ar: 'القَوَاعِدُ: ' + t.ar, en: 'Grammar: ' + t.en, done: v21Shown(p, 'gram:' + t.id).s >= 2, arg: t.id }); } catch (e) { /* ignore */ } return a; }; }
+{ const _jr = jvRunAct; jvRunAct = function jvRunActV21(arg) { const [, k, extra] = String(arg).split('|'); if (k === 'gram') { closeModal(); setTimeout(() => v21Topic(extra, 0), 30); return; } return _jr.apply(this, arguments); }; }
+{ const _jo = jvOpenIsle; jvOpenIsle = function jvOpenIsleV21(id) { const res = _jo.apply(this, arguments);
+  try { const u = UNITS.find((x) => x.id === id); const box = document.querySelector('#modal-box .jv-sheet:not(.locked) .jv-acts'); if (u && box) { const p = P();
+    box.insertAdjacentHTML('beforebegin', `<ul class="v21-isk">${v21IsleKeys(u).map((k) => { const i = v21Info(k); const sh = v21Shown(p, k); return `<li><span lang="ar">${i.kind === 'gram' ? '<span class="emo v21-em">🧩</span> القَوَاعِدُ' : '<span class="emo v21-em">🧠</span> الكَلِمَاتُ'}</span>${v21Feathers(sh.s, 'sm', sh.back)}<small lang="ar">${esc(V21_STAGE[sh.s][0])}${sh.back ? ' ↻' : ''}</small></li>`; }).join('')}</ul>`); } } catch (e) { /* ignore */ } return res; }; }
+/* Writing tab: a grammar island */
+IL_EXTRA.grammar = () => ({ title: 'القَوَاعِدُ', en: 'Grammar', art: 'ic2_grammar', tone: 'coral', run: () => v21GrammarHub() });
+if (!IL_PAGES.write.isles.includes('grammar')) IL_PAGES.write.isles.push('grammar');
+IL_PAGES.write.sub = 'تَتَبُّعُ الحُرُوفِ وَبِنَاءُ الكَلِمَاتِ وَالقَوَاعِدُ'; IL_PAGES.write.subEn = 'Trace letters, build words, grammar';
+/* ---------- actions ---------- */
+Object.assign(ACTIONS, {
+  'v21-mix': () => { closeModal(); setTimeout(() => v21Start('mix'), 30); },
+  'v21-map': () => v21SkillMap(),
+  'v21-grammar': () => v21GrammarHub(),
+  'v21-topic': (a) => { const [id, st] = String(a).split('|'); v21Topic(id, st); },
+  'v21-locked': () => toast('🔒 <span class="en">Opens with its island</span>'),
+  'v21-tp-hear': (a) => { const [id, st] = String(a).split('|'); const t = GR[id]; const reg = v21Reg(); if (t) speak(v21L(grLines(t, reg)[+st]), v21Kind(reg), { quiet: true }); },
+  'v21-eg': (a) => { const [id, n] = String(a).split('|'); const t = GR[id]; if (t && t.eg[+n]) speak(v21L(t.eg[+n][1]).replace(/[{}]/g, ''), 'fusha', { quiet: true }); },
+  'v21-gram-play': (id) => { closeModal(); setTimeout(() => v21Start('gram', id), 30); },
+  'v21-hear': () => { const s = V21.s; if (s && s.it && s.it.hear) speak(s.it.hear, s.it.t === 'pic' ? curDialect() : 'fusha', { quiet: true }); },
+  'v21-pick': (j) => { const s = V21.s; if (!s || s.ans) return; s.sel = +j; v21Done(+j === 0); },
+  'v21-chip': (j) => { const s = V21.s; if (!s || s.ans) return; s.sel = s.sel === +j ? null : +j; v21Render(); },
+  'v21-bask': (b) => { const s = V21.s; if (!s || s.ans) return; if (s.sel == null) { const left = s.it.order.filter((j) => !(j in s.placed)); if (!left.length) return; s.sel = left[0]; } s.placed[s.sel] = +b; s.sel = null; v21Render(); },
+  'v21-end': (j) => { const s = V21.s; if (!s || s.ans) return; s.sel = +j; v21Done(+j === 0); },
+  'v21-word': (j) => { const s = V21.s; if (!s || s.ans) return; const it = s.it; j = +j;
+    if (it.t === 'tap') { s.sel = j; s.fixAt = j; v21Done(j === it.a); return; }
+    if (s.fixAt != null) return; s.fixAt = it.bad; s.firstWrong = j !== it.bad; it.order2 = shuffle(it.o.map((_, n) => n)); v21Render(); },
+  'v21-fixpick': (j) => { const s = V21.s; if (!s || s.ans) return; s.sel = +j; v21Done(+j === 0 && !s.firstWrong); },
+  'v21-build': (j) => { const s = V21.s; if (!s || s.ans) return; s.line.push(+j); v21Render(); },
+  'v21-unbuild': (n) => { const s = V21.s; if (!s || s.ans) return; s.line.splice(+n, 1); v21Render(); },
+  'v21-check': () => { const s = V21.s; if (!s || s.ans || !v21Ready()) return; const it = s.it;
+    const ok = it.t === 'sort' ? it.w.every((w, j) => s.placed[j] === w[1]) : s.line.every((x, n) => x === n); v21Done(ok); },
+  'v21-next': () => v21Next()
+});
+/* "drag the ending": tap works everywhere; a real drag onto the word works too (mouse: HTML5 drag, touch: pointer) */
+document.addEventListener('dragstart', (e) => { const c = e.target.closest && e.target.closest('.v21-endc'); if (c) e.dataTransfer.setData('text/plain', c.dataset.arg); });
+document.addEventListener('dragover', (e) => { if (e.target.closest && e.target.closest('.v21-glue')) e.preventDefault(); });
+document.addEventListener('drop', (e) => { if (!(e.target.closest && e.target.closest('.v21-glue'))) return; e.preventDefault(); const j = e.dataTransfer.getData('text/plain'); if (j !== '') ACTIONS['v21-end'](j); });
+{ let drag = null; document.addEventListener('pointerdown', (e) => { const c = e.target.closest && e.target.closest('.v21-endc'); drag = c && e.pointerType === 'touch' ? { j: c.dataset.arg, x: e.clientX, y: e.clientY } : null; });
+  document.addEventListener('pointerup', (e) => { if (!drag) return; const d = drag; drag = null; if (Math.hypot(e.clientX - d.x, e.clientY - d.y) < 24) return; const el = document.elementFromPoint(e.clientX, e.clientY); if (el && el.closest('.v21-glue')) ACTIONS['v21-end'](d.j); }); }
+if (window.SAQ) SAQ.jvOpenIsle = jvOpenIsle;
+/* ---------- parent report (behind the PIN): feathers per skill, never % ---------- */
+function v21ReportPart(kid) {
+  const p = DB.kids[kid]; if (!p) return ''; const sk = v21Peek(p);
+  const seen = Object.keys(sk).filter((k) => v21Info(k) && !V21_BASE[k] && sk[k].n).sort((a, b) => String(sk[b].last).localeCompare(String(sk[a].last))).slice(0, 8);
+  const ks = Object.keys(V21_BASE).concat(seen); const sh = ks.map((k) => [k, v21Shown(p, k)]);
+  const strong = sh.filter((x) => x[1].s >= 3).length; const back = sh.filter((x) => x[1].back || x[1].due).length;
+  const row = ([k, s]) => { const i = v21Info(k); return `<li class="v21-endrow"><span class="v21-sk" lang="ar"><i class="emo" aria-hidden="true">${i.em}</i>${esc(i.ar)}</span>${v21Feathers(s.s, 'sm', s.back)}<small lang="ar">${esc(V21_STAGE[s.s][0])}${s.due ? ' · ↻' : ''}</small><span class="en">${esc(i.en)} · ${esc(V21_STAGE[s.s][1])}</span></li>`; };
+  return `<h3 lang="ar">🪶 الرِّيشَاتُ (المَهَارَاتُ) <span class="en">Feathers (skills)</span></h3>
+    <p class="small" lang="ar">${v21N(strong)} مَهَارَاتٍ قَوِيَّةٌ أَوْ مُتْقَنَةٌ، وَ${v21N(back)} تَعُودُ لِلْمُرَاجَعَةِ. <span class="en en-block">${strong} skills strong or mastered, ${back} coming back for a check. Four feathers = mastered; there are no percentages.</span></p>
+    <ul class="v21-endlist v21-rep">${sh.map(row).join('')}</ul>`;
+}
+{ const _rh = v20ReportHTML; v20ReportHTML = function v20ReportHTMLV21(kid) { const h = _rh.apply(this, arguments);
+  try { const part = v21ReportPart(kid); const at = h.indexOf('<h3 lang="ar">الأَمَانُ'); return part ? (at > 0 ? h.slice(0, at) + part + h.slice(at) : h.replace(/<\/div>\s*$/, part + '</div>')) : h; } catch (e) { return h; } }; }
 
 </script>
 </body>
