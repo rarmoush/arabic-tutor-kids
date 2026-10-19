@@ -2954,6 +2954,32 @@ html{background:#fff3c4}
 .offline-note{position:fixed;inset-inline:10px;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:9000;background:#fff1c1;border:2px solid #ffb020;border-radius:14px;padding:8px 12px;font-size:.9rem;color:#5a3a00;box-shadow:0 4px 14px rgba(0,0,0,.12);text-align:center}
 .offline-note .en{font-size:.75rem;opacity:.8}
 
+/* ---------- v19 English translation line (Randa: "put the option of having English translation under each instruction") ----------
+   One setting (DB.settings.showEn, off by default). When on, every English helper sits on its OWN line UNDER the Arabic:
+   smaller, lighter, never on the same line as the Arabic. Arabic always stays the main text. The parent view keeps its own English. */
+body.show-en .en:not(#parent .en):not(.keep-en .en):not(.en-same),
+body.show-en #tutor .tt-en{display:block!important;width:100%;max-width:100%;box-sizing:border-box;margin:2px 0 0!important;padding-inline:0;
+  font-size:.74em!important;font-weight:400!important;line-height:1.3;opacity:.72;letter-spacing:0;white-space:normal;text-transform:none;
+  unicode-bidi:plaintext;text-align:match-parent;overflow-wrap:anywhere}
+/* flex ROWS that hold an English line wrap so the line drops under the Arabic (marked .tr19-wrap by trAlign; columns are left alone) */
+body.show-en .tr19-wrap{flex-wrap:wrap!important;row-gap:0!important}
+/* the tab bar stays compact: its English line is tiny */
+body.show-en #il-nav .en{font-size:.62rem!important;line-height:1.1;margin-top:0!important}
+/* v19 calm wrong-answer cue: a soft, small nudge instead of a hard shake */
+@keyframes shake{0%,100%{transform:translateX(0)}30%{transform:translateX(-3px)}65%{transform:translateX(2px)}}
+@keyframes wdShake{0%,100%{transform:translateX(0)}30%{transform:translateX(-3px)}65%{transform:translateX(2px)}}
+@keyframes ttShake{0%,100%{transform:translateX(0)}30%{transform:translateX(-3px)}65%{transform:translateX(2px)}}
+@keyframes il-shake{0%,100%{transform:translateX(0)}30%{transform:translateX(-3px)}65%{transform:translateX(2px)}}
+@keyframes mshake{0%,100%{transform:translateX(0)}50%{transform:translateX(-2px) rotate(-1deg)}}
+.opt.wrong{animation:shake .5s ease-in-out}
+body.show-en .en[data-tal="r"],body.show-en .tt-en[data-tal="r"]{text-align:right!important}
+body.show-en .en[data-tal="c"],body.show-en .tt-en[data-tal="c"]{text-align:center!important}
+body.show-en .en[data-tal="l"],body.show-en .tt-en[data-tal="l"]{text-align:left!important}
+/* helpers that exist only for the translation (e.g. the Wordle colour key) stay hidden when it is off */
+body:not(.show-en) .tr19-only{display:none!important}
+.wd-rules .wd-rl-ar{text-align:start;padding-inline-start:20px}
+.tr19-ar{color:inherit}
+
 </style>
 </head>
 <body>
@@ -6905,7 +6931,7 @@ function roundAnswer(ok, opts) {
   const d = playDay(p); d.row = Math.max(d.row || 0, r.row); saveDB();
   renderRound();
   const st = $('rd-stage'); const y = st ? st.querySelector('.yay') : null;
-  if (ok && y) { const b = y.getBoundingClientRect(); floatText('+1 ★', b.left + b.width / 2, b.top, 'xp'); if (Date.now() - r.tq < 2600 && (it.kind === 'guess' || it.kind === 'dash')) setTimeout(() => floatText('⚡ Speedy!', b.left + b.width / 2, b.top - 24, 'xp'), 220); }
+  if (ok && y) { const b = y.getBoundingClientRect(); floatText('+1 ★', b.left + b.width / 2, b.top, 'xp'); if (Date.now() - r.tq < 2600 && (it.kind === 'guess' || it.kind === 'dash')) setTimeout(() => floatText('⚡ سَرِيع!', b.left + b.width / 2, b.top - 24, 'xp'), 220); }
   if (!ok && it.w) setTimeout(() => speak(it.w.ar, 'fusha', { quiet: true }), 250);
   r.timer = setTimeout(roundNext, ok ? 1050 : 1900);
 }
@@ -7424,8 +7450,8 @@ function openLetter(ch) {
       <button class="lt-ex" data-act="lt-say" data-arg="ex"><span class="rd-pic md"><span class="emo">${L.em}</span></span><span class="lt-ex-w">${L.ex}</span><span class="en">${esc(L.exEn)}</span></button>
     </div>
     <h4 class="lt-sub">أَشْكَالُهُ <span class="en">${forms.length > 1 ? `${forms.length} shapes: it changes with its place in a word` : 'It has one shape and always sits alone'}</span></h4>
-    <div class="lt-forms n${forms.length}">${forms.map(([k, sh]) => `<button class="lt-form" data-act="lt-say" data-arg="sound"><span class="lt-f">${sh}</span><span class="en">${FORM_NAME[k][1]}</span></button>`).join('')}</div>
-    ${nonJ ? `<p class="lt-note en">${ch} holds hands with the letter before it, but never with the next one.</p>` : ch === 'ء' ? `<p class="lt-note en">Hamza can also sit on a seat: <bdi class="ar-inline">أ إ ؤ ئ</bdi></p>` : ch === 'ة' ? `<p class="lt-note en">Taa marbuta only comes at the end of a word.</p>` : ''}
+    <div class="lt-forms n${forms.length}">${forms.map(([k, sh]) => `<button class="lt-form" data-act="lt-say" data-arg="sound"><span class="lt-f">${sh}</span><span class="ar-auto tr19-only">${FORM_NAME[k][0]}</span><span class="en">${FORM_NAME[k][1]}</span></button>`).join('')}</div>
+    ${nonJ ? `<p class="lt-note tr19-only">${ch} يُمْسِكُ يَدَ الحَرْفِ الَّذِي قَبْلَهُ، وَلَا يُمْسِكُ يَدَ الحَرْفِ الَّذِي بَعْدَهُ. <span class="en">${ch} holds hands with the letter before it, but never with the next one.</span></p>` : ch === 'ء' ? `<p class="lt-note tr19-only">الهَمْزَةُ تَجْلِسُ أَحْيَانًا عَلَى كُرْسِيّ: <bdi class="ar-inline">أ إ ؤ ئ</bdi> <span class="en">Hamza can also sit on a seat: <bdi class="ar-inline">أ إ ؤ ئ</bdi></span></p>` : ch === 'ة' ? `<p class="lt-note tr19-only">التَّاءُ المَرْبُوطَةُ تَأْتِي فِي آخِرِ الكَلِمَةِ فَقَط. <span class="en">Taa marbuta only comes at the end of a word.</span></p>` : ''}
     ${vowels ? `<h4 class="lt-sub">الحَرَكَات <span class="en">Little marks change the sound</span></h4>
     <div class="lt-vowels">${vowels.map(([t, n, e]) => `<button class="lt-v" data-act="lt-say" data-arg="v:${t}"><span class="lt-vt">${t}</span><span class="en"><b>${e}</b> ${n}</span></button>`).join('')}</div>
     ${ch !== 'ا' && ch !== 'ء' ? `<details class="lt-bonus"><summary><span class="en">Bonus marks: sukun and shadda</span></summary><div class="lt-vowels">
@@ -8354,7 +8380,7 @@ function wdKbHTML(g, act) {
   }).join('')}</div>`).join('')}</div>`;
 }
 function wdLegendHTML() {
-  return `<div class="wd-legend en" dir="ltr">${wdTile('ب', 'ok', 'mini', 0)}<span>right spot</span>${wdTile('ب', 'near', 'mini', 0)}<span>other spot</span>${wdTile('ب', 'no', 'mini', 0)}<span>not in it</span></div>`;
+  return `<div class="wd-legend tr19-only" dir="rtl">${wdTile('ب', 'ok', 'mini', 0)}<span>مَكَانُهُ صَحِيح <span class="en">right spot</span></span>${wdTile('ب', 'near', 'mini', 0)}<span>فِي مَكَانٍ آخَر <span class="en">other spot</span></span>${wdTile('ب', 'no', 'mini', 0)}<span>لَيْسَ فِيهَا <span class="en">not in it</span></span></div>`;
 }
 function wdMsgHTML(g) {
   if (g.msg) return `<div class="wd-msg ${g.msg.bad ? 'bad' : ''}" role="status"><b>${g.msg.ar}</b> <span class="en">${esc(g.msg.en)}</span></div>`;
@@ -8378,12 +8404,14 @@ function wdStatsHTML(p, hl) {
     <p class="en small muted-note">Practice: ${W.pr.won} won of ${W.pr.played} played.</p></div>`;
 }
 function wdRulesHTML() {
+  /* v19: Arabic first, with the English translation line under each rule (shown when the translation is on) */
+  const li = (ar, en) => `<li>${ar} <span class="en">${en}</span></li>`; const bd = (t) => `<bdi class="ar-inline">${t}</bdi>`;
   return `<div class="wd-rules stack"><h3 class="m-title">${ICON('help')} كَيْفَ ${G('تَلْعَب', 'تَلْعَبِين')}؟ <span class="en">How it works</span></h3>
-    <ol class="en wd-rl" dir="ltr"><li>Guess the secret word in ${WD_TRIES} tries. Type a real word and tap <b>Check</b>.</li><li>Rows go right to left, like Arabic: your first letter is on the right.</li></ol>
+    <ol class="wd-rl wd-rl-ar" dir="rtl">${li(`${G('خَمِّنِ', 'خَمِّنِي')} الكَلِمَةَ السِّرِّيَّةَ فِي ${toArabicDigits(WD_TRIES)} مُحَاوَلَات. ${G('اُكْتُبْ', 'اُكْتُبِي')} كَلِمَةً حَقِيقِيَّةً ${G('وَاضْغَطْ', 'وَاضْغَطِي')} «تَحَقَّقْ».`, `Guess the secret word in ${WD_TRIES} tries. Type a real word and tap <b>Check</b>.`)}${li(`الصُّفُوفُ مِنَ اليَمِينِ إِلَى اليَسَار، مِثْلَ العَرَبِيَّة: ${G('حَرْفُكَ', 'حَرْفُكِ')} الأَوَّلُ عَلَى اليَمِين.`, 'Rows go right to left, like Arabic: your first letter is on the right.')}</ol>
     ${wdLegendHTML()}
-    <h4 class="lt-sub"><span class="en">Letters that count as the same</span></h4>
-    <ul class="en wd-rl" dir="ltr"><li>Vowel marks (<bdi class="ar-inline">◌َ ◌ُ ◌ِ ◌ّ ◌ْ</bdi>) don't count, only the letters.</li><li><bdi class="ar-inline">أ إ آ ا</bdi> are all the same alef.</li><li><bdi class="ar-inline">ة</bdi> and <bdi class="ar-inline">ه</bdi> are the same.</li><li><bdi class="ar-inline">ى</bdi> and <bdi class="ar-inline">ي</bdi> are the same.</li><li><bdi class="ar-inline">ء ؤ ئ</bdi> are all hamza.</li></ul>
-    <p class="en small muted-note">Stuck? Tap <b>Picture</b> for a clue, or <b>Reveal a letter</b> for ${WD_REVEAL_COST} coins. The word of the day is the same for everyone in the family today.</p></div>`;
+    <h4 class="lt-sub">حُرُوفٌ تُحْسَبُ حَرْفًا وَاحِدًا <span class="en">Letters that count as the same</span></h4>
+    <ul class="wd-rl wd-rl-ar" dir="rtl">${li(`الحَرَكَاتُ (${bd('◌َ ◌ُ ◌ِ ◌ّ ◌ْ')}) لَا تُحْسَب، الحُرُوفُ فَقَط.`, `Vowel marks (${bd('◌َ ◌ُ ◌ِ ◌ّ ◌ْ')}) don't count, only the letters.`)}${li(`${bd('أ إ آ ا')} كُلُّهَا أَلِف.`, `${bd('أ إ آ ا')} are all the same alef.`)}${li(`${bd('ة')} وَ${bd('ه')} حَرْفٌ وَاحِد.`, `${bd('ة')} and ${bd('ه')} are the same.`)}${li(`${bd('ى')} وَ${bd('ي')} حَرْفٌ وَاحِد.`, `${bd('ى')} and ${bd('ي')} are the same.`)}${li(`${bd('ء ؤ ئ')} كُلُّهَا هَمْزَة.`, `${bd('ء ؤ ئ')} are all hamza.`)}</ul>
+    <p class="small muted-note">${G('عَالِق', 'عَالِقَة')}؟ ${G('اِضْغَطْ', 'اِضْغَطِي')} «صُورَة» لِتَلْمِيح، أَوْ «اِكْشِفْ حَرْفًا» بِـ${toArabicDigits(WD_REVEAL_COST)} عُمْلَات. كَلِمَةُ اليَوْمِ وَاحِدَةٌ لِكُلِّ العَائِلَةِ اليَوْم. <span class="en">Stuck? Tap <b>Picture</b> for a clue, or <b>Reveal a letter</b> for ${WD_REVEAL_COST} coins. The word of the day is the same for everyone in the family today.</span></p></div>`;
 }
 function wdIdeas(g) {
   const used = new Set(); g.rows.forEach((r) => r.t.forEach((c) => used.add(wdN(c)))); const tried = new Set(g.rows.map((r) => wdKey(r.t)));
@@ -8949,7 +8977,7 @@ if (typeof refreshHeader === 'function' && typeof currentKid !== 'undefined' && 
 /* saved as DB.settings.showEn (missing in older saves → false), so old arabicTutor.v2 saves load unchanged */
 function meaningOn() { return !!(DB.settings && DB.settings.showEn); }
 function applyMeaning() { document.body.classList.toggle('show-en', meaningOn()); document.querySelectorAll('[data-act="meaning-toggle"]').forEach((b) => { b.setAttribute('aria-pressed', String(meaningOn())); b.classList.toggle('on', meaningOn()); }); }
-function meaningToggleHTML(cls) { return `<button class="mean-tg ${cls || ''} ${meaningOn() ? 'on' : ''}" data-act="meaning-toggle" aria-pressed="${meaningOn()}" title="Show meaning (English)"><span class="mt-ic" aria-hidden="true">🌐</span><span class="mt-ar">المَعْنَى</span></button>`; }
+function meaningToggleHTML(cls) { return `<button class="mean-tg ${cls || ''} ${meaningOn() ? 'on' : ''}" data-act="meaning-toggle" aria-pressed="${meaningOn()}" title="Show English translation"><span class="mt-ic" aria-hidden="true">🌐</span><span class="mt-ar">التَّرْجَمَة</span><span class="en">English</span></button>`; }
 /* ---------- on-screen Arabic keyboard (no device keyboard, no Latin keys) ---------- */
 const AKB_ROWS = [[...'ضصثقفغعهخحج'], [...'شسيبلاتنمكط'], [...'ذءؤرىةوزظد'], ['enter', ...'أإآئ', 'space', 'back']];
 function akbHTML(target) {
@@ -9349,7 +9377,7 @@ renderPlacement = function renderPlacementV15() {
    - accessible names start with the visible text (label-content-name-mismatch)
    - stronger text colours where axe found contrast below 4.5:1
    ========================================================= */
-const A11Y_NAMES = { say: 'اِسْتَمِعْ Listen', 'placement-start': 'لُعْبَة البِدَايَة Placement check', 'modal-close': 'إِغْلَاق Close', 'meaning-toggle': 'المَعْنَى Meaning' };
+const A11Y_NAMES = { say: 'اِسْتَمِعْ Listen', 'placement-start': 'لُعْبَة البِدَايَة Placement check', 'modal-close': 'إِغْلَاق Close', 'meaning-toggle': 'التَّرْجَمَة Show English translation' };
 function a11yPass(root) {
   (root || document).querySelectorAll('button, [role="button"]').forEach((b) => {
     const visible = (b.innerText || b.textContent || '').replace(/\s+/g, ' ').trim();
@@ -10460,8 +10488,8 @@ document.addEventListener('click', (e) => {
   function applyEn() { document.body.classList.toggle('show-en', showEn()); const b = document.getElementById('tt-mean'); if (b) { b.classList.toggle('on', showEn()); b.setAttribute('aria-pressed', String(showEn())); } }
   function addToggle() {
     const top = document.querySelector('#tutor .tt-top'); if (!top || document.getElementById('tt-mean')) return;
-    const b = document.createElement('button'); b.id = 'tt-mean'; b.type = 'button'; b.className = 'tt-mean'; b.title = 'Show meaning (English)';
-    b.innerHTML = '<span aria-hidden="true">🌐</span><span lang="ar">المَعْنَى</span>';
+    const b = document.createElement('button'); b.id = 'tt-mean'; b.type = 'button'; b.className = 'tt-mean'; b.title = 'Show English translation';
+    b.innerHTML = '<span aria-hidden="true">🌐</span><span lang="ar">التَّرْجَمَة</span><span class="en">English</span>';
     b.onclick = () => { DB.settings.showEn = !showEn(); saveDB(); applyEn(); };
     const set = document.getElementById('tt-set'); top.insertBefore(b, set || null); applyEn();
   }
@@ -11043,7 +11071,7 @@ function mhGrid() {
   $('mh-sheet-box').innerHTML = `<div class="mh-sheet-h"><b>${G('اِخْتَرْ بِنَفْسِكَ', 'اِخْتَارِي بِنَفْسِكِ')}</b><span class="en">Pick for yourself</span><button class="mh-x" data-act="mh-grid-close" aria-label="أَغْلِقْ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
     <div class="mh-gridx">${ids.map((id) => { const d = mhDef(id); const k = 'g' + (++MH.n); MH.cards[k] = id; return `<button class="mh-gt ${id === 'homework' ? 'hw-tile' : ''}" data-act="mh-open" data-arg="${k}" data-from="grid" data-id="${id}">${mhTile(d)}<b>${esc(d.title)}</b><span class="en">${esc(d.en)}</span></button>`; }).join('')}</div>
     <div class="mh-sheet-foot">
-      <button class="mh-sf ${meaningOn() ? 'on' : ''}" data-act="mh-meaning" aria-pressed="${meaningOn()}"><span aria-hidden="true">🌐</span>المَعْنَى</button>
+      <button class="mh-sf ${meaningOn() ? 'on' : ''}" data-act="mh-meaning" aria-pressed="${meaningOn()}"><span aria-hidden="true">🌐</span>التَّرْجَمَة<span class="en">English</span></button>
       <button class="mh-sf" data-act="voice-open"><span aria-hidden="true">${mhArt('ic2_dialects')}</span>اللَّهْجَة</button>
       <button class="mh-sf" data-act="sfx-toggle"><span aria-hidden="true">${mhArt('ic2_speaker')}</span>الأَصْوَات</button>
       <button class="mh-sf" data-act="open-parent"><span aria-hidden="true">${mhArt('icon_parent')}</span>لِلْوَالِدَيْن</button>
@@ -11133,7 +11161,7 @@ function hwFoot() {
       <button class="mh-note-btn" data-act="hw-consent">لِلْوَالِدَيْن</button></div>`; return;
   }
   if (HW.ended) { f.innerHTML = ''; return; }
-  f.innerHTML = `<div class="hw-tools"><button class="hw-tool" data-act="hw-cam"><span aria-hidden="true">${hwIcon('cam')}</span>${G('صَوِّرِ الوَرَقَة', 'صَوِّرِي الوَرَقَة')}</button><button class="hw-tool" data-act="hw-file"><span aria-hidden="true">${hwIcon('pic')}</span>صُورَةٌ مِنَ الجِهَاز</button></div>
+  f.innerHTML = `<div class="hw-tools"><button class="hw-tool" data-act="hw-cam"><span aria-hidden="true">${hwIcon('cam')}</span>${G('صَوِّرِ الوَرَقَة', 'صَوِّرِي الوَرَقَة')}<span class="en">Take a photo of the sheet</span></button><button class="hw-tool" data-act="hw-file"><span aria-hidden="true">${hwIcon('pic')}</span>صُورَةٌ مِنَ الجِهَاز<span class="en">Photo from this device</span></button></div>
     <form class="mh-input" id="hw-form" autocomplete="off"><input id="hw-text" type="text" dir="rtl" lang="ar" maxlength="500" placeholder="${G('اُكْتُبِ السُّؤَالَ أَوْ جَوَابَكَ…', 'اُكْتُبِي السُّؤَالَ أَوْ جَوَابَكِ…')}" aria-label="السُّؤَال">
     <button type="submit" class="mh-send" aria-label="أَرْسِلْ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H6m5-6-6 6 6 6"/></svg></button></form>`;
 }
@@ -11245,9 +11273,9 @@ const IL_EXTRA = {
 };
 const IL_PAGES = {
   home: { isles: ['chat', 'homework', 'letters', 'stories'] },
-  write: { title: 'الكِتَابَة', en: 'Writing', sub: 'تَتَبُّعُ الحُرُوفِ وَبِنَاءُ الكَلِمَات', isles: ['write', 'build', 'letter'] },
-  games: { title: 'الأَلْعَاب', en: 'Games', sub: 'أَلْعَابٌ قَصِيرَةٌ بِالعَرَبِيَّة', isles: ['wordle', 'game', 'practice', 'games'] },
-  read: { title: 'القِرَاءَة', en: 'Reading', sub: 'قِصَصٌ وَمُحَادَثَاتٌ وَدُرُوس', isles: ['story', 'stories', 'talk', 'lesson', 'journey'] },
+  write: { title: 'الكِتَابَة', en: 'Writing', sub: 'تَتَبُّعُ الحُرُوفِ وَبِنَاءُ الكَلِمَات', subEn: 'Trace letters and build words', isles: ['write', 'build', 'letter'] },
+  games: { title: 'الأَلْعَاب', en: 'Games', sub: 'أَلْعَابٌ قَصِيرَةٌ بِالعَرَبِيَّة', subEn: 'Short games in Arabic', isles: ['wordle', 'game', 'practice', 'games'] },
+  read: { title: 'القِرَاءَة', en: 'Reading', sub: 'قِصَصٌ وَمُحَادَثَاتٌ وَدُرُوس', subEn: 'Stories, conversations and lessons', isles: ['story', 'stories', 'talk', 'lesson', 'journey'] },
   me: { title: 'صَقْرِي', en: 'My falcon', isles: ['dress', 'stickers', 'shop'] }
 };
 /* a distinct picture per island where the v16 card reused one */
@@ -11274,7 +11302,7 @@ function ilHeader() {
 }
 function ilNav() {
   $('il-nav').innerHTML = IL_TABS.map((t) => `<button class="il-tab ${IL.page === t.id ? 'on' : ''}" data-act="il-tab" data-arg="${t.id}" aria-current="${IL.page === t.id ? 'page' : 'false'}">
-    <span class="il-tab-ic" aria-hidden="true">${t.falcon ? falconHeadHTML(currentKid, 'sm') : `<svg viewBox="0 0 24 24">${t.ic}</svg>`}</span><span class="il-tab-t">${t.ar}</span></button>`).join('');
+    <span class="il-tab-ic" aria-hidden="true">${t.falcon ? falconHeadHTML(currentKid, 'sm') : `<svg viewBox="0 0 24 24">${t.ic}</svg>`}</span><span class="il-tab-t">${t.ar}${t.en ? `<span class="en">${t.en}</span>` : ''}</span></button>`).join('');
 }
 function ilHome() {
   const p = P(); const pr = PROFILES[currentKid]; const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); IL.greet = greet;
@@ -11303,7 +11331,7 @@ function ilMe() {
     <div class="il-grid three">${IL_PAGES.me.isles.map((id) => ilIsle(id)).join('')}</div>
     <h3 class="il-h3">الإِعْدَادَات <span class="en">Settings</span></h3>
     <div class="il-sets">
-      ${row('il-meaning', '🌐', 'المَعْنَى بِالإِنْجِلِيزِيَّة', 'Show English meaning', meaningOn())}
+      ${row('il-meaning', '🌐', 'أَظْهِرِ التَّرْجَمَةَ الإِنْجِلِيزِيَّة', 'Show English translation', meaningOn())}
       ${row('voice-open', mhArt('ic2_dialects'), 'اللَّهْجَةُ وَالصَّوْت', 'Dialect and voice')}
       ${row('il-sfx', mhArt('ic2_speaker'), 'الأَصْوَات', 'Sounds', sfxOn())}
       ${row('open-parent', mhArt('icon_parent'), 'لِلْوَالِدَيْن', 'For parents')}
@@ -11316,7 +11344,7 @@ function ilRender() {
   IL.n = 0; IL.ids = {}; const pg = IL_PAGES[IL.page] || IL_PAGES.home; let h;
   if (IL.page === 'home') h = ilHome();
   else if (IL.page === 'me') h = `<h2 class="il-h2">${pg.title} <span class="en">${pg.en}</span></h2>` + ilMe();
-  else h = `<h2 class="il-h2">${pg.title} <span class="en">${pg.en}</span></h2>${pg.sub ? `<p class="il-sub">${pg.sub}</p>` : ''}<div class="il-grid ${pg.isles.filter(ilVisible).length > 4 ? 'many' : 'two'}">${pg.isles.filter(ilVisible).map((id) => ilIsle(id)).join('')}</div>`;
+  else h = `<h2 class="il-h2">${pg.title} <span class="en">${pg.en}</span></h2>${pg.sub ? `<p class="il-sub">${pg.sub}${pg.subEn ? ` <span class="en">${pg.subEn}</span>` : ''}</p>` : ''}<div class="il-grid ${pg.isles.filter(ilVisible).length > 4 ? 'many' : 'two'}">${pg.isles.filter(ilVisible).map((id) => ilIsle(id)).join('')}</div>`;
   $('il-page').innerHTML = h; $('il').setAttribute('aria-label', IL.page === 'home' ? 'الرَّئِيسِيَّة' : pg.title); $('il-page').scrollTop = 0;
   ilHeader(); ilNav();
 }
@@ -11466,12 +11494,12 @@ function nickRepickHTML(id) {
   const pr = PROFILES[id]; const f = pr && pr.gender === 'f';
   return `<form class="stack nick-repick" id="nick-form" data-kid="${id}" autocomplete="off">
     <div class="nick-bird" aria-hidden="true">${falconSVG('happy', 'nick-falcon')}</div>
-    <h2>${f ? 'اِخْتَارِي اسْمًا بِالعَرَبِيَّة' : 'اِخْتَرِ اسْمًا بِالعَرَبِيَّة'}</h2>
-    <p class="nick-sub">${f ? 'اُكْتُبِي اسْمَكِ المُسْتَعَارَ بِالحُرُوفِ العَرَبِيَّةِ. نُجُومُكِ وَعُمْلَاتُكِ تَبْقَى كَمَا هِيَ.' : 'اُكْتُبِ اسْمَكَ المُسْتَعَارَ بِالحُرُوفِ العَرَبِيَّةِ. نُجُومُكَ وَعُمْلَاتُكَ تَبْقَى كَمَا هِيَ.'}</p>
+    <h2>${f ? 'اِخْتَارِي اسْمًا بِالعَرَبِيَّة' : 'اِخْتَرِ اسْمًا بِالعَرَبِيَّة'} <span class="en">Choose a name in Arabic</span></h2>
+    <p class="nick-sub">${f ? 'اُكْتُبِي اسْمَكِ المُسْتَعَارَ بِالحُرُوفِ العَرَبِيَّةِ. نُجُومُكِ وَعُمْلَاتُكِ تَبْقَى كَمَا هِيَ.' : 'اُكْتُبِ اسْمَكَ المُسْتَعَارَ بِالحُرُوفِ العَرَبِيَّةِ. نُجُومُكَ وَعُمْلَاتُكَ تَبْقَى كَمَا هِيَ.'} <span class="en">Write your nickname with Arabic letters. Your stars and coins stay the same.</span></p>
     <label for="nick-new" class="sr-only">الاسْمُ المُسْتَعَار</label>
     <input id="nick-new" class="prof-nick" maxlength="16" lang="ar" dir="rtl" inputmode="none" autocapitalize="off" spellcheck="false" placeholder="صَقْر">
     ${NICK_KB('nick-new')}
-    <div class="row nick-btns"><button type="submit" class="btn big">حِفْظ</button><button type="button" class="btn soft" data-act="nick-later">لَاحِقًا</button></div></form>`;
+    <div class="row nick-btns"><button type="submit" class="btn big">حِفْظ <span class="en">Save</span></button><button type="button" class="btn soft" data-act="nick-later">لَاحِقًا <span class="en">Later</span></button></div></form>`;
 }
 function nickRepick(id) { if (!PROFILES[id] || !PROFILES[id].latinNick || NICK_ASKED[id]) return; NICK_ASKED[id] = 1; openModal(nickRepickHTML(id), null, 'sheet'); }
 function nickRepickSave() {
@@ -11536,6 +11564,108 @@ window.SAQ = Object.assign(window.SAQ || {}, { gUI, guiFix });
   window.addEventListener('online', show); window.addEventListener('offline', show); show();
   window.SAQ = Object.assign(window.SAQ || {}, { offlineCheck: show });
 }());
+
+/* ---------- v19 calm sounds (Randa: "the sounds when you do something correct or wrong are very annoying") ----------
+   - wrong answers: no sound at all (the screens keep their soft visual cue + calm try-again line)
+   - taps, flips, whooshes, pops, coins: no sound
+   - correct / reward (good, correct, level, badge, streak): ONE very quiet, very short rounded sine (~110 ms, gain 0.06),
+     throttled so a streak of right answers never gives rapid repeated chimes
+   - sound effects are OFF by default; existing saves are reset to off once (DB.settings.soundsV2Reset)
+   - the falcon's spoken dialect praise is a voice, not an effect: it does not follow the effects toggle */
+const SFX_CALM = { gain: 0.06, dur: 0.11, freq: 784, gap: 2500, last: 0 };
+const SFX_GOOD_KINDS = { good: 1, correct: 1, level: 1, badge: 1, streak: 1 };
+function sfxMigrateV19() {
+  if (!DB || !DB.settings) return;
+  if (!DB.settings.soundsV2Reset) { DB.settings.sfx = false; DB.settings.soundsV2Reset = true; try { saveDB(); } catch (e) { /* storage optional */ } }
+}
+const _loadDBv18 = loadDB;
+loadDB = function loadDBv19() { _loadDBv18(); sfxMigrateV19(); };
+function calmChime() {
+  const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+  audioCtx = audioCtx || new AC(); if (audioCtx.state === 'suspended') audioCtx.resume();
+  const t = audioCtx.currentTime + 0.005, o = audioCtx.createOscillator(), g = audioCtx.createGain(), lp = audioCtx.createBiquadFilter();
+  o.type = 'sine'; o.frequency.setValueAtTime(SFX_CALM.freq, t); lp.type = 'lowpass'; lp.frequency.value = 1800;
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(SFX_CALM.gain, t + 0.02); /* gentle attack */
+  g.gain.setTargetAtTime(0, t + 0.035, 0.022); /* soft release, inaudible by ~t + 0.11 */
+  o.connect(lp); lp.connect(g); g.connect(audioCtx.destination); o.start(t); o.stop(t + SFX_CALM.dur + 0.03);
+}
+const PRAISE_V19 = { n: 0, last: 0, every: 5, gap: 20000 };
+function praiseVoiceV19() {
+  /* now and then (every 5th right answer, at most once per 20 s) a short spoken praise word in the child's dialect */
+  if (++PRAISE_V19.n % PRAISE_V19.every !== 0 || Date.now() - PRAISE_V19.last < PRAISE_V19.gap) return false;
+  if (typeof speak !== 'function' || typeof hasTTS === 'undefined' || !hasTTS || !currentKid) return false;
+  const d = curDialect(); const w = (SFX_PRAISE[d] || SFX_PRAISE.fusha)[(PRAISE_V19.n / PRAISE_V19.every) % 3 | 0];
+  try { if (speak(w, d, { quiet: true })) { PRAISE_V19.last = Date.now(); return true; } } catch (e) { /* voice optional */ }
+  return false;
+}
+sfx = function sfxV19(kind) {
+  if (!SFX_GOOD_KINDS[kind]) return; /* bad, tap, flip, whoosh, pop, coin: silent */
+  if (kind === 'good' || kind === 'correct') { if (praiseVoiceV19()) { SFX_CALM.last = Date.now(); return; } }
+  if (!DB.settings.sound || !sfxOn()) return;
+  const now = Date.now(); if (now - SFX_CALM.last < SFX_CALM.gap) return; SFX_CALM.last = now;
+  try { calmChime(); } catch (e) { /* audio is optional */ }
+};
+/* the effects toggle: turning it on plays one preview chime (bypasses the throttle) */
+Object.assign(ACTIONS, { 'sfx-toggle': () => { DB.settings.sfx = !sfxOn(); DB.settings.soundsV2Reset = true; saveDB(); sfxBtnPaint(); if (sfxOn() && DB.settings.sound) { SFX_CALM.last = 0; sfx('good'); } } });
+window.SAQ = Object.assign(window.SAQ || {}, { SFX_CALM, PRAISE_V19, sfxMigrateV19 });
+
+/* ---------- v19 English translation line: one setting, reachable from settings, the falcon sheet, the chat bar and the parent area ----------
+   DB.settings.showEn (missing in older saves → off). The label is Arabic; its small English sublabel shows only when it is on. */
+const TR_LABEL = { ar: 'أَظْهِرِ التَّرْجَمَةَ الإِنْجِلِيزِيَّة', en: 'Show English translation' };
+function trCardHTML() {
+  const on = meaningOn();
+  return `<div class="card stack tr19-card keep-en" id="parent-translate"><h2>🌐 ${TR_LABEL.ar} <span class="en">English translation</span></h2>
+    <p class="small" dir="ltr">When on, a small, lighter English line appears under every Arabic instruction, button and hint. Arabic always stays the main text. Off by default.</p>
+    <div class="row" dir="ltr"><button class="btn ${on ? 'primary' : 'soft'}" data-act="tr-parent" aria-pressed="${on}">${on ? '✅ English translation: on' : '⬜ English translation: off'}</button></div></div>`;
+}
+{ const _rp19 = renderParent; renderParent = function renderParentV19() { const r = _rp19.apply(this, arguments); const b = $('parent-body'); if (b && !$('parent-translate')) b.insertAdjacentHTML('afterbegin', trCardHTML()); return r; }; }
+Object.assign(ACTIONS, { 'tr-parent': () => { ACTIONS['meaning-toggle'](); const c = $('parent-translate'); if (c) c.outerHTML = trCardHTML(); } });
+window.SAQ = Object.assign(window.SAQ || {}, { TR_LABEL, trCardHTML });
+/* each English line takes the alignment of the Arabic above it (the English line itself is laid out left-to-right,
+   so "start" would put it on the left under right-aligned Arabic) */
+/* an Arabic word inside an English line (a nickname, a word being taught) is isolated, so punctuation stays where it belongs */
+function trIsolate(e) {
+  if (!/[\u0600-\u06FF]/.test(e.textContent) || !/[A-Za-z]/.test(e.textContent)) return;
+  const w = document.createTreeWalker(e, NodeFilter.SHOW_TEXT); const ts = []; let n; while ((n = w.nextNode())) if (/[\u0600-\u06FF]/.test(n.nodeValue) && !(n.parentElement && n.parentElement.closest('bdi'))) ts.push(n);
+  ts.forEach((t) => { const f = document.createDocumentFragment(); t.nodeValue.split(/([\u0600-\u06FF](?:[\u0600-\u06FF\u064B-\u0652\u0670 ]*[\u0600-\u06FF\u064B-\u0652\u0670])?)/).forEach((part, i) => { if (!part) return; if (i % 2) { const b = document.createElement('bdi'); b.textContent = part; f.appendChild(b); } else f.appendChild(document.createTextNode(part)); }); t.replaceWith(f); });
+}
+function trAlign(root) {
+  (root || document).querySelectorAll('.en:not([data-tal]), .tt-en:not([data-tal])').forEach((e) => {
+    const p = e.parentElement; if (!p) return; const cs = getComputedStyle(p); const rtl = cs.direction === 'rtl'; let a = cs.textAlign;
+    if (a === 'start' || a === 'justify' || a === '-webkit-auto' || a === 'match-parent') a = rtl ? 'right' : 'left'; else if (a === 'end') a = rtl ? 'left' : 'right';
+    if (cs.display.includes('flex')) {
+      if (cs.flexDirection.startsWith('column')) { if (cs.alignItems === 'center') a = 'center'; }
+      else { p.classList.add('tr19-wrap'); if (cs.justifyContent === 'center' || cs.justifyContent === 'space-around' || cs.justifyContent === 'space-evenly') a = 'center'; }
+    } else if (cs.display.includes('grid') && (cs.justifyItems === 'center' || cs.placeItems === 'center')) a = 'center';
+    trIsolate(e);
+    e.setAttribute('data-tal', a === 'center' || a === '-webkit-center' ? 'c' : a === 'left' ? 'l' : 'r');
+  });
+}
+{ const _af19 = arabicFirst; arabicFirst = function arabicFirstV19(root) { const r = _af19.apply(this, arguments); try { trAlign(root); } catch (e) { /* layout helper only */ } return r; }; }
+/* labels that only had English (shown when the translation is on): give them their Arabic (also only while it is on, so the off view is unchanged), so the English is always UNDER Arabic.
+   The arabic-first pass (EN2AR) already covers older labels; this one also handles labels next to digits / symbols. */
+const TR_AR = {
+  'Letters': 'حُرُوف', 'Easy': 'سَهْل', 'Reveal a letter': 'اِكْشِفْ حَرْفًا', 'Letters that count as the same': 'حُرُوفٌ تُحْسَبُ حَرْفًا وَاحِدًا', "Let's play": 'يَلَّا نَلْعَب',
+  'played': 'لَعِبْتُ', 'wins': 'فُزْتُ', 'day streak': 'أَيَّامٌ مُتَتَالِيَة', 'best streak': 'أَطْوَلُ سِلْسِلَة', 'Guesses it took (word of the day)': 'كَمْ مُحَاوَلَةً أَخَذَتْ كَلِمَةُ اليَوْم',
+  'Practice:*': 'التَّدْرِيب', 'Set*': 'مَجْمُوعَةُ الحُرُوف', 'The sound': 'الصَّوْت', 'Bonus marks: sukun and shadda': 'عَلَامَاتٌ إِضَافِيَّة: السُّكُونُ وَالشَّدَّة',
+  'Trace it': 'تَتَبَّعْهُ', 'Play with it': 'اِلْعَبْ بِهِ', 'Hear it': 'اِسْمَعْهَا', 'Which Arabic should the app speak?': 'أَيُّ عَرَبِيَّةٍ يَتَكَلَّمُ التَّطْبِيق؟', 'Pick a voice': 'اِخْتَرْ صَوْتًا',
+  'Voice for*': 'صَوْتُ اللَّهْجَة', 'Speed': 'السُّرْعَة', 'Slow': 'بَطِيء', 'Normal': 'عَادِي', 'Auto:*': 'تِلْقَائِي',
+  'Fatima': 'فَاطِمَة', 'Hamdan': 'حَمْدَان', 'Zariyah': 'زَارِيَة', 'Hamed': 'حَامِد', 'Layla': 'لَيْلَى', 'Rami': 'رَامِي', 'Amany': 'أَمَانِي', 'Laith': 'لَيْث', 'Sana': 'سَنَاء', 'Taim': 'تَيْم', 'Salma': 'سَلْمَى', 'Shakir': 'شَاكِر'
+};
+const TR_ARL = /[\u0621-\u064A]/;
+function trArabicFor(en) {
+  const key = en.textContent.trim().replace(/\s+/g, ' '); if (TR_AR[key]) return TR_AR[key];
+  const k = Object.keys(TR_AR).find((x) => x.endsWith('*') && key.startsWith(x.slice(0, -1))); return k ? TR_AR[k] : '';
+}
+function trFill(root) {
+  (root || document).querySelectorAll('.en:not([data-tr19])').forEach((en) => {
+    en.setAttribute('data-tr19', '1'); if (en.closest('#parent, .keep-en') || en.parentElement.closest('.en')) return;
+    const par = en.parentElement; const cl = par.cloneNode(true); cl.querySelectorAll('.en,[aria-hidden="true"],svg,.lt-f,.lt-vt').forEach((x) => x.remove());
+    if (TR_ARL.test(cl.textContent)) return; const ar = trArabicFor(en); if (!ar) return;
+    const s = document.createElement('span'); s.className = 'ar-auto tr19-ar tr19-only'; s.textContent = ar; en.before(s); en.classList.add('en-sub');
+  });
+}
+{ const _af19b = arabicFirst; arabicFirst = function arabicFirstV19b(root) { try { trFill(root); } catch (e) { /* label helper only */ } return _af19b.apply(this, arguments); }; }
 
 </script>
 </body>
