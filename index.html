@@ -3643,6 +3643,49 @@ body:not(.show-en) .tip-card .tip-en{display:none}
 .hwx-pick .hwx-pg{border-radius:var(--r-md);border:2px solid var(--ds-line);min-height:var(--tap)}
 .mh-note-btn{min-height:var(--tap);border-radius:var(--r-pill)}
 
+/* v25 DEMO · spelling words of the week (calm, ds-v24 tokens) */
+.sp .sp-sub{margin:0;color:var(--ds-ink-2,#3f5568);font-size:16px;line-height:1.7}
+.sp-note{margin:0;background:var(--ds-sun-50,#fff7dc);border-radius:14px;padding:10px 14px;color:var(--ds-sun-ink,#4a3200);line-height:1.7}
+.sp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sp-tile{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;border-radius:20px;border:2px solid var(--ds-sky-100,#d8f1fc);background:var(--ds-sky-50,#eef9fe);font:inherit;cursor:pointer;min-height:110px;justify-content:center}
+.sp-tile.wide{grid-column:1/-1;min-height:80px;flex-direction:row}.sp-tile.off{opacity:.6}
+.sp-em{font-size:32px;line-height:1}
+.sp-chips{display:flex;flex-wrap:wrap;gap:8px}
+.sp-chip{padding:6px 14px;border-radius:999px;background:#fff;border:1.5px solid var(--ds-line,#dfe9f1);font-family:var(--f-read,'Noto Naskh Arabic',serif);font-size:19px}
+.sp-chip.b0{border-color:#ffd2c2}.sp-chip.b2,.sp-chip.b3{border-color:#bfe8d3;background:var(--ds-ok-50,#e6f7ee)}
+.sp-rows{display:flex;flex-direction:column;gap:8px;max-height:44vh;overflow:auto}
+.sp-row{display:flex;align-items:center;gap:8px;min-width:0}.sp-row .icon-btn{flex:0 0 auto}.sp-n{width:24px;color:var(--ds-ink-3,#5d7184);text-align:center}
+.sp-row input{flex:1;min-width:0;width:100%;font:500 20px var(--f-read,'Noto Naskh Arabic',serif);padding:8px 12px;border-radius:12px;border:1.5px solid var(--ds-line,#dfe9f1)}
+.sp-row input.bad{border-color:#ffb199}
+.sp select{font:inherit;padding:4px 8px;border-radius:10px}
+.sp-dots{display:flex;gap:6px;justify-content:center}.sp-dots i{width:10px;height:10px;border-radius:50%;background:#dfe9f1}.sp-dots i.on{background:var(--ds-sky,#3cb7e8)}.sp-dots i.done{background:#9fd8c0}
+.sp-box{min-height:64px;border-radius:16px;border:2px solid var(--ds-line,#dfe9f1);background:#fff;display:flex;align-items:center;justify-content:center;font:600 34px var(--f-read,'Noto Naskh Arabic',serif);letter-spacing:1px}
+.sp-box.yay{border-color:#9fd8c0;background:var(--ds-ok-50,#e6f7ee)}.sp-box.oops{border-color:#ffd2c2}
+.sp-ph{color:#b8c6d2}
+.sp-kb{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;direction:rtl}
+.sp-k{min-height:46px;border-radius:12px;border:1.5px solid var(--ds-line,#dfe9f1);background:#fff;font:600 22px var(--f-read,'Noto Naskh Arabic',serif);cursor:pointer;padding:0}
+.sp-k:active{background:var(--ds-sky-50,#eef9fe)}.sp-k.wide{grid-column:span 2}
+.sp-right{margin:0;text-align:center;font:700 38px var(--f-read,'Noto Naskh Arabic',serif);color:var(--ds-ok,#22a86a)}
+.sp-right .u{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:8px}
+.sp-mine{font:600 24px var(--f-read,'Noto Naskh Arabic',serif)}.sp-mine .x{color:#c2502e;text-decoration:line-through}
+.sp-good{margin:0;text-align:center;font-size:22px;font-weight:600;color:var(--ds-ok,#22a86a)}
+.sp-trace{position:relative;border-radius:16px;border:2px dashed #bfe4f6;background:#fbfeff;height:150px}
+.sp-trace span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 80px var(--f-read,'Noto Naskh Arabic',serif);color:#e3eef5;pointer-events:none}
+.sp-trace canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+.sp-main{width:100%}
+.cw-row{display:flex;align-items:center;gap:8px;min-width:0}.cw-row .icon-btn{flex:0 0 auto}
+.cw-two{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.cw-two input{width:100%;min-width:0;font:500 19px var(--f-read,'Noto Naskh Arabic',serif);padding:7px 12px;border-radius:12px;border:1.5px solid var(--ds-line,#dfe9f1)}
+.cw-two input.cw-m{font:400 15px var(--f-ui,'Readex Pro',sans-serif);background:#fbfdff}
+.cw-pic{font-size:64px;text-align:center;line-height:1.1}
+.cw-word{margin:0;text-align:center;font:700 44px var(--f-read,'Noto Naskh Arabic',serif);color:var(--ds-ink,#14324a)}
+.cw-box{background:var(--ds-sky-50,#eef9fe);border-radius:16px;padding:10px 14px}.cw-box.ex{background:var(--ds-sun-50,#fff7dc)}
+.cw-box b{font-size:14px;color:var(--ds-ink-3,#5d7184)}.cw-box p{margin:2px 0 0;font:500 20px/1.8 var(--f-read,'Noto Naskh Arabic',serif)}
+.cw-opts{display:grid;gap:8px}
+.cw-opt{min-height:52px;border-radius:16px;border:2px solid var(--ds-line,#dfe9f1);background:#fff;font:600 22px var(--f-read,'Noto Naskh Arabic',serif);cursor:pointer}
+.cw-opt.right{border-color:#22a86a;background:var(--ds-ok-50,#e6f7ee);color:#22a86a}.cw-opt.wrong{border-color:#ffb199;background:#fff4ef}
+.cw-wk{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+
 </style>
 </head>
 <body>
@@ -3828,7 +3871,7 @@ body:not(.show-en) .tip-card .tip-en{display:none}
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v24";
+const APP_VERSION = "v25";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -14878,6 +14921,299 @@ function q6NearMisses(right, u, n) {
       return `<button class="calm2-play${cls} ds-play"${attrs}><span class="hwx-pic ds-play-pic" aria-hidden="true">${pic || emo}</span><span class="ds-play-txt">${b}${lbl ? `<small lang="ar">${esc(lbl)}</small>` : ''}${en}</span><span class="ds-play-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M15 5L8 12l7 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>`; });
   } catch (e) { /* keep the v22.1 button */ }
   return html; }; }
+
+/* v25 DEMO · كَلِمَاتُ الإِمْلَاءِ (spelling words of the week). Parent request.
+   - add the school list: 📷 camera / 📄 photo or PDF (same on-device prep as homework: hwPrep JPEG ≤ 1 MB, PDF pages via pdf.js) or ⌨️ typed.
+   - extraction: POST /api/spelling-list {image, state} → {words:[…]}  (NEW Worker route, not deployed). If that route is missing
+     (404) the client falls back to the existing /api/homework photo turn and takes the Arabic words from task_text.
+     Tests/demo inject window.__spFake(body). Without a family code only typed lists work (upload → gentle note, nothing sent).
+   - checker: harakat/tatweel ignored; hamza forms (ء أ إ آ ؤ ئ), ة vs ه, ى vs ي/ا are strict. Letter-by-letter marks, right spelling in green.
+   - practice: Leitner boxes 0..3 (due after 0/1/2/4 days), missed words first and come back the same day; test day = every word once.
+   - stored per child per ISO week in P().spell[weekKey]. Arabic only on screen, no names, no sound effects. */
+const SP_HARAKAT = /[\u064B-\u065F\u0670\u0640\u06D6-\u06ED]/g;
+const SP_LETTERS = 'ا ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ف ق ك ل م ن ه و ي ة ى ء أ إ آ ؤ ئ'.split(' ');
+const SP_BOX_DAYS = [0, 1, 2, 4];
+const SP = { v: null };
+function spBare(s) { return String(s || '').normalize('NFC').replace(SP_HARAKAT, '').replace(/\s+/g, ' ').trim(); }
+function spIsWord(s) { const b = spBare(s); return b.length >= 2 && b.length <= 20 && /^[\u0621-\u064A ]+$/.test(b); }
+/* strict letter-by-letter check (harakat optional). marks[i] for each letter of the RIGHT word: true = child had it */
+function spCheck(target, typed) {
+  const t = [...spBare(target)], y = [...spBare(typed)];
+  const marks = t.map((ch, i) => y[i] === ch);
+  return { ok: t.join('') === y.join(''), marks, target: t.join(''), typed: y.join('') };
+}
+function spWeekKey(d) { d = d ? new Date(d) : new Date(); const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); const day = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - day);
+  const y0 = new Date(Date.UTC(t.getUTCFullYear(), 0, 1)); return t.getUTCFullYear() + '-W' + String(Math.ceil(((t - y0) / 864e5 + 1) / 7)).padStart(2, '0'); }
+const spDay = (d) => (typeof dayKey === 'function' ? dayKey(d) : new Date(d || Date.now()).toISOString().slice(0, 10));
+function spAddDays(n, from) { const d = from ? new Date(from + 'T12:00:00') : new Date(); d.setDate(d.getDate() + n); return spDay(d); }
+function spStore(p) { p = p || P(); if (!p.spell) p.spell = {}; return p.spell; }
+function spWeek(p, key) { return spStore(p)[key || spWeekKey()] || null; }
+function spSetList(words, src, p) { const st = spStore(p); const k = spWeekKey(); const old = st[k];
+  const seen = new Set(); const list = [];
+  words.forEach((w) => { const s = String(w || '').normalize('NFC').trim(); const b = spBare(s); if (!spIsWord(s) || seen.has(b)) return; seen.add(b);
+    const prev = old && old.words.find((x) => spBare(x.w) === b); list.push(prev ? Object.assign({}, prev, { w: s }) : { w: s, box: 0, due: spDay(), miss: 0, ok: 0 }); });
+  st[k] = { words: list.slice(0, 30), src: src || 'typed', at: spDay(), testDay: old ? old.testDay : 4, tests: old ? old.tests : [] };
+  Object.keys(st).sort().slice(0, -6).forEach((x) => delete st[x]); /* keep ~6 weeks */
+  if (typeof saveDB === 'function') saveDB(); return st[k]; }
+/* spaced repetition */
+function spGrade(w, ok, today) { today = today || spDay();
+  if (ok && w.missDay === today) { w.ok++; w.box = 0; w.due = spAddDays(1, today); } /* fixed after a miss today: back tomorrow, no promotion */
+  else if (ok) { w.ok++; w.box = Math.min(3, w.box + 1); w.due = spAddDays(SP_BOX_DAYS[w.box], today); }
+  else { w.miss++; w.box = 0; w.due = today; w.missDay = today; }
+  w.last = today; return w; }
+function spQueue(week, today, max) { today = today || spDay(); max = max || 8; if (!week) return [];
+  const due = week.words.filter((w) => w.due <= today).sort((a, b) => a.box - b.box || b.miss - a.miss);
+  return (due.length ? due : week.words.slice().sort((a, b) => a.box - b.box)).slice(0, max).map((w) => w.w); }
+const spIsTestDay = (week, d) => !!week && new Date(d || Date.now()).getDay() === week.testDay;
+/* extraction */
+function spWordsFromText(t) { return String(t || '').replace(/[0-9٠-٩.,،؛:;()\[\]_\-–—*•"'«»؟?!]/g, ' ').split(/\s+/).filter(spIsWord); }
+const spCanUpload = () => typeof window.__spFake === 'function' || (typeof aiAccess === 'function' && aiAccess() && !!(DB.settings && DB.settings.familyCode) && typeof TT_BASE === 'function' && !!TT_BASE());
+/* POST /api/spelling-list {mode:'spelling'|'class', image | text, state} → {status, words:[{w, meaning?, say?, example?, emoji?}]} (Worker v25) */
+async function spExtract(image, mode, text) {
+  const g = PROFILES[currentKid] ? PROFILES[currentKid].gender : 'm'; const d = typeof curDialect === 'function' ? curDialect() : 'fusha';
+  const body = { mode: mode === 'class' ? 'class' : 'spelling', state: { learner_gender: g, dialect: d } }; if (image) body.image = image; if (text) body.text = text;
+  let j;
+  if (typeof window.__spFake === 'function') j = await window.__spFake(body);
+  else { const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 60000);
+    try { const r = await fetch(TT_BASE() + '/api/spelling-list', { method: 'POST', headers: TT_HDR(), body: JSON.stringify(body), signal: ctl.signal }); if (!r.ok) throw Object.assign(new Error('http'), { status: r.status }); j = await r.json(); } finally { clearTimeout(tm); } }
+  body.image = undefined;
+  const ws = (j && Array.isArray(j.words) ? j.words : spWordsFromText(j && j.task_text)).map((x) => (typeof x === 'string' ? { w: x } : x)).filter((x) => x && spIsWord(x.w));
+  return mode === 'class' ? ws : ws.map((x) => x.w);
+}
+/* ---------- UI ---------- */
+const spX = () => '<button class="icon-btn" data-act="modal-close" aria-label="إِغْلَاق">✖️</button>';
+const spHead = (t) => `<div class="row between"><h2 lang="ar"><span class="emo" aria-hidden="true">✏️</span> ${t}</h2>${spX()}</div>`;
+const SP_DAYS = ['الأَحَد', 'الاِثْنَيْن', 'الثُّلَاثَاء', 'الأَرْبِعَاء', 'الخَمِيس', 'الجُمُعَة', 'السَّبْت'];
+function spSay(t) { try { if (typeof speak === 'function') speak(t, 'fusha', { quiet: true }); } catch (e) { /* audio optional */ } }
+function spOpen() { SP.v = null; const wk = spWeek(); if (!wk || !wk.words.length) { spAdd(); return; }
+  const today = spDay(); const due = wk.words.filter((w) => w.due <= today).length; const known = wk.words.filter((w) => w.box >= 2).length; const td = spIsTestDay(wk);
+  const last = wk.tests[wk.tests.length - 1];
+  openModal(`<div class="stack sp sp-home">${spHead('كَلِمَاتُ الإِمْلَاء')}
+    <p class="sp-sub" lang="ar">كَلِمَاتُ هَذَا الأُسْبُوعِ: ${toArabicDigits(wk.words.length)} · ${G('تَعْرِفُهَا', 'تَعْرِفِينَهَا')} جَيِّدًا: ${toArabicDigits(known)}</p>
+    <div class="sp-chips" lang="ar">${wk.words.map((w) => `<span class="sp-chip b${w.box}">${esc(w.w)}</span>`).join('')}</div>
+    ${td ? `<button class="btn big sp-main" data-act="sp-test">📝 اليَوْمَ يَوْمُ الاِخْتِبَار</button><button class="btn soft" data-act="sp-practice">🔁 تَدْرِيب${due ? ' (' + toArabicDigits(due) + ')' : ''}</button>`
+      : `<button class="btn big sp-main" data-act="sp-practice">🔁 تَدْرِيبُ اليَوْم${due ? ' · ' + toArabicDigits(due) + ' كَلِمَات' : ''}</button><button class="btn soft" data-act="sp-test">📝 اِخْتِبَارٌ تَجْرِيبِيّ</button>`}
+    ${last ? `<p class="sp-sub" lang="ar">آخِرُ اِخْتِبَار: ${toArabicDigits(last.ok)} مِنْ ${toArabicDigits(last.n)}</p>` : ''}
+    <p class="sp-sub" lang="ar">يَوْمُ الاِخْتِبَارِ فِي المَدْرَسَة: <b>${SP_DAYS[wk.testDay]}</b></p>
+    <button class="btn soft sp-par" data-act="sp-edit">✍️ لِلْوَالِدَيْن: تَعْدِيلُ القَائِمَة</button></div>`, null, 'sheet'); }
+function spAdd() { const up = spCanUpload();
+  openModal(`<div class="stack sp sp-add">${spHead('كَلِمَاتُ الإِمْلَاء')}
+    <p class="sp-sub" lang="ar">${G('أَضِفْ', 'أَضِيفِي')} قَائِمَةَ كَلِمَاتِ هَذَا الأُسْبُوعِ مِنَ المَدْرَسَة.</p>
+    <div class="sp-grid"><button class="sp-tile${up ? '' : ' off'}" data-act="sp-up" data-arg="cam"><span class="sp-em emo" aria-hidden="true">📷</span><b lang="ar">${G('صَوِّرِ', 'صَوِّرِي')} القَائِمَة</b></button>
+      <button class="sp-tile${up ? '' : ' off'}" data-act="sp-up" data-arg="file"><span class="sp-em emo" aria-hidden="true">📄</span><b lang="ar">صُورَةٌ أَوْ مَلَفّ</b></button>
+      <button class="sp-tile wide" data-act="sp-type"><span class="sp-em emo" aria-hidden="true">⌨️</span><b lang="ar">${G('اُكْتُبِ', 'اُكْتُبِي')} الكَلِمَات</b></button></div>
+    ${up ? '' : `<p class="sp-note" role="note" lang="ar">لِلْوَالِدَيْن: تَصْوِيرُ القَائِمَةِ يَحْتَاجُ رَابِطَ إِعْدَادِ العَائِلَةِ عَلَى هَذَا الجِهَاز. كِتَابَةُ الكَلِمَاتِ تَعْمَلُ دَائِمًا.</p>`}</div>`, null, 'sheet'); }
+function spUpload(mode) {
+  if (!spCanUpload()) { openModal(`<div class="stack center sp">${typeof falconSVG === 'function' ? falconSVG('happy', 'lg') : ''}<p class="sp-note" lang="ar">صَقُّور يُحِبُّ أَنْ يَرَى القَائِمَة! ${G('اُطْلُبْ', 'اُطْلُبِي')} مِنْ مَامَا أَوْ بَابَا تَجْهِيزَ الجِهَاز.</p><p class="sp-note" lang="ar">لِلْوَالِدَيْن: الصُّوَرُ وَالمَلَفَّاتُ تَحْتَاجُ رَابِطَ إِعْدَادِ العَائِلَةِ. ${G('يُمْكِنُكَ', 'يُمْكِنُكِ')} كِتَابَةُ الكَلِمَاتِ الآن.</p><button class="btn big" data-act="sp-type">⌨️ ${G('اُكْتُبِ', 'اُكْتُبِي')} الكَلِمَات</button></div>`, null, 'sheet'); return; }
+  const id = 'sp-in-' + mode; let inp = $(id);
+  if (!inp) { inp = document.createElement('input'); inp.type = 'file'; inp.id = id; inp.hidden = true; inp.accept = mode === 'cam' ? 'image/*' : 'image/*,application/pdf,.pdf'; if (mode === 'cam') inp.setAttribute('capture', 'environment');
+    document.body.appendChild(inp); inp.addEventListener('change', () => { const f = inp.files && inp.files[0]; inp.value = ''; if (f) spFile(f); }); }
+  inp.click(); }
+async function spFile(file) {
+  openModal(`<div class="stack center sp">${spHead('كَلِمَاتُ الإِمْلَاء')}<p class="sp-sub" lang="ar">صَقُّور يَقْرَأُ القَائِمَة… ⏳</p></div>`, null, 'sheet');
+  let words = [];
+  try { let img = file; if (typeof hwxIsPdf === 'function' && hwxIsPdf(file)) { const r = await hwxPdfPages(file); img = r.pages[0]; }
+    const url = await hwPrep(img); words = await spExtract(url, 'spelling'); } catch (e) { words = null; }
+  if (!words || !words.length) { spEdit([], `لَمْ أَسْتَطِعْ قِرَاءَةَ الكَلِمَاتِ هَذِهِ المَرَّة. ${G('اُكْتُبْهَا', 'اُكْتُبِيهَا')} هُنَا أَوْ ${G('جَرِّبْ', 'جَرِّبِي')} صُورَةً أَوْضَح.`, 'photo'); return; }
+  spEdit(words.filter(spIsWord), 'هَذِهِ الكَلِمَاتُ الَّتِي قَرَأَهَا صَقُّور. رَاجِعُوهَا وَصَحِّحُوهَا قَبْلَ البَدْء.', 'photo'); }
+/* confirm / edit (parent-friendly): one word per row, delete, add, test day */
+function spEdit(words, msg, src) { const wk = spWeek(); SP.edit = { words: (words || (wk ? wk.words.map((w) => w.w) : [])).slice(), src: src || (wk ? wk.src : 'typed'), msg: msg || '', day: wk ? wk.testDay : 4 }; if (!SP.edit.words.length) SP.edit.words = ['']; spEditRender(); }
+function spEditRead() { const E = SP.edit; if (!E) return; const ins = document.querySelectorAll('#modal-box .sp-row input'); if (ins.length) E.words = [...ins].map((i) => i.value); const d = $('sp-day'); if (d) E.day = +d.value; }
+function spEditRender() { const E = SP.edit;
+  openModal(`<div class="stack sp sp-edit">${spHead('قَائِمَةُ الكَلِمَات')}${E.msg ? `<p class="sp-note" lang="ar">${esc(E.msg)}</p>` : `<p class="sp-sub" lang="ar">كَلِمَةٌ وَاحِدَةٌ فِي كُلِّ سَطْر. الحَرَكَاتُ اخْتِيَارِيَّة.</p>`}
+    <div class="sp-rows">${E.words.map((w, i) => `<div class="sp-row"><span class="sp-n">${toArabicDigits(i + 1)}</span><input lang="ar" dir="rtl" inputmode="text" autocomplete="off" value="${esc(w)}" aria-label="الكَلِمَة ${toArabicDigits(i + 1)}"${w && !spIsWord(w) ? ' class="bad"' : ''}><button class="icon-btn" data-act="sp-del" data-arg="${i}" aria-label="حَذْف">🗑️</button></div>`).join('')}</div>
+    <button class="btn soft" data-act="sp-row">➕ كَلِمَةٌ أُخْرَى</button>
+    <label class="sp-sub" lang="ar">يَوْمُ الاِخْتِبَار: <select id="sp-day">${SP_DAYS.map((d, i) => `<option value="${i}"${i === E.day ? ' selected' : ''}>${d}</option>`).join('')}</select></label>
+    <button class="btn big sp-main" data-act="sp-save">✔️ هَذِهِ هِيَ الكَلِمَات</button></div>`, () => { SP.edit = null; }, 'sheet');
+  const ins = document.querySelectorAll('#modal-box .sp-row input'); if (ins.length && !ins[ins.length - 1].value) ins[ins.length - 1].focus(); }
+/* the spelling run (practice or test) */
+function spRun(kind) { const wk = spWeek(); if (!wk || !wk.words.length) { spAdd(); return; }
+  const list = kind === 'test' ? wk.words.map((w) => w.w).sort(() => Math.random() - 0.5) : spQueue(wk);
+  SP.v = { kind, list, i: 0, typed: '', res: null, score: 0, again: [], trace: false }; spRender(); setTimeout(spSayCur, 350); }
+function spSayCur() { const V = SP.v; if (V && V.list[V.i]) spSay(V.list[V.i]); }
+function spRender() { const V = SP.v; if (!V) return; const w = V.list[V.i];
+  if (!w) { spDone(); return; }
+  const dots = `<div class="sp-dots">${V.list.map((_, n) => `<i class="${n < V.i ? 'done' : n === V.i ? 'on' : ''}"></i>`).join('')}</div>`;
+  let res = '';
+  if (V.res) { const r = V.res; res = r.ok ? `<p class="sp-good" lang="ar">${G('أَحْسَنْتَ', 'أَحْسَنْتِ')}! ✔️</p><p class="sp-right" lang="ar">${esc(w)}</p>`
+    : `<p class="sp-sub" lang="ar">${G('كَتَبْتَ', 'كَتَبْتِ')}: <span class="sp-mine">${[...r.typed].map((c, n) => `<span class="${r.target[n] === c ? '' : 'x'}">${esc(c)}</span>`).join('') || '…'}</span></p>
+      <p class="sp-sub" lang="ar">الكِتَابَةُ الصَّحِيحَة:</p><p class="sp-right" lang="ar">${[...r.target].map((c, n) => `<span class="${r.marks[n] ? '' : 'u'}">${esc(c)}</span>`).join('')}</p>
+      ${V.trace ? `<div class="sp-trace"><span lang="ar" aria-hidden="true">${esc(r.target)}</span><canvas id="sp-cv" width="600" height="220" aria-label="تَتَبُّع"></canvas></div>` : `<button class="btn soft" data-act="sp-trace">✍️ ${G('تَتَبَّعِ', 'تَتَبَّعِي')} الكَلِمَة</button>`}`; }
+  openModal(`<div class="stack sp sp-run">${spHead(V.kind === 'test' ? 'يَوْمُ الاِخْتِبَار' : 'تَدْرِيبُ الإِمْلَاء')}${dots}
+    <button class="btn big soft sp-hear" data-act="sp-hear">🔊 ${G('اِسْتَمِعْ', 'اِسْتَمِعِي')}</button>
+    <p class="sp-sub" lang="ar">${G('اُكْتُبِ', 'اُكْتُبِي')} الكَلِمَةَ الَّتِي ${G('تَسْمَعُهَا', 'تَسْمَعِينَهَا')}.</p>
+    <div class="sp-box${V.res ? (V.res.ok ? ' yay' : ' oops') : ''}" lang="ar" dir="rtl" aria-live="polite">${esc(V.typed) || '<span class="sp-ph">…</span>'}</div>
+    ${V.res ? res + `<button class="btn big sp-main" data-act="sp-next">التَّالِي</button>`
+      : `<div class="sp-kb" lang="ar">${SP_LETTERS.map((l) => `<button class="sp-k" data-act="sp-k" data-arg="${l}">${l}</button>`).join('')}<button class="sp-k wide" data-act="sp-k" data-arg=" " aria-label="مَسَافَة">␣</button><button class="sp-k wide" data-act="sp-bs" aria-label="اِمْسَحْ">⌫</button></div>
+      <button class="btn big sp-main" data-act="sp-check"${V.typed ? '' : ' disabled'}>${G('تَحَقَّقْ', 'تَحَقَّقِي')}</button>`}</div>`, () => { SP.v = null; }, 'sheet');
+  if (V.trace) spTracePad(); }
+function spTracePad() { const c = $('sp-cv'); if (!c) return; const x = c.getContext('2d'); x.lineWidth = 9; x.lineCap = 'round'; x.strokeStyle = '#1688bf'; let on = false;
+  const pt = (e) => { const r = c.getBoundingClientRect(); return [(e.clientX - r.left) * c.width / r.width, (e.clientY - r.top) * c.height / r.height]; };
+  c.addEventListener('pointerdown', (e) => { on = true; x.beginPath(); x.moveTo(...pt(e)); c.setPointerCapture(e.pointerId); });
+  c.addEventListener('pointermove', (e) => { if (on) { x.lineTo(...pt(e)); x.stroke(); } });
+  ['pointerup', 'pointercancel'].forEach((k) => c.addEventListener(k, () => { on = false; })); }
+function spDoCheck() { const V = SP.v; if (!V || V.res || !V.typed) return; const w = V.list[V.i]; const r = spCheck(w, V.typed); V.res = r;
+  const wk = spWeek(); const it = wk && wk.words.find((x) => spBare(x.w) === spBare(w));
+  if (r.ok) V.score++; if (it) spGrade(it, r.ok);
+  if (!r.ok && V.kind !== 'test' && !V.again.includes(w)) { V.again.push(w); V.list.push(w); } /* a missed word comes back at the end of the session */
+  if (typeof saveDB === 'function') saveDB(); spRender(); }
+function spDone() { const V = SP.v; const wk = spWeek(); const n = V.kind === 'test' ? V.list.length : V.list.length - V.again.length;
+  if (V.kind === 'test' && wk) { wk.tests.push({ d: spDay(), ok: V.score, n }); wk.tests = wk.tests.slice(-10); if (typeof saveDB === 'function') saveDB(); }
+  const miss = wk ? wk.words.filter((w) => w.box === 0 && w.last === spDay()).map((w) => w.w) : [];
+  SP.v = null;
+  openModal(`<div class="stack center sp sp-done">${spHead(V.kind === 'test' ? 'يَوْمُ الاِخْتِبَار' : 'تَدْرِيبُ الإِمْلَاء')}${typeof falconSVG === 'function' ? falconSVG('happy', 'lg') : ''}
+    <p class="sp-good" lang="ar">${V.kind === 'test' ? `${toArabicDigits(V.score)} مِنْ ${toArabicDigits(n)}` : G('أَنْهَيْتَ تَدْرِيبَ اليَوْم', 'أَنْهَيْتِ تَدْرِيبَ اليَوْم')} 🌿</p>
+    ${miss.length ? `<p class="sp-sub" lang="ar">نُرَاجِعُ هَذِهِ الكَلِمَاتِ مَرَّةً أُخْرَى:</p><div class="sp-chips">${miss.map((w) => `<span class="sp-chip b0">${esc(w)}</span>`).join('')}</div>` : `<p class="sp-sub" lang="ar">نُرَاجِعُ الكَلِمَاتِ بَعْدَ أَيَّامٍ قَلِيلَة.</p>`}
+    <button class="btn big sp-main" data-act="sp-open">تَمَّ</button></div>`, null, 'sheet'); }
+Object.assign(ACTIONS, {
+  'sp-open': () => { closeModal(); setTimeout(spOpen, 20); }, 'sp-add': () => spAdd(), 'sp-type': () => spEdit(null, '', 'typed'), 'sp-edit': () => spEdit(),
+  'sp-up': (m) => spUpload(m === 'cam' ? 'cam' : 'file'),
+  'sp-del': (i) => { spEditRead(); SP.edit.words.splice(+i, 1); if (!SP.edit.words.length) SP.edit.words = ['']; spEditRender(); },
+  'sp-row': () => { spEditRead(); SP.edit.words.push(''); spEditRender(); },
+  'sp-save': () => { spEditRead(); const E = SP.edit; const ok = E.words.filter((w) => spIsWord(w));
+    if (!ok.length) { E.msg = G('اُكْتُبْ', 'اُكْتُبِي') + ' كَلِمَةً عَرَبِيَّةً وَاحِدَةً عَلَى الأَقَلّ.'; spEditRender(); return; }
+    const wk = spSetList(ok, E.src); wk.testDay = E.day; saveDB(); SP.edit = null; modalOnClose = null; spOpen(); },
+  'sp-practice': () => spRun('practice'), 'sp-test': () => spRun('test'), 'sp-hear': () => spSayCur(),
+  'sp-k': (l) => { const V = SP.v; if (!V || V.res || V.typed.length > 24) return; V.typed += l; spRender(); },
+  'sp-bs': () => { const V = SP.v; if (!V || V.res) return; V.typed = [...V.typed].slice(0, -1).join(''); spRender(); },
+  'sp-check': () => spDoCheck(),
+  'sp-trace': () => { if (SP.v) { SP.v.trace = true; spRender(); } },
+  'sp-next': () => { const V = SP.v; if (!V) return; V.i++; V.typed = ''; V.res = null; V.trace = false; spRender(); if (V.list[V.i]) setTimeout(spSayCur, 250); }
+});
+/* entries: ☰ menu tile + chat shortcut */
+{ const _m = calmMenuItems; calmMenuItems = function calmMenuItemsSP() { const items = _m.apply(this, arguments); try { const wk = spWeek(); const due = wk ? wk.words.filter((w) => w.due <= spDay()).length : 0;
+  items.splice(Math.min(2, items.length), 0, { act: 'sp-open', ic: '✏️', ar: 'كَلِمَاتُ الإِمْلَاء', en: '', extra: due ? toArabicDigits(due) : '' }, { act: 'cw-open', ic: '📚', ar: 'كَلِمَاتُ الصَّفّ', en: '', extra: cwBadge() }); } catch (e) { /* optional */ } return items; }; }
+{ const _c = mhDefaultChips; mhDefaultChips = function mhDefaultChipsSP() { const l = _c.apply(this, arguments); l.splice(Math.min(1, l.length), 0, { line: { ar: '✏️ كَلِمَاتُ الإِمْلَاء', en: '' }, go: () => spOpen() }, { line: { ar: '📚 كَلِمَاتُ الصَّفّ', en: '' }, go: () => cwOpen() }); return l; }; }
+window.SAQ_SP = { spCheck, spBare, spGrade, spQueue, spWeekKey, spSetList, spWeek, spWordsFromText, spExtract, spCanUpload, spIsTestDay, spOpen, SP_BOX_DAYS };
+/* =========================================================
+   v25 · 📚 كَلِمَاتُ الصَّفّ (class vocabulary). The child or a parent sends the class words (photo / PDF / typed, same flow).
+   Saqqour teaches 5 a week: the word read in Fusha, a simple meaning (text in Fusha; spoken in the child's dialect when the
+   Worker gave a dialect line), an example sentence, an emoji when there is one, then a short quiz (meaning match · use in a
+   sentence · spell it). Learned words go into a spaced review (same boxes as spelling). The next 5 unlock the following week;
+   the parent sees the whole queue (sheet + parent area).
+   Store: P().cw = { start: weekKey, items: [{w, meaning, say, example, emoji, wk, box, due, miss, ok, learned}] } */
+const CW_PER_WEEK = 5;
+const cwStore = (p) => { p = p || P(); if (!p.cw) p.cw = { start: spWeekKey(), items: [] }; return p.cw; };
+function cwWeekNo(k) { const [y, w] = String(k).split('-W').map(Number); return y * 53 + w; }
+function cwAdd(list, p) { const c = cwStore(p); const now = cwWeekNo(spWeekKey()); const have = new Set(c.items.map((x) => spBare(x.w))); let n = 0;
+  list.forEach((x) => { const w = String((x && x.w) || x || '').trim(); const b = spBare(w); if (!spIsWord(w) || have.has(b)) return; have.add(b);
+    /* first week from now that has room */
+    let wk = Math.max(now, ...c.items.map((i) => i.wk).filter((v) => v >= now).concat(now)); while (c.items.filter((i) => i.wk === wk).length >= CW_PER_WEEK) wk++;
+    const used = c.items.filter((i) => i.wk === wk).length; if (used >= CW_PER_WEEK) wk++;
+    c.items.push({ w, meaning: (x && x.meaning) || '', say: (x && x.say) || '', example: (x && x.example) || '', emoji: (x && x.emoji) || '', wk, box: 0, due: '', miss: 0, ok: 0, learned: '' }); n++; });
+  c.items = c.items.slice(-120); if (typeof saveDB === 'function') saveDB(); return n; }
+const cwOpenNow = (p, k) => cwStore(p).items.filter((i) => i.wk <= cwWeekNo(k || spWeekKey()));
+const cwToLearn = (p, k) => cwOpenNow(p, k).filter((i) => !i.learned);
+const cwDue = (p, today) => cwStore(p).items.filter((i) => i.learned && i.due <= (today || spDay()));
+function cwBadge() { try { const n = cwToLearn().length + cwDue().length; return n ? toArabicDigits(n) : ''; } catch (e) { return ''; } }
+const CW = { v: null };
+function cwOpen() { const c = cwStore(); const nw = cwToLearn(), due = cwDue(), now = cwWeekNo(spWeekKey());
+  const later = c.items.filter((i) => i.wk > now).length; const known = c.items.filter((i) => i.learned).length;
+  if (!c.items.length) { cwAddSheet(); return; }
+  openModal(`<div class="stack sp cw-home"><div class="row between"><h2 lang="ar"><span class="emo" aria-hidden="true">📚</span> كَلِمَاتُ الصَّفّ</h2>${spX()}</div>
+    <p class="sp-sub" lang="ar">كَلِمَاتُ هَذَا الأُسْبُوع:</p><div class="sp-chips">${cwOpenNow().filter((i) => i.wk === now || !i.learned).map((i) => `<span class="sp-chip ${i.learned ? 'b2' : ''}">${i.emoji ? `<span class="emo">${esc(i.emoji)}</span> ` : ''}${esc(i.w)}</span>`).join('') || '<span class="sp-sub">—</span>'}</div>
+    ${nw.length ? `<button class="btn big sp-main" data-act="cw-learn">🌱 ${G('تَعَلَّمْ', 'تَعَلَّمِي')} ${toArabicDigits(nw.length)} كَلِمَات</button>` : ''}
+    ${due.length ? `<button class="btn ${nw.length ? 'soft' : 'big sp-main'}" data-act="cw-review">🔁 مُرَاجَعَة (${toArabicDigits(due.length)})</button>` : ''}
+    ${!nw.length && !due.length ? `<p class="sp-good" lang="ar">${G('أَنْهَيْتَ', 'أَنْهَيْتِ')} كَلِمَاتِ هَذَا الأُسْبُوع 🌿</p>` : ''}
+    <p class="sp-sub" lang="ar">${G('تَعَلَّمْتَ', 'تَعَلَّمْتِ')}: ${toArabicDigits(known)}${later ? ` · كَلِمَاتٌ تُفْتَحُ فِي الأَسَابِيعِ القَادِمَة: ${toArabicDigits(later)}` : ''}</p>
+    <div class="row center"><button class="btn soft" data-act="cw-add">➕ كَلِمَاتٌ جَدِيدَة</button><button class="btn soft sp-par" data-act="cw-queue">👪 لِلْوَالِدَيْن: القَائِمَة</button></div></div>`, null, 'sheet'); }
+function cwAddSheet() { const up = spCanUpload();
+  openModal(`<div class="stack sp sp-add"><div class="row between"><h2 lang="ar"><span class="emo" aria-hidden="true">📚</span> كَلِمَاتُ الصَّفّ</h2>${spX()}</div>
+    <p class="sp-sub" lang="ar">${G('أَرْسِلْ', 'أَرْسِلِي')} لِصَقُّور كَلِمَاتِ الصَّفّ، وَيُعَلِّمُ${G('كَ', 'كِ')} خَمْسًا مِنْهَا كُلَّ أُسْبُوع.</p>
+    <div class="sp-grid"><button class="sp-tile${up ? '' : ' off'}" data-act="cw-up" data-arg="cam"><span class="sp-em emo" aria-hidden="true">📷</span><b lang="ar">${G('صَوِّرِ', 'صَوِّرِي')} القَائِمَة</b></button>
+      <button class="sp-tile${up ? '' : ' off'}" data-act="cw-up" data-arg="file"><span class="sp-em emo" aria-hidden="true">📄</span><b lang="ar">صُورَةٌ أَوْ مَلَفّ</b></button>
+      <button class="sp-tile wide" data-act="cw-type"><span class="sp-em emo" aria-hidden="true">⌨️</span><b lang="ar">${G('اُكْتُبِ', 'اُكْتُبِي')} الكَلِمَات</b></button></div>
+    ${up ? '' : `<p class="sp-note" role="note" lang="ar">لِلْوَالِدَيْن: تَصْوِيرُ القَائِمَةِ وَشَرْحُ المَعَانِي يَحْتَاجَانِ رَابِطَ إِعْدَادِ العَائِلَةِ. ${G('يُمْكِنُكَ', 'يُمْكِنُكِ')} كِتَابَةُ الكَلِمَاتِ وَمَعَانِيهَا بِنَفْسِ${G('كَ', 'كِ')}.</p>`}</div>`, null, 'sheet'); }
+function cwUpload(mode) {
+  if (!spCanUpload()) { openModal(`<div class="stack center sp">${typeof falconSVG === 'function' ? falconSVG('happy', 'lg') : ''}<p class="sp-note" lang="ar">صَقُّور يُحِبُّ أَنْ يَرَى الكَلِمَات! ${G('اُطْلُبْ', 'اُطْلُبِي')} مِنْ مَامَا أَوْ بَابَا تَجْهِيزَ الجِهَاز.</p><button class="btn big" data-act="cw-type">⌨️ ${G('اُكْتُبِ', 'اُكْتُبِي')} الكَلِمَات</button></div>`, null, 'sheet'); return; }
+  const id = 'cw-in-' + mode; let inp = $(id);
+  if (!inp) { inp = document.createElement('input'); inp.type = 'file'; inp.id = id; inp.hidden = true; inp.accept = mode === 'cam' ? 'image/*' : 'image/*,application/pdf,.pdf'; if (mode === 'cam') inp.setAttribute('capture', 'environment');
+    document.body.appendChild(inp); inp.addEventListener('change', () => { const f = inp.files && inp.files[0]; inp.value = ''; if (f) cwFile(f); }); }
+  inp.click(); }
+const cwWait = () => openModal(`<div class="stack center sp"><div class="row between"><h2 lang="ar"><span class="emo" aria-hidden="true">📚</span> كَلِمَاتُ الصَّفّ</h2>${spX()}</div><p class="sp-sub" lang="ar">صَقُّور يَقْرَأُ الكَلِمَات… ⏳</p></div>`, null, 'sheet');
+async function cwFile(file) { cwWait(); let ws = null;
+  try { let img = file; if (typeof hwxIsPdf === 'function' && hwxIsPdf(file)) { const r = await hwxPdfPages(file); img = r.pages[0]; } ws = await spExtract(await hwPrep(img), 'class'); } catch (e) { ws = null; }
+  cwEdit(ws || [], ws && ws.length ? 'هَذِهِ الكَلِمَاتُ وَمَعَانِيهَا كَمَا قَرَأَهَا صَقُّور. رَاجِعُوهَا وَصَحِّحُوهَا قَبْلَ البَدْء.' : `لَمْ أَسْتَطِعْ قِرَاءَةَ الكَلِمَاتِ هَذِهِ المَرَّة. ${G('اُكْتُبْهَا', 'اُكْتُبِيهَا')} هُنَا.`); }
+/* confirm/edit: word + simple meaning per row */
+function cwEdit(list, msg) { CW.edit = { items: (list && list.length ? list : [{ w: '' }]).map((x) => Object.assign({ w: '', meaning: '', say: '', example: '', emoji: '' }, x)), msg: msg || '' }; cwEditRender(); }
+function cwEditRead() { const E = CW.edit; if (!E) return; document.querySelectorAll('#modal-box .cw-row').forEach((r, i) => { if (!E.items[i]) return; const [a, b] = r.querySelectorAll('input'); const nw = a.value.trim(), nm = b.value.trim();
+  if (spBare(nw) !== spBare(E.items[i].w)) { E.items[i].example = ''; E.items[i].say = ''; E.items[i].emoji = ''; } if (nm !== E.items[i].meaning) E.items[i].say = ''; E.items[i].w = nw; E.items[i].meaning = nm; }); }
+function cwEditRender() { const E = CW.edit;
+  openModal(`<div class="stack sp sp-edit"><div class="row between"><h2 lang="ar"><span class="emo" aria-hidden="true">📚</span> قَائِمَةُ كَلِمَاتِ الصَّفّ</h2>${spX()}</div>${E.msg ? `<p class="sp-note" lang="ar">${esc(E.msg)}</p>` : `<p class="sp-sub" lang="ar">الكَلِمَةُ ثُمَّ مَعْنًى بَسِيطٌ (اخْتِيَارِيّ).</p>`}
+    <div class="sp-rows">${E.items.map((x, i) => `<div class="cw-row"><span class="sp-n">${toArabicDigits(i + 1)}</span><div class="cw-two"><input lang="ar" dir="rtl" value="${esc(x.w)}" aria-label="الكَلِمَة ${toArabicDigits(i + 1)}"><input class="cw-m" lang="ar" dir="rtl" value="${esc(x.meaning)}" placeholder="المَعْنَى" aria-label="المَعْنَى"></div><button class="icon-btn" data-act="cw-del" data-arg="${i}" aria-label="حَذْف">🗑️</button></div>`).join('')}</div>
+    <button class="btn soft" data-act="cw-row">➕ كَلِمَةٌ أُخْرَى</button>
+    <p class="sp-sub" lang="ar">يُعَلِّمُ صَقُّور ${toArabicDigits(CW_PER_WEEK)} كَلِمَاتٍ كُلَّ أُسْبُوع، وَتُفْتَحُ الخَمْسُ التَّالِيَةُ فِي الأُسْبُوعِ الَّذِي يَلِيه.</p>
+    <button class="btn big sp-main" data-act="cw-save">✔️ هَذِهِ هِيَ الكَلِمَات</button></div>`, () => { CW.edit = null; }, 'sheet'); }
+async function cwSave() { cwEditRead(); const E = CW.edit; let ok = E.items.filter((x) => spIsWord(x.w));
+  if (!ok.length) { E.msg = G('اُكْتُبْ', 'اُكْتُبِي') + ' كَلِمَةً عَرَبِيَّةً وَاحِدَةً عَلَى الأَقَلّ.'; cwEditRender(); return; }
+  /* typed words without a meaning: ask the Worker for simple meanings when the device is set up (never required) */
+  const need = ok.filter((x) => !x.meaning);
+  if (need.length && spCanUpload()) { cwWait(); try { const r = await spExtract(null, 'class', need.map((x) => x.w).join('\n')); r.forEach((m) => { const t = need.find((x) => spBare(x.w) === spBare(m.w)); if (t) Object.assign(t, { meaning: m.meaning || '', say: m.say || '', example: m.example || '', emoji: m.emoji || '' }); }); } catch (e) { /* words still saved without meanings */ } }
+  cwAdd(ok); CW.edit = null; modalOnClose = null; cwOpen(); }
+/* teaching: one card per word, then the quiz for the batch */
+function cwLearn() { const list = cwToLearn().slice(0, CW_PER_WEEK); if (!list.length) { cwOpen(); return; } CW.v = { kind: 'learn', list: list.map((x) => x.w), i: 0, q: null }; cwCard(); }
+const cwItem = (w) => cwStore().items.find((x) => spBare(x.w) === spBare(w));
+function cwSpeakItem(it) { spSay(it.w); const line = it.say || it.meaning; if (!line) return;
+  setTimeout(() => { try { if (it.say && typeof speak === 'function') speak(it.say, typeof curDialect === 'function' ? curDialect() : 'fusha', { quiet: true }); else spSay(it.meaning); } catch (e) { /* audio optional */ } }, 1100); }
+function cwCard() { const V = CW.v; const it = cwItem(V.list[V.i]); if (!it) { cwQuizStart(); return; }
+  const dots = `<div class="sp-dots">${V.list.map((_, n) => `<i class="${n < V.i ? 'done' : n === V.i ? 'on' : ''}"></i>`).join('')}</div>`;
+  openModal(`<div class="stack sp cw-card"><div class="row between"><h2 lang="ar"><span class="emo" aria-hidden="true">🌱</span> كَلِمَةٌ جَدِيدَة</h2>${spX()}</div>${dots}
+    ${it.emoji ? `<div class="cw-pic emo" aria-hidden="true">${esc(it.emoji)}</div>` : ''}<p class="cw-word" lang="ar">${esc(it.w)}</p>
+    <button class="btn soft sp-hear" data-act="cw-hear">🔊 ${G('اِسْتَمِعْ', 'اِسْتَمِعِي')}</button>
+    ${it.meaning ? `<div class="cw-box"><b lang="ar">المَعْنَى</b><p lang="ar">${esc(it.meaning)}</p></div>` : ''}
+    ${it.example ? `<div class="cw-box ex"><b lang="ar">مِثَال</b><p lang="ar">${esc(it.example)}</p></div>` : ''}
+    <button class="btn big sp-main" data-act="cw-next">${V.i + 1 < V.list.length ? 'الكَلِمَةُ التَّالِيَة' : G('يَلَّا نَخْتَبِرْ', 'يَلَّا نَخْتَبِرْ') + ' 🎯'}</button></div>`, () => { CW.v = null; }, 'sheet');
+  setTimeout(() => cwSpeakItem(it), 300); }
+/* quiz: per word one of meaning-match / sentence / spell, cycling so each type appears; spell reuses the spelling keyboard */
+function cwQuizStart(kind) { const V = CW.v || { list: [] }; const items = V.list.map(cwItem).filter(Boolean);
+  const qs = []; items.forEach((it, n) => { const types = ['mean', 'sent', 'spell'].filter((t) => (t !== 'mean' || it.meaning) && (t !== 'sent' || it.example)); const t = types[(n + (kind === 'review' ? 1 : 0)) % types.length]; qs.push({ w: it.w, t }); });
+  CW.v = { kind: kind || 'learn', list: V.list, qs, j: 0, res: null, score: 0, typed: '' }; cwQ(); }
+function cwOpts(w) { const pool = cwStore().items.filter((x) => spBare(x.w) !== spBare(w)).map((x) => x.w).sort(() => Math.random() - 0.5).slice(0, 2); return pool.concat(w).sort(() => Math.random() - 0.5); }
+function cwBlank(ex, w) { const b = spBare(w); const toks = ex.split(' '); const k = toks.findIndex((t) => spBare(t).includes(b)); if (k < 0) return null; toks[k] = '_____'; return toks.join(' '); }
+function cwQ() { const V = CW.v; const q = V.qs[V.j]; if (!q) { cwQuizDone(); return; } const it = cwItem(q.w);
+  if (!q.opts) q.opts = cwOpts(q.w); let body = '';
+  const optBtns = () => `<div class="cw-opts">${q.opts.map((o, n) => `<button class="cw-opt${V.res ? (spBare(o) === spBare(q.w) ? ' right' : V.res.pick === n ? ' wrong' : '') : ''}" data-act="cw-pick" data-arg="${n}" lang="ar"${V.res ? ' disabled' : ''}>${esc(o)}</button>`).join('')}</div>`;
+  if (q.t === 'mean') body = `<p class="sp-sub" lang="ar">أَيُّ كَلِمَةٍ مَعْنَاهَا:</p><div class="cw-box"><p lang="ar">${esc(it.meaning)}</p></div>${optBtns()}`;
+  else if (q.t === 'sent') body = `<p class="sp-sub" lang="ar">${G('اِخْتَرِ', 'اِخْتَارِي')} الكَلِمَةَ المُنَاسِبَة:</p><div class="cw-box ex"><p lang="ar">${esc(cwBlank(it.example, it.w) || it.example)}</p></div>${optBtns()}`;
+  else body = `<button class="btn big soft sp-hear" data-act="cw-hear-q">🔊 ${G('اِسْتَمِعْ', 'اِسْتَمِعِي')}</button><p class="sp-sub" lang="ar">${G('اُكْتُبِ', 'اُكْتُبِي')} الكَلِمَة.</p>
+    <div class="sp-box${V.res ? (V.res.ok ? ' yay' : ' oops') : ''}" lang="ar">${esc(V.typed) || '<span class="sp-ph">…</span>'}</div>
+    ${V.res ? (V.res.ok ? '' : `<p class="sp-sub" lang="ar">الكِتَابَةُ الصَّحِيحَة:</p><p class="sp-right" lang="ar">${[...V.res.target].map((c, n) => `<span class="${V.res.marks[n] ? '' : 'u'}">${esc(c)}</span>`).join('')}</p>`)
+      : `<div class="sp-kb" lang="ar">${SP_LETTERS.map((l) => `<button class="sp-k" data-act="cw-k" data-arg="${l}">${l}</button>`).join('')}<button class="sp-k wide" data-act="cw-k" data-arg=" " aria-label="مَسَافَة">␣</button><button class="sp-k wide" data-act="cw-bs" aria-label="اِمْسَحْ">⌫</button></div><button class="btn big sp-main" data-act="cw-check"${V.typed ? '' : ' disabled'}>${G('تَحَقَّقْ', 'تَحَقَّقِي')}</button>`}`;
+  const fb = V.res ? `<p class="${V.res.ok ? 'sp-good' : 'sp-sub'}" lang="ar">${V.res.ok ? G('أَحْسَنْتَ', 'أَحْسَنْتِ') + '! ✔️' : 'الجَوَابُ الصَّحِيحُ بِالأَخْضَر.'}</p><button class="btn big sp-main" data-act="cw-qnext">التَّالِي</button>` : '';
+  openModal(`<div class="stack sp cw-quiz"><div class="row between"><h2 lang="ar"><span class="emo" aria-hidden="true">${V.kind === 'review' ? '🔁' : '🎯'}</span> ${V.kind === 'review' ? 'مُرَاجَعَةُ كَلِمَاتِ الصَّفّ' : 'اِخْتِبَارٌ قَصِير'}</h2>${spX()}</div>
+    <div class="sp-dots">${V.qs.map((_, n) => `<i class="${n < V.j ? 'done' : n === V.j ? 'on' : ''}"></i>`).join('')}</div>${body}${fb}</div>`, () => { CW.v = null; }, 'sheet');
+  if (q.t === 'spell' && !V.res && !V.typed) setTimeout(() => spSay(q.w), 300); }
+function cwGrade(ok) { const V = CW.v; const q = V.qs[V.j]; const it = cwItem(q.w); if (ok) V.score++;
+  if (it) { if (!it.learned) { it.learned = spDay(); it.box = 0; it.due = spDay(); } spGrade(it, ok); }
+  if (typeof saveDB === 'function') saveDB(); }
+function cwQuizDone() { const V = CW.v; CW.v = null;
+  openModal(`<div class="stack center sp sp-done"><div class="row between"><h2 lang="ar"><span class="emo" aria-hidden="true">📚</span> كَلِمَاتُ الصَّفّ</h2>${spX()}</div>${typeof falconSVG === 'function' ? falconSVG('happy', 'lg') : ''}
+    <p class="sp-good" lang="ar">${toArabicDigits(V.score)} مِنْ ${toArabicDigits(V.qs.length)} 🌿</p><p class="sp-sub" lang="ar">نُرَاجِعُ هَذِهِ الكَلِمَاتِ فِي الأَيَّامِ القَادِمَة.</p>
+    <button class="btn big sp-main" data-act="cw-open">تَمَّ</button></div>`, null, 'sheet'); }
+function cwReview() { const due = cwDue().sort((a, b) => a.box - b.box).slice(0, 8); if (!due.length) { cwOpen(); return; } CW.v = { list: due.map((x) => x.w) }; cwQuizStart('review'); }
+/* parent view of the queue (sheet + parent area card) */
+function cwQueueHTML() { const c = cwStore(); const now = cwWeekNo(spWeekKey()); const by = {}; c.items.forEach((i) => { (by[i.wk] = by[i.wk] || []).push(i); });
+  return Object.keys(by).sort((a, b) => a - b).map((k) => { const n = +k - now; const lab = n < 0 ? 'أَسَابِيعُ سَابِقَة' : n === 0 ? 'هَذَا الأُسْبُوع' : n === 1 ? 'الأُسْبُوعُ القَادِم 🔒' : `بَعْدَ ${toArabicDigits(n)} أَسَابِيع 🔒`;
+    return `<div class="cw-wk"><b lang="ar">${lab}</b><div class="sp-chips">${by[k].map((i) => `<span class="sp-chip ${i.learned ? 'b2' : ''}" title="${esc(i.meaning)}">${esc(i.w)}${i.learned ? ' ✓' : ''}</span>`).join('')}</div></div>`; }).join('') || '<p class="sp-sub">—</p>'; }
+function cwQueue() { openModal(`<div class="stack sp"><div class="row between"><h2 lang="ar"><span class="emo" aria-hidden="true">👪</span> قَائِمَةُ كَلِمَاتِ الصَّفّ</h2>${spX()}</div><p class="sp-sub" lang="ar">خَمْسُ كَلِمَاتٍ كُلَّ أُسْبُوع. ✓ = تَعَلَّمَهَا الطِّفْل.</p>${cwQueueHTML()}<button class="btn soft" data-act="cw-open">رُجُوع</button></div>`, null, 'sheet'); }
+if (typeof renderParent === 'function') { const _rp = renderParent; renderParent = function renderParentCW() { const r = _rp.apply(this, arguments);
+  try { const b = $('parent-body'); if (b && !$('cw-pcard') && currentKid && P()) { const h = document.createElement('div'); h.className = 'card cw-pcard'; h.id = 'cw-pcard';
+    h.innerHTML = `<b lang="ar">📚 كَلِمَاتُ الصَّفّ</b> <span class="en">Class words queue (5 a week)</span>${cwQueueHTML()}`; b.appendChild(h); } } catch (e) { /* optional */ } return r; }; }
+Object.assign(ACTIONS, {
+  'cw-open': () => { closeModal(); setTimeout(cwOpen, 20); }, 'cw-add': () => cwAddSheet(), 'cw-type': () => cwEdit([], ''), 'cw-up': (m) => cwUpload(m === 'cam' ? 'cam' : 'file'),
+  'cw-del': (i) => { cwEditRead(); CW.edit.items.splice(+i, 1); if (!CW.edit.items.length) CW.edit.items = [{ w: '', meaning: '', say: '', example: '', emoji: '' }]; cwEditRender(); },
+  'cw-row': () => { cwEditRead(); CW.edit.items.push({ w: '', meaning: '', say: '', example: '', emoji: '' }); cwEditRender(); },
+  'cw-save': () => cwSave(), 'cw-learn': () => cwLearn(), 'cw-review': () => cwReview(), 'cw-queue': () => cwQueue(),
+  'cw-hear': () => { const V = CW.v; const it = V && cwItem(V.list[V.i]); if (it) cwSpeakItem(it); },
+  'cw-hear-q': () => { const V = CW.v; if (V && V.qs[V.j]) spSay(V.qs[V.j].w); },
+  'cw-next': () => { const V = CW.v; if (!V) return; V.i++; if (V.i >= V.list.length) cwQuizStart('learn'); else cwCard(); },
+  'cw-pick': (n) => { const V = CW.v; if (!V || V.res) return; const q = V.qs[V.j]; const ok = spBare(q.opts[+n]) === spBare(q.w); V.res = { ok, pick: +n }; cwGrade(ok); cwQ(); },
+  'cw-k': (l) => { const V = CW.v; if (!V || V.res || V.typed.length > 24) return; V.typed += l; cwQ(); },
+  'cw-bs': () => { const V = CW.v; if (!V || V.res) return; V.typed = [...V.typed].slice(0, -1).join(''); cwQ(); },
+  'cw-check': () => { const V = CW.v; if (!V || V.res || !V.typed) return; const q = V.qs[V.j]; const r = spCheck(q.w, V.typed); V.res = r; cwGrade(r.ok); cwQ(); },
+  'cw-qnext': () => { const V = CW.v; if (!V) return; V.j++; V.res = null; V.typed = ''; cwQ(); }
+});
+Object.assign(window.SAQ_SP, { cwAdd, cwStore, cwToLearn, cwDue, cwOpen, cwWeekNo, cwBlank, CW_PER_WEEK });
 
 </script>
 </body>
