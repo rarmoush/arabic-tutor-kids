@@ -3246,7 +3246,8 @@ body:not(.show-en) .tr19-only{display:none!important}
 .v21-glue { display: flex; justify-content: center; align-items: center; gap: 0; font-family: 'Noto Naskh Arabic', serif; font-size: 2.3rem; }
 .v21-stem { background: #fff; border: 2px solid #dbe6f7; border-radius: 16px 0 0 16px; padding: 4px 16px; } 
 .v21-slot { width: 64px; height: 62px; border: 3px dashed var(--gc, #2f8cff); border-radius: 0 16px 16px 0; border-inline-start: 0; background: #f6fbff; }
-.v21-glue .v21-stem:only-child { border-radius: 16px; border-color: #20c46f; }
+.v21-glue .v21-stem:only-child { border-radius: 16px; }
+.v21-glue.yay .v21-stem { border-color: #20c46f; background: #e9fbf1; } .v21-glue.oops .v21-stem { border-color: #ff7a9c; background: #fff5f8; } /* grammar-answers: a wrong ending is never green */
 .v21-ends { display: flex; gap: 10px; justify-content: center; } .v21-endc { min-width: 74px; font-size: 1.7rem; }
 .v21-ask { text-align: center; margin: 0; font-weight: 600; }
 .v21-sent { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; background: #fff; border-radius: 18px; padding: 14px 8px; border: 2px solid #e6eefc; }
@@ -3294,6 +3295,10 @@ body:not(.show-en) .tr19-only{display:none!important}
 .v21-rep { margin: 4px 0 10px; }
 .v21-rep .v21-endrow .en { flex-basis: 100%; }
 @media print { .v21-fe svg.on path { fill: #2bb673 !important; } }
+
+/* grammar-answers fix: wrong word / wrong fix shows pink, plus a clear verdict line */
+.v21-wd.oops { border-color: #ff7a9c; background: #fff5f8; }
+.v21-verdict { text-align: center; margin: 4px 0 0; font-weight: 700; font-size: 1.15rem; } .v21-verdict.ok { color: #12894c; } .v21-verdict.no { color: #c2335a; }
 
 /* v21b calm home */
 .calm-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -13169,7 +13174,7 @@ const GR_TOPICS = [
       { t: 'end', lv: 1, q: '👩‍🏫 ___', s: 'مُعَلِّم', c: [['ـَةٌ', 'مُعَلِّمَةٌ'], ['ـٌ', 'مُعَلِّمٌ']] },
       { t: 'end', lv: 2, q: '👧 ___ وَفِيَّةٌ', s: 'صَدِيق', c: [['ـَةٌ', 'صَدِيقَةٌ'], ['ـٌ', 'صَدِيقٌ'], ['ـُونَ', 'صَدِيقُونَ']] },
       { t: 'sort', lv: 2, b: ['مُذَكَّرٌ 👦', 'مُؤَنَّثٌ 👧'], w: [['بِنْتٌ', 1], ['أَبٌ', 0], ['أُمٌّ', 1], ['جَمَلٌ', 0], ['نَاقَةٌ', 1], ['حِصَانٌ', 0]] },
-      { t: 'pick', lv: 3, q: '🦁 أُنْثَى الأَسَدِ:', o: ['لَبُؤَةٌ', 'أَسَدَةٌ', 'أُسُودٌ'] },
+      { t: 'pick', lv: 3, q: '🦁 أُنْثَى الأَسَدِ:', o: ['لَبُؤَةٌ', 'نَمِرَةٌ', 'أُسُودٌ'] },
       { t: 'fix', lv: 3, w: ['الطَّبِيبَةُ', 'لَطِيفٌ', 'جِدًّا'], bad: 1, o: ['لَطِيفَةٌ', 'لُطَفَاءُ', 'لَطِيفَانِ'] }
     ] },
   { id: 'dem', u: 'u5', ar: 'اسْمُ الإِشَارَةِ', en: 'This (boy/girl)', col: '#ff9f1c', em: '👉',
@@ -13217,7 +13222,7 @@ const GR_TOPICS = [
       { t: 'pick', lv: 1, q: '🐟 السَّمَكَةُ ___ المَاءِ.', o: ['فِي', 'عَلَى'] },
       { t: 'pick', lv: 2, q: '🚌 أَذْهَبُ ___ المَدْرَسَةِ بِالحَافِلَةِ.', o: ['إِلَى', 'عَلَى', 'فِي'] },
       { t: 'build', lv: 2, w: ['القَلَمُ', 'فِي', 'الحَقِيبَةِ'] },
-      { t: 'pick', lv: 3, q: 'رَجَعَ أَبِي ___ العَمَلِ مَسَاءً.', o: ['مِنَ', 'إِلَى', 'عَلَى'] },
+      { t: 'pick', lv: 3, q: '🏠 رَجَعَ أَبِي ___ العَمَلِ إِلَى البَيْتِ مَسَاءً.', o: ['مِنَ', 'إِلَى', 'عَلَى'] },
       { t: 'fix', lv: 3, w: ['جَلَسْتُ', 'عَلَى', 'الكُرْسِيُّ'], bad: 2, o: ['الكُرْسِيِّ', 'الكُرْسِيَّ', 'كُرْسِيٌّ'] }
     ] },
   { id: 'pres', u: 'u9', ar: 'الفِعْلُ المُضَارِعُ', en: 'Verbs now (present)', col: '#14b8a6', em: '✍️',
@@ -13576,7 +13581,7 @@ function v21Start(mode, arg) {
   v21Next(true);
 }
 function v21Next(first) {
-  const s = V21.s; if (!s) return; if (!first) s.i++; s.ans = null; s.up = null; s.sel = null; s.placed = {}; s.line = []; s.fixAt = null;
+  const s = V21.s; if (!s) return; if (!first) s.i++; s.ans = null; s.up = null; s.sel = null; s.placed = {}; s.line = []; s.fixAt = null; s.wordTap = null; s.firstWrong = false;
   if (s.i >= s.keys.length) { v21End(); return; }
   const k = s.keys[s.i]; const lv = (v21Peek(P())[k] || {}).lv || 1; s.lv = lv; s.it = v21Item(k, lv, s.used);
   if (s.it && s.it.t === 'pick') s.it.order = shuffle(s.it.o.map((_, j) => j));
@@ -13601,13 +13606,17 @@ function v21Body(it) {
     const bask = (b) => `<button class="v21-bask b${b}" data-act="v21-bask" data-arg="${b}"><b lang="ar">${v21E(it.b[b])}</b><span class="v21-in">${Object.keys(s.placed).filter((j) => s.placed[j] === b).map((j) => `<span class="v21-chip ${a ? (it.w[j][1] === b ? 'yay' : 'oops') : ''}" lang="ar">${esc(v21L(it.w[j][0]))}</span>`).join('')}</span></button>`;
     return `${hint}<div class="v21-tray">${left.map((j) => `<button class="v21-chip ${s.sel === j ? 'sel' : ''}" data-act="v21-chip" data-arg="${j}" lang="ar">${esc(v21L(it.w[j][0]))}</button>`).join('') || '<span class="v21-empty">✓</span>'}</div><div class="v21-baskets">${bask(0)}${bask(1)}</div>`; }
   if (it.t === 'end') { const pick = s.sel; return `${hint}<div class="v21-q" lang="ar">${v21Blank(it.q)}</div>
-    <div class="v21-glue" lang="ar"><span class="v21-stem">${esc(pick != null ? it.c[pick][1] : it.s)}</span>${pick == null ? '<span class="v21-slot" aria-label="مَكَانُ النِّهَايَةِ"></span>' : ''}</div>
+    <div class="v21-glue ${a ? (a.ok ? 'yay' : 'oops') : ''}" lang="ar"><span class="v21-stem">${esc(pick != null ? it.c[pick][1] : it.s)}</span>${pick == null ? '<span class="v21-slot" aria-label="مَكَانُ النِّهَايَةِ"></span>' : ''}</div>
     <div class="v21-ends">${it.order.map((j) => `<button class="v21-endc ${a ? (j === 0 ? 'yay' : pick === j ? 'oops' : 'dim') : pick === j ? 'sel' : ''}" data-act="v21-end" data-arg="${j}" draggable="true" lang="ar">${esc(it.c[j][0])}</button>`).join('')}</div>`; }
   if (it.t === 'fix' || it.t === 'tap') { const tgt = it.t === 'fix' ? it.bad : it.a;
-    const words = it.w.map((w, j) => `<button class="v21-wd ${s.fixAt === j || (a && j === tgt) ? (a && !a.ok && it.t === 'tap' ? 'yay' : 'sel') : ''} ${a && a.ok && j === tgt ? 'yay' : ''}" data-act="v21-word" data-arg="${j}" lang="ar">${esc(v21L(a && it.t === 'fix' && j === tgt ? it.o[0] : w))}</button>`).join(' ');
+    /* grammar-answers fix: only the right word / fix is ever green; the child's wrong tap or wrong fix is pink, never green */
+    const wcls = (j) => { if (!a) return s.fixAt === j ? 'sel' : ''; if (j === tgt) return a.ok ? 'yay' : (it.t === 'tap' ? 'yay' : 'oops'); return s.wordTap === j || (it.t === 'tap' && s.sel === j) ? 'oops' : ''; };
+    const wtxt = (w, j) => (a && it.t === 'fix' && j === tgt ? (a.ok ? it.o[0] : s.sel != null ? it.o[s.sel] : w) : w);
+    const words = it.w.map((w, j) => `<button class="v21-wd ${wcls(j)}" data-act="v21-word" data-arg="${j}" lang="ar">${esc(v21L(wtxt(w, j)))}</button>`).join(' ');
+    const fixRight = it.t === 'fix' && a && !a.ok ? `<p class="v21-right" lang="ar">${esc(v21L(it.w.map((w, j) => (j === tgt ? it.o[0] : w)).join(' ')))}</p>` : '';
     const q = it.t === 'tap' ? `<p class="v21-ask" lang="ar">${esc(v21L(it.q))}</p>` : '';
     const fixer = it.t === 'fix' && s.fixAt != null && !a ? `<div class="v21-opts three">${it.order2.map((j) => `<button class="v21-opt" data-act="v21-fixpick" data-arg="${j}" lang="ar">${esc(v21L(it.o[j]))}</button>`).join('')}</div>` : '';
-    return `${hint}${q}<div class="v21-sent" lang="ar">${words}</div>${fixer}`; }
+    return `${hint}${q}<div class="v21-sent" lang="ar">${words}</div>${fixRight}${fixer}`; }
   if (it.t === 'build') { const left = it.order.filter((j) => !s.line.includes(j));
     return `${hint}<div class="v21-line ${a ? (a.ok ? 'yay' : 'oops') : ''}" lang="ar">${s.line.map((j, n) => `<button class="v21-tile in" data-act="v21-unbuild" data-arg="${n}">${esc(v21L(it.w[j]))}</button>`).join('') || '<span class="v21-ph">…</span>'}</div>
       ${a && !a.ok ? `<p class="v21-right" lang="ar">${esc(v21L(it.w.join(' ')))}</p>` : ''}
@@ -13622,9 +13631,10 @@ function v21Render() {
   const skillRow = `<div class="v21-skrow"><span class="v21-sk" lang="ar"><i class="emo" aria-hidden="true">${info.em}</i>${s.mode === 'mix' ? esc(info.ar) : esc(g[0])}</span>${v21Feathers(sh.s, 'sm', sh.back)}${v21LvPips(s.up || s.lv)}</div>`;
   const back = s.back[k] ? `<div class="v21-backtag" lang="ar">↻ ${esc(v21L('مَهَارَةٌ [أَتْقَنْتَهَا|أَتْقَنْتِهَا] تَعُودُ لِلْمُرَاجَعَةِ'))} <span class="en">A mastered skill is back for a check</span></div>` : '';
   const up = s.up ? `<div class="v21-up" role="status">${falconSVG('celebrate', 'v21-upbird')}<div><b lang="ar">${esc(v21L('[اِرْتَقَيْتَ|اِرْتَقَيْتِ]'))} إِلَى المُسْتَوَى ${['', 'الأَوَّلِ', 'الثَّانِي', 'الثَّالِثِ'][s.up]}!</b>${v21LvPips(s.up)}<span class="en">Level up! Questions get a little harder now.</span></div></div>` : '';
+  const verdict = s.ans ? `<p class="v21-verdict ${s.ans.ok ? 'ok' : 'no'}" role="status" lang="ar">${s.ans.ok ? esc(v21L('✓ [أَحْسَنْتَ|أَحْسَنْتِ]!')) + ' <span class="en">Right!</span>' : '✗ ' + esc('الجَوَابُ الصَّحِيحُ بِالأَخْضَرِ') + ' <span class="en">Not quite: the right answer is in green</span>'}</p>` : '';
   const dots = `<div class="v20-dots v21-dots">${s.keys.map((_, n) => `<i class="${n < s.i ? 'on' : n === s.i ? 'now' : ''}"></i>`).join('')}</div>`;
   const next = s.ans ? `<button class="btn big gold v21-next" data-act="v21-next">${s.i + 1 >= s.keys.length ? 'النَّتِيجَةُ' : 'التَّالِي'} <span class="en">Next</span></button>` : (it.t === 'sort' || it.t === 'build') && v21Ready() ? `<button class="btn big rd-go" data-act="v21-check">${esc(v21L('[تَحَقَّقْ|تَحَقَّقِي]'))} <span class="en">Check</span></button>` : '';
-  openModal(`<div class="stack v21 v21-game ${s.mode}" style="--gc:${info.t ? info.t.col : '#2f8cff'}">${head}${dots}${skillRow}${back}${v21Body(it)}${up}${next}</div>`, () => { V21.s = null; try { renderHome(); } catch (e) { /* ignore */ } if (IL && IL.page === 'home') ilRender(); }, 'sheet');
+  openModal(`<div class="stack v21 v21-game ${s.mode}" style="--gc:${info.t ? info.t.col : '#2f8cff'}">${head}${dots}${skillRow}${back}${v21Body(it)}${verdict}${up}${next}</div>`, () => { V21.s = null; try { renderHome(); } catch (e) { /* ignore */ } if (IL && IL.page === 'home') ilRender(); }, 'sheet');
 }
 function v21Ready() { const s = V21.s; const it = s.it; return it.t === 'sort' ? Object.keys(s.placed).length === it.w.length : it.t === 'build' ? s.line.length === it.w.length : false; }
 /* every dialect the app offers has its own lines (grammar-v21-dialects.js); no Gulf fallback */
@@ -13713,7 +13723,7 @@ Object.assign(ACTIONS, {
   'v21-end': (j) => { const s = V21.s; if (!s || s.ans) return; s.sel = +j; v21Done(+j === 0); },
   'v21-word': (j) => { const s = V21.s; if (!s || s.ans) return; const it = s.it; j = +j;
     if (it.t === 'tap') { s.sel = j; s.fixAt = j; v21Done(j === it.a); return; }
-    if (s.fixAt != null) return; s.fixAt = it.bad; s.firstWrong = j !== it.bad; it.order2 = shuffle(it.o.map((_, n) => n)); v21Render(); },
+    if (s.fixAt != null) return; s.fixAt = it.bad; s.firstWrong = j !== it.bad; s.wordTap = j !== it.bad ? j : null; it.order2 = shuffle(it.o.map((_, n) => n)); v21Render(); },
   'v21-fixpick': (j) => { const s = V21.s; if (!s || s.ans) return; s.sel = +j; v21Done(+j === 0 && !s.firstWrong); },
   'v21-build': (j) => { const s = V21.s; if (!s || s.ans) return; s.line.push(+j); v21Render(); },
   'v21-unbuild': (n) => { const s = V21.s; if (!s || s.ans) return; s.line.splice(+n, 1); v21Render(); },
