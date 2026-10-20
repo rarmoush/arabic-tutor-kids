@@ -3324,6 +3324,7 @@ body:not(.show-en) .tr19-only{display:none!important}
 
 .q-bubble .ct-say{float:inline-end;margin-inline-start:8px;min-width:48px;min-height:48px;border-radius:50%;border:2px solid #ffc83d;background:#fff8e1;font-size:24px;line-height:1;cursor:pointer}
 .q-bubble .ct-say:active{transform:scale(.94)}
+.opt-tx.pic-opt{font-size:40px;line-height:1.1}
 
 </style>
 </head>
@@ -3510,7 +3511,7 @@ body:not(.show-en) .tr19-only{display:none!important}
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v21b.1";
+const APP_VERSION = "v21b.2";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -6267,12 +6268,15 @@ function buildUnitQuiz(u) {
   const vs = shuffle(u.vocab); const others = (v) => u.vocab.filter((x) => x !== v);
   const qs = [];
   const dl = curDialect(); const di = DIALECT_INFO[dl === 'fusha' ? 'emirati' : dl]; const dk = dl === 'fusha' ? 'emirati' : dl; const dw = (v) => dWord(u, u.vocab.indexOf(v), dk);
-  vs.slice(0, 3).forEach((v) => qs.push({ skill: 'vocab', prompt: `${v[3]} "${v[2]}"`, hint: 'Pick the Fusha word', right: v[0], opts: shuffle([v[0]].concat(sample(others(v), 3).map((x) => x[0]))) }));
+  const hasPic = (v) => typeof objArtHTML !== 'function' || !!objArtHTML(v[3], '', 'pa-inl'); vs.sort((x, y) => hasPic(y) - hasPic(x));
+  vs.slice(0, 3).forEach((v) => qs.push(!hasPic(v) ? { skill: 'vocab', prompt: `${di.flag} ${dw(v)}`, hint: `A word in ${di.short || di.en}. What is it in Fusha?`, right: v[0], opts: shuffle([v[0]].concat(sample(others(v), 3).map((x) => x[0]))) } : { skill: 'vocab', prompt: `${v[3]} "${v[2]}"`, hint: 'Pick the Fusha word', right: v[0], opts: shuffle([v[0]].concat(sample(others(v), 3).map((x) => x[0]))) }));
   const g = vs.slice(3).find((v) => stripHarakat(v[0]) !== stripHarakat(dw(v))) || vs[3];
   qs.push({ skill: 'vocab', prompt: `${di.flag} ${dw(g)}`, hint: `A word in ${di.short || di.en}. What is it in Fusha?`, right: g[0], opts: shuffle([g[0]].concat(sample(others(g), 3).map((x) => x[0]))) });
-  const f = vs.slice(3).find((v) => v !== g) || vs[4]; qs.push({ skill: 'reading', prompt: `📘 ${f[0]}`, hint: 'A Fusha word. What does it mean?', right: f[2], en: true, opts: shuffle([f[2]].concat(sample(others(f), 3).map((x) => x[2]))) });
+  const pv = (v) => others(v).filter(hasPic); const f = vs.slice(3).find((v) => v !== g && hasPic(v) && pv(v).length >= 3) || vs.find((v) => v !== g && hasPic(v) && pv(v).length >= 3) || vs[4];
+  qs.push(hasPic(f) && pv(f).length >= 3 ? { skill: 'reading', prompt: `📘 ${f[0]}`, hint: 'A Fusha word. Pick its picture', right: f[3], pics: true, opts: shuffle([f[3]].concat(sample(pv(f), 3).map((x) => x[3]))) }
+    : { skill: 'reading', prompt: `📘 ${f[0]}`, hint: 'A Fusha word. Pick the same word', right: f[0], opts: shuffle([f[0]].concat(sample(others(f), 3).map((x) => x[0]))) });
   const li = (Math.random() * u.dialogue.length) | 0; const line = u.dialogue[li];
-  qs.push({ skill: 'reading', prompt: dLine(u, li, dl), hint: 'From the dialogue: what does this mean?', right: line[3], en: true, opts: shuffle([line[3]].concat(sample(u.dialogue.filter((l) => l !== line), Math.min(3, u.dialogue.length - 1)).map((l) => l[3]))) });
+  qs.push({ skill: 'reading', prompt: `${di.flag} ${dLine(u, li, dk)}`, hint: 'From the dialogue: pick the same sentence in Fusha', right: line[2], opts: shuffle([line[2]].concat(sample(u.dialogue.filter((l) => l !== line && l[2] !== line[2]), Math.min(3, u.dialogue.length - 1)).map((l) => l[2]))) });
   return { qs, i: 0, score: 0, answered: null, done: false };
 }
 function feedbackBar(ok, rightHtml, nextBtn, extra) {
@@ -6293,7 +6297,7 @@ function renderUnitQuiz() {
   const q = z.qs[z.i]; const a = z.answered; const ok = a !== null && q.opts[a] === q.right;
   return `<div class="q-progress"><div class="progress grow"><div style="width:${Math.round(100 * (z.i + (a !== null ? 1 : 0)) / z.qs.length)}%"></div></div><span class="q-count">${z.i + 1}/${z.qs.length}</span></div>
     <div class="q-prompt">${mascotSVG(a === null ? 'think sm' : ok ? 'cheer sm' : 'oops sm')}<div class="q-bubble"><div class="q-text">${esc(q.prompt)}</div><p class="en en-block">${esc(q.hint)}</p></div></div>
-    <div class="opts">${q.opts.map((o, i) => { let cls = ''; if (a !== null) { if (o === q.right) cls = 'right'; else if (i === a) cls = 'wrong'; else cls = 'dim'; } return `<button class="opt ${cls}" data-act="unit-quiz-answer" data-arg="${i}" ${a !== null ? 'disabled' : ''} ${q.en ? 'dir="ltr"' : ''}><span class="opt-key">${i + 1}</span><span class="opt-tx ${q.en ? 'en-opt' : ''}">${esc(o)}</span></button>`; }).join('')}</div>
+    <div class="opts">${q.opts.map((o, i) => { let cls = ''; if (a !== null) { if (o === q.right) cls = 'right'; else if (i === a) cls = 'wrong'; else cls = 'dim'; } return `<button class="opt ${cls}" data-act="unit-quiz-answer" data-arg="${i}" ${a !== null ? 'disabled' : ''} ${q.en ? 'dir="ltr"' : ''}><span class="opt-key">${i + 1}</span><span class="opt-tx ${q.en ? 'en-opt' : ''} ${q.pics ? 'pic-opt' : ''}">${esc(o)}</span></button>`; }).join('')}</div>
     ${a !== null ? feedbackBar(ok, esc(q.right), `<button class="btn ${ok ? 'good' : 'bad'}" data-act="unit-quiz-next">التَّالِي <span class="en">Next</span></button>`) : ''}`;
 }
 function unitQuizAnswer(i) {
@@ -13777,7 +13781,7 @@ Object.assign(ACTIONS, {
    a Fusha voice. Reading questions (skill 'reading') speak the instruction only, never the target word (it would give the answer). */
 function ctPlan(q) {
   const dl = curDialect(); const pick = G('اِخْتَرْ', 'اِخْتَارِي');
-  if (q.skill === 'reading') return [[G('اِقْرَأ', 'اِقْرَئِي') + ' وَ' + pick + ' المَعْنَى', dl]];
+  if (q.skill === 'reading') return [[G('اِقْرَأ', 'اِقْرَئِي') + ' وَ' + pick + (q.pics ? ' الصُّورَة' : ' الجُمْلَة بِالفُصْحَى'), dl]];
   const parts = [];
   if (/^\S+\s/.test(q.prompt) && !/[a-zA-Z]/.test(q.prompt)) { parts.push([pick + ' الكَلِمَة بِالفُصْحَى', dl]); parts.push([q.prompt.replace(/^\S+\s/, ''), dl]); }
   else parts.push([pick + ' الكَلِمَة بِالفُصْحَى', dl]);
