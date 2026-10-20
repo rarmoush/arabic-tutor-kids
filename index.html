@@ -3327,6 +3327,80 @@ body:not(.show-en) .tr19-only{display:none!important}
 .calm2-menu{background:#e6f4fc}
 .calm2-onhome .il-top{display:none!important}
 
+/* v22 DEMO · start game (diagnostic). Bright, calm, no alarm colours: every tap gets the same soft blue "picked" ring. */
+.dg{--dg-sky:#e9f6ff;--dg-blue:#2f8cff;--dg-sun:#ffc83d;--dg-leaf:#2fae6a;gap:12px;text-align:center}
+.modal.dg-sheet .modal-box,.dg-sheet #modal-box{background:linear-gradient(180deg,#fff8e1 0%,#e9f6ff 100%)}
+.dg-top{display:flex;align-items:center;gap:10px}.dg-top .x-btn{margin-inline-start:auto}
+.dg-mini{width:46px;height:46px}.dg-bird{flex:none}
+.dg-trail{display:flex;gap:6px;flex:1;justify-content:center}.dg-trail i{width:12px;height:12px;border-radius:50%;background:#d7e6ff}
+.dg-trail i.dg-d{background:var(--dg-sun)}.dg-trail i.dg-n{background:var(--dg-blue);transform:scale(1.25)}
+.dg-tag{align-self:center;background:#fff;border-radius:999px;padding:4px 14px;font-weight:600;color:#3a4a6b;box-shadow:0 2px 0 #0001}
+.dg-ins{font-size:1.25rem;font-weight:600;color:#23324f;margin:2px 0}
+.dg-q{display:flex;align-items:center;justify-content:center;gap:12px;min-height:90px;font-family:'Noto Naskh Arabic',serif;font-size:2.4rem;font-weight:700;color:#1d2b4a}
+.dg-q.say{font-family:inherit;font-size:1.3rem;background:#fff;border-radius:20px;padding:10px 14px}
+.dg-read{font-size:2.6rem;background:#fff;border-radius:22px;padding:6px 26px;box-shadow:0 4px 0 #0000000f}
+.dg-hear{border:0;background:var(--dg-blue);color:#fff;border-radius:50%;width:58px;height:58px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 0 #1d63c4}
+.dg-hear .ico{width:30px;height:30px}.dg-hear.big{width:110px;height:110px}.dg-hear.big .ico{width:56px;height:56px}.dg-hear.sm{width:40px;height:40px;flex:none}.dg-hear.sm .ico{width:22px;height:22px}
+.dg-opts{display:grid;gap:10px;grid-template-columns:1fr 1fr}.dg-opts.n3{grid-template-columns:1fr 1fr 1fr}
+.dg-opt{font-family:'Noto Naskh Arabic',serif;font-size:1.9rem;font-weight:700;min-height:78px;border:0;border-radius:20px;background:#fff;color:#1d2b4a;box-shadow:0 5px 0 #c9dcff;cursor:pointer}
+.dg-pics{display:grid;gap:10px;grid-template-columns:1fr 1fr}.dg-pics.n3{grid-template-columns:1fr 1fr 1fr}
+.dg-pic{border:0;border-radius:22px;background:#fff;min-height:104px;box-shadow:0 5px 0 #c9dcff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.dg-pic .emo{font-size:52px}
+.dg-opt.picked,.dg-pic.picked,.dg-wd.picked{outline:4px solid var(--dg-blue);outline-offset:2px;background:#eaf3ff}
+.dg-ask{font-size:1.3rem;font-weight:600}.dg-sent{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.dg-wd{font-family:'Noto Naskh Arabic',serif;font-size:1.8rem;border:0;border-radius:16px;background:#fff;padding:8px 16px;box-shadow:0 4px 0 #c9dcff;cursor:pointer}
+.dg-spq{gap:16px}.dg-line{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.dg-slot{width:46px;height:56px;border-radius:14px;border:3px dashed #9cc3ff;background:#ffffffb0;display:inline-flex;align-items:center;justify-content:center;font-family:'Noto Naskh Arabic',serif;font-size:1.9rem;font-weight:700}
+.dg-slot.full{border:0;background:var(--dg-sun);color:#3b2a00;cursor:pointer;box-shadow:0 4px 0 #e0a800}
+.dg-word{min-height:2.6rem;font-family:'Noto Naskh Arabic',serif;font-size:2rem;font-weight:700;color:var(--dg-leaf)}
+.dg-tiles{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.dg-tile{width:60px;height:66px;border:0;border-radius:16px;background:#fff;font-family:'Noto Naskh Arabic',serif;font-size:2rem;font-weight:700;box-shadow:0 5px 0 #c9dcff;cursor:pointer}
+.dg-dk{margin-top:6px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;width:100%;min-height:72px;border:0;border-radius:24px;background:#d9f7e6;color:#145c37;font-size:1.45rem;cursor:pointer;box-shadow:0 5px 0 #9fe0bd}
+.dg-dk b{font-weight:700}.dg-dk-ic{font-size:1.7rem}.dg-dk .en{flex-basis:100%;font-size:.8rem}
+.dg.dg-go .dg-opts,.dg.dg-go .dg-pics,.dg.dg-go .dg-sent{transition:opacity .3s;opacity:.55}
+.dg-bub{position:relative;background:#fff;border-radius:22px;padding:12px 14px;display:flex;gap:10px;align-items:center;text-align:start;box-shadow:0 4px 0 #0000000d}
+.dg-bub p{margin:0;font-size:1.2rem;line-height:1.7;flex:1}
+.dg-invbird,.dg-endbird{width:150px;height:150px;margin:0 auto}
+.dg-inv h2{margin:4px 0 0}.dg-sub{color:#3a4a6b;margin:0}
+.dg-end{position:relative}.dg-endsky i{position:absolute;width:16px;height:16px;border-radius:50%;background:var(--dg-sun);opacity:.7}
+.dg-endsky i:nth-child(1){top:20px;inset-inline-start:30px}.dg-endsky i:nth-child(2){top:60px;inset-inline-end:40px;background:#7ad96b}.dg-endsky i:nth-child(3){top:120px;inset-inline-start:60px;background:#7cc4ff}
+.dg-endnext{font-size:1.2rem}.dg-endnext b{color:var(--dg-blue)}
+.dg-card{display:flex;align-items:stretch;gap:6px;margin:10px 14px 4px;background:linear-gradient(90deg,#fff3c4,#dff1ff);border-radius:22px;box-shadow:0 4px 0 #0000000f}
+.dg-card-go{flex:1;display:flex;align-items:center;gap:10px;border:0;background:transparent;padding:8px 12px;text-align:start;cursor:pointer}
+.dg-card-go b{display:block;font-size:1.15rem}.dg-card-go small{display:block;color:#3a4a6b}.dg-cardbird{width:48px;height:48px;flex:none}
+.dg-card-x{border:0;background:transparent;font-size:1.1rem;color:#6b7a99;padding:0 14px;cursor:pointer}
+.jv-isle{position:relative}.dg-chest{position:absolute;bottom:14px;inset-inline-end:4px;font-size:22px;background:#fffbe8;border-radius:50%;width:40px;height:40px;z-index:2;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 0 #0002}
+.dg-skipnote{background:#eaf3ff;border-radius:16px;padding:8px 12px;margin:6px 0}
+.dg-pcard h2{margin-top:0}.dg-pk{border-top:1px solid #0001;padding-top:10px;margin-top:10px;text-align:start}
+.dg-pk h3{margin:0 0 4px;display:flex;align-items:center;gap:8px}.dg-pk h4{margin:10px 0 4px}
+.dg-band{background:#fff8e1;border-radius:12px;padding:8px 10px}.dg-band i{font-style:normal;color:#6b5a1a;font-size:.9em}
+.dg-list{margin:0;padding-inline-start:18px}.dg-list li{margin:4px 0}.dg-work li b{display:block}.dg-tip{display:block;color:#23324f}
+/* the parent area normally always shows English; this note follows the translation setting (Arabic first) */
+body:not(.show-en) #dg-pcard .en{display:none!important}
+body.show-en #dg-pcard .en{font-size:.8em;opacity:.8}body.show-en #dg-pcard .en.en-block{display:block}
+#modal-box .dg button.dg-tile,#modal-box .dg button.dg-opt,#modal-box .dg button.dg-pic,#modal-box .dg button.dg-wd{background:#fff;box-shadow:0 5px 0 #c9dcff;color:#1d2b4a}
+#modal-box .dg button.picked{background:#eaf3ff;outline:4px solid #2f8cff}
+#modal-box .dg button.dg-slot.full{background:#ffc83d}
+.dg-pics .rd-pic{max-width:100%}.dg-pics .rd-pic img,.dg-pics .rd-pic svg{max-width:96px;max-height:96px}.dg-pic{overflow:hidden;min-width:0;padding:6px}
+.dg-chest img{width:30px;height:auto}
+#modal-box .dg button.dg-tile,#modal-box .dg button.dg-opt,#modal-box .dg button.dg-wd{background:#f3f8ff;border:2px solid #c9dcff}
+#modal-box .dg button.dg-pic{background:#f7fbff;border:2px solid #e1ecff}
+
+/* v23 DEMO · school unit pack (bright + calm, same tokens as v20/v21) */
+.sc23-sub{margin:0;color:#6b5b4f;font-size:15px}
+.sc23-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sc23-tile{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 8px;border-radius:20px;border:2px solid #ffe0cc;background:#fff8f3;font:inherit;cursor:pointer;min-height:118px;justify-content:center}
+.sc23-tile b{font-size:16px;line-height:1.4;text-align:center}
+.sc23-em{font-size:34px;line-height:1}
+.sc23-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.sc23-two.three{grid-template-columns:1fr 1fr 1fr}
+.sc23-to{display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 6px;border-radius:22px;border:2px solid #ffd7b8;background:#fffaf5;font:inherit;font-size:18px;cursor:pointer}
+.sc23-to .sc23-em{font-size:44px}
+.sc23-paper{background:#fffdf7;border:2px dashed #f3c9a8;border-radius:18px;padding:12px 16px;font-family:'Noto Naskh Arabic',serif;font-size:18px;line-height:1.9}
+.sc23-paper p{margin:0}.sc23-head{font-weight:700}.sc23-sign{text-align:left;font-weight:700}.sc23-date{text-align:left;color:#8a7766;font-size:15px}
+.sc23-paper.final{border-style:solid;box-shadow:0 6px 18px rgba(255,138,101,.15)}
+.sc23-why .v21-opt{font-size:16px;line-height:1.6;text-align:right}
+.sc23-pcard .v20-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+
 .q-bubble .ct-say{float:inline-end;margin-inline-start:8px;min-width:48px;min-height:48px;border-radius:50%;border:2px solid #ffc83d;background:#fff8e1;font-size:24px;line-height:1;cursor:pointer}
 .q-bubble .ct-say:active{transform:scale(.94)}
 .opt-tx.pic-opt{font-size:40px;line-height:1.1}
@@ -3516,7 +3590,7 @@ body:not(.show-en) .tr19-only{display:none!important}
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v21b.2";
+const APP_VERSION = "v22";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -10237,7 +10311,7 @@ function hwStart(d, g) { return [hwL('ask', 'show', d, g)]; }
 
 
 /* GENERATED by gen-read-refs.mjs from src/skills.js READ_STORIES — do not edit. Bare Arabic (no harakat, no punctuation). */
-const READ_REFS = ["أحب قصص المغامرات والفضاء","أذهب إليها كل يوم ثلاثاء مع صفي","أنا آكل تمرة حلوة","استعرت اليوم كتابا عن رائد فضاء عربي","بعد أسبوع صارت الحديقة نظيفة وجميلة","بنيت قلعة من الرمل مع أختي","ثم سبحنا في الماء الأزرق","جدي يقطف التمر","جمعوا الزجاجات والأكياس في سلة التدوير","رأى رمال سيارة سريعة","زرعت مريم شجرة صغيرة وسقاها سالم","سأقرؤه لأخي الصغير قبل النوم","ساعد رمال السيارة فصارا صديقين","شكرا يا جدي","صقور سعيد جدا","صقور طائر صغير","عدنا إلى البيت متعبين وسعداء","علقت السيارة في الرمل","على النخلة تمر كثير","في البستان نخلة عالية","في الصحراء جمل اسمه رمال","في مدرستي مكتبة كبيرة وهادئة","قال الجمل أنا بطيء لكني قوي","قال الجيران شكرا لكم يا أبطال البيئة","قرر أطفال الحي أن ينظفوا الحديقة","كان الجو حارا والشمس ساطعة","هذا صقور","هو يطير فوق البحر","يرى صقور سفينة كبيرة","يوم الجمعة ذهبنا إلى الشاطئ"];
+const READ_REFS = ["أبي الحبيب أتمنى أن تكون بخير وبصحة جيدة","أحب قصص المغامرات والفضاء","أذهب إليها كل يوم ثلاثاء مع صفي","أكتب لك هذه الرسالة لأقول لك شكرا على كل ما تفعله من أجلنا","أنا آكل تمرة حلوة","أنت تعمل كثيرا لتعطينا الطعام والملابس والتعليم","أنت كالقمر الذي يضيء لي الطريق","استعرت اليوم كتابا عن رائد فضاء عربي","بعد أسبوع صارت الحديقة نظيفة وجميلة","بنيت قلعة من الرمل مع أختي","ثم سبحنا في الماء الأزرق","جدي يقطف التمر","جمعوا الزجاجات والأكياس في سلة التدوير","رأى رمال سيارة سريعة","زرعت مريم شجرة صغيرة وسقاها سالم","سأقرؤه لأخي الصغير قبل النوم","ساعد رمال السيارة فصارا صديقين","شكرا لك يا أبي أدعو الله أن يحفظك دائما","شكرا يا جدي","صقور سعيد جدا","صقور طائر صغير","عدنا إلى البيت متعبين وسعداء","علقت السيارة في الرمل","على النخلة تمر كثير","في البستان نخلة عالية","في الصحراء جمل اسمه رمال","في مدرستي مكتبة كبيرة وهادئة","قال الجمل أنا بطيء لكني قوي","قال الجيران شكرا لكم يا أبطال البيئة","قرر أطفال الحي أن ينظفوا الحديقة","كان الجو حارا والشمس ساطعة","هذا صقور","هو يطير فوق البحر","وتساعدني دائما وتشجعني على الدراسة والنجاح","يرى صقور سفينة كبيرة","يوم الجمعة ذهبنا إلى الشاطئ"];
 
 /* v20: pronunciation stars. Azure Speech pronunciation assessment (REST, short audio).
    Locales: the docs list only ar-SA and ar-EG for pronunciation assessment (no ar-AE / ar-LB / ar-SY / ar-JO), and Arabic gets
@@ -13785,6 +13859,449 @@ Object.assign(ACTIONS, {
     <div class="calm-grid">${calmMenuItems().map((x) => `<button class="calm-item" data-act="calm2-go" data-arg="${x.act}"><span class="calm-ic" aria-hidden="true">${x.ic === '@falcon' ? falconHeadHTML(currentKid, 'sm') : x.ic}</span><b lang="ar">${esc(x.ar)}</b><span class="en">${esc(x.en)}</span>${x.extra ? `<i class="calm-n">${x.extra}</i>` : ''}</button>`).join('')}</div></div>`, null, 'sheet'); },
   'calm2-go': (a) => { closeModal(); if (a.startsWith('il-tab:')) { ACTIONS['il-tab'](a.slice(7)); return; } if (a.startsWith('il-open:')) { ilOpen(a.slice(8)); return; } if (ACTIONS[a]) ACTIONS[a](''); }
 });
+
+/* =========================================================
+   v22 · لُعْبَةُ البِدَايَةِ: a ~3-minute placement ("diagnostic") with Saqqour. Kept in its own file so it can be ported.
+   - 11 adaptive questions over 5 strands: letters + sounds · reading (Fusha) · spelling from tiles (Fusha) · listening (child's
+     dialect) · grammar (the 16 v21 topics, one per island).
+   - Difficulty = an island index 0..15 (the journey). Start in the middle (7). Right → jump harder, miss or "مَا أَعْرِفُ بَعْدُ"
+     → jump easier. Jumps shrink 4 · 3 · 2 · 2 · 1 … (a staircase across the islands).
+   - No scores, no right/wrong marks or sounds, no red. Every tap is answered the same calm way and the next question comes.
+   - At the end (quietly): v21 starting levels per skill (adapt-v21.js keeps refining them from daily practice), the journey
+     starts at the first island not clearly known, skipped islands are marked passed (stars 1) and their chests stay openable.
+   - ONE new optional field per child: p.diag = { v, inv, d, th, start, skip:[unitId], sk:{strand: 0..15}, n, dk, sec }.
+     Older saves have no p.diag; viewing never writes it.
+   ========================================================= */
+const DG = { s: null, fresh: {} };
+const DG_SEQ = ['sounds', 'reading', 'gram', 'spell', 'listen', 'letters', 'reading', 'gram', 'spell', 'listen', 'gram'];
+const DG_STEP = [4, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1];
+const DG_START = 7; const DG_MAX = 15;
+/* v22 live (gentler): the journey starts 2–3 islands below the estimate, and the game never skips more than half the islands */
+const DG_BELOW = 2; const DG_SKIP_MAX = 8;
+/* strand → v21 skill key, name, how-to-help tip (Fusha for parents, English only when translation is on) */
+const DG_STRAND = {
+  lettersounds: { ar: 'الحُرُوفُ وَالأَصْوَاتُ', en: 'Letters and sounds', em: '🔤', tip: ['اِلْعَبُوا «أَيُّ حَرْفٍ تَسْمَعُ؟»: قُولُوا كَلِمَةً مِنَ البَيْتِ، وَلْيَذْكُرْ طِفْلُكُمْ حَرْفَهَا الأَوَّلَ.', 'Play "which letter do you hear?": say a word from home and let your child name its first letter.'] },
+  reading: { ar: 'القِرَاءَةُ بِالفُصْحَى', en: 'Reading (Fusha)', em: '📖', tip: ['اِقْرَؤُوا مَعًا كَلِمَةً عَرَبِيَّةً وَاحِدَةً كُلَّ يَوْمٍ مِنْ عُلْبَةٍ أَوْ لَافِتَةٍ.', 'Read one Arabic word a day together, from a box, a label or a sign.'] },
+  spell: { ar: 'الكِتَابَةُ (تَهْجِئَةُ الكَلِمَاتِ)', en: 'Writing (spelling words)', em: '✍️', tip: ['اُبْنُوا كَلِمَةً قَصِيرَةً بِحُرُوفٍ مِنْ وَرَقٍ أَوْ حُرُوفٍ مِغْنَاطِيسِيَّةٍ عَلَى الثَّلَّاجَةِ.', 'Build a short word with paper or fridge-magnet letters.'] },
+  listen: { ar: 'الاِسْتِمَاعُ بِاللَّهْجَةِ', en: 'Listening (dialect)', em: '👂', tip: ['تَحَدَّثُوا بِلَهْجَتِكُمْ فِي لَحَظَاتٍ يَوْمِيَّةٍ قَصِيرَةٍ، فِي المَطْبَخِ أَوْ فِي السُّوقِ، وَسَمُّوا الأَشْيَاءَ.', 'Chat in your dialect in short everyday moments, in the kitchen or at the shop, naming things.'] },
+  gram: { ar: 'القَوَاعِدُ', en: 'Grammar', em: '🧩', tip: ['تَدَرَّبُوا عَلَى «%T» بِأَمْثِلَةٍ مِنَ البَيْتِ، جُمْلَةً أَوْ جُمْلَتَيْنِ فِي اليَوْمِ.', 'Practise "%E" with examples from home, one or two sentences a day.'] }
+};
+const dgStrandOf = (k) => (k === 'sounds' || k === 'letters' ? 'lettersounds' : k);
+const DG_SKILL = { sounds: 'sounds', letters: 'letters', reading: 'reading', spell: 'spelling', listen: 'speaking' };
+/* dialect lines (speaking/listening). Fusha lines are for reading. [boy|girl] forms via gform. */
+const DG_INV = {
+  emirati: 'يَلَّا نِلْعَب لُعْبَة صْغَيْرَة، ثَلَاث دَقَايِق بَس، عَشَان أَعْرِف مِن وِين نِبْدَا!',
+  saudi: 'يَلَّا نِلْعَب لُعْبَة صْغِيرَة، ثَلَاث دَقَايِق بَس، عَشَان أَعْرِف مِن وِين نِبْدَا!',
+  lebanese: 'يَلَّا نِلْعَب لِعْبِة زْغِيرِة، تْلَات دَقَايِق بَس، تَا أَعْرِف مْنِين نْبَلِّش!',
+  syrian: 'يَلَّا نِلْعَب لِعْبِة زْغِيرِة، تْلَات دَقَايِق بَس، مِشَان أَعْرِف مْنِين نْبَلِّش!',
+  jordanian: 'يَلَّا نِلْعَب لُعْبِة زْغِيرِة، ثَلَاث دَقَايِق بَس، عَشَان أَعْرِف مِن وِين نِبْدَا!',
+  egyptian: 'يَلَّا نِلْعَب لِعْبَة صُغَيَّرَة، تَلَات دَقَايِق بَس، عَشَان أَعْرَف نِبْدَأ مِنِين!',
+  fusha: 'هَيَّا نَلْعَبُ لُعْبَةً قَصِيرَةً، ثَلَاثَ دَقَائِقَ فَقَطْ، لِأَعْرِفَ مِنْ أَيْنَ نَبْدَأُ!'
+};
+const DG_HEAR = {
+  emirati: '[سْمَع|سْمَعِي] وِ[اخْتَار|اخْتَارِي] الصُّورَة', saudi: '[اسْمَع|اسْمَعِي] وِ[اخْتَار|اخْتَارِي] الصُّورَة',
+  lebanese: '[اِسْمَاع|اِسْمَعِي] وْ[نَقِّي|نَقِّي] الصُّورَة', syrian: '[اِسْمَاع|اِسْمَعِي] وْ[نَقِّي|نَقِّي] الصُّورَة', jordanian: '[اِسْمَع|اِسْمَعِي] وْ[نَقِّي|نَقِّي] الصُّورَة',
+  egyptian: '[اِسْمَع|اِسْمَعِي] وِ[اخْتَار|اخْتَارِي] الصُّورَة', fusha: '[اِسْمَعْ|اِسْمَعِي] وَ[اخْتَرِ|اخْتَارِي] الصُّورَةَ'
+};
+const DG_END = {
+  emirati: 'شُكْرًا [يَا بَطَل|يَا بَطَلَة]! الحِين أَعْرِف شُو [تَعْرِف|تَعْرْفِين]، وبَنِتْعَلَّم سَوَا خَطْوَة خَطْوَة.',
+  saudi: 'شُكْرًا [يَا بَطَل|يَا بَطَلَة]! الحِين عَرَفْت وِش [تَعْرِف|تَعْرِفِين]، وبِنِتْعَلَّم سَوَا خَطْوَة خَطْوَة.',
+  lebanese: 'مِرْسِي [يَا بَطَل|يَا بَطَلِة]! هَلَّق عْرِفْت شُو [بْتَعْرِف|بْتَعْرْفِي]، وْرَح نِتْعَلَّم سَوَا خَطْوِة خَطْوِة.',
+  syrian: 'يِسْلَمُو [يَا بَطَل|يَا بَطَلِة]! هَلَّق عْرِفْت شُو [بْتَعْرِف|بْتَعْرْفِي]، وْرَح نِتْعَلَّم سَوَا خَطْوِة خَطْوِة.',
+  jordanian: '[يِعْطِيك|يِعْطِيكِ] العَافْيِة [يَا بَطَل|يَا بَطَلِة]! هَسَّا عْرِفْت شُو [بْتَعْرِف|بْتَعْرْفِي]، وْرَح نِتْعَلَّم مَع بَعْض خَطْوِة خَطْوِة.',
+  egyptian: 'شُكْرًا [يَا بَطَل|يَا بَطَلَة]! دِلْوَقْتِي عْرِفْت [بِتِعْرَف|بِتِعْرَفِي] إِيه، وهَنِتْعَلِّم مَع بَعْض خَطْوَة خَطْوَة.',
+  fusha: 'شُكْرًا [يَا بَطَلُ|يَا بَطَلَةُ]! عَرَفْتُ الآنَ مَا [تَعْرِفُهُ|تَعْرِفِينَهُ]، وَسَنَتَعَلَّمُ مَعًا خُطْوَةً خُطْوَةً.'
+};
+const DG_DK = 'مَا أَعْرِفُ بَعْدُ';
+const dgL = (s) => gform(String(s || ''), v20G());
+const dgDia = () => { const d = curDialect(); return DG_INV[d] ? d : 'emirati'; };
+const dgPeek = (p) => (p && p.diag && typeof p.diag === 'object' && !Array.isArray(p.diag) ? p.diag : null);
+function dgData(p) { p = p || P(); let d = p.diag; if (!d || typeof d !== 'object' || Array.isArray(d)) d = p.diag = { v: 1 };
+  if (!Array.isArray(d.skip)) d.skip = []; d.skip = d.skip.filter((id) => UNITS.some((u) => u.id === id)); if (!d.sk || typeof d.sk !== 'object' || Array.isArray(d.sk)) d.sk = {}; return d; }
+const dgLv = (x) => (x < 5 ? 1 : x < 10 ? 2 : 3);
+/* approximate grade band from the island index (school Arabic for native/heritage learners; a guide only) */
+function dgBand(x) { return x < 4 ? ['الرَّوْضَةُ إِلَى الصَّفِّ الأَوَّلِ', 'KG to Grade 1'] : x < 8 ? ['الصَّفُّ الأَوَّلُ إِلَى الثَّانِي', 'Grades 1–2'] : x < 12 ? ['الصَّفُّ الثَّالِثُ إِلَى الرَّابِعِ', 'Grades 3–4'] : ['الصَّفُّ الخَامِسُ فَمَا فَوْقُ', 'Grade 5 and up']; }
+/* ---------- items (built from the island at the probe index) ---------- */
+const dgWords = (idx) => { const u = UNITS[idx]; return u.vocab.map((_, n) => playWord(u, n)).filter((w) => w.em); };
+function dgNear(idx, f) { for (const d of [0, -1, 1, -2, 2, -3, 3]) { const j = idx + d; if (j < 0 || j > DG_MAX) continue; const ws = dgWords(j).filter(f); if (ws.length) return ws; } return dgWords(idx); }
+function dgPic(idx, used, f) { const ws = dgNear(idx, (w) => !used.includes(w.key) && (!f || f(w))); const w = ws[Math.floor(Math.random() * ws.length)]; used.push(w.key);
+  const pool = UNITS.flatMap((u) => u.vocab.map((_, n) => playWord(u, n))).filter((x) => x.em && x.em !== w.em && x.key !== w.key);
+  return [w].concat(distract(w, pool, idx < 4 ? 1 : 2)); }
+function dgItem(k, idx, used) {
+  const lv = dgLv(idx);
+  if (k === 'sounds' || k === 'letters') { const it = v21Item(k, lv, used); return Object.assign({ t: 'pick' }, it, { hint: it.hint }); }
+  if (k === 'reading') { const o = dgPic(idx, used, (w) => !/\s/.test(w.ar.trim()) || idx >= 6); const w = o[0]; return { t: 'pic', o, read: idx >= 12 ? stripHarakat(w.ar) : w.ar, hint: '[اِقْرَأْ وَاخْتَرِ|اِقْرَئِي وَاخْتَارِي] الصُّورَةَ' }; }
+  if (k === 'listen') { const o = dgPic(idx, used); return { t: 'pic', o, hear: o[0].dl || o[0].ar, dia: 1, hint: DG_HEAR[dgDia()] }; }
+  if (k === 'spell') { const max = idx < 4 ? 3 : idx < 8 ? 4 : idx < 12 ? 5 : 7; const min = idx < 4 ? 2 : idx < 8 ? 3 : 4;
+    const okw = (w) => { const s = stripHarakat(w.ar).trim(); return !/[\s،.!؟]/.test(s) && [...s].length >= min && [...s].length <= max; };
+    let ws = dgNear(idx, (w) => okw(w) && !used.includes(w.key)); if (!ws.some(okw)) ws = UNITS.flatMap((u, j) => dgWords(j)).filter(okw);
+    const w = ws[Math.floor(Math.random() * ws.length)]; used.push(w.key); const L = [...stripHarakat(w.ar).trim()];
+    const extra = sample('بتنمسلرد'.split('').filter((c) => !L.includes(c)), idx < 8 ? 0 : idx < 12 ? 1 : 2);
+    return { t: 'spell', w, L, tiles: shuffle(L.map((c, j) => ({ c, j })).concat(extra.map((c, j) => ({ c, j: 100 + j })))), line: [], hint: '[اُكْتُبِ|اُكْتُبِي] الكَلِمَةَ بِالحُرُوفِ' }; }
+  if (k === 'gram') { const t = GR_BY_UNIT[UNITS[idx].id] || GR_TOPICS[0]; const want = [1, 2, 2, 3][idx % 4];
+    const c = t.items.filter((x) => x.t === 'pick' || x.t === 'tap' || x.t === 'end'); const near = [want, want - 1, want + 1, 1, 2, 3].find((l) => c.some((x) => x.lv === l));
+    const it = JSON.parse(JSON.stringify(c.filter((x) => x.lv === near)[Math.floor(Math.random() * c.filter((x) => x.lv === near).length)]));
+    it.topic = t.id; if (it.t === 'end') { it.o = it.c.map((x) => x[1]); it.t = 'pick'; }
+    if (it.t === 'pick') return Object.assign(it, { hint: '[اِخْتَرِ|اِخْتَارِي] الكَلِمَةَ المُنَاسِبَةَ' });
+    return Object.assign(it, { hint: '[اِضْغَطْ|اِضْغَطِي] عَلَى الكَلِمَةِ' }); }
+  return null;
+}
+/* ---------- the session ---------- */
+function dgStart() {
+  if (!currentKid) return; closeModal();
+  DG.s = { i: 0, pos: DG_START, ans: [], used: [], t0: Date.now(), tq: Date.now(), it: null, busy: false };
+  dgNext(true);
+}
+function dgNext(first) {
+  const s = DG.s; if (!s) return; if (!first) s.i++; s.busy = false;
+  const long = Date.now() - s.t0 > 210000 && s.i >= 8; /* never much more than ~3.5 minutes */
+  if (s.i >= DG_SEQ.length || long) { dgFinish(); return; }
+  const k = DG_SEQ[s.i]; s.k = k; s.it = dgItem(k, s.pos, s.used); s.tq = Date.now();
+  if (s.it.t === 'pick') s.it.order = shuffle(s.it.o.map((_, j) => j));
+  if (s.it.t === 'pic') s.it.order = shuffle(s.it.o.map((_, j) => j));
+  dgRender(); if (s.it.hear) setTimeout(() => dgSay(), 300);
+}
+function dgSay() { const it = DG.s && DG.s.it; if (!it) return; try { if (it.t === 'spell') speak(it.w.ar, 'fusha', { quiet: true }); else if (it.hear) speak(it.hear, it.dia ? curDialect() : 'fusha', { quiet: true }); } catch (e) { /* audio is optional */ } }
+/* one answer: the same calm response for right, wrong and "not yet" */
+function dgAnswer(ok, dk) {
+  const s = DG.s; if (!s || s.busy) return; s.busy = true;
+  s.ans.push({ k: s.k, x: s.pos, ok: !!ok, dk: !!dk, ms: Date.now() - s.tq, topic: s.it && s.it.topic });
+  const st = DG_STEP[Math.min(s.i, DG_STEP.length - 1)]; s.pos = Math.max(0, Math.min(DG_MAX, s.pos + (ok ? st : -st)));
+  const box = document.querySelector('#modal-box .dg'); if (box) box.classList.add('dg-go');
+  setTimeout(() => dgNext(), MH && MH.fast ? 0 : 380);
+}
+/* pure: answers → estimate (exposed for tests) */
+function dgCompute(ans) {
+  const n = ans.length; if (!n) return { th: 0, start: 0, sk: {}, n: 0, dk: 0 };
+  const last = ans.slice(-5); const after = last.map((a) => (a.ok ? a.x + 0.5 : a.x - 0.5)); /* staircase midpoint, nudged by the last results */
+  let th = after.reduce((s, v) => s + v, 0) / after.length; th = Math.max(0, Math.min(DG_MAX, th));
+  const sk = {}; Object.keys(DG_STRAND).forEach((g) => { const a = ans.filter((x) => dgStrandOf(x.k) === g);
+    const e = a.length ? a.reduce((s, x) => s + (x.ok ? x.x + 2 : x.x - 2), 0) / a.length : th; sk[g] = Math.round(Math.max(0, Math.min(DG_MAX, 0.5 * e + 0.5 * th)) * 10) / 10; });
+  /* islands "clearly known": 2–3 islands below the estimate (floor − 2), none when the estimate is low, at most 8 (half the journey) */
+  const start = th < 3 ? 0 : Math.max(0, Math.min(DG_SKIP_MAX, Math.floor(th) - DG_BELOW));
+  const gm = ans.filter((x) => x.k === 'gram' && !x.ok).sort((a, b) => a.x - b.x)[0];
+  return { th: Math.round(th * 10) / 10, start, sk, n, dk: ans.filter((x) => x.dk).length, gt: gm ? gm.topic : (GR_BY_UNIT[UNITS[Math.min(DG_MAX, start)].id] || GR_TOPICS[0]).id };
+}
+/* quietly apply: v21 starting levels, journey start, skipped islands passed (chests stay openable) */
+function dgApply(p, r) {
+  const d = dgData(p); const v = v21Data(p); const t = dayKey();
+  /* rerun: islands an earlier run skipped but that are now ahead go back to normal (only ones the diagnostic itself marked) */
+  d.skip.forEach((id) => { const i = UNITS.findIndex((u) => u.id === id); const u = p.units[id]; if (i >= r.start && u && u.dg) delete p.units[id]; });
+  const skip = []; UNITS.forEach((u, i) => { if (i >= r.start) return; if (!(p.units[u.id] && p.units[u.id].stars > 0)) { p.units[u.id] = { stars: 1, best: 0, dg: 1 }; skip.push(u.id); } else if (p.units[u.id].dg) skip.push(u.id); });
+  const rec = (k, lv) => { const o = v.sk[k]; if (o && o.n >= 6) return; /* real practice already decides */ v.sk[k] = Object.assign(o || { n: 0, ok: 0, h: [], st: 0, ms: 0, bx: 0, due: '', last: '', td: {} }, { lv }); };
+  const g = { letters: r.sk.lettersounds, sounds: r.sk.lettersounds, reading: r.sk.reading, spelling: r.sk.spell, speaking: r.sk.listen };
+  Object.keys(g).forEach((k) => rec(k, dgLv(g[k])));
+  UNITS.forEach((u, i) => { const gt = GR_BY_UNIT[u.id]; const gl = i < r.start ? 3 : i === r.start ? dgLv(r.sk.gram) : 1; if (i <= r.start) { rec('vocab:' + u.id, i < r.start ? 3 : dgLv(r.th)); if (gt) rec('gram:' + gt.id, gl); } });
+  Object.assign(d, { v: 1, inv: 'done', d: t, th: r.th, start: r.start, skip, sk: r.sk, n: r.n, dk: r.dk, gt: r.gt, sec: r.sec || 0 });
+  saveDB(); return d;
+}
+function dgFinish() {
+  const s = DG.s; DG.s = null; const p = P(); const r = dgCompute(s.ans); r.sec = Math.round((Date.now() - s.t0) / 1000); const d = dgApply(p, r);
+  const u = UNITS[d.start]; const reg = dgDia();
+  openModal(`<div class="stack dg dg-end center">
+    <div class="dg-endsky" aria-hidden="true"><i></i><i></i><i></i></div>
+    ${falconSVG('celebrate', 'dg-endbird')}
+    <div class="dg-bub"><p lang="ar">${esc(dgL(DG_END[reg]))}</p><button class="dg-hear sm" data-act="dg-end-hear" aria-label="اِسْمَعْ">${ICON('speaker')}</button></div>
+    <p class="dg-endnext" lang="ar">${esc(dgL('[رِحْلَتُكَ|رِحْلَتُكِ] تَبْدَأُ مِنْ جَزِيرَةِ'))} <b>${esc(u.ar)}</b> <span class="en en-block">Your journey starts at: ${esc(u.en)}</span></p>
+    <button class="btn big gold dg-gohome" data-act="dg-home">هَيَّا إِلَى الرِّحْلَةِ <span class="en">To my journey</span></button></div>`, () => { try { ilShow('home'); } catch (e) { /* */ } }, 'sheet');
+  setTimeout(() => { try { speak(dgL(DG_END[reg]), reg, { quiet: true }); } catch (e) { /* */ } }, 300);
+}
+/* ---------- render ---------- */
+function dgBody(it) {
+  const s = DG.s; const ins = `<p class="dg-ins" lang="ar">${esc(dgL(it.hint))}</p>`;
+  const hearBtn = (big) => `<button class="dg-hear ${big ? 'big' : ''}" data-act="dg-hear" aria-label="اِسْمَعْ">${ICON('speaker')}</button>`;
+  if (it.t === 'pick') return `${ins}<div class="dg-q ${it.say ? 'say' : ''}" lang="ar">${it.hear ? hearBtn(it.q === '🔊') : ''}${it.q === '🔊' ? '' : v21Blank(it.q)}</div>
+    <div class="dg-opts n${it.o.length}">${it.order.map((j) => `<button class="dg-opt" data-act="dg-pick" data-arg="${j}" lang="ar">${esc(dgL(it.o[j]))}</button>`).join('')}</div>`;
+  if (it.t === 'pic') return `${ins}<div class="dg-q" lang="ar">${it.hear ? hearBtn(true) : `<span class="dg-read">${esc(it.read)}</span>`}</div>
+    <div class="dg-pics n${it.o.length}">${it.order.map((j) => `<button class="dg-pic" data-act="dg-pick" data-arg="${j}" aria-label="${esc(it.o[j].ar)}">${picHTML(it.o[j], 'md')}</button>`).join('')}</div>`;
+  if (it.t === 'tap') return `${ins}<p class="dg-ask" lang="ar">${esc(dgL(it.q))}</p><div class="dg-sent" lang="ar">${it.w.map((w, j) => `<button class="dg-wd" data-act="dg-tap" data-arg="${j}">${esc(dgL(w))}</button>`).join(' ')}</div>`;
+  if (it.t === 'spell') { const left = it.tiles.map((x, n) => ({ x, n })).filter((o) => !it.line.includes(o.n));
+    return `${ins}<div class="dg-q dg-spq">${picHTML(it.w, 'md')}${hearBtn(false)}</div>
+      <div class="dg-line" lang="ar" dir="rtl">${it.L.map((_, n) => { const t = it.line[n]; return t != null ? `<button class="dg-slot full" data-act="dg-untile" data-arg="${n}">${esc(it.tiles[t].c)}</button>` : '<span class="dg-slot"></span>'; }).join('')}</div>
+      <div class="dg-word" lang="ar" aria-hidden="true">${esc(it.line.map((t) => it.tiles[t].c).join(''))}</div>
+      <div class="dg-tiles">${left.map((o) => `<button class="dg-tile" data-act="dg-tile" data-arg="${o.n}" lang="ar">${esc(o.x.c)}</button>`).join('')}</div>`; }
+  return '';
+}
+function dgRender() {
+  const s = DG.s; if (!s) return; const it = s.it; const N = DG_SEQ.length;
+  const kind = { sounds: 'lettersounds', letters: 'lettersounds', reading: 'reading', spell: 'spell', listen: 'listen', gram: 'gram' }[s.k];
+  openModal(`<div class="stack dg dg-k-${kind}">
+    <div class="dg-top"><span class="dg-bird">${falconSVG('happy', 'dg-mini')}</span>
+      <div class="dg-trail" aria-hidden="true">${Array.from({ length: N }, (_, n) => `<i class="${n < s.i ? 'dg-d' : n === s.i ? 'dg-n' : ''}"></i>`).join('')}</div>${closeBtn()}</div>
+    <span class="dg-tag" lang="ar"><i class="emo" aria-hidden="true">${DG_STRAND[kind].em}</i> ${esc(DG_STRAND[kind].ar)}</span>
+    ${dgBody(it)}
+    <button class="dg-dk" data-act="dg-dk"><span class="dg-dk-ic emo" aria-hidden="true">🌱</span><b lang="ar">${DG_DK}</b><span class="en">I don't know yet</span></button>
+  </div>`, () => { if (DG.s) { DG.s = null; const d = dgData(); if (!d.inv || d.inv === 'new') d.inv = 'later'; saveDB(); try { ilShow('home'); } catch (e) { /* */ } } }, 'sheet dg-sheet');
+}
+/* ---------- invites ---------- */
+function dgInviteHTML(isNew) {
+  const reg = dgDia();
+  return `<div class="stack dg dg-inv center">
+    ${falconSVG('happy', 'dg-invbird')}
+    <div class="dg-bub"><p lang="ar">${esc(dgL(DG_INV[reg]))}</p><button class="dg-hear sm" data-act="dg-inv-hear" aria-label="اِسْمَعْ">${ICON('speaker')}</button></div>
+    <h2 lang="ar">لُعْبَةُ البِدَايَةِ <span class="en en-block">A quick start game (about 3 minutes)</span></h2>
+    <p class="dg-sub" lang="ar">${esc(dgL('لَا نَتِيجَةَ وَلَا خَطَأَ. [اِضْغَطْ|اِضْغَطِي]'))} «${DG_DK}» ${esc(dgL('مَتَى [شِئْتَ|شِئْتِ].'))} <span class="en en-block">No score, no wrong answers. Tap "I don't know yet" any time.</span></p>
+    <button class="btn big gold dg-yes" data-act="dg-start">هَيَّا نَلْعَبُ <span class="en">Let's play</span></button>
+    <button class="btn soft dg-later" data-act="dg-later">${isNew ? 'لَاحِقًا' : 'لَا، شُكْرًا'} <span class="en">${isNew ? 'Later' : 'No thanks'}</span></button></div>`;
+}
+function dgOpenInvite(isNew) { openModal(dgInviteHTML(isNew), null, 'sheet dg-sheet'); setTimeout(() => { try { speak(dgL(DG_INV[dgDia()]), dgDia(), { quiet: true }); } catch (e) { /* */ } }, 300); }
+/* a new player: offered once, right after setup, as soon as no other sheet (consent, tour) is open */
+function dgOfferNew(kid, tries) { tries = tries || 0; if (currentKid !== kid || dgPeek(P())) return; if (window.__noDiag) return;
+  const m = document.getElementById('modal'); const busy = (m && !m.classList.contains('hidden')) || document.getElementById('jv-cele');
+  if (busy) { if (tries < 40) setTimeout(() => dgOfferNew(kid, tries + 1), 500); return; }
+  const d = dgData(); d.inv = 'new'; saveDB(); dgOpenInvite(true); }
+{ const _ops = openProfileSetup; openProfileSetup = function openProfileSetupV22(id, after) { const isNew = !PROFILES[id] || !!PROFILES[id].needsSetup || !(DB.kids[id] && DB.kids[id].xp > 0);
+  return _ops.call(this, id, function () { if (isNew) DG.fresh[id] = 1; return after ? after.apply(this, arguments) : undefined; }); }; }
+{ const _pk = pickProfile; pickProfile = function pickProfileV22(id) { const r = _pk.apply(this, arguments); if (currentKid === id && DG.fresh[id]) { delete DG.fresh[id]; setTimeout(() => dgOfferNew(id), 900); } return r; }; }
+/* an existing player: on the calm home it is one tile in the ☰ menu (no card on the home itself), until it is played; never a popup */
+function dgCard() { const p = P(); if (dgPeek(p) || window.__noDiag) return '';
+  return `<div class="dg-card"><button class="dg-card-go" data-act="dg-invite">${falconSVG('happy', 'dg-cardbird')}<span><b lang="ar">لُعْبَةُ البِدَايَةِ</b><small lang="ar">٣ دَقَائِقَ مَعَ صَقُّور</small><span class="en">Optional 3-minute start game</span></span></button><button class="dg-card-x" data-act="dg-no" aria-label="لَا، شُكْرًا No thanks">✕</button></div>`; }
+{ const _m = calmMenuItems; calmMenuItems = function calmMenuItemsV22() { const items = _m.apply(this, arguments); try { const d = dgPeek(P()); if (!window.__noDiag && !(d && d.th != null)) items.push({ act: 'dg-invite', ic: '🧭', ar: 'لُعْبَةُ البِدَايَةِ', en: 'Start game (3 minutes)' }); } catch (e) { /* optional */ } return items; }; }
+/* journey: islands the start game skipped keep their chest; on the calm home there is no badge — the island's sheet shows it (DG_HOME_CHEST off) */
+const DG_HOME_CHEST = false;
+const dgChestDue = (p, id) => { const d = dgPeek(p); return !!(d && Array.isArray(d.skip) && d.skip.includes(id) && p.units[id] && p.units[id].dg && !(p.journey && p.journey.celebrated && p.journey.celebrated[id])); };
+{ const _r = ilRender; ilRender = function ilRenderV22() { _r.apply(this, arguments); if (IL.page !== 'home' || !DG_HOME_CHEST) return;
+  try { const p = P(); document.querySelectorAll('#il-page .jv-isle').forEach((b) => { if (dgChestDue(p, b.dataset.arg) && !b.querySelector('.dg-chest')) b.insertAdjacentHTML('beforeend', `<span class="dg-chest" role="img" aria-label="كَنْزٌ يَنْتَظِرُ">${jvPainted() ? '<img src="art/' + JV_CHEST_ART + '" alt="" width="30" height="33">' : '<span class="emo">🎁</span>'}</span>`); }); } catch (e) { /* optional */ } }; }
+{ const _jo = jvOpenIsle; jvOpenIsle = function jvOpenIsleV22(id) { const res = _jo.apply(this, arguments);
+  try { const p = P(); const box = document.querySelector('#modal-box .jv-sheet:not(.locked)'); if (box && dgChestDue(p, id)) box.insertAdjacentHTML('beforeend', `<p class="dg-skipnote" lang="ar"><span class="emo">✨</span> ${esc(dgL('[تَعْرِفُ|تَعْرِفِينَ] هَذِهِ الجَزِيرَةَ، فَقَفَزْنَا فَوْقَهَا.'))} <span class="en en-block">You already know this island, so we jumped over it.</span></p><button class="btn big gold dg-openchest" data-act="dg-chest" data-arg="${esc(id)}"><span class="emo">🎁</span> ${esc(dgL('[اِفْتَحِ|اِفْتَحِي] الكَنْزَ'))} <span class="en">Open the chest</span></button>`); } catch (e) { /* */ } return res; }; }
+if (window.SAQ) SAQ.jvOpenIsle = jvOpenIsle;
+/* ---------- parent view: "how to help" note + rerun ---------- */
+function dgNoteHTML(kid) {
+  const p = DB.kids[kid]; const d = dgPeek(p); const pr = PROFILES[kid]; if (!pr) return '';
+  const rerun = `<button class="btn soft dg-rerun" data-act="dg-rerun" data-arg="${esc(kid)}"><span class="emo">🧭</span> ${d && d.th != null ? 'إِعَادَةُ لُعْبَةِ البِدَايَةِ' : 'لُعْبَةُ البِدَايَةِ الآنَ'} <span class="en">${d && d.th != null ? 'Rerun the start game' : 'Run the start game'}</span></button>`;
+  if (!d || d.th == null) return `<div class="dg-pk"><h3 lang="ar">${kidFace(kid)} ${esc(pr.ar || pr.name)}</h3><p class="small" lang="ar">لَمْ تُلْعَبْ لُعْبَةُ البِدَايَةِ بَعْدُ. <span class="en">The start game has not been played yet.</span></p>${rerun}</div>`;
+  const gs = Object.keys(DG_STRAND).map((g) => ({ g, x: typeof d.sk[g] === 'number' ? d.sk[g] : d.th })).sort((a, b) => b.x - a.x);
+  const strong = gs.filter((o) => o.x >= d.th + 0.5 || o.x >= 12).slice(0, 3); const sset = new Set(strong.map((o) => o.g));
+  const work = gs.filter((o) => !sset.has(o.g)).slice(-3).reverse().slice(0, d.dk >= 6 ? 2 : 3).sort((a, b) => a.x - b.x);
+  const T = GR[d.gt] || GR_TOPICS[0]; const tip = (g) => DG_STRAND[g].tip.map((s) => s.replace('%T', T.ar).replace('%E', T.en));
+  const b = dgBand(d.th); const N = toArabicDigits;
+  return `<div class="dg-pk" id="dg-note-${esc(kid)}"><h3 lang="ar">${kidFace(kid)} ${esc(pr.ar || pr.name)} <small>· ${esc(v20Day(d.d)[0])}</small></h3>
+    <p class="dg-band" lang="ar">المُسْتَوَى التَّقْرِيبِيُّ: <b>${esc(b[0])}</b> <i>(تَقْرِيبِيٌّ، لِلِاسْتِرْشَادِ فَقَطْ)</i> <span class="en en-block">Approximate level: ${esc(b[1])} (approximate, a guide only)</span></p>
+    <h4 lang="ar"><span class="emo">💪</span> نِقَاطُ القُوَّةِ <span class="en">Strengths</span></h4>
+    <ul class="dg-list">${(strong.length ? strong : gs.slice(0, 1)).map((o) => `<li lang="ar"><i class="emo" aria-hidden="true">${DG_STRAND[o.g].em}</i> ${esc(DG_STRAND[o.g].ar)} <span class="en">${esc(DG_STRAND[o.g].en)}</span></li>`).join('')}</ul>
+    <h4 lang="ar"><span class="emo">🌱</span> لِنَتَدَرَّبَ عَلَيْهِ <span class="en">To practise</span></h4>
+    <ul class="dg-list dg-work">${work.map((o) => { const t = tip(o.g); return `<li lang="ar"><b><i class="emo" aria-hidden="true">${DG_STRAND[o.g].em}</i> ${esc(DG_STRAND[o.g].ar)}</b><span class="dg-tip">${esc(t[0])}</span><span class="en en-block">${esc(DG_STRAND[o.g].en)}: ${esc(t[1])}</span></li>`; }).join('')}</ul>
+    <p class="small" lang="ar">بَدَأَتِ الرِّحْلَةُ مِنْ جَزِيرَةِ «${esc(UNITS[d.start].ar)}»${d.skip.length ? `، وَقَفَزْنَا فَوْقَ ${N(d.skip.length)} مِنَ الجُزُرِ (كُنُوزُهَا مَا زَالَتْ مَفْتُوحَةً)` : ''}. يَتَعَدَّلُ المُسْتَوَى كُلَّ يَوْمٍ مِنَ التَّدْرِيبِ. ${d.dk ? `اِخْتَارَ «${DG_DK}» ${N(d.dk)} مَرَّاتٍ، وَهَذَا جَيِّدٌ وَصَادِقٌ.` : ''}
+      <span class="en en-block">The journey starts at "${esc(UNITS[d.start].en)}"${d.skip.length ? `; ${d.skip.length} islands were skipped (their chests can still be opened)` : ''}. Levels keep adjusting from daily practice.${d.dk ? ` "I don't know yet" was chosen ${d.dk} times, which is fine and honest.` : ''}</span></p>
+    ${rerun}</div>`;
+}
+{ const _rp = renderParent; renderParent = function renderParentV22() { _rp.apply(this, arguments);
+  try { const b = $('parent-body'); const h = document.createElement('div'); h.className = 'card dg-pcard'; h.id = 'dg-pcard';
+    h.innerHTML = `<h2 lang="ar"><span class="emo">🧭</span> كَيْفَ نُسَاعِدُ؟ <span class="en">How to help (from the start game)</span></h2>${Object.keys(PROFILES).map(dgNoteHTML).join('')}`;
+    const first = b.querySelector('.v20-pcardp') || b.querySelector('.card'); if (first && first.nextSibling) b.insertBefore(h, first.nextSibling); else b.appendChild(h); } catch (e) { /* the parent view still works */ } }; }
+/* ---------- actions ---------- */
+Object.assign(ACTIONS, {
+  'dg-invite': () => dgOpenInvite(false),
+  'dg-start': () => dgStart(),
+  'dg-later': () => { const d = dgData(); if (d.th == null) d.inv = d.inv === 'new' ? 'later' : 'no'; saveDB(); closeModal(); try { ilShow('home'); } catch (e) { /* */ } },
+  'dg-no': () => { const d = dgData(); if (d.th == null) d.inv = 'no'; saveDB(); try { ilShow('home'); } catch (e) { /* */ } },
+  'dg-hear': () => dgSay(),
+  'dg-inv-hear': () => { try { speak(dgL(DG_INV[dgDia()]), dgDia(), { quiet: true }); } catch (e) { /* */ } },
+  'dg-end-hear': () => { try { speak(dgL(DG_END[dgDia()]), dgDia(), { quiet: true }); } catch (e) { /* */ } },
+  'dg-pick': (j) => { const s = DG.s; if (!s || s.busy) return; const b = document.querySelector(`#modal-box [data-act="dg-pick"][data-arg="${+j}"]`); if (b) b.classList.add('picked'); dgAnswer(+j === 0, false); },
+  'dg-tap': (j) => { const s = DG.s; if (!s || s.busy) return; const b = document.querySelector(`#modal-box [data-act="dg-tap"][data-arg="${+j}"]`); if (b) b.classList.add('picked'); dgAnswer(+j === s.it.a, false); },
+  'dg-tile': (n) => { const s = DG.s; if (!s || s.busy) return; const it = s.it; if (it.line.length >= it.L.length || it.line.includes(+n)) return; it.line.push(+n); dgRender();
+    if (it.line.length === it.L.length) { const ok = it.line.map((t) => it.tiles[t].c).join('') === it.L.join(''); setTimeout(() => dgAnswer(ok, false), MH && MH.fast ? 0 : 300); } },
+  'dg-untile': (n) => { const s = DG.s; if (!s || s.busy) return; s.it.line.splice(+n, 1); dgRender(); },
+  'dg-dk': () => dgAnswer(false, true),
+  'dg-home': () => { closeModal(); },
+  'dg-chest': (id) => { closeModal(); setTimeout(() => jvCelebrate(id), 60); },
+  'dg-rerun': (kid) => { if (!PROFILES[kid]) return; closeParent(); pickProfile(kid); closeModal(); setTimeout(() => { closeModal(); dgStart(); }, 400); }
+});
+window.SAQ = Object.assign(window.SAQ || {}, { dgStart, dgCompute, dgApply, dgOpenInvite, dgNoteHTML });
+
+/* =========================================================
+   v23 DEMO · "school unit" pack: a thank-you letter (رِسَالَةُ شُكْرٍ) + verbs with أَنَا / نَحْنُ / أَنْتَ / أَنْتِ / أَنْتُمْ.
+   Generic content for every child (no child, teacher or school names). Fusha for reading, writing and grammar;
+   the talk scene speaks the child's dialect (one dialect per line). [boy|girl] forms as everywhere in the app.
+   ========================================================= */
+/* parent-only words pack (feeds review + Saqqour's mix). Same shape as a unit: [fusha, spoken form, en, emoji] — school words stay Fusha. */
+const SC23_UNIT = { id: 'sc23', level: 4, icon: '✉️', ar: 'الوَحْدَةُ المَدْرَسِيَّةُ: رِسَالَةُ شُكْرٍ', en: 'School unit: a thank-you letter', vocab: [
+  ['رِسَالَةٌ', 'رِسَالَةٌ', 'a letter', '✉️'], ['شُكْرٌ', 'شُكْرٌ', 'thanks', '🙏'], ['المُرْسِلُ', 'المُرْسِلُ', 'the sender', '📤'], ['المُرْسَلُ إِلَيْهِ', 'المُرْسَلُ إِلَيْهِ', 'the person it is sent to', '📥'],
+  ['التَّارِيخُ', 'التَّارِيخُ', 'the date', '📅'], ['طَعَامٌ', 'طَعَامٌ', 'food', '🍲'], ['مَلَابِسُ', 'مَلَابِسُ', 'clothes', '👕'], ['تَعْلِيمٌ', 'تَعْلِيمٌ', 'education', '🏫'],
+  ['صِحَّةٌ', 'صِحَّةٌ', 'health', '💪'], ['نَجَاحٌ', 'نَجَاحٌ', 'success', '🏆'], ['دِرَاسَةٌ', 'دِرَاسَةٌ', 'studying', '📚'], ['القَمَرُ', 'القَمَرُ', 'the moon', '🌙'],
+  ['الطَّرِيقُ', 'الطَّرِيقُ', 'the road', '🛣️'], ['الجَبَلُ', 'الجَبَلُ', 'the mountain', '⛰️'], ['الوَرْدُ', 'الوَرْدُ', 'roses', '🌹'], ['يُضِيءُ', 'يُضِيءُ', 'it lights up', '💡'],
+  ['أَفْتَخِرُ', 'أَفْتَخِرُ', 'I am proud', '🌟'], ['يَحْفَظُ', 'يَحْفَظُ', 'he protects', '🛡️'], ['يُشَجِّعُ', 'يُشَجِّعُ', 'he encourages', '📣'], ['يُسَاعِدُ', 'يُسَاعِدُ', 'he helps', '🤝']
+] };
+/* extra grammar items on the matching islands (appended: existing item ids stay the same) */
+const SC23_GRAM = {
+  past: [
+    { t: 'end', lv: 1, q: '👦 أَنْتَ ___ عَالِيًا.', s: 'قَفَز', c: [['ـْتَ', 'قَفَزْتَ'], ['ـْتُ', 'قَفَزْتُ'], ['ـْتُمْ', 'قَفَزْتُمْ']] },
+    { t: 'sort', lv: 1, b: ['أَنْتَ 👦', 'أَنْتِ 👧'], w: [['شَرِبْتَ', 0], ['شَرِبْتِ', 1], ['وَصَلْتَ', 0], ['وَصَلْتِ', 1]] },
+    { t: 'end', lv: 2, q: '👧 أَنْتِ ___ الكَنْزَ.', s: 'وَجَد', c: [['ـْتِ', 'وَجَدْتِ'], ['ـْتَ', 'وَجَدْتَ'], ['ـْنَا', 'وَجَدْنَا']] },
+    { t: 'pick', lv: 2, q: '👨‍👩‍👧 أَنْتُمْ ___ كَثِيرًا.', o: ['عَمِلْتُمْ', 'عَمِلْتَ', 'عَمِلْتِ'] },
+    { t: 'fix', lv: 3, w: ['أَنْتِ', 'ذَهَبْتَ', 'إِلَى', 'المَدْرَسَةِ.'], bad: 1, o: ['ذَهَبْتِ', 'ذَهَبْتُمْ', 'ذَهَبْنَا'] },
+    { t: 'build', lv: 3, w: ['أَنْتُمْ', 'أَكَلْتُمْ', 'ثُمَّ', 'ذَهَبْتُمْ', 'بِسُرْعَةٍ'] }
+  ],
+  pres: [
+    { t: 'pick', lv: 1, q: '👦 أَنْتَ ___ الكُرَةَ.', o: ['تَلْعَبُ', 'تَلْعَبِينَ'] },
+    { t: 'end', lv: 1, q: '👧 أَنْتِ ___ فِي البَحْرِ.', s: 'تَسْبَح', c: [['ـِينَ', 'تَسْبَحِينَ'], ['ـُونَ', 'تَسْبَحُونَ'], ['ـُ', 'تَسْبَحُ']] },
+    { t: 'end', lv: 2, q: '👨‍👩‍👧 أَنْتُمْ ___ الدَّرْسَ.', s: 'تَدْرُس', c: [['ـُونَ', 'تَدْرُسُونَ'], ['ـِينَ', 'تَدْرُسِينَ'], ['ـُ', 'تَدْرُسُ']] },
+    { t: 'sort', lv: 2, b: ['أَنْتِ 👧', 'أَنْتُمْ 👨‍👩‍👧'], w: [['تَأْكُلِينَ', 0], ['تَأْكُلُونَ', 1], ['تَلْعَبِينَ', 0], ['تَلْعَبُونَ', 1]] },
+    { t: 'fix', lv: 3, w: ['أَنْتُمْ', 'تَعْمَلِينَ', 'ثُمَّ', 'تَسْتَرِيحُونَ', 'قَلِيلًا.'], bad: 1, o: ['تَعْمَلُونَ', 'تَعْمَلُ', 'نَعْمَلُ'] },
+    { t: 'build', lv: 3, w: ['أَنْتِ', 'تَعْمَلِينَ', 'ثُمَّ', 'تَسْتَرِيحِينَ', 'قَلِيلًا'] }
+  ],
+  pron: [
+    { t: 'pick', lv: 2, q: '👨‍👩‍👧 ___ تَلْعَبُونَ مَعًا.', o: ['أَنْتُمْ', 'أَنْتَ', 'نَحْنُ'] },
+    { t: 'sort', lv: 3, b: ['وَاحِدٌ 👤', 'أَكْثَرُ 👥'], w: [['أَنْتَ', 0], ['أَنْتُمْ', 1], ['أَنْتِ', 0], ['نَحْنُ', 1]] }
+  ]
+};
+const SC23_EG = { past: [['👦', 'سَافَرْ{تَ}.'], ['👧', 'سَافَرْ{تِ}.'], ['👥', 'سَافَرْ{تُمْ}.']], pres: [['👧', 'أَنْتِ {تَ}كْتُبِ{ينَ}'], ['👥', 'أَنْتُمْ {تَ}كْتُبُ{ونَ}']], pron: [['👥', 'أَنْتُمْ']] };
+/* the letter as a read-along story (Fusha, no names) */
+const SC23_STORY = { id: 'sc23', stars: 3, icon: '✉️', bg: '#fde2d8', title: 'شُكْرًا يَا أَبِي', en: 'Thank you, Dad (a letter)', s: [
+  ['أَبِي الحَبِيبُ، أَتَمَنَّى أَنْ تَكُونَ بِخَيْرٍ وَبِصِحَّةٍ جَيِّدَةٍ.', 'Dear Dad, I hope you are well and in good health.'],
+  ['أَكْتُبُ لَكَ هَذِهِ الرِّسَالَةَ لِأَقُولَ لَكَ: شُكْرًا عَلَى كُلِّ مَا تَفْعَلُهُ مِنْ أَجْلِنَا.', 'I am writing to say thank you for everything you do for us.'],
+  ['أَنْتَ تَعْمَلُ كَثِيرًا لِتُعْطِيَنَا الطَّعَامَ وَالمَلَابِسَ وَالتَّعْلِيمَ.', 'You work hard to give us food, clothes and education.'],
+  ['وَتُسَاعِدُنِي دَائِمًا، وَتُشَجِّعُنِي عَلَى الدِّرَاسَةِ وَالنَّجَاحِ.', 'You always help me and encourage me to study and succeed.'],
+  ['أَنْتَ كَالقَمَرِ الَّذِي يُضِيءُ لِي الطَّرِيقَ.', 'You are like the moon that lights the way for me.'],
+  ['شُكْرًا لَكَ يَا أَبِي، أَدْعُو اللهَ أَنْ يَحْفَظَكَ دَائِمًا.', 'Thank you, Dad. I pray that God always keeps you safe.']] };
+/* reading questions + letter frame: one grammar-style skill (gram:sc23) for the mix and feathers */
+const SC23_TOPIC = { id: 'sc23', u: 'sc23', ar: 'رِسَالَةُ شُكْرٍ', en: 'A thank-you letter', col: '#ff8a65', em: '✉️', eg: [], items: [
+  { t: 'pick', lv: 1, q: '✉️ إِلَى مَنْ كُتِبَتِ الرِّسَالَةُ؟', o: ['إِلَى الأَبِ', 'إِلَى الأُمِّ', 'إِلَى الصَّدِيقِ'] },
+  { t: 'pick', lv: 1, q: '🙏 لِمَاذَا كُتِبَتِ الرِّسَالَةُ؟', o: ['لِلشُّكْرِ', 'لِلدَّعْوَةِ', 'لِلشَّكْوَى'] },
+  { t: 'pick', lv: 2, q: '🌙 أَيْنَ التَّشْبِيهُ؟', o: ['أَنْتَ كَالقَمَرِ', 'أَنْتَ تَعْمَلُ كَثِيرًا', 'شُكْرًا لَكَ'] },
+  { t: 'pick', lv: 2, q: '👋 مَا الجُمْلَةُ الافْتِتَاحِيَّةُ؟', o: ['أَتَمَنَّى أَنْ تَكُونَ بِخَيْرٍ', 'أَدْعُو اللهَ أَنْ يَحْفَظَكَ', 'أَنْتَ كَالقَمَرِ'] },
+  { t: 'build', lv: 2, w: ['أَتَمَنَّى', 'أَنْ', 'تَكُونَ', 'بِخَيْرٍ'] },
+  { t: 'pick', lv: 3, q: '🏁 مَا الجُمْلَةُ الخِتَامِيَّةُ؟', o: ['أَدْعُو اللهَ أَنْ يَحْفَظَكَ دَائِمًا', 'أَتَمَنَّى أَنْ تَكُونَ بِخَيْرٍ', 'أَنْتَ تَعْمَلُ كَثِيرًا'] },
+  { t: 'sort', lv: 3, b: ['رِسَالَةُ شُكْرٍ 🙏', 'رِسَالَةُ دَعْوَةٍ 🎉'], w: [['أَشْكُرُكَ كَثِيرًا', 0], ['تَعَالَ إِلَى حَفْلَتِي', 1], ['شُكْرًا عَلَى مُسَاعَدَتِكَ', 0], ['أَدْعُوكَ إِلَى عِيدِ مِيلَادِي', 1]] },
+  { t: 'build', lv: 3, w: ['أَنْتَ', 'كَالجَبَلِ', 'فِي', 'قُوَّتِكَ'] },
+  { t: 'build', lv: 3, w: ['أَنْتِ', 'كَالوَرْدِ', 'فِي', 'جَمَالِكِ'] }
+] };
+/* letter-writing frame ("build the sentence"): to = mum (f) / dad (m). Every step is Fusha. */
+const SC23_FRAME = {
+  to: { f: { ar: 'أُمِّي', em: '👩', head: ['أُمِّي', 'الحَبِيبَةُ'] }, m: { ar: 'أَبِي', em: '👨', head: ['أَبِي', 'الحَبِيبُ'] } },
+  open: { f: ['أَتَمَنَّى', 'أَنْ', 'تَكُونِي', 'بِخَيْرٍ'], m: ['أَتَمَنَّى', 'أَنْ', 'تَكُونَ', 'بِخَيْرٍ'] },
+  why: { f: ['شُكْرًا لَكِ عَلَى كُلِّ مَا تَفْعَلِينَهُ مِنْ أَجْلِنَا.', 'شُكْرًا لَكِ لِأَنَّكِ تُسَاعِدِينَنِي دَائِمًا.', 'شُكْرًا لَكِ لِأَنَّكِ تُشَجِّعِينَنِي عَلَى الدِّرَاسَةِ.'],
+    m: ['شُكْرًا لَكَ عَلَى كُلِّ مَا تَفْعَلُهُ مِنْ أَجْلِنَا.', 'شُكْرًا لَكَ لِأَنَّكَ تُسَاعِدُنِي دَائِمًا.', 'شُكْرًا لَكَ لِأَنَّكَ تُشَجِّعُنِي عَلَى الدِّرَاسَةِ.'] },
+  simile: { f: [['🌹', ['أَنْتِ', 'كَالوَرْدِ', 'فِي', 'جَمَالِكِ']], ['🌙', ['أَنْتِ', 'كَالقَمَرِ', 'الَّذِي', 'يُضِيءُ', 'طَرِيقِي']], ['⛰️', ['أَنْتِ', 'كَالجَبَلِ', 'فِي', 'قُوَّتِكِ']]],
+    m: [['⛰️', ['أَنْتَ', 'كَالجَبَلِ', 'فِي', 'قُوَّتِكَ']], ['🌙', ['أَنْتَ', 'كَالقَمَرِ', 'الَّذِي', 'يُضِيءُ', 'طَرِيقِي']], ['🌹', ['أَنْتَ', 'كَالوَرْدِ', 'فِي', 'لُطْفِكَ']]] },
+  close: { f: ['أَدْعُو', 'اللهَ', 'أَنْ', 'يَحْفَظَكِ', 'دَائِمًا'], m: ['أَدْعُو', 'اللهَ', 'أَنْ', 'يَحْفَظَكَ', 'دَائِمًا'] },
+  /* signature: [writer boy|writer girl] for each reader */
+  sign: { f: '[ابْنُكِ|ابْنَتُكِ]', m: '[ابْنُكَ|ابْنَتُكَ]' }
+};
+/* thank-you talk scene (sentence-first scene format). Saqqour plays mum; each dialect has its own lines. */
+const SC23_SCENE = { id: 'sc23thanks', art: null, u: 'sc23', ar: 'شُكْرًا يَا أُمِّي', en: 'Thank you, Mum', em: '💌', col: '#ff8a65',
+  ken: ['Thank you, Mum, lunch is really tasty!', 'I wrote a thank-you letter at school.', 'The letter is for you, Mum!'],
+  ten: ['Hi, my darling! Lunch is ready.', "You're welcome! What did you do today?", 'Lovely! Who is the letter for?', 'Thank you, my darling! I love you so much.'],
+  d: {
+    emirati: { k: ['مَشْكُورَة يَا مَامَا، الغَدَا وَايِد زِين!', 'كِتَبْت رِسَالَة شُكُر فِي المَدْرَسَة.', 'الرِّسَالَة لِج يَا مَامَا!'],
+      t: ['هَلَا [حَبِيبِي|حَبِيبْتِي]! الغَدَا حَاضِر.', 'العَفُو! شُو [سَوَّيْت|سَوَّيْتِي] اليُوم؟', 'حِلُو وَايِد! حَق مِنُو الرِّسَالَة؟', 'اللهْ [يِخَلِّيك|يِخَلِّيج]! [أَحِبَّك|أَحِبِّج] وَايِد.'] },
+    saudi: { k: ['شُكْرًا يَا مَامَا، الغَدَا مَرَّة لَذِيذ!', 'كَتَبْت رِسَالَة شُكْر فِي المَدْرَسَة.', 'الرِّسَالَة لِك يَا مَامَا!'],
+      t: ['هَلَا [حَبِيبِي|حَبِيبْتِي]! الغَدَا جَاهِز.', 'العَفْو! وِش [سَوَّيْت|سَوَّيْتِي] اليَوْم؟', 'حِلْو مَرَّة! الرِّسَالَة لِمِين؟', 'اللهْ [يِخَلِّيك|يِخَلِّيكِ]! [أَحِبَّك|أَحِبِّك] مَرَّة.'] },
+    lebanese: { k: ['مِرْسِي مَامَا، الغَدَا كْتِير طَيِّب!', 'كَتَبْت رِسَالِة شُكُر بِالمَدْرَسِة.', 'الرِّسَالِة إِلِك يَا مَامَا!'],
+      t: ['أَهْلِين [حَبِيبِي|حَبِيبْتِي]! الغَدَا جَاهِز.', 'وَلَو! شُو [عْمِلْت|عْمِلْتِي] اليُوم؟', 'حِلْو كْتِير! لِمِين الرِّسَالِة؟', '[تِسْلَم|تِسْلَمِي] يَا قَلْبِي! [بْحِبَّك|بْحِبِّك] كْتِير.'] },
+    syrian: { k: ['شُكْرًا مَامَا، الغَدَا كْتِير طَيِّب!', 'كَتَبْت رِسَالِة شُكُر بِالمَدْرَسِة.', 'هَيِّ الرِّسَالِة إِلِك يَا مَامَا!'],
+      t: ['أَهْلَين [حَبِيبِي|حَبِيبْتِي]! الغَدَا جَاهِز.', 'العَفُو! شُو [سَوَّيْت|سَوَّيْتِي] اليُوم؟', 'حِلْوِة كْتِير! لِمِين الرِّسَالِة؟', '[تِسْلَم إِيدَيْك|تِسْلَمِي إِيدَيْكِي]! [بْحِبَّك|بْحِبِّك] كْتِير.'] },
+    jordanian: { k: ['شُكْرًا يَا مَامَا، الغَدَا كْثِير زَاكِي!', 'كَتَبِت رِسَالِة شُكُر بِالمَدْرَسِة.', 'الرِّسَالِة إِلِك يَا مَامَا!'],
+      t: ['أَهْلِين [حَبِيبِي|حَبِيبْتِي]! الغَدَا جَاهِز.', 'العَفُو! شُو [عْمِلِت|عْمِلْتِي] اليُوم؟', 'إِشِي حِلُو! لِمِين الرِّسَالِة؟', 'يِسْلَمُو [إِيدَيْك|إِيدَيْكِي]! [بَحِبَّك|بَحِبِّك] كْثِير.'] },
+    egyptian: { k: ['مِيرْسِي يَا مَامَا، الغَدَا حِلْو أَوِي!', 'كَتَبْت جَوَاب شُكْر فِي المَدْرَسَة.', 'الجَوَاب دَه عَلَشَانِك يَا مَامَا!'],
+      t: ['أَهْلًا [يَا حَبِيبِي|يَا حَبِيبْتِي]! الغَدَا جَاهِز.', 'العَفْو! [عَمَلْت|عَمَلْتِي] إِيه النَّهَارْدَه؟', 'حِلْو أَوِي! الجَوَاب لِمِين؟', '[تِسْلَم إِيدَك|تِسْلَمِي إِيدِك]! [بَحِبَّك|بَحِبِّك] أَوِي.'] },
+    fusha: { k: ['شُكْرًا يَا أُمِّي، الغَدَاءُ لَذِيذٌ جِدًّا!', 'كَتَبْتُ رِسَالَةَ شُكْرٍ فِي المَدْرَسَةِ.', 'الرِّسَالَةُ لَكِ يَا أُمِّي!'],
+      t: ['أَهْلًا [يَا حَبِيبِي|يَا حَبِيبَتِي]! الغَدَاءُ جَاهِزٌ.', 'عَفْوًا! مَاذَا [فَعَلْتَ|فَعَلْتِ] اليَوْمَ؟', 'جَمِيلٌ! لِمَنِ الرِّسَالَةُ؟', '[شُكْرًا لَكَ|شُكْرًا لَكِ] [يَا حَبِيبِي|يَا حَبِيبَتِي]! [أُحِبُّكَ|أُحِبُّكِ] كَثِيرًا.'] }
+  } };
+/* app-UI lines of the pack (Fusha, boy/girl) */
+const SC23_UI = {
+  title: 'الوَحْدَةُ المَدْرَسِيَّةُ', sub: 'رِسَالَةُ شُكْرٍ وَالأَفْعَالُ مَعَ الضَّمَائِرِ',
+  words: 'كَلِمَاتُ الوَحْدَةِ', gram: 'الأَفْعَالُ مَعَ الضَّمَائِرِ', story: 'اِقْرَأِ الرِّسَالَةَ', write: 'أَكْتُبُ رِسَالَةَ شُكْرٍ', scene: 'مَشْهَدٌ: شُكْرًا يَا أُمِّي', quiz: 'أَسْئِلَةُ الفَهْمِ',
+  toQ: '[لِمَنْ تَكْتُبُ رِسَالَتَكَ|لِمَنْ تَكْتُبِينَ رِسَالَتَكِ]؟',
+  stOpen: 'الجُمْلَةُ الافْتِتَاحِيَّةُ', stWhy: 'سَبَبُ الرِّسَالَةِ', stSim: 'التَّشْبِيهُ', stClose: 'الجُمْلَةُ الخِتَامِيَّةُ', done: '[رِسَالَتُكَ|رِسَالَتُكِ] جَاهِزَةٌ!',
+  build: '[رَتِّبِ|رَتِّبِي] الكَلِمَاتِ', pickWhy: '[اِخْتَرْ|اِخْتَارِي] سَبَبَ الشُّكْرِ', pickSim: '[اِخْتَرْ|اِخْتَارِي] صُورَةً لِلتَّشْبِيهِ'
+};
+
+/* =========================================================
+   v23 DEMO · school unit pack wiring. Parent turns it on per child (parent area, behind the PIN): p.sc23 = { on: 1, seeded: day }.
+   Fits existing systems: review (v20 rev keys 'sc23:<i>'), Saqqour's mix + feathers (skills vocab:sc23, gram:sc23),
+   grammar islands (items appended to pron / pres / past), stories reader (+ read-aloud refs), talk scenes, build-the-sentence.
+   Older saves: nothing is written until the parent turns the pack on.
+   ========================================================= */
+const SC23 = { w: null };
+const sc23On = (p) => !!(p && p.sc23 && p.sc23.on);
+/* grammar items + examples on the matching islands (appended → old item ids unchanged) */
+Object.keys(SC23_GRAM).forEach((id) => { const t = GR[id]; if (!t) return; SC23_GRAM[id].forEach((it) => t.items.push(it)); (SC23_EG[id] || []).forEach((e) => t.eg.push(e)); });
+/* the pack's own skill topic (not a GR_TOPICS island, so the island map and the 16-topic checks stay as they are) */
+GR.sc23 = SC23_TOPIC;
+/* words: resolve 'sc23:<i>' everywhere a word key is looked up */
+{ const _w = v20Word; v20Word = function v20WordSC23(key) { const k = String(key || ''); if (k.startsWith('sc23:')) { const i = +k.slice(5); return SC23_UNIT.vocab[i] ? playWord(SC23_UNIT, i) : null; } return _w.apply(this, arguments); }; }
+{ const _i = v21Info; v21Info = function v21InfoSC23(k) { if (k === 'vocab:sc23') return { k, ar: 'كَلِمَاتُ الوَحْدَةِ المَدْرَسِيَّةِ', en: 'School unit words', em: '✉️', kind: 'vocab', u: SC23_UNIT };
+  if (k === 'gram:sc23') return { k, ar: SC23_TOPIC.ar, en: 'School unit: ' + SC23_TOPIC.en, em: SC23_TOPIC.em, kind: 'gram', t: SC23_TOPIC, u: SC23_UNIT }; return _i.apply(this, arguments); }; }
+{ const _o = v21Open; v21Open = function v21OpenSC23(p) { const ks = _o.apply(this, arguments); if (sc23On(p)) ks.push('vocab:sc23', 'gram:sc23'); return ks; }; }
+/* answers in the mix / practice feed the review queue too (a miss comes back, a right answer moves it up a box) */
+{ const _d = v21Done; v21Done = function v21DoneSC23(ok) { const s = V21.s; const w = s && !s.ans && s.it && s.it.w; const res = _d.apply(this, arguments);
+  try { if (w && String(w.key).startsWith('sc23:')) { if (ok) v20Hit(w); else v20Miss(w, 'school'); } } catch (e) { /* optional */ } return res; }; }
+/* turning the pack on brings the first words into review (due today) */
+function sc23Seed(p) { const v = v20Data(p); const t = v20Today(); let n = 0;
+  SC23_UNIT.vocab.forEach((_, i) => { const k = 'sc23:' + i; if (n >= 6 || v.rev[k]) return; v.rev[k] = { m: 0.5, b: 0, due: t, last: t, src: 'school' }; n++; }); p.sc23.seeded = t; }
+function sc23Toggle(kid) { const p = DB.kids[kid]; if (!p) return; if (sc23On(p)) p.sc23.on = 0; else { p.sc23 = Object.assign({}, p.sc23 || {}, { on: 1 }); if (!p.sc23.seeded) sc23Seed(p); } saveDB(); }
+/* story: shown on the shelf and opened in the reader only when the pack is on (journey island stories keep their order) */
+const sc23WithStory = (fn) => function () { const on = currentKid && sc23On(P()) && !READ_STORIES.includes(SC23_STORY); if (on) READ_STORIES.push(SC23_STORY); try { return fn.apply(this, arguments); } finally { if (on) READ_STORIES.splice(READ_STORIES.indexOf(SC23_STORY), 1); } };
+readShelfHTML = sc23WithStory(readShelfHTML);
+{ const _o = openReader; openReader = function openReaderSC23(id) { if (id === 'sc23' && !READ_STORIES.includes(SC23_STORY)) { READ_STORIES.push(SC23_STORY); try { return _o.apply(this, arguments); } finally { READ_STORIES.splice(READ_STORIES.indexOf(SC23_STORY), 1); } } return _o.apply(this, arguments); }; }
+/* talk scene: in the scene list when the pack is on; opens by id from the pack sheet (scene order for everyone else unchanged) */
+const sc23WithScene = (fn, byId) => function (id) { const on = !V20_SCENES.includes(SC23_SCENE) && (byId ? id === SC23_SCENE.id : currentKid && sc23On(P())); if (on) V20_SCENES.push(SC23_SCENE); try { return fn.apply(this, arguments); } finally { if (on) V20_SCENES.splice(V20_SCENES.indexOf(SC23_SCENE), 1); } };
+v20SceneList = sc23WithScene(v20SceneList); v20Scene = sc23WithScene(v20Scene, true);
+/* ---------- the pack sheet ---------- */
+function sc23Sheet() {
+  const p = P(); const tile = (act, arg, em, ar, en, k) => { const sh = k ? v21Shown(p, k) : null; return `<button class="sc23-tile" data-act="${act}" data-arg="${arg}"><span class="sc23-em" aria-hidden="true">${em}</span><b lang="ar">${esc(v20L(ar))}</b><span class="en">${esc(en)}</span>${sh ? v21Feathers(sh.s, 'xs', sh.back) : ''}</button>`; };
+  openModal(`<div class="stack sc23 sc23-sheet"><div class="row between"><h2 lang="ar">✉️ ${esc(SC23_UI.title)} <span class="en en-block">School unit</span></h2>${closeBtn()}</div>
+    <p class="sc23-sub" lang="ar">${esc(SC23_UI.sub)}</p>
+    <div class="sc23-grid">${tile('sc23-words', '', '🧠', SC23_UI.words, 'Unit words', 'vocab:sc23')}${tile('sc23-gram', 'past', '✈️', SC23_UI.gram, 'Verbs with pronouns', 'gram:past')}
+    ${tile('sc23-read', '', '📖', SC23_UI.story, 'Read the letter', '')}${tile('sc23-quiz', '', '❓', SC23_UI.quiz, 'Reading questions', 'gram:sc23')}
+    ${tile('sc23-write', '', '✍️', SC23_UI.write, 'Write a thank-you letter', '')}${tile('v20-scene', SC23_SCENE.id, '💌', SC23_UI.scene, 'Talk scene', '')}</div></div>`, null, 'sheet');
+}
+/* words practice = review session (due words) or, when nothing is due, 6 questions in the adaptive engine */
+function sc23Words() { const due = v20Due(P(), 'sc23'); if (due.length) { v20Review('sc23'); return; } V21.s = null; sc23Run('vocab:sc23'); }
+function sc23Run(k) { const p = P(); V21.s = { mode: 'gram', arg: k, keys: Array(6).fill(k), back: {}, i: 0, got: 0, used: [], it: null, ans: null, up: null, t0: 0, sel: null, placed: {}, line: [], stage0: { [k]: v21Shown(p, k).s } }; v21Next(true); }
+/* ---------- letter-writing activity (build-the-sentence style) ---------- */
+const SC23_STEPS = ['to', 'open', 'why', 'simPick', 'sim', 'close', 'done'];
+function sc23Write() { SC23.w = { st: 0, to: null, why: null, sim: null, line: [], order: [], ok: null, t0: Date.now() }; sc23WRender(); }
+function sc23Tiles(w) { const W = SC23.w; const f = SC23_FRAME; return W.st === 1 ? f.open[W.to] : W.st === 4 ? f.simile[W.to][W.sim][1] : W.st === 5 ? f.close[W.to] : []; }
+function sc23Shuffle(n) { let o; do { o = shuffle([...Array(n).keys()]); } while (n > 1 && o.every((x, j) => x === j)); return o; }
+function sc23Letter() { const W = SC23.w; const f = SC23_FRAME; const d = toArabicDigits(new Date().getDate() + ' / ' + (new Date().getMonth() + 1) + ' / ' + new Date().getFullYear());
+  return { head: f.to[W.to].head.join(' ') + '،', date: d, lines: [f.open[W.to].join(' ') + '.', f.why[W.to][W.why], f.simile[W.to][W.sim][1].join(' ') + '.', f.close[W.to].join(' ') + '.'], sign: v20L(f.sign[W.to]) }; }
+function sc23WRender() {
+  const W = SC23.w; if (!W) return; const f = SC23_FRAME; const step = SC23_STEPS[W.st]; const g = (s) => esc(v20L(s));
+  const dots = `<div class="v20-dots">${SC23_STEPS.slice(0, 6).map((_, k) => `<i class="${k < W.st ? 'on' : k === W.st ? 'now' : ''}"></i>`).join('')}</div>`;
+  const draft = W.to ? `<div class="sc23-paper" lang="ar"><p class="sc23-head">${esc(f.to[W.to].head.join(' '))}،</p>${W.st > 1 ? `<p>${esc(f.open[W.to].join(' '))}.</p>` : ''}${W.st > 2 ? `<p>${esc(f.why[W.to][W.why])}</p>` : ''}${W.st > 4 ? `<p>${esc(f.simile[W.to][W.sim][1].join(' '))}.</p>` : ''}${W.st > 5 ? `<p>${esc(f.close[W.to].join(' '))}.</p><p class="sc23-sign">${esc(v20L(f.sign[W.to]))}</p>` : ''}</div>` : '';
+  let body = '';
+  if (step === 'to') body = `<p class="v21-ins" lang="ar">${g(SC23_UI.toQ)}</p><div class="sc23-two">${['f', 'm'].map((x) => `<button class="sc23-to" data-act="sc23-to" data-arg="${x}"><span class="sc23-em" aria-hidden="true">${f.to[x].em}</span><b lang="ar">${esc(f.to[x].ar)}</b></button>`).join('')}</div>`;
+  else if (step === 'why') body = `<p class="v21-kick" lang="ar">${esc(SC23_UI.stWhy)}</p><p class="v21-ins" lang="ar">${g(SC23_UI.pickWhy)}</p><div class="v21-opts sc23-why">${f.why[W.to].map((t, j) => `<button class="v21-opt" data-act="sc23-why" data-arg="${j}" lang="ar">${esc(t)}</button>`).join('')}</div>`;
+  else if (step === 'simPick') body = `<p class="v21-kick" lang="ar">${esc(SC23_UI.stSim)}</p><p class="v21-ins" lang="ar">${g(SC23_UI.pickSim)}</p><div class="sc23-two three">${f.simile[W.to].map((x, j) => `<button class="sc23-to" data-act="sc23-sim" data-arg="${j}"><span class="sc23-em" aria-hidden="true">${x[0]}</span><b lang="ar">${esc(x[1][1])}</b></button>`).join('')}</div>`;
+  else if (step === 'done') { const L = sc23Letter(); body = `<div class="v20-buddy">${falconSVG('celebrate', 'v20-bird sm')}<div class="v20-bub"><b lang="ar">${g(SC23_UI.done)}</b><span class="en">Your letter is ready!</span></div></div>
+      <div class="sc23-paper final" lang="ar"><p class="sc23-date">${esc(L.date)}</p><p class="sc23-head">${esc(L.head)}</p>${L.lines.map((l) => `<p>${esc(l)}</p>`).join('')}<p class="sc23-sign">${esc(L.sign)}</p></div>
+      <div class="row center"><button class="btn soft" data-act="sc23-hear">${ICON('speaker')} اِسْتَمِعْ <span class="en">Listen</span></button><button class="btn big gold" data-act="modal-close">تَمَّ <span class="en">Done</span></button></div>`; }
+  else { const tiles = sc23Tiles(); if (!W.order.length) W.order = sc23Shuffle(tiles.length); const left = W.order.filter((j) => !W.line.includes(j)); const lab = { open: SC23_UI.stOpen, sim: SC23_UI.stSim, close: SC23_UI.stClose }[step];
+    body = `<p class="v21-kick" lang="ar">${esc(lab)}</p><p class="v21-ins" lang="ar">${g(SC23_UI.build)}</p><p class="en en-block v21-ins-en">Build the sentence</p>
+      <div class="v21-line ${W.ok === true ? 'yay' : W.ok === false ? 'oops' : ''}" lang="ar">${W.line.map((j, n) => `<button class="v21-tile in" data-act="sc23-unb" data-arg="${n}">${esc(tiles[j])}</button>`).join('') || '<span class="v21-ph">…</span>'}</div>
+      ${W.ok === false ? `<p class="v21-right" lang="ar">${esc(tiles.join(' '))}</p>` : ''}
+      <div class="v21-tray">${left.map((j) => `<button class="v21-tile" data-act="sc23-b" data-arg="${j}">${esc(tiles[j])}</button>`).join('')}</div>
+      ${W.ok !== null ? `<button class="btn big rd-go" data-act="sc23-wnext">التَّالِي <span class="en">Next</span></button>` : left.length ? '' : `<button class="btn big rd-go" data-act="sc23-check">${v20G() === 'f' ? 'تَحَقَّقِي' : 'تَحَقَّقْ'} <span class="en">Check</span></button>`}`; }
+  openModal(`<div class="stack v21 sc23 sc23-write"><div class="row between"><h2 lang="ar">✍️ ${esc(SC23_UI.write)} <span class="en en-block">Write a thank-you letter</span></h2>${closeBtn()}</div>${step === 'done' ? '' : dots}${step === 'done' ? '' : draft}${body}</div>`, () => { SC23.w = null; }, 'sheet');
+}
+/* parent area: per-child switch (behind the PIN) */
+{ const _rp = renderParent; renderParent = function renderParentSC23() { const r = _rp.apply(this, arguments);
+  try { const b = $('parent-body'); if (b && !$('sc23-pcard')) { const h = document.createElement('div'); h.className = 'card sc23-pcard'; h.id = 'sc23-pcard';
+    h.innerHTML = `<b lang="ar">✉️ الوَحْدَةُ المَدْرَسِيَّةُ: رِسَالَةُ شُكْرٍ</b> <span class="en">School unit pack (thank-you letter, verbs with I / we / you)</span><p class="small" lang="ar">كَلِمَاتٌ تَدْخُلُ المُرَاجَعَةَ وَمَزِيجَ صَقُّور، وَقِصَّةٌ، وَكِتَابَةُ رِسَالَةٍ، وَمَشْهَدٌ. <span class="en">Words join review and the mix; plus a story, letter writing and a talk scene.</span></p><div class="v20-row">${Object.values(PROFILES).map((pr) => `<button class="btn ${sc23On(DB.kids[pr.id]) ? 'gold' : 'soft'}" data-act="sc23-toggle" data-arg="${esc(pr.id)}" aria-pressed="${sc23On(DB.kids[pr.id])}">${kidFace(pr.id)} ${esc(pr.ar || pr.name)} ${sc23On(DB.kids[pr.id]) ? '✓' : ''}</button>`).join('')}</div>`;
+    const first = b.querySelector('.card'); if (first && first.nextSibling) b.insertBefore(h, first.nextSibling); else b.appendChild(h); } } catch (e) { /* optional */ } return r; }; }
+/* menu tile (calm home) when the pack is on */
+{ const _m = calmMenuItems; calmMenuItems = function calmMenuItemsSC23() { const items = _m.apply(this, arguments); try { if (sc23On(P())) items.splice(Math.min(4, items.length), 0, { act: 'sc23-open', ic: '✉️', ar: SC23_UI.title, en: 'School unit' }); } catch (e) { /* optional */ } return items; }; }
+Object.assign(ACTIONS, {
+  'sc23-open': () => sc23Sheet(),
+  'sc23-toggle': (kid) => { sc23Toggle(kid); renderParent(); },
+  'sc23-words': () => { closeModal(); setTimeout(sc23Words, 30); },
+  'sc23-quiz': () => { closeModal(); setTimeout(() => sc23Run('gram:sc23'), 30); },
+  'sc23-gram': (id) => { closeModal(); setTimeout(() => v21Topic(id || 'past', 0), 30); },
+  'sc23-read': () => { modalOnClose = null; closeModal(); setTimeout(() => openReader('sc23'), 30); },
+  'sc23-write': () => { closeModal(); setTimeout(sc23Write, 30); },
+  'sc23-to': (x) => { const W = SC23.w; if (!W) return; W.to = x === 'f' ? 'f' : 'm'; W.st = 1; W.line = []; W.order = []; W.ok = null; sc23WRender(); },
+  'sc23-why': (j) => { const W = SC23.w; if (!W) return; W.why = +j; W.st = 3; sc23WRender(); },
+  'sc23-sim': (j) => { const W = SC23.w; if (!W) return; W.sim = +j; W.st = 4; W.line = []; W.order = []; W.ok = null; sc23WRender(); },
+  'sc23-b': (j) => { const W = SC23.w; if (!W || W.ok !== null) return; W.line.push(+j); sc23WRender(); },
+  'sc23-unb': (n) => { const W = SC23.w; if (!W || W.ok !== null) return; W.line.splice(+n, 1); sc23WRender(); },
+  'sc23-check': () => { const W = SC23.w; if (!W || W.ok !== null) return; W.ok = W.line.every((x, n) => x === n); try { v21Answer('gram:sc23', W.ok, Date.now() - W.t0); } catch (e) { /* optional */ } if (W.ok) v20Chime(); sc23WRender(); },
+  'sc23-wnext': () => { const W = SC23.w; if (!W) return; W.st = W.st === 1 ? 2 : W.st + 1; W.line = []; W.order = []; W.ok = null; W.t0 = Date.now(); sc23WRender(); },
+  'sc23-hear': () => { const W = SC23.w; if (!W) return; const L = sc23Letter(); speak([L.head].concat(L.lines).join(' '), 'fusha', { quiet: true }); }
+});
+if (window.SAQ) Object.assign(SAQ, { sc23Sheet, sc23Write });
 
 /* challenge-tts: a 🔊 button on each final-challenge (unit quiz) question. Uses speak() (Azure /api/tts when a family code +
    consent allow it, otherwise the browser's speechSynthesis). Instructions are spoken in the child's dialect; Fusha words in
