@@ -3295,6 +3295,33 @@ body:not(.show-en) .tr19-only{display:none!important}
 .v21-rep .v21-endrow .en { flex-basis: 100%; }
 @media print { .v21-fe svg.on path { fill: #2bb673 !important; } }
 
+/* v21b calm home */
+.calm-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.calm-item{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;border:0;border-radius:20px;background:#f2f8fc;padding:14px 8px;min-height:96px;font:inherit;cursor:pointer}
+.calm-item b{font-size:1.02rem;color:#1b3a57}
+.calm-ic{font-size:1.8rem;line-height:1;font-weight:900;color:#2b7bb9}
+.calm-n{position:absolute;top:8px;inset-inline-start:10px;font-style:normal;background:#ff8a3d;color:#fff;border-radius:999px;padding:0 8px;font-weight:800}
+.calm2-home{position:relative;display:flex;flex-direction:column;align-items:center;gap:16px;max-width:560px;margin:0 auto;width:100%;padding-top:18px}
+.calm2-menu{position:absolute;top:10px;inset-inline-end:6px;width:52px;height:52px;border:0;border-radius:18px;background:rgba(255,255,255,.9);color:#1b5a80;box-shadow:0 3px 10px rgba(30,90,130,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+.calm2-bird{border:0;background:none;padding:0;cursor:pointer}
+.calm2-bird .calm2-falcon{width:150px;height:auto;display:block}
+.calm2-play{display:flex;align-items:center;justify-content:center;gap:14px;width:min(100%,460px);min-height:132px;border:0;border-radius:36px;cursor:pointer;font:inherit;
+  background:linear-gradient(135deg,#ffd23f,#ff9a2b);color:#4a2600;box-shadow:0 10px 0 #e07f12,0 18px 30px rgba(255,150,40,.35)}
+.calm2-play b{font-size:2.4rem}
+.calm2-play:active{transform:translateY(5px);box-shadow:0 5px 0 #e07f12}
+.calm2-sea{width:100%}
+.calm2-home .jv-wt,.calm2-home .jv-name,.calm2-home .jv-lock,.calm2-home .v21-fe,.calm2-home .jv-stars,.calm2-home .jv-prog{display:none!important}
+.calm2-home .jv-node.s-locked .jv-isle{opacity:.42;filter:saturate(.55)}
+.calm2-home .jv-world{margin-top:0}
+@media (min-width:900px){.calm2-bird .calm2-falcon{width:170px}.calm2-home{padding-top:28px}}
+.calm2-bird{position:relative;width:150px;height:150px;flex:0 0 auto}
+.calm2-bird>*{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain;margin:0!important;transform:none!important}
+.calm2-bird img{object-fit:contain}
+.calm2-home{padding-top:58px}
+@media (min-width:900px){.calm2-bird{width:170px;height:170px}}
+.calm2-menu{background:#e6f4fc}
+.calm2-onhome .il-top{display:none!important}
+
 </style>
 </head>
 <body>
@@ -3480,7 +3507,7 @@ body:not(.show-en) .tr19-only{display:none!important}
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v21";
+const APP_VERSION = "v21b";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -13707,6 +13734,40 @@ function v21ReportPart(kid) {
 }
 { const _rh = v20ReportHTML; v20ReportHTML = function v20ReportHTMLV21(kid) { const h = _rh.apply(this, arguments);
   try { const part = v21ReportPart(kid); const at = h.indexOf('<h3 lang="ar">الأَمَانُ'); return part ? (at > 0 ? h.slice(0, at) + part + h.slice(at) : h.replace(/<\/div>\s*$/, part + '</div>')) : h; } catch (e) { return h; } }; }
+
+/* v21b calm home (Randa's choice, from the declutter demo variant 2, with the bottom tab bar kept):
+   Saqqour (tap = the greeting is spoken) + one huge "play" (next step on the current island) + the island map (art + number only,
+   locked islands softly faded). No coins, counters, titles or badges on home. One small corner menu holds everything else as big tiles. */
+function calmNext(p) { const u = nextUnitFor(p); if (!u) return null; const acts = jvActs(p, u); const next = acts.find((a) => !a.done);
+  return { u, i: UNITS.indexOf(u), acts, next, dn: acts.filter((a) => a.done).length }; }
+function calmMenuItems() { const p = P(); let due = 0; try { due = v20Due(p).length; } catch (e) { /* optional */ } const items = [];
+  const add = (act, ic, ar, en, extra) => items.push({ act, ic, ar, en, extra });
+  add('il-tab:me', '@falcon', 'صَقْرِي', 'My falcon');
+  add('il-open:chat', '💬', 'تَحَدَّثْ مَعِي', 'Talk with me');
+  if (aiAccess()) add('il-open:homework', '📚', 'الوَاجِب', 'Homework');
+  try { if (v21MixPick(p).length) add('v21-mix', '🎲', v21MixTitle(), "Saqqour's mix"); } catch (e) { /* optional */ }
+  if (due) add('v20-review', '↻', 'كَلِمَاتٌ نَرْجِعُ لَهَا', 'Words to revisit', toArabicDigits(due));
+  add('v20-scenes', '🗣️', 'مَشَاهِدُ الكَلَامِ', 'Talk scenes');
+  add('v20-pron', 'ع', 'حُرُوفٌ صَعْبَةٌ', 'Tricky letters');
+  add('v21-map', '🪶', 'رِيشَاتِي', 'My feathers');
+  return items; }
+ilHome = function ilHomeCalm() {
+  const p = P(); const pr = PROFILES[currentKid]; const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); IL.greet = greet; const n = calmNext(p);
+  const play = n && n.next ? `data-act="jv-act" data-arg="${n.u.id}|${n.next.k}|${n.next.arg || ''}"` : n ? `data-act="jv-isle" data-arg="${n.u.id}"` : 'data-act="il-tab" data-arg="games"';
+  return `<div class="calm2-home">
+    <button class="calm2-menu" data-act="calm2-menu" aria-label="القَائِمَة Menu"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg></button>
+    <button class="calm2-bird" data-act="il-hear" aria-label="${esc(falconName().ar)} · ${esc(greet.ar)}">${falconSVG('happy', 'calm2-falcon')}</button>
+    <button class="calm2-play" ${play} aria-label="يَلَّا نِلْعَب Let's play"><svg viewBox="0 0 24 24" width="54" height="54" aria-hidden="true"><path d="M16 5L7 12l9 7z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><b lang="ar">يَلَّا نِلْعَب</b><span class="en">Let's play</span></button>
+    <div class="jv-sea calm2-sea">${jvPathHTML(p)}</div></div>`;
+};
+/* the home opens at the top (Saqqour + play + start of the map), not scrolled down to the current island */
+{ const _r = ilRender; ilRender = function ilRenderCalm() { _r.apply(this, arguments); document.body.classList.toggle('calm2-onhome', IL.page === 'home');
+  if (IL.page === 'home') { document.querySelectorAll('#il-page .calm2-home .jv-name, #il-page .calm2-home .jv-wt').forEach((e) => e.remove()); /* art + number only (names stay in each island's aria-label and sheet) */ const pg = $('il-page'); [120, 400].forEach((t) => setTimeout(() => { if (pg && IL.page === 'home') pg.scrollTop = 0; }, t)); } }; }
+Object.assign(ACTIONS, {
+  'calm2-menu': () => { openModal(`<div class="stack calm-menu calm2-sheet"><div class="row between"><h2 lang="ar">القَائِمَة <span class="en">Menu</span></h2><button class="icon-btn" data-act="modal-close" aria-label="إِغْلَاق Close">✖️</button></div>
+    <div class="calm-grid">${calmMenuItems().map((x) => `<button class="calm-item" data-act="calm2-go" data-arg="${x.act}"><span class="calm-ic" aria-hidden="true">${x.ic === '@falcon' ? falconHeadHTML(currentKid, 'sm') : x.ic}</span><b lang="ar">${esc(x.ar)}</b><span class="en">${esc(x.en)}</span>${x.extra ? `<i class="calm-n">${x.extra}</i>` : ''}</button>`).join('')}</div></div>`, null, 'sheet'); },
+  'calm2-go': (a) => { closeModal(); if (a.startsWith('il-tab:')) { ACTIONS['il-tab'](a.slice(7)); return; } if (a.startsWith('il-open:')) { ilOpen(a.slice(8)); return; } if (ACTIONS[a]) ACTIONS[a](''); }
+});
 
 </script>
 </body>
