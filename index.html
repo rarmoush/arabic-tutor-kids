@@ -3322,6 +3322,9 @@ body:not(.show-en) .tr19-only{display:none!important}
 .calm2-menu{background:#e6f4fc}
 .calm2-onhome .il-top{display:none!important}
 
+.q-bubble .ct-say{float:inline-end;margin-inline-start:8px;min-width:48px;min-height:48px;border-radius:50%;border:2px solid #ffc83d;background:#fff8e1;font-size:24px;line-height:1;cursor:pointer}
+.q-bubble .ct-say:active{transform:scale(.94)}
+
 </style>
 </head>
 <body>
@@ -3507,7 +3510,7 @@ body:not(.show-en) .tr19-only{display:none!important}
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v21b";
+const APP_VERSION = "v21b.1";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -13768,6 +13771,28 @@ Object.assign(ACTIONS, {
     <div class="calm-grid">${calmMenuItems().map((x) => `<button class="calm-item" data-act="calm2-go" data-arg="${x.act}"><span class="calm-ic" aria-hidden="true">${x.ic === '@falcon' ? falconHeadHTML(currentKid, 'sm') : x.ic}</span><b lang="ar">${esc(x.ar)}</b><span class="en">${esc(x.en)}</span>${x.extra ? `<i class="calm-n">${x.extra}</i>` : ''}</button>`).join('')}</div></div>`, null, 'sheet'); },
   'calm2-go': (a) => { closeModal(); if (a.startsWith('il-tab:')) { ACTIONS['il-tab'](a.slice(7)); return; } if (a.startsWith('il-open:')) { ilOpen(a.slice(8)); return; } if (ACTIONS[a]) ACTIONS[a](''); }
 });
+
+/* challenge-tts: a 🔊 button on each final-challenge (unit quiz) question. Uses speak() (Azure /api/tts when a family code +
+   consent allow it, otherwise the browser's speechSynthesis). Instructions are spoken in the child's dialect; Fusha words in
+   a Fusha voice. Reading questions (skill 'reading') speak the instruction only, never the target word (it would give the answer). */
+function ctPlan(q) {
+  const dl = curDialect(); const pick = G('اِخْتَرْ', 'اِخْتَارِي');
+  if (q.skill === 'reading') return [[G('اِقْرَأ', 'اِقْرَئِي') + ' وَ' + pick + ' المَعْنَى', dl]];
+  const parts = [];
+  if (/^\S+\s/.test(q.prompt) && !/[a-zA-Z]/.test(q.prompt)) { parts.push([pick + ' الكَلِمَة بِالفُصْحَى', dl]); parts.push([q.prompt.replace(/^\S+\s/, ''), dl]); }
+  else parts.push([pick + ' الكَلِمَة بِالفُصْحَى', dl]);
+  q.opts.forEach((o) => parts.push([o, 'fusha']));
+  return parts;
+}
+function ctSpeak() {
+  const z = journeyState.quiz; if (!z || z.done) return; const q = z.qs[z.i]; const parts = ctPlan(q);
+  window.__ctLast = parts; stopSpeech(); let k = 0;
+  const next = () => { if (k >= parts.length) return; const [t, kind] = parts[k++]; speak(t, kind, { onEnd: () => setTimeout(next, 250) }); };
+  next();
+}
+{ const _r = renderUnitQuiz; renderUnitQuiz = function renderUnitQuizTTS() { const h = _r.apply(this, arguments);
+  return h.replace('<div class="q-bubble">', '<div class="q-bubble"><button class="ct-say" type="button" data-ct="say" aria-label="اِسْمَعْ">🔊</button>'); }; }
+document.addEventListener('click', (e) => { const b = e.target.closest && e.target.closest('[data-ct="say"]'); if (b) { e.preventDefault(); e.stopPropagation(); ctSpeak(); } }, true);
 
 </script>
 </body>
