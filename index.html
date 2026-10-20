@@ -3686,6 +3686,29 @@ body:not(.show-en) .tip-card .tip-en{display:none}
 .cw-opt.right{border-color:#22a86a;background:var(--ds-ok-50,#e6f7ee);color:#22a86a}.cw-opt.wrong{border-color:#ffb199;background:#fff4ef}
 .cw-wk{display:flex;flex-direction:column;gap:6px;margin-top:6px}
 
+.y13 .y13-sub{margin:.2rem 0;font-weight:600}
+.y13-opts{display:grid;gap:.6rem}
+.y13-opt{display:flex;align-items:center;gap:.7rem;padding:.8rem 1rem;border-radius:18px;border:2px solid #e9e2f5;background:#fff;text-align:start;font:inherit;cursor:pointer}
+.y13-opt.done{border-color:#7fd8a6;background:#f0fff6}
+.y13-oi{font-size:1.8rem}.y13-ot{display:flex;flex-direction:column;flex:1}.y13-ot b{font-size:1.15rem}.y13-ot small{opacity:.75}
+.y13-tick{color:#20c46f;font-weight:700;font-size:1.3rem}
+.y13-task{position:relative;background:#fff8e6;border-radius:16px;padding:.7rem 1rem;margin-top:.4rem}.y13-task.dl{background:#eef7ff}.y13-task p{margin:.3rem 0 0}
+.y13-task .v21-hear{position:absolute;top:.5rem;left:.5rem}
+.y13-body{font-family:'Noto Naskh Arabic',serif;font-size:1.25rem;line-height:2.1;background:#fffdf7;border-radius:18px;padding:.8rem 1rem;max-height:52vh;overflow:auto}
+.y13-body p{margin:0 0 .6rem}.y13-body .v21-hear{vertical-align:middle;margin-inline-start:.3rem}
+.y13-body.poem p{text-align:center;font-weight:700}.y13-gap{display:inline-block;width:1.6rem}
+.y13-gloss{font-size:.95rem;margin:.2rem 0;padding-inline-start:1.2rem}.y13-src{font-size:.8rem;opacity:.7;margin:0}
+.y13-qrow{display:flex;align-items:center;gap:.6rem}.y13-qq{font-size:1.3rem;font-weight:700;flex:1;margin:.3rem 0}
+.y13-ans{display:grid;gap:.55rem}.y13-a{padding:.85rem 1rem;border-radius:16px;border:2px solid #e3dcf2;background:#fff;font:inherit;font-size:1.1rem;text-align:start}
+.y13-a.yay{border-color:#20c46f;background:#eafff2}.y13-a.oops{border-color:#ff9fbf;background:#fff0f5}
+.y13-cnt{font-weight:700;opacity:.7}
+
+.jv-node.s-soon .jv-isle{opacity:.55;filter:grayscale(.7);cursor:default}
+.v26-tag{display:inline-block;margin-inline-start:.4em;padding:.05em .55em;border-radius:999px;background:var(--surface-2,#eef2f6);color:var(--ink-2,#566);font-size:.78em;font-weight:600}
+.jv-name .v26-tag{display:block;margin:.2em auto 0;width:max-content}
+.v26-wt{position:relative;z-index:2;margin:14px auto 4px;width:max-content;max-width:92%;background:rgba(255,255,255,.92);color:#0d4f73;border-radius:999px;padding:5px 16px;font-weight:700;font-size:1rem;box-shadow:0 2px 8px rgba(10,80,110,.15)}
+.v26-badge{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);z-index:3;background:rgba(255,255,255,.95);color:#0d4f73;border-radius:999px;padding:1px 9px;font-size:.78rem;font-weight:700;white-space:nowrap}
+
 </style>
 </head>
 <body>
@@ -3871,7 +3894,7 @@ body:not(.show-en) .tip-card .tip-en{display:none}
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v25";
+const APP_VERSION = "v26";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -13689,6 +13712,146 @@ const GR_GAMES = {
   pic: ['الكَلِمَةُ وَالصُّورَةُ', '[اِخْتَرِ|اِخْتَارِي] الصُّورَةَ', 'Pick the picture']
 };
 
+/* =========================================================
+   Y13 DEMO (stage 1) · the first 3 SECONDARY islands (KS3 stage 1–3, Arabic A native track).
+   Loaded right after grammar-v21-content.js: appends units u17–u19 (LEVELS 5 «آفَاقٌ أَوْسَعُ»), 3 grammar topics on the
+   existing v21 game engine (same item shapes), and Y13_READ (2–3 reading options per island + comprehension questions).
+   Original texts written for this app, except 3 classical public-domain verses (Shawqi d.1932, al-Mutanabbi d.965,
+   al-Shabbi d.1934). Fusha for reading/writing/grammar; dialect only in Saqqour's spoken lines + the speaking prompt.
+   [m|f] = boy / girl form. NOT yet native-teacher-checked (see PROGRESS-y13.md for the review list).
+   ========================================================= */
+LEVELS.push({ n: 5, ar: 'آفَاقٌ أَوْسَعُ', en: 'Wider Horizons', cefr: 'B1', hint: 'Secondary (KS3): heritage, science, sport; كان / إنّ / الأفعال الخمسة.' });
+if (typeof JV_WORLDS !== 'undefined') JV_WORLDS.push(['جُزُرُ الآفَاقِ', 'Horizon isles']);
+UNITS.push(
+  { id: 'u17', level: 5, icon: '🏰', ar: 'التُّرَاثُ وَالتَّارِيخُ', en: 'Heritage & history', y: 7,
+    tip: 'كَانَ وأخواتها: the subject stays ـُ (اسمها), the predicate takes ـَ / ـًا (خبرها): كَانَ الجَوُّ جَمِيلًا.',
+    vocab: [['التُّرَاثُ', 'التُّرَاث', 'heritage', '🏺'], ['الغَوْصُ', 'الغُوص', 'pearl diving', '🤿'], ['اللُّؤْلُؤُ', 'اللُّولُو', 'pearls', '🦪'], ['الحِصْنُ', 'الحِصِن', 'fort', '🏰'], ['المُتْحَفُ', 'المَتْحَف', 'museum', '🏛️'], ['الأَجْدَادُ', 'الأَوَّلِين', 'ancestors', '👴']],
+    dialogue: [['n', 'زِرْت قَصْر الحِصْن أَمْس؟', 'هَلْ زُرْتَ قَصْرَ الحِصْنِ أَمْسِ؟', 'Did you visit Qasr Al Hosn yesterday?'], ['s', 'إِيه، كَان وَايِد حِلُو! شِفْت صُوَر الغُوص القَدِيمَة.', 'نَعَمْ، كَانَ جَمِيلًا جِدًّا! رَأَيْتُ صُوَرَ الغَوْصِ القَدِيمَةَ.', 'Yes, it was lovely! I saw old pearl-diving photos.'], ['n', 'يَدِّي كَان غَوَّاص فِي زْمَان.', 'كَانَ جَدِّي غَوَّاصًا فِي المَاضِي.', 'My grandad was a diver long ago.'], ['s', 'مَا شَاء الله! لَازِم يْعَلِّمْنَا عَن التُّرَاث.', 'مَا شَاءَ اللهُ! يَجِبُ أَنْ يُعَلِّمَنَا عَنِ التُّرَاثِ.', 'Wow! He should teach us about heritage.']] },
+  { id: 'u18', level: 5, icon: '🔬', ar: 'العُلُومُ وَالاِبْتِكَارُ', en: 'Science & innovation', y: 8,
+    tip: 'إِنَّ وأخواتها work the other way round: the subject takes ـَ (اسمها), the predicate stays ـُ (خبرها): إِنَّ العِلْمَ نُورٌ.',
+    vocab: [['العُلُومُ', 'العُلُوم', 'science', '🔬'], ['تَجْرِبَةٌ', 'تَجْرِبَة', 'experiment', '🧪'], ['اخْتِرَاعٌ', 'اخْتِرَاع', 'invention', '💡'], ['الفَضَاءُ', 'الفَضَاء', 'space', '🚀'], ['كَوْكَبٌ', 'كَوْكَب', 'planet', '🪐'], ['حَاسُوبٌ', 'كُمْبْيُوتَر', 'computer', '💻']],
+    dialogue: [['t', 'شُو مَشْرُوعْكُم حَق مَعْرِض العُلُوم؟', 'مَا مَشْرُوعُكُمْ لِمَعْرِضِ العُلُومِ؟', 'What is your project for the science fair?'], ['n', 'بِنْسَوِّي جِهَاز يِسْقِي الزَّرْع بْرُوحَه.', 'سَنَصْنَعُ جِهَازًا يَسْقِي النَّبَاتَاتِ وَحْدَهُ.', 'We will make a device that waters the plants by itself.'], ['s', 'وِإِذَا مَا اشْتَغَل، بِنْجَرِّب مَرَّة ثَانْيَة.', 'وَإِذَا لَمْ يَعْمَلْ، سَنُجَرِّبُ مَرَّةً أُخْرَى.', "And if it doesn't work, we'll try again."], ['t', 'فِكْرَة وَايِد حِلْوَة! بِالتَّوْفِيق.', 'فِكْرَةٌ رَائِعَةٌ! بِالتَّوْفِيقِ.', 'Great idea! Good luck.']] },
+  { id: 'u19', level: 5, icon: '🏅', ar: 'الرِّيَاضَةُ وَالصِّحَّةُ', en: 'Sport & health', y: 9,
+    tip: 'الأفعال الخمسة (يَفْعَلُونَ، تَفْعَلِينَ، يَفْعَلَانِ…) keep their ن normally and DROP it after أَنْ / لَنْ / لَمْ / لا الناهية: لَنْ يَتَأَخَّرُوا.',
+    vocab: [['الرِّيَاضَةُ', 'الرِّيَاضَة', 'sport', '⚽'], ['تَدْرِيبٌ', 'تَمْرِين', 'training', '🏋️'], ['سِبَاقٌ', 'سِبَاق', 'race', '🏃'], ['صِحَّةٌ', 'صِحَّة', 'health', '💪'], ['فَرِيقٌ', 'فَرِيق', 'team', '👥'], ['مُدَرِّبٌ', 'مُدَرِّب', 'coach', '📣']],
+    dialogue: [['s', 'بِتْشَارْكِين فِي سِبَاق المَدْرَسَة؟', 'هَلْ سَتُشَارِكِينَ فِي سِبَاقِ المَدْرَسَةِ؟', 'Will you run in the school race?'], ['n', 'أَكِيد! أَتْمَرَّن كِل يُوم بَعْد الدَّوَام.', 'بِالتَّأْكِيدِ! أَتَدَرَّبُ كُلَّ يَوْمٍ بَعْدَ المَدْرَسَةِ.', 'Of course! I train every day after school.'], ['s', 'لَا تِنْسِين تِشْرَبِين مَاي وَايِد.', 'لَا تَنْسَيْ أَنْ تَشْرَبِي مَاءً كَثِيرًا.', "Don't forget to drink lots of water."], ['n', 'وِإِنْتُو بَعَد، لَا تِنْسُون الإِحْمَاء!', 'وَأَنْتُمْ أَيْضًا، لَا تَنْسَوُا الإِحْمَاءَ!', "You too, don't forget to warm up!"]] }
+);
+const Y13_TOPICS = [
+  { id: 'kana', u: 'u17', ar: 'كَانَ وَأَخَوَاتُهَا', en: 'kāna and its sisters', col: '#c27c2c', em: '🏺', older: 1, y: 7,
+    gulf: ['«كَانَ» وِخَوَاتْهَا يْدِشُّون عَلَى الجُمْلَة اللِّي تِبْدَا بِاسْم وِيْغَيْرُون آخِرْهَا.', 'الاسْم الأَوَّل يِظَل مَرْفُوع، بَس الخَبَر يْصِير مَنْصُوب. [شُوف|شُوفِي] الفَتْحَة!', 'خَوَاتْهَا وَايِد: أَصْبَح، صَار، ظَل، لَيْس، مَا زَال. يَلَّا!'],
+    fusha: ['«كَانَ» وَأَخَوَاتُهَا تَدْخُلُ عَلَى الجُمْلَةِ الاسْمِيَّةِ فَتُغَيِّرُ إِعْرَابَهَا.', 'يَبْقَى المُبْتَدَأُ مَرْفُوعًا وَيُسَمَّى اسْمَهَا، وَيُصْبِحُ الخَبَرُ مَنْصُوبًا وَيُسَمَّى خَبَرَهَا.', 'مِنْ أَخَوَاتِهَا: أَصْبَحَ، أَمْسَى، ظَلَّ، بَاتَ، صَارَ، لَيْسَ، مَا زَالَ. [اِبْدَأْ|اِبْدَئِي]!'],
+    eg: [['🌤️', '{كَانَ} الجَوُّ جَمِيلًا.'], ['🏷️', 'كَانَ {الجَوُّ} جَمِيلًا.'], ['📣', 'كَانَ الجَوُّ {جَمِيلًا}.'], ['🌅', '{أَصْبَحَ} الطِّفْلُ نَشِيطًا.']],
+    items: [
+      { t: 'pick', lv: 1, q: '☀️ كَانَ الجَوُّ ___ أَمْسِ.', o: ['حَارًّا', 'حَارٌّ'] },
+      { t: 'tap', lv: 1, q: '[اُنْقُرْ|اُنْقُرِي] عَلَى اسْمِ كَانَ:', w: ['كَانَ', 'البَحْرُ', 'هَادِئًا.'], a: 1 },
+      { t: 'pick', lv: 1, q: '🌌 أَصْبَحَتِ السَّمَاءُ ___', o: ['صَافِيَةً', 'صَافِيَةٌ'] },
+      { t: 'tap', lv: 2, q: '[اُنْقُرْ|اُنْقُرِي] عَلَى خَبَرِ أَصْبَحَ:', w: ['أَصْبَحَ', 'الطَّرِيقُ', 'مُزْدَحِمًا.'], a: 2 },
+      { t: 'end', lv: 2, q: '📏 صَارَ الطِّفْلُ ___', s: 'طَوِيل', c: [['ـًا', 'طَوِيلًا'], ['ـٌ', 'طَوِيلٌ'], ['ـٍ', 'طَوِيلٍ']] },
+      { t: 'sort', lv: 2, b: ['مِنْ أَخَوَاتِ كَانَ', 'لَيْسَتْ مِنْهَا'], w: [['أَصْبَحَ', 0], ['لَيْسَ', 0], ['ذَهَبَ', 1], ['كَتَبَ', 1]] },
+      { t: 'pick', lv: 3, q: 'كَانَ المُعَلِّمُونَ ___', o: ['مُجْتَهِدِينَ', 'مُجْتَهِدُونَ', 'مُجْتَهِدَيْنِ'] },
+      { t: 'fix', lv: 3, w: ['لَيْسَ', 'الاِمْتِحَانُ', 'صَعْبٌ.'], bad: 2, o: ['صَعْبًا', 'صَعْبٍ', 'الصَّعْبُ'] },
+      { t: 'build', lv: 3, w: ['مَا', 'زَالَ', 'الجَوُّ', 'حَارًّا'] }
+    ] },
+  { id: 'inna', u: 'u18', ar: 'إِنَّ وَأَخَوَاتُهَا', en: 'inna and its sisters', col: '#2c7fc2', em: '💡', older: 1, y: 8,
+    gulf: ['«إِنَّ» وِخَوَاتْهَا بَعَد يْدِشُّون عَلَى الجُمْلَة الاسْمِيَّة، بَس يِشْتَغْلُون بِالعَكْس عَن «كَانَ».', 'الاسْم يْصِير مَنْصُوب، وِالخَبَر يِظَل مَرْفُوع. [لَاحِظ|لَاحْظِي] الضَّمَّة وِالفَتْحَة!', 'خَوَاتْهَا: أَنَّ، كَأَنَّ، لَكِنَّ، لَيْتَ، لَعَلَّ. يَلَّا!'],
+    fusha: ['«إِنَّ» وَأَخَوَاتُهَا تَدْخُلُ أَيْضًا عَلَى الجُمْلَةِ الاسْمِيَّةِ، لَكِنَّهَا تَعْمَلُ عَكْسَ «كَانَ».', 'تَنْصِبُ المُبْتَدَأَ وَيُسَمَّى اسْمَهَا، وَتَرْفَعُ الخَبَرَ وَيُسَمَّى خَبَرَهَا.', 'أَخَوَاتُهَا: أَنَّ، كَأَنَّ، لَكِنَّ، لَيْتَ، لَعَلَّ. هَيَّا نَتَدَرَّبُ!'],
+    eg: [['💡', '{إِنَّ} العِلْمَ نُورٌ.'], ['🏷️', 'إِنَّ {العِلْمَ} نُورٌ.'], ['📣', 'إِنَّ العِلْمَ {نُورٌ}.'], ['🌙', '{كَأَنَّ} القَمَرَ مِصْبَاحٌ.']],
+    items: [
+      { t: 'pick', lv: 1, q: '💡 إِنَّ العِلْمَ ___', o: ['نُورٌ', 'نُورًا'] },
+      { t: 'tap', lv: 1, q: '[اُنْقُرْ|اُنْقُرِي] عَلَى اسْمِ إِنَّ:', w: ['إِنَّ', 'الصَّبْرَ', 'جَمِيلٌ.'], a: 1 },
+      { t: 'end', lv: 2, q: '🧪 لَعَلَّ ___ يَنْجَحُ.', s: 'المَشْرُوع', c: [['ـَ', 'المَشْرُوعَ'], ['ـُ', 'المَشْرُوعُ'], ['ـِ', 'المَشْرُوعِ']] },
+      { t: 'pick', lv: 2, q: '🌙 كَأَنَّ القَمَرَ ___ فِي السَّمَاءِ.', o: ['مِصْبَاحٌ', 'مِصْبَاحًا', 'مِصْبَاحٍ'] },
+      { t: 'sort', lv: 2, b: ['إِنَّ وَأَخَوَاتُهَا', 'كَانَ وَأَخَوَاتُهَا'], w: [['لَكِنَّ', 0], ['لَيْتَ', 0], ['أَمْسَى', 1], ['ظَلَّ', 1]] },
+      { t: 'pick', lv: 3, q: '👷 إِنَّ المُهَنْدِسِينَ ___', o: ['مُبْدِعُونَ', 'مُبْدِعِينَ', 'مُبْدِعَانِ'] },
+      { t: 'pick', lv: 3, q: 'عَلَامَةُ نَصْبِ اسْمِ إِنَّ فِي «إِنَّ العَالِمَيْنِ مَشْهُورَانِ»:', o: ['اليَاءُ', 'الفَتْحَةُ', 'الأَلِفُ'] },
+      { t: 'fix', lv: 3, w: ['لَيْتَ', 'الشَّبَابُ', 'يَعُودُ.'], bad: 1, o: ['الشَّبَابَ', 'الشَّبَابِ', 'شَبَابٌ'] },
+      { t: 'build', lv: 3, w: ['إِنَّ', 'العِلْمَ', 'مِفْتَاحُ', 'النَّجَاحِ'] }
+    ] },
+  { id: 'af5', u: 'u19', ar: 'الأَفْعَالُ الخَمْسَةُ', en: 'The five verbs', col: '#2ca86a', em: '🏃', older: 1, y: 9,
+    gulf: ['هَذِي أَفْعَال حَق الحِين، وِتِلْصَق فِيهَا وَاو الجَمَاعَة أَو أَلِف الثْنِين أَو يَاء البِنْت.', 'لَمَّا تْكُون عَادِيَّة، النُّون مَوْجُودَة فِي الآخِر: يِلْعَبُون، تِلْعَبِين.', 'وِإِذَا يَا قَبِلْهَا «أَنْ» أَو «لَنْ» أَو «لَمْ»، النُّون تِطِير! [رَاقِب|رَاقْبِي] النُّون.'],
+    fusha: ['الأَفْعَالُ الخَمْسَةُ أَفْعَالٌ مُضَارِعَةٌ تَتَّصِلُ بِهَا وَاوُ الجَمَاعَةِ أَوْ أَلِفُ الاثْنَيْنِ أَوْ يَاءُ المُخَاطَبَةِ.', 'تُرْفَعُ بِثُبُوتِ النُّونِ: يَلْعَبُونَ، تَلْعَبِينَ، يَلْعَبَانِ.', 'وَتُنْصَبُ وَتُجْزَمُ بِحَذْفِ النُّونِ: لَنْ يَلْعَبُوا، لَمْ تَلْعَبِي. [رَاقِبِ|رَاقِبِي] النُّونَ!'],
+    eg: [['👥', 'هُمْ {يَلْعَبُونَ}.'], ['👧', 'أَنْتِ {تَلْعَبِينَ}.'], ['👬', 'هُمَا {يَلْعَبَانِ}.'], ['🚫', 'لَنْ {يَتَأَخَّرُوا}.']],
+    items: [
+      { t: 'sort', lv: 1, b: ['مِنَ الأَفْعَالِ الخَمْسَةِ', 'لَيْسَ مِنْهَا'], w: [['يَلْعَبُونَ', 0], ['تَكْتُبِينَ', 0], ['يَلْعَبُ', 1], ['نَكْتُبُ', 1]] },
+      { t: 'pick', lv: 1, q: '⚽ الطُّلَّابُ ___ الكُرَةَ.', o: ['يَلْعَبُونَ', 'يَلْعَبُ'] },
+      { t: 'tap', lv: 1, q: '[اُنْقُرْ|اُنْقُرِي] عَلَى الفِعْلِ مِنَ الأَفْعَالِ الخَمْسَةِ:', w: ['الأَصْدِقَاءُ', 'يَرْكُضُونَ', 'فِي', 'الحَدِيقَةِ.'], a: 1 },
+      { t: 'end', lv: 2, q: 'لَنْ ___ الفُرْصَةَ يَا شَبَابُ.', s: 'تُضَيِّع', c: [['ـُوا', 'تُضَيِّعُوا'], ['ـُونَ', 'تُضَيِّعُونَ'], ['ـِينَ', 'تُضَيِّعِينَ']] },
+      { t: 'pick', lv: 2, q: '👧 أَنْتِ لَمْ ___ الوَاجِبَ بَعْدُ.', o: ['تَكْتُبِي', 'تَكْتُبِينَ', 'تَكْتُبُوا'] },
+      { t: 'pick', lv: 2, q: '👬 اللَّاعِبَانِ ___ بِالفَوْزِ.', o: ['يَحْلُمَانِ', 'يَحْلُمَا', 'يَحْلُمُونَ'] },
+      { t: 'pick', lv: 3, q: 'عَلَامَةُ رَفْعِ «يَتَدَرَّبُونَ»:', o: ['ثُبُوتُ النُّونِ', 'الضَّمَّةُ', 'الوَاوُ'] },
+      { t: 'fix', lv: 3, w: ['يَجِبُ', 'أَنْ', 'تُحَافِظُونَ', 'عَلَى', 'صِحَّتِكُمْ.'], bad: 2, o: ['تُحَافِظُوا', 'تُحَافِظُ', 'تُحَافِظِينَ'] },
+      { t: 'build', lv: 3, w: ['لَمْ', 'يَتَأَخَّرُوا', 'عَنِ', 'التَّدْرِيبِ'] }
+    ] }
+];
+Y13_TOPICS.forEach((t) => { GR_TOPICS.push(t); GR[t.id] = t; GR_BY_UNIT[t.u] = t; });
+/* reading options: kind = story | info | news | poem. q: {q, o:[right, ...wrong]} (shuffled on screen). src = where the text comes from. */
+const Y13_KIND = { story: ['قِصَّةٌ', '📖'], info: ['نَصٌّ مَعْلُومَاتِيٌّ', '🧭'], news: ['خَبَرٌ صَحَفِيٌّ', '📰'], poem: ['شِعْرٌ', '🪶'] };
+const Y13_READ = {
+  u17: [
+    { id: 'diver', kind: 'story', title: 'لُؤْلُؤَةُ جَدِّي', src: 'نَصٌّ أَصْلِيٌّ لِلتَّطْبِيقِ',
+      text: ['كَانَ جَدِّي غَوَّاصًا مَاهِرًا فِي أَيَّامِ اللُّؤْلُؤِ. كَانَ يَخْرُجُ مَعَ البَحَّارَةِ قَبْلَ الفَجْرِ، وَكَانَ البَحْرُ هَادِئًا أَحْيَانًا وَهَائِجًا أَحْيَانًا أُخْرَى.', 'ذَاتَ يَوْمٍ أَصْبَحَتِ الرِّيحُ قَوِيَّةً، فَظَلَّ البَحَّارَةُ صَابِرِينَ حَتَّى هَدَأَتِ الأَمْوَاجُ. وَفِي المَسَاءِ عَادَ جَدِّي وَفِي يَدِهِ لُؤْلُؤَةٌ بَيْضَاءُ لَامِعَةٌ.', 'قَالَ لِي: «لَيْسَ الكَنْزُ فِي اللُّؤْلُؤَةِ فَقَطْ، بَلْ فِي الصَّبْرِ وَالتَّعَاوُنِ». وَمَا زِلْتُ أَتَذَكَّرُ كَلِمَاتِهِ كُلَّمَا رَأَيْتُ البَحْرَ.'],
+      qs: [{ q: 'مَاذَا كَانَ عَمَلُ الجَدِّ؟', o: ['غَوَّاصُ لُؤْلُؤٍ', 'صَيَّادُ سَمَكٍ', 'تَاجِرُ تُمُورٍ'] },
+        { q: 'لِمَاذَا ظَلَّ البَحَّارَةُ صَابِرِينَ؟', o: ['لِأَنَّ الرِّيحَ أَصْبَحَتْ قَوِيَّةً', 'لِأَنَّهُمْ كَانُوا جَائِعِينَ', 'لِأَنَّ اللُّؤْلُؤَةَ ضَاعَتْ'] },
+        { q: 'مَا الدَّرْسُ الَّذِي تَعَلَّمَهُ الرَّاوِي؟', o: ['أَنَّ الكَنْزَ فِي الصَّبْرِ وَالتَّعَاوُنِ', 'أَنَّ البَحْرَ هَادِئٌ دَائِمًا', 'أَنَّ اللُّؤْلُؤَ رَخِيصٌ'] },
+        { q: 'فِي «أَصْبَحَتِ الرِّيحُ قَوِيَّةً»، مَا خَبَرُ أَصْبَحَ؟', o: ['قَوِيَّةً', 'الرِّيحُ', 'أَصْبَحَتْ'] }] },
+    { id: 'hosn', kind: 'info', title: 'قَصْرُ الحِصْنِ', src: 'نَصٌّ أَصْلِيٌّ؛ المَعْلُومَاتُ مِنْ مَوْقِعِ قَصْرِ الحِصْنِ (دَائِرَةُ الثَّقَافَةِ وَالسِّيَاحَةِ - أَبُوظَبِي)',
+      text: ['يُعَدُّ قَصْرُ الحِصْنِ أَقْدَمَ مَبْنًى حَجَرِيٍّ فِي مَدِينَةِ أَبُوظَبِي. كَانَ فِي البِدَايَةِ بُرْجَ مُرَاقَبَةٍ بُنِيَ فِي سِتِّينِيَّاتِ القَرْنِ الثَّامِنَ عَشَرَ لِيَحْرُسَ مَصْدَرَ المَاءِ العَذْبِ الَّذِي كَانَ السُّكَّانُ يَعْتَمِدُونَ عَلَيْهِ.', 'ثُمَّ صَارَ البُرْجُ حِصْنًا كَبِيرًا، وَأَصْبَحَ مَقَرًّا لِلْحُكْمِ وَبَيْتًا لِلْأُسْرَةِ الحَاكِمَةِ سَنَوَاتٍ طَوِيلَةً.', 'وَبَعْدَ أَعْمَالِ تَرْمِيمٍ دَقِيقَةٍ، فُتِحَ القَصْرُ لِلزُّوَّارِ سَنَةَ ٢٠١٨، فَصَارَ مُتْحَفًا يَحْكِي تَارِيخَ المَدِينَةِ وَأَهْلِهَا.'],
+      qs: [{ q: 'مَاذَا كَانَ قَصْرُ الحِصْنِ فِي البِدَايَةِ؟', o: ['بُرْجَ مُرَاقَبَةٍ', 'مُتْحَفًا', 'سُوقًا'] },
+        { q: 'مَاذَا كَانَ البُرْجُ يَحْرُسُ؟', o: ['مَصْدَرَ المَاءِ العَذْبِ', 'مِينَاءَ السُّفُنِ', 'مَزْرَعَةَ النَّخِيلِ'] },
+        { q: 'مَتَى فُتِحَ القَصْرُ لِلزُّوَّارِ؟', o: ['سَنَةَ ٢٠١٨', 'سَنَةَ ١٧٦٠', 'سَنَةَ ١٩٧١'] },
+        { q: 'فِي «صَارَ البُرْجُ حِصْنًا»، مَا اسْمُ صَارَ؟', o: ['البُرْجُ', 'حِصْنًا', 'صَارَ'] }] },
+    { id: 'shawqi', kind: 'poem', title: 'المُعَلِّمُ', src: 'أَحْمَدُ شَوْقِي (ت ١٩٣٢)، الشَّوْقِيَّاتُ، قَصِيدَةُ «العِلْمُ وَالتَّعْلِيمُ» (مِلْكٌ عَامٌّ)',
+      text: ['قُمْ لِلْمُعَلِّمِ وَفِّهِ التَّبْجِيلَا ... كَادَ المُعَلِّمُ أَنْ يَكُونَ رَسُولَا'], gloss: [['وَفِّهِ', 'أَعْطِهِ حَقَّهُ كَامِلًا'], ['التَّبْجِيلَ', 'التَّعْظِيمَ وَالاِحْتِرَامَ']],
+      qs: [{ q: 'مَنْ يَدْعُو الشَّاعِرُ إِلَى احْتِرَامِهِ؟', o: ['المُعَلِّمُ', 'الطَّبِيبُ', 'الصَّدِيقُ'] },
+        { q: 'مَا مَعْنَى «التَّبْجِيلَ»؟', o: ['التَّعْظِيمُ وَالاِحْتِرَامُ', 'الضَّحِكُ', 'السَّفَرُ'] },
+        { q: 'الفِعْلُ «كَادَ» فِي البَيْتِ يَعْمَلُ عَمَلَ:', o: ['كَانَ', 'إِنَّ', 'ظَنَّ'] }] }
+  ],
+  u18: [
+    { id: 'water', kind: 'story', title: 'جِهَازُ السُّقْيَا', src: 'نَصٌّ أَصْلِيٌّ لِلتَّطْبِيقِ',
+      text: ['قَالَتْ مُعَلِّمَةُ العُلُومِ: «إِنَّ كُلَّ اخْتِرَاعٍ يَبْدَأُ بِسُؤَالٍ». فَكَّرَ فَرِيقُ الصَّفِّ الثَّامِنِ فِي سُؤَالٍ: كَيْفَ نَسْقِي نَبَاتَاتِ المَدْرَسَةِ دُونَ أَنْ نُضَيِّعَ المَاءَ؟', 'صَنَعَ الطُّلَّابُ جِهَازًا صَغِيرًا يَقِيسُ رُطُوبَةَ التُّرْبَةِ، فَإِذَا جَفَّتِ التُّرْبَةُ فَتَحَ الجِهَازُ صُنْبُورًا رَفِيعًا.', 'فِي الأُسْبُوعِ الأَوَّلِ تَعَطَّلَ الجِهَازُ مَرَّتَيْنِ، لَكِنَّ الفَرِيقَ لَمْ يَيْأَسْ. وَفِي يَوْمِ المَعْرِضِ قَالَ أَحَدُ الزُّوَّارِ: «لَيْتَ كُلَّ حَدِيقَةٍ فِيهَا جِهَازٌ مِثْلُ هَذَا!»'],
+      qs: [{ q: 'مَا السُّؤَالُ الَّذِي فَكَّرَ فِيهِ الفَرِيقُ؟', o: ['كَيْفَ نَسْقِي النَّبَاتَاتِ دُونَ أَنْ نُضَيِّعَ المَاءَ؟', 'كَيْفَ نَصْنَعُ رُوبُوتًا يَلْعَبُ الكُرَةَ؟', 'كَيْفَ نَزْرَعُ شَجَرَةً جَدِيدَةً؟'] },
+        { q: 'مَاذَا يَقِيسُ الجِهَازُ؟', o: ['رُطُوبَةَ التُّرْبَةِ', 'حَرَارَةَ الشَّمْسِ', 'طُولَ النَّبَاتِ'] },
+        { q: 'مَاذَا حَدَثَ فِي الأُسْبُوعِ الأَوَّلِ؟', o: ['تَعَطَّلَ الجِهَازُ مَرَّتَيْنِ', 'فَازَ الفَرِيقُ بِجَائِزَةٍ', 'جَفَّتْ كُلُّ النَّبَاتَاتِ'] },
+        { q: 'فِي «لَكِنَّ الفَرِيقَ لَمْ يَيْأَسْ»، مَا اسْمُ لَكِنَّ؟', o: ['الفَرِيقَ', 'لَمْ', 'يَيْأَسْ'] }] },
+    { id: 'hope', kind: 'info', title: 'مِسْبَارُ الأَمَلِ', src: 'نَصٌّ أَصْلِيٌّ؛ المَعْلُومَاتُ مِنْ مَرْكَزِ مُحَمَّدِ بْنِ رَاشِدٍ لِلْفَضَاءِ (مَشْرُوعُ الإِمَارَاتِ لِاسْتِكْشَافِ المِرِّيخِ)',
+      text: ['مِسْبَارُ الأَمَلِ أَوَّلُ مَهَمَّةٍ عَرَبِيَّةٍ لِاسْتِكْشَافِ كَوْكَبٍ آخَرَ. أَطْلَقَتْهُ دَوْلَةُ الإِمَارَاتِ فِي شَهْرِ يُولْيُو سَنَةَ ٢٠٢٠ مِنْ قَاعِدَةٍ فِي اليَابَانِ، وَوَصَلَ إِلَى مَدَارِ المِرِّيخِ فِي التَّاسِعِ مِنْ فِبْرَايِرَ سَنَةَ ٢٠٢١.', 'إِنَّ هَدَفَ المِسْبَارِ دِرَاسَةُ الغِلَافِ الجَوِّيِّ لِلْمِرِّيخِ وَمُتَابَعَةُ طَقْسِهِ عَلَى مَدَارِ اليَوْمِ وَالفُصُولِ.', 'وَلَعَلَّ أَهَمَّ مَا يُمَيِّزُ هَذَا المَشْرُوعَ أَنَّ فَرِيقًا كَبِيرًا مِنَ المُهَنْدِسِينَ وَالعُلَمَاءِ الشَّبَابِ شَارَكَ فِي بِنَائِهِ.'],
+      qs: [{ q: 'مَتَى وَصَلَ المِسْبَارُ إِلَى مَدَارِ المِرِّيخِ؟', o: ['فِي فِبْرَايِرَ ٢٠٢١', 'فِي يُولْيُو ٢٠٢٠', 'فِي يَنَايِرَ ٢٠١٨'] },
+        { q: 'مَا هَدَفُ المِسْبَارِ؟', o: ['دِرَاسَةُ الغِلَافِ الجَوِّيِّ لِلْمِرِّيخِ', 'البَحْثُ عَنِ الذَّهَبِ', 'تَصْوِيرُ القَمَرِ فَقَطْ'] },
+        { q: 'مِنْ أَيْنَ أُطْلِقَ المِسْبَارُ؟', o: ['مِنَ اليَابَانِ', 'مِنْ فَرَنْسَا', 'مِنَ البَرَازِيلِ'] },
+        { q: 'فِي «إِنَّ هَدَفَ المِسْبَارِ دِرَاسَةُ…»، مَا خَبَرُ إِنَّ؟', o: ['دِرَاسَةُ', 'هَدَفَ', 'المِسْبَارِ'] }] },
+    { id: 'mutanabbi', kind: 'poem', title: 'فَوْقَ النُّجُومِ', src: 'أَبُو الطَّيِّبِ المُتَنَبِّي (ت ٣٥٤ هـ / ٩٦٥ م)، دِيوَانُ المُتَنَبِّي (مِلْكٌ عَامٌّ)',
+      text: ['إِذَا غَامَرْتَ فِي شَرَفٍ مَرُومِ ... فَلَا تَقْنَعْ بِمَا دُونَ النُّجُومِ'], gloss: [['غَامَرْتَ', 'خُضْتَ أَمْرًا صَعْبًا فِيهِ مُخَاطَرَةٌ'], ['مَرُومِ', 'مَطْلُوبٍ'], ['لَا تَقْنَعْ', 'لَا تَرْضَ']],
+      qs: [{ q: 'بِمَاذَا يَنْصَحُ الشَّاعِرُ مَنْ يَسْعَى إِلَى هَدَفٍ عَظِيمٍ؟', o: ['أَلَّا يَرْضَى بِأَقَلَّ مِنَ القِمَّةِ', 'أَنْ يَتْرُكَ هَدَفَهُ', 'أَنْ يَنَامَ طَوِيلًا'] },
+        { q: 'مَا مَعْنَى «غَامَرْتَ»؟', o: ['خُضْتَ أَمْرًا صَعْبًا', 'نِمْتَ', 'ضَحِكْتَ'] },
+        { q: 'كَلِمَةُ «النُّجُومِ» فِي البَيْتِ رَمْزٌ إِلَى:', o: ['الأَهْدَافِ العَالِيَةِ', 'اللَّيْلِ', 'السَّفَرِ'] }] }
+  ],
+  u19: [
+    { id: 'race', kind: 'story', title: 'نَصِيحَةُ المُدَرِّبِ', src: 'نَصٌّ أَصْلِيٌّ لِلتَّطْبِيقِ',
+      text: ['قَبْلَ السِّبَاقِ بِأُسْبُوعٍ قَالَ المُدَرِّبُ لِلْفَرِيقِ: «أَنْتُمْ تَتَدَرَّبُونَ جَيِّدًا، لَكِنْ لَا تَنْسَوْا أَنَّ الرَّاحَةَ جُزْءٌ مِنَ التَّدْرِيبِ». ضَحِكَ اللَّاعِبُونَ، فَهُمْ يُحِبُّونَ الرَّكْضَ وَلَا يُحِبُّونَ الجُلُوسَ.', 'فِي اليَوْمِ التَّالِي شَعَرَ أَحَدُهُمْ بِأَلَمٍ فِي رُكْبَتِهِ لِأَنَّهُ تَدَرَّبَ سَاعَاتٍ طَوِيلَةً دُونَ رَاحَةٍ. عِنْدَئِذٍ فَهِمَ الجَمِيعُ نَصِيحَةَ المُدَرِّبِ: صَارُوا يَنَامُونَ مُبَكِّرًا، وَيَشْرَبُونَ المَاءَ، وَيَأْكُلُونَ طَعَامًا صِحِّيًّا.', 'وَفِي يَوْمِ السِّبَاقِ لَمْ يَفُزِ الفَرِيقُ بِالمَرْكَزِ الأَوَّلِ، لَكِنَّ كُلَّ لَاعِبٍ حَقَّقَ أَفْضَلَ زَمَنٍ فِي حَيَاتِهِ.'],
+      qs: [{ q: 'مَا نَصِيحَةُ المُدَرِّبِ؟', o: ['أَنَّ الرَّاحَةَ جُزْءٌ مِنَ التَّدْرِيبِ', 'أَنْ يَتَدَرَّبُوا طُولَ اللَّيْلِ', 'أَنْ يَتْرُكُوا السِّبَاقَ'] },
+        { q: 'لِمَاذَا شَعَرَ أَحَدُ اللَّاعِبِينَ بِأَلَمٍ؟', o: ['لِأَنَّهُ تَدَرَّبَ طَوِيلًا دُونَ رَاحَةٍ', 'لِأَنَّهُ سَقَطَ عَنِ الدَّرَّاجَةِ', 'لِأَنَّهُ لَمْ يَتَدَرَّبْ أَبَدًا'] },
+        { q: 'مَاذَا حَدَثَ يَوْمَ السِّبَاقِ؟', o: ['حَقَّقَ كُلُّ لَاعِبٍ أَفْضَلَ زَمَنٍ لَهُ', 'فَازَ الفَرِيقُ بِالمَرْكَزِ الأَوَّلِ', 'لَمْ يُشَارِكِ الفَرِيقُ'] },
+        { q: 'أَيُّ فِعْلٍ مِنَ الأَفْعَالِ الخَمْسَةِ؟', o: ['يَشْرَبُونَ', 'شَعَرَ', 'حَقَّقَ'] }] },
+    { id: 'run', kind: 'news', title: 'خَمْسُمِئَةِ عَدَّاءٍ فِي سِبَاقِ المَدَارِسِ', src: 'خَبَرٌ أَصْلِيٌّ لِلتَّدْرِيبِ (لَيْسَ خَبَرًا حَقِيقِيًّا)',
+      text: ['دُبَيُّ - شَارَكَ أَكْثَرُ مِنْ خَمْسِمِئَةِ طَالِبٍ وَطَالِبَةٍ صَبَاحَ الجُمُعَةِ فِي سِبَاقِ الجَرْيِ المَدْرَسِيِّ السَّنَوِيِّ لِمَسَافَةِ خَمْسَةِ كِيلُومِتْرَاتٍ.', 'وَقَالَ مُنَظِّمُو السِّبَاقِ إِنَّ هَدَفَهُ تَشْجِيعُ الشَّبَابِ عَلَى الحَرَكَةِ اليَوْمِيَّةِ، وَلَيْسَ الفَوْزَ فَقَطْ.', 'وَنَصَحَ الأَطِبَّاءُ المُشَارِكِينَ بِأَنْ يَشْرَبُوا المَاءَ قَبْلَ الجَرْيِ وَبَعْدَهُ، وَأَنْ يَبْدَؤُوا بِتَمَارِينِ الإِحْمَاءِ. وَفِي نِهَايَةِ اليَوْمِ حَصَلَ جَمِيعُ المُشَارِكِينَ عَلَى مِيدَالِيَّاتٍ تِذْكَارِيَّةٍ.'],
+      qs: [{ q: 'كَمْ كَانَتْ مَسَافَةُ السِّبَاقِ؟', o: ['خَمْسَةُ كِيلُومِتْرَاتٍ', 'خَمْسُمِئَةِ مِتْرٍ', 'عَشَرَةُ كِيلُومِتْرَاتٍ'] },
+        { q: 'مَا هَدَفُ السِّبَاقِ؟', o: ['تَشْجِيعُ الشَّبَابِ عَلَى الحَرَكَةِ', 'جَمْعُ المَالِ', 'اخْتِيَارُ فَرِيقٍ لِلْأَلْعَابِ الأُولِمْبِيَّةِ'] },
+        { q: 'بِمَاذَا نَصَحَ الأَطِبَّاءُ؟', o: ['بِشُرْبِ المَاءِ وَالإِحْمَاءِ', 'بِالجَرْيِ دُونَ تَوَقُّفٍ', 'بِأَكْلِ الحَلْوَى'] },
+        { q: 'فِي «أَنْ يَشْرَبُوا»، لِمَاذَا حُذِفَتِ النُّونُ؟', o: ['لِأَنَّ الفِعْلَ مَنْصُوبٌ بِـ«أَنْ»', 'لِأَنَّ الفِعْلَ مَاضٍ', 'لِأَنَّ الفَاعِلَ مُفْرَدٌ'] }] },
+    { id: 'shabbi', kind: 'poem', title: 'صُعُودُ الجِبَالِ', src: 'أَبُو القَاسِمِ الشَّابِّيُّ (ت ١٩٣٤)، أَغَانِي الحَيَاةِ، قَصِيدَةُ «إِرَادَةُ الحَيَاةِ» (مِلْكٌ عَامٌّ)',
+      text: ['وَمَنْ لَا يُحِبُّ صُعُودَ الجِبَالِ ... يَعِشْ أَبَدَ الدَّهْرِ بَيْنَ الحُفَرْ'], gloss: [['أَبَدَ الدَّهْرِ', 'طُولَ الزَّمَانِ'], ['الحُفَرُ', 'الأَمَاكِنُ المُنْخَفِضَةُ']],
+      qs: [{ q: 'كَيْفَ يَعِيشُ مَنْ لَا يُحِبُّ صُعُودَ الجِبَالِ؟', o: ['بَيْنَ الحُفَرِ', 'فَوْقَ القِمَمِ', 'بَيْنَ النُّجُومِ'] },
+        { q: 'مَا الصِّفَةُ الَّتِي يَمْدَحُهَا البَيْتُ؟', o: ['الطُّمُوحُ وَالعَزِيمَةُ', 'الكَسَلُ', 'الخَوْفُ'] },
+        { q: 'مَا مَعْنَى «أَبَدَ الدَّهْرِ»؟', o: ['طُولَ الزَّمَانِ', 'يَوْمًا وَاحِدًا', 'فِي الصَّبَاحِ'] }] }
+  ]
+};
+/* writing (Fusha) + speaking (dialect) task per island */
+const Y13_TASKS = {
+  u17: { w: '[اُكْتُبْ|اُكْتُبِي] فِقْرَةً (٨٠ كَلِمَةً) عَنْ مَكَانٍ تُرَاثِيٍّ [زُرْتَهُ|زُرْتِهِ]، وَ[اسْتَخْدِمْ|اسْتَخْدِمِي] ثَلَاثًا مِنْ أَخَوَاتِ كَانَ.', s: '[قُول|قُولِي] لِ[رَبْعَك|رَبْعِج] شُو كَان يْسَوِّي الأَوَّلِين قَبِل النِّفْط.' },
+  u18: { w: '[اُكْتُبْ|اُكْتُبِي] تَقْرِيرًا قَصِيرًا (١٠٠ كَلِمَةٍ) عَنْ تَجْرِبَةٍ عِلْمِيَّةٍ، وَ[اسْتَخْدِمْ|اسْتَخْدِمِي] إِنَّ وَلَعَلَّ وَلَكِنَّ.', s: '[اشْرَح|اشْرَحِي] لِ[أَهْلَك|أَهْلِج] فِكْرَة اخْتِرَاع [تِبَا|تِبِين] تْسَوِّيه.' },
+  u19: { w: '[اُكْتُبْ|اُكْتُبِي] رِسَالَةً (١٢٠ كَلِمَةً) إِلَى [فَرِيقِكَ|فَرِيقِكِ] [تَنْصَحُهُمْ|تَنْصَحِينَهُمْ] فِيهَا، وَ[اسْتَخْدِمْ|اسْتَخْدِمِي] خَمْسَةَ أَفْعَالٍ مِنَ الأَفْعَالِ الخَمْسَةِ.', s: '[قُول|قُولِي] لِلْفَرِيق كَلْمَة تْشَجِّعْهُم قَبِل السِّبَاق.' }
+};
+
 /* v21 · Saqqour's grammar explanations in every dialect the app offers (Emirati = GR_TOPICS[].gulf, Fusha = GR_TOPICS[].fusha).
    Original lines, [m|f] = boy / girl form. Dialect only — the Fusha examples stay on their own cards. Not native-checked yet. */
 const GR_DL = {
@@ -14107,7 +14270,7 @@ function v21ReportPart(kid) {
 { const _rh = v20ReportHTML; v20ReportHTML = function v20ReportHTMLV21(kid) { const h = _rh.apply(this, arguments);
   try { const part = v21ReportPart(kid); const at = h.indexOf('<h3 lang="ar">الأَمَانُ'); return part ? (at > 0 ? h.slice(0, at) + part + h.slice(at) : h.replace(/<\/div>\s*$/, part + '</div>')) : h; } catch (e) { return h; } }; }
 
-/* v21b calm home (Randa's choice, from the declutter demo variant 2, with the bottom tab bar kept):
+/* v21b calm home (parent's choice, from the declutter demo variant 2, with the bottom tab bar kept):
    Saqqour (tap = the greeting is spoken) + one huge "play" (next step on the current island) + the island map (art + number only,
    locked islands softly faded). No coins, counters, titles or badges on home. One small corner menu holds everything else as big tiles. */
 function calmNext(p) { const u = nextUnitFor(p); if (!u) return null; const acts = jvActs(p, u); const next = acts.find((a) => !a.done);
@@ -14156,7 +14319,7 @@ Object.assign(ACTIONS, {
 const DG = { s: null, fresh: {} };
 const DG_SEQ = ['sounds', 'reading', 'gram', 'spell', 'listen', 'letters', 'reading', 'gram', 'spell', 'listen', 'gram'];
 const DG_STEP = [4, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1];
-const DG_START = 7; const DG_MAX = 15;
+const DG_START = 7; const DG_MAX = UNITS.length - 1; /* y13: 0..18 with the secondary islands */
 /* v22 live (gentler): the journey starts 2–3 islands below the estimate, and the game never skips more than half the islands */
 const DG_BELOW = 2; const DG_SKIP_MAX = 8;
 /* strand → v21 skill key, name, how-to-help tip (Fusha for parents, English only when translation is on) */
@@ -14201,7 +14364,7 @@ function dgData(p) { p = p || P(); let d = p.diag; if (!d || typeof d !== 'objec
   if (!Array.isArray(d.skip)) d.skip = []; d.skip = d.skip.filter((id) => UNITS.some((u) => u.id === id)); if (!d.sk || typeof d.sk !== 'object' || Array.isArray(d.sk)) d.sk = {}; return d; }
 const dgLv = (x) => (x < 5 ? 1 : x < 10 ? 2 : 3);
 /* approximate grade band from the island index (school Arabic for native/heritage learners; a guide only) */
-function dgBand(x) { return x < 4 ? ['الرَّوْضَةُ إِلَى الصَّفِّ الأَوَّلِ', 'KG to Grade 1'] : x < 8 ? ['الصَّفُّ الأَوَّلُ إِلَى الثَّانِي', 'Grades 1–2'] : x < 12 ? ['الصَّفُّ الثَّالِثُ إِلَى الرَّابِعِ', 'Grades 3–4'] : ['الصَّفُّ الخَامِسُ فَمَا فَوْقُ', 'Grade 5 and up']; }
+function dgBand(x) { return x < 4 ? ['الرَّوْضَةُ إِلَى الصَّفِّ الأَوَّلِ', 'KG to Grade 1'] : x < 8 ? ['الصَّفُّ الأَوَّلُ إِلَى الثَّانِي', 'Grades 1–2'] : x < 12 ? ['الصَّفُّ الثَّالِثُ إِلَى الرَّابِعِ', 'Grades 3–4'] : x < 16 ? ['الصَّفُّ الخَامِسُ', 'Grade 5'] : x < 17 ? ['الصَّفُّ السَّادِسُ', 'Grade 6'] : x < 18 ? ['الصَّفُّ السَّابِعُ', 'Grade 7'] : ['الصَّفُّ الثَّامِنُ فَمَا فَوْقُ', 'Grade 8 and up']; }
 /* ---------- items (built from the island at the probe index) ---------- */
 const dgWords = (idx) => { const u = UNITS[idx]; return u.vocab.map((_, n) => playWord(u, n)).filter((w) => w.em); };
 function dgNear(idx, f) { for (const d of [0, -1, 1, -2, 2, -3, 3]) { const j = idx + d; if (j < 0 || j > DG_MAX) continue; const ws = dgWords(j).filter(f); if (ws.length) return ws; } return dgWords(idx); }
@@ -14606,7 +14769,7 @@ function ctSpeak() {
   return h.replace('<div class="q-bubble">', '<div class="q-bubble"><button class="ct-say" type="button" data-ct="say" aria-label="اِسْمَعْ">🔊</button>'); }; }
 document.addEventListener('click', (e) => { const b = e.target.closest && e.target.closest('[data-ct="say"]'); if (b) { e.preventDefault(); e.stopPropagation(); ctSpeak(); } }, true);
 
-/* v22b homework fix (Randa: "I see no way to take a picture or upload homework"):
+/* v22b homework fix (parent: "I see no way to take a picture or upload homework"):
    1) tapping Saqqour on the calm home opens the tutor chat (he still says his greeting);
    2) the chat always shows 📷 camera, 📄 sheet/file (images + PDF) and 🎤 voice. Without a family setup link or consent the
       buttons stay visible and a tap shows a gentle Arabic note + a parent line (English only with translation on). Nothing is sent then.
@@ -15214,6 +15377,108 @@ Object.assign(ACTIONS, {
   'cw-qnext': () => { const V = CW.v; if (!V) return; V.j++; V.res = null; V.typed = ''; cwQ(); }
 });
 Object.assign(window.SAQ_SP, { cwAdd, cwStore, cwToLearn, cwDue, cwOpen, cwWeekNo, cwBlank, CW_PER_WEEK });
+
+/* =========================================================
+   Y13 DEMO · secondary islands UI: «القِرَاءَةُ» act on islands u17–u19 = a menu of 2–3 reading options (story / info /
+   news / poem) → the Fusha text with 🔊 read-aloud → comprehension questions (each with 🔊), checked answers, calm marks.
+   Also: writing (Fusha) + speaking (dialect) task cards, Saqqour's grammar lines fall back to Emirati when a dialect has
+   no lines yet for a new topic. ONE new optional field: p.completed['y13read:<uid>:<id>'] (existing map).
+   ========================================================= */
+const Y13 = { s: null };
+const y13L = (s) => gform(String(s || ''), v20G());
+{ const _gl = grLines; grLines = function grLinesY13(t, d) { return _gl.apply(this, arguments) || t.gulf; }; }
+const y13Words = (r) => r.text.join(' ').split(/\s+/).filter((w) => /[\u0600-\u06FF]/.test(w)).length;
+function y13ReadMenu(uid) {
+  const u = UNITS.find((x) => x.id === uid); const rs = Y13_READ[uid]; if (!u || !rs) return; const p = P(); const tk = Y13_TASKS[uid];
+  const row = (r, i) => { const k = Y13_KIND[r.kind]; const done = !!p.completed['y13read:' + uid + ':' + r.id];
+    return `<button class="y13-opt k-${r.kind}${done ? ' done' : ''}" data-act="y13-open" data-arg="${uid}|${i}"><span class="emo y13-oi" aria-hidden="true">${k[1]}</span><span class="y13-ot"><b lang="ar">${esc(r.title)}</b><small lang="ar">${esc(k[0])} · ${toArabicDigits(y13Words(r))} كَلِمَةً · ${toArabicDigits(r.qs.length)} أَسْئِلَةٍ</small></span>${done ? '<span class="y13-tick" aria-label="تَمَّ">✓</span>' : ''}</button>`; };
+  openModal(`<div class="stack y13 y13-menu">
+    <div class="row between"><h2 lang="ar"><span class="emo" aria-hidden="true">${u.icon}</span> ${esc(u.ar)}</h2>${closeBtn()}</div>
+    <p class="y13-sub" lang="ar">${esc(y13L('[اِخْتَرْ|اِخْتَارِي] نَصًّا لِلْقِرَاءَةِ'))}</p>
+    <div class="y13-opts">${rs.map(row).join('')}</div>
+    ${tk ? `<div class="y13-task" lang="ar"><b>✍️ الكِتَابَةُ</b><p>${esc(y13L(tk.w))}</p></div><div class="y13-task dl" lang="ar"><b>🗣️ المُحَادَثَةُ</b><p>${esc(y13L(tk.s))}</p><button class="v21-hear sm" data-act="y13-say" data-arg="task|${uid}" aria-label="${G('اِسْمَعْ', 'اِسْمَعِي')}">${ICON('speaker')}</button></div>` : ''}
+  </div>`, null, 'sheet');
+}
+function y13Open(uid, i) {
+  const r = Y13_READ[uid] && Y13_READ[uid][i]; if (!r) return; Y13.s = { uid, i, r, q: -1, ok: 0 };
+  const poem = r.kind === 'poem';
+  openModal(`<div class="stack y13 y13-text">
+    <div class="row between"><h2 lang="ar"><span class="emo" aria-hidden="true">${Y13_KIND[r.kind][1]}</span> ${esc(r.title)}</h2>${closeBtn()}</div>
+    <div class="y13-body${poem ? ' poem' : ''}" lang="ar">${r.text.map((t, j) => `<p>${poem ? esc(t).replace(' ... ', '<span class="y13-gap"></span>') : esc(t)}<button class="v21-hear sm" data-act="y13-say" data-arg="p|${j}" aria-label="${G('اِسْمَعْ', 'اِسْمَعِي')}">${ICON('speaker')}</button></p>`).join('')}</div>
+    ${r.gloss ? `<ul class="y13-gloss" lang="ar">${r.gloss.map((g) => `<li><b>${esc(g[0])}</b>: ${esc(g[1])}</li>`).join('')}</ul>` : ''}
+    <p class="y13-src" lang="ar">المَصْدَرُ: ${esc(r.src)}</p>
+    <button class="btn big gold" data-act="y13-q" data-arg="0">الأَسْئِلَةُ ❓</button>
+  </div>`, null, 'sheet');
+}
+function y13Q(n) {
+  const s = Y13.s; if (!s) return; s.q = +n; s.ans = null; const x = s.r.qs[s.q]; if (!x) return y13End(); s.order = shuffle(x.o.map((_, j) => j));
+  y13RenderQ(); setTimeout(() => y13Say('q'), 250);
+}
+function y13RenderQ() {
+  const s = Y13.s; const x = s.r.qs[s.q]; const a = s.ans;
+  const cls = (j) => (!a ? '' : j === 0 ? (a.j === 0 ? ' yay' : '') : j === a.j ? ' oops' : '');
+  openModal(`<div class="stack y13 y13-quiz">
+    <div class="row between"><span class="y13-cnt" lang="ar">${toArabicDigits(s.q + 1)} / ${toArabicDigits(s.r.qs.length)}</span>${closeBtn()}</div>
+    <div class="y13-qrow"><p class="y13-qq" lang="ar">${esc(x.q)}</p><button class="v21-hear" data-act="y13-say" data-arg="q" aria-label="${G('اِسْمَعِ السُّؤَالَ', 'اِسْمَعِي السُّؤَالَ')}">${ICON('speaker')}</button></div>
+    <div class="y13-ans">${s.order.map((j) => `<button class="y13-a${cls(j)}" data-act="y13-ans" data-arg="${j}" ${a ? 'disabled' : ''} lang="ar">${esc(x.o[j])}</button>`).join('')}</div>
+    ${a ? `<p class="v21-verdict y13-verdict ${a.ok ? 'ok' : 'no'}" lang="ar">${a.ok ? esc(y13L('[أَحْسَنْتَ|أَحْسَنْتِ]!')) : esc('الجَوَابُ: ' + x.o[0])}</p><button class="btn big rd-go" data-act="y13-q" data-arg="${s.q + 1}">التَّالِي</button>` : ''}
+  </div>`, null, 'sheet');
+}
+function y13Ans(j) {
+  const s = Y13.s; if (!s || s.ans) return; j = +j; const ok = j === 0; s.ans = { j, ok }; if (ok) s.ok++;
+  try { v21Answer('reading', ok, 0); } catch (e) { /* optional */ } try { if (ok && typeof v20Chime === 'function') v20Chime(); } catch (e) { /* optional */ }
+  y13RenderQ();
+}
+function y13End() {
+  const s = Y13.s; const p = P(); p.completed['y13read:' + s.uid + ':' + s.r.id] = 1; saveDB();
+  openModal(`<div class="stack y13 y13-end center"><div class="v20-buddy">${falconSVG('cheer', 'v20-bird')}</div>
+    <p class="y13-qq" lang="ar">${esc(y13L('[أَنْهَيْتَ|أَنْهَيْتِ] القِرَاءَةَ!'))} ${toArabicDigits(s.ok)} / ${toArabicDigits(s.r.qs.length)}</p>
+    <button class="btn big gold" data-act="y13-menu" data-arg="${s.uid}">${esc(y13L('[اِخْتَرْ|اِخْتَارِي] نَصًّا آخَرَ'))}</button></div>`, null, 'sheet');
+}
+function y13Say(a) {
+  const s = Y13.s; const [k, x] = String(a).split('|'); let t = '', kind = 'fusha';
+  if (k === 'q' && s && s.r.qs[s.q]) t = s.r.qs[s.q].q; else if (k === 'p' && s && s.r.text[+x]) t = s.r.text[+x].replace(' ... ', '، '); else if (k === 'task') { t = y13L(Y13_TASKS[x].s); kind = curDialect(); }
+  try { if (t) speak(t, kind, { quiet: true }); } catch (e) { /* audio is optional */ }
+}
+Object.assign(ACTIONS, {
+  'y13-menu': (a) => y13ReadMenu(a), 'y13-open': (a) => { const [u, i] = String(a).split('|'); y13Open(u, +i); },
+  'y13-q': (a) => y13Q(a), 'y13-ans': (a) => y13Ans(a), 'y13-say': (a) => y13Say(a)
+});
+/* island acts: secondary islands swap the early-reader story for the reading options */
+{ const _ja = jvActs; jvActs = function jvActsY13(p, u) { const a = _ja.apply(this, arguments); if (!Y13_READ[u.id]) return a;
+  const rs = Y13_READ[u.id]; const n = rs.filter((r) => p.completed['y13read:' + u.id + ':' + r.id]).length;
+  const i = a.findIndex((x) => x.k === 'story'); const act = { k: 'y13read', ic: 'ic2_book', ar: 'القِرَاءَةُ: ' + toArabicDigits(rs.length) + ' خِيَارَاتٍ', en: 'Reading options', done: n > 0, arg: u.id };
+  if (i >= 0) a.splice(i, 1, act); else a.unshift(act); return a; }; }
+{ const _jr = jvRunAct; jvRunAct = function jvRunActY13(arg) { const [uid, k] = String(arg).split('|'); if (k === 'y13read') { closeModal(); setTimeout(() => y13ReadMenu(uid), 30); return; } return _jr.apply(this, arguments); }; }
+
+/* v26: KG → secondary (Grade 12) world map (37 islands in 7 worlds). Built islands come from UNITS (u1–u19);
+   the rest are shown on the path as locked «قَرِيبًا» (coming soon) nodes – not clickable, nothing to break. */
+const V26_SOON = [
+  [5, 'u20', 'الإِعْلَامُ وَالتَّوَاصُلُ', 'Media'], [5, 'u21', 'الصَّدَاقَةُ وَالقِيَمُ', 'Friendship & values'], [5, 'u22', 'المُدُنُ وَالعِمَارَةُ', 'Cities'],
+  [5, 'u23', 'الاِقْتِصَادُ وَالمَالُ', 'Money'], [5, 'u24', 'الأَدَبُ وَالخَيَالُ', 'Stories'], [5, 'u25', 'الصِّحَّةُ وَالعَادَاتُ', 'Health'],
+  [6, 'u26', 'الشَّبَابُ وَالمُسْتَقْبَلُ', 'Youth'], [6, 'u27', 'الأُسْرَةُ وَالمُجْتَمَعُ', 'Society'], [6, 'u28', 'التِّقْنِيَةُ وَالإِعْلَامُ', 'Tech'],
+  [6, 'u29', 'البِيئَةُ وَالاِسْتِدَامَةُ', 'Environment'], [6, 'u30', 'السَّفَرُ وَالثَّقَافَاتُ', 'Travel'], [6, 'u31', 'العَمَلُ وَالطُّمُوحُ', 'Work'],
+  [7, 'u32', 'التَّقَدُّمُ العِلْمِيُّ', 'Science'], [7, 'u33', 'الهُوِيَّةُ وَالتُّرَاثُ', 'Heritage'], [7, 'u34', 'الإِعْلَامُ وَالمُجْتَمَعُ', 'Media & society'],
+  [7, 'u35', 'الأَدَبُ العَرَبِيُّ الحَدِيثُ', 'Modern literature'], [7, 'u36', 'قَضَايَا مُعَاصِرَةٌ', 'Issues today'], [7, 'u37', 'التَّرْجَمَةُ وَالأُسْلُوبُ', 'Translation & style']];
+if (typeof JV_WORLDS !== 'undefined') { while (JV_WORLDS.length < 5) JV_WORLDS.push(['جُزُرُ الآفَاقِ', 'Horizon isles']); JV_WORLDS[5] = ['بَوَّابَةُ الشَّهَادَةِ', 'Certificate gate']; JV_WORLDS[6] = ['قِمَمُ الضَّادِ', 'Arabic peaks']; }
+function v26SoonLi(s, i) {
+  return `<li class="jv-node s-locked s-soon side-${['r', 'c', 'l', 'c'][i % 4]}"><button class="jv-isle v26-soon" type="button" disabled aria-disabled="true" aria-label="${esc(s[2])}: قَرِيبًا">
+    ${jvIslandSVG(i, 'locked')}<span class="jv-num">${toArabicDigits(i + 1)}</span><span class="v26-badge" aria-hidden="true">قَرِيبًا</span>
+    <span class="jv-lock" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke-width="2.4"/></svg></span>
+    <span class="jv-name"><b>${esc(s[2])}</b><span class="en">${esc(s[3])}</span><span class="v26-tag">قَرِيبًا<span class="en"> Coming soon</span></span></span></button></li>`;
+}
+function v26Banner(w, soon) { return `<div class="v26-wt" role="heading" aria-level="3">${esc(JV_WORLDS[w - 1][0])}<span class="en"> ${esc(JV_WORLDS[w - 1][1])}</span>${soon ? '<span class="v26-tag">قَرِيبًا</span>' : ''}</div>`; }
+{ const _jp = jvPathHTML; jvPathHTML = function jvPathHTMLv26(p) {
+  let html = _jp.apply(this, arguments); const built = new Set(UNITS.map((u) => u.id)); const nB = UNITS.length;
+  const soon = V26_SOON.filter((s) => !built.has(s[1])); let k = nB;
+  const byW = (w) => soon.filter((s) => s[0] === w).map((s) => v26SoonLi(s, k++)).join('');
+  for (let w = 5; w <= 7; w++) {
+    const lis = byW(w); if (!lis) continue;
+    if (w <= LEVELS.length) { const cut = html.lastIndexOf('</ol></section>'); if (w === LEVELS.length && cut >= 0) { html = html.slice(0, cut) + lis + html.slice(cut); continue; } }
+    html += `<section class="jv-world v26-world-soon">${v26Banner(w, true)}<ol class="jv-path">${lis}</ol></section>`;
+  }
+  { let at = -1; for (let i = 0; i < 5; i++) { at = html.indexOf('<section class="jv-world">', at + 1); if (at < 0) break; } if (at >= 0) { const e = at + '<section class="jv-world">'.length; html = html.slice(0, e) + v26Banner(5, false) + html.slice(e); } }
+  return html; }; }
 
 </script>
 </body>
