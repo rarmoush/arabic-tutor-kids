@@ -3405,6 +3405,18 @@ body.show-en #dg-pcard .en{font-size:.8em;opacity:.8}body.show-en #dg-pcard .en.
 .q-bubble .ct-say:active{transform:scale(.94)}
 .opt-tx.pic-opt{font-size:40px;line-height:1.1}
 
+.hwx-row{align-items:center}
+.hwx-row .hwx-b{min-height:52px;font-size:1rem}
+.hwx-row .hwx-ic{font-size:1.5rem;line-height:1}
+.hwx-row .hwx-off{opacity:.72;border-style:dashed}
+.hwx-note{flex-basis:100%;background:#fff8e1;border-radius:14px;padding:8px 12px;color:#1f4e5f;font-size:.92rem}
+.hwx-note p{margin:2px 0}.hwx-par{font-size:.8rem;opacity:.85}
+body:not(.show-en) .hwx-note .en,body:not(.show-en) .hwx-sheet .en{display:none!important}
+.hwx-pages{display:flex;gap:10px;margin-top:6px}
+.hwx-pg{position:relative;border:2px solid #cfe3ea;border-radius:12px;background:#fff;padding:4px;width:110px;cursor:pointer}
+.hwx-pg img{width:100%;display:block;border-radius:8px}.hwx-pg b{position:absolute;top:4px;inset-inline-start:6px;background:#ffc83d;border-radius:50%;width:26px;height:26px;display:grid;place-items:center}
+.calm2-play.hwx-play .hwx-pic{font-size:3rem;line-height:1}
+
 </style>
 </head>
 <body>
@@ -3590,7 +3602,7 @@ body.show-en #dg-pcard .en{font-size:.8em;opacity:.8}body.show-en #dg-pcard .en.
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v22";
+const APP_VERSION = "v22.1";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -11273,7 +11285,7 @@ const MHL = {
   ai: { en: "I'm an AI helper, not a person.", emirati: 'تَرَى أَنَا مُسَاعِد ذَكَاء اصْطِنَاعِي، مُب إِنْسَان.', saudi: 'تَرَى أَنَا مُسَاعِد ذَكَاء اصْطِنَاعِي، مُو إِنْسَان.', egyptian: 'عَلَى فِكْرَة أَنَا مُسَاعِد ذَكَاء اصْطِنَاعِي، مِش بَنِي آدَم.', lebanese: 'عَلَى فِكْرَة أَنَا مْسَاعِد ذَكَاء اصْطِنَاعِي، مِش إِنْسَان.', fusha: 'أَنَا مُسَاعِدُ ذَكَاءٍ اصْطِنَاعِيٍّ، وَلَسْتُ إِنْسَاناً.' },
   sug_letter: { en: 'How about we practise this letter?', emirati: '[شُو رَايَك|شُو رَايِج] نِتْدَرَّب عَلَى هَالحَرْف؟', saudi: '[وِش رَايَك|وِش رَايِك] نِتْدَرَّب عَلَى هَالحَرْف؟', egyptian: '[إِيه رَأْيَك|إِيه رَأْيِك] نِتْمَرَّن عَلَى الحَرْف دَه؟', lebanese: 'شُو [رَأْيَك|رَأْيِك] نِتْمَرَّن عَلَى هَالحَرْف؟', fusha: 'مَا رَأْيُ[كَ|كِ] أَنْ نَتَدَرَّبَ عَلَى هَذَا الحَرْفِ؟' },
   sug_story: { en: 'Or do you want a story?', emirati: 'وَلَّا [تَبَا|تَبِين] قِصَّة؟', saudi: 'وَلَّا [تَبْغَى|تَبْغِين] قِصَّة؟', egyptian: 'وَلَّا [عَايِز|عَايْزَة] حِكَايَة؟', lebanese: 'وَلَّا [بَدَّك|بَدِّك] قِصَّة؟', fusha: 'أَمْ [تُرِيدُ|تُرِيدِينَ] قِصَّةً؟' },
-  sug_wordle: { en: "Today's word is waiting for you!", emirati: 'كَلِمَة اليُوم تِنْطِر[ك|ج]!', saudi: 'كِلْمَة اليُوم تِنْتِظْر[ك|ك]!', egyptian: 'كِلْمِة النَّهَارْدَه [مِسْتَنِّيَاك|مِسْتَنِّيَاكِي]!', lebanese: 'كِلْمِة اليُوم [عَم تِسْتَنَّاك|عَم تِسْتَنَّاكِي]!', fusha: 'كَلِمَةُ اليَوْمِ تَنْتَظِرُ[كَ|كِ]!' },
+  sug_wordle: { en: "Today's word is waiting for you!", emirati: 'كَلِمَة اليُوم تِنْطِر[ك|ج]!', saudi: 'كِلْمَة اليُوم تِنْتِظْرَ[ك|كِ]!', egyptian: 'كِلْمِة النَّهَارْدَه [مِسْتَنِّيَاك|مِسْتَنِّيَاكِي]!', lebanese: 'كِلْمِة اليُوم [عَم تِسْتَنَّاك|عَم تِسْتَنَّاكِي]!', fusha: 'كَلِمَةُ اليَوْمِ تَنْتَظِرُ[كَ|كِ]!' },
   sug_game: { en: 'Want a quick game?', emirati: '[تَبَا|تَبِين] لُعْبَة سَرِيعَة؟', saudi: '[تَبْغَى|تَبْغِين] لُعْبَة سَرِيعَة؟', egyptian: '[عَايِز|عَايْزَة] لُعْبَة سَرِيعَة؟', lebanese: '[بَدَّك|بَدِّك] لِعْبِة سَرِيعَة؟', fusha: 'هَلْ [تُرِيدُ|تُرِيدِينَ] لُعْبَةً سَرِيعَةً؟' },
   sug_dress: { en: 'I have something new to wear!', emirati: 'عِنْدِي لِبْس جِدِيد! [تَبَا|تَبِين] [تْشُوفَه|تْشُوفِينَه]؟', saudi: 'عِنْدِي لِبْس جْدِيد! [تَبْغَى|تَبْغِين] [تْشُوفَه|تْشُوفِينَه]؟', egyptian: 'عَنْدِي لِبْس جِدِيد! [عَايِز|عَايْزَة] [تْشُوفُه|تْشُوفِيه]؟', lebanese: 'عِنْدِي تْيَاب جْدِيدِة! [بَدَّك|بَدِّك] [تْشُوفُن|تْشُوفِين]؟', fusha: 'عِنْدِي لِبَاسٌ جَدِيدٌ! هَلْ [تُرِيدُ|تُرِيدِينَ] أَنْ [تَرَاهُ|تَرَيْهِ]؟' },
   ask: { en: 'What do you want to do?', emirati: 'شُو [تَبَا|تَبِين] نْسَوِّي؟', saudi: 'وِش [تَبْغَى|تَبْغِين] نْسَوِّي؟', egyptian: '[عَايِز|عَايْزَة] نِعْمِل إِيه؟', lebanese: 'شُو [بَدَّك|بَدِّك] نَعْمِل؟', fusha: 'مَاذَا [تُرِيدُ|تُرِيدِينَ] أَنْ نَفْعَلَ؟' },
@@ -12357,13 +12369,13 @@ function jvPathHTML(p) {
 ilHome = function ilHomeV19() {
   const p = P(); const pr = PROFILES[currentKid]; const greet = mhLine('greet', { name: pr.ar, nameEn: pr.name }); IL.greet = greet;
   const small = ['chat'].concat(aiAccess() ? ['homework'] : []).map((id) => { const d = ilDef(id); const k = 'i' + (++IL.n); IL.ids[k] = id;
-    return `<button class="jv-mini t-${d.tone}" data-act="il-open" data-arg="${k}" data-id="${id}">${ilIsleArt(d)}<b>${esc(id === 'chat' ? 'تَحَدَّثْ مَعِي' : 'الوَاجِب')}</b><span class="en">${id === 'chat' ? 'Talk with me' : 'Homework'}</span></button>`; }).join('');
+    return `<button class="jv-mini t-${d.tone}" data-act="il-open" data-arg="${k}" data-id="${id}">${ilIsleArt(d)}<b>${esc(id === 'chat' ? G('تَحَدَّثْ مَعِي', 'تَحَدَّثِي مَعِي') : 'الوَاجِب')}</b><span class="en">${id === 'chat' ? 'Talk with me' : 'Homework'}</span></button>`; }).join('');
   const done = unitsDone(p);
   return `<div class="il-hero jv-hero">
       <div class="il-sky" aria-hidden="true"><i class="c1"></i><i class="c2"></i></div>
       <button class="il-bird" data-act="mh-pat" aria-label="${esc(falconName().ar)}">${falconSVG('happy', 'il-hero-falcon')}</button>
       <div class="il-bub"><p lang="ar">${esc(greet.ar)}</p><p class="en en-block" dir="ltr">${esc(greet.en)}</p>
-        <button class="il-hear" data-act="il-hear" aria-label="اِسْمَعْ">${mhArt('ic2_speaker')}</button></div>
+        <button class="il-hear" data-act="il-hear" aria-label="${G('اِسْمَعْ', 'اِسْمَعِي')}">${mhArt('ic2_speaker')}</button></div>
     </div>
     <div class="jv-minis">${small}</div>
     <div class="jv-head"><h2>رِحْلَتِي <span class="en">My journey</span></h2><span class="jv-count">${toArabicDigits(done)} / ${toArabicDigits(UNITS.length)} <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><polygon points="${STAR8}" fill="#ffc61a"/></svg></span></div>
@@ -12655,7 +12667,7 @@ function v20RenderScene() {
   } else {
     const log = []; for (let k = 0; k < c.turn; k++) { log.push(['s', L.t[k]]); log.push(['n', L.k[k]]); } if (c.ph === 'talk') log.push(['s', L.t[c.turn]]); else log.push(['s', L.t[3]]);
     body = `<div class="v20-chat" id="v20-chat">${log.map(([who, l], k) => `<div class="v20-msg ${who}">${who === 's' ? `<span class="v20-av">${falconSVG('happy', 'v20-mini')}</span>` : `<span class="v20-av kid">${kidFace(currentKid)}</span>`}<p lang="ar">${esc(v20L(l))}${who === 's' && k === log.length - 1 ? ` <button class="mini-hear" data-act="v20-sc-hear" aria-label="اِسْمَعْ Hear">${ICON('speaker')}</button>` : ''}</p></div>`).join('')}</div>
-      ${c.ph === 'talk' ? `<p class="v20-kicker" lang="ar">${G('اِخْتَرْ', 'اِخْتَارِي')} رَدَّكَ <span class="en">Pick your reply</span></p>
+      ${c.ph === 'talk' ? `<p class="v20-kicker" lang="ar">${G('اِخْتَرْ رَدَّكَ', 'اِخْتَارِي رَدَّكِ')} <span class="en">Pick your reply</span></p>
         <div class="v20-chips">${v20Chips(c).map((k) => `<button class="v20-chip ${c.wrong === k ? 'nudge' : ''} ${c.wrong !== null && k === c.turn ? 'glow' : ''}" data-act="v20-sc-reply" data-arg="${k}" lang="ar">${esc(v20L(L.k[k]))}<span class="en">${esc(s.ken[k])}</span></button>`).join('')}</div>`
       : `<div class="v20-done">${starIcons(3, 30)}<p lang="ar">${G('أَحْسَنْتَ', 'أَحْسَنْتِ')}! ${G('أَكْمَلْتَ', 'أَكْمَلْتِ')} المَشْهَدَ. <span class="en en-block">Scene complete!</span></p><button class="btn big gold" data-act="modal-close">تَمَّ <span class="en">Done</span></button></div>`}`;
   }
@@ -12903,7 +12915,7 @@ function v20bVoice(s) {
   const R = { s, bar, ctl: null, gone: false };
   V20B.rec = R;
   v20bRecorder(V20B_VN_MAX, (ms) => { const c = bar.querySelector('.v20b-clock'); if (c) c.textContent = v20bClock(ms); }, () => v20bVoiceStop()).then((ctl) => { R.ctl = ctl; if (R.gone) ctl.cancel(); },
-    (e) => { v20bRecClose(R); S.say(e.code === 'denied' || e.code === 'nomic' ? v20bDeniedLine() : { ar: 'هَذَا الجِهَازُ لَا يُسَجِّلُ الصَّوْتَ هُنَا. اُكْتُبْ لِي بَدَلاً مِنْ ذَلِكَ.', en: "This device can't record here. Type to me instead.", register: 'fusha' }); });
+    (e) => { v20bRecClose(R); S.say(e.code === 'denied' || e.code === 'nomic' ? v20bDeniedLine() : { ar: 'هَذَا الجِهَازُ لَا يُسَجِّلُ الصَّوْتَ هُنَا. ' + G('اُكْتُبْ', 'اُكْتُبِي') + ' لِي بَدَلاً مِنْ ذَلِكَ.', en: "This device can't record here. Type to me instead.", register: 'fusha' }); });
 }
 function v20bRecClose(R) { R.gone = true; if (V20B.rec === R) V20B.rec = null; if (R.bar) R.bar.remove(); const f = V20B_S[R.s].form(); if (f) f.classList.remove('v20b-hide'); }
 function v20bVoiceCancel() { const R = V20B.rec; if (!R) return; if (R.ctl) R.ctl.cancel(); v20bRecClose(R); }
@@ -12918,7 +12930,7 @@ async function v20bVoiceStop() {
   if (!j || j.err || !j.text) {
     tr.innerHTML = '<span class="small en">—</span>';
     S.say(j && j.err === 429 ? { ar: 'اِسْتَرِحْ قَلِيلاً، ثُمَّ نُكْمِلُ لَاحِقاً.', en: "Let's take a short break and carry on later.", register: 'fusha' }
-      : j && j.err ? { ar: 'لَمْ تَصِلْ رِسَالَتُكَ الصَّوْتِيَّةُ. اُكْتُبْ لِي أَوْ جَرِّبْ بَعْدَ قَلِيلٍ.'.replace('رِسَالَتُكَ', G('رِسَالَتُكَ', 'رِسَالَتُكِ')).replace('اُكْتُبْ لِي أَوْ جَرِّبْ', G('اُكْتُبْ لِي أَوْ جَرِّبْ', 'اُكْتُبِي لِي أَوْ جَرِّبِي')), en: "Your voice note didn't get through. Type to me or try again soon.", register: 'fusha' }
+      : j && j.err ? { ar: ('لَمْ تَصِلْ رِسَالَتُكَ الصَّوْتِيَّةُ. ' + G('اُكْتُبْ لِي أَوْ جَرِّبْ', 'اُكْتُبِي لِي أَوْ جَرِّبِي') + ' بَعْدَ قَلِيلٍ.').replace('رِسَالَتُكَ', G('رِسَالَتُكَ', 'رِسَالَتُكِ')).replace('اُكْتُبْ لِي أَوْ جَرِّبْ', G('اُكْتُبْ لِي أَوْ جَرِّبْ', 'اُكْتُبِي لِي أَوْ جَرِّبِي')), en: "Your voice note didn't get through. Type to me or try again soon.", register: 'fusha' }
       : { ar: G('مَا سِمِعْتَك زِين، قُولْهَا مَرَّة ثَانْيَة؟', 'مَا سِمِعْتِك زِين، قُولِيهَا مَرَّة ثَانْيَة؟'), en: "I couldn't hear you well, say it again?" });
     return;
   }
@@ -13672,9 +13684,9 @@ const v21Blank = (q) => v21E(v21L(q)).replace('___', '<span class="v21-blank" ar
 function v21Body(it) {
   const s = V21.s; const a = s.ans; const g = GR_GAMES[it.t] || GR_GAMES.pick;
   const hint = `<p class="v21-ins" lang="ar">${esc(v21L(it.hint || g[1]))}</p><p class="en en-block v21-ins-en">${esc(g[2])}</p>`;
-  if (it.t === 'pick') return `${hint}<div class="v21-q ${it.big ? 'big' : ''} ${it.say ? 'say' : ''}" lang="ar">${it.hear ? `<button class="v21-hear" data-act="v21-hear" aria-label="اِسْمَعْ">${ICON('speaker')}</button>` : ''}${v21Blank(it.q)}</div>
+  if (it.t === 'pick') return `${hint}<div class="v21-q ${it.big ? 'big' : ''} ${it.say ? 'say' : ''}" lang="ar">${it.hear ? `<button class="v21-hear" data-act="v21-hear" aria-label="${G('اِسْمَعْ', 'اِسْمَعِي')}">${ICON('speaker')}</button>` : ''}${v21Blank(it.q)}</div>
     <div class="v21-opts ${it.o.length > 2 ? 'three' : ''}">${it.order.map((j) => `<button class="v21-opt ${a ? (j === 0 ? 'yay' : s.sel === j ? 'oops' : 'dim') : ''}" data-act="v21-pick" data-arg="${j}" lang="ar">${esc(v21L(it.o[j]))}</button>`).join('')}</div>`;
-  if (it.t === 'pic') return `${hint}<div class="v21-q" lang="ar">${it.hear ? `<button class="v21-hear" data-act="v21-hear" aria-label="اِسْمَعْ">${ICON('speaker')}</button><span>${esc(it.w.ar)}</span>` : `<span class="v21-read">${esc(it.read)}</span>`}</div>
+  if (it.t === 'pic') return `${hint}<div class="v21-q" lang="ar">${it.hear ? `<button class="v21-hear" data-act="v21-hear" aria-label="${G('اِسْمَعْ', 'اِسْمَعِي')}">${ICON('speaker')}</button><span>${esc(it.w.ar)}</span>` : `<span class="v21-read">${esc(it.read)}</span>`}</div>
     <div class="pic-opts v21-pics">${it.o.map((o, j) => `<button class="pic-opt ${a ? (j === 0 ? 'yay' : s.sel === j ? 'oops' : 'dim') : ''}" data-act="v21-pick" data-arg="${j}" style="order:${(j * 7 + s.i) % it.o.length}" aria-label="${esc(o.en)}">${picHTML(o, 'md')}</button>`).join('')}</div>`;
   if (it.t === 'sort') { const left = it.order.filter((j) => !(j in s.placed));
     const bask = (b) => `<button class="v21-bask b${b}" data-act="v21-bask" data-arg="${b}"><b lang="ar">${v21E(it.b[b])}</b><span class="v21-in">${Object.keys(s.placed).filter((j) => s.placed[j] === b).map((j) => `<span class="v21-chip ${a ? (it.w[j][1] === b ? 'yay' : 'oops') : ''}" lang="ar">${esc(v21L(it.w[j][0]))}</span>`).join('')}</span></button>`;
@@ -13733,7 +13745,7 @@ function v21Topic(id, step) {
   openModal(`<div class="stack v21 v21-topic" style="--gc:${t.col}">
     <div class="row between"><h2 lang="ar"><span class="v21-tic emo" aria-hidden="true">${t.em}</span> ${esc(t.ar)} <span class="en en-block">${esc(t.en)}</span></h2>${closeBtn()}</div>
     <div class="v21-skrow"><span class="v21-sk" lang="ar">القَوَاعِدُ${t.older ? '، لِلْكِبَارِ' : ''}</span>${v21Feathers(sh.s, 'sm', sh.back)}</div>
-    <div class="v20-buddy v21-buddy">${falconSVG(step === 2 ? 'cheer' : 'happy', 'v20-bird sm')}<div class="v20-bub"><b lang="${reg === 'fusha' ? 'ar' : 'ar'}" class="v21-dl">${esc(v21L(lines[step]))}</b><button class="v21-hear sm" data-act="v21-tp-hear" data-arg="${esc(id)}|${step}" aria-label="اِسْمَعْ">${ICON('speaker')}</button></div></div>
+    <div class="v20-buddy v21-buddy">${falconSVG(step === 2 ? 'cheer' : 'happy', 'v20-bird sm')}<div class="v20-bub"><b lang="${reg === 'fusha' ? 'ar' : 'ar'}" class="v21-dl">${esc(v21L(lines[step]))}</b><button class="v21-hear sm" data-act="v21-tp-hear" data-arg="${esc(id)}|${step}" aria-label="${G('اِسْمَعْ', 'اِسْمَعِي')}">${ICON('speaker')}</button></div></div>
     <p class="v21-fu" lang="ar">${showEg ? 'أَمْثِلَةٌ بِالفُصْحَى' : 'مِثَالٌ بِالفُصْحَى'} <span class="en">Examples in Fusha</span></p>
     <div class="v21-egs ${eg.length > 4 ? 'six' : ''}">${eg.map(card).join('')}</div>
     <div class="v20-dots v21-steps">${[0, 1, 2].map((n) => `<i class="${n < step ? 'on' : n === step ? 'now' : ''}"></i>`).join('')}</div>
@@ -13834,7 +13846,7 @@ function calmNext(p) { const u = nextUnitFor(p); if (!u) return null; const acts
 function calmMenuItems() { const p = P(); let due = 0; try { due = v20Due(p).length; } catch (e) { /* optional */ } const items = [];
   const add = (act, ic, ar, en, extra) => items.push({ act, ic, ar, en, extra });
   add('il-tab:me', '@falcon', 'صَقْرِي', 'My falcon');
-  add('il-open:chat', '💬', 'تَحَدَّثْ مَعِي', 'Talk with me');
+  add('il-open:chat', '💬', G('تَحَدَّثْ مَعِي', 'تَحَدَّثِي مَعِي'), 'Talk with me');
   if (aiAccess()) add('il-open:homework', '📚', 'الوَاجِب', 'Homework');
   try { if (v21MixPick(p).length) add('v21-mix', '🎲', v21MixTitle(), "Saqqour's mix"); } catch (e) { /* optional */ }
   if (due) add('v20-review', '↻', 'كَلِمَاتٌ نَرْجِعُ لَهَا', 'Words to revisit', toArabicDigits(due));
@@ -14324,6 +14336,96 @@ function ctSpeak() {
 { const _r = renderUnitQuiz; renderUnitQuiz = function renderUnitQuizTTS() { const h = _r.apply(this, arguments);
   return h.replace('<div class="q-bubble">', '<div class="q-bubble"><button class="ct-say" type="button" data-ct="say" aria-label="اِسْمَعْ">🔊</button>'); }; }
 document.addEventListener('click', (e) => { const b = e.target.closest && e.target.closest('[data-ct="say"]'); if (b) { e.preventDefault(); e.stopPropagation(); ctSpeak(); } }, true);
+
+/* v22b homework fix (Randa: "I see no way to take a picture or upload homework"):
+   1) tapping Saqqour on the calm home opens the tutor chat (he still says his greeting);
+   2) the chat always shows 📷 camera, 📄 sheet/file (images + PDF) and 🎤 voice. Without a family setup link or consent the
+      buttons stay visible and a tap shows a gentle Arabic note + a parent line (English only with translation on). Nothing is sent then.
+   3) PDF pages 1–2 are rendered to images ON THE DEVICE (pdf.js, loaded only when a PDF is picked) and go through the same
+      homework-photo path and caps (hwPrep → JPEG ≤ 1 MB data URL → /api/homework). No Worker change.
+   4) the big home button names what the next step really is (read / play / lesson / talk / review). */
+const HWX = { pdf: null };
+const HWX_STEP = {
+  story: ['📖', 'يَلَّا نَقْرَأ', "Let's read"], learn: ['📝', 'دَرْسُ اليَوْم', "Today's lesson"], gram: ['🧩', 'دَرْسُ اليَوْم', "Today's lesson"],
+  talk: ['💬', 'يَلَّا نِحْكِي', "Let's talk"], scene: ['🗣️', 'يَلَّا نِحْكِي', "Let's talk"], review: ['↻', 'يَلَّا نِرَاجِع', "Let's review"],
+  quiz: ['🎯', 'يَلَّا نِلْعَب', "Let's play"], isle: ['🏝️', 'يَلَّا نِلْعَب', "Let's play"], games: ['🎮', 'يَلَّا نِلْعَب', "Let's play"]
+};
+function hwxStepKind() { try { const n = calmNext(P()); if (!n) return 'games'; if (!n.next) return 'isle'; return HWX_STEP[n.next.k] ? n.next.k : 'quiz'; } catch (e) { return 'games'; } }
+{ const _h = ilHome; ilHome = function ilHomeHwx() { let h = _h.apply(this, arguments);
+  const k = hwxStepKind(); const [ic, ar, en] = HWX_STEP[k];
+  h = h.replace(/<button class="calm2-play"([^>]*?)aria-label="[^"]*">[\s\S]*?<\/button>/, (m, attrs) => `<button class="calm2-play hwx-play" data-step="${k}"${attrs}aria-label="${ar} ${en}"><span class="hwx-pic emo" aria-hidden="true">${ic}</span><b lang="ar">${ar}</b><span class="en">${en}</span></button>`);
+  return h.replace('class="calm2-bird" data-act="il-hear"', 'class="calm2-bird" data-act="hwx-bird"'); }; }
+/* ---------- chat tools ---------- */
+const hwxNeed = () => (!aiAccess() ? 'setup' : !tutorAllowed(currentKid) || !consentOf(currentKid).homework ? 'consent' : '');
+function hwxNoteHTML(what) {
+  const kid = what === 'mic' ? 'المَايْك يَحْتَاجُ إِذْنَ مَامَا أَوْ بَابَا.' : G('صَقُّور يِحِبّ يْشُوف وَاجْبَك! اُطْلُبْ مِنْ مَامَا أَوْ بَابَا يِجَهِّزُون الجِهَاز 💛', 'صَقُّور يِحِبّ يْشُوف وَاجْبِچ! اُطْلُبِي مِنْ مَامَا أَوْ بَابَا يِجَهِّزُون الجِهَاز 💛');
+  const need = hwxNeed();
+  const par = need === 'setup' ? ['لِلْوَالِدَيْن: الصُّوَرُ وَالمَلَفَّاتُ وَالصَّوْتُ تَحْتَاجُ رَابِطَ إِعْدَادِ العَائِلَةِ عَلَى هَذَا الجِهَاز.', 'For parents: photos, files and voice need the family setup link opened once on this device.']
+    : ['لِلْوَالِدَيْن: شَغِّلُوا مُسَاعِدَ الوَاجِبِ مِنْ إِعْدَادَاتِ الوَالِدَيْن (رَقْمُ PIN).', 'For parents: turn on the homework helper in parent settings (PIN).'];
+  return `<div class="hwx-note" role="note"><p lang="ar">${kid}</p><p class="hwx-par"><span lang="ar">${par[0]}</span> <span class="en en-block">${par[1]}</span></p>${need === 'consent' ? '<button class="mh-note-btn" data-act="mh-consent">لِلْوَالِدَيْن <span class="en">For parents</span></button>' : ''}</div>`;
+}
+v20bTools = function v20bToolsHwx(s) {
+  const S = V20B_S[s]; const f = S.form() || (s === 'mh' ? $('mh-compose') && $('mh-compose').firstElementChild : null);
+  document.querySelectorAll((s === 'mh' ? '#mh' : '#tutor') + ' .v20b-tool').forEach((b) => b.remove());
+  if (!currentKid || S.ended() || (s === 'tt' && $('tutor').classList.contains('hidden'))) return;
+  const btn = (kind, ic, ar, en, off) => `<button type="button" class="v20b-tool hwx-b v20b-${kind}${off ? ' hwx-off' : ''}" data-act="${kind === 'voice' ? 'v20b-voice' : 'hwx-' + kind}" data-arg="${s}" aria-label="${ar} · ${en}"><span class="v20b-ic hwx-ic emo" aria-hidden="true">${ic}</span><span class="v20b-lab"><span lang="ar">${ar}</span><span class="en">${en}</span></span></button>`;
+  const pOff = !v20bPhotoOk(), vOff = !v20bVoiceOk();
+  const box = document.createElement('div'); box.className = 'v20b-tool-row v20b-tool hwx-row';
+  box.innerHTML = btn('photo', '📷', 'صَوِّرِ الوَاجِب', 'Camera', pOff) + btn('file', '📄', 'صُورَة أَوْ مَلَفّ', 'Photo or PDF', pOff) + btn('voice', '🎤', 'رِسَالَة صَوْتِيَّة', 'Voice note', vOff)
+    + (hwxNeed() === 'setup' ? hwxNoteHTML('hw') : '');
+  if (f && f.parentNode) f.parentNode.insertBefore(box, f); else { const c = s === 'mh' ? $('mh-compose') : $('tt-form') && $('tt-form').parentNode; if (c) c.appendChild(box); }
+};
+/* the falcon-home chat compose was left empty without a family code: show the tools (with the note) instead */
+{ const _c = mhCompose; mhCompose = function mhComposeHwx() { const r = _c.apply(this, arguments); if (!$('mh-form')) v20bTools('mh'); return r; }; }
+function hwxInput(s, mode) {
+  const id = 'hwx-in-' + mode; let inp = $(id);
+  if (!inp) { inp = document.createElement('input'); inp.type = 'file'; inp.id = id; inp.hidden = true;
+    inp.accept = mode === 'cam' ? 'image/*' : 'image/*,application/pdf,.pdf'; if (mode === 'cam') inp.setAttribute('capture', 'environment');
+    document.body.appendChild(inp); inp.addEventListener('change', () => { const f = inp.files && inp.files[0]; const sf = inp.dataset.s; inp.value = ''; if (f && V20B_S[sf]) hwxGo(sf, f); }); }
+  inp.dataset.s = s; inp.click();
+}
+const hwxIsPdf = (f) => /pdf$/i.test(f.type || '') || /\.pdf$/i.test(f.name || '');
+function hwxLoadPdf() {
+  if (window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
+  if (HWX.pdf) return HWX.pdf;
+  HWX.pdf = new Promise((ok, no) => { const sc = document.createElement('script'); const base = new URL('vendor/pdfjs/', (document.querySelector('link[rel=manifest]') || {}).href || location.href).href; sc.src = base + 'pdf.min.js'; sc.onload = () => { try { window.pdfjsLib.GlobalWorkerOptions.workerSrc = base + 'pdf.worker.min.js'; ok(window.pdfjsLib); } catch (e) { no(e); } }; sc.onerror = () => { HWX.pdf = null; no(new Error('pdfjs')); }; document.head.appendChild(sc); });
+  return HWX.pdf;
+}
+async function hwxPdfPages(file) {
+  if (file.size > 15e6) throw new Error('big');
+  const lib = await hwxLoadPdf(); const doc = await lib.getDocument({ data: new Uint8Array(await file.arrayBuffer()), isEvalSupported: false, disableFontFace: false }).promise;
+  const out = [];
+  for (let i = 1; i <= Math.min(2, doc.numPages); i++) { const pg = await doc.getPage(i); const v0 = pg.getViewport({ scale: 1 }); const sc = Math.min(3, 1600 / Math.max(v0.width, v0.height)); const v = pg.getViewport({ scale: sc });
+    const c = document.createElement('canvas'); c.width = Math.round(v.width); c.height = Math.round(v.height); const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height);
+    await pg.render({ canvasContext: x, viewport: v }).promise; out.push(await new Promise((ok) => c.toBlob(ok, 'image/jpeg', 0.9))); c.width = c.height = 0; }
+  try { doc.destroy(); } catch (e) { /* ignore */ }
+  return { pages: out, total: doc.numPages };
+}
+async function hwxGo(s, file) {
+  const S = V20B_S[s];
+  if (!hwxIsPdf(file)) { v20bPhotoGo(s, file); return; }
+  let r; try { r = await hwxPdfPages(file); } catch (e) { S.say({ ar: 'تَعَذَّرَ فَتْحُ هَذَا المَلَفِّ. ' + G('جَرِّبْ', 'جَرِّبِي') + ' صُورَةً لِلْوَرَقَةِ.', en: "I couldn't open that file. Try a photo of the sheet.", register: 'fusha' }); return; }
+  if (!r.pages.length) return;
+  if (r.pages.length === 1) { v20bPhotoGo(s, r.pages[0]); return; }
+  HWX.pick = { s, pages: r.pages }; const urls = r.pages.map((b) => URL.createObjectURL(b));
+  S.append(`<div class="${S.bubCls.replace(' kid', '')} hwx-pick"><p lang="ar">${G('أَيّ صَفْحَة نِشُوف؟', 'أَيّ صَفْحَة نِشُوف؟')} <span class="en">Which page shall we look at?</span></p><div class="hwx-pages">${urls.map((u, i) => `<button class="hwx-pg" data-act="hwx-page" data-arg="${i}" aria-label="الصَّفْحَة ${toArabicDigits(i + 1)} · Page ${i + 1}"><img src="${u}" alt=""><b>${toArabicDigits(i + 1)}</b></button>`).join('')}</div></div>`, s === 'mh' ? 'mh-msg' : 'tt-msg tutor');
+}
+function hwxTap(kind, s) {
+  s = s === 'tt' ? 'tt' : 'mh'; const S = V20B_S[s];
+  if (kind === 'voice') { if (V20B.rec || v20bVoiceOk()) { v20bVoice(s); return; } if (aiAccess() && !micAllowed(currentKid)) { openModal(consentGateHTML(currentKid, 'mic'), null, 'sheet'); return; } }
+  else if (v20bPhotoOk()) { if (!S.on() || S.busy()) return; hwxInput(s, kind === 'photo' ? 'cam' : 'file'); return; }
+  openModal(`<div class="stack center hwx-sheet">${typeof falconSVG === 'function' ? falconSVG('happy', 'lg') : ''}${hwxNoteHTML(kind === 'voice' ? 'mic' : 'hw')}<button class="btn" data-act="modal-close">حَسَنًا <span class="en">OK</span></button></div>`, null, 'sheet');
+}
+Object.assign(ACTIONS, {
+  'hwx-bird': () => { const l = IL.greet; if (l) mhSpeakLine(l); ilChat(); },
+  'v20b-voice': (s) => hwxTap('voice', s), 'hwx-photo': (s) => hwxTap('photo', s), 'hwx-file': (s) => hwxTap('file', s), 'hwx-voice': (s) => hwxTap('voice', s),
+  'hwx-page': (i) => { const k = HWX.pick; if (!k || !k.pages[+i]) return; HWX.pick = null; document.querySelectorAll('.hwx-pick .hwx-pg').forEach((b) => { b.disabled = true; }); v20bPhotoGo(k.s, k.pages[+i]); }
+});
+/* the homework page (#hw) accepts PDFs too */
+{ const el = $('hw-file'); if (el) { el.accept = 'image/*,application/pdf,.pdf';
+  el.addEventListener('change', async (e) => { const f = el.files && el.files[0]; if (!f || !hwxIsPdf(f)) return; e.stopImmediatePropagation(); el.value = '';
+    try { const r = await hwxPdfPages(f); if (r.pages[0]) hwPhoto(r.pages[0]); } catch (er) { hwPhoto(f); } }, true); } }
+window.SAQ_HWX = { hwxStepKind, hwxPdfPages, HWX_STEP };
 
 </script>
 </body>
