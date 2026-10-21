@@ -3951,7 +3951,7 @@ body.acc-open #picker,body.acc-open #app{display:none!important}
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v27.1";
+const APP_VERSION = "v27.2";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -9801,7 +9801,7 @@ const AR_RE = /[\u0600-\u06FF]/;
 function hasOwnArabic(el) { for (const n of el.childNodes) { if (n.nodeType === 3 && AR_RE.test(n.nodeValue)) return true; if (n.nodeType === 1 && !n.classList.contains('en') && AR_RE.test(n.textContent)) return true; } return false; }
 function wrapBareLatin() {
   const app = document.body; const w = document.createTreeWalker(app, NodeFilter.SHOW_TEXT); const hits = []; let n;
-  while ((n = w.nextNode())) { if (!/[A-Za-z]{2,}/.test(n.nodeValue) || AR_RE.test(n.nodeValue)) continue; /* v15: mixed Arabic + Latin (e.g. a Latin nickname inside an Arabic line) stays visible */ const el = n.parentElement; if (!el || el.closest('.en,#parent,.keep-en,script,style,noscript,svg,title,option,textarea')) continue; hits.push(n); }
+  while ((n = w.nextNode())) { if (!/[A-Za-z]{2,}/.test(n.nodeValue) || AR_RE.test(n.nodeValue)) continue; /* v15: mixed Arabic + Latin (e.g. a Latin nickname inside an Arabic line) stays visible */ const el = n.parentElement; if (!el || el.closest('.en,#parent,.keep-en,bdi,[dir="auto"],.acc-small[dir="ltr"],script,style,noscript,svg,title,option,textarea')) continue; hits.push(n); }
   hits.forEach((t) => { const s = document.createElement('span'); s.className = 'en en-wrap'; t.replaceWith(s); s.appendChild(t); });
 }
 function arabicFirst(root) {
