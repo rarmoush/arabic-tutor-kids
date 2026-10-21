@@ -3817,7 +3817,7 @@ body.acc-open #picker,body.acc-open #app{display:none!important}
       <div class="topbar-inner">
         <button class="who" data-act="switch-profile" title="Switch learner">
           <span class="face" id="who-face"></span>
-          <span class="who-txt"><span id="who-name"></span><span class="lvl-badge" title="Level">⭐ <span id="lvl-count">1</span></span></span>
+          <span class="who-txt"><span id="who-name" dir="auto"></span><span class="lvl-badge" title="Level">⭐ <span id="lvl-count">1</span></span></span>
         </button>
         <div class="stats">
           <span class="chip fire" id="streak-chip" title="Days in a row you practised"><span id="flame-ic"></span><span id="streak-count">0</span></span>
@@ -3951,7 +3951,7 @@ body.acc-open #picker,body.acc-open #app{display:none!important}
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v27";
+const APP_VERSION = "v27.1";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -15540,7 +15540,7 @@ function v26Banner(w, soon) { return `<div class="v26-wt" role="heading" aria-le
 /* =========================================================
    v27 ACCOUNTS (DEMO). A parent account replaces the family code / setup link:
    - the parent registers (e-mail + password, parent consent for children under 13) or logs in;
-   - adds child profiles (nickname in Arabic letters, boy/girl words, year group, dialect, a picture);
+   - adds child profiles (nickname in Arabic or English letters, boy/girl words, year group, dialect, a picture);
    - children pick their picture; the parent area sits behind the optional 4-digit parent PIN;
    - progress syncs per child to the Worker (D1); localStorage stays as the offline cache;
    - a one-time "move this device's progress into a child profile" import for the old on-device profiles;
@@ -15550,6 +15550,15 @@ function v26Banner(w, soon) { return `<div class="v26-wt" role="heading" aria-le
    localStorage 'arabicTutor.accOn' = '1'. The session token is kept in its own key and never written into the main save.
    ========================================================= */
 const ACC_KEY = 'arabicTutor.acc';
+/* v27.1: child nickname in Arabic OR English letters (+ space, hyphen, apostrophe), 1–20 characters, at least one letter.
+   Digits, @, /, dots, emoji and symbols are not allowed, so e-mails, URLs, numbers-only and emoji-only names cannot be saved. Same rule on the Worker. */
+const ACC_NICK_CHARS = /[^\u0621-\u063A\u0641-\u064A\u064B-\u0652\u0670A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF '\u2019-]/g;
+const accNickClean = (s) => String(s || '').replace(/\u2019/g, "'").replace(ACC_NICK_CHARS, '').replace(/\s+/g, ' ').replace(/^[\s'-]+/, '').slice(0, 20);
+const ACC_NICK_RE = /^[\u0621-\u063A\u0641-\u064A\u064B-\u0652\u0670A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF '-]{1,20}$/;
+const accNickOK = (s) => { s = String(s || '').trim(); return ACC_NICK_RE.test(s) && /[\u0621-\u064AA-Za-z\u00C0-\u00FF]/.test(s); };
+/* a name in any script shown inside Arabic text: isolate it (FSI … PDI) so an English name never flips the line */
+const accIso = (s) => '\u2068' + String(s || '') + '\u2069';
+const accNameHTML = (s) => `<bdi dir="auto">${esc(s)}</bdi>`;
 const ACC_SLOTS = ['a1', 'a2', 'a3', 'a4', 'a5', 'a6'];
 ACC_SLOTS.forEach((s) => { if (!PROFILE_SLOTS.includes(s)) PROFILE_SLOTS.push(s); });
 const ACC_AV = { falcon: '🦅', butterfly: '🦋', camel: '🐪', turtle: '🐢', fish: '🐠', owl: '🦉', cat: '🐱', star: '⭐' };
@@ -15598,6 +15607,9 @@ function accApplyKids() {
   syncProfiles(); accSave();
   const fc = DB.settings.familyCode; delete DB.settings.familyCode; try { localStorage.setItem(STORE_KEY, JSON.stringify(DB)); } catch (e) { /* */ } if (fc) DB.settings.familyCode = fc;
 }
+/* account children: the name stays as typed (Arabic or English), isolated for RTL text; the old "choose an Arabic name" prompt is skipped */
+{ const _sp2 = syncProfiles; syncProfiles = function syncProfilesV271() { _sp2.apply(this, arguments);
+  Object.values(PROFILES).forEach((pr) => { const r = DB.profiles && DB.profiles[pr.id]; if (!r || !r.acc) return; const n = String(r.nick || '').slice(0, 20); pr.latinNick = false; pr.name = n; pr.ar = /[A-Za-z\u00C0-\u00FF]/.test(n) ? accIso(n) : n; }); }; }
 /* the picture avatar for account children */
 { const _a = avatarHTML; avatarHTML = function avatarHTMLV27(id, size) { const r = DB.profiles && DB.profiles[id]; if (!r || !r.av || !ACC_AV[r.av]) return _a.apply(this, arguments);
   return `<span class="avatar acc-av av-${id} ${size || ''}" style="--avb:${ACC_AVC[r.av]}">${accPic(r.av, 'in-av')}</span>`; }; }
@@ -15675,18 +15687,18 @@ const ACC_SCREENS = {
     <button type="button" class="btn soft acc-wide" data-act="acc-go" data-arg="login">رُجُوعٌ</button></section>`,
   kids: () => { const kids = ACC.kids.filter((k) => ACC.map[k.id]);
     return `<section class="acc-kids"><h1 class="acc-h center">مَنْ يَتَعَلَّمُ الآنَ؟</h1>${accEn('Who is learning now?')}
-    <div class="acc-grid">${kids.map((k) => `<button class="acc-kid" data-act="acc-pick" data-arg="${k.id}" style="--avb:${ACC_AVC[k.av] || '#eef'}">${accPic(k.av)}<span class="acc-kid-nm">${esc(k.nick)}</span></button>`).join('')}</div>
+    <div class="acc-grid">${kids.map((k) => `<button class="acc-kid" data-act="acc-pick" data-arg="${k.id}" style="--avb:${ACC_AVC[k.av] || '#eef'}">${accPic(k.av)}<span class="acc-kid-nm" dir="auto">${esc(k.nick)}</span></button>`).join('')}</div>
     ${kids.length ? '' : `<p class="acc-p center">لَا يُوجَدُ أَطْفَالٌ بَعْدُ. يُضِيفُهُمُ الوَالِدَانِ.</p>`}
     <button class="btn soft acc-parent-btn" data-act="acc-parent">🔒 الوَالِدَانِ</button></section>`; },
   parent: () => { const u = ACC.usage || {}; const C = { tutor: [400, 'المُعَلِّمُ الذَّكِيُّ'], hw: [150, 'مُسَاعِدُ الوَاجِبِ'], tts: [1500, 'الأَصْوَاتُ'], hwimg: [30, 'صُوَرُ الأَوْرَاقِ'] };
     const legacy = PROFILE_SLOTS.filter((s) => !ACC_SLOTS.includes(s) && DB.profiles[s] && DB.kids[s]);
     return `<section class="acc-card stack acc-parent"><div class="row between"><h1 class="acc-h">مِنْطَقَةُ الوَالِدَيْنِ</h1><button class="btn soft" data-act="acc-go" data-arg="kids">رُجُوعٌ</button></div>${accEn('Parent area')}
     <p class="acc-small" dir="ltr">${esc(ACC.email)}</p>
-    <h2 class="acc-h2">الأَطْفَالُ</h2><ul class="acc-list">${ACC.kids.map((k) => `<li class="acc-row">${accPic(k.av, 'sm')}<span class="grow"><b>${esc(k.nick)}</b><small>${k.g === 'f' ? 'بِنْتٌ' : 'وَلَدٌ'} · ${accYearAr(k.yr)} · ${esc(accDialAr(k.dialect))}</small></span><button class="btn ghost sm" data-act="acc-del-kid" data-arg="${k.id}" aria-label="حَذْف">🗑️</button></li>`).join('') || '<li class="acc-small">لَا يُوجَدُ أَطْفَالٌ بَعْدُ.</li>'}</ul>
+    <h2 class="acc-h2">الأَطْفَالُ</h2><ul class="acc-list">${ACC.kids.map((k) => `<li class="acc-row">${accPic(k.av, 'sm')}<span class="grow"><b>${accNameHTML(k.nick)}</b><small>${k.g === 'f' ? 'بِنْتٌ' : 'وَلَدٌ'} · ${accYearAr(k.yr)} · ${esc(accDialAr(k.dialect))}</small></span><button class="btn ghost sm" data-act="acc-del-kid" data-arg="${k.id}" aria-label="حَذْف">🗑️</button></li>`).join('') || '<li class="acc-small">لَا يُوجَدُ أَطْفَالٌ بَعْدُ.</li>'}</ul>
     ${ACC.kids.length < 6 ? '<button class="btn big acc-wide" data-act="acc-go" data-arg="addkid">＋ إِضَافَةُ طِفْلٍ</button>' : ''}
     ${legacy.length && ACC.kids.length ? `<div class="acc-box acc-import"><h2 class="acc-h2">نَقْلُ تَقَدُّمِ هَذَا الجِهَازِ</h2><p class="acc-small">وَجَدْنَا تَقَدُّمًا مَحْفُوظًا عَلَى هَذَا الجِهَازِ مِنْ قَبْلُ. اِنْقُلُوهُ مَرَّةً وَاحِدَةً إِلَى مِلَفِّ طِفْلٍ.</p>${accEn("This device has progress from before accounts. Move it once into a child's profile.")}
       <div class="acc-imp-row"><label class="acc-l">مِنْ<select id="acc-imp-from">${legacy.map((s) => `<option value="${s}">${esc(DB.profiles[s].nick || s)} (${toArabicDigits(DB.kids[s].xp || 0)} ⭐)</option>`).join('')}</select></label>
-      <label class="acc-l">إِلَى<select id="acc-imp-to">${ACC.kids.map((k) => `<option value="${k.id}">${esc(k.nick)}</option>`).join('')}</select></label></div>
+      <label class="acc-l">إِلَى<select id="acc-imp-to">${ACC.kids.map((k) => `<option value="${k.id}" dir="auto">${esc(k.nick)}</option>`).join('')}</select></label></div>
       <button class="btn acc-wide" data-act="acc-import">نَقْلُ التَّقَدُّمِ</button></div>` : ''}
     <h2 class="acc-h2">الذَّكَاءُ الاِصْطِنَاعِيُّ اليَوْمَ</h2><ul class="acc-usage">${Object.keys(C).map((k) => `<li><span>${C[k][1]}</span><b>${toArabicDigits(u[k] || 0)} / ${toArabicDigits(C[k][0])}</b></li>`).join('')}</ul>
     <p class="acc-small">لِكُلِّ عَائِلَةٍ حَدٌّ يَوْمِيٌّ خَاصٌّ بِهَا.</p>
@@ -15698,8 +15710,8 @@ const ACC_SCREENS = {
       <button class="btn ghost" data-act="acc-logout">تَسْجِيلُ الخُرُوجِ</button>
       <button class="btn ghost acc-danger" data-act="acc-go" data-arg="delacc">حَذْفُ الحِسَابِ</button></div></section>`; },
   addkid: () => `<form class="acc-card stack" id="acc-kid" autocomplete="off" novalidate><h1 class="acc-h">طِفْلٌ جَدِيدٌ</h1>${accEn('Add a child')}
-    <label class="acc-l">الاسْمُ الأَوَّلُ أَوِ اسْمُ الدَّلَعِ (بِالعَرَبِيَّةِ)<input id="acc-nick" maxlength="16" dir="rtl" lang="ar" autocomplete="off" spellcheck="false"></label>
-    <p class="acc-small">لَا نَحْتَاجُ إِلَى الاسْمِ الكَامِلِ.</p>
+    <label class="acc-l">الاسْمُ الأَوَّلُ أَوِ اسْمُ الدَّلَعِ<input id="acc-nick" maxlength="20" dir="auto" autocomplete="off" spellcheck="false"></label>
+    <p class="acc-small">بِالعَرَبِيَّةِ أَوِ الإِنْجِلِيزِيَّةِ، كَمَا تُحِبُّونَ. لَا نَحْتَاجُ إِلَى الاسْمِ الكَامِلِ.</p>${accEn('Arabic or English letters are both fine. No full name needed.')}
     <fieldset class="acc-seg"><legend>لِكَلِمَاتِ التَّطْبِيقِ</legend><label><input type="radio" name="acc-g" value="m" checked><span>وَلَدٌ</span></label><label><input type="radio" name="acc-g" value="f"><span>بِنْتٌ</span></label></fieldset>
     <label class="acc-l">السَّنَةُ الدِّرَاسِيَّةُ<select id="acc-yr">${ACC_YEARS.map((y) => `<option value="${y}" ${y === 'Y3' ? 'selected' : ''}>${accYearAr(y)}</option>`).join('')}</select></label>
     <label class="acc-l">اللَّهْجَةُ<select id="acc-dial">${accDialects().map((d) => `<option value="${d}">${esc(accDialAr(d))}</option>`).join('')}</select></label>
@@ -15722,14 +15734,14 @@ document.addEventListener('submit', async (e) => {
     if (id === 'acc-forgot-x') { if ($('acc-rt')) { const r = await accApi('POST', 'reset/confirm', { token: $('acc-rt').value, password: accVal('acc-pw') }); if (r.status !== 200) { ACC_MSG = accErr(r.j); return accShow('forgot', $('acc-rt') && $('acc-rt').value); } toast('✔️ تَمَّ تَغْيِيرُ كَلِمَةِ المُرُورِ'); return accShow('login'); }
       const r = await accApi('POST', 'reset/request', { email: accVal('acc-email').trim() }); if (r.status !== 200) return fail(r.j);
       if (r.j.devToken) return accShow('forgot', r.j.devToken); ACC_MSG = 'إِذَا كَانَ البَرِيدُ مُسَجَّلًا فَسَيَصِلُ رَابِطٌ (غَيْرُ مُفَعَّلٍ فِي النُّسْخَةِ التَّجْرِيبِيَّةِ).'; return accShow('forgot'); }
-    if (id === 'acc-kid') { const nick = nickClean(accVal('acc-nick')).trim(); if (!nickIsArabic(nick)) { ACC_MSG = 'اُكْتُبُوا الاسْمَ بِالحُرُوفِ العَرَبِيَّةِ.'; return accShow('addkid'); }
+    if (id === 'acc-kid') { const nick = accNickClean(accVal('acc-nick')).trim(); if (!accNickOK(nick)) { ACC_MSG = 'اُكْتُبُوا اسْمًا بِالحُرُوفِ (عَرَبِيَّةٍ أَوْ إِنْجِلِيزِيَّةٍ)، مِنْ حَرْفٍ إِلَى ٢٠ حَرْفًا.'; return accShow('addkid'); }
       const q = (n) => (document.querySelector(`input[name=${n}]:checked`) || {}).value;
       const r = await accApi('POST', 'children', { nick, g: q('acc-g'), yr: accVal('acc-yr'), dialect: accVal('acc-dial'), av: q('acc-av') }); if (r.status !== 201) return fail(r.j);
       ACC.kids.push(r.j.child); accApplyKids(); const slot = ACC.map[r.j.child.id]; if (slot) await accPush(r.j.child.id); return accShow('parent'); }
     if (id === 'acc-delacc') { const r = await accApi('DELETE', 'account', { password: accVal('acc-pw') }); if (r.status !== 200) return fail(r.j); accForget(); return accShow('welcome'); }
   } finally { if (btn) btn.disabled = false; }
 });
-document.addEventListener('input', (e) => { if (e.target && e.target.id === 'acc-nick') { const v = nickClean(e.target.value); if (v !== e.target.value) e.target.value = v; } });
+document.addEventListener('input', (e) => { if (e.target && e.target.id === 'acc-nick') { const v = accNickClean(e.target.value); if (v !== e.target.value) e.target.value = v; } });
 document.addEventListener('change', (e) => { if (e.target && e.target.id === 'acc-en') { DB.settings.showEn = !!e.target.checked; saveDB(); document.body.classList.toggle('show-en', DB.settings.showEn); if (ACC.tok) accPushSettings(); } });
 function accForget() { Object.keys(ACC.map).forEach((k) => { const s = ACC.map[k]; delete DB.profiles[s]; delete DB.kids[s]; }); ACC = { tok: null, email: '', kids: [], map: {}, rev: {}, dirty: {}, settings: {}, imported: ACC.imported, usage: null }; accSave(); accUseToken(); syncProfiles(); saveDB(); }
 function accParentGate(cb) { if (hasPin()) parentGate(cb, ''); else cb(); }
@@ -15737,7 +15749,7 @@ Object.assign(ACTIONS, {
   'acc-go': (a) => { ACC_MSG = ''; if (a === 'parent') accRefresh().then(() => accShow('parent')); accShow(a); },
   'acc-pick': async (kid) => { const slot = ACC.map[kid]; if (!slot) return; await Promise.race([accPull(kid), new Promise((r) => setTimeout(r, 2500))]); accHide(); pickProfile(slot); },
   'acc-parent': () => accParentGate(() => { accShow('parent'); accRefresh().then(() => { if (ACC_VIEW === 'parent') accShow('parent'); }); }),
-  'acc-del-kid': async (kid) => { const k = ACC.kids.find((x) => x.id === kid); if (!k || !confirm('حَذْفُ مِلَفِّ ' + k.nick + ' وَتَقَدُّمِهِ؟')) return; const r = await accApi('DELETE', 'children/' + kid); if (r.status === 200) { ACC.kids = ACC.kids.filter((x) => x.id !== kid); accApplyKids(); } accShow('parent'); },
+  'acc-del-kid': async (kid) => { const k = ACC.kids.find((x) => x.id === kid); if (!k || !confirm('حَذْفُ مِلَفِّ ' + accIso(k.nick) + ' وَتَقَدُّمِهِ؟')) return; const r = await accApi('DELETE', 'children/' + kid); if (r.status === 200) { ACC.kids = ACC.kids.filter((x) => x.id !== kid); accApplyKids(); } accShow('parent'); },
   'acc-pin': () => { const had = hasPin(); const go = () => { DB.settings.pin = null; DB.settings.adultOK = DB.settings.adultOK || dayKey(); parentGate(() => { accPushSettings(); accShow('parent'); }, ''); }; if (had) parentGate(go, ''); else go(); },
   'acc-pin-off': () => parentGate(() => { DB.settings.pin = null; saveDB(); accPushSettings(); accShow('parent'); }, ''),
   'acc-old-parent': () => { accHide(); _openParentV15(); },
@@ -15867,10 +15879,12 @@ function sqEnd() {
   if (first) { try { award(10 + 2 * s.ok, 'read', { msg: '❓', quiet: true }); } catch (e) { /* */ } } saveDB();
   const all = s.ok === s.qs.length; modalOnClose = null; SQ = null;
   openModal(`<div class="stack sq sq-end center"><div class="v20-buddy">${falconSVG(all ? 'cheer' : 'happy', 'v20-bird')}</div>
-    <p class="sq-q" lang="ar">${sqF(all ? '[أَحْسَنْتَ|أَحْسَنْتِ]! [فَهِمْتَ|فَهِمْتِ] القِصَّةَ جَيِّدًا.' : '[أَنْهَيْتَ|أَنْهَيْتِ] الأَسْئِلَةَ. [أَحْسَنْتَ|أَحْسَنْتِ] المُحَاوَلَةَ!')}</p>
+    <p class="sq-q sq-praise" lang="ar">${sqF(all ? '[أَحْسَنْتَ|أَحْسَنْتِ] يَا ' : '[أَحْسَنْتَ|أَحْسَنْتِ] المُحَاوَلَةَ يَا ')}${sqName()}! ${sqF(all ? '[فَهِمْتَ|فَهِمْتِ] القِصَّةَ جَيِّدًا.' : '[أَنْهَيْتَ|أَنْهَيْتِ] الأَسْئِلَةَ.')}</p>
     <p class="sq-score" lang="ar">${toArabicDigits(s.ok)} / ${toArabicDigits(s.qs.length)} مِنَ المُحَاوَلَةِ الأُولَى</p>
     <div class="row" style="justify-content:center"><button class="btn soft" data-act="read-open" data-arg="${s.id}">📖 ${sqF('[اِقْرَأْ|اِقْرَئِي] مَرَّةً أُخْرَى')}</button><button class="btn gold" data-act="sq-close">رَائِعٌ</button></div></div>`, () => { if (currentTab === 'home') renderHome(); if (currentTab === 'stories' && RENDER.stories) RENDER.stories(); }, 'sheet');
 }
+/* v27.1: the child's name (Arabic or English) inside Arabic praise, bidi-isolated */
+function sqName() { const pr = currentKid && PROFILES[currentKid]; const n = pr ? String((DB.profiles[currentKid] || {}).nick || pr.name || '') : ''; return n ? `<bdi dir="auto" class="sq-name">${esc(n)}</bdi>` : ''; }
 function sqSay(k) { const s = SQ; if (!s) return; const x = s.qs[s.i]; const t = k === 'line' ? (s.st.s[x.s] || [''])[0] : sqF(x.q); try { if (t) speak(t, 'fusha', { quiet: true }); } catch (e) { /* audio optional */ } }
 Object.assign(ACTIONS, { 'sq-ans': (a) => sqAns(a), 'sq-next': () => sqNext(), 'sq-say': (a) => sqSay(a), 'sq-start': (a) => { closeModal(); setTimeout(() => sqStart(a), 30); },
   'sq-close': () => closeModal(), 'sq-story': () => { const id = SQ && SQ.id; const keep = SQ; modalOnClose = null; closeModal(); if (id) { openReader(id); window.__sqResume = keep; } } });
