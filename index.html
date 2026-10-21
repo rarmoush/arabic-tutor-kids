@@ -3766,6 +3766,37 @@ body.acc-open #picker,body.acc-open #app{display:none!important}
 .sq-ok{margin:0;color:var(--ds-ok,#22a86a);font-weight:600;font-size:var(--t-lg)}.sq-score{margin:0;color:var(--ds-ink-3)}
 .sq-open{margin-top:6px}
 
+.acc-row{flex-wrap:wrap}
+.wl-box{flex-basis:100%;margin-top:8px;padding:10px 12px;background:#fff;border-radius:12px;border:1px solid #e3eef4}
+.wl-yr{margin:0 0 6px;font-size:.95rem}
+.wl-t{width:100%;border-collapse:collapse;font-size:.9rem}
+.wl-t th{text-align:start;font-weight:500;padding:5px 0;color:#14324a}
+.wl-t td{padding:5px 4px;color:#3d5568;white-space:nowrap}
+.wl-t tr+tr{border-top:1px solid #eef4f7}
+.wl-chip{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.82rem}
+.wl-on{background:#e6f6ee;color:#1f7a4d}.wl-catch{background:#eef4fb;color:#2c5d8f}.wl-ahead{background:#fdf3dc;color:#8a5a00}
+.wl-plan{margin-top:6px;font-size:.88rem}.wl-plan summary{cursor:pointer;color:#14324a}.wl-plan ol{margin:6px 0 0;padding-inline-start:20px}
+.wl-note{margin:6px 0 0;font-size:.78rem;color:#6b7f8e}
+/* v28 explain-my-answer */
+.ema{margin:10px 0;padding:12px 14px;border-radius:16px;text-align:right;line-height:1.7}
+.ema-hint{background:#fff8e6;border:2px solid #f3d27a}
+.ema-why{background:#eef8f1;border:2px solid #8fd1a5}
+.ema-t{display:block;font-size:1.05em;margin-bottom:4px}
+.ema-a{margin:2px 0;font-weight:700}.ema-a span{color:#1f8a4c}
+.ema-r{margin:2px 0}
+.ema-off{opacity:.38;text-decoration:line-through}
+.sq-hint.ema-why{background:#eef8f1;border-color:#8fd1a5}
+/* v28 daily mix sheet */
+.mix28-sub{margin:0;color:#5c6470}
+.mix28-bar{height:8px;border-radius:8px;background:#eef1f5;overflow:hidden}.mix28-bar i{display:block;height:100%;background:#3fb27f;border-radius:8px}
+.mix28-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.mix28-step{width:100%;display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;border:2px solid #e6e9ef;background:#fff;text-align:right;cursor:pointer;font:inherit}
+.mix28-step.now{border-color:#3fb27f;background:#f3fbf6}
+.mix28-step.done{opacity:.7}.mix28-step.done .mix28-pic{color:#1f8a4c;font-weight:800}
+.mix28-pic{font-size:1.6em;width:1.6em;text-align:center}
+.mix28-t{display:flex;flex-direction:column;flex:1}.mix28-t small{color:#5c6470}
+.mix28-go{color:#3fb27f;font-size:1.2em}
+
 </style>
 </head>
 <body>
@@ -3951,7 +3982,7 @@ body.acc-open #picker,body.acc-open #app{display:none!important}
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v27.2";
+const APP_VERSION = "v28";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -15028,7 +15059,7 @@ if (window.SAQ) SAQ.jvOpenIsle = jvOpenIsle;
    - Island sheet: activities as a winding path of round step nodes (picture + tick; done / current / locked).
    - Locked island sheet: a gentle hint of what's left on the current island, plus a "اِقْفِزْ إِلَى هُنَا؟" node (skip test)
      on the island right after the current one. Passing it completes both.
-   - Moving to a new island: full-screen celebration (confetti, Saqqour flies to the new island, big "مُسْتَوًى جَدِيدٌ"
+   - Moving to a new island: full-screen celebration (confetti, Saqqour flies to the new island, big "جَزِيرَةٌ جَدِيدَةٌ"
      + level number, spoken dialect praise in the boy/girl form, a chest that opens to a new outfit item). No sound effects.
    ========================================================= */
 const stActs = (p, u) => jvActs(p, u).filter((a) => a.k !== 'review');
@@ -15076,11 +15107,11 @@ function stCelebrate(fromId, toId) {
   const ia = UNITS.indexOf(a), ib = UNITS.indexOf(b); const g = PROFILES[currentKid] && PROFILES[currentKid].gender === 'f' ? 1 : 0; const cheer = (JV_CHEER[curDialect()] || JV_CHEER.emirati)[g];
   const it = stGift(p); saveDB(); const cfg = Object.assign(falconCfg(), it ? { [it.slot]: it.id } : {});
   const old = document.getElementById('st-cele'); if (old) old.remove();
-  const el = document.createElement('div'); el.id = 'st-cele'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', 'مُسْتَوًى جَدِيدٌ');
+  const el = document.createElement('div'); el.id = 'st-cele'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', 'جَزِيرَةٌ جَدِيدَةٌ');
   const conf = Array.from({ length: 36 }, (_, i) => `<i style="--x:${(i * 37) % 100}%;--d:${(i % 7) * 0.25}s;--c:${['#ffd23f', '#5fd08a', '#4fb6ff', '#ff9fb8', '#b78cff'][i % 5]};--r:${(i * 53) % 360}deg"></i>`).join('');
   el.innerHTML = `<div class="stc-conf" aria-hidden="true">${conf}</div><div class="stc-spark" aria-hidden="true">✨</div>
     <button class="stc-x" data-stc="close" aria-label="إِغْلَاق">✖️</button>
-    <h1 class="stc-big" lang="ar">مُسْتَوًى جَدِيدٌ!</h1><p class="stc-lv" lang="ar">المُسْتَوَى <b>${v21N(ib + 1)}</b></p>
+    <h1 class="stc-big" lang="ar">جَزِيرَةٌ جَدِيدَةٌ!</h1><p class="stc-lv" lang="ar">الجَزِيرَةُ <b>${v21N(ib + 1)}</b></p>
     <div class="stc-fly"><span class="stc-isle a">${a ? jvIslandArt(ia, 'done', 1) : ''}</span><span class="stc-isle b">${jvIslandArt(ib, 'current', 1)}</span><span class="stc-bird">${falconSVG('celebrate', 'stc-falcon')}</span></div>
     <p class="stc-cheer" lang="ar">${esc(cheer)}</p><p class="stc-to" lang="ar">${esc(b.ar)}</p>
     <div class="stc-chest"><button class="btn big gold" data-stc="open">🎁 ${G('اِفْتَحِ', 'اِفْتَحِي')} الكَنْزَ</button></div>`;
@@ -15909,6 +15940,339 @@ Object.assign(ACTIONS, { 'sq-ans': (a) => sqAns(a), 'sq-next': () => sqNext(), '
 if (typeof Y13_READ !== 'undefined') Object.keys(Y13_READ).forEach((u) => Y13_READ[u].forEach((r) => { const k = u + ':' + r.id; const tags = SQ27_Y13_TAGS[k] || [];
   r.qs.forEach((q, i) => { if (!q.t) q.t = tags[i] || 'lit'; }); const add = SQ27_Y13_ADD[k]; if (add && r.qs.length < 5 && !r.qs.some((q) => q.q === add.q)) r.qs.push(Object.assign({}, add)); }));
 window.__sq = { start: sqStart, data: () => SQ27 }; /* tests */
+
+/* v28 DEMO: WORKING LEVEL, separate from SCHOOL YEAR.
+   School year = the class the child is in (parent sets it). Working level = where the child is working now, per skill
+   (reading, grammar, writing, speaking/listening), on the same scale as school years (FS1 … Y13).
+   Start: placement result (or the school year if there was none). Then it moves with real answers: over the last 10 counted
+   answers in a skill, ≥85% right → one step up; ≤50% → one step down (never below FS1, never more than 3 above the year).
+   The daily mix, reading level, tutor and explain-my-answer use the working level. The child never sees a level or any
+   "behind" wording; parents see school year vs working level with gentle words. Stored in DB.kids[slot].wl (device, syncs with progress). */
+const WL_SK = ['read', 'gram', 'write', 'talk'];
+const WL_AR = { read: 'القِرَاءَةُ', gram: 'القَوَاعِدُ', write: 'الكِتَابَةُ', talk: 'الاِسْتِمَاعُ وَالمُحَادَثَةُ' };
+const WL_EN = { read: 'Reading', gram: 'Grammar', write: 'Writing', talk: 'Listening & speaking' };
+const WL_FROM = { reading: 'read', vocab: 'read', letters: 'write', spelling: 'write', grammar: 'gram', listening: 'talk', speaking: 'talk' };
+const WL_YEARS = ['FS1', 'FS2', 'Y1', 'Y2', 'Y3', 'Y4', 'Y5', 'Y6', 'Y7', 'Y8', 'Y9', 'Y10', 'Y11', 'Y12', 'Y13'];
+const WL_PL = { 1: 2, 2: 4, 3: 6, 4: 7, 5: 8 }; /* placement world → year index */
+const WL_UNIT_YR = { u1: 1, u2: 2, u3: 2, u4: 2, u5: 3, u6: 3, u7: 4, u8: 4, u9: 5, u10: 5, u11: 5, u12: 6, u13: 6, u14: 6, u15: 7, u16: 7, u17: 8, u18: 8, u19: 8 };
+const WL_WIN = 10;
+function wlYear(slot) { const r = (DB.profiles || {})[slot] || {}; const i = WL_YEARS.indexOf(r.yr); if (i >= 0) return i; return { '4-6': 1, '7-9': 4, '10-12': 7, '13+': 9 }[r.band] ?? 5; }
+function wlGet(slot) { const p = DB.kids[slot]; if (!p) return null;
+  if (!p.wl) { const y = wlYear(slot); if (p.diag && p.diag.sk && p.diag.sk.reading != null) { wlFromDiag(slot, p.diag.sk); return p.wl; }
+    const pl = p.placement && WL_PL[p.placement.level]; const start = pl != null ? Math.min(pl, y) : y; /* the older one-level placement: never start above the year */
+    p.wl = { src: pl != null ? 'placement' : 'year', win: {}, at: Date.now() }; WL_SK.forEach((k) => { p.wl[k] = start; p.wl.win[k] = []; }); }
+  return p.wl; }
+/* per-skill placement: the v22 adaptive start game measures each strand on the island scale (0..18). Island → year, per skill.
+   The game's ceiling is the last built island (the highest island): a child at the ceiling in a higher school year is set to the school year. */
+const WL_DIAG = { read: 'reading', gram: 'gram', write: 'spell', talk: 'listen' };
+function wlIsleYear(x) { const i = Math.max(0, Math.min(UNITS.length - 1, Math.floor(x))); return WL_UNIT_YR[UNITS[i].id] ?? 8; }
+function wlFromDiag(slot, sk) { const p = DB.kids[slot]; const y = wlYear(slot); const top = UNITS.length - 1;
+  const w = { src: 'placement-skills', win: {}, at: Date.now(), ceil: [] };
+  WL_SK.forEach((k) => { const x = sk[WL_DIAG[k]]; let lv = x == null ? y : wlIsleYear(x); if (x != null && x >= top - 0.5 && y > lv) { lv = y; w.ceil.push(k); } w[k] = Math.min(lv, Math.min(14, y + 3)); w.win[k] = []; });
+  if (sk.lettersounds != null && sk.lettersounds < (sk.spell ?? 99)) w.write = Math.min(w.write, wlIsleYear(sk.lettersounds) + 1); /* letters/sounds very low → writing starts lower too */
+  p.wl = w; return w; }
+/* the start game begins near the school year (not always the middle), then its staircase moves as before */
+{ const _ds = dgStart; dgStart = function dgStartWL() { const r = _ds.apply(this, arguments); try { if (DG.s && currentKid) { const y = wlYear(currentKid); let i = UNITS.findIndex((u) => (WL_UNIT_YR[u.id] ?? 99) >= y - 1); if (i < 0) i = UNITS.length - 1; DG.s.pos = Math.max(0, Math.min(DG_MAX, i)); } } catch (e) { /* */ } return r; }; }
+{ const _da = dgApply; dgApply = function dgApplyWL(p, r) { const d = _da.apply(this, arguments); try { const slot = Object.keys(DB.kids).find((k) => DB.kids[k] === p); if (slot) { wlFromDiag(slot, r.sk); saveDB(); } } catch (e) { /* */ } return d; }; }
+/* sync: working levels live in the child's progress record (synced per child); on a conflict the newer level record wins */
+{ const _m = accMerge; accMerge = function accMergeWL(a, b) { const out = _m.apply(this, arguments); if (a && b && (a.wl || b.wl)) { const w = (a.wl && b.wl) ? ((a.wl.at || 0) >= (b.wl.at || 0) ? a.wl : b.wl) : (a.wl || b.wl); out.wl = JSON.parse(JSON.stringify(w)); } return out; }; }
+function wlRecord(slot, skill, ok) { const k = WL_FROM[skill] || (WL_SK.includes(skill) ? skill : null); if (!k) return null; const w = wlGet(slot); if (!w) return null;
+  const a = w.win[k] = (w.win[k] || []).concat(ok ? 1 : 0).slice(-WL_WIN); if (a.length < WL_WIN) return null;
+  const acc = a.reduce((s, x) => s + x, 0) / a.length; const y = wlYear(slot); let move = 0;
+  if (acc >= 0.85 && w[k] < Math.min(14, y + 3)) move = 1; else if (acc <= 0.5 && w[k] > 0) move = -1;
+  if (move) { w[k] += move; w.win[k] = []; w.at = Date.now(); (w.log = w.log || []).push([dayKey(), k, move]); if (w.log.length > 40) w.log = w.log.slice(-40); }
+  return move; }
+{ const _h = skillHit; skillHit = function skillHitWL(id, ok, w) { const r = _h.apply(this, arguments); try { if (currentKid && !(w && w < 1 && ok)) { wlRecord(currentKid, id, !!ok); saveDB(); } } catch (e) { /* never block a game */ } return r; }; }
+/* gentle status for parents only (the child's grammatical gender is used) */
+function wlStatus(slot, k) { const w = wlGet(slot); const d = w[k] - wlYear(slot); const f = (DB.profiles[slot] || {}).g === 'f';
+  if (d < 0) return ['catch', f ? 'تَلْحَقُ بِخُطًى ثَابِتَةٍ' : 'يَلْحَقُ بِخُطًى ثَابِتَةٍ', 'catching up'];
+  if (d > 0) return ['ahead', f ? 'مُتَقَدِّمَةٌ' : 'مُتَقَدِّمٌ', 'ahead'];
+  return ['on', 'عَلَى المَسَارِ', 'on track']; }
+const wlYearAr = (i) => (i <= 1 ? 'الرَّوْضَةُ ' + toArabicDigits(i + 1) : 'السَّنَةُ ' + toArabicDigits(i - 1));
+/* ---------- content picks by WORKING level, tone by SCHOOL YEAR ---------- */
+/* tone: 'young' texts read as babyish to older children (talking-animal, "yummy" register); older children at a low reading
+   level get short texts written in a neutral, age-respecting voice instead (tags to be reviewed by the parent) */
+const WL_TONE = { ra1: 'young', ra2: 'all', ra3: 'all', ra4: 'all', ra5: 'all', ra6: 'all' };
+function wlStory(slot) { const w = wlGet(slot); const lv = w.read; const old = wlYear(slot) >= 6; const p = DB.kids[slot];
+  if (lv >= 8 && typeof Y13_READ !== 'undefined') { const u = ['u17', 'u18', 'u19'][Math.min(2, lv - 8)]; const r = Y13_READ[u][0]; return { kind: 'y13', id: u + ':' + r.id, ar: r.title || r.id }; }
+  const stars = lv <= 3 ? 1 : lv <= 5 ? 2 : 3;
+  const pool = READ_STORIES.filter((s) => s.stars === stars && !(old && WL_TONE[s.id] === 'young'));
+  const s = pool.find((x) => !p.completed['readaloud:' + x.id]) || pool[0] || READ_STORIES[0]; return { kind: 'story', id: s.id, ar: s.title }; }
+function wlUnit(slot, k) { const lv = wlGet(slot)[k]; const p = DB.kids[slot]; const ok = UNITS.filter((u) => (WL_UNIT_YR[u.id] ?? 99) <= Math.max(1, lv));
+  const top = Math.max(...ok.map((u) => WL_UNIT_YR[u.id])); const band = ok.filter((u) => WL_UNIT_YR[u.id] >= Math.min(lv, top)); /* the working band, not the very first island */
+  return band.find((u) => !(p.units[u.id] && p.units[u.id].stars)) || band[band.length - 1] || UNITS[0]; }
+/* the daily mix (about 10–15 min): review → class words → reading at level + 3 questions → grammar at level → speak or write */
+function wlPlan(slot) { const w = wlGet(slot); const st = wlStory(slot); const gu = wlUnit(slot, 'gram'); const wu = wlUnit(slot, 'write'); const day = new Date().getDay();
+  return [
+    { k: 'review', ar: 'مُرَاجَعَةٌ سَرِيعَةٌ', en: 'Quick review' },
+    { k: 'class', ar: 'كَلِمَاتُ الصَّفِّ', en: 'Class words' },
+    { k: 'read', ar: 'قِرَاءَةٌ: «' + st.ar + '» + ٣ أَسْئِلَةٍ', en: 'Reading at working level', lv: w.read },
+    { k: 'gram', ar: 'قَوَاعِدُ: ' + gu.ar, en: 'Grammar at working level', lv: w.gram },
+    day % 2 ? { k: 'talk', ar: 'مُحَادَثَةٌ قَصِيرَةٌ', en: 'Speaking turn', lv: w.talk } : { k: 'write', ar: 'كِتَابَةُ جُمْلَةٍ: ' + wu.ar, en: 'One sentence to write', lv: w.write }]; }
+/* explain-my-answer style by working level (not age): short concrete hint below Y4, named rule from Y4 */
+function wlExplainStyle(slot, k) { const lv = wlGet(slot)[k]; return lv < 5 ? 'concrete' : lv < 9 ? 'rule' : 'rule+example'; }
+/* tutor gets BOTH, plus the rule never to mention levels (rules text goes into the Worker prompt when shipped) */
+const WL_TUTOR_RULES = 'school_year is the class the learner is in; working_level is where they are working now, per skill. Pitch every explanation, text and question at working_level for that skill. Keep tone, topics and examples right for school_year (never babyish for older learners). Never mention levels, years, being behind, easy or below level; never compare with classmates. Praise effort and name the skill that grew.';
+{ if (typeof AzureBrain !== 'undefined') { const _s = AzureBrain.prototype.state; AzureBrain.prototype.state = function stateWL() { const o = _s.apply(this, arguments);
+  try { const slot = currentKid; const w = wlGet(slot); o.school_year = WL_YEARS[wlYear(slot)]; o.working_level = { reading: WL_YEARS[w.read], grammar: WL_YEARS[w.gram], writing: WL_YEARS[w.write], speaking_listening: WL_YEARS[w.talk] }; o.explain_style = wlExplainStyle(slot, 'gram'); try { const gu = wlUnit(slot, 'gram'); o.current_unit = wlUnit(slot, 'read').id; const t = GR_TOPICS.concat(typeof Y13_TOPICS !== 'undefined' ? Y13_TOPICS : []).find((x) => x.u === gu.id); if (t) o.grammar_topic = t.id; } catch (e) { /* */ } o.level_rules = WL_TUTOR_RULES; } catch (e) { /* */ } return o; }; } }
+/* ---------- parent area: school year vs working level ---------- */
+function wlParentHTML(slot) { const w = wlGet(slot); if (!w) return ''; const y = wlYear(slot);
+  return `<div class="wl-box"><p class="wl-yr">السَّنَةُ الدِّرَاسِيَّةُ: <b>${wlYearAr(y)}</b> <span class="en">School year</span></p>
+    <table class="wl-t"><tbody>${WL_SK.map((k) => { const s = wlStatus(slot, k); return `<tr><th>${WL_AR[k]}<span class="en">${WL_EN[k]}</span></th><td>${wlYearAr(w[k])}</td><td><span class="wl-chip wl-${s[0]}">${s[1]}<span class="en"> · ${s[2]}</span></span></td></tr>`; }).join('')}</tbody></table>
+    <details class="wl-plan"><summary>خُطَّةُ اليَوْمِ حَسَبَ مُسْتَوَى العَمَلِ <span class="en">Today's mix at working level</span></summary><ol>${wlPlan(slot).map((x) => `<li>${esc(x.ar)}${x.lv != null ? ` <small>(${wlYearAr(x.lv)})</small>` : ''}</li>`).join('')}</ol></details>
+    <p class="wl-note">يَتَغَيَّرُ مُسْتَوَى العَمَلِ مَعَ الإِجَابَاتِ صُعُودًا وَنُزُولًا. لَا يَرَى الطِّفْلُ أَيَّ مُسْتَوًى.</p></div>`; }
+{ const _v = ACC_SCREENS.parent; ACC_SCREENS.parent = function parentWL() { let h = _v.apply(this, arguments);
+  ACC.kids.forEach((k) => { const slot = ACC.map[k.id]; if (!slot || !DB.kids[slot]) return; const i = h.indexOf(`data-arg="${k.id}" aria-label="حَذْف"`); if (i < 0) return; const end = h.indexOf('</li>', i); h = h.slice(0, end) + wlParentHTML(slot) + h.slice(end); });
+  return h; }; }
+/* v28 fix: the AI health check runs at page load, before the parent session is restored/signed in, so AI stayed "off" for account
+   users until a reload of a session-less page. Re-check once a session exists (on load and right after sign-in). */
+function v28AzRecheck() { try { if (!window.TT_AZ || TT_AZ.ok || typeof ACC === 'undefined' || !ACC.tok) return; fetch(TT_BASE() + '/api/health', { cache: 'no-store', headers: TT_HDR() }).then((r) => (r.ok ? r.json() : null)).then((h) => { if (h) { TT_AZ.ok = !!h.tutor; TT_AZ.tts = !!h.tts; document.body.classList.add('az-on'); } }).catch(() => {}); } catch (e) { /* */ } }
+setTimeout(v28AzRecheck, 1200);
+if (typeof accLoggedIn === 'function') { const _li = accLoggedIn; accLoggedIn = async function accLoggedInV28() { const r = await _li.apply(this, arguments); setTimeout(v28AzRecheck, 300); return r; }; }
+
+/* v28 DEMO · standards tagging (roadmap step 1). Every piece of content resolves to a tag:
+   { strand, std, yr (year index FS1=0 … Y13=14), skill (working-level skill), fw: { moe, c0508, c0544, ibB } }.
+   Strands follow the UAE MoE 2017 Arabic framework (reading literacy, literary reading, informational reading, writing,
+   listening, speaking) plus language/grammar. Cross-walks: Cambridge IGCSE 0508 (R1–R6, W1–W5), 0544 (L/R/S/W 1–5), IB Language B
+   (receptive / productive / interactive). Codes are app codes, mapped to the published objectives (see STANDARDS-AUDIT.md). */
+const STD_STRANDS = {
+  RL: { ar: 'مَهَارَاتُ القِرَاءَةِ الأَسَاسِيَّةُ', en: 'Reading literacy', skill: 'read' },
+  RLT: { ar: 'قِرَاءَةُ النُّصُوصِ الأَدَبِيَّةِ', en: 'Literary reading', skill: 'read' },
+  RIN: { ar: 'قِرَاءَةُ النُّصُوصِ المَعْلُومَاتِيَّةِ', en: 'Informational reading', skill: 'read' },
+  WR: { ar: 'الكِتَابَةُ', en: 'Writing', skill: 'write' },
+  LI: { ar: 'الاِسْتِمَاعُ', en: 'Listening', skill: 'talk' },
+  SP: { ar: 'التَّحَدُّثُ', en: 'Speaking', skill: 'talk' },
+  LG: { ar: 'اللُّغَةُ وَالقَوَاعِدُ', en: 'Language & grammar', skill: 'gram' }
+};
+const STD = {
+  'RL.phon': { s: 'RL', ar: 'يَعْرِفُ الحُرُوفَ وَأَصْوَاتَهَا وَيُحَلِّلُ الكَلِمَةَ صَوْتِيًّا', en: 'Letters, sounds and decoding', fw: { c0544: 'R1' } },
+  'RL.vocab': { s: 'RL', ar: 'يَتَعَرَّفُ مَعَانِيَ الكَلِمَاتِ وَيَسْتَعِينُ بِالصُّوَرِ', en: 'Word meanings, using pictures', fw: { c0544: 'R1', c0508: 'R1' } },
+  'RL.fluency': { s: 'RL', ar: 'يَقْرَأُ قِرَاءَةً جَهْرِيَّةً صَحِيحَةً مُعَبِّرَةً', en: 'Accurate, expressive reading aloud', fw: { c0544: 'S5' } },
+  'RLT.explicit': { s: 'RLT', ar: 'يُحَدِّدُ الشَّخْصِيَّاتِ وَالأَحْدَاثَ وَالتَّفَاصِيلَ', en: 'Explicit meaning in stories', fw: { c0508: 'R1', c0544: 'R3', ibB: 'receptive' } },
+  'RLT.infer': { s: 'RLT', ar: 'يَسْتَنْتِجُ المَعْنَى الضِّمْنِيَّ وَالأَسْبَابَ', en: 'Inference, cause and motive', fw: { c0508: 'R2', ibB: 'receptive' } },
+  'RLT.word': { s: 'RLT', ar: 'يُفَسِّرُ مَعْنَى الكَلِمَةِ مِنَ السِّيَاقِ', en: 'Word meaning in context', fw: { c0508: 'R4' } },
+  'RLT.poetry': { s: 'RLT', ar: 'يَفْهَمُ الشِّعْرَ وَيُدْرِكُ الصُّورَةَ وَالفِكْرَةَ', en: 'Poetry: idea and imagery', fw: { c0508: 'R4', ibB: 'receptive' } },
+  'RIN.explicit': { s: 'RIN', ar: 'يَذْكُرُ الفِكْرَةَ الرَّئِيسَةَ وَالتَّفَاصِيلَ فِي نَصٍّ مَعْلُومَاتِيٍّ', en: 'Main idea and details (information texts)', fw: { c0508: 'R1', c0544: 'R2' } },
+  'RIN.infer': { s: 'RIN', ar: 'يَرْبِطُ السَّبَبَ بِالنَّتِيجَةِ وَيَسْتَنْتِجُ', en: 'Cause–effect and inference (information texts)', fw: { c0508: 'R2', c0544: 'R4' } },
+  'WR.spell': { s: 'WR', ar: 'يَكْتُبُ الكَلِمَاتِ بِإِمْلَاءٍ صَحِيحٍ', en: 'Spelling and dictation', fw: { c0508: 'W5', c0544: 'W4' } },
+  'WR.sentence': { s: 'WR', ar: 'يَبْنِي جُمَلًا صَحِيحَةً مُتَرَابِطَةً', en: 'Building correct sentences', fw: { c0508: 'W3', c0544: 'W2', ibB: 'productive' } },
+  'WR.letter': { s: 'WR', ar: 'يَكْتُبُ رِسَالَةً لِغَرَضٍ وَجُمْهُورٍ', en: 'Writing a letter for a purpose', fw: { c0508: 'W4', c0544: 'W3', ibB: 'productive' } },
+  'LI.detail': { s: 'LI', ar: 'يَفْهَمُ المَسْمُوعَ وَيُحَدِّدُ المَعْلُومَةَ', en: 'Understanding what is heard', fw: { c0544: 'L1', ibB: 'receptive' } },
+  'SP.interact': { s: 'SP', ar: 'يُحَاوِرُ فِي مَوَاقِفَ يَوْمِيَّةٍ وَيَرُدُّ رَدًّا مُنَاسِبًا', en: 'Everyday conversation and replies', fw: { c0544: 'S1', ibB: 'interactive' } },
+  'SP.pron': { s: 'SP', ar: 'يَنْطِقُ نُطْقًا صَحِيحًا', en: 'Pronunciation', fw: { c0544: 'S5' } }
+};
+/* grammar topics: one code each (LG.<topic>), year from the island, 0508 R6/W5 (2027+ syllabus) */
+const STD_GRAM_YR = { pron: 1, num: 2, adj: 2, gen: 2, dem: 3, al: 3, q: 4, prep: 4, pres: 5, sent: 5, neg: 5, poss: 6, mub: 6, fail: 6, past: 7, fut: 7, kana: 8, inna: 8, af5: 8, sc23: 7 };
+const STD_GTYPE = { pick: 'recognise', end: 'form', tap: 'identify', fix: 'correct', sort: 'classify', build: 'construct' };
+function stdGramTag(topic, type) { const t = (typeof GR !== 'undefined' && GR[topic]) || (typeof Y13_TOPICS !== 'undefined' && Y13_TOPICS.find((x) => x.id === topic)) || (topic === 'sc23' && typeof SC23_TOPIC !== 'undefined' ? SC23_TOPIC : null);
+  return { strand: 'LG', std: 'LG.' + topic, yr: STD_GRAM_YR[topic] ?? 5, skill: type === 'build' || type === 'fix' ? 'write' : 'gram', act: STD_GTYPE[type] || 'recognise', name: t ? t.ar : topic, fw: { moe: 'LG', c0508: type === 'build' || type === 'fix' ? 'W5' : 'R6', c0544: 'W4' } }; }
+const STD_STAR_YR = { 1: 2, 2: 4, 3: 6 };
+const STD_Y13_KIND = { story: 'RLT', info: 'RIN', news: 'RIN', poem: 'RLT', speech: 'RIN', classic: 'RLT' };
+function stdQTag(storyId, qi) { /* a comprehension question in a story quiz (ra*, sc23) or a Y7 reading (u17:diver …) */
+  const y13 = /^u1[7-9]:/.test(storyId); let t, yr, strand = 'RLT', kind = 'story';
+  if (y13) { const [u, id] = storyId.split(':'); const r = (Y13_READ[u] || []).find((x) => x.id === id) || {}; kind = r.kind || 'story'; strand = STD_Y13_KIND[kind] || 'RLT'; yr = 8;
+    const tags = SQ27_Y13_TAGS[storyId] || []; t = tags[qi] || (qi >= (r.qs || []).length ? 'voc' : 'lit'); }
+  else { const st = READ_STORIES.find((x) => x.id === storyId) || (storyId === 'sc23' && typeof SC23_STORY !== 'undefined' ? SC23_STORY : {}); yr = STD_STAR_YR[st.stars] ?? 4; t = ((SQ27[storyId] || [])[qi] || {}).t || 'lit'; }
+  if (t === 'lang') return { strand: 'LG', std: 'LG.context', yr, skill: 'gram', fw: { c0508: 'R6' } };
+  const sub = t === 'inf' ? 'infer' : t === 'voc' ? (strand === 'RIN' ? 'explicit' : 'word') : (kind === 'poem' ? 'poetry' : 'explicit');
+  const std = strand + '.' + (strand === 'RIN' && sub === 'word' ? 'explicit' : sub); return { strand, std, yr, skill: 'read', fw: (STD[std] || {}).fw || {} }; }
+/* v21 keys (feathers): gram:<topic> · vocab:<unit> · letters · sounds · spelling · reading · speaking */
+function stdKeyTag(k, it) { const [kind, x] = String(k).split(':');
+  if (kind === 'gram') return stdGramTag(x, it && it.t);
+  const uyr = (u) => (typeof WL_UNIT_YR !== 'undefined' ? WL_UNIT_YR[u] : 4) ?? 4;
+  const m = { vocab: ['RL.vocab', uyr(x)], letters: ['RL.phon', 2], sounds: ['RL.phon', 1], spelling: ['WR.spell', 3], reading: ['RL.vocab', 3], speaking: ['SP.interact', 4], listening: ['LI.detail', 3] }[kind] || ['RL.vocab', 3];
+  const s = STD[m[0]]; return { strand: s.s, std: m[0], yr: m[1], skill: STD_STRANDS[s.s].skill, fw: s.fw }; }
+function stdSceneTag(sc) { return { strand: 'SP', std: 'SP.interact', yr: typeof WL_UNIT_YR !== 'undefined' ? (WL_UNIT_YR[sc.u] ?? 4) : 4, skill: 'talk', fw: STD['SP.interact'].fw }; }
+function stdStoryTag(st) { return { strand: 'RL', std: 'RL.fluency', yr: STD_STAR_YR[st.stars] ?? 4, skill: 'read', fw: STD['RL.fluency'].fw }; }
+/* everything the app can ask, as tagged rows (the coverage test and the parent/teacher report use this) */
+function stdCatalog() { const rows = [];
+  const gt = GR_TOPICS.concat(typeof Y13_TOPICS !== 'undefined' ? Y13_TOPICS : []).concat(typeof SC23_TOPIC !== 'undefined' ? [SC23_TOPIC] : []);
+  gt.forEach((t) => (t.items || []).forEach((it, i) => rows.push({ kind: 'grammar', id: t.id + i, tag: stdGramTag(t.id, it.t) })));
+  Object.keys(SQ27).forEach((sid) => SQ27[sid].forEach((_, i) => rows.push({ kind: 'story-quiz', id: sid + '#' + i, tag: stdQTag(sid, i) })));
+  Object.keys(Y13_READ).forEach((u) => Y13_READ[u].forEach((r) => { const add = (SQ27_Y13_ADD[u + ':' + r.id] ? [].concat(SQ27_Y13_ADD[u + ':' + r.id]) : []); r.qs.concat(add).forEach((_, i) => rows.push({ kind: 'reading-quiz', id: u + ':' + r.id + '#' + i, tag: stdQTag(u + ':' + r.id, i) })); }));
+  READ_STORIES.forEach((st) => rows.push({ kind: 'story', id: st.id, tag: stdStoryTag(st) }));
+  V20_SCENES.forEach((sc) => rows.push({ kind: 'talk-scene', id: sc.id, tag: stdSceneTag(sc) }));
+  UNITS.forEach((u) => u.vocab.forEach((v, i) => rows.push({ kind: 'word', id: u.id + '.' + i, tag: stdKeyTag('vocab:' + u.id) })));
+  LETTERS.forEach((l) => rows.push({ kind: 'letter', id: l.l, tag: stdKeyTag('letters') }));
+  ['sounds', 'spelling', 'speaking', 'listening', 'reading'].forEach((k) => rows.push({ kind: 'skill-game', id: k, tag: stdKeyTag(k) }));
+  if (typeof SC23_FRAME !== 'undefined') rows.push({ kind: 'writing-frame', id: 'sc23', tag: { strand: 'WR', std: 'WR.letter', yr: 7, skill: 'write', fw: STD['WR.letter'].fw } });
+  return rows; }
+/* evidence per standard (counts only, on the child's progress record → synced with the account) */
+function stdHit(tag, ok) { try { if (!currentKid || !tag) return; const p = P(); const e = (p.std = p.std || {}); const r = e[tag.std] || (e[tag.std] = { n: 0, ok: 0, yr: tag.yr }); r.n++; if (ok) r.ok++; r.d = dayKey(); } catch (e) { /* */ } }
+
+/* v28 DEMO · explain-my-answer (roadmap step 4). Every question-answer game: first miss → a hint (never the answer) and the child
+   tries again; second miss → the right answer + the reason. Style follows the WORKING level of that skill, never the school year:
+   concrete (below Y4) · rule (Y4–Y7: names the rule) · rule + example (Y8+). All lines use the child's boy/girl form.
+   Covered: grammar games (pick · end · tap · fix · sort · build), picture/word, letters, sounds, missing letter, reply-in-a-chat (v21),
+   story quizzes, Y7 reading quizzes, the word quiz, listening, dictation, island challenge and lesson questions.
+   Not covered on purpose: placement/start game (measuring, no teaching), Wordle and arcade rounds (their own guess loop). */
+const GR_EXPLAIN = {
+  pron: ['[اُنْظُرْ|اُنْظُرِي] إِلَى الصُّورَةِ: وَلَدٌ أَمْ بِنْتٌ؟ وَاحِدٌ أَمْ أَكْثَرُ؟', 'نَسْتَعْمِلُ «هُوَ» لِلْمُذَكَّرِ، وَ«هِيَ» لِلْمُؤَنَّثِ، وَ«أَنَا» لِلْمُتَكَلِّمِ، وَ«نَحْنُ» لِلْمُتَكَلِّمِينَ.'],
+  num: ['[عُدَّ|عُدِّي]: كَمْ شَيْئًا فِي الجُمْلَةِ؟', 'المُفْرَدُ لِوَاحِدٍ، وَالمُثَنَّى لِاثْنَيْنِ (ـَانِ / ـَيْنِ)، وَالجَمْعُ لِثَلَاثَةٍ فَأَكْثَرَ.'],
+  adj: ['[اُنْظُرْ|اُنْظُرِي] إِلَى الاسْمِ قَبْلَ الصِّفَةِ: مُذَكَّرٌ أَمْ مُؤَنَّثٌ؟', 'الصِّفَةُ تُطَابِقُ المَوْصُوفَ فِي التَّذْكِيرِ وَالتَّأْنِيثِ وَالتَّعْرِيفِ وَالعَدَدِ.'],
+  gen: ['هَلِ الاسْمُ مُذَكَّرٌ أَمْ مُؤَنَّثٌ؟ [اِبْحَثْ|اِبْحَثِي] عَنِ التَّاءِ المَرْبُوطَةِ.', 'كَثِيرٌ مِنَ الأَسْمَاءِ المُؤَنَّثَةِ تَنْتَهِي بِالتَّاءِ المَرْبُوطَةِ (ـة)، وَالفِعْلُ وَالصِّفَةُ يَتْبَعَانِ الاسْمَ.'],
+  dem: ['قَرِيبٌ أَمْ بَعِيدٌ؟ مُذَكَّرٌ أَمْ مُؤَنَّثٌ؟', '«هَذَا» لِلْمُذَكَّرِ القَرِيبِ، وَ«هَذِهِ» لِلْمُؤَنَّثِ القَرِيبِ، وَ«ذَلِكَ / تِلْكَ» لِلْبَعِيدِ.'],
+  al: ['[قُلِ|قُولِي] الكَلِمَةَ بِصَوْتٍ عَالٍ: هَلْ نَسْمَعُ اللَّامَ؟', 'مَعَ الحُرُوفِ الشَّمْسِيَّةِ تُكْتَبُ اللَّامُ وَلَا تُنْطَقُ وَيُشَدَّدُ الحَرْفُ بَعْدَهَا، وَمَعَ القَمَرِيَّةِ تُنْطَقُ اللَّامُ.'],
+  q: ['مَاذَا يُرِيدُ السُّؤَالُ: مَكَانًا، أَمْ وَقْتًا، أَمْ شَخْصًا، أَمْ شَيْئًا، أَمْ عَدَدًا؟', '«أَيْنَ» لِلْمَكَانِ، وَ«مَتَى» لِلزَّمَانِ، وَ«مَنْ» لِلْأَشْخَاصِ، وَ«مَاذَا» لِلْأَشْيَاءِ، وَ«كَمْ» لِلْعَدَدِ.'],
+  prep: ['[تَخَيَّلِ|تَخَيَّلِي] المَكَانَ: دَاخِلَ؟ فَوْقَ؟ نَحْوَ؟ مِنْ أَيْنَ؟', 'حَرْفُ الجَرِّ يُبَيِّنُ العَلَاقَةَ: «فِي» لِلدَّاخِلِ، وَ«عَلَى» لِلْفَوْقِ، وَ«إِلَى» لِلِاتِّجَاهِ، وَ«مِنْ» لِلْبِدَايَةِ، وَالاسْمُ بَعْدَهُ مَجْرُورٌ.'],
+  pres: ['مَنْ يَقُومُ بِالفِعْلِ؟ [اُنْظُرْ|اُنْظُرِي] إِلَى أَوَّلِ حَرْفٍ فِي الفِعْلِ.', 'أَوَّلُ المُضَارِعِ يَدُلُّ عَلَى الفَاعِلِ: أَ لِلْمُتَكَلِّمِ، وَنَ لِلْمُتَكَلِّمِينَ، وَيَ لِلْغَائِبِ، وَتَ لِلْمُخَاطَبِ وَالغَائِبَةِ.'],
+  sent: ['بِمَاذَا تَبْدَأُ الجُمْلَةُ: بِاسْمٍ أَمْ بِفِعْلٍ؟', 'الجُمْلَةُ الاسْمِيَّةُ تَبْدَأُ بِاسْمٍ، وَالجُمْلَةُ الفِعْلِيَّةُ تَبْدَأُ بِفِعْلٍ.'],
+  neg: ['مَا زَمَنُ الجُمْلَةِ: مَاضٍ، أَمْ حَاضِرٌ، أَمْ مُسْتَقْبَلٌ؟', '«لَمْ» تَنْفِي المَاضِيَ مَعَ المُضَارِعِ المَجْزُومِ، وَ«لَنْ» تَنْفِي المُسْتَقْبَلَ، وَ«لَا» تَنْفِي الحَاضِرَ، وَ«لَيْسَ» تَنْفِي الجُمْلَةَ الاسْمِيَّةَ.'],
+  poss: ['لِمَنْ هَذَا الشَّيْءُ: لِي، لَكَ، لَكِ، لَهُ، لَهَا؟', 'الضَّمِيرُ المُتَّصِلُ فِي آخِرِ الكَلِمَةِ: ـي لِلْمُتَكَلِّمِ، وَـكَ لِلْمُخَاطَبِ، وَـكِ لِلْمُخَاطَبَةِ، وَـهُ لِلْغَائِبِ، وَـهَا لِلْغَائِبَةِ، وَـنَا لِلْمُتَكَلِّمِينَ.'],
+  mub: ['[اِبْحَثْ|اِبْحَثِي] عَنِ الاسْمِ الَّذِي نَتَحَدَّثُ عَنْهُ، ثُمَّ عَمَّا نَقُولُهُ عَنْهُ.', 'المُبْتَدَأُ اسْمٌ نَبْدَأُ بِهِ، وَالخَبَرُ مَا نُخْبِرُ بِهِ عَنْهُ، وَكِلَاهُمَا مَرْفُوعٌ.'],
+  fail: ['مَنْ قَامَ بِالفِعْلِ؟ وَعَلَى مَنْ وَقَعَ؟', 'الفَاعِلُ مَنْ قَامَ بِالفِعْلِ وَهُوَ مَرْفُوعٌ، وَالمَفْعُولُ بِهِ مَنْ وَقَعَ عَلَيْهِ الفِعْلُ وَهُوَ مَنْصُوبٌ.'],
+  past: ['مَنْ قَامَ بِالفِعْلِ؟ [اُنْظُرْ|اُنْظُرِي] إِلَى آخِرِ الفِعْلِ.', 'آخِرُ الفِعْلِ المَاضِي يَتَغَيَّرُ: كَتَبْتُ (أَنَا)، كَتَبْتَ (أَنْتَ)، كَتَبْتِ (أَنْتِ)، كَتَبَتْ (هِيَ)، كَتَبْنَا (نَحْنُ).'],
+  fut: ['هَلْ حَدَثَ الفِعْلُ، أَمْ سَيَحْدُثُ؟', 'نَضَعُ «سَـ» أَوْ «سَوْفَ» قَبْلَ الفِعْلِ المُضَارِعِ لِنَتَحَدَّثَ عَنِ المُسْتَقْبَلِ.'],
+  kana: ['بَعْدَ «كَانَ» وَأَخَوَاتِهَا: [فَكِّرْ|فَكِّرِي] فِي حَرَكَةِ آخِرِ الخَبَرِ.', '«كَانَ» وَأَخَوَاتُهَا تَرْفَعُ الاسْمَ وَتَنْصِبُ الخَبَرَ.'],
+  inna: ['بَعْدَ «إِنَّ» وَأَخَوَاتِهَا: [فَكِّرْ|فَكِّرِي] فِي حَرَكَةِ آخِرِ الاسْمِ.', '«إِنَّ» وَأَخَوَاتُهَا تَنْصِبُ الاسْمَ وَتَرْفَعُ الخَبَرَ.'],
+  af5: ['هَلْ قَبْلَ الفِعْلِ حَرْفُ نَصْبٍ أَوْ جَزْمٍ؟', 'الأَفْعَالُ الخَمْسَةُ تُرْفَعُ بِثُبُوتِ النُّونِ، وَتُنْصَبُ وَتُجْزَمُ بِحَذْفِهَا.'],
+  sc23: ['لِمَنْ نَكْتُبُ الرِّسَالَةَ؟ [فَكِّرْ|فَكِّرِي] فِي الشَّخْصِ الَّذِي نُخَاطِبُهُ.', 'نُخَاطِبُ بِالضَّمِيرِ المُنَاسِبِ: «أَنْتَ» لِلْمُذَكَّرِ، وَ«أَنْتِ» لِلْمُؤَنَّثِ، وَ«أَنْتُمْ» لِلْجَمْعِ.']
+};
+const EMA_KIND = { /* non-grammar keys: [hint, reason template with {a}] */
+  vocab: ['[اُنْظُرْ|اُنْظُرِي] إِلَى الصُّوَرِ جَيِّدًا، وَ[اِسْمَعْ|اِسْمَعِي] الكَلِمَةَ مَرَّةً أُخْرَى.', 'الكَلِمَةُ «{a}» هِيَ هَذِهِ الصُّورَةُ.'],
+  reading: ['[اِقْرَأْ|اِقْرَئِي] الكَلِمَةَ حَرْفًا حَرْفًا، ثُمَّ [اُنْظُرْ|اُنْظُرِي] إِلَى الصُّوَرِ.', 'نَقْرَأُ «{a}»، وَهَذِهِ صُورَتُهَا.'],
+  letters: ['[قُلِ|قُولِي] الكَلِمَةَ بِبُطْءٍ: مَا أَوَّلُ صَوْتٍ نَسْمَعُهُ؟', 'تَبْدَأُ الكَلِمَةُ بِحَرْفِ «{a}».'],
+  sounds: ['[اِسْمَعْ|اِسْمَعِي] الصَّوْتَ مَرَّةً أُخْرَى، وَ[قُلْهُ|قُولِيهِ] مَعَهُ.', 'هَذَا صَوْتُ حَرْفِ «{a}».'],
+  spelling: ['[قُلِ|قُولِي] الكَلِمَةَ بِبُطْءٍ: أَيُّ صَوْتٍ نَاقِصٌ؟', 'الحَرْفُ النَّاقِصُ «{a}»، فَنَكْتُبُ الكَلِمَةَ كَامِلَةً بِهِ.'],
+  speaking: ['[اِقْرَأْ|اِقْرَئِي] مَا قَالَهُ صَقُّورٌ: مَاذَا يَسْأَلُ؟', 'نَرُدُّ بِـ«{a}» لِأَنَّهُ يُجِيبُ عَنْ سُؤَالِ صَقُّورٍ.'],
+  listening: ['[اِسْمَعْ|اِسْمَعِي] مَرَّةً أُخْرَى، وَ[رَكِّزْ|رَكِّزِي] عَلَى أَوَّلِ الكَلِمَةِ.', 'سَمِعْنَا «{a}».'],
+  dict: ['[اِسْمَعْ|اِسْمَعِي] الكَلِمَةَ مَرَّةً أُخْرَى، وَ[قَارِنْ|قَارِنِي] الحُرُوفَ.', 'نَكْتُبُ «{a}» بِهَذِهِ الحُرُوفِ.'],
+  quiz: ['[اِقْرَأِ|اِقْرَئِي] السُّؤَالَ مَرَّةً أُخْرَى، وَ[فَكِّرْ|فَكِّرِي] فِي كُلِّ خِيَارٍ.', '«{a}» هُوَ الَّذِي يُجِيبُ عَنِ السُّؤَالِ.'],
+  grammar: ['[اِقْرَأِ|اِقْرَئِي] الجُمْلَةَ كُلَّهَا، ثُمَّ [فَكِّرْ|فَكِّرِي] فِي القَاعِدَةِ.', 'الجَوَابُ «{a}» يُنَاسِبُ القَاعِدَةَ فِي هَذِهِ الجُمْلَةِ.']
+};
+const EMA_READ = { /* comprehension question kinds */
+  lit: ['المَعْلُومَةُ مَكْتُوبَةٌ فِي النَّصِّ. [اِبْحَثْ|اِبْحَثِي] عَنْ كَلِمَاتِ السُّؤَالِ فِيهِ.', 'لِأَنَّ النَّصَّ يَقُولُ ذَلِكَ صَرَاحَةً.'],
+  inf: ['هَذَا لَيْسَ مَكْتُوبًا كَلِمَةً بِكَلِمَةٍ. [فَكِّرْ|فَكِّرِي]: لِمَاذَا حَدَثَ ذَلِكَ؟ [اِبْحَثْ|اِبْحَثِي] عَنِ السَّبَبِ.', 'نَسْتَنْتِجُ ذَلِكَ مِنَ النَّصِّ وَإِنْ لَمْ يَقُلْهُ صَرَاحَةً.'],
+  voc: ['[اِقْرَأِ|اِقْرَئِي] الجُمْلَةَ الَّتِي فِيهَا الكَلِمَةُ: مَاذَا يَحْدُثُ قَبْلَهَا وَبَعْدَهَا؟', 'مَعْنَى الكَلِمَةِ يَظْهَرُ مِنَ الجُمْلَةِ الَّتِي حَوْلَهَا.'],
+  lang: ['[تَذَكَّرِ|تَذَكَّرِي] القَاعِدَةَ: مَا عَمَلُ الكَلِمَةِ فِي الجُمْلَةِ؟', 'هَذِهِ هِيَ القَاعِدَةُ الَّتِي دَرَسْنَاهَا فِي هَذِهِ الجَزِيرَةِ.']
+};
+const emaG = (s) => String(s).replace(/\[([^|\]]*)\|([^\]]*)\]/g, (_, m, f) => G(m, f));
+function emaStyle(skill) { try { return wlExplainStyle(currentKid, skill || 'gram'); } catch (e) { return 'rule'; } }
+function emaTopic(k) { const [kind, x] = String(k || '').split(':'); if (kind !== 'gram') return null; return (typeof GR !== 'undefined' && GR[x]) || (typeof Y13_TOPICS !== 'undefined' && Y13_TOPICS.find((t) => t.id === x)) || (x === 'sc23' && typeof SC23_TOPIC !== 'undefined' ? SC23_TOPIC : null); }
+/* the hint for a v21 key at the child's working level */
+function emaHintFor(k) { const t = emaTopic(k); const kind = String(k).split(':')[0]; const st = emaStyle(t ? 'gram' : (STD_STRANDS[(stdKeyTag(k) || {}).strand] || {}).skill);
+  if (t) { const e = GR_EXPLAIN[t.id] || EMA_KIND.grammar; return emaG(st === 'concrete' ? e[0] : '[تَذَكَّرْ|تَذَكَّرِي] دَرْسَ «' + t.ar + '»: ' + e[0]); }
+  return emaG((EMA_KIND[kind] || EMA_KIND.vocab)[0]); }
+function emaReasonFor(k, ans) { const t = emaTopic(k); const kind = String(k).split(':')[0]; const st = emaStyle(t ? 'gram' : 'read');
+  if (t) { const e = GR_EXPLAIN[t.id] || EMA_KIND.grammar; let r = e[1]; if (st === 'rule+example' && t.eg && t.eg[0]) r += ' مِثَالٌ: ' + String(t.eg[t.eg.length - 1][1]).replace(/[{}]/g, ''); return { a: ans, r: emaG(r) }; }
+  return { a: ans, r: emaG((EMA_KIND[kind] || EMA_KIND.vocab)[1].replace('{a}', ans)) }; }
+const emaBox = (cls, title, body, ans) => `<div class="ema ${cls}" role="status"><b class="ema-t">${title}</b>${ans ? `<p class="ema-a" lang="ar">الجَوَابُ: <span>«${esc(ans)}»</span></p>` : ''}<p class="ema-r" lang="ar">${esc(body)}</p></div>`;
+const emaHintHTML = (h) => emaBox('ema-hint', '💡 ' + emaG('[فَكِّرْ|فَكِّرِي] مَرَّةً أُخْرَى'), h);
+const emaWhyHTML = (o) => emaBox('ema-why', '🪶 لِمَاذَا؟', o.r, o.a);
+/* ---------- v21 games (all six grammar types + picture / letters / sounds / missing letter / reply) ---------- */
+function emaRightText(it) { const L = (x) => (typeof v21L === 'function' ? v21L(x) : emaG(x));
+  if (!it) return ''; if (it.t === 'pick') return L(it.o[0]); if (it.t === 'pic') return (it.o[0] && it.o[0].ar) || ''; if (it.t === 'end') return L(it.c[0][1]);
+  if (it.t === 'tap') return L(it.w[it.a]); if (it.t === 'fix') return L(it.w.map((w, j) => (j === it.bad ? it.o[0] : w)).join(' '));
+  if (it.t === 'sort') return it.b.map((b, n) => stripHarakat(b).replace(/[^\u0600-\u06FF ]/g, '').trim() + ': ' + it.w.filter((w) => w[1] === n).map((w) => L(w[0])).join('، ')).join(' · ');
+  if (it.t === 'build') return L(it.w.join(' ')); return ''; }
+{ const _d = v21Done; v21Done = function v21DoneEMA(ok) { const s = V21.s; if (!s || s.ans) return _d.apply(this, arguments); const k = s.keys[s.i];
+  try { stdHit(stdKeyTag(k, s.it), ok && !s.em1); } catch (e) { /* */ }
+  if (!ok && !s.em1) { s.em1 = { sel: s.sel }; s.emWrong = (s.emWrong || []).concat(s.sel != null ? [s.sel] : []); try { wlRecord(currentKid, (stdKeyTag(k, s.it) || {}).skill || 'gram', false); } catch (e) { /* */ }
+    s.sel = null; s.placed = {}; s.line = []; s.fixAt = null; s.wordTap = null; v21Render(); return; }
+  const r = _d.call(this, ok); if (!ok) { s.em2 = emaReasonFor(k, emaRightText(s.it)); v21Render(); } return r; }; }
+{ const _n = v21Next; v21Next = function v21NextEMA() { if (V21.s) { V21.s.em1 = null; V21.s.em2 = null; V21.s.emWrong = []; } return _n.apply(this, arguments); }; }
+{ const _r = v21Render; v21Render = function v21RenderEMA() { const r = _r.apply(this, arguments); const s = V21.s; if (!s) return r; const box = document.querySelector('#modal-box .v21');
+  if (box) { const k = s.keys[s.i]; const add = !s.ans && s.em1 ? emaHintHTML(emaHintFor(k)) : s.ans && s.em2 ? emaWhyHTML(s.em2) : '';
+    if (add) { const at = box.querySelector('.v21-verdict') || box.querySelector('.v21-next') || box.querySelector('.rd-go'); at ? at.insertAdjacentHTML('beforebegin', add) : box.insertAdjacentHTML('beforeend', add); }
+    if (!s.ans && s.emWrong && s.emWrong.length && s.it && (s.it.t === 'pick' || s.it.t === 'pic' || s.it.t === 'end')) s.emWrong.forEach((j) => { const b = box.querySelector(`[data-act="v21-pick"][data-arg="${j}"], [data-act="v21-end"][data-arg="${j}"]`); if (b) { b.disabled = true; b.classList.add('ema-off'); } });
+    if (s.ans && s.em2) { const v = box.querySelector('.v21-verdict'); if (v) v.remove(); }
+    if (s.ans && s.em1 && s.ans.ok) { const v = box.querySelector('.v21-verdict'); if (v) v.innerHTML = esc(emaG('✓ [أَحْسَنْتَ|أَحْسَنْتِ]! [وَجَدْتَهُ|وَجَدْتِهِ] بَعْدَ التَّلْمِيحِ.')); } }
+  return r; }; }
+/* ---------- story quizzes (ra*, sc23): the sentence hint stays; the words now follow the question kind and level; reason on the second miss ---------- */
+{ const _sa = sqAns; sqAns = function sqAnsEMA(j) { const s = SQ; if (s && (s.state === 'ask' || s.state === 'retry')) { try { stdHit(stdQTag(s.id, s.i), +j === 0 && !s.tries); } catch (e) { /* */ } } return _sa.apply(this, arguments); }; }
+{ const _r = sqRender; sqRender = function sqRenderEMA() { const r = _r.apply(this, arguments); const s = SQ; if (!s) return r; const x = s.qs[s.i]; const t = EMA_READ[x.t] || EMA_READ.lit; const el = document.querySelector('#modal-box .sq-hint-t');
+  if (el && s.state === 'retry') el.textContent = emaG(t[0]) + ' ' + emaG('[حَاوِلْ|حَاوِلِي] مَرَّةً أُخْرَى. [اِقْرَأْ|اِقْرَئِي] هَذِهِ الجُمْلَةَ:');
+  if (el && s.state === 'shown') { el.innerHTML = `الجَوَابُ: <b>«${esc(sqF(x.o[0]))}»</b>. ${esc(emaG(t[1]))} ${x.t === 'inf' ? 'هَذِهِ الجُمْلَةُ تَدُلُّ عَلَيْهِ:' : 'اُنْظُرْ هُنَا:'.replace('اُنْظُرْ', emaG('[اُنْظُرْ|اُنْظُرِي]'))}`; el.closest('.sq-hint').classList.add('ema-why'); }
+  if (el && s.state === 'retry') el.closest('.sq-hint').classList.add('ema-hint'); return r; }; }
+/* ---------- Y7 reading quizzes ---------- */
+{ const _a = y13Ans; y13Ans = function y13AnsEMA(j) { const s = Y13.s; if (!s || s.ans) return; j = +j; const tags = SQ27_Y13_TAGS[s.uid + ':' + s.r.id] || []; s.kind = tags[s.q] || 'lit';
+  try { stdHit(stdQTag(s.uid + ':' + s.r.id, s.q), j === 0 && !s.miss1); } catch (e) { /* */ }
+  if (j !== 0 && s.miss1 == null) { s.miss1 = j; try { wlRecord(currentKid, 'read', false); } catch (e) { /* */ } y13RenderQ(); return; }
+  const r = _a.call(this, j); return r; }; }
+{ const _q = y13Q; y13Q = function y13QEMA(n) { if (Y13.s) Y13.s.miss1 = null; return _q.apply(this, arguments); }; }
+{ const _r = y13RenderQ; y13RenderQ = function y13RenderQEMA() { const r = _r.apply(this, arguments); const s = Y13.s; if (!s) return r; const box = document.querySelector('#modal-box .y13-quiz'); if (!box) return r; const t = EMA_READ[s.kind || 'lit'] || EMA_READ.lit; const x = s.r.qs[s.q];
+  if (!s.ans && s.miss1 != null) { const b = box.querySelector(`[data-act="y13-ans"][data-arg="${s.miss1}"]`); if (b) { b.disabled = true; b.classList.add('ema-off', 'oops'); } box.querySelector('.y13-ans').insertAdjacentHTML('afterend', emaHintHTML(emaG(t[0]))); }
+  if (s.ans && !s.ans.ok) { const v = box.querySelector('.y13-verdict'); if (v) v.outerHTML = emaWhyHTML({ a: x.o[0], r: emaG(t[1]) }); }
+  if (s.ans && s.ans.ok && s.miss1 != null) { const v = box.querySelector('.y13-verdict'); if (v) v.textContent = emaG('[أَحْسَنْتَ|أَحْسَنْتِ]! [وَجَدْتَهُ|وَجَدْتِهِ] بَعْدَ التَّلْمِيحِ.'); }
+  return r; }; }
+/* ---------- the older one-question engines: word quiz, listening, dictation, island challenge, lesson ---------- */
+function emaWord(o) { if (o == null) return ''; if (typeof o === 'string') return o; return o.ar || o.word || (o.w && o.w.ar) || ''; }
+function emaGuard(name, act, getQ, isOk, rightOf, kind) {
+  const orig = window[name]; if (typeof orig !== 'function') return;
+  window[name] = function emaWrapped(i) { const q = getQ(); if (!q) return orig.apply(this, arguments); const ok = isOk(q, i);
+    if (!ok && !q.__em) { q.__em = 1; try { wlRecord(currentKid, kind === 'dict' ? 'write' : kind === 'listening' ? 'talk' : kind === 'grammar' ? 'gram' : 'read', false); } catch (e) { /* */ }
+      const b = document.querySelector(`[data-act="${act}"][data-arg="${i}"]`); if (b) { b.disabled = true; b.classList.add('ema-off'); const host = b.parentElement; if (host && !host.parentElement.querySelector('.ema-hint')) host.insertAdjacentHTML('afterend', emaHintHTML(emaG((EMA_KIND[kind] || EMA_KIND.vocab)[0]))); }
+      return; }
+    const r = orig.apply(this, arguments);
+    if (!ok) setTimeout(() => { const b = document.querySelector(`[data-act="${act}"]`); const host = b && b.parentElement; if (host && !document.querySelector('.ema-why')) host.insertAdjacentHTML('afterend', emaWhyHTML({ a: rightOf(q), r: emaG((EMA_KIND[kind] || EMA_KIND.vocab)[1].replace('{a}', rightOf(q))) })); }, 0);
+    return r; }; }
+emaGuard('quizAnswer', 'quiz-answer', () => typeof quiz !== 'undefined' && quiz && quiz.answered === null && quiz.qs[quiz.i], (q, i) => q.opts[i] && q.opts[i].key === q.right, (q) => emaWord(q.opts.find((o) => o.key === q.right)), 'quiz');
+emaGuard('listenPick', 'lr-pick', () => typeof lround !== 'undefined' && lround && lround.a === null && lround.qs[lround.i], (q, i) => q.opts[+i] === q.w, (q) => emaWord(q.w), 'listening');
+emaGuard('dictPick', 'dict-pick', () => typeof game !== 'undefined' && game && game.answered === null && game.qs && game.qs[game.i], (q, i) => q.opts[i] === q.w, (q) => emaWord(q.w), 'dict');
+emaGuard('unitQuizAnswer', 'unit-quiz-answer', () => typeof journeyState !== 'undefined' && journeyState.quiz && journeyState.quiz.answered === null && journeyState.quiz.qs[journeyState.quiz.i], (q, i) => q.opts[i] === q.right, (q) => emaWord(q.right), 'vocab');
+emaGuard('lessonAnswer', 'lesson-answer', () => typeof lessonState !== 'undefined' && lessonState && lessonState.answered === null && lessonState.t, (q, i) => +i === 0, (q) => emaWord(q.opts[0]), 'grammar');
+/* the ACTIONS map captured the old functions: point them at the wrapped ones */
+Object.assign(ACTIONS, { 'quiz-answer': (a) => quizAnswer(+a), 'lr-pick': (a) => listenPick(a), 'dict-pick': (a) => dictPick(+a), 'unit-quiz-answer': (a) => unitQuizAnswer(+a), 'lesson-answer': (a) => lessonAnswer(+a) });
+
+/* v28 DEMO · the home play button runs today's mix (roadmap step 3). The button still shows what it opens (picture + "today's lesson" +
+   the next step's name); tapping opens a short plan sheet; each step really starts its game at the child's WORKING level for that skill;
+   when a game closes after at least one answer the step gets ✓ and the sheet comes back with the next step ready. */
+const MIX28 = { cur: null, hits: 0, h0: 0 };
+const MIX28_PIC = { review: '🔁', class: '🎒', read: '📖', gram: '🧩', talk: '💬', write: '✏️' };
+function mix28Topic(u) { const all = GR_TOPICS.concat(typeof Y13_TOPICS !== 'undefined' ? Y13_TOPICS : []); return all.find((t) => t.u === u.id) || all.filter((t) => (WL_UNIT_YR[t.u] ?? 0) <= (WL_UNIT_YR[u.id] ?? 0)).pop() || GR_TOPICS[0]; }
+function mix28Scene(slot) { const lv = wlGet(slot).talk; const ok = V20_SCENES.filter((s) => (WL_UNIT_YR[s.u] ?? 9) <= Math.max(2, lv)); const p = DB.kids[slot]; const v = (p.v20 && p.v20.sc) || {};
+  return ok.slice().reverse().find((s) => !v[s.id]) || ok[ok.length - 1] || V20_SCENES[0]; }
+function mix28Plan(slot) { const p = DB.kids[slot]; const w = wlGet(slot); const d = dayKey(); if (!p.mix28 || p.mix28.d !== d) p.mix28 = { d, done: [] };
+  const base = wlPlan(slot); const st = wlStory(slot); const gt = mix28Topic(wlUnit(slot, 'gram')); const ru = wlUnit(slot, 'read'); const wt = mix28Topic(wlUnit(slot, 'write')); const sc = mix28Scene(slot);
+  return base.map((x) => { const o = Object.assign({}, x, { pic: MIX28_PIC[x.k], done: p.mix28.done.includes(x.k) });
+    if (x.k === 'review') { o.keys = mix28Review(slot); o.sub = o.keys.map((k) => (v21Info(k) || {}).ar).filter(Boolean).join(' · '); }
+    if (x.k === 'class') { o.ar = 'كَلِمَاتُ الصَّفِّ: ' + ru.ar; o.keys = ['vocab:' + ru.id, 'reading']; }
+    if (x.k === 'read') o.story = st;
+    if (x.k === 'gram') { o.ar = 'قَوَاعِدُ: ' + gt.ar; o.topic = gt.id; }
+    if (x.k === 'write') { o.keys = w.write < 4 ? ['spelling', 'letters'] : ['spelling', 'gram:' + wt.id]; o.ar = 'كِتَابَةٌ: ' + (w.write < 4 ? 'الحَرْفُ النَّاقِصُ' : 'إِمْلَاءٌ وَ' + wt.ar); }
+    if (x.k === 'talk') { o.scene = sc.id; o.ar = 'مُحَادَثَةٌ: ' + sc.ar; }
+    return o; }); }
+/* review = due feathers the child has really practised; topped up with things from the WORKING band (never first-island items for an older child) */
+function mix28Review(slot) { const p = DB.kids[slot]; const sk = v21Peek(p); const w = wlGet(slot); const band = (k) => { const i = v21Info(k); const u = i && (i.u || (i.t && UNITS.find((x) => x.id === i.t.u))); return !u || (WL_UNIT_YR[u.id] ?? 0) >= Math.min(w.gram, w.read) - 2; };
+  const seen = v21MixPick(p).filter((k) => sk[k] && sk[k].n && band(k));
+  const fill = ['gram:' + mix28Topic(wlUnit(slot, 'gram')).id, 'vocab:' + wlUnit(slot, 'read').id, w.write < 4 ? 'letters' : 'spelling'].filter((k) => v21Info(k));
+  return [...new Set(seen.concat(fill))].slice(0, 3); }
+const mix28Next = (plan) => plan.find((x) => !x.done);
+/* v21 session from a fixed list of keys (class words, writing) */
+function mix28Keys(keys) { const p = P(); const ks = []; for (let r = 0; r < 3; r++) keys.forEach((k) => ks.push(k)); const back = {};
+  V21.s = { mode: 'keys', arg: '', keys: ks, back, i: 0, got: 0, used: [], it: null, ans: null, up: null, t0: 0, sel: null, placed: {}, line: [], stage0: Object.fromEntries([...new Set(ks)].map((k) => [k, v21Shown(p, k).s])) }; v21Next(true); }
+function mix28Run(k) { const plan = mix28Plan(currentKid); const x = plan.find((y) => y.k === k); if (!x) return; closeModal(); MIX28.cur = k; MIX28.h0 = MIX28.hits;
+  setTimeout(() => { if (k === 'review') mix28Keys(x.keys);
+    else if (k === 'class' || k === 'write') mix28Keys(x.keys);
+    else if (k === 'gram') v21Start('gram', x.topic);
+    else if (k === 'read') { if (x.story.kind === 'y13') { const [u, id] = x.story.id.split(':'); y13Open(u, Y13_READ[u].findIndex((r) => r.id === id)); } else openReader(x.story.id); }
+    else if (k === 'talk') v20Scene(x.scene); }, 40); }
+function mix28SheetHTML() { const plan = mix28Plan(currentKid); const nx = mix28Next(plan); const n = plan.filter((x) => x.done).length;
+  return `<div class="stack mix28" dir="rtl"><div class="row between"><h2 lang="ar">${MIX28_PIC.review === '' ? '' : '🪶'} دَرْسُ اليَوْمِ <span class="en">Today's lesson</span></h2>${closeBtn()}</div>
+    <p class="mix28-sub" lang="ar">${nx ? `${toArabicDigits(plan.length)} خُطُوَاتٍ قَصِيرَةٍ · نَحْوَ ١٢ دَقِيقَةً` : G('أَنْهَيْتَ دَرْسَ اليَوْمِ! 🎉', 'أَنْهَيْتِ دَرْسَ اليَوْمِ! 🎉')}</p>
+    <div class="mix28-bar" aria-hidden="true"><i style="width:${Math.round((100 * n) / plan.length)}%"></i></div>
+    <ol class="mix28-list">${plan.map((x) => `<li><button class="mix28-step ${x.done ? 'done' : ''} ${nx && x.k === nx.k ? 'now' : ''}" data-act="mix28-run" data-arg="${x.k}" data-step="${x.k}">
+      <span class="mix28-pic emo" aria-hidden="true">${x.done ? '✓' : x.pic}</span><span class="mix28-t"><b lang="ar">${esc(x.ar)}</b>${x.sub ? `<small lang="ar">${esc(x.sub)}</small>` : ''}<span class="en">${esc(x.en)}</span></span>${nx && x.k === nx.k ? '<span class="mix28-go" aria-hidden="true">◀</span>' : ''}</button></li>`).join('')}</ol>
+    ${nx ? `<button class="btn btn-primary mix28-start" data-act="mix28-run" data-arg="${nx.k}" lang="ar">${n ? G('تَابِعْ', 'تَابِعِي') : G('اِبْدَأْ', 'اِبْدَئِي')} ◀</button>` : ''}</div>`; }
+function mix28Open() { openModal(mix28SheetHTML()); }
+Object.assign(ACTIONS, { 'mix28-open': () => mix28Open(), 'mix28-run': (k) => mix28Run(k) });
+/* answers count as activity for the step in progress */
+['v21Done', 'sqAns', 'y13Ans', 'v20SceneReply', 'skillHit'].forEach((n) => { const f = window[n]; if (typeof f !== 'function') return; window[n] = function mix28Count() { MIX28.hits++; return f.apply(this, arguments); }; });
+{ const _c = closeModal; closeModal = function closeModalMix28() { const r = _c.apply(this, arguments); const k = MIX28.cur; if (!k || !currentKid) return r;
+  setTimeout(() => { if (MIX28.cur !== k) return; if (!$('modal').classList.contains('hidden')) return; /* the game opened its next screen (reader → quiz) */
+    MIX28.cur = null; if (MIX28.hits > MIX28.h0) { const p = P(); mix28Plan(currentKid); if (!p.mix28.done.includes(k)) p.mix28.done.push(k); saveDB(); }
+    if (typeof ilRender === 'function' && typeof IL !== 'undefined' && IL.page === 'home') ilRender(); mix28Open(); }, 250);
+  return r; }; }
+/* the home button: same look, now opens the plan and names the next step */
+{ const _h = ilHome; ilHome = function ilHomeMix28() { let html = _h.apply(this, arguments);
+  try { const plan = mix28Plan(currentKid); const nx = mix28Next(plan);
+    html = html.replace(/<button class="calm2-play([^"]*)"([^>]*)>([\s\S]*?)<\/button>/, (m, cls, attrs, inner) => {
+      attrs = attrs.replace(/\s*data-act="[^"]*"/, '').replace(/\s*data-arg="[^"]*"/, '').replace(/\s*data-step="[^"]*"/, '').replace(/aria-label="[^"]*"/, `aria-label="دَرْسُ اليَوْمِ${nx ? ': ' + esc(nx.ar) : ''} · Today's lesson"`);
+      inner = inner.replace(/<b lang="ar">[\s\S]*?<\/b>/, '<b lang="ar">دَرْسُ اليَوْمِ</b>').replace(/<small lang="ar">[\s\S]*?<\/small>/, '').replace(/<span class="en">[\s\S]*?<\/span>/, `<small lang="ar">${nx ? esc(nx.ar) : G('أَنْهَيْتَهُ ✓', 'أَنْهَيْتِهِ ✓')}</small><span class="en">Today's lesson</span>`);
+      inner = inner.replace(/(<span class="hwx-pic ds-play-pic"[^>]*>)[\s\S]*?(<\/span>)/, `$1<span class="emo">${nx ? nx.pic : '✓'}</span>$2`);
+      return `<button class="calm2-play${cls} mix28-play" data-act="mix28-open" data-step="${nx ? nx.k : 'done'}"${attrs}>${inner}</button>`; });
+  } catch (e) { /* keep the old button */ }
+  return html; }; }
 
 </script>
 </body>
