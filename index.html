@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#ffc83d">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https: http://localhost:* http://127.0.0.1:*; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
-<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png?v=29-1">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png?v=29-1">
 <link rel="manifest" href="./manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="عَرَبِيّ">
@@ -3900,6 +3900,82 @@ html body.tg-on.tg-girl { --accent-2:#c58ad8 !important; }
 body.tg-on .intro-card { background: rgba(255,255,255,.9) !important; border-radius: 30px !important; padding: 18px !important; }
 .acc-kid-pic .tg3d.tg-head img, .acc-kid-pic .tg3d img { border-radius: 50%; }
 
+/* v29.1 · icons, layered dress-up, coin games */
+.il-tab-ic .tg-tab-art { width: 30px; height: 30px; object-fit: contain; filter: none; }
+.il-tab:not(.on) .tg-tab-art { opacity: .78; }
+.calm-ic .tg-menu-art { width: 40px; height: 40px; object-fit: contain; }
+.tg-bdg { display: inline-grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #fff 0 55%, #e3f6fa 56%); box-shadow: 0 4px 10px rgba(20,60,80,.12); }
+.tg-bdg img { width: 78%; height: 78%; object-fit: contain; } .tg-bdg.off { filter: grayscale(1); opacity: .45; }
+/* layered falcon */
+.tg-av { position: relative; display: block; width: 100%; aspect-ratio: 480 / 720; }
+.tg3d .tg-av img.tg-l, .tg-av img.tg-l { position: absolute; display: block; height: auto; filter: none; }
+.tg-av img.tg-base { left: 0; top: 0; width: 100%; z-index: 2; filter: drop-shadow(0 8px 10px rgba(20,60,80,.18)); }
+.tg-av img.tg-bgimg { left: -20%; top: -6%; width: 140%; height: 112%; object-fit: cover; z-index: 0; border-radius: 26px; }
+.tg-av img.s-back { z-index: 1; }
+.tg-coins { display: inline-flex; align-items: center; gap: 4px; background: #fff7dc; border: 2px solid #f4d77a; color: #8a5a00; border-radius: 999px; padding: 2px 10px 2px 6px; font-weight: 800; }
+.tg-coin-ic { width: 22px !important; height: 22px !important; object-fit: contain; }
+/* never on home */
+body.tg-onhome .tg-coins { display: none !important; }
+.tg-dz .tg-dz-stage { display: flex; justify-content: center; overflow: hidden; border-radius: 26px; background: linear-gradient(#dff3fb, #fff); padding: 34px 0 6px; }
+.tg-dz .tg-dz-stage .tg-av { width: 190px; }
+.tg-dz-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 10px 2px 4px; scrollbar-width: none; }
+.tg-dz-tabs button { flex: 0 0 auto; border: 2px solid #e3f0f3; background: #fff; border-radius: 999px; padding: 6px 12px; font-weight: 700; color: #33525c; }
+.tg-dz-tabs button.on { background: #1fb5a8; border-color: #1fb5a8; color: #fff; } body.tg-girl .tg-dz-tabs button.on { background: #c58ad8; border-color: #c58ad8; }
+.tg-dz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; max-height: 300px; overflow-y: auto; padding: 4px 2px; }
+.tg-dz-it { position: relative; border: 2px solid #e3f0f3; border-radius: 18px; background: #fff; padding: 6px 4px; display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 112px; }
+.tg-dz-it img { height: 64px; width: auto; max-width: 100%; object-fit: contain; } .tg-dz-it b { font-size: 13px; line-height: 1.3; text-align: center; }
+.tg-dz-it i { font-style: normal; font-size: 12px; display: inline-flex; align-items: center; gap: 2px; color: #8a5a00; } .tg-dz-it i .tg-coin-ic { width: 16px !important; height: 16px !important; }
+.tg-dz-it.on { border-color: #1fb5a8; background: #e2f7f4; } body.tg-girl .tg-dz-it.on { border-color: #c58ad8; background: #f6ecfa; }
+.tg-dz-it.lock { opacity: .55; } .tg-dz-it.lock img { filter: grayscale(.8); }
+.tg-dz-none { font-size: 36px; color: #9bb; line-height: 64px; } .tg-dz-hint { text-align: center; color: #557; font-size: 14px; margin: 4px 0 0; }
+/* games */
+.tgg-top { margin: 6px 4px 8px; } .tgg-top h2 { margin: 0; font-size: 20px; }
+body:not(.tg-ongames) .tgg-top .tg-coins { display: none; }
+.tgg-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 14px; }
+.tgg-tile { border: 0; border-radius: 22px; background: linear-gradient(160deg, #fff, #e9f8fb); box-shadow: 0 6px 14px rgba(20,60,80,.10); padding: 10px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.tgg-tile img { width: 72px; height: 72px; object-fit: contain; } .tgg-tile b { font-size: 16px; } .tgg-tile span { font-size: 12px; color: #567; text-align: center; }
+.tgg-tile:last-child:nth-child(odd) { grid-column: span 2; }
+.modal.tgg-modal .modal-box { max-width: 520px; }
+.tgg { display: flex; flex-direction: column; gap: 8px; min-height: 70vh; }
+.tgg-head b { font-size: 18px; } .tgg-sub { margin: 0; text-align: center; color: #456; }
+.tgg-play { position: relative; flex: 1; border-radius: 24px; overflow: hidden; background: linear-gradient(#cfefff, #f4fbff 70%, #f6e7c8); min-height: 440px; }
+.tgg-target { text-align: center; padding: 8px; font-size: 18px; } .tgg-target b { font-size: 34px; color: #0f8b8d; } .tgg-target i { font-style: normal; font-size: 24px; margin: 0 4px; color: #2a6f7a; }
+.tgg-sky { position: absolute; inset: 64px 0 0 0; }
+.tgg-drop { position: absolute; top: -70px; width: 64px; height: 64px; border-radius: 50%; border: 0; background: radial-gradient(circle at 35% 30%, #fff, #ffe08a); box-shadow: 0 6px 12px rgba(0,0,0,.12); font-size: 32px; font-family: inherit; will-change: transform; }
+@keyframes tggfall { to { transform: translateY(520px); } }
+.tgg-drop.good { background: radial-gradient(circle, #fff, #8fe3b5); animation-play-state: paused; } .tgg-drop.bad { background: radial-gradient(circle, #fff, #ffb3b3); }
+.tgg-q { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; font-size: 18px; }
+.tgg-q .tg-gpic, .tgg-q .pic-art { width: 92px; height: 92px; } .tgg-q img { width: 92px; height: 92px; object-fit: contain; }
+.tgg-q.mini { position: absolute; top: 6px; left: 0; right: 0; } 
+.tgg-balloons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; padding: 10px 18px 24px; }
+.tgg-bal { border: 0; height: 120px; border-radius: 50% 50% 46% 46%; background: radial-gradient(circle at 35% 30%, #fff 0 8%, var(--bc) 40%); box-shadow: inset -8px -10px 0 rgba(0,0,0,.06), 0 8px 12px rgba(0,0,0,.1); font-size: 24px; font-weight: 800; font-family: inherit; color: #234; animation: tggbob 2.4s ease-in-out infinite; position: relative; }
+.tgg-bal::after { content: ''; position: absolute; left: 50%; bottom: -16px; width: 2px; height: 16px; background: #9ab; }
+@keyframes tggbob { 50% { transform: translateY(-10px); } }
+.tgg-bal.pop { animation: tggpop .4s forwards; } @keyframes tggpop { to { transform: scale(1.4); opacity: 0; } }
+.tgg-bal.bad, .tgg-gate.bad, .tgg-bin.bad { animation: tggshake .4s; } @keyframes tggshake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.tgg-mem { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 12px; }
+.tgg-card { position: relative; height: 96px; border: 0; border-radius: 16px; background: #fff; box-shadow: 0 4px 10px rgba(20,60,80,.12); font-family: inherit; }
+.tgg-card .face { display: none; } .tgg-card.up .face { display: grid; place-items: center; height: 100%; } .tgg-card.up .back { display: none; }
+.tgg-card .back img { width: 60px; height: 60px; object-fit: contain; opacity: .8; } .tgg-card .face b { font-size: 22px; } .tgg-card .face img { width: 70px; height: 70px; object-fit: contain; }
+.tgg-card.good { background: #dff7ea; }
+.tgg-track { position: absolute; inset: 0; } .tgg-ground { position: absolute; left: 0; right: 0; bottom: 0; height: 70px; background: repeating-linear-gradient(90deg, #f1d9a6 0 40px, #ead09a 40px 80px); animation: tggground .8s linear infinite; }
+@keyframes tggground { to { background-position: -80px 0; } }
+.tgg-bird { position: absolute; right: 8%; bottom: 58px; width: 120px; z-index: 2; transition: transform .25s; } .tgg-bird.jump { transform: translateY(-90px); }
+.tgg-gates { position: absolute; left: 0; right: 0; bottom: 80px; direction: ltr; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; padding-left: 4%; transform: translateX(-10%); }
+ @keyframes tgggate { from { transform: translateX(-30%); } to { transform: translateX(150%); } }
+.tgg-gate { border: 4px solid #1fb5a8; background: #fff; border-radius: 18px 18px 6px 6px; padding: 12px 22px; font-size: 24px; font-weight: 800; font-family: inherit; box-shadow: 0 6px 12px rgba(0,0,0,.1); }
+.tgg-gate.good { background: #dff7ea; }
+.tgg-hl { display: grid; place-items: center; height: 220px; } .tgg-hletter { font-size: 96px; font-weight: 800; color: #19495a; background: #fff; border-radius: 30px; padding: 0 34px; box-shadow: 0 8px 16px rgba(0,0,0,.1); }
+.tgg-bins { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 12px; }
+.tgg-bin { border: 0; border-radius: 20px; padding: 14px 4px; font-family: inherit; display: flex; flex-direction: column; align-items: center; gap: 4px; box-shadow: 0 6px 12px rgba(0,0,0,.08); }
+.tgg-bin b { font-size: 34px; } .tgg-bin.b0 { background: #ffe9b0; } .tgg-bin.b1 { background: #cdeffd; } .tgg-bin.b2 { background: #ffd6e5; } .tgg-bin.good { outline: 4px solid #2bb673; }
+.tgg-end { align-items: center; text-align: center; } .tgg-end-fal .mascot { width: 150px; } .tgg-end .row.gap { gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+.tg-bird-lay { display: block; height: min(46vh, 380px); aspect-ratio: 480 / 720; width: auto; filter: none; } .tg-bird-lay .tg-av { width: 100%; height: 100%; }
+.tgg-q .art-img, .tgg-card .face .art-img { width: 96px !important; height: 96px !important; object-fit: contain; }
+.tgg-q.mini { background: none; } .tgg-q.mini .art-img { width: 110px !important; height: 110px !important; }
+.tgg-q .pic-art { background: none !important; box-shadow: none !important; border: 0 !important; width: auto !important; height: auto !important; }
+
 </style>
 </head>
 <body>
@@ -4085,7 +4161,7 @@ body.tg-on .intro-card { background: rgba(255,255,255,.9) !important; border-rad
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v29";
+const APP_VERSION = "v29.1";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -4097,8 +4173,8 @@ const PROFILE_SLOTS = ['k1', 'k2'];
 const PROFILE_FACES = { k1: '🦅', k2: '🦋' };
 const AGE_BANDS = [
   { id: '4-6', ar: '٤–٦ سَنَوَات', en: 'Age 4–6', u13: true }, { id: '7-9', ar: '٧–٩ سَنَوَات', en: 'Age 7–9', u13: true },
-  { id: '10-12', ar: '١٠–١٢ سَنَة', en: 'Age 10–12', u13: true }, { id: '13+', ar: '١٣ سَنَة أَوْ أَكْثَر', en: 'Age 13+', u13: false }];
-const ageBand = (id) => AGE_BANDS.find((b) => b.id === id) || AGE_BANDS[1];
+  { id: '10-12', ar: '١٠–١٢ سَنَة', en: 'Age 10–12', u13: true }, { id: '13-14', ar: '١٣–١٤ سَنَة', en: 'Age 13–14', u13: false }, { id: '15-16', ar: '١٥–١٦ سَنَة', en: 'Age 15–16', u13: false }];
+const ageBand = (id) => AGE_BANDS.find((b) => b.id === (id === '13+' ? '13-14' : id)) || AGE_BANDS[1]; /* v29.1: 13+ split into 13–14 and 15–16 */
 const PROFILES = {}; /* filled from DB.profiles by syncProfiles() (core.js) */
 
 /* 7 dialects (DIALECT_ORDER + DIALECT_INFO live in dialects.js). Emirati first: what the kids hear in Dubai.
@@ -4951,7 +5027,7 @@ function syncProfiles() {
 }
 function saveProfile(id, nick, band, g) {
   if (!PROFILE_SLOTS.includes(id)) return false; nick = String(nick || '').replace(/[<>&"]/g, '').trim().slice(0, 16); if (!nick) return false;
-  DB.profiles[id] = Object.assign(DB.profiles[id] || {}, { nick, band: AGE_BANDS.some((b) => b.id === band) ? band : null, g: g === 'f' ? 'f' : 'm', needsSetup: false });
+  DB.profiles[id] = Object.assign(DB.profiles[id] || {}, { nick, band: band === '13+' ? '13-14' : AGE_BANDS.some((b) => b.id === band) ? band : null, g: g === 'f' ? 'f' : 'm', needsSetup: false });
   if (!DB.kids[id]) DB.kids[id] = freshProgress(); syncProfiles(); DB.kids[id] = normalizeProgress(DB.kids[id]); saveDB(); return true;
 }
 /* sibling comparisons are off: one child never sees the other child's data */
@@ -15701,7 +15777,9 @@ const accPic = (av, cls, g) => `<span class="acc-kid-pic ${cls || ''}" style="--
 const ACC_AVC = { falcon: '#d9f1fb', butterfly: '#f3e6fb', camel: '#fbefd9', turtle: '#e3f7e8', fish: '#dff3fb', owl: '#efe8de', cat: '#fde7e2', star: '#fff5cc' };
 const ACC_YEARS = ['FS1', 'FS2', 'Y1', 'Y2', 'Y3', 'Y4', 'Y5', 'Y6', 'Y7', 'Y8', 'Y9', 'Y10', 'Y11', 'Y12', 'Y13'];
 const accYearAr = (y) => (y.startsWith('FS') ? 'الرَّوْضَةُ ' + toArabicDigits(y.slice(2)) : 'السَّنَةُ ' + toArabicDigits(y.slice(1)));
-const accYearBand = (y) => { const i = ACC_YEARS.indexOf(y); return i <= 2 ? '4-6' : i <= 5 ? '7-9' : i <= 8 ? '10-12' : '13+'; };
+/* v29.1: the year picker also shows the age (up to 16+), so older children find their year */
+const accYearAge = (y) => { const n = y.startsWith('FS') ? +y.slice(2) - 2 : +y.slice(1); return toArabicDigits(n + 4) + '–' + toArabicDigits(n + 5) + ' سَنَة'; };
+const accYearBand = (y) => { const i = ACC_YEARS.indexOf(y); return i <= 2 ? '4-6' : i <= 5 ? '7-9' : i <= 8 ? '10-12' : i <= 10 ? '13-14' : '15-16'; };
 const accDialects = () => (typeof DIALECT_ORDER !== 'undefined' ? DIALECT_ORDER : ['emirati', 'fusha']);
 const accDialAr = (d) => (d === 'fusha' ? 'الفُصْحَى' : (typeof dialectData !== 'undefined' && dialectData[d] ? dialectData[d].title : d));
 /* '0' = the older family-code mode (kept for the legacy test suites and as a quick fallback while accounts are new) */
@@ -15847,7 +15925,7 @@ const ACC_SCREENS = {
     <label class="acc-l">الاسْمُ الأَوَّلُ أَوِ اسْمُ الدَّلَعِ<input id="acc-nick" maxlength="20" dir="auto" autocomplete="off" spellcheck="false"></label>
     <p class="acc-small">بِالعَرَبِيَّةِ أَوِ الإِنْجِلِيزِيَّةِ، كَمَا تُحِبُّونَ. لَا نَحْتَاجُ إِلَى الاسْمِ الكَامِلِ.</p>${accEn('Arabic or English letters are both fine. No full name needed.')}
     <fieldset class="acc-seg"><legend>لِكَلِمَاتِ التَّطْبِيقِ</legend><label><input type="radio" name="acc-g" value="m" checked><span>وَلَدٌ</span></label><label><input type="radio" name="acc-g" value="f"><span>بِنْتٌ</span></label></fieldset>
-    <label class="acc-l">السَّنَةُ الدِّرَاسِيَّةُ<select id="acc-yr">${ACC_YEARS.map((y) => `<option value="${y}" ${y === 'Y3' ? 'selected' : ''}>${accYearAr(y)}</option>`).join('')}</select></label>
+    <label class="acc-l">السَّنَةُ الدِّرَاسِيَّةُ<select id="acc-yr">${ACC_YEARS.map((y) => `<option value="${y}" ${y === 'Y3' ? 'selected' : ''}>${accYearAr(y)} · ${accYearAge(y)}</option>`).join('')}</select></label>
     <label class="acc-l">اللَّهْجَةُ<select id="acc-dial">${accDialects().map((d) => `<option value="${d}">${esc(accDialAr(d))}</option>`).join('')}</select></label>
     <fieldset class="acc-pics"><legend>صُورَةُ المِلَفِّ</legend>${Object.keys(ACC_AV).map((a, i) => `<label style="--avb:${ACC_AVC[a]}"><input type="radio" name="acc-av" value="${a}" ${i === 0 ? 'checked' : ''}>${accPic(a, 'pick')}</label>`).join('')}</fieldset>
     ${accMsgHTML()}<button type="submit" class="btn big acc-wide">حِفْظٌ</button><button type="button" class="acc-link" data-act="acc-go" data-arg="parent">رُجُوعٌ</button></form>`,
@@ -16059,7 +16137,7 @@ const WL_YEARS = ['FS1', 'FS2', 'Y1', 'Y2', 'Y3', 'Y4', 'Y5', 'Y6', 'Y7', 'Y8', 
 const WL_PL = { 1: 2, 2: 4, 3: 6, 4: 7, 5: 8 }; /* placement world → year index */
 const WL_UNIT_YR = { u1: 1, u2: 2, u3: 2, u4: 2, u5: 3, u6: 3, u7: 4, u8: 4, u9: 5, u10: 5, u11: 5, u12: 6, u13: 6, u14: 6, u15: 7, u16: 7, u17: 8, u18: 8, u19: 8 };
 const WL_WIN = 10;
-function wlYear(slot) { const r = (DB.profiles || {})[slot] || {}; const i = WL_YEARS.indexOf(r.yr); if (i >= 0) return i; return { '4-6': 1, '7-9': 4, '10-12': 7, '13+': 9 }[r.band] ?? 5; }
+function wlYear(slot) { const r = (DB.profiles || {})[slot] || {}; const i = WL_YEARS.indexOf(r.yr); if (i >= 0) return i; return { '4-6': 1, '7-9': 4, '10-12': 7, '13+': 9, '13-14': 10, '15-16': 12 }[r.band] ?? 5; }
 function wlGet(slot) { const p = DB.kids[slot]; if (!p) return null;
   if (!p.wl) { const y = wlYear(slot); if (p.diag && p.diag.sk && p.diag.sk.reading != null) { wlFromDiag(slot, p.diag.sk); return p.wl; }
     const pl = p.placement && WL_PL[p.placement.level]; const start = pl != null ? Math.min(pl, y) : y; /* the older one-level placement: never start above the year */
@@ -16385,7 +16463,7 @@ const TG_WORLDS = [
   ['القَاهِرَة', 'مِصْر', 'Cairo', 'Egypt', 'w3-egypt'], ['عَمَّان', 'الأُرْدُنّ', 'Amman', 'Jordan', 'w4-jordan'],
   ['بَيْرُوت', 'لُبْنَان', 'Beirut', 'Lebanon', 'w5-lebanon'], ['تُونِس', 'تُونِس', 'Tunis', 'Tunisia', 'w6-tunisia'],
   ['مُرَّاكُش', 'المَغْرِب', 'Marrakech', 'Morocco', 'w7-morocco']];
-const TG_ART = (n) => 'art/tg/' + n + '.webp';
+const TG_ART = (n) => 'art/tg/' + n + '.webp?v=' + (typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1');
 /* all islands in order: built units (by level) then the «coming soon» ones; world = level */
 function tgIsles(p) {
   const rec = nextUnitFor(p) || {}; const out = [];
@@ -16450,8 +16528,8 @@ IL_TABS.splice(0, IL_TABS.length,
 /* ---------- v2: Saqqour as separate 3D layers (boy: white ghutra · girl: pastel headscarf), outfits, all screens ---------- */
 const TG_OUTFITS = { m: [['hoodie', 'هُودِي'], ['kandura', 'كَنْدُورَة'], ['sport', 'رِيَاضِيّ']], f: [['hoodie', 'هُودِي'], ['casual', 'جَاكِيتٌ مُلَوَّن'], ['sport', 'رِيَاضِيّ']] };
 const tgGen = (kid, g) => { if (g === 'f' || g === 'm') return g; const k = kid || currentKid; return k && PROFILES[k] && PROFILES[k].gender === 'f' ? 'f' : 'm'; };
-const tgOutfit = (kid) => { const k = kid || currentKid; const o = k && DB.kids[k] && DB.kids[k].tgOutfit; return TG_OUTFITS[tgGen(k)].some((x) => x[0] === o) ? o : 'hoodie'; };
-function tgSaqSrc(kid, kind, gg) { const g = tgGen(kid, gg); if (kind === 'head') return TG_ART('saq-' + g + '-head'); if (kind === 'bust') return TG_ART('saq-' + g + '-bust'); if (kind === 'wave') return TG_ART('saq-' + g + '-wave'); return TG_ART('saq-' + g + '-' + tgOutfit(kid)); }
+let tgOutfit = (kid) => { const k = kid || currentKid; const o = k && DB.kids[k] && DB.kids[k].tgOutfit; return TG_OUTFITS[tgGen(k)].some((x) => x[0] === o) ? o : 'hoodie'; };
+function tgSaqSrc(kid, kind, gg) { const g = tgGen(kid, gg); if (kind === 'head') return TG_ART('saq-' + g + '-head'); if (kind === 'bust') return TG_ART('saq-' + g + '-bust'); if (kind === 'wave') return TG_ART('saq-' + g + '-wave'); return TG_ART('dz-' + g + '-' + tgOutfit(kid)); }
 const TG_WAVE = new Set(['cheer', 'celebrate', 'trophy', 'surprised', 'run']);
 const TG_BUST = new Set(['speak', 'listen', 'think', 'oops', 'read', 'point']);
 falconSVG = function falconSVGTG(mood, cls, cfg, viewBox) {
@@ -16483,6 +16561,190 @@ document.body.classList.add('tg-on', 'tg-' + 'all');
 { const M = {"ob_airport": ["1beb53a4", 256, 237], "ob_almonds": ["88c14697", 256, 207], "ob_ant": ["a587e675", 253, 256], "ob_bag": ["6c57a4b1", 221, 256], "ob_balloon": ["46cb52f2", 141, 256], "ob_bananas": ["0abdc04f", 256, 217], "ob_basket": ["f54a1ac8", 228, 256], "ob_bat": ["e09064b9", 256, 177], "ob_bear": ["b5df980b", 219, 256], "ob_bed": ["533e4fbf", 256, 226], "ob_bee": ["8faec58f", 256, 251], "ob_bell": ["9da1c460", 199, 256], "ob_berries": ["57965f70", 256, 235], "ob_bike": ["b210e266", 256, 219], "ob_bird": ["7ae69d33", 233, 256], "ob_boat": ["2a734dd8", 222, 256], "ob_bread": ["e18ac8ff", 256, 203], "ob_breakfast": ["cfdb4e1e", 256, 225], "ob_bridge": ["bb547adf", 256, 157], "ob_brother": ["129ac8cd", 97, 256], "ob_brush": ["fcc6f0ad", 231, 256], "ob_bull": ["79e4ca2d", 214, 256], "ob_bus": ["71b26b29", 256, 186], "ob_butterfly": ["f783759d", 230, 256], "ob_cake": ["83543207", 239, 256], "ob_camel": ["85bce377", 233, 256], "ob_candle": ["721c13e3", 123, 256], "ob_car": ["4416db53", 256, 197], "ob_carrots": ["7d675fad", 252, 256], "ob_castle": ["c8e12950", 256, 245], "ob_cat": ["fd957a1c", 191, 256], "ob_chair": ["0a2243dd", 209, 256], "ob_cheese": ["74369f82", 241, 256], "ob_cheetah": ["4c6859fa", 181, 256], "ob_cherries": ["978c9350", 231, 256], "ob_chicken": ["daa91974", 193, 256], "ob_child": ["80061b5b", 110, 256], "ob_city": ["c5f47ccf", 255, 256], "ob_clever": ["84a0224c", 228, 256], "ob_clock": ["14a78a46", 222, 256], "ob_cloud": ["01c160d1", 256, 192], "ob_cold": ["c2198e5a", 178, 256], "ob_cookies": ["d7745570", 256, 209], "ob_corn": ["c053b7d2", 187, 256], "ob_crocodile": ["19334c54", 256, 189], "ob_crown": ["9a894def", 256, 187], "ob_cucumber": ["52eb1fdf", 256, 214], "ob_cup": ["d33314d8", 256, 225], "ob_dad": ["0fcd212b", 120, 256], "ob_dancing": ["9ac36051", 170, 256], "ob_desert": ["3a34a74b", 256, 218], "ob_doctor": ["6a50b62b", 203, 256], "ob_dog": ["19d87242", 152, 256], "ob_doll": ["21e9606b", 155, 256], "ob_donkey": ["6afbee06", 221, 256], "ob_door": ["294490a2", 241, 256], "ob_dove": ["6b613566", 244, 256], "ob_drawing": ["6ed9478f", 256, 256], "ob_dream": ["7222cb88", 256, 256], "ob_drum": ["5766ffc8", 256, 256], "ob_duck": ["b468e1eb", 144, 256], "ob_ear": ["2d167f4a", 236, 256], "ob_eggs": ["427a6862", 256, 226], "ob_elephant": ["2d7abd2f", 256, 256], "ob_envelope": ["62d15c42", 256, 198], "ob_eye": ["8451e70f", 256, 200], "ob_family": ["16a4b482", 219, 256], "ob_farm": ["9b386f36", 256, 208], "ob_feather": ["773f470a", 213, 256], "ob_finger": ["28afca09", 150, 256], "ob_fire": ["84781b96", 200, 256], "ob_fish": ["6dd8184e", 256, 215], "ob_flag": ["cb8f05b9", 208, 256], "ob_flower": ["25f95db9", 206, 256], "ob_fog": ["60f02015", 256, 235], "ob_football": ["fedf82e7", 255, 256], "ob_fox": ["7b38a05d", 176, 256], "ob_fridge": ["6a219a49", 152, 256], "ob_friend": ["7c5e57e3", 131, 256], "ob_frog": ["47110fd4", 250, 256], "ob_fruit": ["5abac9a5", 256, 253], "ob_garlic": ["a28cffeb", 240, 256], "ob_gazelle": ["012ab981", 140, 256], "ob_gift": ["f04ce053", 253, 256], "ob_giraffe": ["0a2e83f8", 112, 256], "ob_glasses": ["b75338ae", 256, 110], "ob_goal": ["310f8208", 208, 256], "ob_goat": ["13723bb9", 192, 256], "ob_goose": ["70d0e160", 127, 256], "ob_grandma": ["e27195fa", 105, 256], "ob_grandpa": ["be15321c", 117, 256], "ob_grapes": ["79f0d587", 183, 256], "ob_grass": ["7201d62e", 256, 215], "ob_guest": ["3b7f087e", 164, 256], "ob_hair": ["c03622c3", 256, 215], "ob_hand": ["1d54392c", 191, 256], "ob_happy": ["17f022c1", 241, 256], "ob_hat": ["7d54dd20", 256, 158], "ob_head": ["21503602", 234, 256], "ob_healthy": ["95f28a6a", 256, 234], "ob_heart": ["573b0603", 256, 227], "ob_hedgehog": ["686d0453", 256, 252], "ob_hello": ["16c5bb0f", 215, 256], "ob_hen": ["1eadf584", 202, 256], "ob_heritage": ["c06f7a79", 242, 256], "ob_hero": ["3b205ff6", 194, 256], "ob_hobby": ["c1fcb440", 242, 256], "ob_honey": ["93a8d681", 254, 256], "ob_hope": ["bb3b7b7e", 255, 256], "ob_horse": ["6c1bf42b", 218, 256], "ob_hot": ["133cf587", 256, 250], "ob_hotel": ["1d59893b", 256, 212], "ob_house": ["37f8b029", 256, 239], "ob_how_much": ["3c2ee5bd", 203, 256], "ob_i_play": ["13842b1e", 190, 256], "ob_i_visited": ["abd2c31b", 235, 256], "ob_i_will_clean": ["5a66afcb", 190, 256], "ob_ice_cream": ["9062edbb", 129, 256], "ob_ill": ["149f7b0f", 202, 256], "ob_juice": ["99a9f4b1", 183, 256], "ob_jumping": ["8f6af29f", 177, 256], "ob_key": ["839d0017", 221, 256], "ob_king": ["ef3adc64", 177, 256], "ob_kitchen": ["c2da5f30", 256, 224], "ob_lamp": ["c3f2e38f", 173, 256], "ob_late": ["2111dc98", 199, 256], "ob_leaf": ["5fa9466d", 177, 256], "ob_leg": ["0a399383", 132, 256], "ob_lemon": ["3cb27b13", 238, 256], "ob_letter__message": ["7777381d", 256, 184], "ob_library": ["9996ee72", 256, 210], "ob_light": ["dbe34c55", 235, 256], "ob_lightning": ["9a462512", 148, 256], "ob_lion": ["a5b40dd3", 182, 256], "ob_lunch": ["cc8ef285", 256, 246], "ob_mango": ["6af38dd9", 248, 256], "ob_map": ["e80506ae", 256, 218], "ob_market": ["a4074015", 256, 223], "ob_milk": ["62921313", 116, 256], "ob_mirror": ["c6589584", 203, 256], "ob_monkey": ["b0667a42", 215, 256], "ob_month": ["be01f326", 256, 248], "ob_moon": ["bd386b76", 256, 214], "ob_mountain": ["cc99b840", 256, 208], "ob_mouse": ["7a39e0ea", 217, 256], "ob_mum": ["a55c0d3f", 180, 256], "ob_my_head_hurts": ["6eb40bed", 224, 256], "ob_my_name_is": ["bba38d9d", 188, 256], "ob_national_day": ["c5838c9a", 256, 254], "ob_night": ["12171dbe", 214, 256], "ob_nose": ["7487f7fc", 164, 256], "ob_notebook": ["20d450eb", 196, 256], "ob_o_clock": ["1203cb1b", 253, 256], "ob_onion": ["13c99e86", 204, 256], "ob_oud__a_lute": ["ef258af8", 232, 256], "ob_owl": ["6843322c", 178, 256], "ob_palm_tree": ["4cdaeead", 211, 256], "ob_parrot": ["5d2d44fb", 158, 256], "ob_passport": ["3f711c94", 219, 256], "ob_peach": ["b5eea7ca", 251, 256], "ob_peacock": ["08e6bde7", 211, 256], "ob_pearl": ["3c730ee3", 231, 256], "ob_pen": ["bcafe414", 232, 256], "ob_penguin": ["da090ef6", 185, 256], "ob_pepper": ["d9988b93", 193, 256], "ob_phone": ["36e34d00", 146, 256], "ob_picture": ["e4c32165", 255, 256], "ob_pizza": ["12acfd0d", 256, 217], "ob_plane": ["3671c5ed", 256, 147], "ob_planet": ["9e43fc01", 256, 163], "ob_plate": ["bcb63087", 256, 216], "ob_player": ["05bef342", 209, 256], "ob_playground": ["27ca6154", 256, 206], "ob_pomegranate": ["cfa118ac", 256, 185], "ob_popcorn": ["f2b9fad4", 206, 256], "ob_potatoes": ["2b37fcf4", 256, 198], "ob_puzzle": ["ade6ad91", 256, 254], "ob_rabbit": ["be492910", 171, 256], "ob_rain": ["344650a8", 256, 238], "ob_recycling": ["f264514f", 256, 253], "ob_restaurant": ["8d226a6c", 256, 227], "ob_rice": ["666fedd9", 256, 210], "ob_river": ["71d10c1c", 256, 247], "ob_road": ["8ec95936", 256, 218], "ob_robe": ["fa327c1c", 146, 256], "ob_rocket": ["95bab08e", 194, 256], "ob_room": ["dc6d77d2", 256, 243], "ob_roses": ["c63ce61e", 194, 256], "ob_rubbish": ["7be0b90c", 187, 256], "ob_salad": ["f84dc9d4", 256, 221], "ob_salt": ["73b822c0", 154, 256], "ob_sandwich": ["a6d1faa7", 256, 222], "ob_scared": ["404b600e", 137, 256], "ob_school": ["0151233c", 256, 226], "ob_scissors": ["b1ce6990", 255, 256], "ob_shark": ["92efb471", 256, 197], "ob_sheep": ["8777144a", 228, 256], "ob_ship": ["3af3395e", 256, 250], "ob_shirt": ["740cc912", 256, 241], "ob_shy": ["bed1b471", 146, 256], "ob_singing": ["b821b0de", 239, 256], "ob_sister": ["85b2e331", 133, 256], "ob_sleepy": ["6519fe3f", 194, 256], "ob_small_cup": ["f6da4577", 236, 256], "ob_snail": ["a5553e2b", 256, 234], "ob_snow": ["70210426", 231, 256], "ob_soap": ["da61ad7b", 256, 176], "ob_soup": ["d0ea87d3", 250, 256], "ob_spoon": ["308180ff", 219, 256], "ob_spring": ["0f8ce74d", 130, 256], "ob_squirrel": ["957c1975", 246, 256], "ob_star": ["f4f16da0", 256, 254], "ob_stars": ["3a0ea869", 234, 256], "ob_stone": ["66fea48b", 256, 181], "ob_story": ["e85f0558", 201, 256], "ob_sugar": ["f83f8a14", 248, 256], "ob_summer": ["2d389084", 247, 256], "ob_sun": ["bdba78a0", 250, 256], "ob_sunrise": ["5e65b659", 256, 255], "ob_sunset": ["c51030c7", 252, 256], "ob_sweets": ["25c54073", 256, 234], "ob_swimming": ["c1b32258", 256, 206], "ob_tall": ["729fbede", 203, 256], "ob_tasty": ["7626cd5f", 204, 256], "ob_tea": ["835a2e05", 211, 256], "ob_teacher__f": ["433a1d40", 243, 256], "ob_team": ["fdc40e2b", 256, 219], "ob_teeth": ["7d682a1d", 232, 256], "ob_tent": ["297198ec", 256, 180], "ob_thank_you": ["aba69801", 169, 256], "ob_the_environment": ["38bc8a7a", 256, 247], "ob_tiger": ["bec945f9", 182, 256], "ob_tired": ["f921255e", 211, 256], "ob_today": ["ae4e1b9d", 208, 256], "ob_tomatoes": ["58d803ef", 216, 256], "ob_tongue": ["a413c7e6", 171, 256], "ob_toy": ["50b03666", 188, 256], "ob_train": ["b26470a4", 256, 161], "ob_treasure": ["daa3f61a", 252, 256], "ob_trees": ["d57b29e1", 256, 236], "ob_trip": ["d260756f", 192, 256], "ob_trophy": ["ea78e771", 214, 256], "ob_truck": ["0e22cb2f", 256, 206], "ob_turtle": ["a9992529", 256, 210], "ob_umbrella": ["4aea38d5", 248, 256], "ob_upset": ["eca02a2a", 166, 256], "ob_vegetables": ["a8e07fc7", 256, 196], "ob_village": ["caa7e6b2", 256, 243], "ob_voice": ["9481e6c9", 248, 256], "ob_volcano": ["e2d90bd8", 246, 256], "ob_water": ["5225ba82", 185, 256], "ob_watermelon": ["b31581cc", 256, 221], "ob_wave": ["267301c8", 256, 237], "ob_we_look_after": ["53fb0096", 256, 218], "ob_whale": ["dc396d5d", 256, 203], "ob_wheel": ["f85aa41e", 232, 256], "ob_window": ["bab84153", 242, 256], "ob_winter": ["114dc52f", 256, 252], "ob_wolf": ["4994673d", 256, 248], "ob_worm": ["1c685037", 254, 256], "ob_year": ["00d302b6", 243, 256], "isle_u1": ["b58c3d8c", 300, 293], "isle_u2": ["429d3236", 300, 289], "isle_u3": ["10af376f", 300, 285], "isle_u4": ["348b5d06", 288, 300], "isle_u5": ["7a3144c7", 255, 300], "isle_u6": ["ac99bc9b", 227, 300], "isle_u7": ["eefd81ca", 244, 300], "isle_u8": ["b88e3b72", 261, 300], "isle_u9": ["58f8c2c2", 231, 300], "isle_u10": ["badb872b", 260, 300], "isle_u11": ["6ae32c75", 246, 300], "isle_u12": ["94a4e8a7", 250, 300], "isle_u13": ["c07d35f5", 238, 300], "isle_u14": ["0fb69799", 292, 300], "isle_u15": ["7ab4fc75", 277, 300], "isle_u16": ["dd8a1ad6", 268, 300], "gm_build": ["17d1e6db", 256, 249], "gm_dictation": ["9b122e03", 256, 214], "gm_letter_match": ["2bc98e8a", 256, 209], "gm_word_catch": ["f0ecb380", 250, 256], "gm_word_memory": ["43836696", 256, 225], "icon_games": ["acf75d5e", 256, 197], "icon_letters": ["b2dc02b4", 252, 256], "icon_parent": ["0cf22ea1", 200, 256], "icon_play": ["b77cef0a", 248, 256], "icon_shop": ["195194b5", 233, 256], "icon_stickers": ["0f273665", 242, 256], "icon_stories": ["40825236", 256, 235], "icon_trace": ["ce60d3a6", 256, 176], "icon_wordle": ["654b1d1d", 237, 256], "icon_words": ["030cb5bd", 256, 139], "ic2_badges": ["d95d266d", 191, 256], "ic2_book": ["81e78f8c", 248, 256], "ic2_bulb": ["757923e2", 232, 256], "ic2_clock": ["723a276f", 202, 256], "ic2_coin": ["16474ce4", 243, 256], "ic2_compass": ["eccf80a3", 210, 256], "ic2_dialects": ["e13b1762", 256, 209], "ic2_ear": ["4567ab35", 168, 256], "ic2_eye": ["a659bdc5", 256, 228], "ic2_flame": ["2c69eb98", 200, 256], "ic2_gift": ["a2ff7d93", 240, 256], "ic2_grammar": ["3d3bd082", 256, 243], "ic2_lock": ["9cff5090", 209, 256], "ic2_mic": ["532194b1", 169, 256], "ic2_pearl": ["bf0c1df6", 247, 256], "ic2_powers": ["5e4016e8", 226, 256], "ic2_race": ["c015fc84", 240, 256], "ic2_settings": ["4fe4cced", 200, 256], "ic2_shirt": ["08edda08", 217, 256], "ic2_spark": ["b759ae1c", 169, 256], "ic2_speaker": ["7dc0c2ae", 256, 209], "ic2_star": ["fa198443", 256, 248], "ic2_target": ["6ca8dd5b", 256, 240], "ic2_week": ["e9483538", 256, 252]};
   Object.keys(M).forEach((k) => { const [h, w, ht] = M[k]; if (typeof ART_B64 !== "undefined") ART_B64[k] = h; if (typeof ART_SIZE !== "undefined") ART_SIZE[k] = [w, ht]; if (typeof ART_URL !== "undefined") delete ART_URL[k];
     if (k.startsWith("isle_") && typeof JV_ISLE_ART !== "undefined") JV_ISLE_ART[k.slice(5)] = [k + "." + h + ".webp", w, ht]; }); }
+
+'use strict';
+/* =========================================================
+   v29.1 · redrawn icons everywhere · layered dress-up shop (feather colours, outfits, hats, glasses,
+   headphones, scarves, backpacks, things to hold, backgrounds) · 5 coin arcade games.
+   Coins show only in the games tab, the games and the dress-up shop (never on home).
+   ========================================================= */
+/* ---------- 1. the new pictures (art-src/v291/map2.json) + old keys pointed at them ---------- */
+{ const M = {"tg_home": ["b6e7bd12", 255, 256], "tg_map": ["feae202e", 256, 215], "tg_games": ["f5bc46e0", 256, 178], "tg_chat": ["370f12ac", 256, 214], "tg_homework": ["8724a0db", 256, 220], "tg_dictation": ["93a508cf", 256, 231], "tg_classwords": ["67409253", 225, 256], "tg_mix": ["2507e6b3", 256, 213], "tg_review": ["9b80d385", 256, 246], "tg_talk": ["895c800d", 246, 256], "tg_tricky": ["5ca6089d", 256, 255], "tg_feathers": ["1d46404a", 256, 245], "tg_start": ["91f6afc2", 210, 256], "tg_write": ["5e812fa5", 252, 256], "tg_read": ["f5ea49e7", 256, 191], "tg_settings": ["95e6b140", 253, 256], "tg_parent": ["89c066e2", 224, 256], "tg_switch": ["026d0787", 256, 229], "tg_sound": ["b15f5f55", 256, 213], "tg_translate": ["6d49fc40", 256, 232], "tg_dialect": ["332590ad", 256, 232], "tg_g_catch": ["d9c3d365", 192, 256], "tg_g_balloon": ["b96146c4", 216, 256], "tg_g_memory": ["e638e487", 256, 181], "tg_g_runner": ["ac75f127", 256, 170], "tg_g_harakat": ["53b83b98", 256, 109], "tg_shop": ["47f896c1", 222, 256], "tg_wardrobe": ["128bf147", 254, 256], "mk_tri": ["f4074719", 256, 227], "mk_sq": ["65159f31", 256, 251], "mk_star": ["bcb18606", 256, 245], "mk_heart": ["c916331b", 256, 217], "mk_moon": ["e06d61f9", 256, 184], "mk_flower": ["4b473de8", 223, 256], "mk_cloud": ["79585f3a", 256, 178], "bd_gold": ["c8b027fa", 160, 256], "bd_silver": ["93db698c", 159, 256], "bd_bronze": ["a41274ef", 157, 256], "bd_star": ["4ba8f50f", 171, 256], "gift": ["2dbed19a", 238, 256], "chest": ["909f873a", 245, 256], "mosque": ["38bcf230", 255, 256], "coin": ["0259db3e", 249, 256], "gem": ["4d8f1207", 217, 256], "b_first": ["74464000", 256, 251], "b_placed": ["fdee7d3a", 206, 256], "b_lesson1": ["cdd547d9", 255, 256], "b_stars3": ["53eb66a2", 256, 230], "b_level1": ["9b6bf056", 159, 256], "b_journey": ["8b55f867", 256, 218], "b_streak3": ["ed7d9a25", 206, 256], "b_streak7": ["67c10e1d", 200, 256], "b_streak30": ["a8994786", 253, 256], "b_words": ["ff431f2f", 215, 256], "b_dictation": ["42d8f530", 246, 256], "b_writer": ["f167c7f4", 226, 256], "b_quizwhiz": ["2176328e", 256, 252], "b_dialects": ["556ea3f3", 195, 256], "b_grammar": ["a5afdf46", 253, 256], "b_poet": ["0ec2534d", 184, 256], "b_reader": ["7638a0b0", 256, 227], "b_gamer": ["ac8bc870", 256, 220], "b_talker": ["60c40720", 256, 234], "b_readaloud": ["97935857", 256, 210], "b_speaker": ["3fe88abe", 153, 256], "b_xp500": ["45543416", 256, 216], "b_lvl10": ["180114a3", 256, 256], "b_shopper": ["f9801a68", 207, 256], "hat_cap": ["854d196f", 256, 239], "hat_beanie": ["fb42e036", 229, 256], "hat_bucket": ["76868e4e", 256, 175], "hat_crown": ["5d9dcd48", 256, 228], "hat_grad": ["624d9024", 256, 168], "hat_chef": ["b132f282", 256, 239], "hat_helmet": ["d938a3fd", 256, 239], "hat_flower": ["a1f29d5f", 256, 161], "gl_round": ["d7248503", 256, 203], "gl_sun": ["0b5e7929", 256, 189], "gl_star": ["281d5043", 256, 128], "gl_sport": ["a82c24c4", 256, 133], "hp_blue": ["46b16cbd", 232, 256], "hp_pink": ["b3aeb235", 231, 256], "bow_lilac": ["09027a56", 256, 204], "bow_mint": ["eaa5c1a8", 256, 205], "bp_school": ["ac9cb395", 231, 256], "bp_rocket": ["56b5c797", 225, 256], "bp_wings": ["38259038", 256, 184], "sc_red": ["b5c02cc4", 226, 256], "sc_blue": ["2f12f5e9", 243, 256], "sc_stripe": ["37d4dc67", 240, 256], "w_ball": ["14a70a9e", 255, 256], "w_book": ["ebf0f1d8", 256, 208], "w_trophy": ["247947b9", 234, 256], "w_flag": ["e6a83bdf", 203, 256], "w_ice": ["b902d261", 152, 256], "w_brush": ["11f0d311", 185, 256], "w_racket": ["f7c119c7", 222, 256], "w_balloon": ["dfd35da0", 132, 256], "w_star": ["6c5453e1", 185, 256], "w_dallah": ["470b9fcb", 207, 256], "st_ra1_cover": ["bfff05b5", 671, 668], "st_ra1_p1": ["9e30047e", 665, 668], "st_ra1_p2": ["4c2ca3f8", 669, 668], "st_ra1_p3": ["ea54a6dc", 671, 671], "st_ra1_p4": ["7de7a881", 665, 670], "st_ra1_p5": ["4b0343ff", 669, 671], "st_ra2_cover": ["bdf06cd4", 668, 664], "st_ra2_p1": ["2e90f9ff", 665, 664], "st_ra2_p2": ["304e879e", 666, 664], "st_ra2_p3": ["56c6dbcc", 668, 671], "st_ra2_p4": ["b5c8c820", 665, 671], "st_ra2_p5": ["e8861eb9", 667, 671], "st_ra3_cover": ["3ffba2c6", 669, 668], "st_ra3_p1": ["61c74d3c", 667, 669], "st_ra3_p2": ["643ace6f", 669, 669], "st_ra3_p3": ["4a7e2110", 669, 672], "st_ra3_p4": ["83e235df", 668, 671], "st_ra3_p5": ["1f47895f", 669, 671], "st_ra4_cover": ["04a9537b", 669, 668], "st_ra4_p1": ["81ff2a95", 668, 668], "st_ra4_p2": ["1754fee6", 670, 668], "st_ra4_p3": ["9a4b9fed", 669, 672], "st_ra4_p4": ["5aecf058", 668, 672], "st_ra4_p5": ["dacaf1ea", 670, 672], "st_ra5_cover": ["fa5be788", 669, 668], "st_ra5_p1": ["8848f7a6", 666, 667], "st_ra5_p2": ["d62f8caa", 668, 668], "st_ra5_p3": ["7afd883a", 669, 671], "st_ra5_p4": ["050ce844", 666, 671], "st_ra5_p5": ["a496390c", 668, 671], "st_ra6_cover": ["881e856a", 670, 667], "st_ra6_p1": ["4dd2f3f1", 666, 668], "st_ra6_p2": ["3fc1ba07", 670, 668], "st_ra6_p3": ["18696c66", 669, 671], "st_ra6_p4": ["bff4d0a8", 664, 671], "st_ra6_p5": ["4b92c6e9", 670, 671], "scene_market": ["1133a60b", 670, 669], "scene_school": ["3d406bee", 670, 669], "scene_beach": ["0825f37f", 669, 668], "scene_home": ["45f81ee5", 669, 671], "scene_park": ["10b0b250", 670, 672], "scene_oasis": ["e1272458", 669, 672]};
+  Object.keys(M).forEach((k) => { const [h, w, ht] = M[k]; ART_B64[k] = h; ART_SIZE[k] = [w, ht]; delete ART_URL[k]; });
+  const AL = { scene_souq: 'scene_market', scene_desert_palms: 'scene_oasis', scene_dubai_skyline: 'scene_park',
+    mk_triangle: 'mk_tri', mk_diamond: 'gem', mk_dot: 'mk_star', mk_ring: 'mk_moon', mk_arch: 'mk_heart', mk_lattice: 'mk_flower', mk_wave: 'mk_cloud',
+    bd_sprout: 'b_first', bd_dice: 'b_gamer', bd_perfect_burst: 'b_quizwhiz', tier_gold: 'bd_gold', tier_silver: 'bd_silver', tier_bronze: 'bd_bronze', tier_turquoise: 'gem',
+    gift_open: 'chest', ob_mosque: 'mosque', ac_bow: 'bow_lilac', fw_bow: 'bow_lilac', ac_crown: 'hat_crown', fw_crown: 'hat_crown', ac_tiara: 'hat_crown', fw_tiara: 'hat_crown',
+    ac_flower: 'hat_flower', fw_flower: 'hat_flower', ac_glasses: 'gl_round', fw_glasses: 'gl_round', ac_hairbow: 'bow_mint', fw_hairbow: 'bow_mint', ac_heart: 'mk_heart', fw_heart: 'mk_heart',
+    ac_medal: 'bd_gold', fw_medal: 'bd_gold', ac_party: 'gl_star', fw_party: 'gl_star', ac_pencil: 'b_writer', fw_pencil: 'b_writer', ac_phones: 'hp_blue', fw_phones: 'hp_blue',
+    ac_pin: 'mk_star', fw_pin: 'mk_star', ac_scarf: 'sc_red', fw_scarf: 'sc_red', ac_shades: 'gl_sun', fw_shades: 'gl_sun', scarf: 'sc_blue', icon_shop: 'tg_shop', icon_games: 'tg_games' };
+  Object.keys(AL).forEach((k) => { if (M[AL[k]]) { ART_B64[k] = M[AL[k]][0]; ART_SIZE[k] = [M[AL[k]][1], M[AL[k]][2]]; delete ART_URL[k]; ART_URL[k] = ART_BASE + AL[k] + '.' + M[AL[k]][0] + '.webp'; } }); }
+/* the old blue-bird poses and outfit pictures → the 3D Saqqour of this child (boy or girl) */
+{ const _u = artURL; artURL = function artURL291(n) {
+    if (/^pose_/.test(n || '')) { const g = tgGen(); return TG_ART('saq-' + g + (/speaking|listening|thinking|reading|pointing/.test(n) ? '-bust' : /cheer|celebr|wave|trophy|running|surprised/.test(n) ? '-wave' : '-hoodie')); }
+    if (/^outfit_/.test(n || '')) { const g = tgGen(); return n === 'outfit_ghutra_agal' ? TG_ART('saq-' + g + '-head') : TG_ART('dz-' + g + '-' + (n === 'outfit_astronaut' ? 'astro' : n === 'outfit_kandura' && g === 'm' ? 'kandura' : 'hoodie')); }
+    return _u.apply(this, arguments); }; }
+/* badges: one round 3D picture each */
+const TG_BADGE = { first: 'b_first', placed: 'b_placed', lesson1: 'b_lesson1', stars3: 'b_stars3', level1: 'b_level1', journey: 'b_journey', streak3: 'b_streak3', streak7: 'b_streak7', streak30: 'b_streak30', words: 'b_words',
+  dictation: 'b_dictation', writer: 'b_writer', quizwhiz: 'b_quizwhiz', dialects: 'b_dialects', grammar: 'b_grammar', poet: 'b_poet', reader: 'b_reader', gamer: 'b_gamer', talker: 'b_talker', readaloud: 'b_readaloud',
+  speaker: 'b_speaker', xp500: 'b_xp500', lvl10: 'b_lvl10', shopper: 'b_shopper' };
+badgeShape = function badgeShape291(i, on) { const b = BADGES[i]; const k = TG_BADGE[b && b.id] || 'b_stars3';
+  return `<span class="bdg tg-bdg ${on ? 'on' : 'off'}" aria-hidden="true">${artImg(k)}</span>`; };
+/* tab bar + menu: 3D pictures instead of line icons and emoji */
+const TG_TAB_ART = { home: 'tg_home', journey: 'tg_map', games: 'tg_games', write: 'tg_write', read: 'tg_read' };
+{ const _n = ilNav; ilNav = function ilNav291() { _n.apply(this, arguments);
+    document.querySelectorAll('#il-nav .il-tab').forEach((b) => { const k = TG_TAB_ART[b.dataset.arg]; const ic = b.querySelector('.il-tab-ic'); if (k && ic && ART_B64[k]) ic.innerHTML = artImg(k, 'tg-tab-art'); }); }; }
+const TG_MENU_ART = [[/^il-open:chat/, 'tg_chat'], [/homework/, 'tg_homework'], [/mix/, 'tg_mix'], [/review/, 'tg_review'], [/scenes/, 'tg_talk'], [/pron/, 'tg_tricky'], [/v21-map/, 'tg_feathers'],
+  [/il-tab:write/, 'tg_write'], [/il-tab:read/, 'tg_read'], [/^dg|diag/, 'tg_start'], [/sc23|class|school/, 'tg_classwords'], [/^sp|spell/, 'tg_dictation'], [/games/, 'tg_games'], [/parent|acc/, 'tg_parent'],
+  [/switch|pick/, 'tg_switch'], [/sound|sfx/, 'tg_sound'], [/transl/, 'tg_translate'], [/dialect/, 'tg_dialect'], [/journey/, 'tg_map'], [/write|trace/, 'tg_write'], [/read|stor/, 'tg_read'], [/set/, 'tg_settings']];
+const tgMenuArt = (act) => { const m = TG_MENU_ART.find((x) => x[0].test(act || '')); return m && ART_B64[m[1]] ? artImg(m[1], 'tg-menu-art') : ''; };
+{ const _m = calmMenuItems; calmMenuItems = function calmMenuItems291() { return _m.apply(this, arguments).map((x) => { const a = x.ic === '@falcon' ? '' : tgMenuArt(x.act); return a ? Object.assign({}, x, { ic: a }) : x; }); }; }
+/* any island card still pointing at a line icon or emoji gets its 3D picture */
+const TG_ISLE_ART = { chat: 'tg_chat', homework: 'tg_homework', stickers: 'b_stars3', shop: 'tg_shop', dress: 'tg_wardrobe', games: 'tg_games', talk: 'tg_talk', build: 'tg_classwords', write: 'tg_write', letter: 'tg_tricky', story: 'tg_read', stories: 'tg_read', lesson: 'tg_homework' };
+{ const _d = ilDef; ilDef = function ilDef291(id) { const d = _d.apply(this, arguments); if (!d.art && !d.glyph && TG_ISLE_ART[id] && ART_B64[TG_ISLE_ART[id]]) d.art = TG_ISLE_ART[id]; if (id === 'chat') d.art = TG_ISLE_ART.chat; return d; }; }
+
+/* ---------- 2. layered dress-up ---------- */
+const TG_ANCH = { m: { cx: 42, eye: 12.5, top: 4, neck: 27 }, f: { cx: 49, eye: 19.5, top: 6.5, neck: 31 } };
+const TG_SLOTS = [['outfit', 'المَلَابِس'], ['color', 'لَوْنُ الرِّيش'], ['hat', 'عَلَى الرَّأْس'], ['glasses', 'نَظَّارَات'], ['ears', 'سَمَّاعَات'], ['neck', 'وِشَاح'], ['back', 'عَلَى الظَّهْر'], ['hand', 'فِي الجَنَاح'], ['bg', 'الخَلْفِيَّة']];
+/* [id, Arabic name, price in coins, islands needed (0 = none)] */
+const TG_ITEMS = {
+  outfit: { m: [['hoodie', 'هُودِي', 0, 0], ['sport', 'رِيَاضِيّ', 0, 0], ['kandura', 'كَنْدُورَة', 0, 0], ['jacket', 'جَاكِيت جِينْز', 40, 0], ['fb_uae', 'قَمِيصُ كُرَةٍ أَحْمَرُ وَأَبْيَض', 60, 0], ['fb_ksa', 'قَمِيصُ كُرَةٍ أَخْضَر', 60, 0], ['fb_mar', 'قَمِيصُ كُرَةٍ أَحْمَرُ وَأَخْضَر', 60, 0], ['chef', 'طَاهٍ', 80, 2], ['astro', 'رَائِدُ فَضَاء', 120, 4]],
+    f: [['hoodie', 'هُودِي', 0, 0], ['casual', 'جَاكِيتٌ مُلَوَّن', 0, 0], ['sport', 'رِيَاضِيّ', 0, 0], ['dress', 'فُسْتَانٌ صَيْفِيّ', 40, 0], ['denim', 'جَاكِيت جِينْز', 40, 0], ['fb_uae', 'قَمِيصُ كُرَةٍ أَحْمَرُ وَأَبْيَض', 60, 0], ['fb_ksa', 'قَمِيصُ كُرَةٍ أَخْضَر', 60, 0], ['fb_mar', 'قَمِيصُ كُرَةٍ أَحْمَرُ وَأَخْضَر', 60, 0], ['chef', 'طَاهِيَة', 80, 2], ['astro', 'رَائِدَةُ فَضَاء', 120, 4]] },
+  color: [['', 'بُنِّيّ', 0, 0], ['gold', 'ذَهَبِيّ', 30, 0], ['sky', 'أَزْرَق', 30, 0], ['rose', 'وَرْدِيّ', 30, 0], ['mint', 'نَعْنَاعِيّ', 30, 0], ['snow', 'أَبْيَض', 50, 1], ['night', 'لَيْلِيّ', 50, 3]],
+  hat: [['', 'لَا شَيْء', 0, 0], ['hat_cap', 'قُبَّعَة', 20, 0], ['hat_beanie', 'قُبَّعَةٌ صُوفِيَّة', 20, 0], ['hat_bucket', 'قُبَّعَةُ شَاطِئ', 25, 0], ['hat_flower', 'مِشْبَكُ وَرْدَة', 20, 0], ['bow_lilac', 'فِيُونْكَة', 15, 0], ['bow_mint', 'فِيُونْكَةٌ خَضْرَاء', 15, 0], ['hat_chef', 'قُبَّعَةُ طَاهٍ', 30, 1], ['hat_grad', 'قُبَّعَةُ تَخَرُّج', 60, 3], ['hat_crown', 'تَاج', 100, 5]],
+  glasses: [['', 'لَا شَيْء', 0, 0], ['gl_round', 'نَظَّارَةٌ مُسْتَدِيرَة', 20, 0], ['gl_sun', 'نَظَّارَةٌ شَمْسِيَّة', 25, 0], ['gl_star', 'نَظَّارَةُ نُجُوم', 25, 0], ['gl_sport', 'نَظَّارَةُ سِبَاحَة', 30, 1]],
+  ears: [['', 'لَا شَيْء', 0, 0], ['hp_blue', 'سَمَّاعَاتٌ زَرْقَاء', 35, 0], ['hp_pink', 'سَمَّاعَاتٌ وَرْدِيَّة', 35, 0]],
+  neck: [['', 'لَا شَيْء', 0, 0], ['sc_red', 'وِشَاحٌ أَحْمَر', 15, 0], ['sc_blue', 'وِشَاحٌ أَزْرَق', 15, 0], ['sc_stripe', 'وِشَاحٌ مُخَطَّط', 20, 0]],
+  back: [['', 'لَا شَيْء', 0, 0], ['bp_school', 'حَقِيبَةُ مَدْرَسَة', 25, 0], ['bp_wings', 'أَجْنِحَةٌ لَامِعَة', 60, 2], ['bp_rocket', 'حَقِيبَةٌ صَارُوخِيَّة', 90, 4]],
+  hand: [['', 'لَا شَيْء', 0, 0], ['w_book', 'كِتَاب', 0, 0], ['w_ball', 'كُرَة', 15, 0], ['w_ice', 'بُوظَة', 15, 0], ['w_balloon', 'بَالُون', 15, 0], ['w_flag', 'عَلَمُ الإِمَارَات', 20, 0], ['w_brush', 'فُرْشَاةُ رَسْم', 20, 0], ['w_racket', 'مِضْرَبُ تِنِس', 20, 0], ['w_dallah', 'دَلَّة', 30, 0], ['w_star', 'عَصًا سِحْرِيَّة', 40, 1], ['w_trophy', 'كَأْس', 80, 5]],
+  bg: [['', 'سَمَاءٌ صَافِيَة', 0, 0], ['scene_beach', 'الشَّاطِئ', 30, 0], ['scene_park', 'الحَدِيقَة', 30, 0], ['scene_oasis', 'الوَاحَة', 30, 0], ['scene_market', 'السُّوق', 40, 1], ['scene_school', 'المَدْرَسَة', 40, 1]] };
+const tgList = (slot, g) => (slot === 'outfit' ? TG_ITEMS.outfit[g] : TG_ITEMS[slot]);
+function tgKid(k) { const r = DB.kids[k || currentKid] || {}; if (!r.tgWear) r.tgWear = { outfit: r.tgOutfit || 'hoodie' }; if (!r.tgOwn) r.tgOwn = []; return r; }
+const tgOwned = (r, slot, it) => !it[0] || (it[2] === 0 && !it[3]) || r.tgOwn.includes(slot + ':' + it[0]);
+function tgWear(k) { const r = tgKid(k); const g = tgGen(k); const w = Object.assign({}, r.tgWear);
+  if (!tgList('outfit', g).some((x) => x[0] === w.outfit)) w.outfit = 'hoodie'; return w; }
+tgOutfit = function tgOutfit291(kid) { return tgWear(kid).outfit; };
+const TG_FIT = {"m-hoodie": {"cx": 42.0, "eye": 15.97, "hy": 9.97, "hw": 30.0, "gw": 33.0, "ey": 12.47, "ew": 52.0, "bx": 50.2, "by": 8.97, "bw": 17.0, "nohat": true}, "m-sport": {"cx": 42.48, "eye": 15.72, "hy": 9.72, "hw": 30.0, "gw": 33.0, "ey": 12.22, "ew": 52.0, "bx": 50.68, "by": 8.72, "bw": 17.0, "nohat": true}, "m-kandura": {"cx": 41.82, "eye": 15.52, "hy": 9.52, "hw": 30.0, "gw": 33.0, "ey": 12.02, "ew": 52.0, "bx": 50.02, "by": 8.52, "bw": 17.0, "nohat": true}, "m-jacket": {"cx": 42.0, "eye": 15.97, "hy": 9.97, "hw": 30.0, "gw": 33.0, "ey": 12.47, "ew": 52.0, "bx": 50.2, "by": 8.97, "bw": 17.0, "nohat": true}, "m-fb_uae": {"cx": 42.28, "eye": 15.86, "hy": 9.86, "hw": 30.0, "gw": 33.0, "ey": 12.36, "ew": 52.0, "bx": 50.48, "by": 8.86, "bw": 17.0, "nohat": true}, "m-fb_ksa": {"cx": 42.24, "eye": 15.38, "hy": 9.38, "hw": 30.0, "gw": 33.0, "ey": 11.88, "ew": 52.0, "bx": 50.44, "by": 8.38, "bw": 17.0, "nohat": true}, "m-fb_mar": {"cx": 42.02, "eye": 15.39, "hy": 9.39, "hw": 30.0, "gw": 33.0, "ey": 11.89, "ew": 52.0, "bx": 50.22, "by": 8.39, "bw": 17.0, "nohat": true}, "m-chef": {"cx": 42.26, "eye": 15.81, "hy": 9.81, "hw": 30.0, "gw": 33.0, "ey": 12.31, "ew": 52.0, "bx": 50.46, "by": 8.81, "bw": 17.0, "nohat": true}, "m-astro": {"cx": 44.7, "eye": 14.12, "hy": 8.12, "hw": 30.0, "gw": 33.0, "ey": 10.62, "ew": 52.0, "bx": 52.9, "by": 7.12, "bw": 17.0, "nohat": false}, "f-hoodie": {"cx": 49.05, "eye": 21.5, "hy": 15.5, "hw": 30.0, "gw": 34.0, "ey": 15.0, "ew": 54.0, "bx": 58.05, "by": 11.5, "bw": 17.0}, "f-casual": {"cx": 49.54, "eye": 18.45, "hy": 13.89, "hw": 22.8, "gw": 25.84, "ey": 13.51, "ew": 41.04, "bx": 56.38, "by": 10.85, "bw": 12.92}, "f-sport": {"cx": 47.87, "eye": 19.89, "hy": 13.89, "hw": 30.0, "gw": 34.0, "ey": 13.39, "ew": 54.0, "bx": 56.87, "by": 9.89, "bw": 17.0}, "f-dress": {"cx": 48.94, "eye": 21.5, "hy": 15.5, "hw": 30.0, "gw": 34.0, "ey": 15.0, "ew": 54.0, "bx": 57.94, "by": 11.5, "bw": 17.0}, "f-denim": {"cx": 48.89, "eye": 21.3, "hy": 15.3, "hw": 30.0, "gw": 34.0, "ey": 14.8, "ew": 54.0, "bx": 57.89, "by": 11.3, "bw": 17.0}, "f-fb_uae": {"cx": 48.87, "eye": 21.23, "hy": 15.23, "hw": 30.0, "gw": 34.0, "ey": 14.73, "ew": 54.0, "bx": 57.87, "by": 11.23, "bw": 17.0}, "f-fb_ksa": {"cx": 47.98, "eye": 21.17, "hy": 15.17, "hw": 30.0, "gw": 34.0, "ey": 14.67, "ew": 54.0, "bx": 56.98, "by": 11.17, "bw": 17.0}, "f-fb_mar": {"cx": 48.46, "eye": 21.25, "hy": 15.25, "hw": 30.0, "gw": 34.0, "ey": 14.75, "ew": 54.0, "bx": 57.46, "by": 11.25, "bw": 17.0}, "f-chef": {"cx": 48.98, "eye": 21.42, "hy": 15.42, "hw": 30.0, "gw": 34.0, "ey": 14.92, "ew": 54.0, "bx": 57.98, "by": 11.42, "bw": 17.0}, "f-astro": {"cx": 48.85, "eye": 21.65, "hy": 15.65, "hw": 30.0, "gw": 34.0, "ey": 15.15, "ew": 54.0, "bx": 57.85, "by": 11.65, "bw": 17.0}}; /* v29.1 fit: per-outfit anchors (beak-located, reviewed on art-src/v291/fit.py contact sheets) */
+const tgNoHat = (g, o) => !!(TG_FIT[g + '-' + o] || {}).nohat; /* boy outfits with the ghutra: no hats (cleaner than a cap over the ghutra) */
+function tgLayer(slot, id, g, o) { const a = TG_FIT[g + '-' + o] || TG_FIT[g + '-hoodie']; if (!id || !ART_B64[id]) return '';
+  let x = a.cx, y, w, tr = 'translate(-50%,-50%)', z = 3;
+  if (slot === 'hat') { if (a.nohat) return ''; if (/^bow|flower/.test(id)) { x = a.bx; y = a.by; w = a.bw; } else { y = a.hy; w = /crown/.test(id) ? a.hw * 0.75 : a.hw; tr = 'translate(-50%,-100%)'; } z = 6; }
+  else if (slot === 'glasses') { y = a.eye; w = a.gw; z = 5; }
+  else if (slot === 'ears') { y = a.ey; w = a.ew; z = 4; }
+  else if (slot === 'neck') { y = a.eye + (g === 'm' ? 14.5 : 11.5); w = 30; x = a.cx + 1; tr = 'translate(-50%,-35%)'; }
+  else if (slot === 'back') { z = 0; if (id === 'bp_school') { x = 76; y = 40; w = 30; } else if (id === 'bp_wings') { x = 50; y = 36; w = 92; } else { x = 50; y = 42; w = 58; } }
+  else if (slot === 'hand') { x = 12; y = 52; w = 20; tr = 'translate(-50%,-62%)'; z = 7; }
+  return `<img class="tg-l s-${slot}" src="${artURL(id)}" alt="" draggable="false" style="left:${x}%;top:${y}%;width:${w}%;transform:${tr};z-index:${z}">`; }
+/* the whole layered falcon (opts.bg: draw the background scene too) */
+function tgAvatar(k, opts, wOver) { const g = tgGen(k); const w = Object.assign(tgWear(k), wOver || {}); opts = opts || {};
+  const base = 'dz-' + g + '-' + w.outfit + (w.color ? '-' + w.color : '');
+  return `<span class="tg-av g-${g}">${opts.bg && w.bg && ART_B64[w.bg] ? `<img class="tg-l tg-bgimg" src="${artURL(w.bg)}" alt="">` : ''}${tgLayer('back', w.back, g, w.outfit)}<img class="tg-l tg-base" src="${TG_ART(base)}" alt="" draggable="false">${['neck', 'ears', 'glasses', 'hat', 'hand'].map((s) => tgLayer(s, w[s], g, w.outfit)).join('')}</span>`; }
+{ const _f = falconSVG; falconSVG = function falconSVG291(mood, cls, cfg, viewBox) { const h = _f.apply(this, arguments);
+    if (!/tg-stand/.test(h) || (cfg && '__g' in cfg)) return h; const kid = (cfg && cfg.__kid) || currentKid; if (!kid) return h;
+    return h.replace(/<img [^>]*>/, tgAvatar(kid)); }; }
+const TG_DZ = { slot: 'outfit' };
+const tgCoins = () => P().coins || 0;
+const tgCoinTag = () => `<span class="tg-coins" lang="ar">${artImg('coin', 'tg-coin-ic')}<b>${toArabicDigits(tgCoins())}</b></span>`;
+tgDress = function tgDress291() { const k = currentKid; const g = tgGen(k); const r = tgKid(k); const w = tgWear(k); const p = P(); const done = unitsDone(p);
+  const list = TG_DZ.slot === 'hat' && tgNoHat(g, w.outfit) ? [] : tgList(TG_DZ.slot, g);
+  openModal(`<div class="stack tg-dress tg-dz"><div class="row between"><h2 lang="ar">${G('أَلْبِسْ', 'أَلْبِسِي')} صَقُّور</h2>${tgCoinTag()}<button class="icon-btn" data-act="modal-close" aria-label="إِغْلَاق">✖️</button></div>
+    <div class="tg-dz-stage">${tgAvatar(k, { bg: true })}</div>
+    <div class="tg-dz-tabs" role="tablist">${TG_SLOTS.map((s) => `<button role="tab" class="${s[0] === TG_DZ.slot ? 'on' : ''}" data-act="tg-dz-slot" data-arg="${s[0]}" lang="ar">${s[1]}</button>`).join('')}</div>
+    ${!list.length ? `<p class="tg-dz-hint" lang="ar">الغُتْرَةُ عَلَى الرَّأْسِ · ${G('اِخْتَرْ', 'اِخْتَارِي')} زِيَّ رَائِدِ الفَضَاءِ لِتَلْبَسَ قُبَّعَة</p>` : ''}<div class="tg-dz-grid">${list.map((it) => { const own = tgOwned(r, TG_DZ.slot, it); const on = (w[TG_DZ.slot] || '') === it[0]; const lock = !own && it[3] > done;
+      const pic = TG_DZ.slot === 'outfit' ? `<img src="${TG_ART('dz-' + g + '-' + it[0] + (w.color ? '-' + w.color : ''))}" alt="">` : TG_DZ.slot === 'color' ? `<img src="${TG_ART('dz-' + g + '-' + w.outfit + (it[0] ? '-' + it[0] : ''))}" alt="">`
+        : it[0] ? artImg(it[0]) : '<span class="tg-dz-none">∅</span>';
+      return `<button class="tg-dz-it ${on ? 'on' : ''} ${own ? 'own' : lock ? 'lock' : 'buy'}" data-act="tg-dz-pick" data-arg="${it[0] || '-'}" aria-pressed="${on}">${pic}<b lang="ar">${it[1]}</b>
+        ${own ? '' : lock ? `<i lang="ar">🔒 ${toArabicDigits(it[3])} ${it[3] > 2 ? 'جُزُر' : 'جَزِيرَة'}</i>` : `<i class="price">${artImg('coin', 'tg-coin-ic')}${toArabicDigits(it[2])}</i>`}</button>`; }).join('')}</div>
+    <p class="tg-dz-hint" lang="ar">${G('اِجْمَعِ', 'اِجْمَعِي')} العُمُلَاتِ فِي الأَلْعَابِ ${G('وَاشْتَرِ', 'وَاشْتَرِي')} مَا ${G('تُحِبُّ', 'تُحِبِّينَ')}.</p></div>`, null, 'sheet'); };
+Object.assign(ACTIONS, {
+  'tg-dz-slot': (s) => { TG_DZ.slot = s; sfx('tap'); tgDress(); },
+  'tg-dz-pick': (id) => { id = id === '-' ? '' : id; const k = currentKid; const g = tgGen(k); const r = tgKid(k); const p = P(); const slot = TG_DZ.slot;
+    const it = tgList(slot, g).find((x) => x[0] === id); if (!it) return;
+    if (!tgOwned(r, slot, it)) { if (it[3] > unitsDone(p)) { toast(`<span lang="ar">${G('أَكْمِلْ', 'أَكْمِلِي')} ${toArabicDigits(it[3])} مِنَ الجُزُرِ لِفَتْحِ هَذَا</span>`); return; }
+      if ((p.coins || 0) < it[2]) { toast(`<span lang="ar">${G('تَحْتَاجُ', 'تَحْتَاجِينَ')} ${toArabicDigits(it[2] - (p.coins || 0))} عُمْلَةً أُخْرَى · ${G('اِلْعَبْ', 'اِلْعَبِي')} فِي الأَلْعَاب</span>`); return; }
+      p.coins -= it[2]; r.tgOwn.push(slot + ':' + id); }
+    r.tgWear = Object.assign(tgWear(k), { [slot]: id }); if (slot === 'outfit') r.tgOutfit = id; saveDB(); sfx('tap'); tgDress();
+    if (typeof ilRender === 'function' && !$('il').classList.contains('hidden')) ilRender(); } });
+{ const _o = ilOpen; ilOpen = function ilOpen291(id) { if (id === 'shop') { TG_DZ.slot = 'hat'; tgDress(); return; } return _o.apply(this, arguments); }; }
+
+/* ---------- 3. coin arcade games ---------- */
+const TG_WORDS = [['بَيْت', '🏠'], ['قِطَّة', '🐱'], ['جَمَل', '🐪'], ['شَمْس', '☀'], ['سَمَكَة', '🐟'], ['كِتَاب', '📖'], ['تُفَّاحَة', '🍎'], ['مَوْز', '🍌'], ['سَيَّارَة', '🚗'], ['كُرَة', '⚽'],
+  ['وَرْدَة', '🌸'], ['شَجَرَة', '🌳'], ['قَلَم', '✏'], ['طَائِرَة', '✈'], ['حِصَان', '🐴'], ['فِيل', '🐘'], ['أَسَد', '🦁'], ['خُبْز', '🍞'], ['حَلِيب', '🥛'], ['نَجْمَة', '⭐'], ['قَمَر', '🌙'],
+  ['سَفِينَة', '🚢'], ['دَرَّاجَة', '🚲'], ['بَطَّة', '🦆'], ['أَرْنَب', '🐰'], ['كَعْكَة', '🎂'], ['بَيْضَة', '🥚'], ['عِنَب', '🍇'], ['جَزَر', '🥕'], ['مِفْتَاح', '🔑'], ['سَاعَة', '⌚'], ['فَرَاشَة', '🦋'], ['نَحْلَة', '🐝'], ['بَاب', '🚪'], ['مَدْرَسَة', '🏫']];
+const tgPicOK = (e) => typeof objArtHTML === 'function' && !!objArtHTML(e);
+const tgWords = () => TG_WORDS.filter((w) => tgPicOK(w[1]));
+const tgPic = (e) => objArtHTML(e, '', 'tg-gpic') || `<span class="tg-gpic">${e}</span>`;
+const tgShuf = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const tgPick = (a, n) => tgShuf(a).slice(0, n);
+const TG_GAMES = [
+  { id: 'catch', art: 'tg_g_catch', ar: 'صَيْدُ الحُرُوف', sub: () => G('اِلْتَقِطِ الحَرْفَ بِكُلِّ أَشْكَالِهِ', 'اِلْتَقِطِي الحَرْفَ بِكُلِّ أَشْكَالِهِ') },
+  { id: 'balloon', art: 'tg_g_balloon', ar: 'بَالُونَاتُ الكَلِمَات', sub: () => G('فَرْقِعِ البَالُونَ الصَّحِيح', 'فَرْقِعِي البَالُونَ الصَّحِيح') },
+  { id: 'memory', art: 'tg_g_memory', ar: 'ذَاكِرَةُ الصُّوَر', sub: () => G('طَابِقِ الصُّورَةَ وَالكَلِمَة', 'طَابِقِي الصُّورَةَ وَالكَلِمَة') },
+  { id: 'runner', art: 'tg_g_runner', ar: 'عَدَّاءُ صَقُّور', sub: () => G('اِخْتَرِ البَوَّابَةَ الصَّحِيحَة', 'اِخْتَارِي البَوَّابَةَ الصَّحِيحَة') },
+  { id: 'harakat', art: 'tg_g_harakat', ar: 'فَرْزُ الحَرَكَات', sub: () => G('ضَعِ الحَرْفَ فِي صُنْدُوقِ حَرَكَتِهِ', 'ضَعِي الحَرْفَ فِي صُنْدُوقِ حَرَكَتِهِ') }];
+const TGG = { id: null, score: 0, coins: 0, timers: [], raf: 0, left: 0 };
+function tggLoop() { const t = performance.now(); const dt = Math.min(64, t - (TGG.lt || t)); TGG.lt = t;
+  document.querySelectorAll('.tgg-drop').forEach((b) => { if (b.dataset.done) return; const y = (+b.dataset.y || -70) + dt * (+b.dataset.v); b.dataset.y = y; b.style.transform = `translateY(${y}px)`; const H = (b.parentNode && b.parentNode.clientHeight) || 480; if (y > H) b.remove(); });
+  const gs = document.querySelector('.tgg-gates.go'); if (gs) { const x = (+gs.dataset.x || 0) + dt / 5200 * 100; gs.dataset.x = x; gs.style.transform = `translateX(${(x * 1.5 - 30).toFixed(1)}%)`; }
+  if (TGG.id) TGG.raf = requestAnimationFrame(tggLoop); }
+function tggStop() { TGG.timers.forEach(clearTimeout); TGG.timers = []; cancelAnimationFrame(TGG.raf); TGG.raf = 0; TGG.id = null; }
+const tggT = (f, ms) => { const t = setTimeout(f, ms); TGG.timers.push(t); return t; };
+function tggCoin(n) { const p = P(); p.coins = (p.coins || 0) + n; TGG.coins += n; saveDB(); const c = document.querySelector('.tgg-head .tg-coins b'); if (c) c.textContent = toArabicDigits(p.coins); }
+function tggGood(el) { TGG.score++; tggCoin(1); sfx('correct'); if (el) { el.classList.add('good'); } const s = document.querySelector('.tgg-score'); if (s) s.textContent = toArabicDigits(TGG.score); }
+function tggBad(el) { sfx('wrong'); if (el) { el.classList.add('bad'); tggT(() => el.classList.remove('bad'), 450); } }
+function tggShell(g, body) { return `<div class="tgg tgg-${g.id}"><div class="tgg-head row between"><button class="icon-btn" data-act="tgg-quit" aria-label="خُرُوج">✖️</button><b lang="ar">${g.ar}</b>${tgCoinTag()}</div>
+  <p class="tgg-sub" lang="ar">${g.sub()} · <span lang="ar">النِّقَاط: <b class="tgg-score">٠</b></span></p><div class="tgg-play">${body}</div></div>`; }
+function tggEnd() { const n = TGG.score; const bonus = n >= 8 ? 5 : n >= 4 ? 3 : 1; tggCoin(bonus); const got = TGG.coins; const g = TG_GAMES.find((x) => x.id === TGG.id) || TG_GAMES[0]; tggStop();
+  openModal(`<div class="stack tgg-end"><div class="tgg-end-fal">${falconSVG('cheer', 'lg')}</div><h2 lang="ar">${n >= 4 ? G('أَحْسَنْتَ!', 'أَحْسَنْتِ!') : G('مُحَاوَلَةٌ جَمِيلَة!', 'مُحَاوَلَةٌ جَمِيلَة!')}</h2>
+    <p lang="ar">${G('جَمَعْتَ', 'جَمَعْتِ')} <b>${toArabicDigits(got)}</b> عُمْلَة ${artImg('coin', 'tg-coin-ic')}</p>
+    <div class="row gap"><button class="btn primary" data-act="tgg-start" data-arg="${g.id}" lang="ar">${G('اِلْعَبْ', 'اِلْعَبِي')} مَرَّةً أُخْرَى</button><button class="btn" data-act="tg-dress-open" lang="ar">${G('اِذْهَبْ', 'اِذْهَبِي')} إِلَى المَلَابِس</button></div></div>`, null, 'sheet'); }
+/* 1 · catch the falling letter (any of its forms) */
+const tgForms = (l) => [l, l + '\u200d', '\u200d' + l + '\u200d', '\u200d' + l];
+const TG_NOJOIN = new Set(['ا', 'د', 'ذ', 'ر', 'ز', 'و']);
+function tggCatch() { const L = LETTERS.map((x) => x.l).filter((l) => !TG_NOJOIN.has(l)); const t = tgPick(L, 1)[0]; TGG.target = t; TGG.left = 14;
+  return tggShell(TG_GAMES[0], `<div class="tgg-target" lang="ar">${G('اِلْتَقِطْ', 'اِلْتَقِطِي')}: <b>${t}</b> <span>${tgForms(t).slice(1).map((f) => `<i>${f}</i>`).join(' ')}</span></div><div class="tgg-sky" id="tgg-sky"></div>`); }
+function tggCatchRun() { const sky = $('tgg-sky'); if (!sky) return; const L = LETTERS.map((x) => x.l).filter((l) => l !== TGG.target);
+  const drop = () => { if (TGG.id !== 'catch') return; if (TGG.left-- <= 0) { tggT(tggEnd, 1600); return; }
+    const good = Math.random() < 0.5; const l = good ? TGG.target : tgPick(L, 1)[0]; const f = TG_NOJOIN.has(l) ? l : tgPick(tgForms(l), 1)[0];
+    const b = document.createElement('button'); b.className = 'tgg-drop'; b.lang = 'ar'; b.textContent = f; b.dataset.good = good ? '1' : ''; b.style.left = (8 + Math.random() * 74) + '%'; b.dataset.v = (0.11 + Math.min(0.08, TGG.score * 0.006)).toFixed(3);
+    b.onclick = () => { if (b.dataset.done) return; b.dataset.done = 1; if (b.dataset.good) tggGood(b); else tggBad(b); tggT(() => b.remove(), 350); };
+    sky.appendChild(b); tggT(drop, 1100); };
+  drop(); }
+/* 2 · balloon pop: the picture shows the word */
+function tggBalloon() { TGG.left = 8; return tggShell(TG_GAMES[1], `<div class="tgg-q" id="tgg-q"></div><div class="tgg-balloons" id="tgg-bl"></div>`); }
+function tggBalloonRound() { if (TGG.id !== 'balloon') return; if (TGG.left-- <= 0) { tggEnd(); return; } const W = tgWords(); const set = tgPick(W, 4); const ans = set[0];
+  $('tgg-q').innerHTML = `${tgPic(ans[1])}<span lang="ar">${G('أَيْنَ', 'أَيْنَ')} كَلِمَةُ هَذِهِ الصُّورَة؟</span>`;
+  const cols = ['#ff8fb1', '#7fd3f7', '#ffd166', '#9be7c4'];
+  $('tgg-bl').innerHTML = tgShuf(set).map((w, i) => `<button class="tgg-bal" style="--bc:${cols[i]};animation-delay:${i * 0.25}s" data-w="${w[0] === ans[0] ? 1 : ''}" lang="ar">${w[0]}</button>`).join('');
+  $('tgg-bl').querySelectorAll('.tgg-bal').forEach((b) => { b.onclick = () => { if (b.dataset.w) { tggGood(b); b.classList.add('pop'); tggT(tggBalloonRound, 700); } else tggBad(b); }; }); }
+/* 3 · memory: match picture and word */
+function tggMemory() { const set = tgPick(tgWords(), 6); const cards = tgShuf(set.flatMap((w, i) => [{ k: i, h: tgPic(w[1]) }, { k: i, h: `<b lang="ar">${w[0]}</b>` }])); TGG.open = []; TGG.pairs = 0;
+  return tggShell(TG_GAMES[2], `<div class="tgg-mem">${cards.map((c, i) => `<button class="tgg-card" data-k="${c.k}" data-i="${i}"><span class="back">${artImg('tg_g_memory')}</span><span class="face">${c.h}</span></button>`).join('')}</div>`); }
+function tggMemoryRun() { document.querySelectorAll('.tgg-card').forEach((b) => { b.onclick = () => { if (b.classList.contains('up') || TGG.open.length >= 2) return; b.classList.add('up'); TGG.open.push(b);
+  if (TGG.open.length === 2) { const [a, c] = TGG.open; if (a.dataset.k === c.dataset.k) { tggGood(); a.classList.add('good'); c.classList.add('good'); TGG.open = []; if (++TGG.pairs === 6) tggT(tggEnd, 900); }
+    else { sfx('wrong'); tggT(() => { a.classList.remove('up'); c.classList.remove('up'); TGG.open = []; }, 900); } } }; }); }
+/* 4 · runner: Saqqour runs, two gates come — pick the gate with the right word (or the right spelling) */
+function tggRunner() { TGG.left = 8; return tggShell(TG_GAMES[3], `<div class="tgg-track"><div class="tgg-q mini" id="tgg-q"></div><div class="tgg-bird">${falconSVG('run', 'tgg-fal')}</div><div class="tgg-gates" id="tgg-gates"></div><div class="tgg-ground"></div></div>`); }
+function tggRunnerRound() { if (TGG.id !== 'runner') return; if (TGG.left-- <= 0) { tggEnd(); return; } const [a, b] = tgPick(tgWords(), 2);
+  $('tgg-q').innerHTML = `${tgPic(a[1])}`; const gs = tgShuf([[a[0], 1], [b[0], 0]]);
+  const box = $('tgg-gates'); box.innerHTML = gs.map((x) => `<button class="tgg-gate" data-ok="${x[1] ? 1 : ''}" lang="ar">${x[0]}</button>`).join(''); box.dataset.x = 0; box.classList.add('go');
+  let done = false; const miss = tggT(() => { if (!done) { done = true; sfx('wrong'); tggRunnerRound(); } }, 5200);
+  box.querySelectorAll('.tgg-gate').forEach((g) => { g.onclick = () => { if (done) return; if (g.dataset.ok) { done = true; clearTimeout(miss); tggGood(g); document.querySelector('.tgg-bird').classList.add('jump'); tggT(() => { document.querySelector('.tgg-bird') && document.querySelector('.tgg-bird').classList.remove('jump'); tggRunnerRound(); }, 700); } else tggBad(g); }; }); }
+/* 5 · harakat sorting: fatha / damma / kasra */
+const TG_HAR = [['\u064e', 'فَتْحَة'], ['\u064f', 'ضَمَّة'], ['\u0650', 'كَسْرَة']];
+function tggHarakat() { TGG.left = 12; return tggShell(TG_GAMES[4], `<div class="tgg-hl" id="tgg-hl"></div><div class="tgg-bins">${TG_HAR.map((h, i) => `<button class="tgg-bin b${i}" data-h="${i}" lang="ar"><b>بـ${h[0]}ـ</b><span>${h[1]}</span></button>`).join('')}</div>`); }
+function tggHarakatRound() { if (TGG.id !== 'harakat') return; if (TGG.left-- <= 0) { tggEnd(); return; } const l = tgPick(LETTERS.map((x) => x.l), 1)[0]; const h = Math.floor(Math.random() * 3); TGG.h = h;
+  const el = $('tgg-hl'); el.innerHTML = `<span class="tgg-hletter" lang="ar">${l}${TG_HAR[h][0]}</span>`; }
+function tggHarakatRun() { document.querySelectorAll('.tgg-bin').forEach((b) => { b.onclick = () => { if (+b.dataset.h === TGG.h) { tggGood(b); tggT(() => { b.classList.remove('good'); tggHarakatRound(); }, 450); } else tggBad(b); }; }); tggHarakatRound(); }
+const TGG_RUN = { catch: [tggCatch, tggCatchRun], balloon: [tggBalloon, tggBalloonRound], memory: [tggMemory, tggMemoryRun], runner: [tggRunner, tggRunnerRound], harakat: [tggHarakat, tggHarakatRun] };
+function tggStart(id) { tggStop(); const r = TGG_RUN[id]; if (!r) return; TGG.id = id; TGG.score = 0; TGG.coins = 0; openModal(r[0](), tggStop, 'sheet tgg-modal'); TGG.id = id; TGG.lt = 0; TGG.raf = requestAnimationFrame(tggLoop); tggT(r[1], 250); }
+Object.assign(ACTIONS, { 'tgg-start': (id) => tggStart(id), 'tgg-quit': () => { tggStop(); closeModal(); }, 'tg-dress-open': () => { closeModal(); TG_DZ.slot = 'outfit'; tgDress(); } });
+/* the games tab: coin count + the five arcade games on top */
+{ const _r = ilRender; ilRender = function ilRender291() { _r.apply(this, arguments); document.body.classList.toggle('tg-ongames', IL.page === 'games');
+    if (IL.page === 'games') { const pg = $('il-page'); if (pg && !pg.querySelector('.tgg-list')) pg.insertAdjacentHTML('afterbegin', `<div class="tgg-top row between"><h2 lang="ar">أَلْعَابُ العُمُلَات</h2>${tgCoinTag()}</div>
+      <div class="tgg-list">${TG_GAMES.map((g) => `<button class="tgg-tile" data-act="tgg-start" data-arg="${g.id}">${artImg(g.art)}<b lang="ar">${g.ar}</b><span lang="ar">${g.sub()}</span></button>`).join('')}</div>`); } }; }
+/* home hero: the dressed-up layered falcon */
+{ const _h = tgHome; tgHome = function tgHome291() { return _h.apply(this, arguments).replace(/<img class="tg-bird-img"[^>]*>/, `<span class="tg-bird-img tg-bird-lay">${tgAvatar(currentKid)}</span>`); }; }
 
 </script>
 </body>

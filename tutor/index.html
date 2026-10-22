@@ -2954,7 +2954,7 @@ html{background:#fff3c4}
 .offline-note{position:fixed;inset-inline:10px;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:9000;background:#fff1c1;border:2px solid #ffb020;border-radius:14px;padding:8px 12px;font-size:.9rem;color:#5a3a00;box-shadow:0 4px 14px rgba(0,0,0,.12);text-align:center}
 .offline-note .en{font-size:.75rem;opacity:.8}
 
-/* ---------- v19 English translation line (Randa: "put the option of having English translation under each instruction") ----------
+/* ---------- v19 English translation line (parent request: "put the option of having English translation under each instruction") ----------
    One setting (DB.settings.showEn, off by default). When on, every English helper sits on its OWN line UNDER the Arabic:
    smaller, lighter, never on the same line as the Arabic. Arabic always stays the main text. The parent view keeps its own English. */
 body.show-en .en:not(#parent .en):not(.keep-en .en):not(.en-same),
@@ -11977,7 +11977,7 @@ window.SAQ = Object.assign(window.SAQ || {}, { gUI, guiFix });
   window.SAQ = Object.assign(window.SAQ || {}, { offlineCheck: show });
 }());
 
-/* ---------- v19 calm sounds (Randa: "the sounds when you do something correct or wrong are very annoying") ----------
+/* ---------- v19 calm sounds (parent request: "the sounds when you do something correct or wrong are very annoying") ----------
    - wrong answers: no sound at all (the screens keep their soft visual cue + calm try-again line)
    - taps, flips, whooshes, pops, coins: no sound
    - correct / reward (good, correct, level, badge, streak): ONE very quiet, very short rounded sine (~110 ms, gain 0.06),
