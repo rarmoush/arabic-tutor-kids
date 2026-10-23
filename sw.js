@@ -1,7 +1,7 @@
 /* v18b service worker: the app opens offline. Pages: network first, cached copy when offline. Art and icons (file names
    carry a content hash): cache first. Requests to other sites (the AI Worker) are never touched or cached. */
-const VER = 'ad544f8d94';
-const SHELL = 'shell-' + VER; const ART = 'art-v30'; const AUDIO = 'audio-v30'; /* v30: new name so the redrawn icons/art replace the old cached copies */
+const VER = '984911f256';
+const SHELL = 'shell-' + VER; const ART = 'art-v31'; const AUDIO = 'audio-v31'; /* v31: new names with the story covers, game icons and extra clips */
 const CORE = ['./', './manifest.webmanifest', './icon-192.png', './icon-512.png', './favicon-32.png', './privacy/', './terms/'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(SHELL).then((c) => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => (k.startsWith('shell-') && k !== SHELL) || (k.startsWith('art-') && k !== ART) || (k.startsWith('audio-') && k !== AUDIO)).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
