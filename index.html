@@ -4049,6 +4049,444 @@ body:not(.tg-ongames) .tgg-top .tg-coins { display: none; }
 .ra-cover31 .ra-pic-btn{aspect-ratio:16/9;max-width:480px}
 @media (max-height:760px){.ra-cover31 .ra-pic-btn{aspect-ratio:2/1}}
 
+/* ---------- v32 printables ---------- */
+#pr32{position:fixed;inset:0;z-index:120;overflow:auto;background:#e9f1f4;font-family:var(--f-ui,"Readex Pro",sans-serif);color:#173246;-webkit-overflow-scrolling:touch}
+#pr32.hidden{display:none}
+.pr32-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:8px;padding:calc(env(safe-area-inset-top) + 8px) 10px 8px;background:rgba(247,251,252,.96);border-bottom:1px solid #d8e6ec;box-shadow:0 2px 10px rgba(20,60,80,.06)}
+.pr32-bar .btn{min-height:44px;padding:0 12px;font-size:14px;white-space:nowrap}
+.pr32-bar .pr32-dl{background:#2a9d9a;color:#fff;border:0}
+.pr32-t{flex:1 1 auto;min-width:0;font-size:15px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pr32-bar .en{display:none}
+body.show-en .pr32-bar .en{display:inline;font-size:11px;opacity:.8}
+.pr32-hint{margin:8px 14px 4px;font-size:12.5px;color:#56707f;text-align:center;line-height:1.6}
+.pr32-pages{padding:10px 12px 40px}
+.pr32-wait{text-align:center;font-size:30px;padding:40px}
+.pr32-meas{position:absolute;left:-10000px;top:0;visibility:hidden;pointer-events:none}
+.pr32-ic{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;color:#2a7f8f;background:#eaf6f7;border:0;flex:0 0 auto}
+.pr32-ic svg{display:block}
+/* the A4 page (real size; the preview box is zoomed to the phone width) */
+.pr-page{width:210mm;height:297mm;box-sizing:border-box;padding:13mm 15mm 8mm;margin:0 auto 14px;background:#fff;display:flex;flex-direction:column;overflow:hidden;position:relative;
+  font-family:"Noto Naskh Arabic","Readex Pro",serif;color:#1b3347;box-shadow:0 4px 18px rgba(30,70,90,.14);direction:rtl;text-align:right;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pr-in{flex:1 1 auto;min-height:0;overflow:hidden}
+.pr-foot{flex:0 0 7mm;display:flex;justify-content:space-between;align-items:flex-end;font:9pt "Readex Pro",sans-serif;color:#8aa3b0;border-top:.3mm solid #e2edf1;margin-top:2mm}
+.pr-en{display:block;font:9.5pt/1.45 "Readex Pro",Arial,sans-serif;color:#6c8592;direction:ltr;text-align:left;margin-top:.6mm}
+.pr-en-k{display:block;font:9pt/1.4 "Readex Pro",Arial,sans-serif;color:#6c8592;direction:ltr;text-align:left}
+.pr-h1{font-size:23pt;line-height:1.45;margin:0;font-weight:700;color:#173246}
+.pr-h2{font-size:15pt;line-height:1.5;margin:4mm 0 2mm;color:#22707a;font-weight:700}
+.pr-h2 small{display:block;font-size:10.5pt;color:#56707f;font-weight:400}
+.pr-h3{font-size:13pt;margin:4mm 0 1mm;color:#22707a}
+.pr-ins{font-size:12.5pt;line-height:1.7;margin:1.5mm 0 0;color:#3b5566}
+.pr-for{font-size:12pt;margin:2mm 0 0;color:#3b5566}
+.pr-note{font-size:11.5pt;margin:2mm 0;color:#3b5566;background:#f5fbfb;border-radius:3mm;padding:2mm 3mm}
+/* letters */
+.pr-lt-head{display:flex;gap:5mm;align-items:center;border-bottom:.4mm dashed #cfe0e6;padding-bottom:3mm;margin-bottom:2mm}
+.pr-lt-big{flex:0 0 30mm;height:30mm;border-radius:8mm;background:#e9f6f5;color:#1f6f78;display:flex;align-items:center;justify-content:center;font-size:44pt;font-weight:700;line-height:1}
+.pr-lt-t{flex:1 1 auto;min-width:0}
+.pr-lt-pic{flex:0 0 34mm;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1mm;background:#fbf6ec;border-radius:5mm;padding:2mm}
+.pr-lt-pic b{font-size:15pt;line-height:1.4}
+.pr-lt-pic .pic-art,.pr-lt-pic .pr-pic-emo{display:block;width:22mm;height:22mm;font-size:42pt;line-height:22mm}
+.pr-lt-pic img,.pr-lt-pic .art-img{width:22mm!important;height:22mm!important;object-fit:contain}
+.pr-lt-row{display:flex;align-items:center;gap:3mm;margin:1.2mm 0;break-inside:avoid}
+.pr-lt-lab{flex:0 0 24mm;font-size:11pt;line-height:1.35;color:#3b5566}
+.pr-lt-lab .pr-en{font-size:8.5pt;text-align:right;direction:ltr}
+.pr-trace{flex:1 1 auto;width:150mm;height:34mm;display:block;font-family:"Noto Naskh Arabic",serif;overflow:visible}
+.pr-lt-row.tall .pr-trace{height:44mm}
+.pr-lt-free .pr-trace{height:24mm}
+.pr-gl-top{stroke:#d5e3ea;stroke-width:.25;stroke-dasharray:1 1.2}
+.pr-gl-base{stroke:#9fc3cf;stroke-width:.35}
+.pr-g-solid{fill:#1b3347}
+.pr-g-dash{fill:#eef3f6;stroke:#5f7e8d;stroke-width:.4;stroke-dasharray:1 .75}
+.pr-lt-word{margin-top:3mm;border-top:.4mm dashed #cfe0e6;padding-top:2mm}
+/* stories */
+.pr-st-meta{display:flex;justify-content:space-between;font:10pt "Readex Pro",sans-serif;color:#6c8592}
+.pr-stars{color:#e0a92a;letter-spacing:1px}
+.pr-cover{height:66mm;border-radius:5mm;overflow:hidden;margin:3mm 0 2mm;background:var(--bk,#eef5f7)}
+.pr-cover img,.pr-cover .art-img{width:100%!important;height:66mm!important;object-fit:cover;display:block}
+.pr-cover-emo{display:flex;align-items:center;justify-content:center;font-size:60pt}
+.pr-s{font-size:16pt;line-height:2;margin:0 0 1.5mm;break-inside:avoid}
+.pr-sn{display:inline-flex;align-items:center;justify-content:center;width:6.5mm;height:6.5mm;border-radius:50%;background:#e9f6f5;color:#22707a;font:9pt "Readex Pro",sans-serif;margin-left:2mm;vertical-align:.6mm}
+.pr-s .pr-s-en{margin:0 8.5mm 0 0}
+.pr-voc-g{display:flex;flex-wrap:wrap;gap:2.5mm}
+.pr-vw{border:.35mm solid #cfe0e6;border-radius:3mm;padding:1.5mm 3.5mm;font-size:14pt;line-height:1.6;background:#fbfdfd}
+.pr-vw .pr-en{font-size:8.5pt;text-align:center}
+.pr-q{margin:0 0 3mm;break-inside:avoid}
+.pr-qq{font-size:14pt;line-height:1.75;margin:0 0 1mm}
+.pr-qn{display:inline-flex;align-items:center;justify-content:center;width:7mm;height:7mm;border-radius:2mm;background:#22707a;color:#fff;font:10pt "Readex Pro",sans-serif;margin-left:2.5mm;vertical-align:.5mm}
+.pr-qo{list-style:none;margin:0;padding:0 9.5mm 0 0;display:flex;flex-wrap:wrap;gap:1.5mm 6mm;font-size:13pt;line-height:1.7}
+.pr-qo li{display:flex;align-items:center;gap:2mm}
+.pr-qo i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:6.5mm;height:6.5mm;border:.35mm solid #7d98a6;border-radius:50%;font-size:10pt}
+.pr-draw{height:48mm;border:.4mm dashed #b9d0d9;border-radius:5mm;padding:2mm 4mm;margin-top:3mm;font-size:12pt;color:#56707f}
+.pr-draw p{margin:0}
+.pr-key-t{font-size:14pt;margin:0 0 2mm}
+.pr-key-l{list-style:none;padding:0;margin:0;font-size:13pt;line-height:2}
+.pr-key-l small{color:#6c8592;font-size:10pt}
+.pr-key-v{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:1mm 6mm;font-size:12.5pt;line-height:1.8}
+.pr-key-v span{font:10pt "Readex Pro",sans-serif;color:#56707f}
+.pr-tip{margin-top:6mm;background:#f5fbfb;border-radius:4mm;padding:3mm 4mm;font-size:12pt;line-height:1.8;color:#3b5566}
+/* word cards */
+.pr-cards-h{font:11pt "Readex Pro",sans-serif;color:#56707f;margin:0 0 3mm;display:flex;flex-wrap:wrap;justify-content:space-between;gap:2mm}
+.pr-cards-h .pr-en{display:inline;margin:0 2mm}
+.pr-cards{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:62mm;border-top:.35mm dashed #9fb7c2;border-right:.35mm dashed #9fb7c2}
+.pr-card{position:relative;border-left:.35mm dashed #9fb7c2;border-bottom:.35mm dashed #9fb7c2;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3mm;text-align:center}
+.pr-card b{font-size:30pt;line-height:1.6;font-weight:700;color:#173246}
+.pr-card .pr-en{text-align:center;font-size:11pt}
+.pr-card i{position:absolute;bottom:2.5mm;left:4mm;font-style:normal;color:#e0a92a;font-size:9pt}
+/* certificate */
+.pr-cert{height:258mm}
+.pr-cert-in{height:100%;box-sizing:border-box;border:2.2mm solid #9fd3cf;outline:.6mm solid #e0a92a;outline-offset:-5mm;border-radius:7mm;padding:14mm 14mm 10mm;display:flex;flex-direction:column;align-items:center;text-align:center;
+  background:radial-gradient(circle at 50% 0,#f2fbfa 0,#fff 60%)}
+.pr-cert-bird{width:46mm;height:46mm}
+.pr-cert-bird svg{width:100%;height:100%}
+.pr-cert-h{font-size:30pt;margin:2mm 0 0;color:#1f6f78;line-height:1.5}
+.pr-cert-to{font-size:14pt;color:#56707f;margin:8mm 0 0}
+.pr-cert-name{font:700 30pt/1.6 "Readex Pro","Noto Naskh Arabic",sans-serif;color:#173246;margin:2mm 0;border-bottom:.5mm solid #e0a92a;padding:0 10mm 1mm;min-width:90mm}
+.pr-cert-why{font-size:15pt;margin:3mm 0 0;line-height:1.7}
+.pr-cert .pr-en{text-align:center}
+.pr-cert-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:4mm;margin:9mm 0 6mm}
+.pr-cert-stats span{display:flex;flex-direction:column;align-items:center;min-width:33mm;padding:3mm 3mm;border-radius:4mm;background:#f2f9f9;font-size:11.5pt;line-height:1.6;color:#3b5566}
+.pr-cert-stats b{font:700 22pt/1.3 "Readex Pro",sans-serif;color:#1f6f78}
+.pr-cert-stats b.sm{font-size:13pt;line-height:1.8}
+.pr-cert-msg{font-size:17pt;font-weight:700;color:#1f6f78;margin:4mm 0 0}
+.pr-cert-foot{margin-top:auto;width:100%;display:flex;justify-content:space-between;font-size:12pt;color:#56707f}
+/* printables screen */
+.pr32-chips{display:flex;flex-wrap:wrap;gap:8px}
+.pr32-chip{min-height:40px;padding:0 14px;border-radius:20px;border:1.5px solid #cfe0e6;background:#fff;font:inherit;font-size:15px;color:#1b3347}
+.pr32-chip.on{background:#2a9d9a;border-color:#2a9d9a;color:#fff}
+.pr32-opts{display:flex;flex-wrap:wrap;gap:6px 14px}
+.pr32-lts{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:7px}
+.pr32-lt{position:relative;height:56px;border-radius:14px;border:1.5px solid #d7e7ed;background:#fff;font-family:var(--font-word,"Noto Naskh Arabic");color:#173246}
+.pr32-lt b{font-size:24px;line-height:1}
+.pr32-lt svg{position:absolute;bottom:3px;left:3px;width:13px;height:13px;color:#7fa9b3}
+.pr32-lv{border:1.5px solid #e1edf1;border-radius:14px;background:#fff;padding:2px 10px}
+.pr32-lv summary{min-height:44px;display:flex;align-items:center;gap:6px;font-weight:600;cursor:pointer}
+.pr32-sl{list-style:none;margin:0;padding:0 0 6px}
+.pr32-sl li{display:flex;align-items:center;gap:8px;padding:5px 0;border-top:1px solid #eef4f6;line-height:1.5}
+.pr32-si{font-size:20px}
+.pr32-cardsb{display:flex;flex-wrap:wrap;gap:8px}
+.pr32-cardsb .btn{display:flex;flex-direction:column;align-items:center;line-height:1.3;min-height:50px}
+.pr32-cardsb small{font-size:11px;opacity:.75}
+.pr32-entry .acc-small{margin:6px 2px 0}
+@media print{
+  @page{size:A4 portrait;margin:0}
+  html,body{background:#fff!important;margin:0!important;padding:0!important;height:auto!important;overflow:visible!important}
+  body.pr32-on > *:not(#pr32){display:none!important}
+  body.pr32-on #pr32{position:static!important;overflow:visible!important;background:#fff!important;inset:auto}
+  .pr32-bar,.pr32-hint,.pr32-wait{display:none!important}
+  .pr32-pages{zoom:1!important;padding:0!important}
+  .pr-page{margin:0!important;box-shadow:none!important;break-after:page;page-break-after:always}
+  .pr-page:last-child{break-after:auto;page-break-after:auto}
+}
+/* ---------- v32 teacher mode ---------- */
+.tch-ul{margin:0;padding:0 18px 0 0;line-height:1.8}
+.tch-ul li{margin:6px 0}
+.tch-acts{display:grid;gap:8px}
+.tch-acts .btn{min-height:48px}
+.tch-row{display:flex;gap:8px;align-items:center;margin:6px 0}
+.tch-row .tch-nick{flex:1 1 auto;min-width:0;min-height:44px;border:1.5px solid #cfe0e6;border-radius:12px;padding:0 10px;font:inherit;font-size:16px;background:#fff}
+.tch-g{display:inline-flex;border:1.5px solid #cfe0e6;border-radius:12px;overflow:hidden;flex:0 0 auto}
+.tch-g label{position:relative}
+.tch-g input{position:absolute;opacity:0;inset:0;margin:0}
+.tch-g span{display:inline-flex;align-items:center;min-height:42px;padding:0 10px;font-size:14px}
+.tch-g input:checked + span{background:#2a9d9a;color:#fff}
+.tch-gentle{background:#f2f9f9;border-radius:14px;padding:10px 12px;line-height:1.75;margin:0}
+.tch-wait{text-align:center;font-size:28px}
+.tch-cards{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.tch-k{background:#fff;border:1.5px solid #e1edf1;border-radius:16px;padding:10px 12px}
+.tch-k-h{display:flex;align-items:center;gap:8px}
+.tch-k-h b{flex:1 1 auto;min-width:0}
+.tch-k-h small{color:#56707f;font-size:12.5px;white-space:nowrap}
+.tch-k-sk{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+.tch-k-sk span{background:#f4f9fb;border-radius:10px;padding:5px 8px;display:flex;flex-direction:column;line-height:1.45}
+.tch-k-sk i{font-style:normal;font-size:12px;color:#56707f}
+.tch-k-sk b{font-size:14px;font-weight:600}
+.tch-k-r{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13.5px;color:#2c4658;line-height:1.6}
+.tch-pack .acc-chk{min-height:40px}
+.tch-home{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:6px}
+.tch-home-l{font-size:13px;color:#2c4658;background:rgba(255,255,255,.75);border-radius:10px;padding:2px 8px}
+.tch-home-b{min-height:34px;border:0;border-radius:17px;padding:0 12px;background:rgba(255,255,255,.92);color:#1b3347;font:inherit;font-size:14px;box-shadow:0 2px 6px rgba(20,60,80,.1)}
+/* class overview sheet */
+.pr-cls-r{display:grid;grid-template-columns:34mm repeat(4,1fr) 14mm 18mm 22mm;gap:1.5mm;align-items:center;font:10pt/1.5 "Readex Pro",sans-serif;padding:1.6mm 0;border-bottom:.3mm solid #e2edf1}
+.pr-cls-r > span:first-child{font-weight:600;font-size:11pt}
+.pr-cls-th{margin-top:4mm;font-weight:700;color:#22707a;border-bottom:.5mm solid #9fd3cf}
+
+/* ===== v32 DEMO games: goal strip, pearl map, kick, hop, paint, riddles, hide, sentence dhow, spot the mistake, sky ===== */
+/* goal strip (every game) */
+.g32-goal{position:relative;height:58px;margin:2px 14px 0;--p:0}
+.g32-gtrack{position:absolute;inset-inline:22px 40px;top:26px;display:flex;justify-content:space-between;align-items:center;height:6px;border-radius:6px;background:linear-gradient(90deg,#e8eef2,#e8eef2)}
+.g32-gtrack i{width:8px;height:8px;border-radius:50%;background:#cfdbe2;transition:background .3s,transform .3s}
+.g32-gtrack i.on{background:#f2b632;transform:scale(1.25)}
+.g32-gfal{position:absolute;top:2px;inset-inline-start:calc(var(--p) * (100% - 92px));width:44px;height:44px;transition:inset-inline-start .6s cubic-bezier(.3,1.4,.5,1);z-index:2}
+.g32-gfal .mascot,.g32-gfal img,.g32-gfal svg{width:44px!important;height:44px!important;object-fit:contain}
+.g32-gfal.hop{animation:g32hop .6s}
+@keyframes g32hop{0%{transform:translateY(0)}40%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+.g32-gend{position:absolute;top:0;inset-inline-end:0;width:48px;height:48px;display:flex;align-items:center;justify-content:center}
+.g32-gend img{width:46px;height:46px;object-fit:contain}
+.g32-goal.look-palm .g32-gend img{filter:saturate(.25) brightness(1.08);transition:filter .8s}
+.g32-goal.look-palm.won .g32-gend img{filter:none}
+.g32-goal.look-dhow .g32-gend img{transform:scaleX(-1)}
+.g32-goal.won .g32-gend{animation:g32pop .8s}
+.g32-goal.look-dhow.won .g32-gend{animation:g32sail 1.6s ease-in-out}
+@keyframes g32pop{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+@keyframes g32sail{0%{transform:translateX(0)}50%{transform:translateX(-10px) rotate(-4deg)}100%{transform:translateX(0)}}
+.g32-gcap{position:absolute;bottom:-2px;inset-inline:0;text-align:center;font-size:11.5px;color:#6b8592;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* end sheet payoff + oyster + gift */
+.g32-end .tgg-end-fal{display:inline-block}
+.g32-pay{display:inline-flex;justify-content:center;position:relative;margin:-8px auto 0}
+.g32-pay img{width:110px;height:auto}
+.g32-pay.won img{animation:g32hatch 1.1s ease-out}
+.g32-pay.look-palm:not(.won) img{filter:saturate(.25)}
+@keyframes g32hatch{0%{transform:scale(.6) rotate(-6deg);opacity:.2}55%{transform:scale(1.12) rotate(3deg);opacity:1}100%{transform:scale(1)}}
+.g32-spark{position:absolute;top:-6px;inset-inline-end:-10px;font-style:normal;font-size:24px;animation:g32pop 1.2s infinite}
+.g32-oyline{display:flex;align-items:center;justify-content:center;gap:8px;background:#f2fbff;border-radius:16px;padding:6px 12px;font-size:15px;color:#24506a}
+.g32-oy-ic{width:34px;height:34px;object-fit:contain}
+.g32-gift{display:flex;align-items:center;gap:10px;justify-content:center;border:0;border-radius:18px;background:#fff6e6;padding:8px 14px;font:inherit;font-size:15px;color:#7a4d00;cursor:pointer;box-shadow:0 4px 10px rgba(120,80,0,.08)}
+.g32-gift-box{font-size:30px;display:inline-block;animation:g32wig 2.4s infinite}
+.g32-gift.open .g32-gift-box{animation:g32pop .8s}
+@keyframes g32wig{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-10deg)}90%{transform:rotate(10deg)}95%{transform:rotate(-6deg)}}
+/* games tab banner */
+.g32-banner{display:flex;align-items:center;gap:12px;width:calc(100% - 24px);margin:4px 12px 12px;border:0;border-radius:22px;padding:10px 14px;background:linear-gradient(135deg,#e6f8fb,#fdf6e7);box-shadow:0 6px 16px rgba(20,60,80,.10);font:inherit;text-align:start;cursor:pointer}
+.g32-banner .grow{flex:1;display:flex;flex-direction:column;gap:2px}.g32-banner b{font-size:18px;color:#16465c}.g32-banner small{font-size:13px;color:#4d6d7c}
+.g32-bn-img{width:54px;height:54px;object-fit:contain}
+.g32-pc{background:#fff;border-radius:14px;padding:4px 10px;font-size:15px;color:#24506a;box-shadow:inset 0 0 0 1px #d8e8ef;white-space:nowrap}
+.tgg-tile.g32-bonus{background:linear-gradient(160deg,#fff,#f0f7ff)}
+/* pearl map */
+.g32-map-modal .modal-box,.g32-map-modal #modal-box{max-width:520px}
+.g32-mapw{gap:10px;padding-bottom:10px}
+.g32-map-h h2{margin:0;font-size:20px}
+.g32-left{margin:0;text-align:center;font-size:15px;color:#24506a}
+.g32-map{position:relative;width:100%;aspect-ratio:720/956;border-radius:22px;overflow:hidden;box-shadow:0 8px 20px rgba(20,60,80,.15)}
+.g32-map-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.g32-isle{position:absolute;top:10px;inset-inline-start:12px;background:#ffffffd9;border-radius:12px;padding:3px 10px;font-size:14px;color:#16465c}
+.g32-sp{position:absolute;left:var(--x);top:var(--y);width:13%;transform:translate(-50%,-50%);display:flex;justify-content:center}
+.g32-sp img{width:100%;height:auto;filter:drop-shadow(0 3px 4px rgba(0,40,60,.25))}
+.g32-sp.oy.shut img{opacity:.75;filter:grayscale(.3) drop-shadow(0 3px 4px rgba(0,40,60,.2))}
+.g32-sp.chest{width:15%}.g32-sp.chest.shut img{filter:grayscale(.85) brightness(1.05);opacity:.7}
+.g32-sp.next::after{content:"";position:absolute;inset:-6px;border-radius:50%;box-shadow:0 0 0 3px #fff9,0 0 18px 4px #fff;animation:g32glow 1.8s infinite}
+@keyframes g32glow{50%{opacity:.4}}
+.g32-diver{position:absolute;top:-62%;inset-inline-end:-30%;width:70%;font-style:normal;animation:g32bob 2.4s ease-in-out infinite}
+.g32-diver img{width:100%}
+@keyframes g32bob{50%{transform:translateY(-4px) rotate(-3deg)}}
+.g32-mapw h3{margin:8px 0 0;font-size:17px}
+.g32-shop{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.g32-item{display:flex;align-items:center;gap:10px;background:#fff;border-radius:18px;padding:8px 10px;box-shadow:0 3px 10px rgba(20,60,80,.08)}
+.g32-item .grow{flex:1;display:flex;flex-direction:column}.g32-item small{color:#6b8592;font-size:12.5px}
+.g32-it-img{width:46px;height:46px;object-fit:contain}
+.g32-using{color:#1d8a5b;font-size:14px;white-space:nowrap}
+.g32-swap{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#f6fafc;border-radius:16px;padding:8px 10px;flex-wrap:wrap}
+.g32-frs{display:flex;flex-wrap:wrap;gap:6px}.g32-fr{width:62px;height:70px;background:#fff;border-radius:14px;box-shadow:0 2px 6px rgba(20,60,80,.08)}
+.g32-fr svg{width:100%;height:100%}
+/* kick */
+.g32-kick{display:flex;flex-direction:column;align-items:center;min-height:360px;border-radius:24px;margin:6px 12px;background:linear-gradient(#e9f7ff 0 30%,#bfe6a8 30% 100%);position:relative;overflow:hidden}
+.g32-kick.beach{background:linear-gradient(#e9f7ff 0 22%,#9fdcf0 22% 34%,#f6e2b3 34% 100%)}
+.g32-goals{display:flex;gap:8px;justify-content:center;width:100%;padding:6px 8px}
+.g32-gl{position:relative;border:0;background:none;padding:0;width:31%;cursor:pointer}
+.g32-net{width:100%;height:auto;transition:transform .3s}
+.g32-gl b{position:absolute;inset:auto 0 22% 0;margin:auto;width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;font:700 30px/1 "Noto Naskh Arabic",serif;color:#173246}
+.g32-gl.in .g32-net{animation:g32net .6s}
+@keyframes g32net{30%{transform:scale(1.06,.94)}60%{transform:scale(.98,1.03)}}
+.g32-gl.good b{background:#dff7ea}.g32-gl.bad{animation:tggshake .4s}
+.g32-ball{margin-top:auto;margin-bottom:22px;width:72px;height:72px;transition:transform .55s cubic-bezier(.3,.6,.4,1)}
+.g32-ball .tg-gpic,.g32-ball img{width:72px;height:72px;object-fit:contain}
+.g32-ball.wob{animation:tggshake .4s}
+/* hop */
+.g32-dunes{position:relative;min-height:390px;margin:6px 12px;border-radius:24px;background:linear-gradient(#fdf3df 0 35%,#f2d9a8 35% 100%);overflow:hidden}
+.g32-stones{display:flex;justify-content:space-around;padding:96px 6px 0}
+.g32-stone{position:relative;border:0;background:none;padding:0;width:30%;cursor:pointer}
+.g32-stone-img{width:100%;height:auto}
+.g32-stone b{position:absolute;inset:0 0 10% 0;display:flex;align-items:center;justify-content:center;font:700 34px/1 "Noto Naskh Arabic",serif;color:#173246}
+.g32-stone.good b{color:#1d8a5b}.g32-stone.bad{animation:tggshake .4s}
+.g32-gz{position:absolute;bottom:8px;left:50%;width:110px;margin-left:-55px;--dx:0px;--dy:0px}
+.g32-gz-img{width:100%;height:auto}
+.g32-gz.jump{animation:g32jump .9s ease-in-out forwards}
+@keyframes g32jump{0%{transform:translate(0,0)}50%{transform:translate(calc(var(--dx) * .5),calc(var(--dy) - 60px)) rotate(-8deg)}100%{transform:translate(var(--dx),var(--dy)) scale(.8)}}
+/* paint */
+.g32-paint{display:flex;flex-direction:column;align-items:center;gap:8px;padding:4px 12px}
+.g32-easel{width:190px;height:216px;background:#fff;border-radius:24px;box-shadow:0 6px 14px rgba(20,60,80,.10);padding:6px}
+.g32-friend{width:100%;height:100%}
+.g32-pt{transition:opacity .3s}.g32-pt.now{animation:g32glowp 1.4s infinite}
+@keyframes g32glowp{50%{opacity:.55}}
+.g32-pq{display:flex;align-items:center;gap:10px;justify-content:center;min-height:56px}
+.g32-phrase{margin:0;font:700 28px/1.5 "Noto Naskh Arabic",serif;color:#173246;text-align:center}
+.g32-ask{margin:0;font-size:18px;color:#24506a;text-align:center}
+.g32-chip{display:inline-block;width:26px;height:26px;border-radius:50%;background:var(--c);vertical-align:middle;box-shadow:inset 0 0 0 2px #0002}
+.g32-sw{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.g32-swb{border:0;background:#fff;border-radius:50%;width:64px;height:64px;padding:7px;box-shadow:0 4px 10px rgba(20,60,80,.12);cursor:pointer}
+.g32-swb i{display:block;width:100%;height:100%;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 2px #0001}
+.g32-swb.lab{width:74px;height:auto;border-radius:16px;display:flex;flex-direction:column;align-items:center;gap:4px}.g32-swb.lab i{width:44px;height:44px}.g32-swb.lab span{font-size:14px}
+.g32-swb.good{box-shadow:0 0 0 4px #43c08a}.g32-swb.bad{animation:tggshake .4s}
+.g32-opt{border:0;border-radius:18px;background:#fff;padding:12px 18px;font:700 22px/1.5 "Noto Naskh Arabic",serif;color:#173246;box-shadow:0 4px 10px rgba(20,60,80,.10);cursor:pointer;min-width:42%}
+.g32-opt.good{background:#dff7ea}.g32-opt.bad{animation:tggshake .4s;background:#ffe9e9}
+.g32-parts{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.g32-pb{border:0;border-radius:14px;background:#eef5f8;padding:6px 10px;font:inherit;font-size:16px}.g32-pb.on{background:#16465c;color:#fff}
+.g32-done{flex-basis:100%;margin-top:6px}
+/* riddles */
+.g32-riddle{display:flex;align-items:center;gap:10px;margin:6px 14px;background:#fff;border-radius:22px;padding:10px 12px;box-shadow:0 4px 12px rgba(20,60,80,.08);position:relative}
+.g32-riddle p{margin:0;flex:1;font:600 20px/1.8 "Noto Naskh Arabic",serif;color:#173246}
+.g32-riddle .g31-hear{position:static;flex:none}
+.g32-rd-fal{width:62px!important;height:62px!important;flex:none}.g32-rd-fal img{width:62px;height:62px;object-fit:contain}
+.g32-wp{grid-template-columns:repeat(3,1fr)!important}.g32-wp .g31-pic{min-height:120px}.g32-wp .g31-pic .tg-gpic,.g32-wp .g31-pic img{width:72px;height:72px}
+.g32-stars{display:flex;justify-content:center;gap:4px;min-height:28px;font-size:22px}.g32-stars i{font-style:normal;animation:g32pop .6s}
+/* hide */
+.g32-hq{display:flex;align-items:center;justify-content:center;gap:10px;padding:4px 12px}
+.g32-hq .g31-hear{position:static}
+.g32-scene{position:relative;height:300px;margin:6px 14px;border-radius:24px;background:linear-gradient(#e9f7ff 0 58%,#f4e3bd 58% 100%);overflow:hidden}
+.g32-obj{position:absolute;left:50%;top:52%;width:150px;height:150px;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;justify-content:center}
+.g32-obj .tg-gpic,.g32-obj img{width:150px;height:150px;object-fit:contain}
+.g32-spot{position:absolute;width:64px;height:64px;border-radius:50%;border:2px dashed #7fa7b8;background:#ffffff8c;display:flex;align-items:center;justify-content:center;cursor:pointer;transform:translate(-50%,-50%);padding:0}
+.g32-q{font:700 22px/1 sans-serif;color:#7fa7b8}
+.g32-spot.at-top{left:50%;top:13%;z-index:3}
+.g32-spot.at-under{left:50%;top:88%;z-index:3}
+.g32-spot.at-behind{left:63%;top:30%;z-index:1}
+.g32-spot.at-front{left:44%;top:74%;z-index:3}
+.g32-spot.at-beside{left:15%;top:58%;z-index:3}
+.g32-spot.bad{animation:tggshake .4s}
+.g32-spot.found{border-color:transparent;background:none;width:84px;height:84px}
+.g32-gz-hid{width:84px;height:auto;animation:g32pop .7s}
+/* sentence dhow + spot */
+.g32-sent{padding:4px 12px 10px}
+.g32-tiers{display:flex;flex-direction:column;gap:10px}
+.g32-tier{display:flex;align-items:center;gap:10px;background:#fff;border-radius:20px;padding:8px;box-shadow:0 3px 10px rgba(20,60,80,.08)}
+.g32-tb{flex:1}.g32-gifts{display:flex;gap:2px;font-size:22px}.g32-gifts i{font-style:normal}.g32-gifts .wait{filter:grayscale(1);opacity:.35}
+.g32-timer{display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#4d6d7c;padding:4px 6px}
+.g32-sh{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+.g32-sh .g31-hear{position:static;width:46px;height:46px;font-size:22px}
+.g32-tierl{background:#eef5f8;border-radius:12px;padding:3px 10px;font-size:14px;color:#24506a}
+.g32-dots{display:flex;gap:6px}.g32-dots i{width:10px;height:10px;border-radius:50%;background:#d6e2e8}.g32-dots i.on{background:#43c08a}
+.g32-sea{position:relative;border-radius:22px;background:linear-gradient(#e9f7ff 0 55%,#9fdcf0 55% 100%);padding:8px 8px 12px;overflow:hidden}
+.g32-boat{width:120px;margin:0 auto;transition:transform 1.8s ease-in}
+.g32-boat img{width:100%;height:auto}
+.g32-boat.sail{transform:translateX(-140%) rotate(-3deg)}
+.g32-deck{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:6px}
+.g32-plank{min-width:58px;min-height:44px;padding:4px 10px;border-radius:10px;background:#c99a63;box-shadow:inset 0 -3px 0 #a87a45;color:#fff;font:700 21px/1.6 "Noto Naskh Arabic",serif;display:flex;align-items:center;justify-content:center}
+.g32-plank:not(.on){background:#e7d3b7;box-shadow:inset 0 -3px 0 #d3b68d}
+.g32-deck.done .g32-plank{background:#3aa676;box-shadow:inset 0 -3px 0 #2b8a5f}
+.g32-cards{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+.g32-card{border:0;border-radius:14px;background:#fff;padding:8px 14px;font:700 22px/1.6 "Noto Naskh Arabic",serif;color:#173246;box-shadow:0 4px 10px rgba(20,60,80,.12);cursor:pointer}
+.g32-card.used{visibility:hidden}.g32-card.bad{animation:tggshake .4s;background:#ffe9e9}
+.g32-line{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;background:#fff;border-radius:20px;padding:14px 8px;box-shadow:0 4px 12px rgba(20,60,80,.08);margin-top:8px}
+.g32-w{border:0;border-radius:12px;background:#f3f7fa;padding:6px 10px;font:700 23px/1.7 "Noto Naskh Arabic",serif;color:#173246;cursor:pointer}
+.g32-w.bad{animation:tggshake .4s}
+.g32-w.fixed{background:#dff7ea;display:flex;flex-direction:column;align-items:center;line-height:1.3}
+.g32-w.fixed s{color:#c05050;font-size:16px;opacity:.8}.g32-w.fixed b{color:#1d8a5b}
+.g32-fix{display:flex;align-items:center;justify-content:center;gap:8px;min-height:40px}.g32-fix p{margin:0;font-size:18px;color:#1d8a5b}.g32-fix .g31-hear{position:static;width:42px;height:42px;font-size:20px}
+.g32-sand{display:flex;align-items:center;gap:6px;margin:2px 4px 6px}
+.g32-sand i{flex:1;height:6px;border-radius:6px;background:#f3e2b6;position:relative;overflow:hidden}
+.g32-sand i::after{content:"";position:absolute;inset:0;background:#e0b858;transform-origin:right;animation:g32drain 45s linear forwards}
+.g32-sand span{font-size:16px;opacity:.7}
+.g32-sand.done span{opacity:.35}
+@keyframes g32drain{to{transform:scaleX(0)}}
+/* sky */
+.g32-air{position:relative;height:360px;margin:6px 12px;border-radius:24px;background:linear-gradient(#bfe6ff,#eef9ff);overflow:hidden}
+.g32-skyfal{position:absolute;left:50%;top:84%;width:64px;height:64px;transform:translate(-50%,-50%);transition:left .7s ease,top .7s ease;z-index:2}
+.g32-skyfal .mascot,.g32-skyfal img{width:64px!important;height:64px!important;object-fit:contain}
+.g32-star{position:absolute;left:var(--x);top:var(--y);width:64px;height:64px;border:0;background:none;padding:0;cursor:pointer;animation:g32float 4s ease-in-out infinite;animation-delay:var(--d)}
+.g32-star span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);background:#ffd166;font:700 24px/1 "Noto Naskh Arabic",serif;color:#5a3d00;padding-top:6px}
+.g32-star.got{animation:g32pop .6s;opacity:.4}.g32-star.bad{animation:tggshake .4s}
+@keyframes g32float{50%{transform:translateY(-10px)}}
+@media (prefers-reduced-motion:reduce){.g32-gfal,.g32-ball,.g32-boat,.g32-skyfal{transition:none}.g32-gz.jump,.g32-star,.g32-gift-box,.g32-diver,.g32-sp.next::after{animation:none}}
+.g32-obj .pic-art,.g32-ball .pic-art{display:block;width:100%!important;height:100%!important;font-size:inherit}
+.g32-obj .pic-art img,.g32-ball .pic-art img{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain}
+.g32-ball{width:76px;height:76px}
+.g32-boat img{transform:scaleX(-1)}
+
+/* ===== v32 graphics pass: painted scenes + 3D pieces ===== */
+.g33-ic{display:inline-block;width:1.45em;height:1.45em;object-fit:contain;vertical-align:-.38em;margin-inline:.08em}
+.g33-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;user-select:none}
+/* goal strip: sky ribbon + pearls */
+.g32-gtrack{height:22px;top:18px;border-radius:12px;background:var(--g33-strip) center/100% 100% no-repeat;padding:0 8px;box-shadow:0 2px 6px rgba(40,110,140,.12)}
+.g32-gtrack i{width:12px;height:12px;background:var(--g33-pearl) center/contain no-repeat;filter:grayscale(1) opacity(.45);border-radius:0}
+.g32-gtrack i.on{background:var(--g33-pearl) center/contain no-repeat;filter:none;transform:scale(1.3)}
+.g32-gfal{filter:drop-shadow(0 3px 3px rgba(20,60,80,.18))}
+.g32-gend img{filter:drop-shadow(0 3px 3px rgba(20,60,80,.18))}
+/* end sheet */
+.g32-gift-box{width:48px;height:48px;font-size:0;position:relative}
+.g32-gift-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .4s}
+.g33-gift-o{opacity:0}.g32-gift.open .g33-gift-o{opacity:1}.g32-gift.open .g33-gift-c{opacity:0}
+.g32-spark .g33-ic{width:30px;height:30px}
+/* kick */
+.g33-kick{aspect-ratio:1/1;min-height:0;width:calc(100% - 24px);max-width:440px;margin:6px auto;display:block;background:none;box-shadow:0 8px 20px rgba(20,60,80,.15)}
+.g33-kick .g31-top{position:absolute;top:8px;inset-inline-start:8px;z-index:3}
+.g33-kick .g32-goals{position:absolute;inset:0;display:block;padding:0;z-index:2}
+.g33-kick .g32-gl{position:absolute;width:25%;height:15%;top:38%;transform:translate(-50%,-50%);border-radius:10px}
+.g33-kick .g32-gl:nth-child(1){left:19.5%}.g33-kick .g32-gl:nth-child(2){left:50%}.g33-kick .g32-gl:nth-child(3){left:80%}
+.g33-kick.beach .g32-gl{top:43%}.g33-kick.beach .g32-gl:nth-child(1){left:19%}.g33-kick.beach .g32-gl:nth-child(3){left:80.5%}
+.g33-kick .g32-net{display:none}
+.g33-kick .g32-gl b{inset:0;width:46px;height:46px;background:#ffffffe6;box-shadow:0 4px 10px rgba(0,40,30,.22);font-size:28px}
+.g33-kick .g32-gl.in b{animation:g32net .6s}
+.g33-kick .g32-ball{position:absolute;bottom:7%;left:50%;margin:0 0 0 -34px;width:68px;height:68px;z-index:2;filter:drop-shadow(0 8px 6px rgba(0,40,0,.25))}
+.g33-ball-img{width:100%;height:100%;object-fit:contain}
+/* hop */
+.g33-dunes{aspect-ratio:1/1;min-height:0!important;width:calc(100% - 24px);max-width:440px;margin:6px auto;background:none;box-shadow:0 8px 20px rgba(20,60,80,.15)}
+.g33-dunes .g32-stones{position:absolute;inset:0;padding:0;display:block;z-index:1}
+.g33-dunes .g32-stone{position:absolute;width:26%;height:12%;top:50.5%;transform:translate(-50%,-50%);border-radius:50%}
+.g33-dunes .g32-stone:nth-child(1){left:18%}.g33-dunes .g32-stone:nth-child(2){left:51%}.g33-dunes .g32-stone:nth-child(3){left:82.5%}
+.g33-dunes .g32-stone-img{display:none}
+.g33-dunes .g32-stone b{inset:-6px 0 0 0;color:#3b2408;text-shadow:0 1px 0 #fff8,0 0 8px #fff6;font-size:32px}
+.g33-dunes .g32-stone.good b{color:#13724a}
+.g33-dunes .g32-gz{z-index:2;width:26%;margin-left:-13%;bottom:4%;filter:drop-shadow(0 8px 6px rgba(90,60,10,.25))}
+/* paint */
+.g33-studio{position:relative;width:min(300px,82vw);aspect-ratio:1/1;border-radius:24px;overflow:hidden;box-shadow:0 8px 20px rgba(20,60,80,.15)}
+.g33-studio .g33-bg{filter:saturate(.9) brightness(1.02)}
+.g33-easel{position:absolute;left:50%;bottom:3%;transform:translateX(-50%);width:auto;height:84%;aspect-ratio:360/519;background:none;box-shadow:none;padding:0;border-radius:0;z-index:1;filter:drop-shadow(0 10px 8px rgba(40,50,60,.22))}
+.g33-fr{position:relative;display:block;width:100%;height:100%;isolation:isolate}
+.g33-fr .g33-fr-base{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.g33-pt{position:absolute;inset:0;background:var(--c);mix-blend-mode:multiply;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;pointer-events:none;transition:background .4s}
+.g33-pt.white{background:#fff;mix-blend-mode:normal;opacity:.5}
+.g33-pt.now:not(.on){background:#ffd75e;animation:g33glow 1.4s infinite}
+@keyframes g33glow{0%,100%{opacity:.15}50%{opacity:.75}}
+.g32-pt.now{animation:none}.g33-pt.now:not(.on){animation:g33glow 1.4s infinite}
+.g32-fr{width:62px;height:82px;padding:3px}.g32-fr .g33-fr{width:100%;height:100%}
+/* who */
+.g33-who{position:relative;margin:6px 12px;border-radius:24px;overflow:hidden;padding:4px 0 10px;box-shadow:0 8px 20px rgba(20,60,80,.12)}
+.g33-who>*:not(.g33-bg){position:relative;z-index:1}
+.g33-who .g32-riddle{background:#ffffffeb}
+.g33-who .g31-pic{background:#ffffffeb}
+.g32-stars i{font-size:0;width:26px;height:26px;display:inline-block;background:var(--g33-star) center/contain no-repeat}
+/* hide */
+.g33-scene{aspect-ratio:1/1;height:auto;width:calc(100% - 28px);max-width:420px;margin:6px auto;background:none;box-shadow:0 8px 20px rgba(20,60,80,.15)}
+.g33-spot{width:58px;height:58px;z-index:2;border:2.5px dashed #ffffffd9;background:#ffffff66;box-shadow:0 2px 10px rgba(0,40,60,.18);backdrop-filter:blur(1px)}
+.g33-spot .g32-q{color:#fff;text-shadow:0 1px 3px #0005}
+.g33-spot.found{width:80px;height:80px;border:0;background:none;box-shadow:none;backdrop-filter:none}
+.g33-peek{display:block;width:80px}
+.g33-peek img{width:80px;height:auto;filter:drop-shadow(0 5px 4px rgba(40,40,20,.28))}
+.g33-spot.at-behind.found .g33-peek{clip-path:inset(0 0 46% 0);transform:translateY(16%)}
+.g33-spot.at-under.found .g33-peek img{filter:brightness(.82) drop-shadow(0 4px 3px rgba(40,40,20,.3))}
+/* dhow + spot */
+.g33s-dhow .g32-sea{background:none;min-height:190px;box-shadow:0 8px 20px rgba(20,60,80,.12)}
+.g33s-dhow .g32-sea>*:not(.g33-bg){position:relative;z-index:1}
+.g33s-dhow .g32-boat{filter:drop-shadow(0 6px 5px rgba(0,50,70,.25))}
+.g32-plank{background:var(--g33-plank) center/100% 100% no-repeat!important;box-shadow:none!important;color:#4a2a0c;text-shadow:0 1px 0 #fff6;min-width:66px;border-radius:8px;filter:drop-shadow(0 3px 3px rgba(60,30,0,.2))}
+.g32-plank:not(.on){filter:saturate(.35) brightness(1.18) opacity(.8)}
+.g32-deck.done .g32-plank{filter:drop-shadow(0 0 6px #43c08a) drop-shadow(0 3px 3px rgba(60,30,0,.2))}
+.g33-deskw{position:relative;border-radius:22px;overflow:hidden;padding:26px 12px;margin-top:8px;box-shadow:0 8px 20px rgba(20,60,80,.12)}
+.g33-deskw .g32-line{position:relative;z-index:1;margin:0;background:#fffffff0}
+.g32-tier .g33-ic{width:26px;height:26px}.g32-gifts .g33-ic{width:28px;height:28px}
+.g32-gifts i{font-size:0}.g32-gifts .wait .g33-ic{filter:grayscale(1);opacity:.45}
+/* sky */
+.g33-air{background:none;box-shadow:0 8px 20px rgba(20,60,80,.12)}
+.g33-air .g32-skyfal{z-index:3}
+.g33-air .g32-star{z-index:2;width:70px;height:70px}
+.g33-air .g32-star span{clip-path:none;background:var(--g33-star) center/contain no-repeat;color:#6a4300;text-shadow:0 1px 0 #fff8;padding-top:8px;filter:drop-shadow(0 5px 6px rgba(160,110,0,.25))}
+/* map */
+.g32-sp{width:9.5%}.g32-sp.chest{width:11.5%}
+.g32-map{aspect-ratio:900/1592}
+.g32-pc .g33-ic{width:22px;height:22px}
+/* teacher + printables */
+.tch .g33-ic,.pr32-hub .g33-ic,.pr32-entry .g33-ic,.tch-entry .g33-ic,.tch-home .g33-ic{width:1.6em;height:1.6em;vertical-align:-.45em}
+.acc-h .g33-ic{width:38px;height:38px}
+/* certificate (print) */
+.g33-cert{position:relative;border:0!important;outline:0!important;background:none!important}
+.g33-cert>*:not(.g33-cert-fr){position:relative;z-index:1}
+.g33-cert-fr{position:absolute!important;inset:0;width:100%;height:100%;object-fit:fill;z-index:0}
+.g33-cert-medal{width:22mm;height:auto;margin:3mm auto 0;display:block}
+@media (prefers-reduced-motion:reduce){.g33-pt.now:not(.on){animation:none;opacity:.5}}
+.g33-spot{width:46px;height:46px}
+.g33-spot.found{width:76px;height:76px;border:3px solid #fff;background:none;box-shadow:0 0 0 3px #43c08aaa,0 0 16px #fff;backdrop-filter:none;z-index:4;animation:g33ring 1.5s ease-out forwards}
+@keyframes g33ring{0%{transform:translate(-50%,-50%) scale(.6);opacity:0}25%{transform:translate(-50%,-50%) scale(1);opacity:1}70%{opacity:1}100%{opacity:0}}
+.g33-spot.found .g32-q{display:none}.g33-spot.gone{opacity:0;transition:opacity .3s;pointer-events:none}
+.g33-reveal{z-index:1;animation:g33fade .45s ease-out both}
+@keyframes g33fade{from{opacity:0}to{opacity:1}}
+
 </style>
 </head>
 <body>
@@ -4234,7 +4672,7 @@ body:not(.tg-ongames) .tgg-top .tg-coins { display: none; }
 
 <script>
 /* SAQQOUR_V17_ISLANDS */
-const APP_VERSION = "v30";
+const APP_VERSION = "v32";
 const APP_BRAND = {"ar": "عَرَبِيّ", "en": "Arabic Tutor"};
 'use strict';
 /* =========================================================
@@ -17314,6 +17752,771 @@ const p31Lv = (s) => s.lv || { 1: 1, 2: 3, 3: 4 }[s.stars] || 2;
     const grp = order.map((lv) => { const ss = READ_STORIES.filter((s) => btn[s.id] && (s.lv || s.stars) && p31Lv(s) === lv); if (!ss.length) return '';
       return `<section class="p31-shg ${lv === mine ? 'mine' : ''}" data-lv="${lv}"><h3 class="p31-shl"><span class="p31-st">${'★'.repeat([0, 1, 1, 2, 3, 3][lv])}</span> ${lv === mine ? 'لَكَ الآنَ · ' : ''}${P31_LV_AR[lv]} <span class="en">${lv === mine ? 'For you now · ' : ''}${P31_LV_EN[lv]}</span></h3><div class="shelf v8">${ss.map((s) => btn[s.id]).join('')}</div></section>`; }).join('');
     return h.replace(m[0], `<div class="p31-shelf">${grp}${other.length ? `<div class="shelf v8">${other.map((s) => btn[s.id]).join('')}</div>` : ''}</div></div>`); } catch (e) { return h; } }; }
+
+/* =========================================================
+   v32 PRINTABLES (demo): A4 sheets made in the page and printed with the browser (Print / Save as PDF).
+   - letter tracing sheets (28 letters, every positional form, dashed shapes on guide lines, a picture word)
+   - story sheets for all 42 stories (text + cover + vocabulary + quiz) with an answer key page for the grown-up
+   - word cards by level (8 per A4, cut lines) and a progress certificate with the child's own display name
+   Arabic-first (Fusha), optional English line, boy / girl / class (plural) wording where the sheet talks to the child.
+   Pages are laid out off-screen at real A4 size, split into pages by measuring (nothing is clipped), then shown
+   scaled to the phone. Print CSS hides the app and prints only the A4 pages.
+   ========================================================= */
+const PR32 = { who: null, en: null, key: true };
+const PR32_ALIF = 'أبجد';
+const pr32Esc = (s) => esc(s);
+const pr32Lazy = (h) => String(h).replace(/loading="lazy"/g, 'loading="eager"');
+/* who the sheet talks to: { g: 'm' | 'f' | 'p', name, slot } */
+function pr32Ctx(who) {
+  const inParent = document.body.classList.contains('acc-open');
+  if (!who && !inParent && currentKid && PROFILES[currentKid]) return { g: PROFILES[currentKid].gender === 'f' ? 'f' : 'm', slot: currentKid, name: (DB.profiles[currentKid] || {}).nick || PROFILES[currentKid].name || '' };
+  who = who || PR32.who;
+  if (who === 'gm' || who === 'gf' || who === 'p') return { g: who === 'p' ? 'p' : who.slice(1), slot: null, name: '' };
+  const slot = who && (ACC.map || {})[who] ? ACC.map[who] : who && DB.profiles[who] ? who : null;
+  if (slot && DB.profiles[slot]) return { g: DB.profiles[slot].g === 'f' ? 'f' : 'm', slot, name: DB.profiles[slot].nick || '' };
+  return { g: 'm', slot: null, name: '' };
+}
+const pr32G = (c, m, f, p) => (c.g === 'p' ? p : c.g === 'f' ? f : m);
+const pr32En = () => (PR32.en == null ? !!DB.settings.showEn : PR32.en);
+const pr32EnHTML = (t, cls) => (pr32En() ? `<span class="pr-en ${cls || ''}" lang="en" dir="ltr">${t}</span>` : '');
+const pr32Name = (n) => `<bdi dir="auto">${esc(String(n || '').slice(0, 20))}</bdi>`;
+function pr32Hash(s) { let h = 2166136261; for (const ch of String(s)) { h ^= ch.codePointAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
+const pr32Date = () => { const d = new Date(); return toArabicDigits(`${d.getDate()} / ${d.getMonth() + 1} / ${d.getFullYear()}`); };
+const PR32_ICON = '<svg class="pr32-svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M7 8V4h10v4M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 14h10v6H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
+const pr32Btn = (act, arg, label) => `<button class="icon-btn pr32-ic" data-act="${act}" data-arg="${esc(arg)}" aria-label="${label}">${PR32_ICON}</button>`;
+
+/* ---------- letter tracing sheet ---------- */
+const PR32_FORM = { isolated: ['وَحْدَهُ', 'Alone'], initial: ['فِي أَوَّلِ الكَلِمَةِ', 'Start'], medial: ['فِي وَسَطِ الكَلِمَةِ', 'Middle'], final: ['فِي آخِرِ الكَلِمَةِ', 'End'] };
+const pr32Letters = () => ALPHA.map((a) => a[0]);
+function pr32TraceSVG(glyph, n, size, slotW) {
+  /* one guide row: the model shape (solid) on the right, then dashed shapes to trace, then empty room to write alone */
+  const W = 150, H = 32, base = 21; const cells = []; let x = W - slotW / 2;
+  for (let i = 0; i < n; i++) {
+    const solid = i === 0; const empty = i >= n - 1 && n > 2;
+    if (!empty && glyph) cells.push(`<text x="${x.toFixed(1)}" y="${base}" text-anchor="middle" direction="rtl" font-size="${size}" class="${solid ? 'pr-g-solid' : 'pr-g-dash'}">${esc(glyph)}</text>`);
+    x -= slotW; }
+  return `<svg class="pr-trace" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <line x1="0" x2="${W}" y1="7" y2="7" class="pr-gl-top"/><line x1="0" x2="${W}" y1="${base}" y2="${base}" class="pr-gl-base"/><line x1="0" x2="${W}" y1="29" y2="29" class="pr-gl-top"/>${cells.join('')}</svg>`;
+}
+function pr32LetterBlocks(ch, c) {
+  const M = (typeof LTM !== 'undefined' && LTM[ch]) || { ch, en: '', ar: ch, ex: '', exEn: '', em: '' }; const L = [M.ch, M.en, M.ar, M.snd, M.ex, M.exEn, M.em];
+  const forms = formsOf(ch); const seen = new Set(); const rows = forms.filter(([k, g]) => { if (seen.has(g)) return false; seen.add(g); return true; });
+  const nonJ = R_JOIN.has(ch) && ch !== 'ة';
+  const pic = L[6] ? (typeof objArtHTML === 'function' ? objArtHTML(L[6], L[4], 'pr-pic-art') : '') || `<span class="pr-pic-emo">${L[6]}</span>` : '';
+  const ins = pr32G(c, 'تَتَبَّعِ الحَرْفَ عَلَى الخُطُوطِ المُنَقَّطَةِ، ثُمَّ اكْتُبْهُ وَحْدَكَ فِي المَكَانِ الفَارِغِ.', 'تَتَبَّعِي الحَرْفَ عَلَى الخُطُوطِ المُنَقَّطَةِ، ثُمَّ اكْتُبِيهِ وَحْدَكِ فِي المَكَانِ الفَارِغِ.', 'تَتَبَّعُوا الحَرْفَ عَلَى الخُطُوطِ المُنَقَّطَةِ، ثُمَّ اكْتُبُوهُ وَحْدَكُمْ فِي المَكَانِ الفَارِغِ.');
+  const head = `<div class="pb pr-lt-head pb-break" data-sheet="letter" data-ch="${esc(ch)}"><div class="pr-lt-big">${esc(ch)}</div>
+    <div class="pr-lt-t"><h1 class="pr-h1">حَرْفُ ${esc(L[2] || ch)}</h1>${pr32EnHTML('Letter ' + esc(L[1] || ''))}<p class="pr-ins">${ins}</p>${pr32EnHTML('Trace the letter on the dashed lines, then write it on your own in the empty space.')}${c.name ? `<p class="pr-for">الاسْمُ: ${pr32Name(c.name)}</p>` : '<p class="pr-for">الاسْمُ: ……………………</p>'}</div>
+    ${L[4] ? `<div class="pr-lt-pic">${pic}<b>${esc(L[4])}</b>${pr32EnHTML(esc(L[5] || ''))}</div>` : ''}</div>`;
+  const rowH = rows.length <= 2 ? 'tall' : '';
+  const body = rows.map(([k, g]) => `<div class="pb pr-lt-row ${rowH}"><div class="pr-lt-lab"><b>${PR32_FORM[k][0]}</b>${pr32EnHTML(PR32_FORM[k][1])}</div>${pr32TraceSVG(g, 6, 22, 25)}</div>`);
+  const note = nonJ ? `<p class="pb pr-note">💡 هَذَا الحَرْفُ لَا يَتَّصِلُ بِالحَرْفِ الَّذِي بَعْدَهُ.${pr32EnHTML('This letter never joins the letter after it.')}</p>` : '';
+  const word = L[4] ? `<div class="pb pr-lt-row pr-lt-word"><div class="pr-lt-lab"><b>كَلِمَةٌ</b>${pr32EnHTML('Word')}</div>${pr32TraceSVG(L[4], 3, 17, 50)}</div>` : '';
+  const free = `<div class="pb pr-lt-row pr-lt-free"><div class="pr-lt-lab"><b>${pr32G(c, 'اُكْتُبْ وَحْدَكَ', 'اُكْتُبِي وَحْدَكِ', 'اُكْتُبُوا وَحْدَكُمْ')}</b>${pr32EnHTML('On your own')}</div>${pr32TraceSVG('', 1, 22, 150)}</div>`;
+  return [head].concat(body, [note, word, free, rows.length <= 2 ? free : '']).filter(Boolean);
+}
+
+/* ---------- story sheet + answer key ---------- */
+const pr32Lv = (s) => (typeof p31Lv === 'function' ? p31Lv(s) : s.lv || s.stars || 1);
+function pr32Opts(q) { return q.o.map((t, i) => ({ t, ok: i === 0, h: pr32Hash(q.q + '|' + t) })).sort((a, b) => a.h - b.h); }
+function pr32StoryBlocks(id, c, withKey) {
+  const st = READ_STORIES.find((s) => s.id === id); if (!st) return [];
+  const qs = (typeof SQ27 !== 'undefined' && SQ27[id]) || []; const lv = pr32Lv(st); const cov = 'st_' + id + '_cover';
+  const ins = pr32G(c, 'اِقْرَأِ القِصَّةَ بِصَوْتٍ عَالٍ، ثُمَّ أَجِبْ عَنِ الأَسْئِلَةِ.', 'اِقْرَئِي القِصَّةَ بِصَوْتٍ عَالٍ، ثُمَّ أَجِيبِي عَنِ الأَسْئِلَةِ.', 'اِقْرَؤُوا القِصَّةَ بِصَوْتٍ عَالٍ، ثُمَّ أَجِيبُوا عَنِ الأَسْئِلَةِ.');
+  const out = [`<div class="pb pr-st-head pb-break" data-sheet="story" data-id="${esc(id)}"><div class="pr-st-meta"><span>${PR32_LVN(lv)}</span><span class="pr-stars">${'★'.repeat(st.stars || 1)}</span></div>
+    <h1 class="pr-h1">${esc(st.title)}</h1>${pr32EnHTML(esc(st.en))}
+    ${ART_B64[cov] ? `<div class="pr-cover">${pr32Lazy(artImg(cov, 'pr-cover-img', st.en))}</div>` : `<div class="pr-cover pr-cover-emo" style="--bk:${st.bg || '#eef5f7'}"><span>${st.icon || '📖'}</span></div>`}
+    <p class="pr-ins">${ins}</p>${pr32EnHTML('Read the story out loud, then answer the questions.')}${c.name ? `<p class="pr-for">الاسْمُ: ${pr32Name(c.name)}</p>` : '<p class="pr-for">الاسْمُ: ……………………</p>'}</div>`];
+  st.s.forEach((x, i) => out.push(`<p class="pb pr-s"><span class="pr-sn">${toArabicDigits(i + 1)}</span>${esc(x[0])}${pr32EnHTML(esc(x[1] || ''), 'pr-s-en')}</p>`));
+  if (st.vocab && st.vocab.length) out.push(`<div class="pb pr-voc"><h2 class="pr-h2">كَلِمَاتٌ جَدِيدَةٌ ${pr32EnHTML('New words')}</h2><div class="pr-voc-g">${st.vocab.map((v) => `<span class="pr-vw"><b>${esc(v[0])}</b>${pr32EnHTML(esc(v[1]))}</span>`).join('')}</div></div>`);
+  if (qs.length) { out.push(`<h2 class="pb pr-h2 pr-q-h">أَسْئِلَةٌ ${pr32EnHTML('Questions')}<small>${pr32G(c, 'ضَعْ دَائِرَةً حَوْلَ الجَوَابِ.', 'ضَعِي دَائِرَةً حَوْلَ الجَوَابِ.', 'ضَعُوا دَائِرَةً حَوْلَ الجَوَابِ.')}</small></h2>`);
+    qs.forEach((q, i) => out.push(`<div class="pb pr-q"><p class="pr-qq"><span class="pr-qn">${toArabicDigits(i + 1)}</span>${esc(q.q)}</p><ol class="pr-qo">${pr32Opts(q).map((o, j) => `<li><i>${PR32_ALIF[j]}</i>${esc(o.t)}</li>`).join('')}</ol></div>`)); }
+  out.push(`<div class="pb pr-draw"><p>${pr32G(c, 'اُرْسُمْ', 'اُرْسُمِي', 'اُرْسُمُوا')} أَجْمَلَ جُزْءٍ فِي القِصَّةِ:</p>${pr32EnHTML('Draw your favourite part of the story:')}</div>`);
+  if (withKey && qs.length) out.push(`<div class="pb pr-key pb-break" data-sheet="key"><h2 class="pr-h2">لِلْكِبَارِ: الإِجَابَاتُ ${pr32EnHTML('For the grown-up: answer key')}</h2><p class="pr-key-t">«${esc(st.title)}»</p>
+    <ol class="pr-key-l">${qs.map((q, i) => { const o = pr32Opts(q); const j = o.findIndex((x) => x.ok); return `<li><span class="pr-qn">${toArabicDigits(i + 1)}</span><b>${PR32_ALIF[j]}</b> ${esc(q.o[0])} <small>(الجُمْلَةُ ${toArabicDigits((q.s || 0) + 1)})</small></li>`; }).join('')}</ol>
+    ${st.vocab && st.vocab.length ? `<h3 class="pr-h3">مَعَانِي الكَلِمَاتِ <span class="pr-en-k" lang="en" dir="ltr">Word meanings</span></h3><ul class="pr-key-v">${st.vocab.map((v) => `<li><b>${esc(v[0])}</b> <span lang="en" dir="ltr">${esc(v[1])}</span></li>`).join('')}</ul>` : ''}
+    <p class="pr-tip">اِقْرَؤُوا القِصَّةَ مَعًا أَوَّلًا، وَاسْأَلُوا عَنِ الصُّوَرِ وَالكَلِمَاتِ الجَدِيدَةِ. الخَطَأُ جُزْءٌ مِنَ التَّعَلُّمِ.<span class="pr-en-k" lang="en" dir="ltr">Read it together first and talk about the picture and new words. Mistakes are part of learning.</span></p></div>`);
+  return out;
+}
+const PR32_LV_AR = ['', 'المُسْتَوَى الأَوَّلُ', 'المُسْتَوَى الثَّانِي', 'المُسْتَوَى الثَّالِثُ', 'المُسْتَوَى الرَّابِعُ', 'المُسْتَوَى الخَامِسُ'];
+const PR32_LVN = (lv) => PR32_LV_AR[lv] || PR32_LV_AR[1];
+
+/* ---------- word cards by level ---------- */
+function pr32Words(lv) { const seen = new Set(); const out = [];
+  READ_STORIES.filter((s) => pr32Lv(s) === lv && s.vocab).forEach((s) => s.vocab.forEach((v) => { const k = String(v[0]).replace(/[\u064B-\u0652\u0670]/g, ''); if (!seen.has(k)) { seen.add(k); out.push(v); } })); return out; }
+function pr32CardsBlocks(lv, c) {
+  const w = pr32Words(lv); const out = [];
+  for (let i = 0; i < w.length; i += 8) out.push(`<div class="pb pr-cards-p pb-break" data-sheet="cards"><p class="pr-cards-h">بِطَاقَاتُ الكَلِمَاتِ · ${PR32_LVN(lv)} ${pr32EnHTML('Word cards · Level ' + lv)}<small>✂️ ${pr32G(c, 'قُصَّ', 'قُصِّي', 'قُصُّوا')} عَلَى الخُطُوطِ</small></p>
+    <div class="pr-cards">${w.slice(i, i + 8).map((v) => `<div class="pr-card"><b>${esc(v[0])}</b>${pr32EnHTML(esc(v[1]))}<i>${'★'.repeat([0, 1, 1, 2, 3, 3][lv])}</i></div>`).join('')}</div></div>`);
+  return out;
+}
+
+/* ---------- certificate ---------- */
+function pr32CertBlocks(c) {
+  const p = c.slot ? DB.kids[c.slot] : null; const nm = c.name || '';
+  const stories = p ? countPrefix(p, 'readaloud:') : 0; const a = p && p.abc ? p.abc : { seen: {} }; const letters = ALPHA.filter((x) => a.seen && a.seen[x[0]]).length;
+  const days = p ? (p.activeDays || []).length : 0; let lvl = '';
+  try { if (c.slot && typeof wlGet === 'function') lvl = wlYearAr(wlGet(c.slot).read); } catch (e) { /* */ }
+  const f = c.g === 'f';
+  return [`<div class="pb pr-cert pb-break" data-sheet="cert"><div class="pr-cert-in">
+    <div class="pr-cert-bird">${typeof falconSVG === 'function' ? falconSVG('happy', 'pr-cert-svg') : ''}</div>
+    <h1 class="pr-cert-h">شَهَادَةُ تَقَدُّمٍ</h1>${pr32EnHTML('Certificate of progress')}
+    <p class="pr-cert-to">تُقَدَّمُ هَذِهِ الشَّهَادَةُ إِلَى</p>
+    <p class="pr-cert-name">${nm ? pr32Name(nm) : '……………………………'}</p>
+    <p class="pr-cert-why">${f ? 'لِأَنَّهَا تَتَعَلَّمُ العَرَبِيَّةَ بِحَمَاسٍ وَصَبْرٍ.' : 'لِأَنَّهُ يَتَعَلَّمُ العَرَبِيَّةَ بِحَمَاسٍ وَصَبْرٍ.'}</p>${pr32EnHTML('for learning Arabic with energy and patience.')}
+    <div class="pr-cert-stats"><span><b>${toArabicDigits(stories)}</b>قِصَصٌ مَقْرُوءَةٌ</span><span><b>${toArabicDigits(letters)}</b>حُرُوفٌ ${f ? 'تَعَرَّفَتْ' : 'تَعَرَّفَ'} عَلَيْهَا</span><span><b>${toArabicDigits(days)}</b>أَيَّامُ تَعَلُّمٍ</span>${lvl ? `<span><b class="sm">${esc(lvl)}</b>مُسْتَوَى القِرَاءَةِ</span>` : ''}</div>
+    <p class="pr-cert-msg">${f ? 'أَحْسَنْتِ! نَحْنُ فَخُورُونَ بِكِ.' : 'أَحْسَنْتَ! نَحْنُ فَخُورُونَ بِكَ.'}</p>${pr32EnHTML('Well done! We are proud of you.')}
+    <div class="pr-cert-foot"><span>التَّارِيخُ: ${pr32Date()}</span><span>التَّوْقِيعُ: ………………</span></div></div></div>`];
+}
+
+/* ---------- pagination + print view ---------- */
+async function pr32Fonts() { try { await Promise.race([Promise.all(['16px "Noto Naskh Arabic"', 'bold 16px "Noto Naskh Arabic"', '16px "Readex Pro"'].map((f) => document.fonts.load(f, 'بَ'))).then(() => document.fonts.ready), new Promise((r) => setTimeout(r, 2500))]); } catch (e) { /* */ } }
+async function pr32Paginate(blocks, foot) {
+  await pr32Fonts();
+  const meas = document.createElement('div'); meas.className = 'pr32-meas'; meas.setAttribute('aria-hidden', 'true'); document.body.appendChild(meas);
+  const pages = []; let inn = null;
+  const newPage = () => { const pg = document.createElement('section'); pg.className = 'pr-page'; pg.setAttribute('dir', 'rtl'); pg.setAttribute('lang', 'ar');
+    pg.innerHTML = '<div class="pr-in"></div><footer class="pr-foot"><span></span><span></span></footer>'; meas.appendChild(pg); inn = pg.firstChild; pages.push(pg); };
+  newPage();
+  for (const b of blocks) { if (!b) continue; const t = document.createElement('div'); t.innerHTML = b.trim(); const el = t.firstElementChild; if (!el) continue;
+    if (el.classList.contains('pb-break') && inn.children.length) newPage();
+    inn.appendChild(el);
+    if (inn.children.length > 1 && (inn.scrollHeight > inn.clientHeight + 1 || el.getBoundingClientRect().bottom - inn.getBoundingClientRect().top > inn.clientHeight - 26)) { inn.removeChild(el); newPage(); inn.appendChild(el); } }
+  pages.forEach((pg, i) => { const f = pg.querySelector('.pr-foot'); f.firstChild.textContent = foot || (APP_BRAND && APP_BRAND.ar) || ''; f.lastChild.textContent = toArabicDigits(i + 1) + ' / ' + toArabicDigits(pages.length); });
+  meas.remove(); return pages;
+}
+let PR32_DOC = null;
+function pr32Root() { let el = document.getElementById('pr32'); if (!el) { el = document.createElement('div'); el.id = 'pr32'; el.className = 'hidden'; el.setAttribute('dir', 'rtl'); el.setAttribute('lang', 'ar'); document.body.appendChild(el); } return el; }
+function pr32Zoom() { const el = document.querySelector('#pr32 .pr32-pages'); if (!el) return; const mm = 96 / 25.4; const w = 210 * mm; const z = Math.min(1, (Math.min(window.innerWidth, 900) - 24) / w); el.style.zoom = String(Math.round(z * 1000) / 1000); el.dataset.z = String(z); }
+window.addEventListener('resize', pr32Zoom);
+async function pr32Open(title, blocks, file) { blocks = (blocks || []).map((b) => (b ? pr32Lazy(b) : b));
+  const root = pr32Root(); PR32_DOC = { title, file, prevTitle: document.title };
+  root.innerHTML = `<div class="pr32-bar"><button class="btn soft pr32-back" data-act="pr32-close">رُجُوعٌ <span class="en">Back</span></button><b class="pr32-t">${esc(title)}</b>
+      <button class="btn pr32-dl" data-act="pr32-print">⬇️ PDF · طِبَاعَةٌ <span class="en">Download PDF / Print</span></button></div>
+    <p class="pr32-hint">${'فِي نَافِذَةِ الطِّبَاعَةِ اخْتَارُوا «حِفْظٌ كَـ PDF» أَوِ الطَّابِعَةَ.'} <span class="en">In the print window choose “Save as PDF” or your printer. A4.</span></p>
+    <div class="pr32-pages"><p class="pr32-wait">⏳</p></div>`;
+  root.classList.remove('hidden'); document.body.classList.add('pr32-on'); root.scrollTop = 0;
+  const pages = await pr32Paginate(blocks); const box = root.querySelector('.pr32-pages'); box.innerHTML = ''; pages.forEach((p) => box.appendChild(p)); pr32Zoom();
+  box.dataset.pages = String(pages.length); root.dataset.ready = '1';
+  return pages.length;
+}
+function pr32Close() { const r = document.getElementById('pr32'); if (r) { r.classList.add('hidden'); r.innerHTML = ''; delete r.dataset.ready; } document.body.classList.remove('pr32-on'); if (PR32_DOC) document.title = PR32_DOC.prevTitle; PR32_DOC = null; }
+async function pr32Print() {
+  const imgs = [...document.querySelectorAll('#pr32 img')]; await Promise.race([Promise.all(imgs.map((i) => (i.complete ? null : i.decode ? i.decode().catch(() => null) : null))), new Promise((r) => setTimeout(r, 4000))]);
+  if (PR32_DOC && PR32_DOC.file) document.title = PR32_DOC.file; /* Save as PDF uses the page title as the file name */
+  try { window.print(); } finally { setTimeout(() => { if (PR32_DOC) document.title = PR32_DOC.prevTitle; }, 1500); }
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && document.body.classList.contains('pr32-on')) { e.stopPropagation(); pr32Close(); } }, true);
+/* ---------- open helpers ---------- */
+const pr32Slug = (s) => String(s).replace(/[^A-Za-z0-9_-]+/g, '-');
+function pr32OpenLetter(ch, who) { const c = pr32Ctx(who); const M = (typeof LTM !== 'undefined' && LTM[ch]) || {};
+  return pr32Open('حَرْفُ ' + ch, pr32LetterBlocks(ch, c), 'letter-' + pr32Slug(M.en || 'sheet')); }
+function pr32OpenLetters(who) { const c = pr32Ctx(who); return pr32Open('كُلُّ الحُرُوفِ', pr32Letters().flatMap((ch) => pr32LetterBlocks(ch, c)), 'letters-28'); }
+function pr32OpenStory(id, who) { const c = pr32Ctx(who); const st = READ_STORIES.find((s) => s.id === id); return pr32Open(st ? st.title : 'قِصَّةٌ', pr32StoryBlocks(id, c, PR32.key), 'story-' + id); }
+function pr32OpenCards(lv, who) { const c = pr32Ctx(who); return pr32Open('بِطَاقَاتُ الكَلِمَاتِ · ' + PR32_LVN(+lv), pr32CardsBlocks(+lv, c), 'word-cards-level-' + lv); }
+function pr32OpenCert(who) { const c = pr32Ctx(who); return pr32Open('شَهَادَةُ تَقَدُّمٍ', pr32CertBlocks(c), 'certificate'); }
+Object.assign(ACTIONS, {
+  'pr32-close': () => pr32Close(),
+  'pr32-print': () => pr32Print(),
+  'pr32-story': (id) => pr32OpenStory(id),
+  'pr32-letter': (ch) => pr32OpenLetter(ch),
+  'pr32-letters': () => pr32OpenLetters(),
+  'pr32-cards': (lv) => pr32OpenCards(lv),
+  'pr32-cert': () => pr32OpenCert(),
+  'pr32-who': (w) => { PR32.who = w || null; accShow('printables'); },
+  'pr32-hub': () => { PR32.who = PR32.who || (ACC.kids[0] && ACC.kids[0].id) || 'gm'; accShow('printables'); }
+});
+/* the print icon on every story (reader header) and every letter (letter card) */
+{ const _rr = renderReader; renderReader = function renderReaderV32() { const r = _rr.apply(this, arguments);
+    try { const row = document.querySelector('#modal-box .reader > .row.between'); if (row && reader && reader.st && !row.querySelector('.pr32-ic')) { const x = row.querySelector('.x-btn'); const t = document.createElement('span'); t.innerHTML = pr32Btn('pr32-story', reader.st.id, 'اِطْبَعِ القِصَّةَ · Print this story'); row.insertBefore(t.firstChild, x); } } catch (e) { /* */ }
+    return r; }; }
+{ const _ol = openLetter; openLetter = function openLetterV32(ch) { const r = _ol.apply(this, arguments);
+    try { const top = document.querySelector('#modal-box .lt-top'); if (top && !top.querySelector('.pr32-ic')) { const nav = top.querySelector('.lt-nav'); const t = document.createElement('span'); t.innerHTML = pr32Btn('pr32-letter', ch, 'اِطْبَعْ وَرَقَةَ الحَرْفِ · Print a tracing sheet'); top.insertBefore(t.firstChild, nav); } } catch (e) { /* */ }
+    return r; }; }
+/* ---------- the printables screen (parent / teacher area) ---------- */
+ACC_SCREENS.printables = () => {
+  const who = PR32.who || 'gm'; const en = pr32En(); const tch = typeof tchOn === 'function' && tchOn();
+  const chips = (tch ? [['p', 'الصَّفُّ كُلُّهُ', 'Whole class']] : []).concat(ACC.kids.map((k) => [k.id, k.nick, '']), [['gm', 'وَلَدٌ', 'boy'], ['gf', 'بِنْتٌ', 'girl']]);
+  const lv = [1, 2, 3, 4, 5];
+  return `<section class="acc-card stack pr32-hub"><div class="row between"><h1 class="acc-h">🖨️ أَوْرَاقٌ لِلطِّبَاعَةِ</h1><button class="btn soft" data-act="acc-go" data-arg="parent">رُجُوعٌ</button></div>${accEn('Printables: A4 sheets, print or save as PDF')}
+    <h2 class="acc-h2">لِمَنْ؟ ${accEn('Who is it for? (boy / girl wording)')}</h2><div class="pr32-chips">${chips.map(([id, n]) => `<button class="pr32-chip ${who === id ? 'on' : ''}" data-act="pr32-who" data-arg="${esc(id)}" aria-pressed="${who === id}"><bdi dir="auto">${esc(n)}</bdi></button>`).join('')}</div>
+    <div class="pr32-opts"><label class="acc-chk"><input type="checkbox" id="pr32-en" ${en ? 'checked' : ''}><span>سَطْرٌ بِالإِنْجِلِيزِيَّةِ</span></label><label class="acc-chk"><input type="checkbox" id="pr32-key" ${PR32.key ? 'checked' : ''}><span>صَفْحَةُ الإِجَابَاتِ لِلْكِبَارِ</span></label></div>
+    <h2 class="acc-h2">✏️ أَوْرَاقُ تَتَبُّعِ الحُرُوفِ ${accEn('Letter tracing (all forms)')}</h2>
+    <div class="pr32-lts">${pr32Letters().map((ch) => `<button class="pr32-lt" data-act="pr32-letter" data-arg="${ch}" aria-label="اِطْبَعْ حَرْفَ ${ch}"><b>${ch}</b>${PR32_ICON}</button>`).join('')}</div>
+    <button class="btn soft acc-wide" data-act="pr32-letters">🖨️ كُلُّ الحُرُوفِ (٢٨ صَفْحَةً) <span class="en">All 28 letters</span></button>
+    <h2 class="acc-h2">📖 القِصَصُ ${accEn('Stories: text, picture, words, quiz + answer key')}</h2>
+    ${lv.map((l) => `<details class="pr32-lv" ${l === 1 ? 'open' : ''}><summary>${PR32_LVN(l)} <span class="en">Level ${l}</span></summary><ul class="pr32-sl">${READ_STORIES.filter((s) => pr32Lv(s) === l).map((s) => `<li><span class="pr32-si" aria-hidden="true">${s.icon || '📖'}</span><span class="grow">${esc(s.title)}<span class="en"> ${esc(s.en)}</span></span>${pr32Btn('pr32-story', s.id, 'اِطْبَعْ ' + s.title)}</li>`).join('')}</ul></details>`).join('')}
+    <h2 class="acc-h2">🃏 بِطَاقَاتُ الكَلِمَاتِ ${accEn('Word cards by level')}</h2>
+    <div class="pr32-cardsb">${lv.map((l) => `<button class="btn soft" data-act="pr32-cards" data-arg="${l}">${PR32_LVN(l)}<small>${toArabicDigits(pr32Words(l).length)} كَلِمَةً</small></button>`).join('')}</div>
+    <h2 class="acc-h2">🏅 شَهَادَةُ تَقَدُّمٍ ${accEn("Progress certificate with the child's display name")}</h2>
+    ${ACC.kids.length ? `<div class="pr32-cardsb">${ACC.kids.map((k) => `<button class="btn soft" data-act="pr32-cert-kid" data-arg="${k.id}"><bdi dir="auto">${esc(k.nick)}</bdi></button>`).join('')}</div>` : '<p class="acc-small">أَضِيفُوا طِفْلًا أَوَّلًا.</p>'}
+  </section>`; };
+ACTIONS['pr32-cert-kid'] = (kid) => pr32OpenCert(kid);
+document.addEventListener('change', (e) => { const t = e.target; if (!t) return; if (t.id === 'pr32-en') PR32.en = !!t.checked; if (t.id === 'pr32-key') PR32.key = !!t.checked; });
+/* parent area: the printables entry */
+{ const _p = ACC_SCREENS.parent; ACC_SCREENS.parent = function parentV32(a) { const h = _p.apply(this, arguments);
+    const box = `<div class="acc-box pr32-entry"><button class="btn big acc-wide" data-act="pr32-hub">🖨️ أَوْرَاقٌ لِلطِّبَاعَةِ <span class="en">Printables</span></button><p class="acc-small">أَوْرَاقُ الحُرُوفِ، وَالقِصَصُ مَعَ الأَسْئِلَةِ، وَبِطَاقَاتُ الكَلِمَاتِ، وَشَهَادَةٌ. ${accEn('Letter sheets, stories with quizzes, word cards and a certificate.')}</p>${typeof tchEntryHTML === 'function' ? tchEntryHTML() : ''}</div>`;
+    return h.replace('<h2 class="acc-h2">الذَّكَاءُ الاِصْطِنَاعِيُّ اليَوْمَ</h2>', box + '<h2 class="acc-h2">الذَّكَاءُ الاِصْطِنَاعِيُّ اليَوْمَ</h2>'); }; }
+
+/* =========================================================
+   v32 LIGHT TEACHER MODE (demo). A grown-up account can switch to teacher mode:
+   - a class of up to 30 student profiles (display names only; the same child profiles as families use)
+   - a calm class overview: working level per skill, stories read, quiz answers, last active (alphabetical, never ranked)
+   - a story and a letter of the week (shown to the students as one quiet line on home and used in today's path)
+   - a printable class pack (overview sheet, the week's story + answer key, the week's letter sheet, certificates)
+   Server: the account settings keep { teacher: { on, cls, week } } and a teacher account may hold 30 children
+   (small change in tutor/worker/src/accounts.mjs; stage / local preview worker only).
+   ========================================================= */
+for (let i = 7; i <= 30; i++) if (!ACC_SLOTS.includes('a' + i)) ACC_SLOTS.push('a' + i);
+const TCH_MAX = 30;
+const tch = () => (ACC.settings && ACC.settings.teacher) || null;
+const tchOn = () => !!(ACC.tok && tch() && tch().on);
+const tchWeek = () => (tchOn() && tch().week) || {};
+const tchSort = (a, b) => String(a.nick).localeCompare(String(b.nick), 'ar');
+async function tchSave(next) {
+  const r = await accApi('PUT', 'settings', { teacher: next });
+  if (r.status === 200 && r.j.settings && r.j.settings.teacher) { ACC.settings = Object.assign({}, ACC.settings, { teacher: r.j.settings.teacher }); accSave(); return true; }
+  return false;
+}
+function tchDays(slot, k) { const p = DB.kids[slot]; let t = 0;
+  const d = p && p.activeDays && p.activeDays.length ? p.activeDays[p.activeDays.length - 1] : null; if (d) { const x = new Date(d + 'T12:00:00'); if (!isNaN(x)) t = x.getTime(); }
+  if (k && k.updated && k.rev > 1) t = Math.max(t, k.updated);
+  if (!t) return null; return Math.max(0, Math.round((new Date(dayKey() + 'T12:00:00') - new Date(dayKey(new Date(t)) + 'T12:00:00')) / 864e5)); }
+function tchAgo(n) { if (n == null) return 'لَمْ يَبْدَأْ بَعْدُ'; if (n === 0) return 'اليَوْمَ'; if (n === 1) return 'أَمْسِ'; if (n === 2) return 'قَبْلَ يَوْمَيْنِ';
+  return 'قَبْلَ ' + toArabicDigits(n) + (n <= 10 ? ' أَيَّامٍ' : ' يَوْمًا'); }
+const tchAgoEn = (n) => (n == null ? 'not started yet' : n === 0 ? 'today' : n === 1 ? 'yesterday' : n + ' days ago');
+function tchSum(k) {
+  const slot = ACC.map[k.id]; const p = slot && DB.kids[slot]; const o = { k, slot, lv: {}, stories: 0, qOk: 0, qAll: 0, ago: null, wkStory: null, wkLetter: null };
+  if (!p) return o;
+  try { const w = wlGet(slot); WL_SK.forEach((s) => { o.lv[s] = w[s]; }); } catch (e) { /* */ }
+  o.stories = countPrefix(p, 'readaloud:');
+  Object.keys(p.completed || {}).forEach((key) => { if (!key.startsWith('storyq:')) return; const id = key.slice(7); const n = ((typeof SQ27 !== 'undefined' && SQ27[id]) || []).length || 4; o.qOk += Math.min(n, +p.completed[key] || 0); o.qAll += n; });
+  o.ago = tchDays(slot, k); const wk = tchWeek();
+  if (wk.story) o.wkStory = !!p.completed['readaloud:' + wk.story];
+  if (wk.letter) { const a = p.abc || {}; o.wkLetter = !!((a.ok && a.ok[wk.letter]) || (a.seen && a.seen[wk.letter])); }
+  return o;
+}
+const tchQuiz = (o) => (o.qAll ? `${toArabicDigits(o.qOk)} مِنْ ${toArabicDigits(o.qAll)}` : 'لَا أَسْئِلَةَ بَعْدُ');
+const tchStoryTitle = (id) => { const s = READ_STORIES.find((x) => x.id === id); return s ? s.title : ''; };
+/* ---------- parent area: the entry ---------- */
+function tchEntryHTML() {
+  if (tchOn()) return '<button class="btn soft acc-wide tch-entry" data-act="acc-go" data-arg="parent">🧑‍🏫 العَوْدَةُ إِلَى صَفِّي <span class="en">Back to my class</span></button>';
+  return `<button class="btn soft acc-wide tch-entry" data-act="acc-go" data-arg="tchintro">🧑‍🏫 وَضْعُ المُعَلِّمِ <span class="en">Teacher mode</span></button>`;
+}
+/* ---------- screens ---------- */
+ACC_SCREENS.tchintro = () => `<section class="acc-card stack tch"><div class="row between"><h1 class="acc-h">🧑‍🏫 وَضْعُ المُعَلِّمِ</h1><button class="btn soft" data-act="acc-go" data-arg="parent">رُجُوعٌ</button></div>${accEn('Teacher mode')}
+  <ul class="tch-ul"><li>صَفٌّ حَتَّى ${toArabicDigits(TCH_MAX)} تِلْمِيذًا، بِأَسْمَاءِ عَرْضٍ فَقَطْ.${accEn('A class of up to 30 students, display names only.')}</li>
+  <li>لَمْحَةٌ هَادِئَةٌ عَنْ كُلِّ طِفْلٍ: المُسْتَوَى، وَالقِصَصُ، وَالأَسْئِلَةُ، وَآخِرُ نَشَاطٍ. بِلَا تَرْتِيبٍ وَلَا مُقَارَنَةٍ.${accEn('A calm overview of each child. No rankings, no comparing.')}</li>
+  <li>قِصَّةُ الأُسْبُوعِ وَحَرْفُ الأُسْبُوعِ، وَحُزْمَةٌ لِلطِّبَاعَةِ.${accEn('A story and a letter of the week, and a printable class pack.')}</li></ul>
+  <p class="acc-small">يَعْمَلُ التَّلَامِيذُ عَلَى جِهَازِ الصَّفِّ أَوْ عَلَى أَجْهِزَتِهِمْ بِهَذَا الحِسَابِ، وَيَخْتَارُ كُلُّ طِفْلٍ صُورَتَهُ.${accEn('Students use the class device (or their own) with this account and pick their own picture.')}</p>
+  ${ACC_MSG ? `<p class="acc-msg" role="alert">${ACC_MSG}</p>` : ''}
+  <button class="btn big acc-wide" data-act="tch-on">تَفْعِيلُ وَضْعِ المُعَلِّمِ <span class="en">Turn on</span></button></section>`;
+ACC_SCREENS.teacher = () => { const t = tch() || {}; const wk = t.week || {}; const kids = ACC.kids.slice().sort(tchSort);
+  const lvOpts = [1, 2, 3, 4, 5].map((l) => `<optgroup label="${PR32_LVN(l)}">${READ_STORIES.filter((s) => pr32Lv(s) === l).map((s) => `<option value="${s.id}" ${wk.story === s.id ? 'selected' : ''}>${esc(s.title)}</option>`).join('')}</optgroup>`).join('');
+  return `<section class="acc-card stack acc-parent tch"><div class="row between"><h1 class="acc-h">🧑‍🏫 صَفِّي${t.cls ? ' · <bdi dir="auto">' + esc(t.cls) + '</bdi>' : ''}</h1><button class="btn soft" data-act="acc-go" data-arg="kids">رُجُوعٌ</button></div>${accEn('My class')}
+    <div class="tch-acts"><button class="btn big" data-act="tch-view">👀 نَظْرَةٌ عَلَى الصَّفِّ <span class="en">Class overview</span></button>
+      <button class="btn soft" data-act="acc-go" data-arg="tchpack">🖨️ حُزْمَةُ الصَّفِّ <span class="en">Class pack</span></button>
+      <button class="btn soft" data-act="pr32-hub">🖨️ أَوْرَاقٌ لِلطِّبَاعَةِ <span class="en">Printables</span></button></div>
+    <form class="acc-box stack tch-week" id="tch-week" novalidate><h2 class="acc-h2">📌 لِهَذَا الأُسْبُوعِ ${accEn('This week')}</h2>
+      <label class="acc-l">قِصَّةُ الأُسْبُوعِ<select id="tch-story"><option value="">—</option>${lvOpts}</select></label>
+      <label class="acc-l">حَرْفُ الأُسْبُوعِ<select id="tch-letter"><option value="">—</option>${pr32Letters().map((c) => `<option value="${c}" ${wk.letter === c ? 'selected' : ''}>${c}</option>`).join('')}</select></label>
+      <label class="acc-l">اسْمُ الصَّفِّ (اخْتِيَارِيٌّ)<input id="tch-cls" maxlength="30" dir="auto" value="${esc(t.cls || '')}" placeholder="مِثْلَ: الصَّفُّ الأَوَّلُ"></label>
+      <p class="acc-small">بِدُونِ اسْمِ المَدْرَسَةِ أَوْ أَسْمَاءِ الأَشْخَاصِ. ${accEn('No school or personal names.')}</p>
+      ${ACC_MSG ? `<p class="acc-msg" role="alert">${ACC_MSG}</p>` : ''}<button type="submit" class="btn acc-wide">حِفْظٌ <span class="en">Save</span></button></form>
+    <h2 class="acc-h2">التَّلَامِيذُ (${toArabicDigits(kids.length)}) ${accEn('Students')}</h2>
+    <ul class="acc-list tch-list">${kids.map((k) => `<li class="acc-row">${accPic(k.av, 'sm', k.g)}<span class="grow"><b>${accNameHTML(k.nick)}</b><small>${k.g === 'f' ? 'بِنْتٌ' : 'وَلَدٌ'} · ${accYearAr(k.yr)}</small></span><button class="btn ghost sm" data-act="acc-del-kid" data-arg="${k.id}" aria-label="حَذْف">🗑️</button></li>`).join('') || '<li class="acc-small">لَا يُوجَدُ تَلَامِيذُ بَعْدُ.</li>'}</ul>
+    ${kids.length < TCH_MAX ? '<button class="btn big acc-wide" data-act="acc-go" data-arg="addclass">＋ إِضَافَةُ تَلَامِيذَ <span class="en">Add students</span></button>' : ''}
+    <h2 class="acc-h2">المَزِيدُ</h2><div class="acc-more">
+      <button class="btn soft" data-act="tch-full">⚙️ إِعْدَادَاتُ الحِسَابِ <span class="en">Account settings</span></button>
+      <button class="btn ghost" data-act="tch-off">العَوْدَةُ إِلَى وَضْعِ العَائِلَةِ <span class="en">Back to family mode</span></button></div></section>`; };
+let TCH_ROWS = 6;
+const tchRow = (i) => `<div class="tch-row"><input class="tch-nick" maxlength="20" dir="auto" autocomplete="off" spellcheck="false" aria-label="اسْمُ العَرْضِ ${toArabicDigits(i + 1)}" placeholder="اسْمُ العَرْضِ">
+  <span class="tch-g"><label><input type="radio" name="tch-g-${i}" value="m" checked><span>وَلَدٌ</span></label><label><input type="radio" name="tch-g-${i}" value="f"><span>بِنْتٌ</span></label></span></div>`;
+ACC_SCREENS.addclass = () => `<form class="acc-card stack tch" id="tch-add" autocomplete="off" novalidate><h1 class="acc-h">＋ إِضَافَةُ تَلَامِيذَ</h1>${accEn('Add students')}
+  <p class="acc-small">اسْمُ عَرْضٍ فَقَطْ: اسْمٌ أَوَّلُ أَوْ لَقَبٌ، بِالعَرَبِيَّةِ أَوِ الإِنْجِلِيزِيَّةِ. لَا اسْمَ عَائِلَةٍ. «وَلَدٌ / بِنْتٌ» لِكَلِمَاتِ التَّطْبِيقِ فَقَطْ.${accEn('Display names only (first name or nickname). Boy / girl is only for the app’s wording.')}</p>
+  <div class="tch-rows">${Array.from({ length: Math.min(TCH_ROWS, TCH_MAX - ACC.kids.length) }, (_, i) => tchRow(i)).join('')}</div>
+  ${ACC.kids.length + TCH_ROWS < TCH_MAX ? '<button type="button" class="btn ghost" data-act="tch-row">＋ سَطْرٌ آخَرُ <span class="en">Another row</span></button>' : ''}
+  <label class="acc-l">السَّنَةُ الدِّرَاسِيَّةُ<select id="tch-yr">${ACC_YEARS.map((y) => `<option value="${y}" ${y === 'Y1' ? 'selected' : ''}>${accYearAr(y)} · ${accYearAge(y)}</option>`).join('')}</select></label>
+  <label class="acc-l">اللَّهْجَةُ<select id="tch-dial">${accDialects().map((d) => `<option value="${d}">${esc(accDialAr(d))}</option>`).join('')}</select></label>
+  ${ACC_MSG ? `<p class="acc-msg" role="alert">${ACC_MSG}</p>` : ''}<button type="submit" class="btn big acc-wide">حِفْظٌ <span class="en">Save</span></button><button type="button" class="acc-link" data-act="acc-go" data-arg="parent">رُجُوعٌ</button></form>`;
+ACC_SCREENS.tchview = (rows) => { const kids = ACC.kids.slice().sort(tchSort); const wk = tchWeek();
+  const list = rows ? kids.map(tchSum) : null;
+  return `<section class="acc-card stack tch tch-view"><div class="row between"><h1 class="acc-h">👀 نَظْرَةٌ عَلَى الصَّفِّ</h1><button class="btn soft" data-act="acc-go" data-arg="parent">رُجُوعٌ</button></div>${accEn('Class overview')}
+    <p class="tch-gentle">لَمْحَةٌ لِلْمُسَاعَدَةِ، لَيْسَتْ تَرْتِيبًا. كُلُّ طِفْلٍ يَتَقَدَّمُ بِسُرْعَتِهِ، وَالأَسْمَاءُ بِتَرْتِيبِ الحُرُوفِ.${accEn('A helping glance, not a ranking. Every child grows at their own pace; names are in alphabetical order.')}</p>
+    ${wk.story || wk.letter ? `<p class="acc-small">📌 ${wk.story ? 'قِصَّةُ الأُسْبُوعِ: «' + esc(tchStoryTitle(wk.story)) + '»' : ''}${wk.story && wk.letter ? ' · ' : ''}${wk.letter ? 'حَرْفُ الأُسْبُوعِ: ' + wk.letter : ''}</p>` : ''}
+    ${!list ? '<p class="tch-wait">⏳</p>' : `<ul class="tch-cards">${list.map((o) => `<li class="tch-k" data-kid="${o.k.id}"><div class="tch-k-h">${accPic(o.k.av, 'sm', o.k.g)}<b>${accNameHTML(o.k.nick)}</b><small title="${tchAgoEn(o.ago)}">🕒 ${tchAgo(o.ago)}</small></div>
+      <div class="tch-k-sk">${WL_SK.map((s) => `<span><i>${WL_AR[s]}</i><b>${o.lv[s] != null ? esc(wlYearAr(o.lv[s])) : '—'}</b></span>`).join('')}</div>
+      <div class="tch-k-r"><span>📚 قِصَصٌ: <b>${toArabicDigits(o.stories)}</b></span><span>❓ ${o.qAll ? 'صَحِيحٌ مِنَ المُحَاوَلَةِ الأُولَى: ' : ''}<b>${tchQuiz(o)}</b></span>
+        ${wk.story ? `<span>📖 ${o.wkStory ? 'قِصَّةُ الأُسْبُوعِ ✓' : 'قِصَّةُ الأُسْبُوعِ: بَعْدُ'}</span>` : ''}${wk.letter ? `<span>✏️ ${o.wkLetter ? 'الحَرْفُ ✓' : 'الحَرْفُ: بَعْدُ'}</span>` : ''}</div></li>`).join('') || '<li class="acc-small">لَا يُوجَدُ تَلَامِيذُ بَعْدُ.</li>'}</ul>`}
+    <button class="btn soft acc-wide" data-act="acc-go" data-arg="tchpack">🖨️ حُزْمَةُ الصَّفِّ <span class="en">Print a class pack</span></button></section>`; };
+ACC_SCREENS.tchpack = () => { const wk = tchWeek();
+  const ck = (id, on, ar, en, dis) => `<label class="acc-chk"><input type="checkbox" id="${id}" ${on && !dis ? 'checked' : ''} ${dis ? 'disabled' : ''}><span>${ar} <span class="en">${en}</span></span></label>`;
+  return `<section class="acc-card stack tch"><div class="row between"><h1 class="acc-h">🖨️ حُزْمَةُ الصَّفِّ</h1><button class="btn soft" data-act="acc-go" data-arg="parent">رُجُوعٌ</button></div>${accEn('Class pack (A4, print or save as PDF)')}
+    <div class="stack tch-pack">${ck('tp-ov', 1, 'لَمْحَةُ الصَّفِّ لِلْمُعَلِّمِ', 'Class overview sheet')}
+    ${ck('tp-st', 1, 'قِصَّةُ الأُسْبُوعِ' + (wk.story ? ': «' + esc(tchStoryTitle(wk.story)) + '» مَعَ الإِجَابَاتِ' : ' (لَمْ تُخْتَرْ بَعْدُ)'), "Story of the week + answer key", !wk.story)}
+    ${ck('tp-lt', 1, 'وَرَقَةُ حَرْفِ الأُسْبُوعِ' + (wk.letter ? ': ' + wk.letter : ' (لَمْ يُخْتَرْ بَعْدُ)'), 'Letter of the week sheet', !wk.letter)}
+    ${ck('tp-ce', 1, 'شَهَادَةٌ لِكُلِّ طِفْلٍ', 'A certificate for every child')}
+    ${ck('tp-wc', 0, 'بِطَاقَاتُ كَلِمَاتِ قِصَّةِ الأُسْبُوعِ', "Word cards for the week's level", !wk.story)}</div>
+    <button class="btn big acc-wide" data-act="tch-pack-go">🖨️ تَجْهِيزُ الحُزْمَةِ <span class="en">Make the pack</span></button></section>`; };
+/* the class overview sheet (A4) */
+function tchSheetBlocks() { const t = tch() || {}; const kids = ACC.kids.slice().sort(tchSort).map(tchSum);
+  const head = `<div class="pb pr-cls-h pb-break" data-sheet="class"><h1 class="pr-h1">صَفِّي${t.cls ? ' · <bdi dir="auto">' + esc(t.cls) + '</bdi>' : ''}</h1><p class="pr-ins">لَمْحَةٌ لِلْمُعَلِّمِ · ${pr32Date()} · الأَسْمَاءُ بِتَرْتِيبِ الحُرُوفِ، بِلَا تَرْتِيبٍ لِلنَّتَائِجِ.</p>${pr32EnHTML('Teacher overview · names in alphabetical order, not ranked.')}
+    <div class="pr-cls-r pr-cls-th"><span>الاسْمُ</span>${WL_SK.map((s) => `<span>${WL_AR[s]}</span>`).join('')}<span>قِصَصٌ</span><span>أَسْئِلَةٌ</span><span>آخِرُ نَشَاطٍ</span></div></div>`;
+  const rows = kids.map((o) => `<div class="pb pr-cls-r"><span>${pr32Name(o.k.nick)}</span>${WL_SK.map((s) => `<span>${o.lv[s] != null ? esc(wlYearAr(o.lv[s])) : '—'}</span>`).join('')}<span>${toArabicDigits(o.stories)}</span><span>${o.qAll ? toArabicDigits(o.qOk) + ' / ' + toArabicDigits(o.qAll) : '—'}</span><span>${tchAgo(o.ago)}</span></div>`);
+  return [head].concat(rows, ['<p class="pb pr-tip">كُلُّ طِفْلٍ يَتَقَدَّمُ بِسُرْعَتِهِ. «المُسْتَوَى» هُوَ مُسْتَوَى العَمَلِ الآنَ، لَا السَّنَةُ الدِّرَاسِيَّةُ.<span class="pr-en-k" lang="en" dir="ltr">Each child grows at their own pace. The level is the current working level, not the school year.</span></p>']); }
+async function tchPack() { const wk = tchWeek(); const on = (id) => { const x = $(id); return !!(x && x.checked && !x.disabled); };
+  const sel = { ov: on('tp-ov'), st: on('tp-st'), lt: on('tp-lt'), ce: on('tp-ce'), wc: on('tp-wc') };
+  await accRefresh(); let blocks = []; const cls = pr32Ctx('p');
+  if (sel.ov) blocks = blocks.concat(tchSheetBlocks());
+  if (sel.st && wk.story) blocks = blocks.concat(pr32StoryBlocks(wk.story, cls, true));
+  if (sel.lt && wk.letter) blocks = blocks.concat(pr32LetterBlocks(wk.letter, cls));
+  if (sel.wc && wk.story) { const s = READ_STORIES.find((x) => x.id === wk.story); if (s) blocks = blocks.concat(pr32CardsBlocks(pr32Lv(s), cls)); }
+  if (sel.ce) ACC.kids.slice().sort(tchSort).forEach((k) => { blocks = blocks.concat(pr32CertBlocks(pr32Ctx(k.id))); });
+  if (!blocks.length) { toast('اِخْتَارُوا وَرَقَةً وَاحِدَةً عَلَى الأَقَلِّ.'); return 0; }
+  return pr32Open('حُزْمَةُ الصَّفِّ', blocks, 'class-pack');
+}
+/* ---------- routing: the parent area becomes «my class» in teacher mode ---------- */
+{ const _p = ACC_SCREENS.parent; ACC_SCREENS.parent = function parentV32T(a) { if (tchOn() && a !== 'full') return ACC_SCREENS.teacher(); return _p.apply(this, arguments); }; }
+Object.assign(ACTIONS, {
+  'tch-on': async () => { const ok = await tchSave(Object.assign({ cls: '', week: {} }, tch() || {}, { on: true }));
+    if (!ok) { ACC_MSG = 'لَمْ يُحْفَظْ. هَذِهِ المِيزَةُ تَحْتَاجُ إِلَى تَحْدِيثِ الخَادِمِ.'; return accShow('tchintro'); } accShow('parent'); },
+  'tch-off': async () => { if (!confirm('العَوْدَةُ إِلَى وَضْعِ العَائِلَةِ؟ تَبْقَى مِلَفَّاتُ التَّلَامِيذِ كَمَا هِيَ.')) return; await tchSave(Object.assign({}, tch() || {}, { on: false })); accShow('parent'); },
+  'tch-full': () => accShow('parent', 'full'),
+  'tch-row': () => { const box = document.querySelector('#tch-add .tch-rows'); if (!box) return; const n = box.children.length; if (ACC.kids.length + n >= TCH_MAX) return; const t = document.createElement('div'); t.innerHTML = tchRow(n); box.appendChild(t.firstElementChild); box.lastElementChild.querySelector('input').focus(); },
+  'tch-view': async () => { accShow('tchview'); await accRefresh(); if (ACC_VIEW === 'tchview') accShow('tchview', true); },
+  'tch-pack-go': () => tchPack()
+});
+document.addEventListener('submit', async (e) => {
+  const id = e.target && e.target.id; if (id !== 'tch-week' && id !== 'tch-add') return; e.preventDefault(); e.stopImmediatePropagation();
+  const btn = e.target.querySelector('[type=submit]'); if (btn) btn.disabled = true;
+  try {
+    if (id === 'tch-week') { const next = Object.assign({}, tch() || {}, { on: true, cls: accVal('tch-cls').trim().slice(0, 30), week: { story: accVal('tch-story') || null, letter: accVal('tch-letter') || null, at: Date.now() } });
+      const ok = await tchSave(next); ACC_MSG = ok ? '' : 'لَمْ يُحْفَظْ. حَاوِلُوا مَرَّةً أُخْرَى.'; if (ok) toast('✔️ تَمَّ الحِفْظُ'); return accShow('parent'); }
+    const rows = [...e.target.querySelectorAll('.tch-row')].map((r) => ({ nick: accNickClean(r.querySelector('.tch-nick').value).trim(), g: (r.querySelector('input[type=radio]:checked') || {}).value || 'm' })).filter((r) => r.nick);
+    const bad = rows.filter((r) => !accNickOK(r.nick)); if (!rows.length || bad.length) { ACC_MSG = 'اُكْتُبُوا اسْمًا بِالحُرُوفِ (عَرَبِيَّةٍ أَوْ إِنْجِلِيزِيَّةٍ)، مِنْ حَرْفٍ إِلَى ٢٠ حَرْفًا.'; return accShow('addclass'); }
+    const avs = Object.keys(ACC_AV); const added = []; let err = null;
+    for (const [i, r] of rows.entries()) { const res = await accApi('POST', 'children', { nick: r.nick, g: r.g, yr: accVal('tch-yr'), dialect: accVal('tch-dial'), av: avs[(ACC.kids.length + i) % avs.length] });
+      if (res.status !== 201) { err = res.j; break; } ACC.kids.push(res.j.child); added.push(res.j.child.id); }
+    accApplyKids(); for (const k of added) await accPush(k);
+    if (err) { ACC_MSG = accErr(err); return accShow('addclass'); } toast('✔️ ' + toArabicDigits(added.length)); TCH_ROWS = 6; return accShow('parent');
+  } finally { if (btn) btn.disabled = false; }
+}, true);
+/* ---------- students: one quiet line on home + the week's story in today's path ---------- */
+function tchHomeLine() { const wk = tchWeek(); if (!wk.story && !wk.letter || !currentKid) return ''; const p = P();
+  const st = wk.story && READ_STORIES.find((s) => s.id === wk.story); const done = st && p.completed['readaloud:' + st.id];
+  return `<div class="tch-home" lang="ar"><span class="tch-home-l">📌 ${G('لَكَ', 'لَكِ')} هَذَا الأُسْبُوعَ:</span>${st ? `<button class="tch-home-b" data-act="read-open" data-arg="${st.id}">📖 ${esc(st.title)}${done ? ' ✓' : ''}</button>` : ''}${wk.letter ? `<button class="tch-home-b" data-act="lt-open" data-arg="${wk.letter}">✏️ حَرْفُ ${wk.letter}</button>` : ''}</div>`; }
+{ const _h = tgHome; tgHome = function tgHomeV32() { const h = _h.apply(this, arguments); const line = tchOn() ? tchHomeLine() : ''; if (!line) return h;
+    return h.replace(/(<div class="tg-hi">[\s\S]*?<\/p>)(<\/div>)/, `$1${line}$2`); }; }
+{ const _ws = wlStory; wlStory = function wlStoryV32(slot) { const wk = tchWeek(); const p = DB.kids[slot];
+    if (wk.story && p && !p.completed['readaloud:' + wk.story]) { const s = READ_STORIES.find((x) => x.id === wk.story); if (s) return { kind: 'story', id: s.id, ar: s.title }; }
+    return _ws.apply(this, arguments); }; }
+window.__tch = { tchSum, tchOn, tchPack }; /* tests */
+
+/* generated by tools/gen-audio-bank-v32.mjs: v32 game texts, voice → { text (NFC) → audio/<id>.mp3 }, merged into SND_BANK */
+{ const B = {"ar-SA-HamedNeural":{"أَبِي يَشْرَبُ الشَّايَ.":"a236cc194960","أَبْيَضُ":"cc5513110840","أَخِي":"7b8efc59e1ba","أَرَى نَجْمَةً.":"396e7bb054c2","أَسْوَدُ":"ad4d228ce8cc","أَشْرَبُ الحَلِيبَ.":"1373b7839dc0","أَطِيرُ عَالِيًا فِي السَّمَاءِ. أَحْمِلُ المُسَافِرِينَ. مَنْ أَنَا؟":"98935a9f6dde","أَطِيرُ مِنْ زَهْرَةٍ إِلَى زَهْرَةٍ. أَصْنَعُ العَسَلَ. مَنْ أَنَا؟":"c247de661326","أَطْلُعُ فِي الصَّبَاحِ. أُعْطِي الضَّوْءَ وَالدِّفْءَ. مَنْ أَنَا؟":"23b2ca9687e7","أَعِيشُ فِي الصَّحْرَاءِ. عَلَى ظَهْرِي سَنَامٌ. مَنْ أَنَا؟":"5f0088a04cd1","أَعِيشُ فِي المَاءِ. أَسْبَحُ بِزَعَانِفِي. مَنْ أَنَا؟":"bae6ffe5df82","أَعِيشُ فِي المَزْرَعَةِ. أُعْطِيكُمُ الحَلِيبَ. مَنْ أَنَا؟":"2e51838933c8","أَقْفِزُ قُرْبَ البِرْكَةِ. لَوْنِي أَخْضَرُ. مَنْ أَنَا؟":"ce1ef807bff0","أَمْشِي بِبُطْءٍ. أَحْمِلُ بَيْتِي عَلَى ظَهْرِي. مَنْ أَنَا؟":"218c69d9157d","أَنَا":"b0675d7f5683","أَنَا أُحِبُّ التُّفَّاحَ.":"2f06cf6bef58","أَنَا حَيَوَانٌ كَبِيرٌ جِدًّا. لِي خُرْطُومٌ طَوِيلٌ. مَنْ أَنَا؟":"a1ed51518fec","أَنَا شَجَرَةٌ طَوِيلَةٌ. أُعْطِيكُمُ التَّمْرَ. مَنْ أَنَا؟":"d369fcca5605","أَنَا طَائِرٌ لَا يَطِيرُ. أَعِيشُ بَيْنَ الثُّلُوجِ. مَنْ أَنَا؟":"a17107d1fa67","أَنَا طَائِرٌ. أَسْهَرُ فِي اللَّيْلِ وَأَنَامُ فِي النَّهَارِ. مَنْ أَنَا؟":"f6c0c35f7916","أَيَّامًا":"af721f71b846","أُخْتِي تَرْسُمُ بَيْتًا.":"10731086ed7d","أُمِّي تَطْبُخُ طَعَامًا لَذِيذًا.":"c8e4a20b622c","إِلَى":"95dc807389d7","إِلَيْهِ":"e4e09757cc3a","الأَسَدُ":"10aafaf35cf9","الأَطْفَالُ":"f5157e87d08e","الأَوْلَادُ يَلْعَبُونَ كُرَةَ القَدَمِ.":"f316e974532f","البَابَ":"4ebce5bf3b88","البَحْرِ":"13a3b85bea35","البَطَّةُ":"21e753e85c17","البَطَّةُ تَسْبَحُ.":"2f848d50f281","البَطَّةُ فِي المَاءِ.":"2ecd980c6cc1","البَقَرَةُ":"c3329bc1b497","البُومَةُ":"a749930d5413","البِطْرِيقُ":"79d41e446d37","البِنْتُ":"a2cae7905d4c","البِنْتُ تَرْسُمُ وَرْدَةً.":"b7c2c5df2acf","البِنْتُ تَلْعَبُ بِالكُرَةِ.":"328211fdaefa","التَّمْرَ":"16f23433d7e0","التُّفَّاحَ":"2f7c092b7068","الجَمَلُ":"932388253454","الجَمَلُ فِي الصَّحْرَاءِ.":"56f8f9720ee1","الجَمَلُ كَبِيرٌ.":"a1a5d38b5caf","الحَدِيقَةُ وَاسِعَةٌ وَجَمِيلَةٌ.":"19888ed2b42f","الحَدِيقَةِ":"3331a53657ef","الحَلِيبَ":"87b91500a80e","الخَشَبِيَّةُ":"988f8d5565b9","الدَّرَّاجَةُ":"cfc223d4609c","الزَّرَافَةُ":"7875fe35be81","الزَّرْقَاءَ":"c7dbb655cc94","السَّفِينَةُ":"5f0a196a8650","السَّفِينَةُ تُبْحِرُ فِي البَحْرِ.":"4e378e15b2cd","السَّمَاءِ":"2444bbdfe1d9","السَّمَكَةُ":"1aaf90bad36d","السَّمَكَةُ تَسْبَحُ بِسُرْعَةٍ.":"960c5b6f30ed","السَّمَكُ":"94f2603e4420","السُّفُنُ":"426dcce4006f","السُّلَحْفَاةُ":"5766cc5649ac","الشَّاطِئِ":"b7c8e69f0989","الشَّايَ":"22bfff69959d","الشَّجَرَةُ العَالِيَةُ تُعْطِينَا ظِلًّا.":"e11a849e9a64","الشَّجَرَةِ":"14c9facb0329","الشَّمْسُ":"d1175faf6a7f","الشَّمْسُ حَارَّةٌ.":"34cc1915cefa","الشَّمْسُ كَبِيرَةٌ.":"a106bc13a76c","الشِّتَاءِ":"8c80ff2422d0","الشِّعَابِ":"3906f472fd4e","الصَّبَاحِ":"eda377226d6e","الصَّحْرَاءِ":"fcfac85f6a38","الصَّدِيقُ":"b10ef4b09bd4","الصَّقْرُ":"6273382200d9","الصَّقْرُ طَائِرٌ سَرِيعٌ جِدًّا.":"48157c1c2138","الضِّفْدَعُ":"35694bcc9856","الطَّائِرَةُ":"88f60c0fbee2","الطَّائِرَةُ تَطِيرُ عَالِيًا.":"db248c2592e6","الطَّائِرَةُ تَطِيرُ فَوْقَ الغُيُومِ.":"750383558b96","الطَّالِبَاتُ يَكْتُبْنَ الدَّرْسَ بِهُدُوءٍ.":"a94e4f495348","الطُّلَّابُ":"e153d08ce378","الطُّيُورُ":"17f6d3838b5a","الغَزَالَةُ":"915a0389d78e","الغَزَالَةُ أَمَامَ البَيْتِ":"c7e57e4caf7b","الغَزَالَةُ أَمَامَ الجَمَلِ":"2c49c18f5f47","الغَزَالَةُ أَمَامَ الخَيْمَةِ":"9612a4809a86","الغَزَالَةُ أَمَامَ السَّيَّارَةِ":"76c8f913de33","الغَزَالَةُ أَمَامَ الشَّجَرَةِ":"7107c3560001","الغَزَالَةُ أَمَامَ النَّخْلَةِ":"20cabd6969e1","الغَزَالَةُ بِجَانِبِ البَيْتِ":"06748fd3053a","الغَزَالَةُ بِجَانِبِ الجَمَلِ":"b0c3dacfbb92","الغَزَالَةُ بِجَانِبِ الخَيْمَةِ":"170375e7603f","الغَزَالَةُ بِجَانِبِ السَّرِيرِ":"2abaf6e37ade","الغَزَالَةُ بِجَانِبِ السَّيَّارَةِ":"ff3f700000e2","الغَزَالَةُ بِجَانِبِ الشَّجَرَةِ":"025c8c7d9148","الغَزَالَةُ بِجَانِبِ الكُرْسِيِّ":"d4a2f849daff","الغَزَالَةُ بِجَانِبِ النَّخْلَةِ":"4e283730368f","الغَزَالَةُ تَحْتَ السَّرِيرِ":"144c37d08558","الغَزَالَةُ تَحْتَ الشَّجَرَةِ":"2ffa8d272260","الغَزَالَةُ تَحْتَ الكُرْسِيِّ":"22748e2bf9f5","الغَزَالَةُ تَحْتَ النَّخْلَةِ":"5c6112f64d1f","الغَزَالَةُ تَرْكُضُ فِي الصَّحْرَاءِ.":"3922b07bec76","الغَزَالَةُ خَلْفَ البَيْتِ":"2a3fd34401aa","الغَزَالَةُ خَلْفَ الجَمَلِ":"accb60488ee3","الغَزَالَةُ خَلْفَ الخَيْمَةِ":"e7a16ca53619","الغَزَالَةُ خَلْفَ السَّرِيرِ":"b1f15432aaf5","الغَزَالَةُ خَلْفَ السَّيَّارَةِ":"3b7a3b9958c6","الغَزَالَةُ خَلْفَ الشَّجَرَةِ":"b0decba5435c","الغَزَالَةُ خَلْفَ الكُرْسِيِّ":"ae1735f3528d","الغَزَالَةُ خَلْفَ النَّخْلَةِ":"179741addab7","الغَزَالَةُ فَوْقَ البَيْتِ":"3ef1a4129c16","الغَزَالَةُ فَوْقَ الجَمَلِ":"e5df70346466","الغَزَالَةُ فَوْقَ الخَيْمَةِ":"bc3b678ebdb7","الغَزَالَةُ فَوْقَ السَّرِيرِ":"088b53119ec6","الغَزَالَةُ فَوْقَ السَّيَّارَةِ":"be1c1f831af9","الغَزَالَةُ فَوْقَ الكُرْسِيِّ":"be4bbc165e4b","الغَوَّاصُ":"0ef6411889e4","الغُيُومِ":"4505e6bb19a6","الفَرَاشَةُ":"9f4556cf46c9","الفِيلُ":"b6d6fb3246f6","القَمَرُ":"2b487d12bbd4","القَمَرُ جَمِيلٌ.":"43ff9e43716b","القَمَرُ مُنِيرٌ.":"fedcf9d8bf47","القِطَّةُ":"ca2f6dff52ec","القِطَّةُ تَشْرَبُ الحَلِيبَ.":"a202669c320b","القِطَّةُ صَغِيرَةٌ.":"329e670612b8","الكُرَةُ":"539b60a5970d","الكُرَةُ حَمْرَاءُ.":"324ce09e02e2","المَاءَ":"383319ba861f","المَاءِ":"6fa7c973baba","المَدْرَسَةِ":"72467dc92789","المَرْجَانِيَّةِ":"ab8f4d53c7ba","المَطَرِ":"a686e30e0d47","المُعَلِّمَةُ تَشْرَحُ الدَّرْسَ بِوُضُوحٍ.":"3b2d573bc9c3","المُلَوَّنُ":"95b8c507603d","النَّحْلَةُ":"b71b03f43321","النَّحْلَةُ عَلَى الوَرْدَةِ.":"c6239db3b6b2","النَّخْلَ":"6c7f0e8101c3","النَّخْلَةُ":"8793798e4696","النَّخْلَةُ طَوِيلَةٌ جِدًّا.":"163549f74601","النَّوْمِ":"b4fbbd898dcb","الهَادِئِ":"55b9230424b4","الوَرْدَةُ جَمِيلَةٌ.":"5862c99280d7","الوَرْدَةِ":"666b5b698e3a","الوَلَدُ":"c65f1e65a44a","الوَلَدُ نَشِيطٌ وَذَكِيٌّ.":"ffbdb44286d1","الوَلَدُ يَأْكُلُ تُفَّاحَةً.":"bced3bbc686f","الوَلَدُ يَقْرَأُ كِتَابًا.":"e1d83d9f81a4","اَ":"08be0bce2d54","اُ":"b5efb0862755","اِ":"cb6fd6d3d295","اِشْتَرَتْ أُمِّي فَاكِهَةً طَازَجَةً.":"b65a77417f85","بَعْدَ":"3ae39fb5a2b1","بَعْدَ المَطَرِ ظَهَرَ قَوْسُ قُزَحٍ فِي السَّمَاءِ.":"fd67f1dd80da","بَنَفْسَجِيٌّ":"cd1ec63a92dc","بَنَفْسَجِيَّةٌ":"02c31ec66f10","بَيْضَاءُ":"a3dac4352b9c","بَيْنَ":"d75985022336","بُرْتُقَالِيٌّ":"a00aa275c419","بُرْتُقَالِيَّةٌ":"e0fa928ceaee","بِالمِفْتَاحِ":"72d79e18bf69","بِسُرْعَةٍ":"e380eb80026a","بِلَادٍ":"26b2813c9c29","تَأْكُلُ":"dad6c0894557","تَأْكُلُ البِنْتُ مَوْزَةً صَفْرَاءَ.":"528e505c60d7","تَحْتَ":"0a1bd791de82","تَرْسُمُ":"7bceef369a32","تَرْكُضُ":"5abf9f88cf2f","تَشْرَبُ":"774578feaf5d","تَطِيرُ":"8f741527ad8d","تَطِيرُ الطُّيُورُ إِلَى بِلَادٍ دَافِئَةٍ فِي الشِّتَاءِ.":"f825ad3d503f","تَطْبُخُ":"a59f4395bd80","تُبْحِرُ":"ceb7305cd8ce","تُبْحِرُ السُّفُنُ الخَشَبِيَّةُ قُرْبَ الشَّاطِئِ الهَادِئِ.":"867db73d0f1d","ثُمَّ":"ebdfc009a1ad","جَدَّتِهِ":"a38b1d36b32d","جَلَسَتِ":"dff8d5fae401","جَلَسَتِ القِطَّةُ تَحْتَ الشَّجَرَةِ.":"b1104d2f21a3","جَمِيلٌ":"6040382ce64f","جَمِيلَةً":"9b095e5abfa7","جِدًّا":"6b1a1f430286","حَقِيبَةٌ بَنَفْسَجِيَّةٌ":"e18734149688","حَقِيبَةٌ بَيْضَاءُ":"a22934dbed20","حَقِيبَةٌ بُرْتُقَالِيَّةٌ":"326f41c6312a","حَقِيبَةٌ حَمْرَاءُ":"23ec42ef63e5","حَقِيبَةٌ خَضْرَاءُ":"e778d311e295","حَقِيبَةٌ زَرْقَاءُ":"59ec7b5480bb","حَقِيبَةٌ سَوْدَاءُ":"3402a74ec0fc","حَقِيبَةٌ صَفْرَاءُ":"762abdaa99d9","حَقِيبَةٌ وَرْدِيَّةٌ":"d9b4c00055c2","حَمْرَاءُ":"ae0ea6ad2b64","حِذَاءٌ":"2d20f55f1354","حِذَاءٌ أَبْيَضُ":"02f6d1f5fa5e","حِذَاءٌ أَحْمَرُ":"c80f153e494e","حِذَاءٌ أَخْضَرُ":"dd365c873d83","حِذَاءٌ أَزْرَقُ":"27c32f36ff9f","حِذَاءٌ أَسْوَدُ":"bc6ee39aee6f","حِذَاءٌ أَصْفَرُ":"2b94d499ce70","حِذَاءٌ بَنَفْسَجِيٌّ":"14920245173f","حِذَاءٌ بُرْتُقَالِيٌّ":"1cc893429d2a","حِذَاءٌ وَرْدِيٌّ":"b0ef0481db7e","خَضْرَاءُ":"6f1980c7a0c7","دَافِئَةٍ":"48c6b243e0f8","دَرَّاجَتَهُ":"23bee46eccac","ذَهَبَ الوَلَدُ إِلَى المَدْرَسَةِ.":"fde212c05544","ذَهَبَتِ البِنْتُ إِلَى السُّوقِ.":"aed30c3b52b6","رَأَيْتُ سَفِينَتَيْنِ كَبِيرَتَيْنِ فِي المِينَاءِ.":"670ecb1689cf","رَقَبَتِي طَوِيلَةٌ جِدًّا. آكُلُ أَوْرَاقَ الشَّجَرِ العَالِيَةَ. مَنْ أَنَا؟":"c2d81a83d28e","رِسَالَةً":"b22c80a46b0b","رِيشٌ":"3b0cfafd6316","رِيشٌ أَبْيَضُ":"f89abbdbf717","رِيشٌ أَحْمَرُ":"88c75620d37f","رِيشٌ أَخْضَرُ":"3aeec9e1e8a6","رِيشٌ أَزْرَقُ":"092c665c39f4","رِيشٌ أَسْوَدُ":"e3e6612208fa","رِيشٌ أَصْفَرُ":"d4190c44c140","رِيشٌ بَنَفْسَجِيٌّ":"046c8db49a49","رِيشٌ بُرْتُقَالِيٌّ":"6510e84e706d","رِيشٌ وَرْدِيٌّ":"2314a553614c","زَرْقَاءُ":"a5fe84aeb85c","سَوْدَاءُ":"da4ead0ce84d","شَرِبَتِ القِطَّةُ الحَلِيبَ.":"7a41e2f339b0","صَدِيقَهُ":"6ff06f7746fa","صَفْرَاءَ":"2d67e8c90836","صَفْرَاءُ":"2f65d3f3ae2a","طَعَامًا":"1f2d000a708e","ظَهَرَ":"fd830a2979a8","عَلَى":"ae245b24a68a","عَنِ":"d2cb08140a8c","عِنْدَمَا":"84959500a9df","غَاصَ":"92833bdf799b","غَاصَ الغَوَّاصُ فِي البَحْرِ وَوَجَدَ لُؤْلُؤَةً.":"b9597fa301f5","غَاصَ الغَوَّاصُ لِيَجْمَعَ اللُّؤْلُؤَ.":"11f1fae7d6ef","فَتَحَتِ":"3b22b7958e35","فَتَحَتِ البِنْتُ البَابَ بِالمِفْتَاحِ.":"8890d741705e","فَوْقَ":"e4d6e496e038","فِي":"1c6a3aa2e7cc","فِي الصَّبَاحِ يَذْهَبُ الطُّلَّابُ إِلَى مَدَارِسِهِمْ.":"001bac580933","قَبْلَ":"3d0b14f17df5","قَرَأَتِ":"3d302175943a","قَرَأَتِ البِنْتُ قِصَّةً جَمِيلَةً عَنِ البَحْرِ.":"c332818e7112","قَرَأْتُ كِتَابًا مُفِيدًا.":"bcdabb4bfae5","قَصِيرَةً":"d6273b722356","قَوْسُ":"2fe369af25b2","قُبَّعَةٌ":"69c57187ca01","قُبَّعَةٌ بَنَفْسَجِيَّةٌ":"45a75977a0cd","قُبَّعَةٌ بَيْضَاءُ":"56d5a9330c6c","قُبَّعَةٌ بُرْتُقَالِيَّةٌ":"e834da011905","قُبَّعَةٌ حَمْرَاءُ":"f1cfeba97c40","قُبَّعَةٌ خَضْرَاءُ":"5f2f36e9bdda","قُبَّعَةٌ زَرْقَاءُ":"9a236c92149c","قُبَّعَةٌ سَوْدَاءُ":"475c858d8a08","قُبَّعَةٌ صَفْرَاءُ":"b4909b72d09a","قُبَّعَةٌ وَرْدِيَّةٌ":"97bbc3833e8c","قُرْبَ":"e94f4181ff58","قُزَحٍ":"04f65e2c2246","قِصَّةً":"4b4a045427ff","كَبِيرَةٌ":"f4eb9a26c7a8","كَتَبَ الطِّفْلُ اسْمَهُ عَلَى الدَّفْتَرِ.":"fe1d596252a7","كَتَبَ الوَلَدُ رِسَالَةً قَصِيرَةً إِلَى جَدَّتِهِ.":"4d56340f6c22","كَثِيرًا":"0ae0e922fcaf","كُلَّ":"5fe3125e1580","كِتَابًا":"536ba436a639","لَذِيذًا":"c4b5ec77691c","لَيْلَةٍ":"9bfcd993295c","لُؤْلُؤَةً":"8d4729495bb6","لِأَنَّهُ":"48f7157f10f9","لِي جَنَاحَانِ مُلَوَّنَانِ. كُنْتُ يَرَقَةً صَغِيرَةً. مَنْ أَنَا؟":"bf8cf9bdf6ef","لِي شَعْرٌ كَثِيفٌ حَوْلَ رَأْسِي. يُسَمُّونَنِي مَلِكَ الغَابَةِ. مَنْ أَنَا؟":"d52e2ae5951f","لِي عَجَلَتَانِ وَجَرَسٌ صَغِيرٌ. مَنْ أَنَا؟":"b3d3779c1061","مَاءً":"399099e6facd","مَدَارِسِهِمْ":"f8e065ae5152","مَوْزَةً":"b18c54069008","نَذْهَبُ إِلَى البَحْرِ صَيْفًا.":"a58ce33c49f8","نَزْرَعُ":"b026ebe98f8c","نَزْرَعُ النَّخْلَ لِأَنَّهُ يُعْطِينَا التَّمْرَ.":"ce0385bb542c","نَشْرَبُ":"1b8597d031db","نَشْرَبُ المَاءَ كُلَّ يَوْمٍ.":"c05e0a461799","نَظَّارَةٌ":"0ce7c982a25f","نَظَّارَةٌ بَنَفْسَجِيَّةٌ":"052c393c7a21","نَظَّارَةٌ بَيْضَاءُ":"da1b3f8a5440","نَظَّارَةٌ بُرْتُقَالِيَّةٌ":"febe5436d892","نَظَّارَةٌ حَمْرَاءُ":"17226a78788e","نَظَّارَةٌ خَضْرَاءُ":"24e3c4330ee6","نَظَّارَةٌ زَرْقَاءُ":"ac09e58b7601","نَظَّارَةٌ سَوْدَاءُ":"1b4b764774dc","نَظَّارَةٌ صَفْرَاءُ":"12f56ca8f25d","نَظَّارَةٌ وَرْدِيَّةٌ":"a5b89dca151e","نَقْرَأُ":"1a72d18dd49f","نَقْرَأُ كُلَّ لَيْلَةٍ قِصَّةً قَبْلَ النَّوْمِ.":"d71bb59ed680","هَؤُلَاءِ أَصْدِقَاءُ مُخْلِصُونَ.":"2dc9f1cfbd13","هَاتَانِ وَرْدَتَانِ جَمِيلَتَانِ.":"05cd9142cb27","هَذَا بَيْتٌ كَبِيرٌ.":"fb6f2c5c62ea","هَذَا وَلَدٌ مُهَذَّبٌ.":"67a9b98f980c","هَذِهِ الحَقِيبَةُ ثَقِيلَةٌ عَلَى ظَهْرِي.":"97ee9cc24d94","هَذِهِ سَمَكَةٌ.":"c7088585c31a","هَذِهِ سَيَّارَةٌ سَرِيعَةٌ.":"7387733d755a","وَرْدَةً":"049e55328f9e","وَرْدِيَّةٌ":"50a0a7a3e0a4","وَوَجَدَ":"47a48ee1c066","وِشَاحٌ":"a3200d73ce3f","وِشَاحٌ أَبْيَضُ":"dcd9df778f2b","وِشَاحٌ أَحْمَرُ":"b3e092541e8b","وِشَاحٌ أَخْضَرُ":"53fc9a47ae3d","وِشَاحٌ أَزْرَقُ":"746ef2831035","وِشَاحٌ أَسْوَدُ":"91dc83f34994","وِشَاحٌ أَصْفَرُ":"38c19e579094","وِشَاحٌ بَنَفْسَجِيٌّ":"835fb95811b0","وِشَاحٌ بُرْتُقَالِيٌّ":"f7757a49b022","وِشَاحٌ وَرْدِيٌّ":"55fa5fdf08b9","يَحْتَاجُ":"f8016f2afa00","يَذْهَبُ":"738e057b5e34","يَرْكَبُ":"fddc918ac5bf","يَرْكَبُ أَخِي دَرَّاجَتَهُ الزَّرْقَاءَ.":"ddc0de9e3b33","يَشْرَبُ":"8bb88cbe7bdb","يَشْرَبُ الجَمَلُ مَاءً كَثِيرًا ثُمَّ يَصْبِرُ أَيَّامًا.":"6d4b3cb9a16c","يَصْبِرُ":"b2e09ccac08d","يَعِيشُ":"595bbabc690a","يَعِيشُ السَّمَكُ المُلَوَّنُ بَيْنَ الشِّعَابِ المَرْجَانِيَّةِ.":"abd69bd3c895","يَعِيشُ الصَّقْرُ فِي الصَّحْرَاءِ الوَاسِعَةِ.":"45e00c940274","يَقْرَأُ":"d781def4b31b","يَلْعَبُ":"748e2ca4dcf0","يَلْعَبُ الأَطْفَالُ فِي الحَدِيقَةِ.":"3d733dd7e336","يَوْمٍ":"293c6934a04f","يُسَاعِدُ":"77270260116a","يُسَاعِدُ الصَّدِيقُ صَدِيقَهُ عِنْدَمَا يَحْتَاجُ إِلَيْهِ.":"dcd55b15f20e","يُعْطِينَا":"e8ec21197571"},"ar-SA-ZariyahNeural":{"أَبِي يَشْرَبُ الشَّايَ.":"c9408c7f5eee","أَبْيَضُ":"32273352d4c6","أَخِي":"3211eef7f0e9","أَرَى نَجْمَةً.":"14762574824e","أَسْوَدُ":"a1be1062ee3a","أَشْرَبُ الحَلِيبَ.":"cc5aacf51197","أَطِيرُ عَالِيًا فِي السَّمَاءِ. أَحْمِلُ المُسَافِرِينَ. مَنْ أَنَا؟":"8796d347f056","أَطِيرُ مِنْ زَهْرَةٍ إِلَى زَهْرَةٍ. أَصْنَعُ العَسَلَ. مَنْ أَنَا؟":"8b2e231002e8","أَطْلُعُ فِي الصَّبَاحِ. أُعْطِي الضَّوْءَ وَالدِّفْءَ. مَنْ أَنَا؟":"eff31bb7349b","أَعِيشُ فِي الصَّحْرَاءِ. عَلَى ظَهْرِي سَنَامٌ. مَنْ أَنَا؟":"59dba8caa01e","أَعِيشُ فِي المَاءِ. أَسْبَحُ بِزَعَانِفِي. مَنْ أَنَا؟":"83e0db6b6d2d","أَعِيشُ فِي المَزْرَعَةِ. أُعْطِيكُمُ الحَلِيبَ. مَنْ أَنَا؟":"85ed20de8774","أَقْفِزُ قُرْبَ البِرْكَةِ. لَوْنِي أَخْضَرُ. مَنْ أَنَا؟":"bf23fd8458a4","أَمْشِي بِبُطْءٍ. أَحْمِلُ بَيْتِي عَلَى ظَهْرِي. مَنْ أَنَا؟":"ee18a04e1425","أَنَا":"e6c8984ce041","أَنَا أُحِبُّ التُّفَّاحَ.":"0f808857b2fe","أَنَا حَيَوَانٌ كَبِيرٌ جِدًّا. لِي خُرْطُومٌ طَوِيلٌ. مَنْ أَنَا؟":"1469d053b4f6","أَنَا شَجَرَةٌ طَوِيلَةٌ. أُعْطِيكُمُ التَّمْرَ. مَنْ أَنَا؟":"9f6503a39706","أَنَا طَائِرٌ لَا يَطِيرُ. أَعِيشُ بَيْنَ الثُّلُوجِ. مَنْ أَنَا؟":"c127a29e6b45","أَنَا طَائِرٌ. أَسْهَرُ فِي اللَّيْلِ وَأَنَامُ فِي النَّهَارِ. مَنْ أَنَا؟":"6e2acfcb1ded","أَيَّامًا":"3ed6662de1e7","أُخْتِي تَرْسُمُ بَيْتًا.":"6f63dc143e1f","أُمِّي تَطْبُخُ طَعَامًا لَذِيذًا.":"1e687069f6b9","إِلَى":"81fe9ac34956","إِلَيْهِ":"d34774879d62","الأَسَدُ":"52d5b5cbfe4d","الأَطْفَالُ":"7897aa42b94e","الأَوْلَادُ يَلْعَبُونَ كُرَةَ القَدَمِ.":"c5d7494050f6","البَابَ":"2e82dc196435","البَحْرِ":"35d120159cc2","البَطَّةُ":"6547bb3333c7","البَطَّةُ تَسْبَحُ.":"839c8a03fb1b","البَطَّةُ فِي المَاءِ.":"e1153ece07f5","البَقَرَةُ":"a7b02d973378","البُومَةُ":"ce91453ff656","البِطْرِيقُ":"9811ab398964","البِنْتُ":"043e7e1f18a7","البِنْتُ تَرْسُمُ وَرْدَةً.":"af0e5a9c0550","البِنْتُ تَلْعَبُ بِالكُرَةِ.":"6a0c5f108cf4","التَّمْرَ":"caf7f1df0563","التُّفَّاحَ":"a52541bda0ba","الجَمَلُ":"f245698a45f8","الجَمَلُ فِي الصَّحْرَاءِ.":"48f94bffb8a5","الجَمَلُ كَبِيرٌ.":"93c22a359096","الحَدِيقَةُ وَاسِعَةٌ وَجَمِيلَةٌ.":"c9d08a522cd9","الحَدِيقَةِ":"22f1f53bd7ec","الحَلِيبَ":"b456c57b940a","الخَشَبِيَّةُ":"13df9df14f2f","الدَّرَّاجَةُ":"5de6f24c3fc2","الزَّرَافَةُ":"e2e424b68da6","الزَّرْقَاءَ":"3b8515419cf0","السَّفِينَةُ":"1f3c7d80eb3f","السَّفِينَةُ تُبْحِرُ فِي البَحْرِ.":"82fded8a1872","السَّمَاءِ":"df24d9bdb8ba","السَّمَكَةُ":"18614460ab9f","السَّمَكَةُ تَسْبَحُ بِسُرْعَةٍ.":"ef5f86b5b694","السَّمَكُ":"a8c4d6910e4c","السُّفُنُ":"e107bf845bbd","السُّلَحْفَاةُ":"222362f2f283","الشَّاطِئِ":"608935bcb7ae","الشَّايَ":"6ef59d31baee","الشَّجَرَةُ العَالِيَةُ تُعْطِينَا ظِلًّا.":"03f56655bca9","الشَّجَرَةِ":"e27a02d3e124","الشَّمْسُ":"7d58ed8c79ef","الشَّمْسُ حَارَّةٌ.":"76d7668f660c","الشَّمْسُ كَبِيرَةٌ.":"3fdb43d7c2e7","الشِّتَاءِ":"42c0664591c6","الشِّعَابِ":"744d0a7d2606","الصَّبَاحِ":"7833a235f9ae","الصَّحْرَاءِ":"c0219b3b1018","الصَّدِيقُ":"ffa6b2df42b3","الصَّقْرُ":"5e28489a5247","الصَّقْرُ طَائِرٌ سَرِيعٌ جِدًّا.":"bc380469cc68","الضِّفْدَعُ":"5c4e982bd246","الطَّائِرَةُ":"8fd9f971bffe","الطَّائِرَةُ تَطِيرُ عَالِيًا.":"ed7c3f032d15","الطَّائِرَةُ تَطِيرُ فَوْقَ الغُيُومِ.":"6c0628dc51f9","الطَّالِبَاتُ يَكْتُبْنَ الدَّرْسَ بِهُدُوءٍ.":"3d67c0f47774","الطُّلَّابُ":"34f618509fcf","الطُّيُورُ":"6871c17ab14d","الغَزَالَةُ":"98936f90ad56","الغَزَالَةُ أَمَامَ البَيْتِ":"3a304c85b1f6","الغَزَالَةُ أَمَامَ الجَمَلِ":"a1eb6a16d994","الغَزَالَةُ أَمَامَ الخَيْمَةِ":"ac4de5250ed8","الغَزَالَةُ أَمَامَ السَّيَّارَةِ":"8f158a1cde07","الغَزَالَةُ أَمَامَ الشَّجَرَةِ":"69d2bde49f19","الغَزَالَةُ أَمَامَ النَّخْلَةِ":"5ef4b72f0828","الغَزَالَةُ بِجَانِبِ البَيْتِ":"60142474bc5f","الغَزَالَةُ بِجَانِبِ الجَمَلِ":"c671d68f2f01","الغَزَالَةُ بِجَانِبِ الخَيْمَةِ":"56ec0fbf4f4d","الغَزَالَةُ بِجَانِبِ السَّرِيرِ":"59a459ebbbf1","الغَزَالَةُ بِجَانِبِ السَّيَّارَةِ":"77280d62cf22","الغَزَالَةُ بِجَانِبِ الشَّجَرَةِ":"619a74ada109","الغَزَالَةُ بِجَانِبِ الكُرْسِيِّ":"f8721f8fa97a","الغَزَالَةُ بِجَانِبِ النَّخْلَةِ":"afb01a93acf2","الغَزَالَةُ تَحْتَ السَّرِيرِ":"4bc283bb4b73","الغَزَالَةُ تَحْتَ الشَّجَرَةِ":"5e7c03553cf5","الغَزَالَةُ تَحْتَ الكُرْسِيِّ":"f3821c675b67","الغَزَالَةُ تَحْتَ النَّخْلَةِ":"348d1ea5106e","الغَزَالَةُ تَرْكُضُ فِي الصَّحْرَاءِ.":"f15f253cd791","الغَزَالَةُ خَلْفَ البَيْتِ":"341c7112d17c","الغَزَالَةُ خَلْفَ الجَمَلِ":"2d345a61282f","الغَزَالَةُ خَلْفَ الخَيْمَةِ":"88fc7d8028ab","الغَزَالَةُ خَلْفَ السَّرِيرِ":"8e7bae48a87a","الغَزَالَةُ خَلْفَ السَّيَّارَةِ":"b0f71725bcd3","الغَزَالَةُ خَلْفَ الشَّجَرَةِ":"fcd69ff54e2a","الغَزَالَةُ خَلْفَ الكُرْسِيِّ":"d9757d4d4fc7","الغَزَالَةُ خَلْفَ النَّخْلَةِ":"f309935ab282","الغَزَالَةُ فَوْقَ البَيْتِ":"a02e88df8826","الغَزَالَةُ فَوْقَ الجَمَلِ":"965a2af025fd","الغَزَالَةُ فَوْقَ الخَيْمَةِ":"4f07a050784f","الغَزَالَةُ فَوْقَ السَّرِيرِ":"5ad9059f4912","الغَزَالَةُ فَوْقَ السَّيَّارَةِ":"82e1f5c4a5cd","الغَزَالَةُ فَوْقَ الكُرْسِيِّ":"504a3107a91e","الغَوَّاصُ":"643e1e13b865","الغُيُومِ":"1244f6c5f965","الفَرَاشَةُ":"dde3a05ee081","الفِيلُ":"f8ef4ce981e5","القَمَرُ":"d731d20edff2","القَمَرُ جَمِيلٌ.":"cd724dd783ee","القَمَرُ مُنِيرٌ.":"0d64286a65e9","القِطَّةُ":"95bf03161b43","القِطَّةُ تَشْرَبُ الحَلِيبَ.":"05e5c07ff422","القِطَّةُ صَغِيرَةٌ.":"f3aadd429445","الكُرَةُ":"c117a455f84b","الكُرَةُ حَمْرَاءُ.":"876095394ad7","المَاءَ":"97d3c774990b","المَاءِ":"793bd61f96d3","المَدْرَسَةِ":"74421f4864ca","المَرْجَانِيَّةِ":"1d36492b24f6","المَطَرِ":"e0ac503014df","المُعَلِّمَةُ تَشْرَحُ الدَّرْسَ بِوُضُوحٍ.":"e1d9bb360641","المُلَوَّنُ":"40a1ade64431","النَّحْلَةُ":"348791c2cb5b","النَّحْلَةُ عَلَى الوَرْدَةِ.":"9284bf7b6f84","النَّخْلَ":"d72cb3320b67","النَّخْلَةُ":"c7ebc89e8d0b","النَّخْلَةُ طَوِيلَةٌ جِدًّا.":"169275c6a18a","النَّوْمِ":"1053becd71c0","الهَادِئِ":"ef396caed1d1","الوَرْدَةُ جَمِيلَةٌ.":"f84d87d32ea7","الوَرْدَةِ":"39280c08667f","الوَلَدُ":"d7f350c9d0de","الوَلَدُ نَشِيطٌ وَذَكِيٌّ.":"353f95bea0dc","الوَلَدُ يَأْكُلُ تُفَّاحَةً.":"65b4fb35465c","الوَلَدُ يَقْرَأُ كِتَابًا.":"7e617144cf1b","اَ":"22230bf606a0","اُ":"46b8ef9b566d","اِ":"3dcd02ac87b7","اِشْتَرَتْ أُمِّي فَاكِهَةً طَازَجَةً.":"593760fa031a","بَعْدَ":"5f6c7069f568","بَعْدَ المَطَرِ ظَهَرَ قَوْسُ قُزَحٍ فِي السَّمَاءِ.":"43707dae77da","بَنَفْسَجِيٌّ":"aaba57bf4a33","بَنَفْسَجِيَّةٌ":"9ea5fdd02ecd","بَيْضَاءُ":"b207a7c7b450","بَيْنَ":"48ef58838f45","بُرْتُقَالِيٌّ":"b877a217c984","بُرْتُقَالِيَّةٌ":"d4f238a7d2db","بِالمِفْتَاحِ":"5102aba08778","بِسُرْعَةٍ":"ccc0e3b17657","بِلَادٍ":"17a56b213986","تَأْكُلُ":"e9b53410803d","تَأْكُلُ البِنْتُ مَوْزَةً صَفْرَاءَ.":"0435037608d4","تَحْتَ":"b2db0377660b","تَرْسُمُ":"10686317b279","تَرْكُضُ":"84b6ac7927ff","تَشْرَبُ":"f70aeae9fbad","تَطِيرُ":"6901ac19925d","تَطِيرُ الطُّيُورُ إِلَى بِلَادٍ دَافِئَةٍ فِي الشِّتَاءِ.":"e5e0e9512ad2","تَطْبُخُ":"80e93d5b213a","تُبْحِرُ":"b7d290a980d3","تُبْحِرُ السُّفُنُ الخَشَبِيَّةُ قُرْبَ الشَّاطِئِ الهَادِئِ.":"78c138533c55","ثُمَّ":"4a9f55e699d4","جَدَّتِهِ":"712d2f69ea7a","جَلَسَتِ":"a06af625c420","جَلَسَتِ القِطَّةُ تَحْتَ الشَّجَرَةِ.":"fa3dfc31bda0","جَمِيلٌ":"8dd0a9ce14fb","جَمِيلَةً":"009e4b3f4fd3","جِدًّا":"5554a2684ede","حَقِيبَةٌ بَنَفْسَجِيَّةٌ":"c452ffae38c0","حَقِيبَةٌ بَيْضَاءُ":"921968bb88d5","حَقِيبَةٌ بُرْتُقَالِيَّةٌ":"823a1e719e0c","حَقِيبَةٌ حَمْرَاءُ":"ee6849406b39","حَقِيبَةٌ خَضْرَاءُ":"391ff2e22b7e","حَقِيبَةٌ زَرْقَاءُ":"1a16da2e9528","حَقِيبَةٌ سَوْدَاءُ":"d41618115c2e","حَقِيبَةٌ صَفْرَاءُ":"4641830a06d3","حَقِيبَةٌ وَرْدِيَّةٌ":"91389f1abfd4","حَمْرَاءُ":"eb34837242c4","حِذَاءٌ":"e65fa013c52b","حِذَاءٌ أَبْيَضُ":"6fc86736afdc","حِذَاءٌ أَحْمَرُ":"a251aceddf12","حِذَاءٌ أَخْضَرُ":"23c1d103d60a","حِذَاءٌ أَزْرَقُ":"28c7081743d5","حِذَاءٌ أَسْوَدُ":"8d2d58b07c6f","حِذَاءٌ أَصْفَرُ":"31283fc630e3","حِذَاءٌ بَنَفْسَجِيٌّ":"5cbd982e88c6","حِذَاءٌ بُرْتُقَالِيٌّ":"c80341d6f731","حِذَاءٌ وَرْدِيٌّ":"cd9352a52aa2","خَضْرَاءُ":"5c396b0e7937","دَافِئَةٍ":"9a0634bb80f7","دَرَّاجَتَهُ":"aaca625ba890","ذَهَبَ الوَلَدُ إِلَى المَدْرَسَةِ.":"74e7b1be8544","ذَهَبَتِ البِنْتُ إِلَى السُّوقِ.":"e354106475f0","رَأَيْتُ سَفِينَتَيْنِ كَبِيرَتَيْنِ فِي المِينَاءِ.":"de2e26ba37d7","رَقَبَتِي طَوِيلَةٌ جِدًّا. آكُلُ أَوْرَاقَ الشَّجَرِ العَالِيَةَ. مَنْ أَنَا؟":"b49c0f2c66f3","رِسَالَةً":"d14505984497","رِيشٌ":"eb48ee2544ba","رِيشٌ أَبْيَضُ":"13c26792de98","رِيشٌ أَحْمَرُ":"4d31a4e1f6de","رِيشٌ أَخْضَرُ":"30cfcf3c9b05","رِيشٌ أَزْرَقُ":"e1dce53b9397","رِيشٌ أَسْوَدُ":"609bc8e7d8d0","رِيشٌ أَصْفَرُ":"0875ac169a58","رِيشٌ بَنَفْسَجِيٌّ":"160d2c9cded2","رِيشٌ بُرْتُقَالِيٌّ":"3ca6c7886ffa","رِيشٌ وَرْدِيٌّ":"734659d3b20d","زَرْقَاءُ":"e3d9c27147a5","سَوْدَاءُ":"5ca7baea1e3a","شَرِبَتِ القِطَّةُ الحَلِيبَ.":"46800e6475b9","صَدِيقَهُ":"521785aa7781","صَفْرَاءَ":"31f7fc5f675a","صَفْرَاءُ":"1668d9669ecf","طَعَامًا":"ced8f3fd6ceb","ظَهَرَ":"fb7656a15292","عَلَى":"9a58a3d9df73","عَنِ":"a6df60892f06","عِنْدَمَا":"b7b34275c617","غَاصَ":"bc40dc2cab86","غَاصَ الغَوَّاصُ فِي البَحْرِ وَوَجَدَ لُؤْلُؤَةً.":"c94b66cb8a67","غَاصَ الغَوَّاصُ لِيَجْمَعَ اللُّؤْلُؤَ.":"4593fa503908","فَتَحَتِ":"70494950de56","فَتَحَتِ البِنْتُ البَابَ بِالمِفْتَاحِ.":"40ba727a54d2","فَوْقَ":"f279cdb9c705","فِي":"09be5c1f13a0","فِي الصَّبَاحِ يَذْهَبُ الطُّلَّابُ إِلَى مَدَارِسِهِمْ.":"419a74939ec3","قَبْلَ":"9e830e9b7673","قَرَأَتِ":"05a32378da48","قَرَأَتِ البِنْتُ قِصَّةً جَمِيلَةً عَنِ البَحْرِ.":"f4ce5df55725","قَرَأْتُ كِتَابًا مُفِيدًا.":"27bbbfa57677","قَصِيرَةً":"4f7a1a8d5142","قَوْسُ":"af5cd8857e85","قُبَّعَةٌ":"153ef2e8fe9b","قُبَّعَةٌ بَنَفْسَجِيَّةٌ":"ff9849ad4abf","قُبَّعَةٌ بَيْضَاءُ":"56aad5344904","قُبَّعَةٌ بُرْتُقَالِيَّةٌ":"1bca89b1793f","قُبَّعَةٌ حَمْرَاءُ":"e1020a79787b","قُبَّعَةٌ خَضْرَاءُ":"11ee5da70a0b","قُبَّعَةٌ زَرْقَاءُ":"141f4f2437a1","قُبَّعَةٌ سَوْدَاءُ":"171d7871898d","قُبَّعَةٌ صَفْرَاءُ":"59ff6d0a7033","قُبَّعَةٌ وَرْدِيَّةٌ":"a49d7f602073","قُرْبَ":"9f02fa2fdd14","قُزَحٍ":"e208d3f97fd0","قِصَّةً":"62c54fd7b2aa","كَبِيرَةٌ":"90f5c4248c22","كَتَبَ الطِّفْلُ اسْمَهُ عَلَى الدَّفْتَرِ.":"01209096e0dd","كَتَبَ الوَلَدُ رِسَالَةً قَصِيرَةً إِلَى جَدَّتِهِ.":"91ce270f039a","كَثِيرًا":"3a00edbb47e5","كُلَّ":"3de71e661824","كِتَابًا":"c33573707b41","لَذِيذًا":"a94991606aec","لَيْلَةٍ":"9aeb51610b7e","لُؤْلُؤَةً":"f339e7d148ac","لِأَنَّهُ":"26f8d43fe2c2","لِي جَنَاحَانِ مُلَوَّنَانِ. كُنْتُ يَرَقَةً صَغِيرَةً. مَنْ أَنَا؟":"a42a44957190","لِي شَعْرٌ كَثِيفٌ حَوْلَ رَأْسِي. يُسَمُّونَنِي مَلِكَ الغَابَةِ. مَنْ أَنَا؟":"a792c704ba86","لِي عَجَلَتَانِ وَجَرَسٌ صَغِيرٌ. مَنْ أَنَا؟":"d2796d52d2b6","مَاءً":"1bb8dc3e1bbf","مَدَارِسِهِمْ":"8e1a99986455","مَوْزَةً":"4eba630ddbef","نَذْهَبُ إِلَى البَحْرِ صَيْفًا.":"33c58cdae9bd","نَزْرَعُ":"8254e4a3d313","نَزْرَعُ النَّخْلَ لِأَنَّهُ يُعْطِينَا التَّمْرَ.":"d1a038244c61","نَشْرَبُ":"7c49cbc4ada8","نَشْرَبُ المَاءَ كُلَّ يَوْمٍ.":"3e2ce127ee05","نَظَّارَةٌ":"076175000e5c","نَظَّارَةٌ بَنَفْسَجِيَّةٌ":"1e99bd426b23","نَظَّارَةٌ بَيْضَاءُ":"9540fa0ffaec","نَظَّارَةٌ بُرْتُقَالِيَّةٌ":"37c2992dd359","نَظَّارَةٌ حَمْرَاءُ":"f50520b98412","نَظَّارَةٌ خَضْرَاءُ":"15a91b992139","نَظَّارَةٌ زَرْقَاءُ":"b2ef160ce715","نَظَّارَةٌ سَوْدَاءُ":"be979d28be4c","نَظَّارَةٌ صَفْرَاءُ":"56e9bb626981","نَظَّارَةٌ وَرْدِيَّةٌ":"b088cc29e5e1","نَقْرَأُ":"2270f41b99cd","نَقْرَأُ كُلَّ لَيْلَةٍ قِصَّةً قَبْلَ النَّوْمِ.":"a413e93ebb7d","هَؤُلَاءِ أَصْدِقَاءُ مُخْلِصُونَ.":"5f1b822e5d74","هَاتَانِ وَرْدَتَانِ جَمِيلَتَانِ.":"b2ae8d1b3f74","هَذَا بَيْتٌ كَبِيرٌ.":"91d469aa92c7","هَذَا وَلَدٌ مُهَذَّبٌ.":"366d917ed91e","هَذِهِ الحَقِيبَةُ ثَقِيلَةٌ عَلَى ظَهْرِي.":"70420451f971","هَذِهِ سَمَكَةٌ.":"1a1f23882c43","هَذِهِ سَيَّارَةٌ سَرِيعَةٌ.":"40f61c4b5624","وَرْدَةً":"5c9931093559","وَرْدِيَّةٌ":"212adee8c1f8","وَوَجَدَ":"acef47cea1da","وِشَاحٌ":"fd8ab8faee5d","وِشَاحٌ أَبْيَضُ":"be5fb01d9f2d","وِشَاحٌ أَحْمَرُ":"6abcf1bfe78c","وِشَاحٌ أَخْضَرُ":"cd81b434b594","وِشَاحٌ أَزْرَقُ":"3ec39d691258","وِشَاحٌ أَسْوَدُ":"501c8e14013e","وِشَاحٌ أَصْفَرُ":"4c0cb43a74ba","وِشَاحٌ بَنَفْسَجِيٌّ":"444d74d4b43a","وِشَاحٌ بُرْتُقَالِيٌّ":"d4ffda206eee","وِشَاحٌ وَرْدِيٌّ":"084d072b966b","يَحْتَاجُ":"37b84d7907af","يَذْهَبُ":"b045129ded83","يَرْكَبُ":"95b525439a27","يَرْكَبُ أَخِي دَرَّاجَتَهُ الزَّرْقَاءَ.":"60dcdf2fc51b","يَشْرَبُ":"e04dbf6bee61","يَشْرَبُ الجَمَلُ مَاءً كَثِيرًا ثُمَّ يَصْبِرُ أَيَّامًا.":"62b8837b7e41","يَصْبِرُ":"99a1323dd0de","يَعِيشُ":"677aae1a3ce4","يَعِيشُ السَّمَكُ المُلَوَّنُ بَيْنَ الشِّعَابِ المَرْجَانِيَّةِ.":"39e9389aa65e","يَعِيشُ الصَّقْرُ فِي الصَّحْرَاءِ الوَاسِعَةِ.":"d2e6987f706e","يَقْرَأُ":"a03d82a177fa","يَلْعَبُ":"eac75ebb64d0","يَلْعَبُ الأَطْفَالُ فِي الحَدِيقَةِ.":"c7a75e0dbfb8","يَوْمٍ":"c4f86ec417d6","يُسَاعِدُ":"1d5ba2499613","يُسَاعِدُ الصَّدِيقُ صَدِيقَهُ عِنْدَمَا يَحْتَاجُ إِلَيْهِ.":"cbcf546c8fa9","يُعْطِينَا":"74654c0c925b"}}; Object.keys(B).forEach((v) => { SND_BANK[v] = Object.assign(SND_BANK[v] || {}, B[v]); }); }
+
+'use strict';
+/* =========================================================
+   v32 DEMO · game content (Fusha, fully vowelled). Every text here is in the built-in audio bank (src/audio-bank-v32.js).
+   ========================================================= */
+/* paint Saqqour's friend: parts (with grammatical gender) and colours (masculine / feminine forms) */
+const G32_PARTS = [['feather', 'رِيشٌ', 'm', 'feathers'], ['hat', 'قُبَّعَةٌ', 'f', 'hat'], ['scarf', 'وِشَاحٌ', 'm', 'scarf'], ['shoes', 'حِذَاءٌ', 'm', 'shoes'], ['bag', 'حَقِيبَةٌ', 'f', 'bag'], ['glasses', 'نَظَّارَةٌ', 'f', 'glasses']];
+const G32_COLS = [['#e5484d', 'أَحْمَرُ', 'حَمْرَاءُ', 'red'], ['#3b82f6', 'أَزْرَقُ', 'زَرْقَاءُ', 'blue'], ['#22a06b', 'أَخْضَرُ', 'خَضْرَاءُ', 'green'], ['#f5c400', 'أَصْفَرُ', 'صَفْرَاءُ', 'yellow'],
+  ['#ffffff', 'أَبْيَضُ', 'بَيْضَاءُ', 'white'], ['#2b2b33', 'أَسْوَدُ', 'سَوْدَاءُ', 'black'], ['#ff8a1f', 'بُرْتُقَالِيٌّ', 'بُرْتُقَالِيَّةٌ', 'orange'], ['#ff7eb6', 'وَرْدِيٌّ', 'وَرْدِيَّةٌ', 'pink'], ['#8b5cf6', 'بَنَفْسَجِيٌّ', 'بَنَفْسَجِيَّةٌ', 'purple']];
+/* who am I? (first-person riddles, read aloud) */
+const G32_WHO = [
+  ['🐪', 'الجَمَلُ', 'أَعِيشُ فِي الصَّحْرَاءِ. عَلَى ظَهْرِي سَنَامٌ. مَنْ أَنَا؟'],
+  ['🐘', 'الفِيلُ', 'أَنَا حَيَوَانٌ كَبِيرٌ جِدًّا. لِي خُرْطُومٌ طَوِيلٌ. مَنْ أَنَا؟'],
+  ['🦁', 'الأَسَدُ', 'لِي شَعْرٌ كَثِيفٌ حَوْلَ رَأْسِي. يُسَمُّونَنِي مَلِكَ الغَابَةِ. مَنْ أَنَا؟'],
+  ['🐟', 'السَّمَكَةُ', 'أَعِيشُ فِي المَاءِ. أَسْبَحُ بِزَعَانِفِي. مَنْ أَنَا؟'],
+  ['🐝', 'النَّحْلَةُ', 'أَطِيرُ مِنْ زَهْرَةٍ إِلَى زَهْرَةٍ. أَصْنَعُ العَسَلَ. مَنْ أَنَا؟'],
+  ['🦒', 'الزَّرَافَةُ', 'رَقَبَتِي طَوِيلَةٌ جِدًّا. آكُلُ أَوْرَاقَ الشَّجَرِ العَالِيَةَ. مَنْ أَنَا؟'],
+  ['🐢', 'السُّلَحْفَاةُ', 'أَمْشِي بِبُطْءٍ. أَحْمِلُ بَيْتِي عَلَى ظَهْرِي. مَنْ أَنَا؟'],
+  ['🦉', 'البُومَةُ', 'أَنَا طَائِرٌ. أَسْهَرُ فِي اللَّيْلِ وَأَنَامُ فِي النَّهَارِ. مَنْ أَنَا؟'],
+  ['🐄', 'البَقَرَةُ', 'أَعِيشُ فِي المَزْرَعَةِ. أُعْطِيكُمُ الحَلِيبَ. مَنْ أَنَا؟'],
+  ['☀', 'الشَّمْسُ', 'أَطْلُعُ فِي الصَّبَاحِ. أُعْطِي الضَّوْءَ وَالدِّفْءَ. مَنْ أَنَا؟'],
+  ['🌴', 'النَّخْلَةُ', 'أَنَا شَجَرَةٌ طَوِيلَةٌ. أُعْطِيكُمُ التَّمْرَ. مَنْ أَنَا؟'],
+  ['✈', 'الطَّائِرَةُ', 'أَطِيرُ عَالِيًا فِي السَّمَاءِ. أَحْمِلُ المُسَافِرِينَ. مَنْ أَنَا؟'],
+  ['🚲', 'الدَّرَّاجَةُ', 'لِي عَجَلَتَانِ وَجَرَسٌ صَغِيرٌ. مَنْ أَنَا؟'],
+  ['🐧', 'البِطْرِيقُ', 'أَنَا طَائِرٌ لَا يَطِيرُ. أَعِيشُ بَيْنَ الثُّلُوجِ. مَنْ أَنَا؟'],
+  ['🦋', 'الفَرَاشَةُ', 'لِي جَنَاحَانِ مُلَوَّنَانِ. كُنْتُ يَرَقَةً صَغِيرَةً. مَنْ أَنَا؟'],
+  ['🐸', 'الضِّفْدَعُ', 'أَقْفِزُ قُرْبَ البِرْكَةِ. لَوْنِي أَخْضَرُ. مَنْ أَنَا؟']];
+/* where is the gazelle hiding? object (genitive) + the spots that make sense for it */
+const G32_PREP = { top: 'فَوْقَ', under: 'تَحْتَ', behind: 'خَلْفَ', front: 'أَمَامَ', beside: 'بِجَانِبِ' };
+const G32_PREP_EN = { top: 'on top of', under: 'under', behind: 'behind', front: 'in front of', beside: 'beside' };
+const G32_HIDE = [['⛺', 'الخَيْمَةِ', 'the tent', ['top', 'behind', 'front', 'beside']], ['🌴', 'النَّخْلَةِ', 'the palm tree', ['under', 'behind', 'front', 'beside']], ['🚗', 'السَّيَّارَةِ', 'the car', ['top', 'behind', 'front', 'beside']],
+  ['🐪', 'الجَمَلِ', 'the camel', ['top', 'behind', 'front', 'beside']], ['🏠', 'البَيْتِ', 'the house', ['top', 'behind', 'front', 'beside']], ['🪑', 'الكُرْسِيِّ', 'the chair', ['top', 'under', 'behind', 'beside']],
+  ['🌳', 'الشَّجَرَةِ', 'the tree', ['under', 'behind', 'front', 'beside']], ['🛏', 'السَّرِيرِ', 'the bed', ['top', 'under', 'behind', 'beside']]];
+const g32HideSay = (o, k) => 'الغَزَالَةُ ' + G32_PREP[k] + ' ' + o[1];
+/* sentence dhow: three tiers, three sets of four */
+const G32_TIERS = [['easy', 'سَهْلٌ', 'Easy', 'السَّهْلِ'], ['mid', 'مُتَوَسِّطٌ', 'Medium', 'المُتَوَسِّطِ'], ['adv', 'مُتَقَدِّمٌ', 'Advanced', 'المُتَقَدِّمِ']];
+const G32_DHOW = {
+  easy: [['القِطَّةُ تَشْرَبُ الحَلِيبَ.', 'الشَّمْسُ كَبِيرَةٌ.', 'أَنَا أُحِبُّ التُّفَّاحَ.', 'البَطَّةُ فِي المَاءِ.'],
+    ['الوَلَدُ يَقْرَأُ كِتَابًا.', 'البِنْتُ تَرْسُمُ وَرْدَةً.', 'الجَمَلُ فِي الصَّحْرَاءِ.', 'السَّمَكَةُ تَسْبَحُ بِسُرْعَةٍ.'],
+    ['القَمَرُ جَمِيلٌ.', 'أَبِي يَشْرَبُ الشَّايَ.', 'النَّحْلَةُ عَلَى الوَرْدَةِ.', 'الكُرَةُ حَمْرَاءُ.']],
+  mid: [['ذَهَبَ الوَلَدُ إِلَى المَدْرَسَةِ.', 'تَأْكُلُ البِنْتُ مَوْزَةً صَفْرَاءَ.', 'السَّفِينَةُ تُبْحِرُ فِي البَحْرِ.', 'يَلْعَبُ الأَطْفَالُ فِي الحَدِيقَةِ.'],
+    ['الطَّائِرَةُ تَطِيرُ فَوْقَ الغُيُومِ.', 'جَلَسَتِ القِطَّةُ تَحْتَ الشَّجَرَةِ.', 'أُمِّي تَطْبُخُ طَعَامًا لَذِيذًا.', 'الصَّقْرُ طَائِرٌ سَرِيعٌ جِدًّا.'],
+    ['نَشْرَبُ المَاءَ كُلَّ يَوْمٍ.', 'يَرْكَبُ أَخِي دَرَّاجَتَهُ الزَّرْقَاءَ.', 'الغَزَالَةُ تَرْكُضُ فِي الصَّحْرَاءِ.', 'فَتَحَتِ البِنْتُ البَابَ بِالمِفْتَاحِ.']],
+  adv: [['فِي الصَّبَاحِ يَذْهَبُ الطُّلَّابُ إِلَى مَدَارِسِهِمْ.', 'قَرَأَتِ البِنْتُ قِصَّةً جَمِيلَةً عَنِ البَحْرِ.', 'يَعِيشُ السَّمَكُ المُلَوَّنُ بَيْنَ الشِّعَابِ المَرْجَانِيَّةِ.', 'تَطِيرُ الطُّيُورُ إِلَى بِلَادٍ دَافِئَةٍ فِي الشِّتَاءِ.'],
+    ['غَاصَ الغَوَّاصُ فِي البَحْرِ وَوَجَدَ لُؤْلُؤَةً.', 'نَزْرَعُ النَّخْلَ لِأَنَّهُ يُعْطِينَا التَّمْرَ.', 'بَعْدَ المَطَرِ ظَهَرَ قَوْسُ قُزَحٍ فِي السَّمَاءِ.', 'يُسَاعِدُ الصَّدِيقُ صَدِيقَهُ عِنْدَمَا يَحْتَاجُ إِلَيْهِ.'],
+    ['تُبْحِرُ السُّفُنُ الخَشَبِيَّةُ قُرْبَ الشَّاطِئِ الهَادِئِ.', 'يَشْرَبُ الجَمَلُ مَاءً كَثِيرًا ثُمَّ يَصْبِرُ أَيَّامًا.', 'كَتَبَ الوَلَدُ رِسَالَةً قَصِيرَةً إِلَى جَدَّتِهِ.', 'نَقْرَأُ كُلَّ لَيْلَةٍ قِصَّةً قَبْلَ النَّوْمِ.']] };
+/* spot the mistake: [correct sentence, index of the word that is changed, the wrong word] */
+const G32_SPOT = {
+  easy: [[['البِنْتُ تَلْعَبُ بِالكُرَةِ.', 1, 'يَلْعَبُ'], ['القِطَّةُ صَغِيرَةٌ.', 1, 'صَغِيرٌ'], ['الشَّمْسُ حَارَّةٌ.', 1, 'حَارٌّ'], ['هَذَا بَيْتٌ كَبِيرٌ.', 1, 'بَيْطٌ']],
+    [['الوَلَدُ يَأْكُلُ تُفَّاحَةً.', 1, 'تَأْكُلُ'], ['الوَرْدَةُ جَمِيلَةٌ.', 1, 'جَمِيلٌ'], ['أَشْرَبُ الحَلِيبَ.', 1, 'الحَلِيتَ'], ['الجَمَلُ كَبِيرٌ.', 1, 'كَبِيرَةٌ']],
+    [['البَطَّةُ تَسْبَحُ.', 1, 'يَسْبَحُ'], ['القَمَرُ مُنِيرٌ.', 1, 'مُنِيرَةٌ'], ['هَذِهِ سَمَكَةٌ.', 0, 'هَذَا'], ['أَرَى نَجْمَةً.', 1, 'نَخْمَةً']]],
+  mid: [[['ذَهَبَتِ البِنْتُ إِلَى السُّوقِ.', 0, 'ذَهَبَ'], ['الطَّائِرَةُ تَطِيرُ عَالِيًا.', 1, 'يَطِيرُ'], ['هَذِهِ سَيَّارَةٌ سَرِيعَةٌ.', 2, 'سَرِيعٌ'], ['يَلْعَبُ الأَطْفَالُ فِي الحَدِيقَةِ.', 3, 'الحَدِيكَةِ']],
+    [['الوَلَدُ نَشِيطٌ وَذَكِيٌّ.', 2, 'وَذَكِيَّةٌ'], ['شَرِبَتِ القِطَّةُ الحَلِيبَ.', 0, 'شَرِبَ'], ['الحَدِيقَةُ وَاسِعَةٌ وَجَمِيلَةٌ.', 1, 'وَاسِعٌ'], ['قَرَأْتُ كِتَابًا مُفِيدًا.', 1, 'كِطَابًا']],
+    [['أُخْتِي تَرْسُمُ بَيْتًا.', 1, 'يَرْسُمُ'], ['هَذَا وَلَدٌ مُهَذَّبٌ.', 0, 'هَذِهِ'], ['النَّخْلَةُ طَوِيلَةٌ جِدًّا.', 1, 'طَوِيلٌ'], ['نَذْهَبُ إِلَى البَحْرِ صَيْفًا.', 2, 'البَهْرِ']]],
+  adv: [[['الطَّالِبَاتُ يَكْتُبْنَ الدَّرْسَ بِهُدُوءٍ.', 1, 'يَكْتُبُونَ'], ['رَأَيْتُ سَفِينَتَيْنِ كَبِيرَتَيْنِ فِي المِينَاءِ.', 2, 'كَبِيرَيْنِ'], ['هَذِهِ الحَقِيبَةُ ثَقِيلَةٌ عَلَى ظَهْرِي.', 2, 'ثَقِيلٌ'], ['يَعِيشُ الصَّقْرُ فِي الصَّحْرَاءِ الوَاسِعَةِ.', 3, 'السَّحْرَاءِ']],
+    [['الأَوْلَادُ يَلْعَبُونَ كُرَةَ القَدَمِ.', 1, 'يَلْعَبْنَ'], ['اِشْتَرَتْ أُمِّي فَاكِهَةً طَازَجَةً.', 0, 'اِشْتَرَى'], ['هَاتَانِ وَرْدَتَانِ جَمِيلَتَانِ.', 0, 'هَذَانِ'], ['غَاصَ الغَوَّاصُ لِيَجْمَعَ اللُّؤْلُؤَ.', 1, 'الغَوَّاسُ']],
+    [['الشَّجَرَةُ العَالِيَةُ تُعْطِينَا ظِلًّا.', 1, 'العَالِي'], ['المُعَلِّمَةُ تَشْرَحُ الدَّرْسَ بِوُضُوحٍ.', 1, 'يَشْرَحُ'], ['كَتَبَ الطِّفْلُ اسْمَهُ عَلَى الدَّفْتَرِ.', 4, 'الدَّفْطَرِ'], ['هَؤُلَاءِ أَصْدِقَاءُ مُخْلِصُونَ.', 2, 'مُخْلِصَاتٌ']]] };
+
+'use strict';
+/* =========================================================
+   v32 DEMO · six game ideas from ALEFBATA-GAMES.md, in the calm light 3D look (drawn art in art-src/v32, gpt_image_2_5):
+   1 pearl dive map (رِحْلَةُ اللُّؤْلُؤِ): every finished game opens an oyster, five oysters open a pearl chest; pearls buy
+     bonus games and game looks (not only clothes). It lives behind the games tab, never on home.
+   2 Saqqour flies to the nest: a goal strip in every arcade game, one hop per right answer, never back, payoff at the end.
+   3 kick the letter + gazelle hop (action skins).   4 paint Saqqour's friend (colour words + agreement).
+   5 who am I? + where is the gazelle hiding? (listening riddles, prepositions).
+   6 sentence dhow + spot the mistake (easy / medium / advanced, quiet optional timer at advanced only, a gift box per set, a certificate per tier).
+   Every word is said from the built-in audio bank; sound effects stay off unless switched on; boy/girl wording through G().
+   ========================================================= */
+{ const M = {"g32_chest": ["e1feb449", 360, 417], "g32_gazelle": ["d93da5ae", 360, 469], "g32_goal": ["226ac26a", 360, 255], "g32_hatch": ["e53647c7", 360, 344], "g32_map": ["93658906", 720, 956], "g32_nest": ["46a999ed", 360, 310], "g32_oyster": ["595e0ed6", 360, 391], "g32_oyster_c": ["3e025afd", 360, 275], "g32_palm": ["9cb0ed4b", 360, 376], "g32_stone": ["69de6eb3", 360, 241], "tg_g_dhow": ["b879fdd9", 256, 247], "tg_g_hide": ["03d17f66", 256, 268], "tg_g_hop": ["771e920e", 256, 353], "tg_g_kick": ["d9d8579f", 256, 211], "tg_g_paint": ["9cb94b86", 256, 233], "tg_g_sky": ["905579ff", 256, 261], "tg_g_spot": ["78d4c6b0", 256, 234], "tg_g_who": ["cea0d297", 256, 252]};
+  Object.keys(M).forEach((k) => { const [h, w, ht] = M[k]; ART_B64[k] = h; ART_SIZE[k] = [w, ht]; delete ART_URL[k]; }); }
+const g32Img = (k, cls) => artImg(k, cls || '').replace(/loading="lazy"/, 'loading="eager"');
+const g32Tok = (s) => String(s).split(' ');
+const g32Bare = (w) => String(w).replace(/[.،؟!]+$/, '');
+const g32En = (t) => `<span class="en">${t}</span>`;
+/* ---------- state (per child, synced with the rest of the progress) ---------- */
+function g32S() { const p = P(); if (!p.g32) p.g32 = {}; const s = p.g32;
+  ['oy', 'pearls'].forEach((k) => { if (typeof s[k] !== 'number') s[k] = 0; }); ['own', 'sets', 'gifts', 'certs'].forEach((k) => { if (!s[k] || typeof s[k] !== 'object') s[k] = {}; });
+  if (!Array.isArray(s.friends)) s.friends = []; if (!s.look) s.look = 'nest'; if (typeof s.timer !== 'boolean') s.timer = false; return s; }
+const g32Num = (n, one, two, few, many) => (n === 1 ? one : n === 2 ? two : n <= 10 ? toArabicDigits(n) + ' ' + few : toArabicDigits(n) + ' ' + many);
+const g32Pearls = (n) => g32Num(n, 'لُؤْلُؤَةٌ وَاحِدَةٌ', 'لُؤْلُؤَتَانِ', 'لُؤْلُؤَاتٍ', 'لُؤْلُؤَةً');
+const g32OyLeft = () => { const s = g32S(); const n = 5 - (s.oy % 5); return n; };
+const g32LeftLine = () => { const n = g32OyLeft(); return `${G('بَقِيَ لَكَ', 'بَقِيَ لَكِ')} ${g32Num(n, 'مَحَارَةٌ وَاحِدَةٌ', 'مَحَارَتَانِ', 'مَحَارَاتٍ', 'مَحَارَةً')} إِلَى صُنْدُوقِ اللُّؤْلُؤِ`; };
+/* ---------- 2 · the goal strip in every game ---------- */
+const G32_N = { feed: 10, hear: 8, path: 6, forms: 12, first: 8, catch: 10, balloon: 8, memory: 6, runner: 8, harakat: 12, kick: 10, hop: 10, paint: 6, free: 6, who: 6, hide: 8, dhow: 4, spot: 4, sky: 10 };
+const G32_LOOKS = {
+  nest: { art: 'g32_nest', win: 'g32_hatch', ar: 'عُشُّ صَقُّور', en: 'The nest', price: 0, goal: () => G('سَاعِدْ صَقُّورَ لِيَصِلَ إِلَى عُشِّهِ', 'سَاعِدِي صَقُّورَ لِيَصِلَ إِلَى عُشِّهِ') },
+  palm: { art: 'g32_palm', win: 'g32_palm', ar: 'نَخْلَةُ التَّمْرِ', en: 'The date palm', price: 3, goal: () => G('اِسْقِ النَّخْلَةَ حَتَّى يَظْهَرَ التَّمْرُ', 'اِسْقِي النَّخْلَةَ حَتَّى يَظْهَرَ التَّمْرُ') },
+  dhow: { art: 'tg_g_dhow', win: 'tg_g_dhow', ar: 'شِرَاعُ السَّفِينَةِ', en: 'The dhow sail', price: 3, goal: () => G('اِمْلَأْ شِرَاعَ السَّفِينَةِ بِالرِّيحِ', 'اِمْلَئِي شِرَاعَ السَّفِينَةِ بِالرِّيحِ') } };
+function g32GoalHTML(id) { const N = G32_N[id] || 8; const lk = G32_LOOKS[g32S().look] ? g32S().look : 'nest'; const L = G32_LOOKS[lk];
+  return `<div class="g32-goal look-${lk}" data-n="${N}" style="--p:0" role="progressbar" aria-valuemin="0" aria-valuemax="${N}" aria-valuenow="0" aria-label="${esc(L.goal())}">
+    <div class="g32-gtrack">${Array.from({ length: N }, () => '<i></i>').join('')}</div><span class="g32-gfal">${falconSVG('run', 'g32-gf')}</span><span class="g32-gend">${g32Img(L.art, 'g32-gend-img')}</span><small class="g32-gcap" lang="ar">${L.goal()}</small></div>`; }
+function g32Step() { const g = document.querySelector('.tgg .g32-goal'); if (!g || g.dataset.won) return; const N = +g.dataset.n; TGG.hop = Math.min(N, (TGG.hop || 0) + 1);
+  g.style.setProperty('--p', (TGG.hop / N).toFixed(3)); g.setAttribute('aria-valuenow', TGG.hop); g.querySelectorAll('.g32-gtrack i').forEach((d, i) => d.classList.toggle('on', i < TGG.hop));
+  const f = g.querySelector('.g32-gfal'); if (f) { f.classList.remove('hop'); void f.offsetWidth; f.classList.add('hop'); }
+  if (TGG.hop >= N) { g.dataset.won = 1; TGG.won = true; g.classList.add('won'); const lk = g32S().look; const e = g.querySelector('.g32-gend'); if (e && lk === 'nest') e.innerHTML = g32Img('g32_hatch', 'g32-gend-img'); } }
+{ const _sh = tggShell; tggShell = function tggShellG32(g, body) { const h = _sh.apply(this, arguments); return h.replace('<div class="tgg-play">', g32GoalHTML(g.id) + '<div class="tgg-play">'); }; }
+{ const _g = tggGood; tggGood = function tggGoodG32() { const r = _g.apply(this, arguments); g32Step(); return r; }; }
+{ const _s = tggStart; tggStart = function tggStartG32(id) { TGG.hop = 0; TGG.won = false; TGG.gift = null; TGG.cert = null; return _s.apply(this, arguments); }; }
+/* ---------- 1 · pearl dive: every finished game opens an oyster ---------- */
+function g32Oyster() { const s = g32S(); s.oy++; s.pearls++; const chest = s.oy % 5 === 0; if (chest) s.pearls += 3; saveDB(); return { chest }; }
+{ const _e = tggEnd; tggEnd = function tggEndG32() { const id = TGG.id; const won = !!TGG.won; const gift = TGG.gift; const cert = TGG.cert; const o = id ? g32Oyster() : { chest: false };
+    const r = _e.apply(this, arguments); const box = document.querySelector('#modal-box .tgg-end'); if (!box) return r;
+    const lk = G32_LOOKS[g32S().look] ? g32S().look : 'nest'; const L = G32_LOOKS[lk];
+    box.classList.add('g32-end'); const fal = box.querySelector('.tgg-end-fal');
+    const pay = `<div class="g32-pay look-${lk} ${won ? 'won' : ''}">${g32Img(won ? L.win : L.art, 'g32-pay-img')}${won ? '<i class="g32-spark" aria-hidden="true">✨</i>' : ''}</div>`;
+    if (fal) fal.insertAdjacentHTML('afterend', pay);
+    const row = box.querySelector('.row.gap');
+    const oy = `<div class="g32-oyline" lang="ar">${g32Img('g32_oyster', 'g32-oy-ic')}<span>${G('فَتَحْتَ مَحَارَةً!', 'فَتَحْتِ مَحَارَةً!')} +١ لُؤْلُؤَةٌ${o.chest ? ` · ${g32Img('g32_chest', 'g32-oy-ic')} ${G('وَجَدْتَ', 'وَجَدْتِ')} صُنْدُوقًا: +٣` : ''}</span></div>`;
+    const gf = gift ? `<button class="g32-gift ${g32S().gifts[gift] ? 'open' : ''}" data-act="g32-gift" data-arg="${gift}" lang="ar"><span class="g32-gift-box" aria-hidden="true">🎁</span><span>${g32S().gifts[gift] ? 'فُتِحَتِ الهَدِيَّةُ ✓' : G('اِفْتَحْ هَدِيَّةَ المَجْمُوعَةِ', 'اِفْتَحِي هَدِيَّةَ المَجْمُوعَةِ')}</span></button>` : '';
+    const ce = cert ? `<button class="btn soft g32-cert-b" data-act="g32-cert" data-arg="${cert}" lang="ar">🏅 شَهَادَةُ نَجْمِ القِرَاءَةِ</button>` : '';
+    if (row) { row.insertAdjacentHTML('beforebegin', oy + gf + ce); row.insertAdjacentHTML('beforeend', `<button class="btn" data-act="g32-map" lang="ar">🦪 رِحْلَةُ اللُّؤْلُؤِ</button>`); }
+    return r; }; }
+/* the map: 15 oysters + 3 chests per island, a serpentine path over a calm sea */
+const G32_SPOTS = [[78, 92], [56, 88], [33, 90], [16, 80], [30, 70], [52, 68], [74, 64], [86, 54], [64, 48], [42, 50], [20, 44], [14, 32], [34, 26], [56, 28], [78, 24], [86, 13], [62, 8], [38, 7]];
+function g32MapHTML() { const s = g32S(); const bed = Math.floor(s.oy / 15); const inBed = s.oy % 15;
+  let oyI = 0; const spots = G32_SPOTS.map(([x, y], i) => { const chest = i % 6 === 5; let st, img;
+    if (chest) { const k = (i + 1) / 6; st = inBed >= 5 * k ? 'open' : 'shut'; img = g32Img('g32_chest', 'g32-sp-img'); }
+    else { st = oyI < inBed ? 'open' : oyI === inBed ? 'next' : 'shut'; img = g32Img(oyI < inBed ? 'g32_oyster' : 'g32_oyster_c', 'g32-sp-img'); oyI++; }
+    return `<span class="g32-sp ${chest ? 'chest' : 'oy'} ${st}" style="--x:${x}%;--y:${y}%">${img}${st === 'next' ? `<i class="g32-diver" aria-hidden="true">${g32Img('tg_g_dhow', 'g32-dv')}</i>` : ''}</span>`; }).join('');
+  const shop = G32_SHOP.map((it) => { const own = it.price === 0 || s.own[it.id]; const use = it.kind === 'look' ? (s.look === it.look) : false; const can = s.pearls >= it.price;
+    const act = own ? (it.kind === 'game' ? `<button class="btn primary sm" data-act="g32-play" data-arg="${it.game}" lang="ar">${G('اِلْعَبْ', 'اِلْعَبِي')}</button>` : use ? '<span class="g32-using" lang="ar">مُسْتَعْمَلٌ ✓</span>' : `<button class="btn sm" data-act="g32-use" data-arg="${it.id}" lang="ar">${G('اِسْتَعْمِلْ', 'اِسْتَعْمِلِي')}</button>`)
+      : `<button class="btn sm ${can ? 'primary' : ''}" data-act="g32-buy" data-arg="${it.id}" ${can ? '' : 'disabled'} lang="ar">⚪ ${g32Pearls(it.price)}</button>`;
+    return `<li class="g32-item ${own ? 'own' : ''}" data-id="${it.id}">${g32Img(it.art, 'g32-it-img')}<span class="grow"><b lang="ar">${it.ar}</b><small lang="ar">${it.kind === 'game' ? 'لُعْبَةٌ إِضَافِيَّةٌ' : 'شَكْلٌ لِلْهَدَفِ'}</small>${g32En(it.en)}</span>${act}</li>`; }).join('');
+  const friends = s.friends.slice(-8).map((f) => `<span class="g32-fr">${g32FriendSVG(f.c, 'g32-fr-svg')}</span>`).join('');
+  const certs = Object.keys(s.certs).map((k) => `<button class="btn soft sm" data-act="g32-cert" data-arg="${k}" lang="ar">🏅 ${g32CertName(k)}</button>`).join('');
+  return `<div class="g32-mapw stack"><div class="row between g32-map-h"><button class="icon-btn" data-act="g32-map-x" aria-label="إِغْلَاقٌ">✖️</button><h2 lang="ar">🦪 رِحْلَةُ اللُّؤْلُؤِ</h2><span class="g32-pc" lang="ar">⚪ <b>${toArabicDigits(s.pearls)}</b></span></div>
+    <p class="g32-left" lang="ar">${g32LeftLine()} ${g32En('Every finished game opens one oyster; five open a pearl chest.')}</p>
+    <div class="g32-map" aria-label="خَرِيطَةُ الجَزِيرَةِ ${toArabicDigits(bed + 1)}">${g32Img('g32_map', 'g32-map-bg')}<span class="g32-isle" lang="ar">الجَزِيرَةُ ${toArabicDigits(bed + 1)}</span>${spots}</div>
+    <h3 lang="ar">دُكَّانُ اللُّؤْلُؤِ ${g32En('Pearl shop: bonus games and game looks')}</h3><ul class="g32-shop">${shop}</ul>
+    <div class="g32-swap"><span lang="ar">${G('عِنْدَكَ', 'عِنْدَكِ')} ${tgCoinTag()}</span><button class="btn sm" data-act="g32-swap" ${tgCoins() >= 20 ? '' : 'disabled'} lang="ar">${G('بَدِّلْ', 'بَدِّلِي')} ٢٠ عُمْلَةً بِلُؤْلُؤَةٍ</button></div>
+    ${friends ? `<h3 lang="ar">أَصْدِقَاءُ صَقُّور ${g32En('Friends you painted')}</h3><div class="g32-frs">${friends}</div>` : ''}
+    ${certs ? `<h3 lang="ar">شَهَادَاتِي</h3><div class="row gap wrap">${certs}</div>` : ''}</div>`; }
+const G32_SHOP = [
+  { id: 'sky', kind: 'game', game: 'sky', art: 'tg_g_sky', ar: 'صَقُّورُ فِي السَّمَاءِ', en: 'Saqqour in the sky (bonus game)', price: 5 },
+  { id: 'free', kind: 'game', game: 'free', art: 'tg_g_paint', ar: 'أَلْوَانٌ حُرَّةٌ', en: 'Free painting (bonus game)', price: 4 },
+  { id: 'nest', kind: 'look', look: 'nest', art: 'g32_nest', ar: 'عُشُّ صَقُّور', en: 'Goal look: the nest', price: 0 },
+  { id: 'palm', kind: 'look', look: 'palm', art: 'g32_palm', ar: 'نَخْلَةُ التَّمْرِ', en: 'Goal look: the date palm', price: 3 },
+  { id: 'dhow', kind: 'look', look: 'dhow', art: 'tg_g_dhow', ar: 'شِرَاعُ السَّفِينَةِ', en: 'Goal look: the dhow sail', price: 3 },
+  { id: 'beach', kind: 'look', look: null, art: 'tg_g_kick', ar: 'مَلْعَبُ الشَّاطِئِ', en: 'Kick look: the beach pitch', price: 2 }];
+function g32MapOpen() { tggStop(); openModal(g32MapHTML(), null, 'sheet g32-map-modal'); }
+/* ---------- games ---------- */
+const G32 = [
+  { id: 'kick', art: 'tg_g_kick', ar: 'رَكْلَةُ الحَرْفِ', sub: () => G('اِسْمَعْ وَارْكُلِ الكُرَةَ نَحْوَ الحَرْفِ', 'اِسْمَعِي وَارْكُلِي الكُرَةَ نَحْوَ الحَرْفِ') + g32En('Listen, then kick the ball to that letter') },
+  { id: 'hop', art: 'tg_g_hop', ar: 'قَفْزَةُ الغَزَالَةِ', sub: () => G('اِسْمَعْ وَاقْفِزْ عَلَى الصَّوْتِ', 'اِسْمَعِي وَاقْفِزِي عَلَى الصَّوْتِ') + g32En('Listen, then hop onto that sound') },
+  { id: 'paint', art: 'tg_g_paint', ar: 'لَوِّنْ صَدِيقَ صَقُّور', sub: () => G('اِقْرَأْ وَلَوِّنْ', 'اِقْرَئِي وَلَوِّنِي') + g32En('Read, then colour') },
+  { id: 'who', art: 'tg_g_who', ar: 'مَنْ أَنَا؟', sub: () => G('اِسْمَعِ اللُّغْزَ وَاخْتَرِ الصُّورَةَ', 'اِسْمَعِي اللُّغْزَ وَاخْتَارِي الصُّورَةَ') + g32En('Hear the riddle, pick the picture') },
+  { id: 'hide', art: 'tg_g_hide', ar: 'أَيْنَ تَخْتَبِئُ الغَزَالَةُ؟', sub: () => G('اِقْرَأْ وَابْحَثْ عَنِ الغَزَالَةِ', 'اِقْرَئِي وَابْحَثِي عَنِ الغَزَالَةِ') + g32En('Read, then find the gazelle') },
+  { id: 'dhow', art: 'tg_g_dhow', ar: 'سَفِينَةُ الجُمْلَةِ', sub: () => G('رَتِّبِ الكَلِمَاتِ لِتُبْحِرَ السَّفِينَةُ', 'رَتِّبِي الكَلِمَاتِ لِتُبْحِرَ السَّفِينَةُ') + g32En('Put the words in order to sail the dhow') },
+  { id: 'spot', art: 'tg_g_spot', ar: 'أَيْنَ الخَطَأُ؟', sub: () => G('اِقْرَأْ وَالْمِسِ الكَلِمَةَ الخَطَأَ', 'اِقْرَئِي وَالْمِسِي الكَلِمَةَ الخَطَأَ') + g32En('Read, then tap the wrong word') },
+  { id: 'sky', art: 'tg_g_sky', ar: 'صَقُّورُ فِي السَّمَاءِ', bonus: 1, sub: () => G('اِسْمَعْ وَطِرْ إِلَى النَّجْمَةِ', 'اِسْمَعِي وَطِيرِي إِلَى النَّجْمَةِ') + g32En('Listen, then fly to that star') },
+  { id: 'free', art: 'tg_g_paint', ar: 'أَلْوَانٌ حُرَّةٌ', bonus: 1, sub: () => G('لَوِّنْ صَدِيقَ صَقُّورَ كَمَا تُحِبُّ', 'لَوِّنِي صَدِيقَ صَقُّورَ كَمَا تُحِبِّينَ') + g32En('Colour the friend any way you like') }];
+TG_GAMES.push(...G32);
+const g32Find = (id) => TG_GAMES.find((g) => g.id === id);
+const g32Shell = (id, body) => tggShell(g32Find(id), body);
+/* the instruction on its own line, the score under it (as in the v31 games) */
+{ const _sh = tggShell; tggShell = function tggShellG32b(g, body) { if (!G32.some((x) => x.id === g.id)) return _sh.apply(this, arguments);
+    return _sh.apply(this, arguments).replace(/<p class="tgg-sub" lang="ar">[\s\S]*?<\/p>/, `<p class="tgg-sub g31-sub" lang="ar"><span class="g31-ins">${g.sub()}</span><span class="g31-score">النِّقَاط: <b class="tgg-score">٠</b></span></p>`); }; }
+const g32Say = (t) => g31Say(t);
+/* 3a · kick the letter: hear a letter, kick the ball into the goal that shows it (sometimes in a joined form) */
+function g32Kick() { TGG.left = 10; const beach = !!g32S().own.beach && g32S().kickLook !== 'pitch';
+  return g32Shell('kick', `<div class="g32-kick ${beach ? 'beach' : ''}"><div class="g31-top">${g31Hear()}</div><div class="g32-goals" id="g32-goals"></div><div class="g32-ball" id="g32-ball">${tgPic('⚽')}</div></div>`); }
+function g32KickRound() { if (TGG.id !== 'kick') return; if (TGG.left-- <= 0) { tggEnd(); return; }
+  const set = []; tgShuf(g31Letters()).forEach((l) => { if (set.length < 3 && !set.some((x) => g31Skel(x) === g31Skel(l))) set.push(l); }); const t = set[0]; TGG.t = t; g32Say(G31_HAR(t));
+  const ft = Math.random() < 0.5 ? 0 : 1 + Math.floor(Math.random() * 3); const shown = (l) => (TG_NOJOIN.has(l) ? (ft === 1 || ft === 0 ? l : '\u200d' + l) : tgForms(l)[ft]);
+  const ball = $('g32-ball'); ball.className = 'g32-ball'; ball.style.transform = '';
+  const box = $('g32-goals'); box.dataset.lock = ''; box.innerHTML = tgShuf(set).map((l) => `<button class="g32-gl" data-l="${l}">${g32Img('g32_goal', 'g32-net')}<b lang="ar">${shown(l)}</b></button>`).join('');
+  box.querySelectorAll('.g32-gl').forEach((b) => { b.onclick = () => { if (TGG.id !== 'kick' || box.dataset.lock) return;
+    if (b.dataset.l === TGG.t) { box.dataset.lock = 1; const r = b.getBoundingClientRect(), q = ball.getBoundingClientRect();
+      ball.style.transform = `translate(${(r.left + r.width / 2 - q.left - q.width / 2).toFixed(0)}px, ${(r.top + r.height * 0.55 - q.top - q.height / 2).toFixed(0)}px) scale(.55) rotate(-540deg)`; ball.classList.add('go');
+      tggT(() => b.classList.add('in'), 450); tggGood(b); tggT(g32KickRound, 1300); }
+    else { tggBad(b); ball.classList.remove('wob'); void ball.offsetWidth; ball.classList.add('wob'); tggT(() => g32Say(G31_HAR(TGG.t)), 500); } }; }); }
+/* 3b · gazelle hop: hear a syllable (fatha / damma / kasra), hop onto the stone that shows it */
+const G32_HAR = ['\u064e', '\u064f', '\u0650'];
+function g32HopG() { TGG.left = 10; return g32Shell('hop', `<div class="g32-hop"><div class="g31-top">${g31Hear()}</div><div class="g32-dunes"><div class="g32-stones" id="g32-st"></div><div class="g32-gz" id="g32-gz">${g32Img('g32_gazelle', 'g32-gz-img')}</div></div></div>`); }
+function g32HopRound() { if (TGG.id !== 'hop') return; if (TGG.left-- <= 0) { tggEnd(); return; }
+  const l = tgPick(g31Letters().filter((x) => x !== 'ا'), 1)[0]; const opts = tgShuf(G32_HAR.map((h) => l + h)); const t = opts[Math.floor(Math.random() * 3)]; TGG.t = t; g32Say(t);
+  const gz = $('g32-gz'); gz.className = 'g32-gz'; gz.style.transform = '';
+  const st = $('g32-st'); st.dataset.lock = ''; st.innerHTML = opts.map((o) => `<button class="g32-stone" data-s="${o}">${g32Img('g32_stone', 'g32-stone-img')}<b lang="ar">${o}</b></button>`).join('');
+  st.querySelectorAll('.g32-stone').forEach((b) => { b.onclick = () => { if (TGG.id !== 'hop' || st.dataset.lock) return;
+    if (b.dataset.s === TGG.t) { st.dataset.lock = 1; const r = b.getBoundingClientRect(), q = gz.getBoundingClientRect(); gz.style.setProperty('--dx', (r.left + r.width / 2 - q.left - q.width / 2).toFixed(0) + 'px'); gz.style.setProperty('--dy', (r.top + r.height * 0.45 - q.top - q.height).toFixed(0) + 'px');
+      gz.classList.add('jump'); tggGood(b); g32Say(TGG.t); tggT(g32HopRound, 1300); }
+    else { tggBad(b); tggT(() => g32Say(TGG.t), 500); } }; }); }
+/* 4 · paint Saqqour's friend (a little bird pal drawn in SVG; each part takes a colour) */
+function g32FriendSVG(c, cls) { c = c || {}; const f = (k, d) => c[k] || d; const grey = '#e7ecf0';
+  return `<svg class="g32-friend ${cls || ''}" viewBox="0 0 200 230" role="img" aria-label="صَدِيقُ صَقُّور">
+  <ellipse cx="100" cy="222" rx="58" ry="6" fill="#00000014"/>
+  <g class="g32-pt" data-p="shoes"><ellipse cx="78" cy="208" rx="20" ry="11" fill="${f('shoes', grey)}" stroke="#9aa7b2" stroke-width="2"/><ellipse cx="122" cy="208" rx="20" ry="11" fill="${f('shoes', grey)}" stroke="#9aa7b2" stroke-width="2"/></g>
+  <g class="g32-pt" data-p="feather"><ellipse cx="100" cy="140" rx="62" ry="66" fill="${f('feather', grey)}" stroke="#9aa7b2" stroke-width="2"/><path d="M42 140 q-22 10 -14 36 q16 -6 24 -20z" fill="${f('feather', grey)}" stroke="#9aa7b2" stroke-width="2"/><path d="M158 140 q22 10 14 36 q-16 -6 -24 -20z" fill="${f('feather', grey)}" stroke="#9aa7b2" stroke-width="2"/></g>
+  <ellipse cx="100" cy="158" rx="36" ry="38" fill="#fff8ec" opacity=".9"/>
+  <circle cx="80" cy="118" r="13" fill="#fff"/><circle cx="120" cy="118" r="13" fill="#fff"/><circle cx="82" cy="120" r="6.5" fill="#2b2b33"/><circle cx="118" cy="120" r="6.5" fill="#2b2b33"/><circle cx="84" cy="117" r="2" fill="#fff"/><circle cx="120" cy="117" r="2" fill="#fff"/>
+  <path d="M92 132 q8 12 16 0 q-8 -5 -16 0z" fill="#f4a73b"/>
+  <g class="g32-pt" data-p="glasses"><circle cx="80" cy="118" r="17" fill="none" stroke="${f('glasses', '#c7d0d8')}" stroke-width="5"/><circle cx="120" cy="118" r="17" fill="none" stroke="${f('glasses', '#c7d0d8')}" stroke-width="5"/><path d="M97 116 h6" stroke="${f('glasses', '#c7d0d8')}" stroke-width="5"/></g>
+  <g class="g32-pt" data-p="scarf"><path d="M58 158 q42 22 84 0 l2 14 q-44 24 -88 0z" fill="${f('scarf', grey)}" stroke="#9aa7b2" stroke-width="2"/><path d="M126 166 l10 34 l-14 -2 l-6 -28z" fill="${f('scarf', grey)}" stroke="#9aa7b2" stroke-width="2"/></g>
+  <g class="g32-pt" data-p="bag"><path d="M150 150 q12 -26 22 0" fill="none" stroke="${f('bag', '#c7d0d8')}" stroke-width="4"/><rect x="146" y="150" width="32" height="28" rx="7" fill="${f('bag', grey)}" stroke="#9aa7b2" stroke-width="2"/></g>
+  <g class="g32-pt" data-p="hat"><ellipse cx="100" cy="80" rx="52" ry="10" fill="${f('hat', grey)}" stroke="#9aa7b2" stroke-width="2"/><path d="M70 80 q2 -40 30 -42 q28 2 30 42z" fill="${f('hat', grey)}" stroke="#9aa7b2" stroke-width="2"/><path d="M71 70 h58" stroke="#ffffff99" stroke-width="5"/></g></svg>`; }
+const g32ColPh = (part, col) => part[1] + ' ' + (part[2] === 'f' ? col[2] : col[1]);
+function g32Paint(free) { const id = free ? 'free' : 'paint'; TGG.left = 6; TGG.pc = {}; TGG.free = !!free; TGG.order = free ? [] : G32_PARTS.slice(); TGG.part = null;
+  return g32Shell(id, `<div class="g32-paint"><div class="g32-easel" id="g32-easel">${g32FriendSVG({}, '')}</div><div class="g32-pq" id="g32-pq"></div><div class="g32-sw" id="g32-sw"></div></div>`); }
+function g32PaintRound() { if (TGG.id !== 'paint') return; if (TGG.left-- <= 0) { g32FriendSave(); tggEnd(); return; }
+  const part = TGG.order[6 - TGG.left - 1]; const col = tgPick(G32_COLS, 1)[0]; TGG.part = part; TGG.col = col; const agree = 6 - TGG.left > 4; /* the last two rounds: pick the phrase that agrees */
+  const ez = $('g32-easel'); ez.querySelectorAll('.g32-pt').forEach((g) => g.classList.toggle('now', g.dataset.p === part[0]));
+  const q = $('g32-pq'), sw = $('g32-sw'); sw.dataset.lock = '';
+  if (!agree) { const ph = g32ColPh(part, col); TGG.say = ph; g32Say(ph);
+    q.innerHTML = `<p class="g32-phrase" lang="ar">${ph}</p>${g31Hear()}`;
+    const opts = tgShuf([col].concat(tgPick(G32_COLS.filter((c) => c !== col), 3)));
+    sw.innerHTML = opts.map((c) => `<button class="g32-swb" data-c="${c[0]}" style="--c:${c[0]}" aria-label="${esc(c[3])}"><i></i></button>`).join('');
+    sw.querySelectorAll('.g32-swb').forEach((b) => { b.onclick = () => { if (TGG.id !== 'paint' || sw.dataset.lock) return; if (b.dataset.c === TGG.col[0]) { sw.dataset.lock = 1; g32Fill(part[0], TGG.col[0]); tggGood(b); tggT(g32PaintRound, 1100); } else tggBad(b); }; }); }
+  else { const right = g32ColPh(part, col); const wrong = part[1] + ' ' + (part[2] === 'f' ? col[1] : col[2]); TGG.say = '';
+    q.innerHTML = `<p class="g32-ask" lang="ar">${G('أَيُّ جُمْلَةٍ صَحِيحَةٌ؟', 'أَيُّ جُمْلَةٍ صَحِيحَةٌ؟')} <span class="g32-chip" style="--c:${col[0]}"></span></p>`;
+    sw.innerHTML = tgShuf([right, wrong]).map((t) => `<button class="g32-opt" data-ok="${t === right ? 1 : ''}" lang="ar">${t}</button>`).join('');
+    sw.querySelectorAll('.g32-opt').forEach((b) => { b.onclick = () => { if (TGG.id !== 'paint' || sw.dataset.lock) return; if (b.dataset.ok) { sw.dataset.lock = 1; g32Say(right); g32Fill(part[0], TGG.col[0]); tggGood(b); tggT(g32PaintRound, 1500); } else tggBad(b); }; }); } }
+function g32Fill(k, c) { TGG.pc[k] = c; const ez = $('g32-easel'); if (ez) { ez.innerHTML = g32FriendSVG(TGG.pc, 'done-' + k); } }
+function g32FriendSave() { if (!Object.keys(TGG.pc || {}).length) return; const s = g32S(); s.friends.push({ c: Object.assign({}, TGG.pc), at: dayKey() }); if (s.friends.length > 24) s.friends.shift(); saveDB(); }
+/* bonus: free painting (tap a part, then a colour; the colour word agrees with the part) */
+function g32FreeRun() { if (TGG.id !== 'free') return; const ez = $('g32-easel'), q = $('g32-pq'), sw = $('g32-sw'); TGG.part = G32_PARTS[0];
+  const draw = () => { const p = TGG.part; ez.querySelectorAll('.g32-pt').forEach((g) => g.classList.toggle('now', g.dataset.p === p[0]));
+    q.innerHTML = `<div class="g32-parts">${G32_PARTS.map((x) => `<button class="g32-pb ${x === p ? 'on' : ''}" data-p="${x[0]}" lang="ar">${x[1]}</button>`).join('')}</div>`;
+    sw.innerHTML = G32_COLS.map((c) => `<button class="g32-swb lab" data-c="${c[0]}" style="--c:${c[0]}"><i></i><span lang="ar">${p[2] === 'f' ? c[2] : c[1]}</span></button>`).join('') + `<button class="btn primary g32-done" data-act="g32-free-done" lang="ar">${G('اِحْفَظْ صَدِيقَكَ', 'اِحْفَظِي صَدِيقَكِ')}</button>`;
+    q.querySelectorAll('.g32-pb').forEach((b) => { b.onclick = () => { TGG.part = G32_PARTS.find((x) => x[0] === b.dataset.p); g32Say(TGG.part[1]); draw(); }; });
+    sw.querySelectorAll('.g32-swb').forEach((b) => { b.onclick = () => { const c = G32_COLS.find((x) => x[0] === b.dataset.c); const first = !TGG.pc[TGG.part[0]]; g32Fill(TGG.part[0], c[0]); g32Say(g32ColPh(TGG.part, c)); if (first) tggGood(); draw(); }; }); };
+  draw(); }
+/* 5a · who am I? */
+function g32Who() { TGG.left = 6; TGG.used = []; return g32Shell('who', `<div class="g32-who"><div class="g32-riddle" id="g32-rd"></div><div class="g31-pics g32-wp" id="g32-wp"></div><div class="g32-stars" id="g32-stars"></div></div>`); }
+function g32WhoRound() { if (TGG.id !== 'who') return; if (TGG.left-- <= 0) { tggEnd(); return; }
+  const pool = G32_WHO.filter((r) => tgPicOK(r[0]) && !TGG.used.includes(r[0])); const a = tgPick(pool, 1)[0]; TGG.used.push(a[0]); TGG.a = a;
+  const set = tgShuf([a].concat(tgPick(G32_WHO.filter((r) => r !== a && tgPicOK(r[0])), 2)));
+  $('g32-rd').innerHTML = `${falconSVG('speak', 'g32-rd-fal')}<p lang="ar">${a[2]}</p>${g31Hear()}`; TGG.say = a[2]; g32Say(a[2]);
+  const box = $('g32-wp'); box.dataset.lock = ''; box.innerHTML = set.map((r) => `<button class="g31-pic" data-ok="${r === a ? 1 : ''}" aria-label="${esc(r[1])}">${tgPic(r[0])}<b lang="ar">${r[1]}</b></button>`).join('');
+  box.querySelectorAll('.g31-pic').forEach((b) => { b.onclick = () => { if (TGG.id !== 'who' || box.dataset.lock) return; if (b.dataset.ok) { box.dataset.lock = 1; b.classList.add('show'); tggGood(b); g32Say(TGG.a[1]); $('g32-stars').insertAdjacentHTML('beforeend', '<i>⭐</i>'); tggT(g32WhoRound, 1500); } else { tggBad(b); } }; }); }
+/* 5b · where is the gazelle hiding? (فَوْقَ / تَحْتَ / خَلْفَ / أَمَامَ / بِجَانِبِ) */
+function g32Hide() { TGG.left = 8; TGG.last = null; return g32Shell('hide', `<div class="g32-hide"><div class="g32-hq" id="g32-hq"></div><div class="g32-scene" id="g32-scene"></div><div class="g32-stars" id="g32-stars"></div></div>`); }
+function g32HideRound() { if (TGG.id !== 'hide') return; if (TGG.left-- <= 0) { tggEnd(); return; }
+  const objs = G32_HIDE.filter((o) => tgPicOK(o[0]) && o !== TGG.last); const o = tgPick(objs, 1)[0]; TGG.last = o; const k = tgPick(o[3], 1)[0]; TGG.k = k; const say = g32HideSay(o, k); TGG.say = say;
+  $('g32-hq').innerHTML = `<p class="g32-phrase" lang="ar">${say}</p>${g31Hear()}`; g32Say(say);
+  const sc = $('g32-scene'); sc.dataset.lock = ''; sc.innerHTML = `<div class="g32-obj">${tgPic(o[0])}</div>${o[3].map((s) => `<button class="g32-spot at-${s}" data-k="${s}" aria-label="${G32_PREP[s]}"><span class="g32-q" aria-hidden="true">?</span></button>`).join('')}`;
+  sc.querySelectorAll('.g32-spot').forEach((b) => { b.onclick = () => { if (TGG.id !== 'hide' || sc.dataset.lock) return;
+    if (b.dataset.k === TGG.k) { sc.dataset.lock = 1; b.classList.add('found'); b.innerHTML = g32Img('g32_gazelle', 'g32-gz-hid'); tggGood(); $('g32-stars').insertAdjacentHTML('beforeend', '<i>⭐</i>'); tggT(g32HideRound, 1600); }
+    else { tggBad(b); tggT(() => g32Say(TGG.say), 500); } }; }); }
+/* 6 · sentence dhow + spot the mistake: tier picker, sets of four, a gift box per set, a certificate per tier */
+const g32SetKey = (game, tier, i) => game + ':' + tier + ':' + i;
+const g32TierDone = (game, tier) => [0, 1, 2].every((i) => g32S().sets[g32SetKey(game, tier, i)]);
+const g32Bank = (game) => (game === 'dhow' ? G32_DHOW : G32_SPOT);
+function g32TierPick(game) { const s = g32S();
+  return `<div class="g32-tiers"><p class="g32-ask" lang="ar">${G('اِخْتَرِ المُسْتَوَى', 'اِخْتَارِي المُسْتَوَى')} ${g32En('Pick a level')}</p>${G32_TIERS.map(([t, ar, en]) => `<div class="g32-tier"><button class="btn big g32-tb" data-act="g32-tier" data-arg="${game}:${t}" lang="ar">${ar} ${g32En(en)}</button>
+    <span class="g32-gifts" aria-label="الهَدَايَا">${[0, 1, 2].map((i) => `<i class="${s.sets[g32SetKey(game, t, i)] ? 'got' : 'wait'}" aria-hidden="true">🎁</i>`).join('')}${g32TierDone(game, t) ? '<i class="got">🏅</i>' : ''}</span></div>`).join('')}
+    <label class="g32-timer"><input type="checkbox" id="g32-timer" ${s.timer ? 'checked' : ''}><span lang="ar">⏳ مُؤَقِّتٌ هَادِئٌ لِلْمُسْتَوَى المُتَقَدِّمِ (اخْتِيَارِيٌّ) ${g32En('A quiet timer, advanced level only (optional)')}</span></label></div>`; }
+function g32SentG(game) { TGG.left = 0; return g32Shell(game, `<div class="g32-sent" id="g32-sent">${g32TierPick(game)}</div>`); }
+function g32TierGo(arg) { const [game, tier] = String(arg).split(':'); if (TGG.id !== game) return; const s = g32S(); const tb = $('g32-timer'); if (tb) { s.timer = tb.checked; saveDB(); }
+  let set = [0, 1, 2].find((i) => !s.sets[g32SetKey(game, tier, i)]); if (set == null) set = Math.floor(Math.random() * 3);
+  Object.assign(TGG, { tier, set, items: g32Bank(game)[tier][set], k: 0 }); g32SentRound(); }
+function g32Timer() { if (TGG.tier !== 'adv' || !g32S().timer) return ''; return '<div class="g32-sand" aria-hidden="true"><i></i><span>⏳</span></div>'; }
+function g32SentRound() { const game = TGG.id; if (game !== 'dhow' && game !== 'spot') return;
+  if (TGG.k >= TGG.items.length) { const s = g32S(); const key = g32SetKey(game, TGG.tier, TGG.set); const first = !s.sets[key]; s.sets[key] = dayKey(); TGG.gift = key;
+    if (first && g32TierDone(game, TGG.tier) && !s.certs[game + ':' + TGG.tier]) s.certs[game + ':' + TGG.tier] = dayKey(); if (s.certs[game + ':' + TGG.tier]) TGG.cert = game + ':' + TGG.tier; saveDB(); tggEnd(); return; }
+  const it = TGG.items[TGG.k]; const box = $('g32-sent'); const dots = TGG.items.map((_, i) => `<i class="${i < TGG.k ? 'on' : ''}"></i>`).join('');
+  const tierAr = G32_TIERS.find((t) => t[0] === TGG.tier)[1];
+  if (game === 'dhow') { const T = g32Tok(it); TGG.T = T; TGG.j = 0; TGG.say = it; g32Say(it);
+    box.innerHTML = `<div class="g32-sh"><span class="g32-tierl" lang="ar">${tierAr}</span><span class="g32-dots">${dots}</span>${g31Hear()}</div>${g32Timer()}
+      <div class="g32-sea"><div class="g32-boat" id="g32-boat">${g32Img('tg_g_dhow', 'g32-boat-img')}</div><div class="g32-deck" id="g32-deck" lang="ar">${T.map(() => '<span class="g32-plank"></span>').join('')}</div></div>
+      <div class="g32-cards" id="g32-cards">${tgShuf(T.map((w, i) => ({ w, i }))).map((x) => `<button class="g32-card" data-w="${esc(x.w)}" lang="ar">${x.w}</button>`).join('')}</div>`;
+    box.querySelectorAll('.g32-card').forEach((b) => { b.onclick = () => { if (TGG.id !== 'dhow' || b.dataset.done || TGG.j >= TGG.T.length) return;
+      if (b.dataset.w === TGG.T[TGG.j]) { b.dataset.done = 1; b.classList.add('used'); const pl = $('g32-deck').children[TGG.j]; pl.textContent = TGG.T[TGG.j]; pl.classList.add('on'); g32Say(g32Bare(TGG.T[TGG.j])); TGG.j++;
+        if (TGG.j === TGG.T.length) { tggGood(); $('g32-boat').classList.add('sail'); $('g32-deck').classList.add('done'); tggT(() => g32Say(it), 500); TGG.k++; tggT(g32SentRound, 2600); } }
+      else tggBad(b); }; }); }
+  else { const [right, ix, wrong] = it; const T = g32Tok(right); const p = (T[ix].match(/[.،؟!]+$/) || [''])[0]; const shown = T.slice(); shown[ix] = wrong + p; TGG.say = '';
+    box.innerHTML = `<div class="g32-sh"><span class="g32-tierl" lang="ar">${tierAr}</span><span class="g32-dots">${dots}</span></div>${g32Timer()}
+      <p class="g32-ask" lang="ar">${G('فِي الجُمْلَةِ كَلِمَةٌ وَاحِدَةٌ خَطَأٌ. أَيْنَ هِيَ؟', 'فِي الجُمْلَةِ كَلِمَةٌ وَاحِدَةٌ خَطَأٌ. أَيْنَ هِيَ؟')}</p>
+      <div class="g32-line" id="g32-line" lang="ar">${shown.map((w, i) => `<button class="g32-w" data-i="${i}">${w}</button>`).join('')}</div><div class="g32-fix" id="g32-fix"></div>`;
+    const line = $('g32-line'); line.querySelectorAll('.g32-w').forEach((b) => { b.onclick = () => { if (TGG.id !== 'spot' || line.dataset.lock) return;
+      if (+b.dataset.i === ix) { line.dataset.lock = 1; b.classList.add('fixed'); b.innerHTML = `<s>${wrong}</s><b>${T[ix]}</b>`; tggGood(); TGG.say = right; g32Say(right);
+        $('g32-fix').innerHTML = `<p lang="ar">✔️ ${right}</p>${g31Hear()}`; TGG.k++; tggT(g32SentRound, 2800); }
+      else tggBad(b); }; }); }
+  const sd = box.querySelector('.g32-sand'); if (sd) tggT(() => sd.classList.add('done'), 45000); }
+/* the gift box and the certificate */
+function g32Gift(key, el) { const s = g32S(); if (s.gifts[key]) return; s.gifts[key] = dayKey(); s.pearls += 2; saveDB();
+  if (el) { el.classList.add('open'); el.querySelector('span:last-child').textContent = G('فِي الهَدِيَّةِ لُؤْلُؤَتَانِ!', 'فِي الهَدِيَّةِ لُؤْلُؤَتَانِ!') + ' +٢'; } }
+const g32CertName = (k) => { const [game, tier] = k.split(':'); const g = g32Find(game); const t = G32_TIERS.find((x) => x[0] === tier); return (g ? g.ar : '') + ' · ' + (t ? t[1] : ''); };
+function g32CertBlocks(key) { const c = pr32Ctx(); const f = c.g === 'f'; const [game, tier] = key.split(':'); const g = g32Find(game); const t = G32_TIERS.find((x) => x[0] === tier) || G32_TIERS[0];
+  return [`<div class="pb pr-cert pb-break" data-sheet="star"><div class="pr-cert-in"><div class="pr-cert-bird">${falconSVG('happy', 'pr-cert-svg')}</div>
+    <h1 class="pr-cert-h">شَهَادَةُ نَجْمِ القِرَاءَةِ</h1>${pr32EnHTML('Star Reader certificate')}<p class="pr-cert-to">تُقَدَّمُ هَذِهِ الشَّهَادَةُ إِلَى</p>
+    <p class="pr-cert-name">${c.name ? pr32Name(c.name) : '……………………………'}</p>
+    <p class="pr-cert-why">${f ? 'لِأَنَّهَا أَنْهَتْ' : 'لِأَنَّهُ أَنْهَى'} كُلَّ مَجْمُوعَاتِ «${g ? g.ar : ''}» فِي المُسْتَوَى ${t[3]}.</p>${pr32EnHTML('for finishing every set of this game at the ' + t[2].toLowerCase() + ' level.')}
+    <p class="pr-cert-msg">${f ? 'أَحْسَنْتِ!' : 'أَحْسَنْتَ!'}</p><div class="pr-cert-foot"><span>التَّارِيخُ: ${pr32Date()}</span><span>التَّوْقِيعُ: ……………………</span></div></div></div>`]; }
+/* ---------- bonus: Saqqour in the sky (stars with letters drift; fly to the one you hear) ---------- */
+function g32Sky() { TGG.left = 10; return g32Shell('sky', `<div class="g32-sky"><div class="g31-top">${g31Hear()}</div><div class="g32-air" id="g32-air"><span class="g32-skyfal" id="g32-skyfal">${falconSVG('run', 'g32-sf')}</span></div></div>`); }
+function g32SkyRound() { if (TGG.id !== 'sky') return; if (TGG.left-- <= 0) { tggEnd(); return; }
+  const set = []; tgShuf(g31Letters()).forEach((l) => { if (set.length < 4 && !set.some((x) => g31Skel(x) === g31Skel(l))) set.push(l); }); const t = set[0]; TGG.t = t; g32Say(G31_HAR(t));
+  const air = $('g32-air'); air.querySelectorAll('.g32-star').forEach((x) => x.remove()); air.dataset.lock = '';
+  tgShuf(set).forEach((l, i) => air.insertAdjacentHTML('beforeend', `<button class="g32-star" data-l="${l}" style="--x:${12 + i * 22 + Math.random() * 6}%;--y:${10 + Math.random() * 45}%;--d:${(i * 0.4).toFixed(1)}s" lang="ar"><span>${l}</span></button>`));
+  air.querySelectorAll('.g32-star').forEach((b) => { b.onclick = () => { if (TGG.id !== 'sky' || air.dataset.lock) return;
+    if (b.dataset.l === TGG.t) { air.dataset.lock = 1; const a = air.getBoundingClientRect(), r = b.getBoundingClientRect(); const f = $('g32-skyfal'); f.style.left = (r.left - a.left + r.width / 2) + 'px'; f.style.top = (r.top - a.top + r.height / 2) + 'px'; b.classList.add('got'); tggGood(b); tggT(g32SkyRound, 1300); }
+    else { tggBad(b); tggT(() => g32Say(G31_HAR(TGG.t)), 500); } }; }); }
+Object.assign(TGG_RUN, { kick: [g32Kick, g32KickRound], hop: [g32HopG, g32HopRound], paint: [() => g32Paint(false), g32PaintRound], free: [() => g32Paint(true), g32FreeRun], who: [g32Who, g32WhoRound], hide: [g32Hide, g32HideRound],
+  dhow: [() => g32SentG('dhow'), () => {}], spot: [() => g32SentG('spot'), () => {}], sky: [g32Sky, g32SkyRound] });
+Object.assign(ACTIONS, {
+  'g32-map': () => g32MapOpen(), 'g32-map-x': () => closeModal(),
+  'g32-tier': (arg) => g32TierGo(arg),
+  'g32-gift': (arg, el) => g32Gift(arg, el),
+  'g32-cert': (arg) => { closeModal(); pr32Open('شَهَادَةُ نَجْمِ القِرَاءَةِ', g32CertBlocks(arg), 'star-reader-certificate'); },
+  'g32-free-done': () => { if (TGG.id !== 'free') return; g32FriendSave(); TGG.pc = {}; tggEnd(); },
+  'g32-buy': (id) => { const it = G32_SHOP.find((x) => x.id === id); const s = g32S(); if (!it || s.own[id] || s.pearls < it.price) return; s.pearls -= it.price; s.own[id] = dayKey(); if (it.kind === 'look' && it.look) s.look = it.look; saveDB(); toast('✔️ ' + it.ar); g32MapOpen(); },
+  'g32-use': (id) => { const it = G32_SHOP.find((x) => x.id === id); const s = g32S(); if (!it || !(it.price === 0 || s.own[id])) return; if (it.look) s.look = it.look; else if (id === 'beach') s.kickLook = s.kickLook === 'pitch' ? 'beach' : 'pitch'; saveDB(); g32MapOpen(); },
+  'g32-play': (id) => { const s = g32S(); if (!s.own[id]) return; closeModal(); tggStart(id); },
+  'g32-swap': () => { const p = P(); if ((p.coins || 0) < 20) return; p.coins -= 20; g32S().pearls++; saveDB(); g32MapOpen(); } });
+/* games tab: the pearl-dive banner on top (home stays coin-free), the new tiles after the v31 tiles, bonus tiles only once bought */
+{ const _r = ilRender; ilRender = function ilRenderG32() { _r.apply(this, arguments); if (typeof IL === 'undefined' || IL.page !== 'games' || !currentKid) return; const list = document.querySelector('.tgg-list'); if (!list || list.dataset.g32) return; list.dataset.g32 = 1;
+    const s = g32S(); list.insertAdjacentHTML('beforebegin', `<button class="g32-banner" data-act="g32-map">${g32Img('g32_oyster', 'g32-bn-img')}<span class="grow"><b lang="ar">رِحْلَةُ اللُّؤْلُؤِ</b><small lang="ar">${g32LeftLine()}</small></span><span class="g32-pc" lang="ar">⚪ <b>${toArabicDigits(s.pearls)}</b></span></button>`);
+    let after = [...list.querySelectorAll('.tgg-tile.g31-new')].pop();
+    G32.forEach((g) => { const t = list.querySelector(`.tgg-tile[data-arg="${g.id}"]`); if (!t) return; if (g.bonus && !s.own[g.id]) { t.remove(); return; } t.classList.add('g31-new', 'g32-new'); if (g.bonus) t.classList.add('g32-bonus'); if (after) after.after(t); else list.prepend(t); after = t; }); }; }
+/* texts for the audio bank (tools/gen-audio-bank-v32.mjs) */
+function G32_SAY() { const S = new Set(); const add = (t) => { t = String(t || '').trim(); if (t) S.add(t); };
+  g31Letters().forEach((l) => { G32_HAR.forEach((h) => add(l + h)); add(G31_HAR(l)); });
+  G32_PARTS.forEach((p) => { add(p[1]); G32_COLS.forEach((c) => add(g32ColPh(p, c))); }); G32_COLS.forEach((c) => { add(c[1]); add(c[2]); });
+  G32_WHO.forEach((r) => { add(r[1]); add(r[2]); });
+  G32_HIDE.forEach((o) => o[3].forEach((k) => add(g32HideSay(o, k))));
+  Object.values(G32_DHOW).forEach((sets) => sets.forEach((set) => set.forEach((s) => { add(s); g32Tok(s).forEach((w) => add(g32Bare(w))); })));
+  Object.values(G32_SPOT).forEach((sets) => sets.forEach((set) => set.forEach((it) => add(it[0]))));
+  return [...S]; }
+window.__g32 = { g32S, G32_SAY, g32MapOpen, g32CertBlocks, G32_DHOW, G32_SPOT, G32_WHO, G32_HIDE }; /* tests */
+
+/* =========================================================
+   v32 GRAPHICS PASS (demo): every v32 game, map, reward and teacher/printables icon redrawn as one family of
+   soft daylight 3D art (Higgsfield gpt_image_2_5, art-src/v32g). Scenes carry the game pieces inside them
+   (goals, stepping stones, the hiding objects) so nothing looks pasted on; the tap targets sit over them.
+   Saqqour himself stays the dressed tg avatar art. The paintable friend is one 3D bird with six aligned
+   part masks: each part takes its colour by multiply over the bird's own shading.
+   ========================================================= */
+{ const M = {"g33_map": ["dfa556e1", 900, 1592], "g33_pitch": ["e8b6d3cb", 960, 960], "g33_beach": ["e99ede23", 960, 960], "g33_dunes": ["4fd60a2c", 960, 960], "g33_studio": ["83dc54f2", 960, 960], "g33_meadow": ["5a5dbce0", 960, 717], "g33_sea": ["f59e6033", 960, 717], "g33_desk": ["7dfc841d", 960, 717], "g33_sky": ["bd190668", 800, 1072], "g33_h_tent": ["65e84154", 720, 720], "g33_h_palm": ["c0966b5d", 720, 720], "g33_h_car": ["44cee089", 720, 720], "g33_h_camel": ["f0730b87", 720, 720], "g33_h_house": ["b92df851", 720, 720], "g33_h_chair": ["2c6c3388", 720, 720], "g33_h_tree": ["8dca70e5", 720, 720], "g33_h_bed": ["745a8aa3", 720, 720], "g33_cert": ["b3e1bf5f", 1100, 1473], "g33_strip": ["01cbb9da", 640, 84], "g33_plank": ["1fd4b6ac", 360, 53], "g33_pearl": ["f9c93535", 128, 133], "g33_gift": ["82fafe0a", 256, 265], "g33_giftopen": ["be416252", 256, 503], "g33_medal": ["e6c3c5e2", 192, 276], "g33_star": ["6c7db43c", 192, 192], "g33_ball": ["adb56dfb", 160, 165], "g33_i_print": ["6051a539", 128, 120], "g33_i_class": ["a7531589", 128, 138], "g33_i_clip": ["1ff3aae2", 128, 150], "g33_i_pin": ["2e46aef7", 128, 188], "g33_i_books": ["91ab34d5", 128, 111], "g33_i_clock": ["d5932801", 128, 146], "g33_i_pencil": ["acc759de", 128, 120], "g33_i_sheet": ["73150642", 128, 127], "g33_i_cards": ["c44bc77e", 128, 110], "g33_bm_hat": ["973eeab1", 360, 527], "g33_bm_bag": ["75390122", 360, 527], "g33_bm_scarf": ["7a65571b", 360, 527], "g33_bm_shoes": ["51706069", 360, 527], "g33_bm_feather": ["5dae58f5", 360, 527], "g33_bm_glasses": ["11693522", 360, 527], "g33_bird": ["023b526f", 360, 527], "g32_gazelle": ["b56ec953", 360, 542], "g33_v_bed_behind": ["ab41d9e6", 720, 720], "g33_v_bed_beside": ["ba76abe7", 720, 720], "g33_v_bed_top": ["dbfe3d6b", 720, 720], "g33_v_bed_under": ["e2de620c", 720, 720], "g33_v_camel_behind": ["d8043dc6", 720, 720], "g33_v_camel_beside": ["b8ad60be", 720, 720], "g33_v_camel_front": ["670d7300", 720, 720], "g33_v_camel_top": ["4e30b868", 720, 720], "g33_v_car_behind": ["7ecdb32b", 720, 720], "g33_v_car_beside": ["5a1c757d", 720, 720], "g33_v_car_front": ["e666c1da", 720, 720], "g33_v_car_top": ["6f6ae97f", 720, 720], "g33_v_chair_behind": ["560c7640", 720, 720], "g33_v_chair_beside": ["46ce3c5d", 720, 720], "g33_v_chair_top": ["878fca30", 720, 720], "g33_v_chair_under": ["7ed23635", 720, 720], "g33_v_house_behind": ["1b4b3fa0", 720, 720], "g33_v_house_beside": ["edf22f60", 720, 720], "g33_v_house_front": ["28251fb8", 720, 720], "g33_v_house_top": ["c52ecd4a", 720, 720], "g33_v_palm_behind": ["b8f42a5f", 720, 720], "g33_v_palm_beside": ["43328639", 720, 720], "g33_v_palm_front": ["9420c38f", 720, 720], "g33_v_palm_under": ["34f00b02", 720, 720], "g33_v_tent_behind": ["133f35db", 720, 720], "g33_v_tent_beside": ["2b9b2d53", 720, 720], "g33_v_tent_front": ["68ca6560", 720, 720], "g33_v_tent_top": ["bfc32e31", 720, 720], "g33_v_tree_behind": ["b027b0d1", 720, 720], "g33_v_tree_beside": ["23c5190f", 720, 720], "g33_v_tree_front": ["f0f050d7", 720, 720], "g33_v_tree_under": ["0447dd20", 720, 720]};
+  Object.keys(M).forEach((k) => { const [h, w, ht] = M[k]; ART_B64[k] = h; ART_SIZE[k] = [w, ht]; delete ART_URL[k]; }); }
+const g33Ic = (k, cls, alt) => g32Img('g33_' + k, 'g33-ic ' + (cls || ''), alt);
+/* emoji -> 3D icon (only the ones this pass owns) */
+const G33_EMO = [['🧑‍🏫', 'i_class'], ['🖨️', 'i_print'], ['👀', 'i_clip'], ['📌', 'i_pin'], ['📚', 'i_books'], ['📖', 'i_books'], ['❓', 'star'], ['🕒', 'i_clock'], ['⏳', 'i_clock'], ['✏️', 'i_pencil'], ['🃏', 'i_cards'],
+  ['🏅', 'medal'], ['🎁', 'gift'], ['⭐', 'star'], ['⚪', 'pearl'], ['✨', 'star']];
+function g33Emo(h, skip) { h = String(h); G33_EMO.forEach(([e, k]) => { if (!skip || !skip.includes(e)) h = h.split(e).join(g33Ic(k)); }); return h.replace(/🦪/g, g32Img('g32_oyster', 'g33-ic')); }
+/* CSS hooks for art used from stylesheets (hashed names) */
+(function g33Vars() { const r = document.documentElement.style; ['star', 'plank', 'strip', 'pearl'].forEach((k) => r.setProperty('--g33-' + k, `url("${artURL('g33_' + k)}")`)); })();
+/* ---------- the paintable friend ---------- */
+const G33_BIRD_PARTS = ['feather', 'scarf', 'bag', 'shoes', 'hat', 'glasses'];
+function g33Friend(c, cls) { c = c || {}; const now = (cls || '').match(/now-(\w+)/);
+  return `<span class="g32-friend g33-fr ${cls || ''}" role="img" aria-label="صَدِيقُ صَقُّور">${g32Img('g33_bird', 'g33-fr-base')}${G33_BIRD_PARTS.map((p) => { const col = c[p];
+    const m = artURL('g33_bm_' + p); return `<span class="g32-pt g33-pt ${col ? 'on' : ''} ${col && col.toLowerCase() === '#ffffff' ? 'white' : ''}" data-p="${p}" style="--c:${col || 'transparent'};-webkit-mask-image:url('${m}');mask-image:url('${m}')"></span>`; }).join('')}</span>`; }
+g32FriendSVG = g33Friend;
+/* ---------- pearl map: the new painted sea, spots along the sand trail ---------- */
+G32_SPOTS.splice(0, G32_SPOTS.length, [63, 96], [57, 88.6], [49, 81.3], [44, 73.6], [51, 66.3], [64, 61.5], [74, 56.2], [68, 49.4], [54, 45.5], [42, 41.1], [42, 34.8], [56, 31.1], [70, 27.8], [77, 22.6], [67, 17], [53, 13.3], [48, 8.5], [60, 4.5]);
+{ const _m = g32MapHTML; g32MapHTML = function g32MapHTMLG33() { setTimeout(() => { const n = document.querySelector('.g32-map .g32-sp.next'); if (n && n.scrollIntoView) n.scrollIntoView({ block: 'center' }); }, 60); return g33Emo(_m.apply(this, arguments).replace(g32Img('g32_map', 'g32-map-bg'), g32Img('g33_map', 'g32-map-bg'))); }; }
+/* ---------- goal strip: a sky ribbon with pearls instead of plain dots ---------- */
+/* ---------- end sheet: gift box, medal, pearl icons ---------- */
+{ const _e = tggEnd; tggEnd = function tggEndG33() { const r = _e.apply(this, arguments); const box = document.querySelector('#modal-box .tgg-end'); if (!box) return r;
+    box.querySelectorAll('.g32-gift-box').forEach((s) => { s.innerHTML = g32Img('g33_gift', 'g33-gift-c') + g32Img('g33_giftopen', 'g33-gift-o'); });
+    box.querySelectorAll('.g32-cert-b, .g32-gift span:last-child, .g32-spark').forEach((b) => { b.innerHTML = g33Emo(b.innerHTML); });
+    const sp = box.querySelector('.g32-spark'); if (sp) sp.innerHTML = g32Img('g33_star', 'g33-ic');
+    box.querySelectorAll('[data-act="g32-map"]').forEach((b) => { b.innerHTML = g33Emo(b.innerHTML); });
+    return r; }; }
+{ const _g = g32Gift; g32Gift = function g32GiftG33(key, el) { const r = _g.apply(this, arguments); if (el) { const t = el.querySelector('span:last-child'); if (t) t.innerHTML = g33Emo(t.innerHTML); } return r; }; }
+/* games-tab banner */
+{ const _r = ilRender; ilRender = function ilRenderG33() { _r.apply(this, arguments); document.querySelectorAll('.g32-banner .g32-pc').forEach((p) => { if (!p.dataset.g33) { p.dataset.g33 = 1; p.innerHTML = g33Emo(p.innerHTML); } }); }; }
+/* ---------- kick: a painted pitch with three real goals; the letters ride on them ---------- */
+{ const _k = g32Kick; g32Kick = function g32KickG33() { const beach = !!g32S().own.beach && g32S().kickLook !== 'pitch';
+    return _k.apply(this, arguments).replace(/<div class="g32-kick ?(beach)?">/, `<div class="g32-kick g33-kick${beach ? ' beach' : ''}">${g32Img(beach ? 'g33_beach' : 'g33_pitch', 'g33-bg')}`).replace(tgPic('⚽'), g32Img('g33_ball', 'g33-ball-img')); }; }
+/* ---------- gazelle hop: dunes with the three stones in the picture ---------- */
+{ const _h = g32HopG; g32HopG = function g32HopG33() { return _h.apply(this, arguments).replace('<div class="g32-dunes">', `<div class="g32-dunes g33-dunes">${g32Img('g33_dunes', 'g33-bg')}`); }; }
+/* ---------- paint: the friend in a sunny painting studio ---------- */
+{ const _p = g32Paint; g32Paint = function g32PaintG33() { return _p.apply(this, arguments).replace('<div class="g32-easel" id="g32-easel">', `<div class="g33-studio">${g32Img('g33_studio', 'g33-bg')}<div class="g32-easel g33-easel" id="g32-easel">`).replace('<div class="g32-pq"', '</div><div class="g32-pq"'); }; }
+/* ---------- who am I: a calm meadow behind the riddle ---------- */
+{ const _w = g32Who; g32Who = function g32WhoG33() { return _w.apply(this, arguments).replace('<div class="g32-who">', `<div class="g32-who g33-who">${g32Img('g33_meadow', 'g33-bg')}`); }; }
+/* ---------- where is the gazelle hiding: one painted scene per object, spots placed on it ---------- */
+/* each scene is painted twice per hiding place: the empty scene, and the same scene with the gazelle really there (occluded, shadowed); the spot sits where she is */
+const G33_HIDE = {'⛺': ['tent', {"behind": [25, 44], "beside": [27, 60], "front": [51, 69], "top": [49, 24]}], '🌴': ['palm', {"behind": [58, 59], "beside": [26, 67], "front": [43, 65], "under": [43, 82]}], '🚗': ['car', {"behind": [27, 44], "beside": [18, 59], "front": [50, 60], "top": [45, 34]}], '🐪': ['camel', {"behind": [67, 42], "beside": [20, 53], "front": [32, 67], "top": [55, 31]}], '🏠': ['house', {"behind": [75, 47], "beside": [22, 57], "front": [48, 70], "top": [36, 33]}], '🪑': ['chair', {"behind": [76, 33], "beside": [15, 64], "top": [53, 25], "under": [49, 73]}], '🌳': ['tree', {"behind": [60, 57], "beside": [27, 62], "front": [42, 80], "under": [44, 63]}], '🛏': ['bed', {"behind": [47, 26], "beside": [76, 47], "top": [64, 29], "under": [38, 56]}]};
+{ const _hd = g32Hide; g32Hide = function g32HideG33() { return _hd.apply(this, arguments).replace('<div class="g32-scene" id="g32-scene">', '<div class="g32-scene g33-scene" id="g32-scene">'); }; }
+g32HideRound = function g32HideRoundG33() { if (TGG.id !== 'hide') return; if (TGG.left-- <= 0) { tggEnd(); return; }
+  const objs = G32_HIDE.filter((o) => G33_HIDE[o[0]] && o !== TGG.last); const o = tgPick(objs, 1)[0]; TGG.last = o; const k = tgPick(o[3], 1)[0]; TGG.k = k; const say = g32HideSay(o, k); TGG.say = say;
+  $('g32-hq').innerHTML = `<p class="g32-phrase" lang="ar">${say}</p>${g31Hear()}`; g32Say(say); const [art, pos] = G33_HIDE[o[0]]; const vk = 'g33_v_' + art + '_' + k;
+  { const pre = new Image(); pre.src = artURL(vk); }
+  const sc = $('g32-scene'); sc.dataset.lock = ''; sc.innerHTML = `${g32Img('g33_h_' + art, 'g33-bg')}${o[3].map((s) => { const p = pos[s] || [50, 50]; return `<button class="g32-spot g33-spot at-${s}" data-k="${s}" style="left:${p[0]}%;top:${p[1]}%" aria-label="${G32_PREP[s]}"><span class="g32-q" aria-hidden="true">?</span></button>`; }).join('')}`;
+  sc.querySelectorAll('.g32-spot').forEach((b) => { b.onclick = () => { if (TGG.id !== 'hide' || sc.dataset.lock) return;
+    if (b.dataset.k === TGG.k) { sc.dataset.lock = 1; b.classList.add('found'); sc.insertAdjacentHTML('beforeend', g32Img(vk, 'g33-bg g33-reveal')); sc.querySelectorAll('.g32-spot:not(.found)').forEach((x) => x.classList.add('gone')); tggGood(); $('g32-stars').insertAdjacentHTML('beforeend', '<i></i>'); tggT(g32HideRound, 1800); }
+    else { tggBad(b); tggT(() => g32Say(TGG.say), 500); } }; }); };
+TGG_RUN.hide = [g32Hide, g32HideRound];
+/* ---------- sentence dhow (sea) + spot the mistake (reading desk) ---------- */
+{ const _s = g32SentG; g32SentG = function g32SentGG33(game) { return _s.apply(this, arguments).replace('<div class="g32-sent" id="g32-sent">', `<div class="g32-sent g33s-${game}" id="g32-sent">`); };
+  TGG_RUN.dhow = [() => g32SentG('dhow'), () => {}]; TGG_RUN.spot = [() => g32SentG('spot'), () => {}]; }
+{ const _t = g32TierPick; g32TierPick = function g32TierPickG33() { return g33Emo(_t.apply(this, arguments)); }; }
+{ const _t = g32Timer; g32Timer = function g32TimerG33() { return g33Emo(_t.apply(this, arguments)); }; }
+{ const _r = g32SentRound; g32SentRound = function g32SentRoundG33() { const r = _r.apply(this, arguments); const box = $('g32-sent');
+    if (box && TGG.id === 'dhow') { const sea = box.querySelector('.g32-sea'); if (sea && !sea.querySelector('.g33-bg')) sea.insertAdjacentHTML('afterbegin', g32Img('g33_sea', 'g33-bg')); }
+    if (box && TGG.id === 'spot') { const ln = box.querySelector('.g32-line'); if (ln && !box.querySelector('.g33-deskw')) { ln.insertAdjacentHTML('beforebegin', `<div class="g33-deskw">${g32Img('g33_desk', 'g33-bg')}</div>`); box.querySelector('.g33-deskw').appendChild(ln); } }
+    return r; }; }
+/* ---------- sky: painted clouds, 3D stars ---------- */
+{ const _k = g32Sky; g32Sky = function g32SkyG33() { return _k.apply(this, arguments).replace('<div class="g32-air" id="g32-air">', `<div class="g32-air g33-air" id="g32-air">${g32Img('g33_sky', 'g33-bg')}`); };
+  TGG_RUN.sky = [g32Sky, g32SkyRound]; }
+Object.assign(TGG_RUN, { kick: [g32Kick, g32KickRound], hop: [g32HopG, g32HopRound], paint: [() => g32Paint(false), g32PaintRound], free: [() => g32Paint(true), g32FreeRun], who: [g32Who, g32WhoRound] });
+/* ---------- certificate: a painted frame and a medal ---------- */
+{ const _c = g32CertBlocks; g32CertBlocks = function g32CertBlocksG33() { return _c.apply(this, arguments).map((b) => b.replace('<div class="pr-cert-in">', `<div class="pr-cert-in g33-cert">${g32Img('g33_cert', 'g33-cert-fr')}`).replace('<p class="pr-cert-msg">', `${g32Img('g33_medal', 'g33-cert-medal')}<p class="pr-cert-msg">`)); }; }
+if (typeof pr32CertBlocks === 'function') { const _c = pr32CertBlocks; pr32CertBlocks = function pr32CertBlocksG33() { const r = _c.apply(this, arguments); const fx = (b) => String(b).replace('<div class="pr-cert-in">', `<div class="pr-cert-in g33-cert">${g32Img('g33_cert', 'g33-cert-fr')}`); return Array.isArray(r) ? r.map(fx) : fx(r); }; }
+/* ---------- teacher mode + printables: 3D icons instead of emoji ---------- */
+['tchintro', 'teacher', 'tchview', 'tchpack', 'printables'].forEach((k) => { const f = ACC_SCREENS[k]; if (typeof f !== 'function') return; ACC_SCREENS[k] = function g33Scr() { return g33Emo(f.apply(this, arguments)); }; });
+{ const _p = ACC_SCREENS.parent; ACC_SCREENS.parent = function parentG33() { return _p.apply(this, arguments).replace(/<div class="acc-box pr32-entry">[\s\S]*?<\/div>/, (m) => g33Emo(m)); }; }
+if (typeof tchHomeLine === 'function') { const _l = tchHomeLine; tchHomeLine = function tchHomeLineG33() { return g33Emo(_l.apply(this, arguments)); }; }
+window.__g33 = { g33Friend, G33_HIDE, g33Emo }; /* tests */
+/* offline: once the app is idle, warm the service-worker art cache with the new pictures (cache-first art/*.webp) */
+(function g33Warm() { if (!('serviceWorker' in navigator) || navigator.connection && navigator.connection.saveData) return;
+  const go = () => Object.keys(ART_B64).filter((k) => k.startsWith('g33_') || k.startsWith('g32_')).forEach((k, i) => setTimeout(() => { fetch(artURL(k)).catch(() => {}); }, i * 120));
+  const idle = window.requestIdleCallback || ((f) => setTimeout(f, 4000)); window.addEventListener('load', () => idle(go, { timeout: 8000 })); })();
 
 </script>
 </body>
