@@ -18409,7 +18409,7 @@ const g32SetKey = (game, tier, i) => game + ':' + tier + ':' + i;
 const g32TierDone = (game, tier) => [0, 1, 2].every((i) => g32S().sets[g32SetKey(game, tier, i)]);
 const g32Bank = (game) => (game === 'dhow' ? G32_DHOW : G32_SPOT);
 /* v35: game tiers follow the child's working level (grammar strand). Easier tiers are always open; a harder tier opens only when the tier below it is finished (earned, never a silent jump). */
-function g32WlTier() { try { if (typeof wlGet !== 'function' || !currentKid) return 2; const w = wlGet(currentKid); const lv = w ? w.gram : 6; return lv < 4 ? 0 : lv < 7 ? 1 : 2; } catch (e) { return 2; } }
+function g32WlTier() { try { if (typeof wlGet !== 'function' || !currentKid) return 2; const w = wlGet(currentKid); const Y = (y) => WL_YEARS.indexOf(y); const lv = w && w.gram != null ? w.gram : Y('Y5'); return lv < Y('Y4') ? 0 : lv < Y('Y7') ? 1 : 2; /* v36: compare on the WL_YEARS index scale (was raw year numbers) */ } catch (e) { return 2; } }
 function g32TierOpen(game, i) { const top = g32WlTier(); if (i <= top) return true; return g32TierDone(game, G32_TIERS[i - 1][0]); }
 function g32TierPick(game) { const s = g32S(); const rec = g32WlTier();
   return `<div class="g32-tiers"><p class="g32-ask" lang="ar">${G('اِخْتَرِ المُسْتَوَى', 'اِخْتَارِي المُسْتَوَى')} ${g32En('Pick a level')}</p>${G32_TIERS.map(([t, ar, en], ti) => { const open = g32TierOpen(game, ti); return `<div class="g32-tier"><button class="btn big g32-tb ${open ? '' : 'locked'} ${ti === rec ? 'rec' : ''}" data-act="${open ? 'g32-tier' : 'g32-tier-locked'}" data-arg="${game}:${t}" lang="ar" ${open ? '' : 'aria-disabled="true"'}>${open ? '' : '🔒 '}${ar}${ti === rec ? ' ⭐' : ''} ${g32En(en)}</button>
