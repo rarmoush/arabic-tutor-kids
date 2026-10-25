@@ -1,6 +1,6 @@
 /* v18b service worker: the app opens offline. Pages: network first, cached copy when offline. Art and icons (file names
    carry a content hash): cache first. Requests to other sites (the AI Worker) are never touched or cached. */
-const VER = '585936aba6';
+const VER = '22e63a1dd7';
 const SHELL = 'shell-' + VER; const ART = 'art-v32'; const AUDIO = 'audio-v33'; /* v31: new names with the story covers, game icons and extra clips */
 const CORE = ['./', './manifest.webmanifest', './icon-192.png', './icon-512.png', './favicon-32.png', './privacy/', './terms/'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(SHELL).then((c) => c.addAll(CORE)).then(() => self.skipWaiting())); });
