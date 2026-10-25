@@ -10958,7 +10958,7 @@ const RISK_RULES = [
     /(يتنمر|يتنمرون|تنمر|بيتنمرو|متنمر)/, /(محد|ماحد|ما حد|مافي حد|ولا حد|محدا|ما حدا|محدش|مفيش حد|لا احد) (يحبني|بيحبني|يبيني|بدو ياني|عايزني|يهتم|يريدني)/, /(انا |اني )?(حزين|حزينه|زعلان وايد|زعلانه وايد|مكتئب|مكتئبه|وحيد|وحيده|خايف وايد|خايفه وايد|مرعوب|مرعوبه|مخنوق|مخنوقه|ضايق وايد)/, /(ابكي|بكيت|عم ابكي|ببكي|قاعد ابكي|قاعده ابكي)/, /(اكره نفسي|كاره نفسي|انا فاشل|انا غبي وما احد)/] },
   { kind: 'sexual', level: 'low', re: [/\b(sex|sexy|porn|nude|naked|boobs|penis|vagina|make out|kiss me|send nudes|horny)\b/, /(سكس|جنسي|الجنس|اباحي|عاري|عريان|عريانه|بوسني|(^|\s)(زب|كس)(\s|$))/] },
   { kind: 'contact', level: 'low', re: [/\b(meet (me|you|up)|where do you live|come to my (house|home)|your (phone|number|address|insta|snap|whatsapp)|add me on|send (me )?(a |your )?(photo|pic|picture|selfie)|video call)\b/, /\b(whatsapp|snapchat|instagram|tiktok|discord|telegram)\b/, /(نتقابل|نلتقي|تعال بيتي|تعالي بيتي|وين ساكن|وين بيتك|ارسل(ي)? (لي )?صوره|ابي صورتك|رقمك|واتساب|واتس|سناب|انستا|تيك توك|ديسكورد|مكالمه فيديو)/] },
-  { kind: 'unsafe', level: 'low', re: [/\b(gun|guns|bomb|knife to|weapon|drugs?|cocaine|weed|alcohol|beer|vodka|cigarette|vape|how to steal|kill (him|her|them|someone|people))\b/, /(مسدس|سلاح|قنبله|متفجر|مخدرات|حشيش|خمر|بيره|سجاير|سيجاره|فيب|كيف اسرق|اقتله|اقتلها|نقتل)/] },
+  { kind: 'unsafe', level: 'low', re: [/\b(gun|guns|bomb|knife to|weapon|drugs?|cocaine|weed|alcohol|beer|vodka|cigarette|vape|how to steal|kill (him|her|them|someone|people))\b/, /(مسدس|سلاح|قنبله|متفجر|مخدرات|حشيش|سجاير|سيجاره|كيف اسرق|اقتله|اقتلها|نقتل)|(?<![\u0621-\u064A])(ال)?(خمر|بيره|فيب)(?![\u0621-\u064A])/ /* v34: بيره/خمر/فيب as whole words only (كبيره = big) */] },
   { kind: 'jailbreak', level: 'low', re: [/\b(ignore|forget|disregard) (all |your |the |previous |prior |above )*(instructions|rules|prompt|guidelines)/, /\bsystem prompt\b/, /\byou are (now|no longer)\b/, /\b(pretend|act|roleplay|role-play) (to be|as|you are|you're)\b/, /\b(dan|developer mode|jailbreak|no restrictions|unfiltered)\b/, /\bwhat are your (rules|instructions)\b/, /\brepeat (the|your) (text|words|prompt) above\b/,
     /(تجاهل|انسى|انس|اترك) (كل )?(التعليمات|القواعد|الاوامر)/, /(انت الحين|انت الان|من الحين انت|تظاهر انك|خليك انت) /, /(قول|اكتب) (لي )?(التعليمات|البرومبت)/] },
   { kind: 'pii', level: 'low', re: [/(\+?\d[\d\s-]{6,}\d)/, /[\w.+-]+@[\w-]+\.[\w.]+/, /\b(my|our) (address|phone|number|school|password|full name|surname|last name)\b/, /\b(my name is|i live (in|at|on)|i go to .{0,20} school|i'?m \d{1,2} years)\b/, /\b(street|road|villa|apartment|flat) ?\d+/,
@@ -12203,15 +12203,29 @@ document.addEventListener('click', (e) => {
     s.country = typeof SAQ_COUNTRY === 'function' ? SAQ_COUNTRY() : 'ae'; /* v18: helpline numbers in the safety script */
     return s;
   };
+  /* v34 streaming: ask for SSE (early line + final). An old worker answers JSON: used as is. A broken stream falls back to one normal request. */
+  async function azTurnFetch(brain, body, signal) {
+    const want = !!brain.onEarly && AZ.stream !== false;
+    if (want) { try { const res = await fetch(brain.endpoint, { method: 'POST', headers: HDR(), body: JSON.stringify(Object.assign({}, body, { stream: true })), signal });
+        if (!res.ok) throw new Error('http ' + res.status);
+        if (!/event-stream/.test(res.headers.get('content-type') || '') || !res.body) return await res.json();
+        const rd = res.body.getReader(); const dec = new TextDecoder(); let buf = '', fin = null;
+        for (;;) { const { value, done } = await rd.read(); if (done) break; buf += dec.decode(value, { stream: true }); let k;
+          while ((k = buf.indexOf('\n\n')) >= 0) { const fr = buf.slice(0, k); buf = buf.slice(k + 2); const ev = (fr.match(/^event: (.*)$/m) || [])[1]; let d = null; try { d = JSON.parse((fr.match(/^data: (.*)$/m) || [])[1] || 'null'); } catch (e) { continue; }
+            if (ev === 'early' && d && d.action) { const v = AzureBrain.validate([d.action], brain.ctx)[0]; if (v) { if (d.action.register) v.register = d.action.register === 'fusha' ? 'fusha' : 'dialect'; AZ.early = (AZ.early || 0) + 1; try { brain.onEarly(v, d.ms); } catch (e) { /* display only */ } } }
+            else if (ev === 'final') fin = d; else if (ev === 'error') throw new Error('stream error'); } }
+        if (fin) return fin; throw new Error('stream ended');
+      } catch (e) { if (signal.aborted || /^http 4/.test(e.message)) throw e; AZ.streamFail = (AZ.streamFail || 0) + 1; /* fall back below */ } }
+    const res = await fetch(brain.endpoint, { method: 'POST', headers: HDR(), body: JSON.stringify(body), signal });
+    if (!res.ok) throw new Error('http ' + res.status); return res.json();
+  }
   AzureBrain.prototype.post = (function (orig) {
     return async function (event) {
       const t0 = performance.now(); this.endpointRaw = true;
       const body = { session_id: this.sid, event, state: this.state(), history: this.history.slice(-12) };
-      const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 35000); /* reasoning model + one possible dialect regeneration */
+      const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 22000); /* v34: 22 s client budget; reasoning model + one possible dialect regeneration */
       try {
-        const res = await fetch(this.endpoint, { method: 'POST', headers: HDR(), body: JSON.stringify(body), signal: ctl.signal });
-        if (!res.ok) throw new Error('http ' + res.status);
-        const j = await res.json(); let raw = (j && j.actions) || [];
+        const j = await azTurnFetch(this, body, ctl.signal); let raw = (j && j.actions) || [];
         /* scope guard on the device too: a reply that answers maths, shows code or gives non-Arabic facts is swapped for a scripted redirect */
         if (event.type === 'reply' && !(j && j.safety) && typeof checkReply === 'function') { const mt = j && j.meta && j.meta.scope && j.meta.scope.topic; const why = checkReply(raw, mt);
           if (why) { const pr = PROFILES[currentKid]; raw = redirectActions(mt === 'jailbreak' ? 'jailbreak' : 'off_topic', null, this.ctx.dialect(), pr ? pr.gender : 'm'); AZ.scope = (AZ.scope || 0) + 1; } }
@@ -12220,6 +12234,7 @@ document.addEventListener('click', (e) => {
         const acts = []; raw.forEach((a) => { const v = AzureBrain.validate([a], this.ctx)[0]; if (v) { if (a.register) v.register = a.register === 'fusha' ? 'fusha' : 'dialect'; acts.push(v); } });
         acts.forEach((a) => { if (a.ar || a.en) this.history.push({ role: 'tutor', text: TB.scrub(a.ar + ' / ' + a.en) }); });
         AZ.lat.push({ event: event.type, server_ms: j.meta && j.meta.ms, total_ms: Math.round(performance.now() - t0), in_tokens: j.meta && j.meta.in_tokens, out_tokens: j.meta && j.meta.out_tokens, raw: raw, actions: acts.map((a) => ({ type: a.type, register: a.register, ar: a.ar, en: a.en, activity: a.activity, chips: a.chips && a.chips.map((c) => c.ar + ' / ' + c.en), word: a.params && (a.params.item ? a.params.item.dia + ' · ' + a.params.item.fusha : a.params.word ? a.params.word.ar : a.params.id || (a.params.letter && a.params.letter.l)) })) });
+        this.lastEarly = j && j.meta && j.meta.early || null;
         if (!acts.length) throw new Error('no valid actions');
         return acts;
       } finally { clearTimeout(tm); }
@@ -12756,8 +12771,18 @@ async function mhSend(text, via, value) {
   if (!mhCloud()) { mhScripted(text, TT_AZ && TT_AZ.ok === false && DB.settings.familyCode ? 'offline' : null); return; }
   const b = mhBrain(); MH.busy = true; const ty = mhTyping(); const t0 = Date.now();
   b.history.push({ role: 'child', text: TB.scrub(value || text) });
-  try { const acts = await b.post({ type: 'reply', text: TB.scrub(text), value: value || null, via: via || 'type' }); MH.lat = Date.now() - t0; ty.remove(); MH.delay = 0; await mhRun(acts); }
-  catch (e) { ty.remove(); MH.err = String(e && e.message || e); mhScripted(text, 'offline'); }
+  /* v34: only a failed request falls back; an error while showing/speaking a real answer is logged, never replaced by offline lines */
+  let acts = null; let early = null; let ty2 = null;
+  /* v34 streaming: one checked line can show before the turn is done (no voice yet; the final turn speaks as before) */
+  b.onEarly = (a) => { if (early || !['say', 'praise', 'explain'].includes(a.type)) return; ty.remove(); MH.delay = 0; MH.first = Date.now() - t0;
+    const l = { ar: a.ar, en: a.en, register: a.register, d: a.register === 'fusha' ? 'fusha' : curDialect(), kind: a.type }; early = { el: mhSay(l), i: MH.msgs.length - 1, ar: a.ar }; ty2 = mhTyping(); };
+  try { acts = await b.post({ type: 'reply', text: TB.scrub(text), value: value || null, via: via || 'type' }); MH.lat = Date.now() - t0; if (!early) MH.first = MH.lat; }
+  catch (e) { MH.err = String(e && e.message || e); }
+  b.onEarly = null; ty.remove(); if (ty2) ty2.remove();
+  if (early && acts && acts.length) { const kept = b.lastEarly && b.lastEarly.kept && acts[0] && acts[0].ar === early.ar;
+    if (kept) acts = acts.slice(1); else { early.el.remove(); if (MH.msgs.length - 1 === early.i) MH.msgs.pop(); } }
+  try { if (acts && acts.length) { MH.delay = 0; await mhRun(acts); } else if (early && acts) mhSetChips(mhDefaultChips('letter')); else mhScripted(text, early || /no valid actions/.test(MH.err || '') ? null : 'offline'); } /* a 200 whose actions were all invalid is not 'offline' */
+  catch (e) { MH.runErr = String(e && e.message || e); }
   finally { MH.busy = false; }
 }
 document.addEventListener('submit', (e) => { if (e.target.id !== 'mh-form') return; e.preventDefault(); const i = $('mh-text'); const v = i.value; i.value = ''; mhSend(v, 'type'); });
@@ -12909,27 +12934,43 @@ async function hwSend(text, image) {
     return;
   }
   const tp = text && !image ? classifyHomework(text) : { topic: null };
+  if (tp.topic === 'arabic' && HW.task && text) { const nb = (x) => normAr(String(x || '')).replace(/\s+/g, ''); if (!nb(HW.task).includes(nb(text).slice(0, 20))) { HW.task = ''; HW.kind = 'none'; HW.history = []; } } /* v34: a new typed question = a new task: the old one never carries over */
   if (tp.topic === 'off_topic') { hwOther(d, g).forEach(hwSay); return; }
   if (tp.topic === 'answer_request' && !HW.task) { hwRefuse(d, g, HW.kind, false).forEach(hwSay); return; }
   if (!TT_BASE() || !DB.settings.familyCode) { hwSay({ type: 'say', register: 'fusha', ar: 'مُسَاعِدُ الوَاجِبِ غَيْرُ مُتَّصِلٍ عَلَى هَذَا الجِهَازِ بَعْدُ. اُطْلُبْ مِنْ أَحَدِ وَالِدَيْكَ تَشْغِيلَهُ.', en: 'The homework helper is not connected on this device yet. Ask a parent to set it up.' }); return; }
-  HW.busy = true; const ty = hwTyping(!!image); const t0 = Date.now(); let j = null, err = null;
+  if (image && (HW.task || HW.history.length)) { HW.task = ''; HW.kind = 'none'; HW.history = []; } /* v34: a new photo = a new question: the old task and chat never carry over */
+  HW.busy = true; const ty = hwTyping(!!image); const t0 = Date.now(); let j = null, err = null, early = null, ty2 = null;
   const body = { session_id: HW.sid, mode: 'homework', task_text: HW.task, task_kind: HW.kind, history: HW.history.slice(-10),
     event: { type: image ? 'photo' : 'reply', text: TB.scrub(text), image: image || undefined }, state: { dialect: d, learner_gender: g, level: levelInfo(P().xp).lvl, country: typeof SAQ_COUNTRY === 'function' ? SAQ_COUNTRY() : 'ae' } };
+  try { const w = wlGet(currentKid); body.state.school_year = WL_YEARS[wlYear(currentKid)]; body.state.working_level = { reading: WL_YEARS[w.read], grammar: WL_YEARS[w.gram], writing: WL_YEARS[w.write] }; } catch (e) { /* v34: level hints are optional */ }
   image = null; /* the photo leaves memory with this request */
   try {
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 45000);
-    const r = await fetch(TT_BASE() + '/api/homework', { method: 'POST', headers: TT_HDR(), body: JSON.stringify(body), signal: ctl.signal }); clearTimeout(tm);
-    if (!r.ok) err = r.status; else j = await r.json();
+    /* v34 streaming: SSE early line + final; old worker → JSON; a broken stream → one normal request */
+    const plain = async () => { const r = await fetch(TT_BASE() + '/api/homework', { method: 'POST', headers: TT_HDR(), body: JSON.stringify(body), signal: ctl.signal }); if (!r.ok) err = r.status; else j = await r.json(); };
+    if (window.HW_STREAM !== false) { try { const r = await fetch(TT_BASE() + '/api/homework', { method: 'POST', headers: TT_HDR(), body: JSON.stringify(Object.assign({}, body, { stream: true })), signal: ctl.signal });
+        if (!r.ok) err = r.status; else if (!/event-stream/.test(r.headers.get('content-type') || '') || !r.body) j = await r.json();
+        else { const rd = r.body.getReader(); const dec = new TextDecoder(); let buf = '';
+          for (;;) { const { value, done } = await rd.read(); if (done) break; buf += dec.decode(value, { stream: true }); let k;
+            while ((k = buf.indexOf('\n\n')) >= 0) { const fr = buf.slice(0, k); buf = buf.slice(k + 2); const ev = (fr.match(/^event: (.*)$/m) || [])[1]; let d = null; try { d = JSON.parse((fr.match(/^data: (.*)$/m) || [])[1] || 'null'); } catch (e) { continue; }
+              if (ev === 'early' && d && d.action && d.action.ar && !early) { ty.remove(); const a = d.action; const l = { type: a.type, register: a.register === 'fusha' ? 'fusha' : 'dialect', ar: String(a.ar).replace(/\{name\}/g, PROFILES[currentKid].ar), en: a.en || '' }; hwSay(l); early = { el: hwChat().lastElementChild, i: HW.msgs.length - 1, ar: a.ar, ms: Date.now() - t0 }; ty2 = hwTyping(false); }
+              else if (ev === 'final') j = d; else if (ev === 'error') throw new Error('stream'); } }
+          if (!j) throw new Error('stream ended'); } }
+      catch (e) { if (ctl.signal.aborted) throw e; j = null; err = null; await plain(); } }
+    else await plain();
+    clearTimeout(tm);
   } catch (e) { err = 'net'; }
-  body.event.image = undefined; ty.remove(); HW.busy = false; HW.lat.push(Date.now() - t0);
+  body.event.image = undefined; ty.remove(); if (ty2) ty2.remove(); HW.busy = false; HW.lat.push(Date.now() - t0); HW.first = early ? early.ms : Date.now() - t0;
+  if (early && j && j.actions && j.actions.length) { const kept = j.meta && j.meta.early && j.meta.early.kept && j.actions[0].ar === early.ar; if (kept) { HW.history.push({ role: 'tutor', text: TB.scrub(early.ar) }); j = Object.assign({}, j, { actions: j.actions.slice(1), _kept: HW.msgs[early.i] }); } else { early.el && early.el.remove(); if (HW.msgs.length - 1 === early.i) HW.msgs.pop(); } }
   if (!j) { const l = err === 413 ? ['الصُّورَةُ كَبِيرَةٌ جِدّاً. صَوِّرْ جُزْءاً مِنَ الوَرَقَةِ فَقَطْ.', 'The photo is too big. Take a photo of part of the sheet.'] : err === 429 ? ['اِسْتَرِحْ قَلِيلاً، ثُمَّ نُكْمِلُ لَاحِقاً.', "Let's take a short break and carry on later."] : ['لَا أَسْتَطِيعُ الاتِّصَالَ الآنَ. حَاوِلْ بَعْدَ قَلِيلٍ.', "I can't connect right now. Try again in a little while."];
     hwSay({ type: 'say', register: 'fusha', ar: l[0], en: l[1] }); return; }
   HW.turns++; if (text) HW.history.push({ role: 'child', text: TB.scrub(text) }); else HW.history.push({ role: 'child', text: '(photo)' });
-  if (typeof j.task_text === 'string') HW.task = j.task_text; if (j.task_kind) HW.kind = j.task_kind;
+  if (typeof j.task_text === 'string') { const nb = (x) => String(x || '').replace(/[\u064B-\u0652\s]/g, ''); if (HW.task && j.task_text && nb(j.task_text).slice(0, 30) !== nb(HW.task).slice(0, 30)) HW.history = HW.history.slice(-1); HW.task = j.task_text; } /* v34: a different task → drop the old question's chat */ if (j.task_kind) HW.kind = j.task_kind;
   if (j.safety) { if (typeof ttSafetyFlag === 'function') ttSafetyFlag(j.safety); else if (j.safety.level === 'high') addAlert(j.safety.kind, 'high'); }
   let spoke = null;
   (j.actions || []).forEach((a) => { if (!a || !a.ar) return; const l = { type: a.type, register: a.register === 'fusha' ? 'fusha' : 'dialect', ar: String(a.ar).replace(/\{name\}/g, PROFILES[currentKid].ar), en: a.en || '' }; hwSay(l); HW.history.push({ role: 'tutor', text: TB.scrub(l.ar) }); spoke = l; });
   if (j.safety && j.safety.end) { HW.ended = true; HW.task = ''; hwFoot(); }
+  if (!spoke && j._kept) spoke = j._kept;
   if (spoke && TTP().voice.auto && !MH.quiet) ttSpeak(spoke.ar, spoke.register === 'fusha' ? 'fusha' : 'dia');
 }
 document.addEventListener('submit', (e) => { if (e.target.id !== 'hw-form') return; e.preventDefault(); const i = $('hw-text'); const v = i.value; i.value = ''; hwSend(v); });
@@ -18579,6 +18620,48 @@ if (typeof ACTIONS !== 'undefined' && typeof tchSave === 'function') {
   ACTIONS['tch-off'] = () => flip(false, 'العَوْدَةُ إِلَى وَضْعِ العَائِلَةِ؟ تَبْقَى مِلَفَّاتُ التَّلَامِيذِ كَمَا هِيَ.');
   const _on = ACTIONS['tch-on']; ACTIONS['tch-on'] = () => (GL33.tchBusy ? null : _on());
 }
+
+/* v34 (stage): make the v21 practice items follow the child's working level (v28 WL).
+   1) "reading" items draw words only from units at or just above the reading working level (was: any unit, so a Y1 beginner saw Y8 words).
+   2) Saqqour's daily mix for a child with no history starts at their level: no letter drills for readers at Y3+, and the
+      first vocabulary set is the unit at their reading level instead of unit 1. Answer-driven ordering (due/weak skills) is unchanged. */
+function v34WlIdx(k) { try { const w = currentKid && wlGet(currentKid); return w ? w[k] : null; } catch (e) { return null; } }
+function v34Units(lv) { const r = v34WlIdx('read'); if (r == null) return UNITS; const lo = Math.max(0, r - 2), hi = r + (lv === 3 ? 1 : 0);
+  const us = UNITS.filter((u) => { const y = WL_UNIT_YR[u.id]; return y == null || (y >= lo && y <= hi); }); return us.length >= 2 ? us : UNITS.slice().sort((a, b) => (WL_UNIT_YR[a.id] || 0) - (WL_UNIT_YR[b.id] || 0)).slice(0, 3); }
+{ const _item = v21Item; v21Item = function v21ItemV34(k, lv, used) {
+    const i = v21Info(k); if (!i || i.kind !== 'reading') return _item(k, lv, used);
+    const lim = lv === 1 ? 2 : 3; const pool = v34Units(lv).flatMap((u) => u.vocab.map((_, n) => playWord(u, n)));
+    let src = pool.filter((w) => w.em && stripHarakat(w.ar).length <= (lv === 1 ? 5 : 9)); if (src.length < 4) return _item(k, lv, used);
+    const fresh = src.filter((w) => !(used || []).includes(w.key)); const list = fresh.length ? fresh : src; const w = list[Math.floor(Math.random() * list.length)]; if (used) used.push(w.key);
+    const all = v21Pool(); const opts = [w].concat(distract(w, all.filter((x) => x.key !== w.key && x.em !== w.em), lim - 1));
+    return { t: 'pic', w, o: opts, hear: null, read: lv === 3 ? stripHarakat(w.ar) : w.ar }; }; }
+{ const _mix = v21MixPick; v21MixPick = function v21MixPickV34(p) {
+    const out = _mix(p); try { const sk = v21Peek(p); const wr = v34WlIdx('write'), rd = v34WlIdx('read'); if (rd == null) return out;
+      const u = wlUnit(currentKid, 'read'); const vk = u ? 'vocab:' + u.id : null; const seen = (k) => sk[k] && sk[k].n;
+      const res = out.map((k) => { if (seen(k)) return k;
+        if ((k === 'letters' || k === 'sounds') && wr >= 4) return 'reading';
+        if (k.startsWith('vocab:') && vk && rd >= 3 && WL_UNIT_YR[k.slice(6)] < rd - 2) return vk; return k; });
+      return res.filter((k, j) => res.indexOf(k) === j).concat(out.filter((k) => !res.includes(k))).slice(0, 3); } catch (e) { return out; } }; }
+
+/* ---------- v34.2: recently missed words/letters (per kid, ring of 8) ---------- */
+function v34Miss(kind, v) { try { if (!currentKid || !v) return; const p = P(); const m = p.v34m || (p.v34m = { w: [], l: [] }); const a = m[kind]; const s = String(v).trim().slice(0, 24); if (!s) return;
+  const i = a.indexOf(s); if (i >= 0) a.splice(i, 1); a.push(s); if (a.length > 8) a.splice(0, a.length - 8); } catch (e) { /* optional */ } }
+function v34Hit(kind, v) { try { const m = P().v34m; if (!m || !v) return; const i = m[kind].indexOf(String(v).trim()); if (i >= 0) m[kind].splice(i, 1); } catch (e) { /* optional */ } }
+{ const _ra = roundAnswer; roundAnswer = function roundAnswerV34(ok) { const r = round; const it = r && !r.answered ? r.items[r.i] : null; const res = _ra.apply(this, arguments);
+  try { if (it) { const w = it.w && it.w.ar; const l = it.letter || (it.w && it.w.letter); if (w) (ok ? v34Hit : v34Miss)('w', w); if (l) (ok ? v34Hit : v34Miss)('l', l); } } catch (e) { /* optional */ } return res; }; }
+
+/* ---------- v34.2: what the tutor gets each turn: per-skill accuracy, missed items, due-for-review ---------- */
+function v34AdaptState() { const o = {}; try { const p = P(); const sk = v21Peek(p); const t = dayKey(); const ss = {}; const due = [];
+  Object.keys(sk).forEach((k) => { const r = sk[k]; if (!r || !r.n) return; ss[k] = { acc: Math.round(v21Acc(r) * 100) / 100, n: r.n }; if (r.due && r.due <= t && r.bx > 0) due.push(k); });
+  const keys = Object.keys(ss).sort((a, b) => ss[a].acc - ss[b].acc).slice(0, 16); if (keys.length) { o.skill_stats = {}; keys.forEach((k) => { o.skill_stats[k] = ss[k]; }); }
+  if (due.length) o.due_review = due.slice(0, 8); const m = p.v34m; if (m && m.w.length) o.missed_words = m.w.slice(-8); if (m && m.l.length) o.missed_letters = m.l.slice(-8); } catch (e) { /* optional */ } return o; }
+if (typeof AzureBrain !== 'undefined') { const _s = AzureBrain.prototype.state; AzureBrain.prototype.state = function stateV34() { return Object.assign(_s.apply(this, arguments), v34AdaptState()); }; }
+
+/* ---------- v34.2: progress sync after every answer: debounced (2.5 s) but never starved (max 10 s) ---------- */
+if (typeof accMarkDirty === 'function') { let first = 0; const _m = accMarkDirty; accMarkDirty = function accMarkDirtyV34(slot) { _m.apply(this, arguments);
+  const now = Date.now(); if (!first) first = now; if (now - first >= 10000) { first = 0; clearTimeout(accTimer); accFlush(); } else { clearTimeout(accTimer); accTimer = setTimeout(() => { first = 0; accFlush(); }, 2500); } };
+  window.addEventListener('pagehide', () => { try { if (ACC_ON()) accFlush(); } catch (e) { /* */ } }); }
+{ const _v = v21Answer; v21Answer = function v21AnswerV34() { const r = _v.apply(this, arguments); try { if (currentKid && ACC.map && Object.values(ACC.map).includes(currentKid)) accMarkDirty(currentKid); } catch (e) { /* */ } return r; }; }
 
 </script>
 </body>
