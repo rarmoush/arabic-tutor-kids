@@ -4550,6 +4550,7 @@ body.demo-on .kg-card{padding-inline-end:150px}.kg-card b{white-space:normal;ove
 .pr-up{color:#2f8f6f}.pr-mem{display:inline-block;width:40px;height:12px;border-radius:6px;background:rgba(63,158,131,calc(var(--s)*.9 + .08));border:1px solid #cfe3db}
 .pr-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media (max-width:520px){.pr-2{grid-template-columns:1fr}}.pr-ex{background:#fff7e0;border-radius:6px;padding:0 4px}.pr ul{padding-inline-start:20px;margin:4px 0}
 body.demo-on .dc-panel{margin-top:96px}
+.kg-ico{width:1.4em;height:1.4em;vertical-align:-.3em;display:inline-block}.dc-card .dc-ic .kg-ico{width:26px;height:26px}
 
 </style>
 </head>
@@ -18892,6 +18893,9 @@ function kgPractice(game, acc) { if (!currentKid || !P()) return; const s = kgS(
 { const _e = tggEnd; tggEnd = function tggEndKG() { try { const ok = TGG.score || 0, bad = TGG.kgBad || 0; if (ok + bad > 0) { kgPractice(TGG.id, ok / (ok + bad)); saveDB(); } } catch (e) { /* */ } TGG.kgBad = 0; return _e.apply(this, arguments); }; }
 /* ---------- the diagnostic screen (one question at a time; calm; no red crosses) ---------- */
 const KG = { t0: 0, item: null };
+/* inline icons (some phone fonts lack these emoji) */
+const KG_SPROUT = '<svg class="kg-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-8" stroke="#3f9e83" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M12 13c0-4-3-6-7-6 0 4 3 6 7 6z" fill="#6cc3a0"/><path d="M12 11c0-3.5 2.5-5.5 6.5-5.5 0 3.5-2.5 5.5-6.5 5.5z" fill="#3f9e83"/></svg>';
+const KG_BOOK = '<svg class="kg-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5C4.7 20 4 19.3 4 18.5z" fill="#5b8fd6"/><path d="M13 4h5.5c.8 0 1.5.7 1.5 1.5v13c0 .8-.7 1.5-1.5 1.5H13z" fill="#7fb0ee"/><path d="M11 4h2v16h-2z" fill="#3c6fb8"/></svg>';
 function kgOpen() { const s = kgS(); if (!s.diag || (s.diag.done && KG.redo)) kgDiagNew(); KG.redo = false; if (s.diag.done) { kgMapOpen(); return; } kgAsk(); }
 function kgAsk() { const d = kgS().diag; if (!d || d.done) { kgMapOpen(true); return; }
   let id = d.cur; if (d.ease) { const miss = d.lastMiss || d.cur; const easy = KG_ORDER.find((x) => x !== miss && d.res[x] && (d.res[x].v === 'yes' || d.res[x].v === 'inf')) || (miss === 'sounds' ? 'vocab' : 'sounds'); id = easy; d.easeFrom = miss; KG.easeItem = true; } else KG.easeItem = false;
@@ -18909,7 +18913,7 @@ function kgAns(i) { const it = KG.item; if (!it) return; const ok = it.opts[+i] 
 /* ---------- the skill map + path (child view) and the printable report (parents / teachers) ---------- */
 function kgMapOpen(fresh) { const s = kgS(); const path = kgPath().slice(0, 3);
   const rows = KG_ORDER.map((id) => { const n = kgNode(id); const st = kgStatus(id); const m = s.m[id] || {}; const sg = typeof srsStrength === 'function' ? srsStrength(id) : 0; const due = typeof srsDue === 'function' && srsDue(id); return `<div class="kg-node st-${st}${sg > 0.75 ? ' dark' : ''}" style="--s:${sg.toFixed(2)}" data-s="${sg.toFixed(2)}"><span class="kg-dot" style="--v:${Math.round((m.v || 0) * 100)}%"></span><b>${n.ar}</b><small>${KG_ST[st][0]}${m.fluent ? ' · ⚡' : ''}</small>${due ? '<span class="kg-due">🔁 حَانَ وَقْتُ المُرَاجَعَةِ</span>' : ''}</div>`; }).join('');
-  const steps = path.map((p, i) => `<button class="kg-step why-${p.why}" data-act="kg-go" data-arg="${p.id}"><span class="kg-n">${toArabicDigits(i + 1)}</span><b>${kgNode(p.id).ar}</b><small aria-label="${p.why === 'gap' ? 'نُقَوِّي الأَسَاسَ' : p.why === 'review' ? 'مُرَاجَعَةٌ' : 'جَدِيدٌ'}">${p.why === 'gap' ? '🌱' : p.why === 'review' ? '🔁' : '⭐'}</small></button>`).join('');
+  const steps = path.map((p, i) => `<button class="kg-step why-${p.why}" data-act="kg-go" data-arg="${p.id}"><span class="kg-n">${toArabicDigits(i + 1)}</span><b>${kgNode(p.id).ar}</b><small aria-label="${p.why === 'gap' ? 'نُقَوِّي الأَسَاسَ' : p.why === 'review' ? 'مُرَاجَعَةٌ' : 'جَدِيدٌ'}">${p.why === 'gap' ? KG_SPROUT : p.why === 'review' ? '🔁' : '⭐'}</small></button>`).join('');
   openModal(`<div class="kg-map" lang="ar">${fresh ? `<p class="kg-thanks">${G('شُكْرًا! عَرَفْنَا مِنْ أَيْنَ نَبْدَأُ مَعَكَ.', 'شُكْرًا! عَرَفْنَا مِنْ أَيْنَ نَبْدَأُ مَعَكِ.')}</p>` : ''}
     <h3>${G('مَسَارُكَ', 'مَسَارُكِ')}</h3><div class="kg-steps">${steps}</div><details class="kg-more"><summary>🗺️ خَرِيطَةُ المَهَارَاتِ</summary><p class="kg-legend">الأَغْمَقُ = أَثْبَتُ فِي الذَّاكِرَةِ.</p><div class="kg-nodes">${rows}</div></details>
     <div class="kg-row"><button class="btn ghost" data-act="kg-redo">↺ ${G('أَعِدِ التَّعَرُّفَ', 'أَعِيدِي التَّعَرُّفَ')}</button></div></div>`, null, 'sheet kg-modal'); }
@@ -18981,7 +18985,7 @@ const xpLine = (x) => (x.rush ? `<p class="xp-line calm">${G('نَتَمَهَّ
 function xpGoalHTML() { const s = xpS(), d = xpDay(); const pc = Math.min(100, Math.round((d.xp / s.goal) * 100));
   return `<div class="xp-goal" role="img" aria-label="${d.xp} / ${s.goal}" title="${d.xp} / ${s.goal}"><span class="xp-ring" style="--p:${pc}%"><b>${toArabicDigits(Math.min(d.xp, 99))}</b></span>${d.xp >= s.goal ? `<span>${G('أَتْمَمْتَ هَدَفَ اليَوْمِ 🌿', 'أَتْمَمْتِ هَدَفَ اليَوْمِ 🌿')}</span>` : `<span class="xp-of">/ ${toArabicDigits(s.goal)}</span>`}</div>`; }
 /* ================= M2 · daily task cards ================= */
-const DC_TYPES = { lesson: ['📘', 'دَرْسٌ قَصِيرٌ'], practice: ['🎯', 'تَدْرِيبٌ'], game: ['🎮', 'لُعْبَةٌ'], review: ['🔁', 'مُرَاجَعَةٌ'], quiz: ['✅', 'اخْتِبَارٌ صَغِيرٌ'], story: ['📖', 'قِصَّةٌ'] };
+const DC_TYPES = { lesson: [KG_BOOK, 'دَرْسٌ قَصِيرٌ'], practice: ['🎯', 'تَدْرِيبٌ'], game: ['🎮', 'لُعْبَةٌ'], review: ['🔁', 'مُرَاجَعَةٌ'], quiz: ['✅', 'اخْتِبَارٌ صَغِيرٌ'], story: ['📖', 'قِصَّةٌ'] };
 function dcGameNode(game) { const c = KG_NODES.filter((n) => n.game === game).map((n) => n.id); return c.find((id) => kgStatus(id) !== 'secure' && kgStatus(id) !== 'later') || c[0]; }
 function dcBuild() { const done = kgS().diag && kgS().diag.done; const path = done ? kgPath() : [{ id: KG_ORDER[Math.max(0, kgStartIx() - 1)], why: 'frontier' }];
   const weak = path.find((x) => x.why === 'gap') || path.find((x) => x.why === 'frontier') || path[0]; const front = path.find((x) => x.why === 'frontier' && x.id !== weak.id); const rev = path.find((x) => x.why === 'review');
@@ -19037,7 +19041,7 @@ function lsItem(node) { if ((node === 'sounds' || node === 'letters') && LS.lett
 function lsOpen(node, o) { Object.assign(LS, { node, quiz: !!o.quiz, k: 0, streak: 0, miss: 0, ok: 0, first: 0, hints: 0, ms: [], used: [], hint: false, reteach: 0, letter: (node === 'sounds' || node === 'letters') ? lsPickLetter() : null });
   LS.ex = lsItem(node); if (LS.quiz) return lsAsk(); lsTeach(false); }
 function lsTeach(again) { const kp = LS_KP[LS.node], it = LS.ex; LS.tT = Date.now();
-  openModal(`<div class="ls" lang="ar"><p class="ls-tag">${again ? G('لِنَتَذَكَّرْ مَعًا', 'لِنَتَذَكَّرْ مَعًا') : '📘 ' + kgNode(LS.node).ar}</p>${LS.letter ? `<p class="ls-letter">${LS.letter}</p>` : ''}
+  openModal(`<div class="ls" lang="ar"><p class="ls-tag">${again ? G('لِنَتَذَكَّرْ مَعًا', 'لِنَتَذَكَّرْ مَعًا') : KG_BOOK + ' ' + kgNode(LS.node).ar}</p>${LS.letter ? `<p class="ls-letter">${LS.letter}</p>` : ''}
     <p class="ls-rule">${kp.rule}</p><div class="ls-ex"><p class="ls-exh">مِثَالٌ مَحْلُولٌ</p>${it.pic ? `<div class="kg-pic">${tgPic(it.pic)}</div>` : ''}${it.show ? `<p class="kg-show">${it.show}</p>` : ''}${it.say ? `<button class="kg-hear" data-act="ls-hear" data-arg="ex" aria-label="اِسْمَعْ">🔊</button>` : ''}
     <ol class="ls-how">${kp.how.map((h) => `<li>${lsG(h)}</li>`).join('')}</ol><p class="ls-ans">الجَوَابُ: <b>${esc(it.ans)}</b> ✓</p></div>
     <button class="btn primary ls-go" data-act="ls-start">${G('جَرِّبْ بِنَفْسِكَ', 'جَرِّبِي بِنَفْسِكِ')}</button></div>`, null, 'sheet kg-modal ls-modal'); }
