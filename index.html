@@ -4389,6 +4389,7 @@ body.show-en .pr32-bar .en{display:inline;font-size:11px;opacity:.8}
 .g32-ball{width:76px;height:76px}
 .g32-boat img{transform:scaleX(-1)}
 .g32-tb.locked{opacity:.55;filter:grayscale(.6)}.g32-tb.rec{outline:3px solid #ffcf33;outline-offset:2px}
+.g32-sent .g32-card.g32-hint,.g32-sent .g32-w.g32-hint{outline:4px solid #f5b800;outline-offset:2px;box-shadow:0 0 18px #ffd54a;animation:g32hint 1.2s ease-in-out 3}@keyframes g32hint{50%{transform:scale(1.06)}}@media (prefers-reduced-motion:reduce){.g32-hint{animation:none}}
 
 /* ===== v32 graphics pass: painted scenes + 3D pieces ===== */
 .g33-ic{display:inline-block;width:1.45em;height:1.45em;object-fit:contain;vertical-align:-.38em;margin-inline:.08em}
@@ -4496,6 +4497,7 @@ body.show-en .pr32-bar .en{display:inline;font-size:11px;opacity:.8}
 #demo-ribbon .demo-en{display:inline!important;font-style:normal;letter-spacing:.08em}
 #demo-ribbon .demo-en .en,#demo-ribbon .demo-en span{display:inline!important;visibility:visible!important;opacity:1!important;font-size:11px!important;position:static!important}
 #demo-ribbon::before{content:"DEMO";font:800 11px/1 system-ui,sans-serif;letter-spacing:.12em;color:#3a2a00}
+body.demo-on #toast{top:calc(96px + env(safe-area-inset-top));max-width:calc(100vw - 24px)} /* v38: clear of the DEMO badge */
 
 </style>
 </head>
@@ -5523,7 +5525,7 @@ function loadDB() {
   migrateProfiles(); syncProfiles();
   Object.keys(PROFILES).forEach((id) => { DB.kids[id] = normalizeProgress(DB.kids[id]); });
 }
-/* v15 (KHDA tier 1): profiles are created on the device. Older saves kept progress under a per-child key;
+/* v15: profiles are created on the device. Older saves kept progress under a per-child key;
    move each one into a slot (k1, k2) and keep a local nickname made from that saved key, so nothing is lost.
    The age band and boy/girl words are then confirmed on the device (needsSetup). */
 function migrateProfiles() {
@@ -10581,7 +10583,7 @@ function sfxBtnPaint() { const b = $('sfx-btn'); if (b) b.innerHTML = `${sfxOn()
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', add); else add(); })();
 
 /* =========================================================
-   v15 · KHDA tier 1: on-device profiles, parent PIN, privacy notice, consent, parent alerts.
+   v15: on-device profiles, parent PIN, privacy notice, consent, parent alerts.
    Everything here is stored in localStorage (arabicTutor.v2) only. Older saves load unchanged:
    every field below is optional and created on first use.
      DB.profiles[k1|k2] = { nick, band, g, needsSetup }      (core.js migrateProfiles / saveProfile)
@@ -10821,7 +10823,7 @@ Object.assign(ACTIONS, {
 })();
 
 /* =========================================================
-   v15 · Placement rebuilt for Arabic-first mode (KHDA tier 1, item 2).
+   v15 · Placement rebuilt for Arabic-first mode.
    Every prompt and every answer is Arabic text, a picture or audio, so nothing is blank when English is hidden.
    It measures Arabic, not translation: word → picture (one per level), picture → first letter (sound),
    letter name → letter, short Fusha sentence → picture (comprehension), and هَذَا / هَذِهِ.
@@ -10891,7 +10893,7 @@ renderPlacement = function renderPlacementV15() {
   document.head.appendChild(css); })();
 
 /* =========================================================
-   v15 · accessibility (KHDA tier 1, item 8; axe critical/serious from axe-results.json).
+   v15 · accessibility (axe critical/serious from axe-results.json).
    - every button gets an accessible name (Arabic first, English after), incl. icon-only 🔊 buttons
    - accessible names start with the visible text (label-content-name-mismatch)
    - stronger text colours where axe found contrast below 4.5:1
@@ -12300,7 +12302,7 @@ document.addEventListener('click', (e) => {
 })();
 
 /* =========================================================
-   TUTOR SAFETY (KHDA tier 1, items 3 and 5). Runs on the device, before anything is sent anywhere:
+   TUTOR SAFETY. Runs on the device, before anything is sent anywhere:
    - consent gate: the tutor only opens when a parent has switched it on for this child (PIN, privacy notice)
    - every typed or spoken message is checked by detectRisk() (tutor/shared/safety.mjs, injected by build.py)
      high risk (self-harm, abuse, distress) → fixed calm script, session ends, parent flag on the device
@@ -18410,37 +18412,55 @@ const g32TierDone = (game, tier) => [0, 1, 2].every((i) => g32S().sets[g32SetKey
 const g32Bank = (game) => (game === 'dhow' ? G32_DHOW : G32_SPOT);
 /* v35: game tiers follow the child's working level (grammar strand). Easier tiers are always open; a harder tier opens only when the tier below it is finished (earned, never a silent jump). */
 function g32WlTier() { try { if (typeof wlGet !== 'function' || !currentKid) return 2; const w = wlGet(currentKid); const Y = (y) => WL_YEARS.indexOf(y); const lv = w && w.gram != null ? w.gram : Y('Y5'); return lv < Y('Y4') ? 0 : lv < Y('Y7') ? 1 : 2; /* v36: compare on the WL_YEARS index scale (was raw year numbers) */ } catch (e) { return 2; } }
-function g32TierOpen(game, i) { const top = g32WlTier(); if (i <= top) return true; return g32TierDone(game, G32_TIERS[i - 1][0]); }
-function g32TierPick(game) { const s = g32S(); const rec = g32WlTier();
-  return `<div class="g32-tiers"><p class="g32-ask" lang="ar">${G('اِخْتَرِ المُسْتَوَى', 'اِخْتَارِي المُسْتَوَى')} ${g32En('Pick a level')}</p>${G32_TIERS.map(([t, ar, en], ti) => { const open = g32TierOpen(game, ti); return `<div class="g32-tier"><button class="btn big g32-tb ${open ? '' : 'locked'} ${ti === rec ? 'rec' : ''}" data-act="${open ? 'g32-tier' : 'g32-tier-locked'}" data-arg="${game}:${t}" lang="ar" ${open ? '' : 'aria-disabled="true"'}>${open ? '' : '🔒 '}${ar}${ti === rec ? ' ⭐' : ''} ${g32En(en)}</button>
-    <span class="g32-gifts" aria-label="الهَدَايَا">${[0, 1, 2].map((i) => `<i class="${s.sets[g32SetKey(game, t, i)] ? 'got' : 'wait'}" aria-hidden="true">🎁</i>`).join('')}${g32TierDone(game, t) ? '<i class="got">🏅</i>' : ''}</span></div>`; }).join('')}
-    <label class="g32-timer"><input type="checkbox" id="g32-timer" ${s.timer ? 'checked' : ''}><span lang="ar">⏳ مُؤَقِّتٌ هَادِئٌ لِلْمُسْتَوَى المُتَقَدِّمِ (اخْتِيَارِيٌّ) ${g32En('A quiet timer, advanced level only (optional)')}</span></label></div>`; }
-function g32SentG(game) { TGG.left = 0; return g32Shell(game, `<div class="g32-sent" id="g32-sent">${g32TierPick(game)}</div>`); }
-function g32TierGo(arg) { const [game, tier] = String(arg).split(':'); if (TGG.id !== game) return; const ti = G32_TIERS.findIndex((x) => x[0] === tier); if (ti < 0 || !g32TierOpen(game, ti)) return; const s = g32S(); const tb = $('g32-timer'); if (tb) { s.timer = tb.checked; saveDB(); }
-  let set = [0, 1, 2].find((i) => !s.sets[g32SetKey(game, tier, i)]); if (set == null) set = Math.floor(Math.random() * 3);
-  Object.assign(TGG, { tier, set, items: g32Bank(game)[tier][set], k: 0 }); g32SentRound(); }
-function g32Timer() { if (TGG.tier !== 'adv' || !g32S().timer) return ''; return '<div class="g32-sand" aria-hidden="true"><i></i><span>⏳</span></div>'; }
+/* v38: no level picker and no locks (children always picked easy). The game starts at the child's working level (difficulty 0..2 = easy/medium/advanced under the hood)
+   and moves within the session: up after 3 first-try answers in a row, down after an item with 2+ misses. The child only sees stars and progress dots. */
+const G32_SESSION = 8, G32_UP = 4, G32_DOWN = 2; /* v38 (calm adaptivity): stay where the child succeeds, up gently after 4 first-try answers in a row, down quickly (an item with 2+ misses, or 2 items in a row with a miss), every 3rd item a review one level lower */
+/* v38 session pattern: warm-up (2 known items) → focus block on 1–2 weak points (due weak items first, with an early hint) → finish on a win (a known item).
+   Weak items: per child, per game; a miss makes an item weak, 2 first-try wins in later sessions master it; spaced review 1 → 2 → 4 sessions. */
+const g32K = (it) => JSON.stringify(it);
+function g32W(game) { const s = g32S(); s.weak = s.weak || {}; s.known = s.known || {}; s.sess = s.sess || {}; return { s, weak: (s.weak[game] = s.weak[game] || {}), known: (s.known[game] = s.known[game] || []), n: s.sess[game] || 0 }; }
+function g32Pool(game, d) { return [].concat(...g32Bank(game)[G32_TIERS[d][0]]); }
+function g32NextItem(game) { const W = g32W(game); const fresh = (a) => a.filter((x) => !TGG.used.includes(x)); let it = null; TGG.phase = 'focus';
+  if (TGG.k < 2 || TGG.k === TGG.n - 1) { TGG.phase = TGG.k < 2 ? 'warm' : 'win'; const low = Math.max(0, TGG.d - 1); const kn = fresh([0, 1, 2].filter((d) => d <= TGG.d).flatMap((d) => g32Pool(game, d)).filter((x) => W.known.includes(g32K(x))));
+    it = tgPick(kn.length ? kn : fresh(g32Pool(game, low)).length ? fresh(g32Pool(game, low)) : g32Pool(game, low), 1)[0]; }
+  else { const all = [0, 1, 2].flatMap((d) => g32Pool(game, d)); const due = fresh(all.filter((x) => { const w = W.weak[g32K(x)]; return w && w.due <= W.n; })).sort((x, y) => W.weak[g32K(y)].m - W.weak[g32K(x)].m).slice(0, 2);
+    if (due.length && TGG.focus.length < 2) TGG.focus.push(g32K(due[0]));
+    const pick = due.find((x) => TGG.focus.includes(g32K(x))); if (pick && TGG.missRun < 2) { it = pick; TGG.phase = 'weak'; }
+    else { const p = fresh(g32Pool(game, TGG.d)); it = tgPick(p.length ? p : g32Pool(game, TGG.d), 1)[0]; } }
+  TGG.used.push(it); TGG.cur = g32K(it); TGG.phases.push(TGG.phase); return it; }
+function g32Learn(game, miss) { const W = g32W(game); const k = TGG.cur; if (!k) return; const w = W.weak[k];
+  if (miss) { W.weak[k] = { m: (w ? w.m : 0) + 1, ok: 0, iv: 1, due: W.n + 1, t: Date.now() }; const i = W.known.indexOf(k); if (i >= 0) W.known.splice(i, 1); }
+  else if (w) { if (TGG.phase === 'weak') { w.ok++; w.iv = Math.min(4, w.iv * 2); w.due = W.n + w.iv; w.t = Date.now(); if (w.ok >= 2) { delete W.weak[k]; W.known.push(k); const ms = W.s.mast = W.s.mast || {}; (ms[TGG.id] = ms[TGG.id] || {})[k] = Date.now(); } } }
+  else if (!W.known.includes(k)) { W.known.push(k); if (W.known.length > 80) W.known.shift(); } }
+function g32Adapt(miss) { g32Learn(TGG.id, miss); TGG.log.push([TGG.d, miss, TGG.phase]); if (miss === 0) { TGG.streak++; TGG.missRun = 0; if (TGG.streak >= G32_UP && TGG.d < 2) { TGG.d++; TGG.streak = 0; TGG.moves.push(1); } return; }
+  TGG.streak = 0; TGG.missRun++; if ((miss >= G32_DOWN || TGG.missRun >= 2) && TGG.d > 0) { TGG.d--; TGG.missRun = 0; TGG.moves.push(-1); } }
+/* after 2 misses on one item: a gentle hint (the right card / word glows) and a kind line; never a loop of misses */
+function g32Hint(el) { if (TGG.miss < (TGG.phase === 'weak' ? 1 : 2) || TGG.hinted === TGG.k) return; TGG.hinted = TGG.k; if (el) el.classList.add('g32-hint'); try { toast('💡 ' + G('لَا بَأْسَ! هَذِهِ مُسَاعَدَةٌ صَغِيرَةٌ.', 'لَا بَأْسَ! هَذِهِ مُسَاعَدَةٌ صَغِيرَةٌ.')); } catch (e) { /* */ } }
+function g32SentG(game) { TGG.left = 0; Object.assign(TGG, { d: g32WlTier(), d0: g32WlTier(), streak: 0, miss: 0, moves: [], used: [], log: [], phases: [], focus: [], missRun: 0, hinted: -1, k: 0, n: G32_SESSION, items: [] });
+  tggT(() => { if (TGG.id === game) g32SentRound(); }, 60); return g32Shell(game, `<div class="g32-sent" id="g32-sent"></div>`); }
+function g32TierGo() { /* v38: the level picker is gone */ }
+function g32Timer() { return ''; /* v38: no timer (it belonged to the level picker) */ return '<div class="g32-sand" aria-hidden="true"><i></i><span>⏳</span></div>'; }
 function g32SentRound() { const game = TGG.id; if (game !== 'dhow' && game !== 'spot') return;
-  if (TGG.k >= TGG.items.length) { const s = g32S(); const key = g32SetKey(game, TGG.tier, TGG.set); const first = !s.sets[key]; s.sets[key] = dayKey(); TGG.gift = key;
+  if (TGG.k > 0 && TGG.items.length === TGG.k) g32Adapt(TGG.miss); TGG.miss = 0;
+  if (TGG.k >= TGG.n) { const W0 = g32W(game); W0.s.sess[game] = W0.n + 1; const s = g32S(); TGG.tier = G32_TIERS[TGG.d][0]; let set0 = [0, 1, 2].find((i) => !s.sets[g32SetKey(game, TGG.tier, i)]); TGG.set = set0 == null ? Math.floor(Math.random() * 3) : set0; const key = g32SetKey(game, TGG.tier, TGG.set); const first = !s.sets[key]; s.sets[key] = dayKey(); TGG.gift = key;
     if (first && g32TierDone(game, TGG.tier) && !s.certs[game + ':' + TGG.tier]) s.certs[game + ':' + TGG.tier] = dayKey(); if (s.certs[game + ':' + TGG.tier]) TGG.cert = game + ':' + TGG.tier; saveDB(); tggEnd(); return; }
-  const it = TGG.items[TGG.k]; const box = $('g32-sent'); const dots = TGG.items.map((_, i) => `<i class="${i < TGG.k ? 'on' : ''}"></i>`).join('');
-  const tierAr = G32_TIERS.find((t) => t[0] === TGG.tier)[1];
+  TGG.tier = G32_TIERS[TGG.d][0]; const it = g32NextItem(game); TGG.items.push(it); const box = $('g32-sent'); const dots = Array.from({ length: TGG.n }, (_, i) => `<i class="${i < TGG.k ? 'on' : ''}"></i>`).join('');
   if (game === 'dhow') { const T = g32Tok(it); TGG.T = T; TGG.j = 0; TGG.say = it; g32Say(it);
-    box.innerHTML = `<div class="g32-sh"><span class="g32-tierl" lang="ar">${tierAr}</span><span class="g32-dots">${dots}</span>${g31Hear()}</div>${g32Timer()}
+    box.innerHTML = `<div class="g32-sh" data-d="${TGG.d}"><span class="g32-dots">${dots}</span>${g31Hear()}</div>${g32Timer()}
       <div class="g32-sea"><div class="g32-boat" id="g32-boat">${g32Img('tg_g_dhow', 'g32-boat-img')}</div><div class="g32-deck" id="g32-deck" lang="ar">${T.map(() => '<span class="g32-plank"></span>').join('')}</div></div>
       <div class="g32-cards" id="g32-cards">${tgShuf(T.map((w, i) => ({ w, i }))).map((x) => `<button class="g32-card" data-w="${esc(x.w)}" lang="ar">${x.w}</button>`).join('')}</div>`;
     box.querySelectorAll('.g32-card').forEach((b) => { b.onclick = () => { if (TGG.id !== 'dhow' || b.dataset.done || TGG.j >= TGG.T.length) return;
       if (b.dataset.w === TGG.T[TGG.j]) { b.dataset.done = 1; b.classList.add('used'); const pl = $('g32-deck').children[TGG.j]; pl.textContent = TGG.T[TGG.j]; pl.classList.add('on'); g32Say(g32Bare(TGG.T[TGG.j])); TGG.j++;
         if (TGG.j === TGG.T.length) { tggGood(); $('g32-boat').classList.add('sail'); $('g32-deck').classList.add('done'); tggT(() => g32Say(it), 500); TGG.k++; tggT(g32SentRound, 2600); } }
-      else tggBad(b); }; }); }
+      else { TGG.miss++; tggBad(b); g32Hint([...box.querySelectorAll('.g32-card:not(.used)')].find((x) => x.dataset.w === TGG.T[TGG.j])); } }; }); }
   else { const [right, ix, wrong] = it; const T = g32Tok(right); const p = (T[ix].match(/[.،؟!]+$/) || [''])[0]; const shown = T.slice(); shown[ix] = wrong + p; TGG.say = '';
-    box.innerHTML = `<div class="g32-sh"><span class="g32-tierl" lang="ar">${tierAr}</span><span class="g32-dots">${dots}</span></div>${g32Timer()}
+    box.innerHTML = `<div class="g32-sh" data-d="${TGG.d}"><span class="g32-dots">${dots}</span></div>${g32Timer()}
       <p class="g32-ask" lang="ar">${G('فِي الجُمْلَةِ كَلِمَةٌ وَاحِدَةٌ خَطَأٌ. أَيْنَ هِيَ؟', 'فِي الجُمْلَةِ كَلِمَةٌ وَاحِدَةٌ خَطَأٌ. أَيْنَ هِيَ؟')}</p>
       <div class="g32-line" id="g32-line" lang="ar">${shown.map((w, i) => `<button class="g32-w" data-i="${i}">${w}</button>`).join('')}</div><div class="g32-fix" id="g32-fix"></div>`;
     const line = $('g32-line'); line.querySelectorAll('.g32-w').forEach((b) => { b.onclick = () => { if (TGG.id !== 'spot' || line.dataset.lock) return;
       if (+b.dataset.i === ix) { line.dataset.lock = 1; b.classList.add('fixed'); b.innerHTML = `<s>${wrong}</s><b>${T[ix]}</b>`; tggGood(); TGG.say = right; g32Say(right);
         $('g32-fix').innerHTML = `<p lang="ar">✔️ ${right}</p>${g31Hear()}`; TGG.k++; tggT(g32SentRound, 2800); }
-      else tggBad(b); }; }); }
+      else { TGG.miss++; tggBad(b); g32Hint(line.querySelector(`.g32-w[data-i="${ix}"]`)); } }; }); }
   const sd = box.querySelector('.g32-sand'); if (sd) tggT(() => sd.classList.add('done'), 45000); }
 /* the gift box and the certificate */
 function g32Gift(key, el) { const s = g32S(); if (s.gifts[key]) return; s.gifts[key] = dayKey(); s.pearls += 2; saveDB();
@@ -18489,6 +18509,20 @@ function G32_SAY() { const S = new Set(); const add = (t) => { t = String(t || '
   Object.values(G32_SPOT).forEach((sets) => sets.forEach((set) => set.forEach((it) => add(it[0]))));
   return [...S]; }
 window.__g32 = { g32S, G32_SAY, g32MapOpen, g32CertBlocks, G32_DHOW, G32_SPOT, G32_WHO, G32_HIDE }; /* tests */
+
+/* v38 sync: two devices, one child. Weak/known items, finished sets, certificates and gifts are merged (not taken wholesale from one copy):
+   weak items: union, newest record wins; a later "mastered" mark removes a weak item; known = union minus what is still weak; sessions = max. */
+function g32MergeS(a, b) { const o = JSON.parse(JSON.stringify(a || {})); b = b || {};
+  ['sets', 'certs', 'gifts'].forEach((k) => { o[k] = Object.assign({}, b[k] || {}, o[k] || {}); });
+  const games = new Set([...Object.keys(o.weak || {}), ...Object.keys(b.weak || {}), ...Object.keys(o.known || {}), ...Object.keys(b.known || {}), ...Object.keys(o.mast || {}), ...Object.keys(b.mast || {})]);
+  o.weak = o.weak || {}; o.known = o.known || {}; o.mast = o.mast || {}; o.sess = o.sess || {};
+  games.forEach((g) => { const ma = Object.assign({}, (b.mast || {})[g] || {}); Object.entries(o.mast[g] || {}).forEach(([k, t]) => { ma[k] = Math.max(t, ma[k] || 0); }); o.mast[g] = ma;
+    const wk = {}; [(b.weak || {})[g] || {}, o.weak[g] || {}].forEach((W) => Object.entries(W).forEach(([k, r]) => { if (!wk[k] || (r.t || 0) > (wk[k].t || 0)) wk[k] = r; }));
+    Object.keys(wk).forEach((k) => { if ((ma[k] || 0) > (wk[k].t || 0)) delete wk[k]; }); o.weak[g] = wk;
+    o.known[g] = [...new Set([...((b.known || {})[g] || []), ...(o.known[g] || [])])].filter((k) => !wk[k]).slice(-80);
+    o.sess[g] = Math.max((b.sess || {})[g] || 0, o.sess[g] || 0); });
+  return o; }
+{ const _m = accMerge; accMerge = function accMergeG32(a, b) { const out = _m.apply(this, arguments); try { if (a && b && (a.g32 || b.g32)) { const base = out.g32 && a.g32 && JSON.stringify(out.g32) === JSON.stringify(a.g32) ? a : b; out.g32 = g32MergeS(base.g32, (base === a ? b : a).g32); } } catch (e) { /* keep the plain merge */ } return out; }; }
 
 /* =========================================================
    v32 GRAPHICS PASS (demo): every v32 game, map, reward and teacher/printables icon redrawn as one family of
@@ -18551,7 +18585,7 @@ TGG_RUN.hide = [g32Hide, g32HideRound];
 /* ---------- sentence dhow (sea) + spot the mistake (reading desk) ---------- */
 { const _s = g32SentG; g32SentG = function g32SentGG33(game) { return _s.apply(this, arguments).replace('<div class="g32-sent" id="g32-sent">', `<div class="g32-sent g33s-${game}" id="g32-sent">`); };
   TGG_RUN.dhow = [() => g32SentG('dhow'), () => {}]; TGG_RUN.spot = [() => g32SentG('spot'), () => {}]; }
-{ const _t = g32TierPick; g32TierPick = function g32TierPickG33() { return g33Emo(_t.apply(this, arguments)); }; }
+/* v38: level picker removed */
 { const _t = g32Timer; g32Timer = function g32TimerG33() { return g33Emo(_t.apply(this, arguments)); }; }
 { const _r = g32SentRound; g32SentRound = function g32SentRoundG33() { const r = _r.apply(this, arguments); const box = $('g32-sent');
     if (box && TGG.id === 'dhow') { const sea = box.querySelector('.g32-sea'); if (sea && !sea.querySelector('.g33-bg')) sea.insertAdjacentHTML('afterbegin', g32Img('g33_sea', 'g33-bg')); }
