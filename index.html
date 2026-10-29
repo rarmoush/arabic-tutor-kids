@@ -4552,6 +4552,64 @@ body.demo-on .kg-card{padding-inline-end:150px}.kg-card b{white-space:normal;ove
 body.demo-on .dc-panel{margin-top:96px}
 .kg-ico{width:1.4em;height:1.4em;vertical-align:-.3em;display:inline-block}.dc-card .dc-ic .kg-ico{width:26px;height:26px}
 
+/* v41 treasure box · same look as the home tools (white round buttons, teal ring like the XP ring) and the lesson-end sheet */
+.tb-ic{position:relative;width:38px;height:38px;border:0;border-radius:50%;padding:0;background:conic-gradient(#57b79a var(--p),#e3ece8 0);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.tb-ic .tb-box{width:30px;height:30px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center}
+.tb-ic .tb-box img{width:24px;height:24px;object-fit:contain}
+.tb-ic.ready{background:conic-gradient(#f2b935 100%,#f2b935 0)}.tb-ic.ready .tb-box{box-shadow:inset 0 0 6px #ffe7a6}
+.tb-ic.ready{animation:tbpulse 3s ease-in-out infinite}
+.tb-ic b{position:absolute;top:-3px;inset-inline-start:-3px;min-width:16px;height:16px;line-height:16px;background:#f2b935;color:#3a2a06;border-radius:8px;font-size:11px;padding:0 3px;border:2px solid #fff}
+.kg-card .tb-ic{margin-inline-start:auto}
+@keyframes tbpulse{50%{box-shadow:0 0 0 5px #f2b93533}}
+.tb{text-align:center;padding:6px 4px 10px;direction:rtl}
+.tb .tb-box{display:inline-block;position:relative}.tb .tb-box img{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 14px rgba(70,45,10,.22))}
+.tb .tb-box.lg{width:190px}.tb .tb-box.md{width:132px}
+.tb .tb-ready::before,.tb .tb-opening::before{content:'';position:absolute;inset:-18% -14%;border-radius:50%;background:radial-gradient(closest-side,#ffe7a6cc,#ffe7a600);z-index:-1}
+.tb-big{border:0;background:none;padding:0;position:relative;z-index:0;-webkit-tap-highlight-color:transparent}
+.tb-big .tb-ready{animation:tbfloat 3.2s ease-in-out infinite}
+@keyframes tbfloat{50%{transform:translateY(-6px)}}
+.tb-opening{animation:tbwobble .9s ease-in-out}@keyframes tbwobble{20%{transform:rotate(-3deg)}45%{transform:rotate(3deg) scale(1.03)}70%{transform:rotate(-1.5deg)}}
+.tb-t{margin:10px 0 2px}.tb-sub{margin:0;color:#5b6b73}
+.tb .btn{width:100%;margin-top:12px}.tb .btn.ghost{width:auto}
+.tb-stage{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:4px;min-height:200px;z-index:0}
+.tb-chest{position:relative;order:2;padding-top:70px}.tb-stage .tb-fal{order:1;width:120px;margin-bottom:-6px}.tb-stage .tb-fal .mascot,.tb-stage .tb-fal img,.tb-stage .tb-fal svg{width:120px;height:auto}
+.tb-rw{position:absolute;top:0;margin:0;left:50%;transform:translateX(-50%);z-index:2;width:96px;height:96px;border-radius:50%;background:#fff;box-shadow:0 6px 18px rgba(40,60,70,.16);display:flex;align-items:center;justify-content:center;animation:tbrise .7s ease-out both}
+.tb-rw img,.tb-rw .tb-rw-it{width:72px;height:72px;object-fit:contain}.tb-rw .tg-gpic{font-size:52px;line-height:1}
+@keyframes tbrise{from{transform:translate(-50%,40px) scale(.6);opacity:0}}
+.tb-rev.rare .tb-rw{box-shadow:0 0 0 4px #ffe7a6,0 6px 18px rgba(200,150,30,.3)}
+.tb-st{display:inline-flex;width:70px;height:70px;border-radius:50%;background:var(--c);color:#fff;font-size:36px;align-items:center;justify-content:center;border:3px solid #fff}
+.tb-rw-av{display:block;width:84px;height:84px;overflow:hidden}.tb-rw-av .tg-av{width:100%;height:100%}
+.pr-tb{font-size:14px}
+@media (prefers-reduced-motion:reduce){.tb-ic.ready,.tb-opening,.tb-rw,.tb-big .tb-ready{animation:none}}
+.tb-item{align-items:center;gap:0}.tb-item .tb-chest{padding-top:0;order:1}.tb-box.sm{width:84px}.tb-item .tb-new{order:2;width:170px;height:200px;margin:0;animation:tbrise2 .7s ease-out both}.tb-item .tb-rw-av{width:170px;height:200px;overflow:visible}
+@keyframes tbrise2{from{transform:translateY(24px) scale(.85);opacity:0}}.tb .btn.ghost.tb-later{width:100%;margin-top:6px;background:none;box-shadow:none;color:#5b6b73}
+.tb-rw-coin{width:64px;height:64px}
+
+/* v42 calmer screens */
+body.v42-plan .tg-streak,body.v42-plan .tg-hi p,body.v42-plan .dc-map,body.v42-plan .tg-chips,body.v42-plan .tg-chip{display:none!important}
+body.v42-plan .tg-bottom{visibility:hidden;pointer-events:none}
+.tgg-tile.g31-new::before{display:none}.tgg-tile span{display:none}.tgg-tile b{font-size:17px;margin-top:4px}.tgg-tile{padding:14px 8px;min-height:120px;justify-content:center}
+.v42-sets,.v42-det,.v42-more{margin-top:12px;border-radius:16px;background:#fff;box-shadow:0 2px 8px rgba(20,60,80,.06)}
+.v42-sets>summary,.v42-det>summary,.v42-more>summary{list-style:none;cursor:pointer;padding:14px 16px;font-weight:700;min-height:48px;display:flex;align-items:center;gap:8px}
+.v42-sets>summary::-webkit-details-marker,.v42-det>summary::-webkit-details-marker,.v42-more>summary::-webkit-details-marker{display:none}
+.v42-sets>summary::after,.v42-det>summary::after,.v42-more>summary::after{content:'⌄';margin-inline-start:auto;color:#7a8a92}
+.v42-sets[open]>summary::after,.v42-det[open]>summary::after,.v42-more[open]>summary::after{content:'⌃'}
+.v42-sets>*:not(summary),.v42-det>*:not(summary),.v42-more>*:not(summary){margin:0 12px 12px}
+.v42-sets>summary .en,.v42-det>summary .en,.v42-more>summary .en{font-weight:400}
+.v42-kid{flex-basis:100%;width:100%;margin-top:8px}
+.v42-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.v42-n{background:#f3f8f6;border-radius:14px;padding:10px 6px;text-align:center;display:flex;flex-direction:column;gap:2px}
+.v42-n b{font-size:22px;color:#1f6f5c}.v42-n span{font-size:13px;color:#4c5d64}
+.v42-ins{margin:10px 2px;font-size:15px}
+.v42-rep{width:100%;min-height:48px}
+.v42-map{display:flex;align-items:center;gap:8px;width:100%;margin:12px 0 0;border:0;border-radius:16px;background:#fff;box-shadow:0 2px 8px rgba(20,60,80,.06);padding:14px 16px;font-weight:700;min-height:48px;font-size:16px}
+.acc-parent .acc-row{flex-wrap:wrap}
+
+.sq-shelf{margin-top:12px;background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(20,60,80,.06);padding:12px 14px;display:flex;align-items:center;gap:10px}
+.sq-shelf>b{flex:none}.sq-row{display:flex;gap:8px;margin-inline-start:auto}
+.sq-row img,.sq-row i{width:44px;height:44px;object-fit:contain;display:block}.sq-row i{border:2px dashed #dbe6e3;border-radius:50%}
+.tb-sq .tb-sq-img{width:170px;height:170px;object-fit:contain;filter:drop-shadow(0 10px 14px rgba(40,60,70,.18))}
+
 </style>
 </head>
 <body>
@@ -17185,7 +17243,7 @@ document.body.classList.add('tg-on', 'tg-' + 'all');
    Coins show only in the games tab, the games and the dress-up shop (never on home).
    ========================================================= */
 /* ---------- 1. the new pictures (art-src/v291/map2.json) + old keys pointed at them ---------- */
-{ const M = {"tg_home": ["b6e7bd12", 255, 256], "tg_map": ["feae202e", 256, 215], "tg_games": ["f5bc46e0", 256, 178], "tg_chat": ["370f12ac", 256, 214], "tg_homework": ["8724a0db", 256, 220], "tg_dictation": ["93a508cf", 256, 231], "tg_classwords": ["67409253", 225, 256], "tg_mix": ["2507e6b3", 256, 213], "tg_review": ["9b80d385", 256, 246], "tg_talk": ["895c800d", 246, 256], "tg_tricky": ["5ca6089d", 256, 255], "tg_feathers": ["1d46404a", 256, 245], "tg_start": ["91f6afc2", 210, 256], "tg_write": ["5e812fa5", 252, 256], "tg_read": ["f5ea49e7", 256, 191], "tg_settings": ["95e6b140", 253, 256], "tg_parent": ["89c066e2", 224, 256], "tg_switch": ["026d0787", 256, 229], "tg_sound": ["b15f5f55", 256, 213], "tg_translate": ["6d49fc40", 256, 232], "tg_dialect": ["332590ad", 256, 232], "tg_g_catch": ["d9c3d365", 192, 256], "tg_g_balloon": ["b96146c4", 216, 256], "tg_g_memory": ["e638e487", 256, 181], "tg_g_runner": ["ac75f127", 256, 170], "tg_g_harakat": ["53b83b98", 256, 109], "tg_shop": ["47f896c1", 222, 256], "tg_wardrobe": ["128bf147", 254, 256], "mk_tri": ["f4074719", 256, 227], "mk_sq": ["65159f31", 256, 251], "mk_star": ["bcb18606", 256, 245], "mk_heart": ["c916331b", 256, 217], "mk_moon": ["e06d61f9", 256, 184], "mk_flower": ["4b473de8", 223, 256], "mk_cloud": ["79585f3a", 256, 178], "bd_gold": ["c8b027fa", 160, 256], "bd_silver": ["93db698c", 159, 256], "bd_bronze": ["a41274ef", 157, 256], "bd_star": ["4ba8f50f", 171, 256], "gift": ["2dbed19a", 238, 256], "chest": ["909f873a", 245, 256], "mosque": ["38bcf230", 255, 256], "coin": ["0259db3e", 249, 256], "gem": ["4d8f1207", 217, 256], "b_first": ["74464000", 256, 251], "b_placed": ["fdee7d3a", 206, 256], "b_lesson1": ["cdd547d9", 255, 256], "b_stars3": ["53eb66a2", 256, 230], "b_level1": ["9b6bf056", 159, 256], "b_journey": ["8b55f867", 256, 218], "b_streak3": ["ed7d9a25", 206, 256], "b_streak7": ["67c10e1d", 200, 256], "b_streak30": ["a8994786", 253, 256], "b_words": ["ff431f2f", 215, 256], "b_dictation": ["42d8f530", 246, 256], "b_writer": ["f167c7f4", 226, 256], "b_quizwhiz": ["2176328e", 256, 252], "b_dialects": ["556ea3f3", 195, 256], "b_grammar": ["a5afdf46", 253, 256], "b_poet": ["0ec2534d", 184, 256], "b_reader": ["7638a0b0", 256, 227], "b_gamer": ["ac8bc870", 256, 220], "b_talker": ["60c40720", 256, 234], "b_readaloud": ["97935857", 256, 210], "b_speaker": ["3fe88abe", 153, 256], "b_xp500": ["45543416", 256, 216], "b_lvl10": ["180114a3", 256, 256], "b_shopper": ["f9801a68", 207, 256], "hat_cap": ["854d196f", 256, 239], "hat_beanie": ["fb42e036", 229, 256], "hat_bucket": ["76868e4e", 256, 175], "hat_crown": ["5d9dcd48", 256, 228], "hat_grad": ["624d9024", 256, 168], "hat_chef": ["b132f282", 256, 239], "hat_helmet": ["d938a3fd", 256, 239], "hat_flower": ["a1f29d5f", 256, 161], "gl_round": ["d7248503", 256, 203], "gl_sun": ["0b5e7929", 256, 189], "gl_star": ["281d5043", 256, 128], "gl_sport": ["a82c24c4", 256, 133], "hp_blue": ["46b16cbd", 232, 256], "hp_pink": ["b3aeb235", 231, 256], "bow_lilac": ["09027a56", 256, 204], "bow_mint": ["eaa5c1a8", 256, 205], "bp_school": ["ac9cb395", 231, 256], "bp_rocket": ["56b5c797", 225, 256], "bp_wings": ["38259038", 256, 184], "sc_red": ["b5c02cc4", 226, 256], "sc_blue": ["2f12f5e9", 243, 256], "sc_stripe": ["37d4dc67", 240, 256], "w_ball": ["14a70a9e", 255, 256], "w_book": ["ebf0f1d8", 256, 208], "w_trophy": ["247947b9", 234, 256], "w_flag": ["e6a83bdf", 203, 256], "w_ice": ["b902d261", 152, 256], "w_brush": ["11f0d311", 185, 256], "w_racket": ["f7c119c7", 222, 256], "w_balloon": ["dfd35da0", 132, 256], "w_star": ["6c5453e1", 185, 256], "w_dallah": ["470b9fcb", 207, 256], "st_ra1_cover": ["bfff05b5", 671, 668], "st_ra1_p1": ["9e30047e", 665, 668], "st_ra1_p2": ["4c2ca3f8", 669, 668], "st_ra1_p3": ["ea54a6dc", 671, 671], "st_ra1_p4": ["7de7a881", 665, 670], "st_ra1_p5": ["4b0343ff", 669, 671], "st_ra2_cover": ["bdf06cd4", 668, 664], "st_ra2_p1": ["2e90f9ff", 665, 664], "st_ra2_p2": ["304e879e", 666, 664], "st_ra2_p3": ["56c6dbcc", 668, 671], "st_ra2_p4": ["b5c8c820", 665, 671], "st_ra2_p5": ["e8861eb9", 667, 671], "st_ra3_cover": ["3ffba2c6", 669, 668], "st_ra3_p1": ["61c74d3c", 667, 669], "st_ra3_p2": ["643ace6f", 669, 669], "st_ra3_p3": ["4a7e2110", 669, 672], "st_ra3_p4": ["83e235df", 668, 671], "st_ra3_p5": ["1f47895f", 669, 671], "st_ra4_cover": ["04a9537b", 669, 668], "st_ra4_p1": ["81ff2a95", 668, 668], "st_ra4_p2": ["1754fee6", 670, 668], "st_ra4_p3": ["9a4b9fed", 669, 672], "st_ra4_p4": ["5aecf058", 668, 672], "st_ra4_p5": ["dacaf1ea", 670, 672], "st_ra5_cover": ["fa5be788", 669, 668], "st_ra5_p1": ["8848f7a6", 666, 667], "st_ra5_p2": ["d62f8caa", 668, 668], "st_ra5_p3": ["7afd883a", 669, 671], "st_ra5_p4": ["050ce844", 666, 671], "st_ra5_p5": ["a496390c", 668, 671], "st_ra6_cover": ["881e856a", 670, 667], "st_ra6_p1": ["4dd2f3f1", 666, 668], "st_ra6_p2": ["3fc1ba07", 670, 668], "st_ra6_p3": ["18696c66", 669, 671], "st_ra6_p4": ["bff4d0a8", 664, 671], "st_ra6_p5": ["4b92c6e9", 670, 671], "scene_market": ["1133a60b", 670, 669], "scene_school": ["3d406bee", 670, 669], "scene_beach": ["0825f37f", 669, 668], "scene_home": ["45f81ee5", 669, 671], "scene_park": ["10b0b250", 670, 672], "scene_oasis": ["e1272458", 669, 672]};
+{ const M = {"tg_home": ["b6e7bd12", 255, 256], "tg_map": ["feae202e", 256, 215], "tg_games": ["f5bc46e0", 256, 178], "tg_chat": ["370f12ac", 256, 214], "tg_homework": ["8724a0db", 256, 220], "tg_dictation": ["93a508cf", 256, 231], "tg_classwords": ["67409253", 225, 256], "tg_mix": ["2507e6b3", 256, 213], "tg_review": ["9b80d385", 256, 246], "tg_talk": ["895c800d", 246, 256], "tg_tricky": ["5ca6089d", 256, 255], "tg_feathers": ["1d46404a", 256, 245], "tg_start": ["91f6afc2", 210, 256], "tg_write": ["5e812fa5", 252, 256], "tg_read": ["f5ea49e7", 256, 191], "tg_settings": ["95e6b140", 253, 256], "tg_parent": ["89c066e2", 224, 256], "tg_switch": ["026d0787", 256, 229], "tg_sound": ["b15f5f55", 256, 213], "tg_translate": ["6d49fc40", 256, 232], "tg_dialect": ["332590ad", 256, 232], "tg_g_catch": ["d9c3d365", 192, 256], "tg_g_balloon": ["b96146c4", 216, 256], "tg_g_memory": ["e638e487", 256, 181], "tg_g_runner": ["ac75f127", 256, 170], "tg_g_harakat": ["53b83b98", 256, 109], "tg_shop": ["5edddcec", 222, 256], "tg_wardrobe": ["128bf147", 254, 256], "mk_tri": ["f4074719", 256, 227], "mk_sq": ["65159f31", 256, 251], "mk_star": ["bcb18606", 256, 245], "mk_heart": ["c916331b", 256, 217], "mk_moon": ["e06d61f9", 256, 184], "mk_flower": ["4b473de8", 223, 256], "mk_cloud": ["79585f3a", 256, 178], "bd_gold": ["c8b027fa", 160, 256], "bd_silver": ["93db698c", 159, 256], "bd_bronze": ["a41274ef", 157, 256], "bd_star": ["4ba8f50f", 171, 256], "gift": ["2dbed19a", 238, 256], "chest": ["909f873a", 245, 256], "mosque": ["38bcf230", 255, 256], "coin": ["0259db3e", 249, 256], "gem": ["4d8f1207", 217, 256], "b_first": ["74464000", 256, 251], "b_placed": ["fdee7d3a", 206, 256], "b_lesson1": ["cdd547d9", 255, 256], "b_stars3": ["53eb66a2", 256, 230], "b_level1": ["9b6bf056", 159, 256], "b_journey": ["8b55f867", 256, 218], "b_streak3": ["ed7d9a25", 206, 256], "b_streak7": ["67c10e1d", 200, 256], "b_streak30": ["a8994786", 253, 256], "b_words": ["ff431f2f", 215, 256], "b_dictation": ["42d8f530", 246, 256], "b_writer": ["f167c7f4", 226, 256], "b_quizwhiz": ["2176328e", 256, 252], "b_dialects": ["556ea3f3", 195, 256], "b_grammar": ["a5afdf46", 253, 256], "b_poet": ["0ec2534d", 184, 256], "b_reader": ["7638a0b0", 256, 227], "b_gamer": ["ac8bc870", 256, 220], "b_talker": ["60c40720", 256, 234], "b_readaloud": ["97935857", 256, 210], "b_speaker": ["3fe88abe", 153, 256], "b_xp500": ["45543416", 256, 216], "b_lvl10": ["180114a3", 256, 256], "b_shopper": ["f9801a68", 207, 256], "hat_cap": ["854d196f", 256, 239], "hat_beanie": ["fb42e036", 229, 256], "hat_bucket": ["76868e4e", 256, 175], "hat_crown": ["5d9dcd48", 256, 228], "hat_grad": ["624d9024", 256, 168], "hat_chef": ["b132f282", 256, 239], "hat_helmet": ["d938a3fd", 256, 239], "hat_flower": ["a1f29d5f", 256, 161], "gl_round": ["d7248503", 256, 203], "gl_sun": ["0b5e7929", 256, 189], "gl_star": ["281d5043", 256, 128], "gl_sport": ["a82c24c4", 256, 133], "hp_blue": ["46b16cbd", 232, 256], "hp_pink": ["b3aeb235", 231, 256], "bow_lilac": ["09027a56", 256, 204], "bow_mint": ["eaa5c1a8", 256, 205], "bp_school": ["ac9cb395", 231, 256], "bp_rocket": ["56b5c797", 225, 256], "bp_wings": ["38259038", 256, 184], "sc_red": ["b5c02cc4", 226, 256], "sc_blue": ["2f12f5e9", 243, 256], "sc_stripe": ["37d4dc67", 240, 256], "w_ball": ["14a70a9e", 255, 256], "w_book": ["ebf0f1d8", 256, 208], "w_trophy": ["247947b9", 234, 256], "w_flag": ["e6a83bdf", 203, 256], "w_ice": ["b902d261", 152, 256], "w_brush": ["11f0d311", 185, 256], "w_racket": ["f7c119c7", 222, 256], "w_balloon": ["dfd35da0", 132, 256], "w_star": ["6c5453e1", 185, 256], "w_dallah": ["470b9fcb", 207, 256], "st_ra1_cover": ["bfff05b5", 671, 668], "st_ra1_p1": ["9e30047e", 665, 668], "st_ra1_p2": ["4c2ca3f8", 669, 668], "st_ra1_p3": ["ea54a6dc", 671, 671], "st_ra1_p4": ["7de7a881", 665, 670], "st_ra1_p5": ["4b0343ff", 669, 671], "st_ra2_cover": ["bdf06cd4", 668, 664], "st_ra2_p1": ["2e90f9ff", 665, 664], "st_ra2_p2": ["304e879e", 666, 664], "st_ra2_p3": ["56c6dbcc", 668, 671], "st_ra2_p4": ["b5c8c820", 665, 671], "st_ra2_p5": ["e8861eb9", 667, 671], "st_ra3_cover": ["3ffba2c6", 669, 668], "st_ra3_p1": ["61c74d3c", 667, 669], "st_ra3_p2": ["643ace6f", 669, 669], "st_ra3_p3": ["4a7e2110", 669, 672], "st_ra3_p4": ["83e235df", 668, 671], "st_ra3_p5": ["1f47895f", 669, 671], "st_ra4_cover": ["04a9537b", 669, 668], "st_ra4_p1": ["81ff2a95", 668, 668], "st_ra4_p2": ["1754fee6", 670, 668], "st_ra4_p3": ["9a4b9fed", 669, 672], "st_ra4_p4": ["5aecf058", 668, 672], "st_ra4_p5": ["dacaf1ea", 670, 672], "st_ra5_cover": ["fa5be788", 669, 668], "st_ra5_p1": ["8848f7a6", 666, 667], "st_ra5_p2": ["d62f8caa", 668, 668], "st_ra5_p3": ["7afd883a", 669, 671], "st_ra5_p4": ["050ce844", 666, 671], "st_ra5_p5": ["a496390c", 668, 671], "st_ra6_cover": ["881e856a", 670, 667], "st_ra6_p1": ["4dd2f3f1", 666, 668], "st_ra6_p2": ["3fc1ba07", 670, 668], "st_ra6_p3": ["18696c66", 669, 671], "st_ra6_p4": ["bff4d0a8", 664, 671], "st_ra6_p5": ["4b92c6e9", 670, 671], "scene_market": ["1133a60b", 670, 669], "scene_school": ["3d406bee", 670, 669], "scene_beach": ["0825f37f", 669, 668], "scene_home": ["45f81ee5", 669, 671], "scene_park": ["10b0b250", 670, 672], "scene_oasis": ["e1272458", 669, 672]};
   Object.keys(M).forEach((k) => { const [h, w, ht] = M[k]; ART_B64[k] = h; ART_SIZE[k] = [w, ht]; delete ART_URL[k]; });
   const AL = { scene_souq: 'scene_market', scene_desert_palms: 'scene_oasis', scene_dubai_skyline: 'scene_park',
     mk_triangle: 'mk_tri', mk_diamond: 'gem', mk_dot: 'mk_star', mk_ring: 'mk_moon', mk_arch: 'mk_heart', mk_lattice: 'mk_flower', mk_wave: 'mk_cloud',
@@ -19179,6 +19237,153 @@ function prSave(slot) { const box = document.querySelector('.pr'); if (!box) ret
 Object.assign(ACTIONS, { 'pr-open': (slot) => { PR.slot = slot || currentKid; openModal(prReportHTML(PR.slot), null, 'sheet kg-modal kg-repm'); }, 'pr-print': () => ACTIONS['kg-print'](), 'pr-save': () => prSave(PR.slot), 'pr-close': () => closeModal() });
 const PR = { slot: null };
 window.__pr = { prReportHTML, prSave, prMiss, prSnap, prKind, prDemoSeed };
+
+/* v41 · treasure boxes: a calm, cosmetic reward for focused practice.
+   - Earned after 5 and 15 minutes of ACTIVE practice in a day (max 2 a day, up to 3 kept unopened). Active time = gaps between real taps/answers inside an
+     activity, each counted up to 20 s; taps under 0.8 s apart count nothing; nothing counts while hidden.
+   - Each box gives COINS (≈55%: 5/10/15, sometimes 25) or UNLOCKS a falcon item/colour the child does not own yet (≈45%), shown on the falcon with "wear it now".
+     Nothing left to unlock → coins, so a box is never empty. Seeded by box id (same on every device, testable). Nothing to buy; nothing locks learning. */
+const TB_AT = [300, 900]; const TB_KEEP = 3; const TB_GAP_MAX = 20; const TB_GAP_MIN = 0.8;
+function tbS(slot) { const p = DB.kids[slot || currentKid]; if (!p) return null; if (!p.tb) p.tb = { day: {}, earned: [], opened: {}, sq: [] }; return p.tb; }
+const tbOn = (slot) => { const p = DB.kids[slot || currentKid]; return !!p && !(p.tbOff); };
+const tbReady = (slot) => { const s = tbS(slot); return s ? s.earned.filter((id) => !s.opened[id]) : []; };
+/* ---- active time ---- */
+const TBT = { last: 0 };
+function tbCredit(now) { if (!currentKid || !P() || !tbOn()) return 0; now = now || Date.now(); const gap = TBT.last ? (now - TBT.last) / 1000 : 0; TBT.last = now;
+  if (gap < TB_GAP_MIN) return 0; const add = Math.min(gap, TB_GAP_MAX); const s = tbS(); const k = dayKey(); s.day[k] = Math.round(((s.day[k] || 0) + add) * 10) / 10;
+  const ks = Object.keys(s.day).sort(); while (ks.length > 30) delete s.day[ks.shift()]; tbCheck(); return add; }
+function tbCheck() { const s = tbS(); const k = dayKey(); const sec = s.day[k] || 0; let got = null;
+  TB_AT.forEach((at, i) => { const id = k + ':' + (i + 1); if (sec >= at && !s.earned.includes(id) && tbReady().length < TB_KEEP) { s.earned.push(id); got = id; } });
+  if (s.earned.length > 60) s.earned = s.earned.slice(-60); if (got) { saveDB(); TBT.fresh = got; } return got; }
+const TB_ZONE = '#modal-box, .lesson, canvas, .tgg, .ls, .kg-diag';
+const TB_SKIP = '[data-act=close], [data-act=modal-close], .icon-btn.back, .tabbar, nav, .tb-ic, [data-act^="tb-"], [data-act="kg-pause"], [data-act="ls-close"]';
+if (typeof document !== 'undefined') {
+  document.addEventListener('pointerdown', (e) => { const t = e.target; if (!t || !t.closest || !t.closest(TB_ZONE) || t.closest(TB_SKIP)) return; tbCredit(); }, true);
+  let mv = 0; document.addEventListener('pointermove', (e) => { if (!e.target || e.target.tagName !== 'CANVAS' || e.buttons !== 1) return; const n = Date.now(); if (n - mv > 2000) { mv = n; tbCredit(n); } }, true);
+  document.addEventListener('visibilitychange', () => { TBT.last = 0; });
+}
+/* ---- rewards ---- */
+function tbRand(seed) { let a = hashStr(String(seed)) >>> 0; return () => { a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+const TB_POOL = [['coins', 50], ['item', 30], ['squishy', 20]];
+/* v43: squishy collectibles (cosmetic, kept on a small shelf on My falcon) */
+const TB_SQ = [['sq_sky', 'غَيْمَةٌ طَرِيَّةٌ', 'Cloud squishy'], ['sq_mint', 'كَعْكَةٌ طَرِيَّةٌ', 'Bun squishy'], ['sq_sun', 'نَجْمَةٌ طَرِيَّةٌ', 'Star squishy'], ['sq_coral', 'فُقْمَةٌ طَرِيَّةٌ', 'Seal squishy']];
+/* items a box can unlock: existing customizer items and colours the child does not own yet. Boy: no hats/bows/flower clip (they do not show over the ghutra), no pink.
+   Top tier (price ≥ 90: crown, rocket backpack) stays an islands reward. Island locks are ignored for boxes. */
+const TB_TOP = 90;
+function tbItems(slot) { const k = slot || currentKid; const g = typeof tgGen === 'function' ? tgGen(k) : 'm'; const own = (tgKid(k).tgOwn || []); const out = [];
+  ['color', 'hat', 'glasses', 'ears', 'neck', 'back', 'hand'].forEach((sl) => (typeof tgList === 'function' ? tgList(sl, g) : TG_ITEMS[sl] || []).forEach((it) => { if (!it[0] || it[2] <= 0 || it[2] >= TB_TOP) return;
+    if (g === 'm' && (sl === 'hat' || /rose|pink|bow|flower|balloon|w_ice/.test(it[0]))) return; if (own.includes(sl + ':' + it[0])) return; out.push([sl, it]); })); return out; }
+function tbCoins(r) { return r() < 0.1 ? 25 : 5 + Math.floor(r() * 3) * 5; }
+function tbPick(id, slot) { const k = slot || currentKid; const r = tbRand(id + '|' + k); const x = r() * 100; const kind = x < TB_POOL[0][1] ? 'coins' : x < TB_POOL[0][1] + TB_POOL[1][1] ? 'item' : 'squishy';
+  if (kind === 'squishy') { const own = ((DB.kids[k] || {}).tb || {}).sq || []; const L = TB_SQ.filter((q) => !own.includes(q[0])); if (L.length) { const q = L[Math.floor(r() * L.length)]; return { kind, id: q[0], name: q[1], en: q[2] }; } }
+  if (kind === 'item') { const L = tbItems(k); if (L.length) { const [sl, it] = L[Math.floor(r() * L.length)]; return { kind, slot: sl, id: it[0], name: it[1], price: it[2], rare: it[2] >= 60 }; } }
+  const n = tbCoins(r); return { kind: 'coins', n, rare: n === 25, fallback: kind !== 'coins' }; }
+function tbApply(id) { const s = tbS(); if (!s.earned.includes(id) || s.opened[id]) return null; const p = P(); const rw = tbPick(id); const r = tgKid(currentKid);
+  if (rw.kind === 'coins') p.coins = (p.coins || 0) + rw.n; else if (rw.kind === 'squishy') { s.sq = s.sq || []; if (!s.sq.includes(rw.id)) s.sq.push(rw.id); } else if (!r.tgOwn.includes(rw.slot + ':' + rw.id)) r.tgOwn.push(rw.slot + ':' + rw.id);
+  s.opened[id] = { t: Date.now(), k: rw.kind === 'item' ? 'item:' + rw.slot + ':' + rw.id : rw.kind === 'squishy' ? 'sq:' + rw.id : 'coins:' + rw.n }; saveDB(); return rw; }
+/* ---- art: the game's own gouache 3D chest (closed + opening painted to match chest.webp; open = the existing coin chest) ---- */
+const TB_ART = { closed: 'tb_closed.fc07ca5b.webp', opening: 'tb_opening.8dd811fc.webp' };
+function tbBoxSVG(st, cls) { const src = st === 'open' ? artURL('chest') : ART_BASE + TB_ART[st === 'opening' ? 'opening' : 'closed'];
+  return `<span class="tb-box ${cls || ''} tb-${st}"><img src="${src}" alt="" draggable="false" decoding="async"></span>`; }
+function tbRwIcon(rw) { if (rw.kind === 'coins') return artImg('coin', 'tb-rw-coin'); return `<span class="tb-rw-av">${tgAvatar(currentKid, {}, { [rw.slot]: rw.id })}</span>`; }
+function tbRwText(rw) { if (rw.kind === 'squishy') return [rw.name, rw.en + ' for your shelf']; if (rw.kind === 'coins') return [`${toArabicDigits(rw.n)} عُمْلَةً`, rw.n + ' coins'];
+  return [`${rw.slot === 'color' ? 'لَوْنٌ جَدِيدٌ: ' : ''}${rw.name}`, rw.slot === 'color' ? 'New falcon colour unlocked' : 'New falcon item unlocked']; }
+/* ---- screens ---- */
+function tbRing() { const s = tbS(); const sec = (s && s.day[dayKey()]) || 0; const k = s ? TB_AT.filter((at, i) => s.earned.includes(dayKey() + ':' + (i + 1))).length : 0; const next = TB_AT[k]; const ready = tbReady().length;
+  const pc = ready ? 100 : next ? Math.min(100, Math.round(((sec - (TB_AT[k - 1] || 0)) / (next - (TB_AT[k - 1] || 0))) * 100)) : 100;
+  return `<button class="tb-ic${ready ? ' ready' : ''}" data-act="tb-open" aria-label="${ready ? 'صُنْدُوقُ كَنْزٍ جَاهِزٌ' : 'صُنْدُوقُ الكَنْزِ'}" style="--p:${pc}%">${tbBoxSVG(ready ? 'ready' : 'closed', 'sm')}${ready > 1 ? `<b>${toArabicDigits(ready)}</b>` : ''}</button>`; }
+function tbOpen() { const r = tbReady(); const s = tbS(); const sec = s.day[dayKey()] || 0; const done = TB_AT.filter((at, i) => s.earned.includes(dayKey() + ':' + (i + 1))).length;
+  if (!r.length) return openModal(`<div class="tb" lang="ar">${tbBoxSVG('closed', 'lg')}<h3 class="tb-t">${done >= TB_AT.length ? G('جَمَعْتَ صُنْدُوقَيِ اليَوْمِ. أَحْسَنْتَ! نَلْتَقِي غَدًا.', 'جَمَعْتِ صُنْدُوقَيِ اليَوْمِ. أَحْسَنْتِ! نَلْتَقِي غَدًا.') : G('تَدَرَّبْ قَلِيلًا وَسَيَظْهَرُ صُنْدُوقُ كَنْزٍ.', 'تَدَرَّبِي قَلِيلًا وَسَيَظْهَرُ صُنْدُوقُ كَنْزٍ.')}</h3><p class="en en-block">${done >= TB_AT.length ? "You found today's two boxes." : 'Keep practising and a treasure box will appear.'}</p></div>`, null, 'sheet tb-modal');
+  TBT.fresh = null; openModal(`<div class="tb" lang="ar"><button class="tb-big" data-act="tb-tap" aria-label="اِفْتَحِ الصُّنْدُوقَ">${tbBoxSVG('ready', 'lg')}</button><h3 class="tb-t">${G('صُنْدُوقُ كَنْزٍ لَكَ!', 'صُنْدُوقُ كَنْزٍ لَكِ!')}</h3><p class="tb-sub">${G('اِضْغَطْ عَلَيْهِ لِتَفْتَحَهُ.', 'اِضْغَطِي عَلَيْهِ لِتَفْتَحِيهِ.')}</p><p class="en en-block">A treasure box for you. Tap to open.</p></div>`, null, 'sheet tb-modal'); }
+function tbTap() { const id = tbReady()[0]; if (!id) return; const big = document.querySelector('.tb-big'); if (big) { big.disabled = true; big.innerHTML = tbBoxSVG('opening', 'lg'); }
+  setTimeout(() => { const rw = tbApply(id); if (!rw) return; const t = tbRwText(rw); const more = tbReady().length;
+    const later = `<button class="btn ghost tb-later" data-act="${more ? 'tb-open' : 'tb-done'}">${more ? 'الصُّنْدُوقُ التَّالِي' : 'لَاحِقًا'}</button>`;
+    const btn = rw.kind === 'squishy' ? `<button class="btn primary" data-act="tb-shelf">${G('ضَعْهُ فِي رَفِّكَ', 'ضَعِيهِ فِي رَفِّكِ')}</button>${later}` : rw.kind === 'item' ? `<button class="btn primary" data-act="tb-equip" data-arg="${rw.slot}|${rw.id}">${G('زَيِّنْ صَقْرَكَ الآنَ', 'زَيِّنِي صَقْرَكِ الآنَ')}</button><button class="btn ghost tb-later" data-act="${more ? 'tb-open' : 'tb-done'}">${more ? 'الصُّنْدُوقُ التَّالِي' : 'لَاحِقًا'}</button>`
+      : `<button class="btn primary" data-act="${more ? 'tb-open' : 'tb-done'}">${more ? G('اِفْتَحِ الصُّنْدُوقَ التَّالِيَ', 'اِفْتَحِي الصُّنْدُوقَ التَّالِيَ') : 'جَمِيلٌ!'}</button>`;
+    const stage = rw.kind === 'squishy' ? `<div class="tb-stage tb-item tb-sq"><div class="tb-chest">${tbBoxSVG('opening', 'sm')}</div><div class="tb-fal tb-new"><img class="tb-sq-img" src="${artURL(rw.id)}" alt=""></div></div>` : rw.kind === 'item' ? `<div class="tb-stage tb-item"><div class="tb-chest">${tbBoxSVG('opening', 'sm')}</div><div class="tb-fal tb-new">${tbRwIcon(rw)}</div></div>`
+      : `<div class="tb-stage"><div class="tb-chest">${tbBoxSVG('open', 'md')}<div class="tb-rw">${tbRwIcon(rw)}</div></div><div class="tb-fal">${typeof falconSVG === 'function' ? falconSVG('cheer', 'lg') : ''}</div></div>`;
+    openModal(`<div class="tb tb-rev tb-${rw.kind}${rw.rare ? ' rare' : ''}" lang="ar">${stage}<h3 class="tb-t">${t[0]}</h3><p class="en en-block">${t[1]}</p>${btn}</div>`, null, 'sheet tb-modal'); }, 900); }
+Object.assign(ACTIONS, { 'tb-open': () => tbOpen(), 'tb-tap': () => tbTap(), 'tb-done': () => { closeModal(); if (typeof ilShow === 'function') ilShow('home'); }, 'tb-shelf': () => { if (tbReady().length) return tbOpen(); closeModal(); if (typeof ilShow === 'function') { IL.page = 'me'; ilShow('me'); } },
+  'tb-equip': (a) => { const [sl, id] = String(a).split('|'); const r = tgKid(currentKid); if (!r.tgOwn.includes(sl + ':' + id)) return; r.tgWear = Object.assign({}, r.tgWear, { [sl]: id }); if (typeof TG_ACC !== 'undefined' && TG_ACC.includes(sl)) { TG_ACC.forEach((x) => { if (x !== sl) r.tgWear[x] = ''; }); r.tgWear.acc = sl; } saveDB(); if (tbReady().length) return tbOpen(); closeModal(); if (typeof ilShow === 'function') ilShow('home'); },
+  'tb-set': (a) => { const [slot, v] = String(a).split('|'); const p = DB.kids[slot]; if (!p) return; p.tbOff = v === '0'; saveDB(); try { const r = accRoot(); if (r && !r.classList.contains('hidden') && ACC_VIEW) accShow(ACC_VIEW); } catch (e) { /* */ } } });
+/* home: one small box icon with a ring (in the task panel or on the starting-check card); a freshly earned box shows once as the calm focus */
+{ const _r = ilRender; ilRender = function ilRenderTB() { _r.apply(this, arguments); try { if (typeof IL === 'undefined' || IL.page !== 'home' || !currentKid || !tbOn()) return; const pg = $('il-page'); if (!pg || pg.querySelector('.tb-ic')) return;
+  const tools = pg.querySelector('.dc-tools'); const kc = pg.querySelector('.kg-card'); if (tools) tools.insertAdjacentHTML('afterbegin', tbRing()); else if (kc) kc.insertAdjacentHTML('beforeend', tbRing());
+  if (TBT.fresh && tbReady().length && $('modal').classList.contains('hidden')) tbOpen(); } catch (e) { /* home must never break */ } }; }
+/* sync: union of earned and opened (earliest open wins); max of active seconds per day. Unlocked items travel in tgOwn (merged as a union below). */
+function tbMerge(a, b) { if (!a) return b; if (!b) return a; const o = { day: {}, earned: [], opened: {} };
+  new Set(Object.keys(a.day || {}).concat(Object.keys(b.day || {}))).forEach((k) => { o.day[k] = Math.max((a.day || {})[k] || 0, (b.day || {})[k] || 0); });
+  o.earned = [...new Set((a.earned || []).concat(b.earned || []))].sort(); [a.opened || {}, b.opened || {}].forEach((m) => Object.keys(m).forEach((k) => { if (!o.opened[k] || m[k].t < o.opened[k].t) o.opened[k] = m[k]; })); o.sq = [...new Set((a.sq || []).concat(b.sq || []))]; return o; }
+{ const _m = accMerge; accMerge = function accMergeTB(a, b) { const out = _m.apply(this, arguments); try { if (a && b && (a.tb || b.tb)) out.tb = tbMerge(a.tb, b.tb); if (a && b && (a.tgOwn || b.tgOwn)) out.tgOwn = [...new Set((a.tgOwn || []).concat(b.tgOwn || []))]; if (a && b) out.tbOff = !!(a.tbOff || b.tbOff) && !!(out.tbOff); } catch (e) { /* keep the plain merge */ } return out; }; }
+/* parent: switch + a line in the progress report */
+{ const _x = xpParentHTML; xpParentHTML = function xpParentTB(slot) { const h = _x.apply(this, arguments); const on = !(DB.kids[slot] || {}).tbOff;
+  return h.replace('<p><b>الدَّوْرِيُّ الأُسْبُوعِيُّ</b>', `<p><b>صَنَادِيقُ الكَنْزِ</b> <span class="en">Treasure boxes: a cosmetic reward after 5 and 15 minutes of focused practice (max 2 a day). Nothing to buy.</span></p><div class="xp-opts"><button class="xp-opt${on ? '' : ' on'}" data-act="tb-set" data-arg="${slot}|0">مُتَوَقِّفَةٌ</button><button class="xp-opt${on ? ' on' : ''}" data-act="tb-set" data-arg="${slot}|1">مُفَعَّلَةٌ</button></div><p><b>الدَّوْرِيُّ الأُسْبُوعِيُّ</b>`); }; }
+{ const _rp = prReportHTML; prReportHTML = function prReportTB(slot) { const h = _rp.apply(this, arguments); try { const s = tbS(slot); if (!s || !s.earned.length) return h; const n = s.earned.length, o = Object.keys(s.opened).length;
+  return h.replace('<h3>المَهَارَاتُ: البِدَايَةُ وَالآنَ</h3>', `<p class="pr-tb">🎁 صَنَادِيقُ الكَنْزِ: ${toArabicDigits(n)} (فُتِحَ ${toArabicDigits(o)}) <small class="en">treasure boxes earned / opened</small></p><h3>المَهَارَاتُ: البِدَايَةُ وَالآنَ</h3>`); } catch (e) { return h; } }; }
+/* demo: one box already earned (in memory only; demo mode never saves) */
+function tbDemo() { try { if (!document.body.classList.contains('demo-on') || !currentKid) return; const s = tbS(); const id = dayKey() + ':1'; if (!s.earned.includes(id)) { s.earned.push(id); s.day[dayKey()] = Math.max(s.day[dayKey()] || 0, 320); } } catch (e) { /* */ } }
+{ const _r = ilRender; ilRender = function ilRenderTBDemo() { tbDemo(); return _r.apply(this, arguments); }; }
+window.__tb = { tbS, tbCredit, tbCheck, tbReady, tbPick, tbApply, tbMerge, tbItems, TBT, TB_AT, TB_KEEP, TB_POOL, tbOpen, tbTap, tbRing };
+
+/* v42 · calmer screens (no new features; everything stays reachable).
+   Home (once the day's plan exists): the 3 task cards + XP goal + treasure box are the one focus; the island strip, extra "today's path" button, streak and
+   location chips step back (islands live in the Journey tab, the streak on "My falcon"). The memory map moves from the home tools to "My falcon".
+   My falcon: settings sit in one collapsed "settings" section. Games: no "new" badge on every tile, titles only (the game explains itself when it opens).
+   Parent area: per child a short summary (3 numbers + one line), details collapsed; print / teacher / AI limits / PIN / account tools in one "more" section. */
+function v42Week(slot) { const p = DB.kids[slot]; const days = []; for (let i = 0; i < 7; i++) { const d = new Date(Date.now() - i * 864e5); days.push(d.toISOString().slice(0, 10)); }
+  const tb = (p && p.tb && p.tb.day) || {}; const xd = (p && p.xp && p.xp.days) || {}; let sec = 0, act = 0;
+  days.forEach((k) => { const s = tb[k] || 0; sec += s; if (s >= 60 || (xd[k] && xd[k].xp > 0)) act++; }); return { min: Math.round(sec / 60), days: act }; }
+function v42Sum(slot, li) { const chips = [...li.querySelectorAll('.wl-chip')]; const on = chips.filter((c) => !c.classList.contains('wl-catch')).length; const w = v42Week(slot);
+  const g = (PROFILES[slot] || {}).gender === 'f'; const insight = !chips.length ? 'سَتَظْهَرُ المُلَاحَظَاتُ بَعْدَ أَوَّلِ أُسْبُوعٍ.' : on === chips.length ? 'عَلَى المَسَارِ فِي كُلِّ المَهَارَاتِ.' : (g ? 'تَلْحَقُ' : 'يَلْحَقُ') + ` بِخُطًى ثَابِتَةٍ فِي ${toArabicDigits(chips.length - on)} مِنْ ${toArabicDigits(chips.length)} مَهَارَاتٍ.`;
+  const insEn = !chips.length ? 'Notes appear after the first week.' : on === chips.length ? 'On track in every skill.' : `Catching up steadily in ${chips.length - on} of ${chips.length} skills.`;
+  const n = (v, ar, en) => `<div class="v42-n"><b>${toArabicDigits(v)}</b><span>${ar}</span><span class="en">${en}</span></div>`;
+  return `<div class="v42-sum">${n(w.min, 'دَقِيقَةً هَذَا الأُسْبُوعَ', 'active minutes this week')}${n(w.days, 'أَيَّامُ تَعَلُّمٍ', 'learning days')}${n(chips.length ? on + '/' + chips.length : '–', 'مَهَارَاتٌ عَلَى المَسَارِ', 'skills on track')}</div><p class="v42-ins">${insight} <span class="en">${insEn}</span></p>`; }
+function v42Parent(h) { try { const t = document.createElement('template'); t.innerHTML = h; const root = t.content.querySelector('.acc-parent'); if (!root) return h;
+  root.querySelectorAll('li.acc-row').forEach((li) => { const del = li.querySelector('[data-act=acc-del-kid]'); const slot = ACC.map && ACC.map[del ? del.dataset.arg : ''];
+    const xp = li.querySelector('.xp-par'); const rep = xp && xp.querySelector('[data-act=pr-open]'); const parts = [li.querySelector('.wl-box'), li.querySelector('.p31-par'), xp].filter(Boolean); if (!parts.length) return;
+    const box = document.createElement('div'); box.className = 'v42-kid'; box.innerHTML = slot ? v42Sum(slot, li) : ''; if (rep) { rep.classList.add('v42-rep'); box.appendChild(rep); }
+    const d = document.createElement('details'); d.className = 'v42-det'; d.innerHTML = '<summary>التَّفَاصِيلُ وَالإِعْدَادَاتُ <span class="en">Details & settings</span></summary>'; parts.forEach((x) => d.appendChild(x)); box.appendChild(d); li.appendChild(box); });
+  /* everything after "add a child" goes into one "more" section */
+  const add = root.querySelector('[data-arg=addkid]'); if (add) { add.classList.remove('big'); add.classList.add('soft');
+    const more = document.createElement('details'); more.className = 'v42-more'; more.innerHTML = '<summary>المَزِيدُ <span class="en">More: printables, teacher mode, AI limits, PIN, account</span></summary>';
+    let n = add.nextSibling; const move = []; while (n) { move.push(n); n = n.nextSibling; } move.forEach((x) => { if (x.nodeType === 1 && x.matches('h2.acc-h2') && /المَزِيدُ/.test(x.textContent)) return x.remove(); more.appendChild(x); }); root.appendChild(more); }
+  return t.innerHTML; } catch (e) { return h; } }
+{ const _p = ACC_SCREENS.parent; ACC_SCREENS.parent = function parentV42() { const h = _p.apply(this, arguments); return /acc-parent/.test(h) ? v42Parent(h) : h; }; }
+/* parent settings per child: goal first; treasure boxes + league in a collapsed section */
+{ const _x = xpParentHTML; xpParentHTML = function xpParentV42(slot) { const h = _x.apply(this, arguments); const i = h.indexOf('<p><b>صَنَادِيقُ الكَنْزِ</b>'); const j = h.lastIndexOf('</div>'); if (i < 0 || j < i) return h;
+  return h.slice(0, i) + '<details class="v42-det"><summary>إِعْدَادَاتٌ أُخْرَى <span class="en">More settings</span></summary>' + h.slice(i, j) + '</details>' + h.slice(j); }; }
+/* home + my falcon + games */
+{ const _r = ilRender; ilRender = function ilRenderV42() { _r.apply(this, arguments); try { const pg = $('il-page'); if (!pg || typeof IL === 'undefined') return;
+  document.body.classList.toggle('v42-plan', IL.page === 'home' && !!pg.querySelector('.dc-panel'));
+  if (IL.page === 'me') { const s = pg.querySelector('.il-sets'); if (s && !s.closest('details')) { const d = document.createElement('details'); d.className = 'v42-sets'; d.innerHTML = '<summary>⚙️ الإِعْدَادَاتُ <span class="en">Settings</span></summary>'; s.parentNode.insertBefore(d, s); d.appendChild(s);
+      const prev = d.previousElementSibling; if (prev && prev.classList.contains('il-h3')) prev.remove(); }
+    if (typeof kgMapOpen === 'function' && !pg.querySelector('[data-act=kg-map]') && P() && P().kg && P().kg.diag && P().kg.diag.done) { const isl = pg.querySelector('.il-isle'); if (isl) isl.parentNode.insertAdjacentHTML('afterend', `<button class="v42-map" data-act="kg-map">🗺️ ${G('مَسَارِي', 'مَسَارِي')} <span class="en">My learning map</span></button>`); } }
+} catch (e) { /* never break a screen */ } }; }
+
+/* v43 · trendy falcon items (same painted 3D style), squishy art, squishy shelf on My falcon. Cosmetic only; coins are earned, never bought. */
+{ const A = {"gl_wrap": ["05ca1b36", 256, 101], "hp_studio": ["866e6cf4", 236, 256], "nk_chain": ["ac4e8035", 256, 256], "w_skate": ["2f16d167", 88, 256], "w_camera": ["2b51a035", 256, 240], "bp_mini": ["b5dff5f7", 201, 256], "hat_beanie2": ["ddfc529a", 256, 245], "sq_sky": ["09c39ea1", 256, 193], "sq_mint": ["8d6cb8aa", 256, 243], "sq_sun": ["b23cdad6", 256, 248], "sq_coral": ["63698e86", 256, 188]}; Object.keys(A).forEach((k) => { ART_B64[k] = A[k][0]; if (typeof ART_SIZE !== 'undefined') ART_SIZE[k] = [A[k][1], A[k][2]]; }); }
+/* [id, Arabic name, coin price, islands needed]: moderate prices, nothing top tier; the boy never sees hats (ghutra), bows or pink */
+TG_ITEMS.glasses.push(['gl_wrap', 'نَظَّارَةٌ رِيَاضِيَّةٌ', 40, 0]);
+['m', 'f'].forEach((g) => TG_ITEMS.ears[g].push(['hp_studio', 'سَمَّاعَاتُ اسْتُودْيُو', 45, 0]));
+TG_ITEMS.neck.push(['nk_chain', 'سِلْسِلَةٌ ذَهَبِيَّةٌ', 40, 0]);
+TG_ITEMS.hand.push(['w_skate', 'لَوْحُ تَزَلُّجٍ', 45, 0], ['w_camera', 'كَامِيرَا فَوْرِيَّةٌ', 40, 0]);
+TG_ITEMS.back.push(['bp_mini', 'حَقِيبَةٌ صَغِيرَةٌ', 45, 0]);
+TG_ITEMS.hat.push(['hat_beanie2', 'قُبَّعَةٌ صُوفِيَّةٌ عَصْرِيَّةٌ', 35, 0]);
+/* the mini backpack sits where the school bag sits */
+{ const _l = tgLayer; tgLayer = function tgLayerV43(slot, id, g, o) { if (slot === 'back' && id === 'bp_mini') return _l.call(this, slot, 'bp_school', g, o).replace(/src="[^"]*"/, `src="${artURL('bp_mini')}"`).replace('scaleX(-1)', 'scaleX(1)');
+  if (slot === 'hand' && id === 'w_skate') return _l.apply(this, arguments).replace(/width:([\d.]+)%/, (m, w) => `width:${(w * 0.75).toFixed(2)}%`); return _l.apply(this, arguments); }; }
+/* squishy shelf: one tidy row on My falcon (empty spots are soft outlines) */
+function sqShelf() { const s = tbS(); const own = (s && s.sq) || []; if (!own.length) return '';
+  return `<div class="sq-shelf" aria-label="رَفُّ الدُّمَى الطَّرِيَّةِ"><b>${G('رَفِّي', 'رَفِّي')} <span class="en">My squishies</span></b><div class="sq-row">${TB_SQ.map((q) => own.includes(q[0]) ? `<img src="${artURL(q[0])}" alt="${esc(q[1])}" title="${esc(q[1])}">` : '<i aria-hidden="true"></i>').join('')}</div></div>`; }
+{ const _r = ilRender; ilRender = function ilRenderV43() { _r.apply(this, arguments); try { if (typeof IL === 'undefined' || IL.page !== 'me') return; const pg = $('il-page'); if (!pg || pg.querySelector('.sq-shelf')) return; const h = sqShelf(); if (!h) return;
+  const at = pg.querySelector('.v42-map') || pg.querySelector('.il-grid'); if (at) at.insertAdjacentHTML('afterend', h); } catch (e) { /* never break a screen */ } }; }
+window.__v43 = { sqShelf };
+/* v43 items have no baked composite yet: draw them as a layer on the plain falcon (one accessory at a time, like the dresser) */
+const V43_IDS = ['gl_wrap', 'hp_studio', 'nk_chain', 'w_skate', 'w_camera', 'bp_mini', 'hat_beanie2'];
+{ const _a = tgAvatar; tgAvatar = function tgAvatarV43(k, opts, wOver) { try { const g = tgGen(k); const w0 = Object.assign(tgWear(k), wOver || {});
+    if (wOver) { const s = TG_ACC.filter((x) => wOver[x]); if (s.length) { TG_ACC.forEach((x) => { if (!s.includes(x)) w0[x] = ''; }); w0.acc = s[s.length - 1]; } }
+    const sl = w0.acc; if (sl && V43_IDS.includes(w0[sl]) && typeof tgAvatarOld === 'function') { const one = {}; TG_ACC.forEach((x) => { one[x] = x === sl ? w0[sl] : ''; }); return tgAvatarOld(k, opts, Object.assign({}, w0, one)); } } catch (e) { /* fall through */ }
+  return _a.apply(this, arguments); }; }
 
 </script>
 </body>
