@@ -17309,7 +17309,7 @@ function tgLayer(slot, id, g, o) { const a = TG_FIT[g + '-' + o] || TG_FIT[g + '
   const sc = a.hw / 30; let x = a.cx, y, w, tr = 'translate(-50%,-50%)', z = 3, hgt = '';
   if (slot === 'hat') { if (a.nohat) return ''; if (/^bow|flower/.test(id)) { x = a.bx; y = a.by; w = a.bw; } else { y = a.hy; w = /crown/.test(id) ? a.hw * 0.75 : a.hw; if (/bucket/.test(id)) { w *= 1.15; y += 1; } tr = 'translate(-50%,-100%)'; } z = 6; }
   else if (slot === 'glasses') { y = a.eye; w = a.gw; z = 5; }
-  else if (slot === 'ears') { const gh = g === 'm' && a.nohat; x = a.hc - (gh ? 2 : 0); w = a.hwid / 0.66 * 1.15 * (gh ? 0.7 : g === 'm' ? 0.85 : 1); y = a.eye + (gh ? 8 : 7); if (gh) z = 4; /* v29.3 r4: over the ghutra so both cups show */ hgt = `height:${(w * (256 / 232) * 0.62 * (480 / 720)).toFixed(2)}%;`; tr = 'translate(-50%,-75%)'; if (!gh) z = 1; }
+  else if (slot === 'ears') { const gh = g === 'm' && a.nohat; x = a.hc - (gh ? 2 : 0); w = a.hwid / 0.66 * 1.15 * (gh ? 0.7 : g === 'm' ? 0.85 : 1); y = a.eye + (gh ? 8 : 7) - (g === 'm' ? 2.5 : 0); /* v44: boy cups sat low on the cheeks; lift 2.5% */ if (gh) z = 4; /* v29.3 r4: over the ghutra so both cups show */ hgt = `height:${(w * (256 / 232) * 0.62 * (480 / 720)).toFixed(2)}%;`; tr = 'translate(-50%,-75%)'; if (!gh) z = 1; }
   else if (slot === 'neck') { y = a.eye + (g === 'm' ? 14.5 : 10) + 4; w = (g === 'm' ? 28 : 21) * sc; x = a.cx + 1; tr = 'translate(-50%,-35%)'; }
   else if (slot === 'back') { z = 0; const mb = g === 'm'; if (id === 'bp_school') { id = mb || /casual|sport|denim/.test(o) ? 'bp_bag_teal' : 'bp_bag_pink'; x = a.bc + (mb ? -23 : 26) * sc; y = 41; w = (mb ? 40 : 44) * sc; tr = mb ? 'translate(-50%,-50%) scaleX(-1)' : tr; }
     else if (id === 'bp_wings') { x = a.bc; y = 36; w = 92 * sc; } else if (id === 'bp_wings_w') { x = a.bc; y = 37; w = 100 * sc; } else { id = 'bp_rocket2'; x = a.bc; y = 45; w = (mb ? 80 : 72) * sc; } }
@@ -19021,7 +19021,7 @@ kgPractice = function kgPracticeSRS(game, acc) { if (!currentKid || !P()) return
   if (sec.length) { const m = kgS().m; sec.sort((a, b) => (m[a].due || 0) - (m[b].due || 0)); out.push({ id: sec[0], why: 'review', due: srsDue(sec[0]) }); } return out; }; }
 /* ================= M2 · XP + daily goal ================= */
 const XP_GOALS = [5, 10, 15, 20]; const XP_HABIT_CAP = 5; const XP_BASE = { lesson: 5, practice: 4, game: 4, review: 3, quiz: 3, story: 4 };
-function xpS() { const p = P(); if (!p.xp) p.xp = { goal: 10, days: {}, taught: [] }; const k = dayKey(); if (!p.xp.days[k]) { p.xp.days[k] = { xp: 0, habit: 0, n: {}, paper: 0, perf: 0 }; const ks = Object.keys(p.xp.days).sort(); while (ks.length > 60) delete p.xp.days[ks.shift()]; } return p.xp; }
+function xpS() { const p = P(); if (!p.xp || typeof p.xp !== 'object') p.xp = { goal: 10, days: {}, taught: [] }; /* v44: repair partial xp data (demo report crashed on xp without days) */ if (!p.xp.days || typeof p.xp.days !== 'object') p.xp.days = {}; if (!(+p.xp.goal > 0)) p.xp.goal = 10; if (!Array.isArray(p.xp.taught)) p.xp.taught = []; const k = dayKey(); if (!p.xp.days[k]) { p.xp.days[k] = { xp: 0, habit: 0, n: {}, paper: 0, perf: 0 }; const ks = Object.keys(p.xp.days).sort(); while (ks.length > 60) delete p.xp.days[ks.shift()]; } return p.xp; }
 const xpDay = () => xpS().days[dayKey()];
 /* one finished task → XP. ok/n = answers right / asked; first = right on the first try; hints used; ms = answer times.
    - scaled by accuracy; first-try answers without a hint count fully, others count half
@@ -19134,7 +19134,7 @@ function lgS(slot) { const p = DB.kids[slot || currentKid]; if (!p) return { on:
 const lgOn = () => !!(currentKid && lgS().on);
 const lgWeekStart = (d) => { d = new Date(d || Date.now()); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() - ((d.getDay() + 1) % 7)); return d; }; /* weeks start on Saturday */
 /* league points: each day's XP up to the parent's daily cap (so long sessions do not race ahead) */
-function lgWeek(slot) { const p = DB.kids[slot]; if (!p || !p.xp) return 0; const cap = lgS(slot).cap; const w0 = lgWeekStart(); let t = 0; for (let i = 0; i < 7; i++) { const d = new Date(w0.getTime() + i * DAY); const r = p.xp.days[dayKey(d)]; if (r) t += Math.min(cap, r.xp); } return t; }
+function lgWeek(slot) { const p = DB.kids[slot]; if (!p || !p.xp || !p.xp.days) return 0; const cap = lgS(slot).cap; const w0 = lgWeekStart(); let t = 0; for (let i = 0; i < 7; i++) { const d = new Date(w0.getTime() + i * DAY); const r = p.xp.days[dayKey(d)]; if (r) t += Math.min(cap, r.xp); } return t; }
 function lgTable() { const me = currentKid; const s = lgS(); const rows = [{ nick: s.nick, xp: lgWeek(me), me: true }];
   if (s.mode === 'family') Object.keys(DB.kids).filter((k) => k !== me && DB.kids[k].lg && DB.kids[k].lg.on && DB.kids[k].lg.mode === 'family').forEach((k) => rows.push({ nick: DB.kids[k].lg.nick, xp: lgWeek(k) }));
   else { const seed = hashStr(dayKey(lgWeekStart()) + me); const days = Math.min(7, Math.floor((Date.now() - lgWeekStart().getTime()) / DAY) + 1);
