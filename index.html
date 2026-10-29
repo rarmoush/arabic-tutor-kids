@@ -12290,7 +12290,7 @@ document.addEventListener('click', (e) => {
       history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + (hm ? hash : location.hash)); } } catch (e) { /* */ }
   /* v16: on the published app the Worker address is known; a parent still has to add the family code once (?code=…) */
   /*     (computed, not saved: no new save field, and the saved settings object is replaced when the save loads) */
-  const DEF_EP = /(^|\.)rarmoush\.github\.io$/.test(location.hostname) ? 'https://saqqour-tutor.rarmoush.workers.dev' : '';
+  const DEF_EP = /(^|\.)rarmoush\.github\.io$|^(www\.)?meetsakr\.com$/.test(location.hostname) ? 'https://saqqour-tutor.rarmoush.workers.dev' : '';
   const BASE = () => (DB.settings.tutorEndpoint || DEF_EP).replace(/\/api\/tutor$/, '').replace(/\/+$/, '');
   const HDR = () => Object.assign({ 'Content-Type': 'application/json', 'X-Session': AZ.sid }, DB.settings.familyCode ? { 'X-Family-Code': DB.settings.familyCode } : {});
   window.TT_BASE = BASE; window.TT_HDR = () => HDR(); /* the homework helper (src/homework.js) posts to the same Worker */
