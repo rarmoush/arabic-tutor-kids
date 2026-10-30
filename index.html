@@ -17,7 +17,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="./fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="./app.28e24757c5.js" as="script">
+<link rel="preload" href="./app.75419abe02.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(./fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(./fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -4874,6 +4874,26 @@ body.tg-on.il-area #app{padding-bottom:calc(100px + env(safe-area-inset-bottom))
 .v51-has-ic > svg,.v51-has-ic > .ic:not(img){display:none}
 .badge.locked .bi .v51-lock{width:100%;height:100%;object-fit:contain;opacity:.9}
 
+/* v52: one falcon, day sky (boy) / sunrise (girl), the first choice, sign-up steps, free mode */
+:root{--v52-bg:url("art/v49/bg-boy-day.webp")}
+body.tg-on #intro.v52-intro,.intro#intro.v52-intro,body.tg-on #acc,#acc{background:linear-gradient(180deg,rgba(251,244,230,.10),rgba(251,244,230,.55)),var(--v52-bg) center/cover no-repeat,var(--v50-cream,#FBF4E6)!important}
+.v52-fal{display:block;width:150px;height:auto;margin:0 auto 6px;filter:drop-shadow(0 10px 10px rgba(20,60,80,.18))}
+#acc .acc-bird{display:flex;justify-content:center}#acc .acc-bird .v52-fal{width:120px}
+.v52-choice{display:flex;flex-direction:column;gap:12px;width:100%;margin-top:14px}
+.v52-b{min-height:56px!important;width:100%;font-size:1.15rem;border-radius:18px!important}
+.v52-b2{background:#fff!important;color:var(--v50-teal,#1E8C86)!important;border:2px solid var(--v50-teal,#1E8C86)!important;box-shadow:none!important}
+.v52-in{min-height:44px;font-size:1rem}
+.v52-card{text-align:center}.v52-card .acc-l{text-align:start}
+.v52-dots{display:flex;gap:6px;justify-content:center;margin-bottom:6px}.v52-dots i{width:8px;height:8px;border-radius:50%;background:#d9cfbf}.v52-dots i.on{background:var(--v50-teal,#1E8C86)}
+.v52-seg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0}
+.v52-g{min-height:56px;border-radius:18px;border:2px solid #d9cfbf;background:#fff;font:inherit;font-size:1.15rem;font-weight:700;color:var(--v50-ink,#14324a)}
+.v52-g.on{border-color:var(--v50-teal,#1E8C86);background:#E3F3F1}
+body.v52-girl .v52-g.on[data-arg=f]{border-color:#C9897F;background:#FBECE8}
+.v52-back{margin-top:4px}
+.v52-ask{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:stretch}.v52-ask .v52-fal{width:110px}.v52-ask h2{margin:0}
+#demo-ribbon.v52-free::before{content:none!important}#demo-ribbon.v52-free>b{display:inline!important;font-size:12px}
+body.free-on .v20b-tool,body.free-on .hwx-row,body.free-on .mh-mic{display:none!important} /* free try-out: no homework photos, files or voice notes */
+
 </style>
 </head>
 <body>
@@ -5058,6 +5078,6 @@ body.tg-on.il-area #app{padding-bottom:calc(100px + env(safe-area-inset-bottom))
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="./app.28e24757c5.js"></script>
+<script defer src="./app.75419abe02.js"></script>
 </body>
 </html>
