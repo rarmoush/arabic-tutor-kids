@@ -6,9 +6,14 @@
 <meta name="theme-color" content="#ffc83d">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https: http://localhost:* http://127.0.0.1:*; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png?v=30">
-<link rel="apple-touch-icon" href="./apple-touch-icon.png?v=30">
-<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./favicon.ico?v=54" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png?v=54">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png?v=54">
+<link rel="icon" type="image/png" sizes="48x48" href="./favicon-48.png?v=54">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png?v=54">
+<meta property="og:image" content="https://meetsakr.com/og-image.jpg?v=54">
+<meta property="og:title" content="Sakr · Arabic for kids">
+<link rel="manifest" href="./manifest.webmanifest?v=54">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="عَرَبِيّ">
 <meta name="app-version" content="v17-islands">
@@ -17,7 +22,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="./fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="./app.c1711626fe.js" as="script">
+<link rel="preload" href="./app.86600f6df7.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(./fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(./fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -4925,6 +4930,16 @@ body.free-on .v20b-tool,body.free-on .hwx-row,body.free-on .mh-mic{display:none!
 .brk-pill{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px auto 0;min-height:48px;padding:6px 18px;border:0;border-radius:24px;background:#e6f5ff;color:#1d4c63;font-size:1.15rem;box-shadow:0 2px 0 #c6e4f5}
 .brk-pill img{width:24px;height:24px}.brk-pill .en{font-size:.8rem}
 .brk-offer{position:fixed;inset-inline:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:8000;background:#fffdf7;border-radius:20px;padding:12px;box-shadow:0 6px 20px rgba(20,60,80,.18);display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;text-align:center}
+/* v54.2 · English under every Arabic line on the account pages (always on) */
+#acc.v54-en-on .acc-en,#acc.v54-en-on .v52-en,#acc.v54-en-on .en,#acc.v54-en-on .v54-en,#acc.v54-en-on [lang="en"],#intro .en,#intro .v54-en,#intro [lang="en"]{display:block!important}
+.v54-en{display:block;font:500 12.5px/1.35 var(--font-en,system-ui);color:#6b7c8d;margin-top:2px;letter-spacing:.01em;text-align:start}
+.btn .v54-en,.btn .en{color:inherit;opacity:.82;font-size:12.5px}
+label.acc-l .v54-en{margin-bottom:4px}
+.v54-in{display:block;margin:6px auto 0;font-weight:700}
+.v54-signin{margin-top:6px}
+#acc.v54-en-on .btn,#intro .btn{flex-direction:column;gap:1px}
+#acc.v54-en-on .v54-en,#acc.v54-en-on .acc-en,#acc.v54-en-on .v52-en,#intro .v54-en,#intro .v52-en,#intro .intro-line .en,#intro .intro-tag .en{text-align:right}
+#acc.v54-en-on .center .v54-en,#acc.v54-en-on .acc-h.center~.v52-en,#acc.v54-en-on .acc-h.center~.acc-en,#acc.v54-en-on .btn .v54-en,#acc.v54-en-on .btn .en,#intro .btn .en,#intro .acc-link .en,#acc.v54-en-on .acc-link .v54-en,#acc.v54-en-on .acc-link .en,#intro h1 .v54-en,#intro .intro-line .en,#intro .intro-tag .en{text-align:center}
 
 </style>
 </head>
@@ -5110,6 +5125,6 @@ body.free-on .v20b-tool,body.free-on .hwx-row,body.free-on .mh-mic{display:none!
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="./app.c1711626fe.js"></script>
+<script defer src="./app.86600f6df7.js"></script>
 </body>
 </html>
