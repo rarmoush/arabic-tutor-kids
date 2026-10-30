@@ -17,7 +17,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="../fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../app.75419abe02.js" as="script">
+<link rel="preload" href="../app.b68425f8d2.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(../fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(../fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -4894,6 +4894,12 @@ body.v52-girl .v52-g.on[data-arg=f]{border-color:#C9897F;background:#FBECE8}
 #demo-ribbon.v52-free::before{content:none!important}#demo-ribbon.v52-free>b{display:inline!important;font-size:12px}
 body.free-on .v20b-tool,body.free-on .hwx-row,body.free-on .mh-mic{display:none!important} /* free try-out: no homework photos, files or voice notes */
 
+/* v53: loading pulse on a speaker, the "tap to hear" fallback, ?audiodebug=1 overlay */
+.v53-wait{animation:v53p 1s ease-in-out infinite}@keyframes v53p{0%,100%{box-shadow:0 0 0 0 rgba(30,140,134,.45)}50%{box-shadow:0 0 0 8px rgba(30,140,134,0)}}
+#v53-tap{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:9999;min-height:56px;padding:0 22px;border-radius:18px;border:0;background:var(--v50-teal,#1E8C86);color:#fff;font:inherit;font-weight:700;font-size:1.1rem;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+#v53-dbg{position:fixed;left:4px;right:4px;bottom:4px;z-index:10000;background:rgba(0,0,0,.78);color:#9ff;font:11px/1.35 ui-monospace,monospace;white-space:pre-wrap;padding:6px 8px;border-radius:8px;pointer-events:none;direction:ltr;text-align:left}
+@media (prefers-reduced-motion:reduce){.v53-wait{animation:none;outline:3px solid rgba(30,140,134,.5)}}
+
 </style>
 </head>
 <body>
@@ -5078,6 +5084,6 @@ body.free-on .v20b-tool,body.free-on .hwx-row,body.free-on .mh-mic{display:none!
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="../app.75419abe02.js"></script>
+<script defer src="../app.b68425f8d2.js"></script>
 </body>
 </html>

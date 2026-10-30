@@ -14950,7 +14950,7 @@ function v51Chunk(name) { if (V51_LOAD[name]) return V51_LOAD[name]; const f = t
   V51_LOAD[name] = new Promise((res) => { const s = document.createElement('script'); s.src = V51_ROOT + f; s.async = true; s.onload = () => res(true); s.onerror = () => { V51_LOAD[name] = null; res(false); }; document.head.appendChild(s); }); return V51_LOAD[name]; }
 window.v51Chunk = v51Chunk;
 /* the natural-voice clip index: fetched right after the first screen is up (or at the first spoken word, whichever comes first) */
-{ const go = () => v51Chunk('audio'); if (document.readyState === 'complete') setTimeout(go, 300); else window.addEventListener('load', () => setTimeout(go, 300)); setTimeout(go, 2500);
+{ const go = () => v51Chunk('audio'); go(); /* v53: start at once (was: after page load): a tap before it arrived fell to the device voice, silent on phones without an Arabic voice */
   if (typeof speak === 'function') { const _s = speak; speak = window.speak = function speakV51() { go(); return _s.apply(this, arguments); }; } }
 /* ---- painted shop thumbnails: the item itself, one gouache style (outfits and colours keep the falcon wearing them) ---- */
 const V51_ITEMS = new Set(['hat_cap', 'hat_beanie', 'hat_bucket', 'hat_chef', 'hat_grad', 'hat_crown', 'hat_flower', 'bow_lilac', 'bow_mint', 'hat_beanie2', 'gl_round', 'gl_sun', 'gl_star', 'gl_sport', 'gl_wrap', 'hp_blue', 'hp_studio', 'hp_pink', 'sc_red', 'sc_blue', 'sc_stripe', 'nk_chain', 'bp_school', 'bp_wings', 'bp_rocket', 'bp_mini', 'w_book', 'w_ball', 'w_ice', 'w_balloon', 'w_brush', 'w_racket', 'w_dallah', 'w_star', 'w_trophy', 'w_skate', 'w_camera']);
@@ -14978,3 +14978,154 @@ function v51Swap() { try {
 let v51Q = 0; new MutationObserver(() => { if (v51Q) return; v51Q = requestAnimationFrame(() => { v51Q = 0; v51Swap(); v51Thumbs(); }); }).observe(document.body, { childList: true, subtree: true });
 setTimeout(v51Swap, 0);
 window.__v51 = { chunk: v51Chunk, thumbs: v51Thumbs, items: V51_ITEMS };
+
+/* v52 · one falcon on first open (the boy Sakr + day sky until the child's gender is known), a clear first choice
+   (Try free · Sign up · Sign in), a calm step-by-step sign-up that reuses the account API, and a free try-out mode.
+   No content, dialect, safety or AI-disclosure text changed; the free mode stores nothing and sends nothing. */
+const V52_FAL = (g) => (typeof TG_ART === 'function' ? TG_ART(g === 'f' ? 'saq-f-wave' : 'saq-m-wave') : '');
+const V52_BG = (g) => (typeof ART_BASE === 'string' ? ART_BASE : './art/') + (g === 'f' ? 'v49/bg-girl-sunrise.webp' : 'v49/bg-boy-day.webp');
+const v52Bird = (g) => `<img class="v52-fal" src="${V52_FAL(g)}" alt="" width="150" height="225" draggable="false" data-g="${g === 'f' ? 'f' : 'm'}">`;
+const v52Sky = (g) => { document.documentElement.style.setProperty('--v52-bg', `url("${V52_BG(g)}")`); document.body.classList.toggle('v52-girl', g === 'f'); };
+const V52_EN = (t) => `<p class="en v52-en" lang="en">${t}</p>`;
+/* the three ways in (same on the first-visit page and on the account welcome page) */
+const v52Choice = () => `<div class="v52-choice">
+  <button type="button" class="btn big v52-b" data-act="v52-free">اِبْدَأْ مَجَّانًا <span class="en">Try free</span></button>
+  <button type="button" class="btn soft v52-b v52-b2" data-act="v52-signup">سَجِّلْ <span class="en">Sign up</span></button>
+  <button type="button" class="acc-link v52-in" data-act="v52-login">لَدَيَّ حِسَابٌ: تَسْجِيلُ الدُّخُولِ <span class="en">I have an account</span></button></div>`;
+/* 1. first-visit page: one boy falcon, day sky, the choice */
+function v52Intro() { const it = document.getElementById('intro'); if (!it) return; const c = it.querySelector('.intro-card'); if (!c || c.dataset.v52) return; c.dataset.v52 = 1;
+  const h = (c.querySelector('h1') || {}).outerHTML || '';
+  c.innerHTML = `${v52Bird('m')}${h}<p class="intro-line" lang="ar">أَنَا صَقْر! <span class="en" lang="en">I'm Sakr</span></p>
+    <p class="intro-tag" lang="ar">يَلَّا نِتْعَلَّم وِنِلْعَب وِنِنْطِلِق <span class="en" lang="en">Let's learn, play and soar</span></p>${v52Choice()}`;
+  it.classList.add('v52-intro'); v52Sky('m'); }
+v52Intro();
+function v52CloseIntro() { const it = document.getElementById('intro'); if (!it) return; try { DB.settings.introSeen = dayKey(); saveDB(); } catch (e) { /* */ } it.remove(); }
+{ const _w = ACC_SCREENS.welcome; ACC_SCREENS.welcome = function welcomeV52() { v52Sky('m'); return `<section class="acc-card acc-welcome v52-card">${v52Bird('m')}
+  <h1 class="acc-h">أَهْلًا بِكُمْ</h1><p class="acc-p">حِسَابٌ وَاحِدٌ لِلْعَائِلَةِ، وَمِلَفٌّ لِكُلِّ طِفْلٍ. التَّقَدُّمُ مَحْفُوظٌ عَلَى كُلِّ الأَجْهِزَةِ.</p>${accEn('One family account, a profile for each child. Progress is saved on every device.')}${v52Choice()}</section>`; }; void _w; }
+/* other account screens: the one falcon there is the boy until a gender is chosen */
+/* (accBird is only used by the old welcome screen, replaced above) */
+/* 2. sign-up: one question per step, the falcon + sky follow the boy/girl answer; then the existing register + add-child calls */
+const V52S = { step: 1, g: 'm', nick: '', yr: 'Y3', dial: '' };
+const v52Dots = (n) => `<div class="v52-dots" aria-hidden="true">${[1, 2, 3, 4].map((i) => `<i class="${i <= n ? 'on' : ''}"></i>`).join('')}</div>`;
+const v52Back = (to) => `<button type="button" class="acc-link v52-back" data-act="${to ? 'v52-step' : 'v52-home'}" data-arg="${to || ''}">رُجُوعٌ <span class="en">Back</span></button>`;
+ACC_SCREENS.signup = function signupV52() { const s = V52S; v52Sky(s.g); const D = accDialects(); if (!s.dial) s.dial = D[0];
+  if (s.step === 1) return `<section class="acc-card stack v52-card" id="v52-s1">${v52Dots(1)}${v52Bird(s.g)}<h1 class="acc-h center">مَنْ سَيَتَعَلَّمُ مَعَ صَقْر؟</h1>${V52_EN('Who will learn with Sakr?')}
+    <div class="v52-seg" role="radiogroup"><button type="button" role="radio" aria-checked="${s.g === 'm'}" class="v52-g ${s.g === 'm' ? 'on' : ''}" data-act="v52-g" data-arg="m">وَلَدٌ <span class="en">Boy</span></button><button type="button" role="radio" aria-checked="${s.g === 'f'}" class="v52-g ${s.g === 'f' ? 'on' : ''}" data-act="v52-g" data-arg="f">بِنْتٌ <span class="en">Girl</span></button></div>
+    <button type="button" class="btn big acc-wide" data-act="v52-step" data-arg="2">التَّالِي <span class="en">Next</span></button>${v52Back('')}</section>`;
+  if (s.step === 2) return `<form class="acc-card stack v52-card" id="v52-s2" autocomplete="off" novalidate>${v52Dots(2)}${v52Bird(s.g)}<h1 class="acc-h center">${s.g === 'f' ? 'مَا اسْمُكِ؟' : 'مَا اسْمُكَ؟'}</h1>${V52_EN('First name or nickname')}
+    <label class="acc-l">الاسْمُ الأَوَّلُ أَوِ اسْمُ الدَّلَعِ<input id="acc-nick" maxlength="20" dir="auto" autocomplete="off" spellcheck="false" value="${esc(s.nick)}"></label>
+    <p class="acc-small">بِالعَرَبِيَّةِ أَوِ الإِنْجِلِيزِيَّةِ، كَمَا تُحِبُّونَ. لَا نَحْتَاجُ إِلَى الاسْمِ الكَامِلِ.</p>${accMsgHTML()}
+    <button type="submit" class="btn big acc-wide">التَّالِي <span class="en">Next</span></button>${v52Back('1')}</form>`;
+  if (s.step === 3) return `<form class="acc-card stack v52-card" id="v52-s3" novalidate>${v52Dots(3)}${v52Bird(s.g)}<h1 class="acc-h center">العُمْرُ وَاللَّهْجَةُ</h1>${V52_EN('Age and dialect')}
+    <label class="acc-l">السَّنَةُ الدِّرَاسِيَّةُ<select id="acc-yr">${ACC_YEARS.map((y) => `<option value="${y}" ${y === s.yr ? 'selected' : ''}>${accYearAr(y)} · ${accYearAge(y)}</option>`).join('')}</select></label>
+    <label class="acc-l">اللَّهْجَةُ<select id="acc-dial">${D.map((d) => `<option value="${d}" ${d === s.dial ? 'selected' : ''}>${esc(accDialAr(d))}</option>`).join('')}</select></label>
+    <button type="submit" class="btn big acc-wide">التَّالِي <span class="en">Next</span></button>${v52Back('2')}</form>`;
+  /* step 4: the parent account, with exactly the existing consent text and checks */
+  return ACC_SCREENS.register().replace('id="acc-reg"', 'id="acc-reg" data-v52="1"').replace('<h1 class="acc-h">', `${v52Dots(4)}<h1 class="acc-h">`).replace('<button type="button" class="acc-link" data-act="acc-go" data-arg="login">لَدَيَّ حِسَابٌ</button>', v52Back('3')); };
+function v52Go(step) { V52S.step = step; ACC_MSG = ''; accShow('signup'); }
+document.addEventListener('submit', (e) => { const id = e.target && e.target.id; if (id !== 'v52-s2' && id !== 'v52-s3') return; e.preventDefault(); e.stopImmediatePropagation();
+  if (id === 'v52-s2') { const n = accNickClean(accVal('acc-nick')).trim(); if (!accNickOK(n)) { V52S.nick = n; ACC_MSG = 'اُكْتُبُوا اسْمًا بِالحُرُوفِ (عَرَبِيَّةٍ أَوْ إِنْجِلِيزِيَّةٍ)، مِنْ حَرْفٍ إِلَى ٢٠ حَرْفًا.'; return accShow('signup'); } V52S.nick = n; return v52Go(3); }
+  V52S.yr = accVal('acc-yr') || V52S.yr; V52S.dial = accVal('acc-dial') || V52S.dial; v52Go(4); }, true);
+/* after the parent account exists (existing register call), add the child from the answers and open their page */
+{ const _li = accLoggedIn; accLoggedIn = async function accLoggedInV52(j) {
+  if (!(ACC_VIEW === 'signup' && V52S.step === 4 && V52S.nick)) return _li.apply(this, arguments);
+  ACC.tok = j.token; ACC.email = j.email || ''; accSave(); accUseToken(); await accRefresh();
+  const r = await accApi('POST', 'children', { nick: V52S.nick, g: V52S.g, yr: V52S.yr, dialect: V52S.dial, av: Object.keys(ACC_AV)[0] });
+  if (r.status !== 201) { ACC_MSG = accErr(r.j); return accShow('parent'); }
+  ACC.kids.push(r.j.child); accApplyKids(); const slot = ACC.map[r.j.child.id]; if (slot) await accPush(r.j.child.id);
+  V52S.step = 1; V52S.nick = ''; return ACTIONS['acc-pick'](r.j.child.id); }; }
+/* 3. free try-out: an in-memory child (boy by default, no name), nothing saved, a few samples, then a gentle sign-up prompt */
+const FREE = { on: false, story: null, game: null, talk: 0, tok: null }; const FREE_TALK = 3;
+const V52_F0 = window.fetch.bind(window); /* taken before the free/demo sandbox wraps fetch: used only for the guest chat routes */
+function freeStart() { if (FREE.on) return; FREE.on = true; demoStart(); document.body.classList.add('free-on');
+  DB.profiles[DEMO_SLOT] = { nick: 'بَطَل', band: '8-10', g: 'm', needsSetup: false, yr: 'Y3', av: 'falcon', acc: 'free' };
+  const p = normalizeProgress({}); p.dialect = 'emirati'; p.quizSet = 'emirati'; DB.kids[DEMO_SLOT] = p;
+  /* guest chat: the tutor is on for this in-memory child (no mic, no homework); parent areas stay locked behind a PIN nobody has */
+  DB.settings.consent = Object.assign({}, DB.settings.consent, { [DEMO_SLOT]: Object.assign({}, DB.settings.consent[DEMO_SLOT], { tutor: true, mic: false, homework: false }) });
+  DB.settings.pin = { h: 'guest-' + Math.random().toString(36).slice(2) + Date.now().toString(36), s: 'x' };
+  const _df = window.fetch; window.fetch = function fetchGuest(u, o) { const url = String(u && u.url ? u.url : u); if (!/\/api\/guest(\/tutor|\/tts)?$/.test(url.split('?')[0])) return _df(u, o);
+    if (/\/api\/guest$/.test(url)) return V52_F0(u, o);
+    return v52GuestTok().then((t) => { if (!t) throw new Error('guest unavailable'); const hd = Object.assign({}, (o && o.headers) || {}, { Authorization: 'Bearer ' + t }); return V52_F0(u, Object.assign({}, o, { headers: hd })); }); };
+  syncProfiles(); pickProfile(DEMO_SLOT); try { ilRender(); } catch (e) { /* */ }
+  const rb = document.getElementById('demo-ribbon'); if (rb) { rb.id = 'demo-ribbon'; rb.classList.add('v52-free'); rb.innerHTML = '<b lang="ar">تَجْرِبَةٌ مَجَّانِيَّةٌ</b> <button type="button" data-act="v52-signup">سَجِّلْ <span class="en">Sign up</span></button>'; } }
+function v52Base() { return (typeof TT_BASE === 'function' ? TT_BASE() : (DB.settings.tutorEndpoint || '').replace(/\/api\/tutor$/, '')).replace(/\/+$/, ''); }
+async function v52GuestTok() { if (FREE.tok) return FREE.tok; try { const r = await V52_F0(v52Base() + '/api/guest', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' }); if (r.status !== 201) return null; const j = await r.json(); FREE.tok = j.token; return FREE.tok; } catch (e) { return null; } }
+if (typeof aiAccess === 'function') { const _a = aiAccess; aiAccess = function aiAccessFree() { return FREE.on || _a.apply(this, arguments); }; }
+if (typeof mhCloud === 'function') { const _c = mhCloud; mhCloud = function mhCloudFree() { return FREE.on ? FREE.talk <= FREE_TALK : _c.apply(this, arguments); }; }
+if (typeof mhBrain === 'function') { const _b = mhBrain; mhBrain = function mhBrainFree() { const fresh = !MH.brain; const b = _b.apply(this, arguments); if (FREE.on && fresh) b.endpoint = v52Base() + '/api/guest/tutor'; return b; }; }
+function freeAsk(why) { if (typeof openModal !== 'function') return; openModal(`<div class="v52-ask">${v52Bird('m')}<h2 lang="ar">${why || 'أَعْجَبَتْكَ التَّجْرِبَةُ؟'}</h2>
+  <p lang="ar">سَجِّلْ مَجَّانًا لِتَحْفَظَ تَقَدُّمَكَ وَتَفْتَحَ كُلَّ الدُّرُوسِ وَالقِصَصِ وَالأَلْعَابِ.</p>${V52_EN('Sign up free to keep your progress and open every lesson, story and game.')}
+  <button type="button" class="btn big acc-wide" data-act="v52-signup">سَجِّلْ <span class="en">Sign up</span></button><button type="button" class="btn soft acc-wide" data-act="v52-keep">أُكْمِلُ التَّجْرِبَةَ <span class="en">Keep trying</span></button></div>`); }
+/* limits: one story, one game, a short talk; writing, grammar, homework and the shop ask to sign up */
+{ const gate = (name, test) => { const f = ACTIONS[name]; if (!f) return; ACTIONS[name] = function freeGate() { if (FREE.on) { const why = test.apply(this, arguments); if (why) return freeAsk(why); } return f.apply(this, arguments); }; };
+  { const _r = openReader; openReader = function openReaderFree(id) { if (FREE.on) { if (!FREE.story) FREE.story = id; if (FREE.story !== id) return freeAsk('فِي التَّجْرِبَةِ قِصَّةٌ وَاحِدَةٌ'); } return _r.apply(this, arguments); }; }
+  gate('v47-play', (id) => { if (!FREE.game) FREE.game = id; return FREE.game === id ? '' : 'فِي التَّجْرِبَةِ لُعْبَةٌ وَاحِدَةٌ'; });
+  { const _o = ilOpen; ilOpen = function ilOpenFree(id) { if (FREE.on) { if (id === 'stories' && FREE.story) { /* the shelf is fine to look at */ }
+      if (['write', 'grammar', 'homework', 'dress', 'shop'].includes(id)) return freeAsk('هَذَا القِسْمُ بَعْدَ التَّسْجِيلِ'); } return _o.apply(this, arguments); }; } }
+/* talk: a few typed or spoken messages (tapped answer chips stay free) */
+if (typeof mhSend === 'function') { const _m = mhSend; mhSend = async function mhSendFree(text, via) { if (FREE.on && (via === 'type' || via === 'voice')) { if (FREE.talk >= FREE_TALK) return freeAsk('اِنْتَهَتْ رَسَائِلُ التَّجْرِبَةِ'); FREE.talk++; } return _m.apply(this, arguments); }; }
+Object.assign(ACTIONS, {
+  'v52-free': () => { v52CloseIntro(); freeStart(); },
+  'v52-signup': () => { v52CloseIntro(); if (FREE.on) { const q = location.search.replace(/^\?/, '').split('&').filter((x) => x && !/^(free|demo|signup)=/.test(x)); q.push('signup=1'); location.href = location.pathname + '?' + q.join('&'); return; } V52S.step = 1; accShow('signup'); },
+  'v52-login': () => { v52CloseIntro(); ACC_MSG = ''; accShow('login'); },
+  'v52-home': () => { V52S.step = 1; accShow('welcome'); },
+  'v52-step': (n) => v52Go(+n || 1),
+  'v52-g': (g) => { V52S.g = g === 'f' ? 'f' : 'm'; accShow('signup'); },
+  'v52-keep': () => { if (typeof closeModal === 'function') closeModal(); } });
+document.addEventListener('DOMContentLoaded', () => { const q = location.search;
+  if (/[?&]free=1\b/.test(q)) setTimeout(() => { v52CloseIntro(); freeStart(); }, 80);
+  else if (/[?&]signup=1\b/.test(q)) setTimeout(() => { v52CloseIntro(); V52S.step = 1; accShow('signup'); }, 80); });
+window.__v52 = { FREE, V52S, freeStart };
+
+/* v53 · voices on phones (Randa: "sometimes the voices don't work … on the phone").
+   Root causes found: (1) since v51 the natural-voice clip index loads lazily; a tap before it arrived went straight to the device
+   voice — silent on phones with no Arabic voice, Saudi-only on iPhone. (2) a play() refused by the browser was dropped silently.
+   (3) no sign that a clip was loading on a slow link. Fixes: wait (≤4.5 s) for the index before choosing the voice, a "tap to hear"
+   button when play() is refused, a pulse on the speaker while loading, a stronger unlock on the first touch, and a hidden
+   ?audiodebug=1 overlay (memory only, nothing stored or sent). No content, voices or texts changed. */
+const V53 = { tapEl: null, waits: 0, refused: 0, lastErr: '', t0: Date.now() };
+const v53BankReady = () => typeof SND_BANK !== 'undefined' && SND_BANK && Object.keys(SND_BANK).length > 0;
+document.addEventListener('pointerdown', (e) => { const b = e.target && e.target.closest && e.target.closest('button, [data-act]'); V53.tapEl = b || null; }, { capture: true, passive: true });
+/* 1. never choose the voice before the clip index is here (it is fetched at start-up; on a slow phone that can take a few seconds) */
+function v53Defer(fn, self, args, onEnd) {
+  const gen0 = SAQ.SND.gen; let done = false; V53.waits++; v53Busy(true);
+  const go = () => { if (done) return; done = true; v53Busy(false); if (SAQ.SND.gen !== gen0) { if (onEnd) onEnd(); return; } fn.apply(self, args); };
+  (typeof v51Chunk === 'function' ? v51Chunk('audio') : Promise.resolve()).then(go, go); setTimeout(go, 4500);
+}
+{ const _sp = speak; speak = window.speak = function speakV53(text, kind, opts) { if (!v53BankReady() && typeof V51_CHUNKS !== 'undefined') { v53Defer(_sp, this, arguments, opts && opts.onEnd); return { snd: true, deferred: true }; } return _sp.apply(this, arguments); }; }
+if (typeof window.ttSpeak === 'function') { const _tt = window.ttSpeak; window.ttSpeak = function ttSpeakV53(text, kind, o) { if (!v53BankReady() && typeof V51_CHUNKS !== 'undefined') { v53Defer(_tt, this, arguments, o && o.onEnd); return {}; } return _tt.apply(this, arguments); }; }
+/* 2. loading pulse on the speaker that was tapped */
+function v53Busy(on) { try { const b = V53.tapEl; if (!b) return; b.classList.toggle('v53-wait', !!on); if (on) setTimeout(() => b.classList.remove('v53-wait'), 9000); } catch (e) { /* */ } }
+if (typeof sndRun === 'function') { const _r = sndRun; sndRun = function sndRunV53(steps, text, gen, onDevice, onEnd) { v53Busy(true); const off = () => v53Busy(false);
+  return _r.call(this, steps, text, gen, function () { off(); return onDevice.apply(this, arguments); }, function () { off(); if (onEnd) return onEnd.apply(this, arguments); }); }; }
+/* 3. play() refused (autoplay rule, iPhone silent element, focus lost): show one "tap to hear" button; the tap plays the same clip */
+if (typeof sndPlayURL === 'function') { const _pl = sndPlayURL; sndPlayURL = function sndPlayURLV53(url, rate, gen) {
+  return _pl.call(this, url, rate, gen).catch((e) => { V53.lastErr = String(e && (e.name || e.message)); if (!e || e.name !== 'NotAllowedError') throw e; V53.refused++; v53Busy(false);
+    return new Promise((res, rej) => { const old = document.getElementById('v53-tap'); if (old) old.remove(); const b = document.createElement('button'); b.type = 'button'; b.id = 'v53-tap';
+      b.innerHTML = '🔊 اِضْغَطْ لِتَسْمَعَ <span class="en">Tap to hear</span>'; document.body.appendChild(b);
+      const t = setTimeout(() => { b.remove(); rej(e); }, 15000);
+      b.addEventListener('click', () => { clearTimeout(t); b.remove(); SAQ.SND.unlocked = false; try { sndUnlock(); } catch (x) { /* */ } _pl.call(this, url, rate, SAQ.SND.gen === gen ? gen : SAQ.SND.gen).then(res, rej); }, { once: true }); }); }); }; }
+/* 4. a stronger first-touch unlock: also resume Web Audio and (Safari 17+) ask for playback audio focus */
+{ const once = () => { try { const AC = window.AudioContext || window.webkitAudioContext; if (AC) { const c = V53.ac || (V53.ac = new AC()); if (c.state === 'suspended') c.resume(); const o = c.createBuffer(1, 1, 22050); const s = c.createBufferSource(); s.buffer = o; s.connect(c.destination); s.start(0); } } catch (e) { /* */ }
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) { /* */ } };
+  ['touchend', 'click'].forEach((ev) => document.addEventListener(ev, once, { capture: true, passive: true, once: true })); }
+/* 5. ?audiodebug=1: a small overlay for testing on a phone (memory only; nothing is stored or sent) */
+if (/[?&]audiodebug=1\b/.test(location.search)) { const box = document.createElement('div'); box.id = 'v53-dbg'; box.setAttribute('aria-hidden', 'true'); document.addEventListener('DOMContentLoaded', () => document.body.appendChild(box));
+  const show = () => { try { const S = SAQ.SND; const ar = window.speechSynthesis ? speechSynthesis.getVoices().filter((v) => /^ar/i.test(v.lang)).length : -1;
+    box.textContent = [`bank ${v53BankReady() ? 'ready' : 'loading'} · unlocked ${S.unlocked} · webaudio ${V53.ac ? V53.ac.state : '-'}`, `device ar voices ${ar} · cloud ${typeof sndCloudOK === 'function' && sndCloudOK() ? 'on' : 'off'} · waits ${V53.waits} · refused ${V53.refused} ${V53.lastErr}`,
+      `net ${(navigator.connection && navigator.connection.effectiveType) || '?'} · sw ${navigator.serviceWorker && navigator.serviceWorker.controller ? 'on' : 'off'}`].concat(S.log.slice(-6).reverse().map((x) => `${Math.round((x.t - V53.t0) / 100) / 10}s ${x.src}${x.voice ? ' ' + String(x.voice).split('-')[2] : ''} ${x.how || x.err || ''} ${x.ms ? x.ms + 'ms' : ''}`)).join('\n'); } catch (e) { box.textContent = 'audiodebug: ' + e.message; } };
+  setInterval(show, 700); }
+window.__v53 = V53;
+/* 6. free try-out: Sakr's own lines (not in the built-in clips) use the guest voice route (Azure, capped on the worker) instead of the
+   device voice, which is missing or Saudi-only on many phones. Falls back to the device voice if the route says no. */
+if (typeof sndCloudOK === 'function' && typeof sndFetchCloud === 'function') {
+  const _ok = sndCloudOK; sndCloudOK = function sndCloudOKV53() { if (typeof FREE !== 'undefined' && FREE.on) return navigator.onLine !== false && !V53.guestVoiceOff; return _ok.apply(this, arguments); };
+  const _fc = sndFetchCloud; sndFetchCloud = function sndFetchCloudV53(text, voice, rate) {
+    if (!(typeof FREE !== 'undefined' && FREE.on)) return _fc.apply(this, arguments);
+    const r2 = Math.round(Math.max(0.5, Math.min(1.3, rate || 1)) * 20) / 20; const k = 'g:' + voice + '|' + r2 + '|' + text; if (SAQ.SND.mem.has(k)) return Promise.resolve(SAQ.SND.mem.get(k));
+    if (text.length > 200) return Promise.reject(new Error('guest voice: long line'));
+    const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 7000);
+    return fetch(v52Base() + '/api/guest/tts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, voice, rate: r2 }), signal: ctl.signal })
+      .then((r) => { if (r.status === 429 || r.status === 403) V53.guestVoiceOff = true; if (!r.ok) throw new Error('guest tts ' + r.status); return r.blob(); })
+      .then((b) => { if (!b.size) throw new Error('tts empty'); const u = URL.createObjectURL(b); sndMemPut(k, u); return u; }).finally(() => clearTimeout(tm)); };
+}
