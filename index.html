@@ -17,7 +17,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="./fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="./app.b68425f8d2.js" as="script">
+<link rel="preload" href="./app.c1711626fe.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(./fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(./fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -4900,6 +4900,32 @@ body.free-on .v20b-tool,body.free-on .hwx-row,body.free-on .mh-mic{display:none!
 #v53-dbg{position:fixed;left:4px;right:4px;bottom:4px;z-index:10000;background:rgba(0,0,0,.78);color:#9ff;font:11px/1.35 ui-monospace,monospace;white-space:pre-wrap;padding:6px 8px;border-radius:8px;pointer-events:none;direction:ltr;text-align:left}
 @media (prefers-reduced-motion:reduce){.v53-wait{animation:none;outline:3px solid rgba(30,140,134,.5)}}
 
+.v54-dk{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;width:100%;min-height:56px;margin-top:10px;padding:8px 14px;border:0;border-radius:20px;background:#d9f7e6;color:#145c37;font-size:1.3rem;cursor:pointer;box-shadow:0 2px 0 #b5e8cc}
+.v54-dk b{font-weight:700}.v54-dk-ic{font-size:1.5rem}.v54-dk .en{flex-basis:100%;font-size:.8rem;line-height:1.1}
+.v54-dk.picked,.v54-dk:active{background:#c4efd8;transform:translateY(1px)}
+.dg-dk{min-height:56px}
+.v54-fr{width:auto!important;height:100%!important;max-width:100%;margin:0 auto}.v54-fr .g33-fr-base{object-fit:fill}
+.g32-fr .v54-fr{height:100%!important}
+.g33-easel{aspect-ratio:420/670}
+/* v54: progress waypoints are little nests: eggs wait, a chick hatches as each step is done; the big nest stays at the end */
+.g32-gtrack{height:30px;top:14px}
+.g32-gtrack i{width:24px;height:24px;background:url(art/v54/nest_eggs.webp) center/contain no-repeat;filter:none;opacity:.9;border-radius:0}
+.g32-gtrack i.on{background:url(art/v54/nest_chick.webp) center/contain no-repeat;opacity:1;transform:none;animation:v54hatch .5s ease-out}
+@keyframes v54hatch{0%{transform:scale(.7) rotate(-8deg)}60%{transform:scale(1.25) rotate(4deg)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.g32-gtrack i.on{animation:none}}
+/* break game */
+.brk{position:fixed;inset:0;z-index:2147483000;background:#bfe6fb;overflow:hidden;touch-action:none}
+.brk canvas{position:absolute;inset:0;display:block}
+.brk-top{position:absolute;top:calc(10px + env(safe-area-inset-top));inset-inline:12px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.brk-n{pointer-events:none;display:flex;align-items:center;gap:6px;background:#ffffffd9;border-radius:20px;padding:6px 14px;font-size:1.3rem;color:#1d4c63}.brk-n img{width:26px;height:26px}
+.brk-x{pointer-events:auto;width:48px;height:48px;border-radius:50%;border:0;background:#ffffffd9;font-size:1.2rem;color:#1d4c63}
+.brk-hint{position:absolute;bottom:calc(18% + env(safe-area-inset-bottom));inset-inline:0;text-align:center;font-size:1.25rem;color:#1d4c63;text-shadow:0 1px 0 #fff;transition:opacity .6s;pointer-events:none}.brk-hint.gone{opacity:0}
+.brk-end{position:absolute;inset:auto 16px calc(16px + env(safe-area-inset-bottom));background:#fffdf7;border-radius:28px;padding:18px;text-align:center;display:flex;flex-direction:column;gap:10px;box-shadow:0 10px 30px rgba(20,60,80,.2)}
+.brk-end h2{margin:0}.brk-end p{font-size:1.4rem;margin:0}.brk-ic{width:28px;height:28px;vertical-align:-6px}.brk-endbird{width:110px;height:110px;margin:-70px auto 0}
+.brk-pill{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px auto 0;min-height:48px;padding:6px 18px;border:0;border-radius:24px;background:#e6f5ff;color:#1d4c63;font-size:1.15rem;box-shadow:0 2px 0 #c6e4f5}
+.brk-pill img{width:24px;height:24px}.brk-pill .en{font-size:.8rem}
+.brk-offer{position:fixed;inset-inline:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:8000;background:#fffdf7;border-radius:20px;padding:12px;box-shadow:0 6px 20px rgba(20,60,80,.18);display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;text-align:center}
+
 </style>
 </head>
 <body>
@@ -5084,6 +5110,6 @@ body.free-on .v20b-tool,body.free-on .hwx-row,body.free-on .mh-mic{display:none!
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="./app.b68425f8d2.js"></script>
+<script defer src="./app.c1711626fe.js"></script>
 </body>
 </html>
