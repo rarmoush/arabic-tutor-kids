@@ -22,7 +22,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="../fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../app.86600f6df7.js" as="script">
+<link rel="preload" href="../app.14a43fd36f.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(../fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(../fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -4941,6 +4941,14 @@ label.acc-l .v54-en{margin-bottom:4px}
 #acc.v54-en-on .v54-en,#acc.v54-en-on .acc-en,#acc.v54-en-on .v52-en,#intro .v54-en,#intro .v52-en,#intro .intro-line .en,#intro .intro-tag .en{text-align:right}
 #acc.v54-en-on .center .v54-en,#acc.v54-en-on .acc-h.center~.v52-en,#acc.v54-en-on .acc-h.center~.acc-en,#acc.v54-en-on .btn .v54-en,#acc.v54-en-on .btn .en,#intro .btn .en,#intro .acc-link .en,#acc.v54-en-on .acc-link .v54-en,#acc.v54-en-on .acc-link .en,#intro h1 .v54-en,#intro .intro-line .en,#intro .intro-tag .en{text-align:center}
 
+/* v54.4 · t420u: every page scrolls to its bottom (short phones, URL bar showing) */
+body.tg-onhome #il-page{overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding-bottom:calc(110px + env(safe-area-inset-bottom))!important}
+body.tg-onhome .tg-bird{min-height:min(260px,34dvh)}
+body.tg-onhome .tg-bird-img{height:min(46dvh,380px)}
+.intro{overflow-y:auto;-webkit-overflow-scrolling:touch;align-items:safe center;padding:16px 0 calc(24px + env(safe-area-inset-bottom));box-sizing:border-box}
+.screen{min-height:100dvh}
+.modal .modal-box{max-height:calc(100dvh - 24px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+
 </style>
 </head>
 <body>
@@ -5125,6 +5133,6 @@ label.acc-l .v54-en{margin-bottom:4px}
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="../app.86600f6df7.js"></script>
+<script defer src="../app.14a43fd36f.js"></script>
 </body>
 </html>
