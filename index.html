@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffc83d">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https: http://localhost:* http://127.0.0.1:*; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; worker-src 'self' blob:; connect-src 'self' https: http://localhost:* http://127.0.0.1:*; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <link rel="icon" href="./favicon.ico?v=54" sizes="any">
 <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png?v=54">
@@ -22,7 +22,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="./fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="./app.034a268d6a.js" as="script">
+<link rel="preload" href="./app.ddb55e8270.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(./fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(./fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -5173,6 +5173,48 @@ body.k6-on #mh-compose,body.k6-on .v546-type,body.k6-on .v546-ans{margin-bottom:
 .w8-note{font-size:.78rem;color:#5b7486;background:#f6f8fa;border-radius:12px;padding:8px 10px;margin-top:12px}.w8-note .en{display:block;margin-top:4px}
 .w8-btns{display:flex;gap:8px;margin-top:12px}.w8-btns .btn{flex:1}
 @media print{body>*:not(#modal){display:none!important}.w8-btns{display:none}}
+/* v54.9 uploads */
+.v9-wrow{margin:6px 0 4px;display:flex;flex-direction:column;gap:6px;align-items:stretch}
+.v9-wnote{font-size:.9rem;margin:0;color:#6b4a00;min-height:1em}
+/* v54.9 call screen: green call, dark X, mic voice note */
+.v546-call .v546-btns{display:none}
+.v9c-row{display:flex;justify-content:center;align-items:flex-start;gap:26px;margin:8px 0 2px}
+.v9c-b{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;color:inherit;font:inherit;padding:0;cursor:pointer}
+.v9c-b svg{width:66px;height:66px;border-radius:50%;padding:18px;box-sizing:border-box;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.v9c-b.go svg{background:#22a45a;color:#fff;fill:#fff;stroke:none;box-shadow:0 6px 18px rgba(34,164,90,.35)}
+.v9c-b.x svg{background:#2f3a45;color:#fff}
+.v9c-b.mic svg{background:#fff;color:#2f3a45;box-shadow:0 4px 14px rgba(0,0,0,.12);width:76px;height:76px;padding:20px}
+.v9c-l{font-size:.85rem;display:flex;flex-direction:column;align-items:center;line-height:1.2}.v9c-l .en{font-size:.7rem;opacity:.75}
+.v546-call[data-hands="1"] .v9c-b.go{opacity:.35;pointer-events:none}
+.v546-call[data-hands="0"] .v9c-chip.pause{display:none}
+.v9c-sub{display:flex;gap:8px;justify-content:center}
+.v9c-chip{border:0;border-radius:999px;padding:6px 14px;background:rgba(255,255,255,.75);color:#2f3a45;font:inherit;font-size:.85rem;display:inline-flex;gap:6px;align-items:center}.v9c-chip .en{font-size:.7rem;opacity:.7}
+.v546-call.v9c-recording .v9c-b.mic svg{background:#2f3a45;color:#fff;animation:v9pulse 1.2s ease-in-out infinite}
+@keyframes v9pulse{0%,100%{box-shadow:0 0 0 0 rgba(47,58,69,.35)}50%{box-shadow:0 0 0 14px rgba(47,58,69,0)}}
+.v9c-rec{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.85);border-radius:14px;padding:6px 10px;max-width:100%;color:#2f3a45}.v9c-rec.hidden{display:none}
+.v9c-dot{width:10px;height:10px;border-radius:50%;background:#2f3a45;animation:v9pulse 1s infinite}
+.v9c-live{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.9rem}
+.v9c-note{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.85);color:#2f3a45;border-radius:16px;padding:6px 10px;max-width:92%}
+.v9c-play{width:34px;height:34px;border-radius:50%;border:0;background:#2f3a45;color:#fff;font-size:.9rem}.v9c-play.off{background:none;width:auto}
+.v9c-tr{flex:1;font-size:.95rem}
+#v9-dbg{position:fixed;left:6px;bottom:6px;z-index:2147483647;background:rgba(0,0,0,.78);color:#9effa9;font:11px/1.35 monospace;white-space:pre;padding:6px 8px;border-radius:8px;pointer-events:none;direction:ltr;max-width:96vw;overflow:hidden}
+/* v54.9 home hero */
+.v9h{display:flex;flex-direction:column;gap:12px;width:100%}
+.v9h-hero{position:relative;display:block;width:100%;height:min(62vh,470px);min-height:330px;border:0;padding:0;border-radius:26px;overflow:hidden;cursor:pointer;text-align:start;box-shadow:0 10px 28px rgba(60,40,0,.18);background:#f6efe2;font:inherit;color:#1f2a33}
+.v9h-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.v9h-txt{position:absolute;inset:auto 0 0 0;display:flex;flex-direction:column;gap:4px;padding:56px 18px 16px;background:linear-gradient(to top,rgba(255,250,240,.97) 52%,rgba(255,250,240,0))}
+.v9h-tag{align-self:flex-start;font-size:.8rem;background:#fff;border-radius:999px;padding:3px 10px;box-shadow:0 1px 4px rgba(0,0,0,.08)}.v9h-tag .en{margin-inline-start:6px;opacity:.7;font-size:.72rem}
+.v9h-t{font-size:2rem;line-height:1.1}.v9h-t .en{display:block;font-size:.85rem;font-weight:500;opacity:.7}
+.v9h-s{font-size:.95rem;opacity:.85}
+.v9h-go{align-self:flex-end;display:inline-flex;align-items:center;gap:6px;background:#1f7a6e;color:#fff;border-radius:999px;padding:8px 18px;font-weight:700;margin-top:4px}
+.v9h-f .v9h-go{background:#6b5aa6}
+.v9h-go svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.v9h-diag{display:flex;align-items:center;gap:12px;width:100%;border:0;border-radius:20px;background:#fffaf0;box-shadow:0 4px 14px rgba(60,40,0,.10);padding:10px 14px;font:inherit;color:#1f2a33;text-align:start;cursor:pointer}
+.v9h-di img{width:72px;height:48px;object-fit:contain}
+.v9h-dt{display:flex;flex-direction:column;gap:2px}.v9h-dt b{font-size:1.05rem}.v9h-dt b .en{margin-inline-start:6px;font-size:.75rem;font-weight:500;opacity:.7}.v9h-dt small{opacity:.8}
+@media (max-height:760px){.v9h-hero{height:58vh;min-height:300px}.v9h-t{font-size:1.7rem}}
+.v50-hub.v9h{width:auto!important;max-width:calc(100% - 32px);box-sizing:border-box;align-self:stretch}
+.v546-call .v546-said{max-height:22vh;overflow-y:auto;overscroll-behavior:contain}@media (max-height:760px){.v546-call .v546-said{max-height:16vh}.v546-call .v546-av,.v546-call .v546-face{width:110px;height:110px}}
 
 </style>
 </head>
@@ -5358,6 +5400,6 @@ body.k6-on #mh-compose,body.k6-on .v546-type,body.k6-on .v546-ans{margin-bottom:
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="./app.034a268d6a.js"></script>
+<script defer src="./app.ddb55e8270.js"></script>
 </body>
 </html>
