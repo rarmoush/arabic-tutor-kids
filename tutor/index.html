@@ -22,7 +22,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="../fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../app.ddb55e8270.js" as="script">
+<link rel="preload" href="../app.c6903e3498.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(../fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(../fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -5215,6 +5215,18 @@ body.k6-on #mh-compose,body.k6-on .v546-type,body.k6-on .v546-ans{margin-bottom:
 @media (max-height:760px){.v9h-hero{height:58vh;min-height:300px}.v9h-t{font-size:1.7rem}}
 .v50-hub.v9h{width:auto!important;max-width:calc(100% - 32px);box-sizing:border-box;align-self:stretch}
 .v546-call .v546-said{max-height:22vh;overflow-y:auto;overscroll-behavior:contain}@media (max-height:760px){.v546-call .v546-said{max-height:16vh}.v546-call .v546-av,.v546-call .v546-face{width:110px;height:110px}}
+/* v54.10: no floating Sakr under the cards on the home (the hero already shows him) */ .tg-home:has(.v9h) > .tg-bird{display:none!important}
+.tg-home:has(.v9h) .v9h-hero{height:clamp(300px,calc(100dvh - 310px),560px)}
+/* v54.11: Diagnostic card is text only: a soft accent line on the start side and a calm arrow, in the hero's colours */
+.v9h-diag{position:relative;min-height:74px;padding:14px 22px 14px 16px;overflow:hidden}
+.v9h-diag::before{content:"";position:absolute;inset-block:16px;inset-inline-start:0;width:5px;border-radius:0 6px 6px 0;background:#1f7a6e}
+[dir="rtl"] .v9h-diag::before,.v9h-diag:dir(rtl)::before{border-radius:6px 0 0 6px}
+.v9h-diag.v9h-f::before{background:#6b5aa6}
+.v9h-diag .v9h-dt{flex:1;min-width:0}
+.v9h-dgo{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(31,122,110,.12);color:#1f7a6e}
+.v9h-diag.v9h-f .v9h-dgo{background:rgba(107,90,166,.13);color:#6b5aa6}
+.v9h-dgo svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.v9h-diag:active{transform:scale(.985)}
 
 </style>
 </head>
@@ -5400,6 +5412,6 @@ body.k6-on #mh-compose,body.k6-on .v546-type,body.k6-on .v546-ans{margin-bottom:
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="../app.ddb55e8270.js"></script>
+<script defer src="../app.c6903e3498.js"></script>
 </body>
 </html>
