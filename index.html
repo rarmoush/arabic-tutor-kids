@@ -22,7 +22,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="./fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="./app.9e7345dd92.js" as="script">
+<link rel="preload" href="./app.af3e438b41.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(./fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(./fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -5303,6 +5303,11 @@ body.k6-on #mh-compose,body.k6-on .v546-type,body.k6-on .v546-ans{margin-bottom:
 .v13i-sb>span[aria-hidden]{font-size:22px}
 .v13i-foot{display:flex;justify-content:space-between;gap:8px;margin-top:16px}.v13i-link{background:none;border:0;color:#2a6f9b;text-decoration:underline;font:inherit;padding:8px;display:flex;flex-direction:column;cursor:pointer}
 
+/* t477 English help: shown for "I don't understand" turns even when English is off; calm, small, under the Arabic */
+body .mh-msg .mh-bub.v13-help p.mh-en.en-block, body:not(.show-en) .mh-msg .mh-bub.v13-help p.mh-en.en{display:block!important;font-size:.86em;opacity:.9;margin-top:4px;border-top:1px dashed rgba(0,0,0,.12);padding-top:4px}
+.v546-top .mean-tg.v13-tg{margin-inline-start:auto;font-size:.78rem;padding:4px 8px;border-radius:999px;min-height:32px}
+.v546-top .mean-tg.v13-tg + .v13-more{margin-inline-start:6px}
+
 </style>
 </head>
 <body>
@@ -5487,6 +5492,6 @@ body.k6-on #mh-compose,body.k6-on .v546-type,body.k6-on .v546-ans{margin-bottom:
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="./app.9e7345dd92.js"></script>
+<script defer src="./app.af3e438b41.js"></script>
 </body>
 </html>
