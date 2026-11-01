@@ -22,7 +22,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="./fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="./app.c6903e3498.js" as="script">
+<link rel="preload" href="./app.136591a8c3.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(./fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(./fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -5227,6 +5227,41 @@ body.k6-on #mh-compose,body.k6-on .v546-type,body.k6-on .v546-ans{margin-bottom:
 .v9h-diag.v9h-f .v9h-dgo{background:rgba(107,90,166,.13);color:#6b5aa6}
 .v9h-dgo svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .v9h-diag:active{transform:scale(.985)}
+/* v54.12 (t456u): «كَلِّمْنِي» chat screen (replaces the call look) */
+.v546-call.v12{display:flex!important;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:0;background:linear-gradient(#f7f2e8,#f3ecdf);color:#1f2a33;text-align:start}
+.v546-call.v12.hidden{display:none!important}
+.v12 .v546-av,.v12 .v546-said,.v12 .v9c-row,.v12 .v9c-sub,.v12 .v546-btns,.v12 .v546-note,.v12 .v9c-note,.v12 .v546-live{display:none!important}
+.v12 .v546-top{display:flex;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top) + 12px) 16px 10px;padding-inline-start:130px;min-height:64px;box-sizing:border-box;background:#fffaf0;box-shadow:0 2px 10px rgba(60,40,0,.07);color:#1f2a33;font-size:1.1rem;flex:none}
+.v12 .v546-top .en{font-size:.75rem;opacity:.65}
+.v12 .v12-face{width:40px;height:40px;border-radius:50%;overflow:hidden;background:#e7f1ee;display:grid;place-items:center;flex:none}
+.v12 .v12-face>*{width:100%;height:100%;object-fit:cover}
+.v12-thread{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:12px 12px 6px;-webkit-overflow-scrolling:touch}
+.v12-thread #mh-chat{max-height:none!important;height:auto!important;overflow:visible!important;padding:0!important;margin:0!important;background:none!important}
+.v12 .v546-state,.v12 .v546-heard{display:none;margin:0;padding:4px 16px;font-size:.9rem;color:#5a6670;text-align:center}
+.v12.v12-st .v546-state,.v12.v12-st .v546-heard:not(:empty){display:block}
+.v12 .v9c-rec{margin:0 12px 6px;border-radius:16px;background:#fff;box-shadow:0 2px 10px rgba(60,40,0,.08)}
+.v12 .v546-type{display:flex;align-items:center;gap:6px;margin:0;padding:8px 10px calc(env(safe-area-inset-bottom) + 10px);background:#fffaf0;box-shadow:0 -2px 10px rgba(60,40,0,.06);flex:none;flex-wrap:nowrap}
+.v12 .v546-type input{flex:1;min-width:0;height:44px;border-radius:22px;border:1.5px solid #e2d8c6;background:#fff;padding:0 14px;font:inherit;font-size:1rem;color:#1f2a33}
+.v12-att-b,.v12 .v12-mic,.v12 .v546-send{flex:none;width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;padding:0;cursor:pointer}
+.v12-att-b{background:#efe7d8;color:#4a5560}
+.v12 .v12-mic{background:#e3f0ec;color:#1f7a6e;box-shadow:none;transform:none}
+.v12.v9c-recording .v12-mic{background:#1f7a6e;color:#fff}
+.v12 .v546-send{background:#1f7a6e;color:#fff}
+.v12-att-b svg,.v12 .v12-mic svg,.v12 .v546-send svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.v12-att{margin:0 10px 8px;background:#fff;border-radius:18px;box-shadow:0 6px 22px rgba(60,40,0,.14);padding:6px;display:flex;flex-direction:column;gap:2px}
+.v12-att.hidden{display:none}
+.v12-att button{display:flex;align-items:center;gap:12px;border:0;background:none;padding:10px 12px;border-radius:14px;font:inherit;color:#1f2a33;text-align:start;cursor:pointer}
+.v12-att button:active{background:#f4eee2}
+.v12-att svg{width:26px;height:26px;flex:none;fill:none;stroke:#1f7a6e;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.v12-att b{display:block;font-size:1rem}.v12-att small{display:block;font-size:.82rem;color:#5a6670}
+.v12-vn{display:flex;align-items:center;gap:8px}.v12-vn small{opacity:.7}
+.v12-vn .v9c-play{width:32px;height:32px;border-radius:50%;border:0;background:#1f7a6e;color:#fff;flex:none}
+.v12 .k6-tg{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:#efe7d8;color:#1f2a33;padding:0;font-size:.85rem;display:grid;place-items:center;margin:0}
+
+.v546-call.v12 .v546-type .v9c-b.mic{width:44px!important;height:44px!important;min-width:0;border-radius:50%;border:0;padding:0;margin:0;background:#e3f0ec!important;color:#1f7a6e!important;box-shadow:none!important;transform:none!important;display:grid;place-items:center}
+.v546-call.v12.v9c-recording .v546-type .v9c-b.mic{background:#1f7a6e!important;color:#fff!important}
+.v546-call.v12 .v546-type .v9c-b.mic svg{width:22px!important;height:22px!important;fill:none!important;stroke:currentColor!important;stroke-width:2;background:none!important;border-radius:0;padding:0}
+.v546-on #v9-dbg{top:72px;bottom:auto}
 
 </style>
 </head>
@@ -5412,6 +5447,6 @@ body.k6-on #mh-compose,body.k6-on .v546-type,body.k6-on .v546-ans{margin-bottom:
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="./app.c6903e3498.js"></script>
+<script defer src="./app.136591a8c3.js"></script>
 </body>
 </html>
