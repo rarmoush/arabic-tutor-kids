@@ -8,7 +8,7 @@
  "display": "standalone",
  "background_color": "#fff8e1",
  "theme_color": "#ffc83d",
- "description": "Play-first Arabic for kids",
+ "description": "AI Arabic tutor",
  "icons": [
   {
    "src": "icon-192.png?v=54",
