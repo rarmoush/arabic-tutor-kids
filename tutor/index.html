@@ -27,7 +27,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="../fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../app.8e5e2052e8.js" as="script">
+<link rel="preload" href="../app.77ddc71c98.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(../fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(../fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -5452,6 +5452,134 @@ body:has(#modal:not(.hidden)) #demo-ribbon,body.v5500-inner #demo-ribbon{display
 /* t506: registry pictures standing in for old emoji keep the emoji's size */
 img.ic-emo,.ic-emo img{width:1.3em;height:1.3em;object-fit:contain;vertical-align:-.25em;display:inline-block}
 
+/* t534: unit-quiz "pick the picture" options were full-width, almost empty cards.
+   .pic-opt { aspect-ratio: 1.25 } is meant for the 2-column .pic-opts grid, but the
+   unit quiz put class pic-opt on .opt-tx inside a stacked full-width .opt, so each
+   row became ~width/1.25 tall with a tiny centred picture (WhatsApp iOS screenshot). */
+.opt-tx.pic-opt {
+  aspect-ratio: auto;
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  min-height: 0;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: inherit;
+}
+.opts.pic-opts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 340px;
+  margin-inline: auto;
+}
+.opts.pic-opts .opt.pic-opt {
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 1.25;
+  padding: 18px 8px 10px;
+  gap: 0;
+}
+.opts.pic-opts .opt.pic-opt .opt-key {
+  position: absolute;
+  top: 8px;
+  inset-inline-start: 8px;
+}
+.opts.pic-opts .opt.pic-opt .pic-art,
+.opts.pic-opts .opt.pic-opt .rd-pic,
+.opts.pic-opts .opt.pic-opt img,
+.opts.pic-opts .opt.pic-opt .emo {
+  width: 72px;
+  height: 72px;
+  max-width: 78%;
+  max-height: 78%;
+  object-fit: contain;
+}
+.opts.pic-opts .opt.pic-opt .pic-art { font-size: 64px; line-height: 1; }
+.opts.pic-opts .opt.pic-opt .emo { font-size: 56px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+/* keep 2-col picture grids from collapsing to one huge column on narrow WebKit views */
+.pic-opts, .kg-opts.pics, .dg-pics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pic-opts.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+
+/* t534: stories shelf + home fold */
+
+/* Root cause: .book uses animation:popin .45s both, so opacity stays 0 until
+   the staggered delay elapses. Path-v31 moves later (higher-level) stories
+   to the "for you now" group but keeps their late delays, so that shelf looks
+   empty. Also the 2-col cover grid was scoped only to #tab-stories, while
+   signed-in sessions render the shelf in #il-page. */
+.book,
+.book.v8 {
+  opacity: 1 !important;
+  animation: none !important;
+}
+#tab-stories .shelf.v8,
+#il-page .shelf.v8,
+.p31-shelf .shelf.v8,
+.p31-shg .shelf.v8 {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: visible;
+  scroll-snap-type: none;
+  width: 100%;
+}
+.p31-shelf,
+.p31-shg { width: 100%; box-sizing: border-box; }
+@media (min-width: 700px) {
+  #tab-stories .shelf.v8,
+  #il-page .shelf.v8,
+  .p31-shelf .shelf.v8,
+  .p31-shg .shelf.v8 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Home: keep the bottom tab bar visible; shrink the hero so the AI Tutor
+   banner and the Diagnostic card both sit above #il-nav without scrolling.
+   Do not add items; do not hide the greeting, hero, Diagnostic, or tab bar. */
+body.tg-onhome #il-nav {
+  display: flex !important;
+}
+body.tg-onhome #il-page {
+  padding-bottom: calc(88px + env(safe-area-inset-bottom)) !important;
+}
+.tg-home:has(.v9h) { min-height: 0; }
+.tg-home:has(.v9h) .v9h { gap: 8px; }
+.tg-home:has(.v9h) .v9h-hero {
+  height: clamp(168px, calc(100dvh - 360px), 380px) !important;
+  min-height: 168px !important;
+  max-height: none;
+}
+.tg-home:has(.v9h) .tg-top { padding: 10px 16px 0; }
+.tg-home:has(.v9h) .v9h-txt { padding: 40px 16px 12px; }
+.tg-home:has(.v9h) .v9h-t { font-size: 1.7rem; }
+.v9h-diag { padding-top: 10px; padding-bottom: 10px; min-height: 64px; }
+@media (max-height: 700px) {
+  .tg-home:has(.v9h) .v9h-hero {
+    height: clamp(140px, calc(100dvh - 340px), 260px) !important;
+    min-height: 140px !important;
+  }
+  .tg-home:has(.v9h) .v9h-t { font-size: 1.45rem; }
+  .tg-home:has(.v9h) .tg-top { padding: 6px 14px 0; }
+  .tg-home:has(.v9h) .v9h-txt { padding: 28px 14px 10px; }
+}
+
+/* When the kg teaser and break pill are unhidden (tg-onhome off), shrink the
+   hero further on short phones so Diagnostic still clears the tab bar. */
+@media (max-height: 700px) {
+  body:not(.tg-onhome) .tg-home:has(.v9h) .v9h-hero {
+    height: clamp(120px, calc(100dvh - 480px), 200px) !important;
+    min-height: 120px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -5636,6 +5764,6 @@ img.ic-emo,.ic-emo img{width:1.3em;height:1.3em;object-fit:contain;vertical-alig
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="../app.8e5e2052e8.js"></script>
+<script defer src="../app.77ddc71c98.js"></script>
 </body>
 </html>
