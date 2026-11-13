@@ -27,7 +27,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="../fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../app.893fa95907.js" as="script">
+<link rel="preload" href="../app.496b7319c9.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(../fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(../fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -3767,6 +3767,19 @@ body.acc-open #picker,body.acc-open #app{display:none!important}
 .acc-kid-pic{overflow:hidden}.acc-kid-pic img,.acc-kid-pic svg{width:78%;height:78%;object-fit:contain}
 .avatar.acc-av{padding:0;overflow:hidden}.avatar.acc-av .acc-kid-pic.in-av{width:100%;height:100%;background:transparent}
 
+/* t560: small Sign out on the signed-in home header; calm, does not compete with the two cards */
+.acc-home-out{flex:none;align-self:flex-start;display:inline-flex;align-items:center;gap:5px;max-width:44%;margin:0;padding:7px 10px;border:0;border-radius:14px;background:rgba(255,255,255,.92);color:#3a4a52;font:inherit;font-size:.78rem;font-weight:600;line-height:1.25;letter-spacing:0;box-shadow:0 2px 8px rgba(0,60,80,.10);cursor:pointer;text-align:start;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acc-home-out svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+[dir=rtl] .acc-home-out svg,.acc-home-out:dir(rtl) svg{transform:scaleX(-1)}
+.acc-home-out .en{font-size:.68rem;font-weight:500;opacity:.7}
+body.tg-girl .acc-home-out{color:#3d3558}
+.tg-home:has(.v9h) .acc-home-out{padding:6px 9px}
+.acc-out-ask{padding-top:6px}
+.acc-out-ask .acc-h{margin:0 0 4px;font-size:1.25rem}
+.acc-out-ask .acc-p{margin:0 0 12px}
+.acc-out-btns{display:flex;gap:10px;justify-content:stretch;margin-top:8px}
+.acc-out-btns .btn{flex:1}
+
 /* v27 story quiz: calm, readable, big tap targets */
 .sq{gap:var(--s3,12px)}.sq-cnt{font-size:var(--t-sm);color:var(--ds-ink-3)}
 .sq-dots{display:flex;gap:6px;justify-content:center}.sq-dots i{width:10px;height:10px;border-radius:50%;background:var(--ds-line)}.sq-dots i.on{background:var(--ds-teal)}.sq-dots i.cur{background:var(--ds-sky)}
@@ -5992,6 +6005,6 @@ body.tg-onhome #il-page {
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="../app.893fa95907.js"></script>
+<script defer src="../app.496b7319c9.js"></script>
 </body>
 </html>
