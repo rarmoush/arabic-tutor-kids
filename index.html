@@ -26,7 +26,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="./fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="./app.20f1787899.js" as="script">
+<link rel="preload" href="./app.02dde52bdd.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(./fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(./fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -5929,6 +5929,48 @@ body.show-en #lo .en-block{display:block;margin:2px 0 0}
 @media (prefers-reduced-motion:reduce){#lo *{animation:none!important;transition:none!important}}
 @media (max-height:700px){#lo .lo-sakr{height:150px}#lo .lo-yay-fal,#lo .lo-stop-fal,#lo .lo-talk-fal{height:180px}#lo .lo-tile{min-height:120px}#lo .lo-ti{height:84px}#lo .lo-opt{min-height:110px}}
 
+/* t566 visual QA fixes (Randa t566u: "review all the pages and graphics"). v54.28 */
+/* 1. "Talk to me" chat: the bottom tab bar was drawn over the chat tools (voice note / homework / file).
+      t534 forces #il-nav visible while body.tg-onhome is set, and that class stays on while the chat (#mh) is open. */
+body.mh-on #il-nav{display:none!important}
+/* 2. Daily hello screen: Sakr was cut off at the legs by a square box. Give the picture a tall box. */
+.v47-front-bird{width:min(42vw,170px)!important;height:auto!important;aspect-ratio:2/3;overflow:visible!important;filter:drop-shadow(0 10px 14px rgba(21,58,87,.14))}
+.v47-front-bird .mascot,.v47-front-bird img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center bottom!important}
+/* 3. Home greeting: «رِحْلَتُكَ: أَبُوظَبْي · الإِمَارَات» broke into two lines in a narrow pill. */
+.tg-top .tg-hi{min-width:0;flex:1 1 auto}
+.tg-top .tg-hi{overflow:visible}
+.tg-top .tg-hi p{white-space:nowrap;width:max-content;max-width:calc(100vw - 96px);font-size:.86rem}
+/* 4. Sakr runner: the question picture was squashed to a 29px sliver. */
+.tgg-q.mini .pic-art,.tgg-q.mini .tg-gpic{width:96px!important;height:96px!important;display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 auto}
+.tgg-q.mini .art-img,.tgg-q.mini img{width:96px!important;height:96px!important;max-width:none!important;object-fit:contain!important}
+/* 5. Catch the letters: falling letters were drawn over the "catch:" target line. */
+.tgg-target{position:relative;z-index:3;background:linear-gradient(180deg,rgba(234,247,251,.98),rgba(234,247,251,.9));border-radius:18px 18px 0 0}
+.tgg-sky{inset:84px 0 0 0!important}
+/* 6. Word of the day: the 6th row of tiles was cut off and the hint chips sat on top of it. */
+.wd-stage .wd-t{width:clamp(34px,calc((100dvh - 500px) / 6.9),54px)!important;height:clamp(34px,calc((100dvh - 500px) / 6.9),54px)!important;font-size:clamp(18px,calc((100dvh - 500px) / 13),26px)}
+.wd-stage .wd-row{gap:5px}
+.wd-stage .wd-board{gap:5px}
+.wd-top .seg button,.wd-top .seg span{white-space:nowrap}
+/* 7. "Me" page: the dress-up falcon stood on its own label. */
+.il-isle .il-art.fal{display:flex;justify-content:center;margin-bottom:4px}
+.il-isle .il-art.fal .mascot{width:56px!important;height:84px!important}
+/* 8. Units: every unit gets its painted island (was a mix of a few painted icons and blank/emoji squares). */
+.v545-card .v545-ic img.t566-isle{width:56px;height:56px;object-fit:contain;display:block;margin:0 auto}
+/* 9. A visible Back at the top of parent forms (log in, add a child) and the old reports page. */
+.acc-topback{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 16px;border:0;border-radius:999px;background:#eaf6f6;color:#155e63;font:inherit;font-weight:700;cursor:pointer;margin-bottom:-4px}
+.acc-topback svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+#parent .t566-pback{position:sticky;top:8px;z-index:6;margin:8px 12px 0}
+/* 10. Voice-note button (all children): the 🎤 emoji was drawn as a girl singing in purple, also on boy screens. Use the painted mic tile like its neighbours. */
+.v20b-voice .hwx-ic img,.v20b-voice .v20b-ic img{content:url(art/ic5_mic.23520e50.webp)}
+/* t566: tablet home hero — portrait poster in a wide card cropped Sakr's head */
+@media (min-width:600px){.v9h-art{object-position:50% 40%!important}}
+@media (min-width:600px) and (min-height:900px){.tg-home:has(.v9h) .v9h-hero{height:clamp(380px,calc(100dvh - 430px),620px)!important}}
+/* t566 adaptive start game: a step ladder instead of 11 dots */
+.dg6-ladder{display:flex;gap:5px;flex:1;justify-content:center;align-items:flex-end;height:30px}
+.dg6-ladder i{width:14px;border-radius:4px;background:#d7e6ff}
+.dg6-ladder i:nth-child(1){height:8px}.dg6-ladder i:nth-child(2){height:11px}.dg6-ladder i:nth-child(3){height:14px}.dg6-ladder i:nth-child(4){height:17px}.dg6-ladder i:nth-child(5){height:20px}.dg6-ladder i:nth-child(6){height:23px}.dg6-ladder i:nth-child(7){height:26px}
+.dg6-ladder i.dg-d{background:var(--dg-sun,#f4c04e)}.dg6-ladder i.dg-n{background:var(--dg-blue,#3d8bfd)}
+
 </style>
 </head>
 <body>
@@ -6113,6 +6155,6 @@ body.show-en #lo .en-block{display:block;margin:2px 0 0}
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="./app.20f1787899.js"></script>
+<script defer src="./app.02dde52bdd.js"></script>
 </body>
 </html>
