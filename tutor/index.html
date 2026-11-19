@@ -27,7 +27,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="../fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../app.02dde52bdd.js" as="script">
+<link rel="preload" href="../app.f88eb1e7f1.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(../fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(../fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -5972,6 +5972,40 @@ body.mh-on #il-nav{display:none!important}
 .dg6-ladder i:nth-child(1){height:8px}.dg6-ladder i:nth-child(2){height:11px}.dg6-ladder i:nth-child(3){height:14px}.dg6-ladder i:nth-child(4){height:17px}.dg6-ladder i:nth-child(5){height:20px}.dg6-ladder i:nth-child(6){height:23px}.dg6-ladder i:nth-child(7){height:26px}
 .dg6-ladder i.dg-d{background:var(--dg-sun,#f4c04e)}.dg6-ladder i.dg-n{background:var(--dg-blue,#3d8bfd)}
 
+/* t569: word-guess top bar — keep clear of the floating «رجوع» Back pill (the ✕ is not needed next to Back) */
+body.v545-fb .wd-top,body:has(#v545-back:not(.hidden)) .wd-top{padding-right:112px}
+body.v545-fb .wd-top>.x-btn[data-act="modal-close"],body:has(#v545-back:not(.hidden)) .wd-top>.x-btn[data-act="modal-close"]{display:none}
+body:has(#v545-back:not(.hidden)) .wd-top .seg button{padding-left:10px!important;padding-right:10px!important}
+/* t569 · dress-up: keyboard hidden until the name box is tapped; the 7 category tabs wrap into a grid (no tab off-screen) */
+.fc-sheet:not(.kb-on) .akb{display:none!important}
+.fc-sheet #fc-name{cursor:pointer}
+.fc-tabs.scroll,.seg.fc-tabs{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;overflow:visible!important;flex-wrap:wrap}
+.fc-tabs.scroll button,.seg.fc-tabs button{flex:none!important;min-width:0;padding-inline:4px!important;white-space:normal}
+/* t569 · arcade game sheets open full height (no ~20% empty strip on top) and the play area fills the sheet */
+.modal.tgg-modal{padding:0}
+.modal.tgg-modal .modal-box{height:100%;max-height:100%;border-radius:0!important;display:flex;flex-direction:column;max-width:none;padding:12px 16px calc(12px + env(safe-area-inset-bottom))!important}
+.modal.tgg-modal .modal-box>.tgg{flex:1;min-height:0}
+@media (min-width:640px){.modal.tgg-modal{padding:16px}.modal.tgg-modal .modal-box{max-width:640px;height:min(900px,96vh);border-radius:28px!important}}
+/* t569 · games whose pieces sit in normal flow: centre them in the taller play area instead of leaving a big empty strip below */
+.modal.tgg-modal .tgg-play:not(:has(> .tgg-track, > .tgg-sky, > .g31-feed)){display:flex;flex-direction:column;justify-content:safe center}
+
+/* t569hw: homework files in the AI tutor chat — file bubble, quick replies, saved-history divider */
+#mh-chat .t9-fb{display:flex;flex-direction:column;align-items:stretch;gap:6px;max-width:min(74vw,280px)}
+#mh-chat .t9-fb .t9-th{display:block;width:100%;max-width:220px;max-height:200px;object-fit:cover;object-position:top;border-radius:12px;background:#fff}
+#mh-chat .t9-file{display:flex;align-items:center;gap:10px;min-width:0;padding:6px 8px;border-radius:12px;background:rgba(255,255,255,.88);color:#1d3b4f;text-align:start}
+#mh-chat .t9-ic{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:40px;height:44px;border-radius:10px;background:#eef4f8}
+#mh-chat .t9-ic svg{display:block;width:30px;height:38px}
+#mh-chat .t9-ft{display:flex;flex-direction:column;min-width:0}
+#mh-chat .t9-ft .t9-fn{margin:0;color:#1d3b4f!important;font-weight:700;font-size:.92rem;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px}
+#mh-chat .t9-ft .t9-fm{display:block!important;font-size:.78rem;line-height:1.3;color:#5b7183!important;visibility:visible!important}
+#mh-chat .t9-chiprow{display:flex;justify-content:flex-start;padding:2px 46px 6px 8px}
+#mh-chat .t9-chips{display:flex;flex-wrap:wrap;gap:8px}
+#mh-chat .t9-chip{min-height:44px;padding:8px 16px;border-radius:999px;border:2px solid #1f8a8a;background:#fff;color:#155e63;font:inherit;font-weight:700;cursor:pointer;display:inline-flex;flex-direction:column;align-items:center;line-height:1.2}
+#mh-chat .t9-chip.main{background:#1f8a8a;color:#fff}
+#mh-chat .t9-chip .en{font-size:.7rem;font-weight:500;opacity:.85}
+#mh-chat .t9-sep{display:flex;align-items:center;justify-content:center;gap:6px;margin:8px auto 4px;padding:3px 12px;border-radius:999px;background:rgba(29,59,79,.07);color:#5b7183;font-size:.78rem;width:max-content}
+#mh-chat .t9-old{animation:none!important;opacity:.96}
+
 </style>
 </head>
 <body>
@@ -6156,6 +6190,6 @@ body.mh-on #il-nav{display:none!important}
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="../app.02dde52bdd.js"></script>
+<script defer src="../app.f88eb1e7f1.js"></script>
 </body>
 </html>
