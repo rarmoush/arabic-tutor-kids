@@ -27,7 +27,7 @@
 <title>عَرَبِيّ · Arabic Tutor</title>
 <link rel="preload" href="../fonts/Readex-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/NotoNaskh-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../app.8bea100e8d.js" as="script">
+<link rel="preload" href="../app.1c728c7dd3.js" as="script">
 <style>
 @font-face{font-family:'El Messiri';src:url(../fonts/ElMessiri-500-arabic.woff2) format('woff2');font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
 @font-face{font-family:'Readex Pro';src:url(../fonts/Readex-arabic.woff2) format('woff2');font-weight:300 600;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
@@ -6006,6 +6006,65 @@ body:has(#v545-back:not(.hidden)) .wd-top .seg button{padding-left:10px!importan
 #mh-chat .t9-sep{display:flex;align-items:center;justify-content:center;gap:6px;margin:8px auto 4px;padding:3px 12px;border-radius:999px;background:rgba(29,59,79,.07);color:#5b7183;font-size:.78rem;width:max-content}
 #mh-chat .t9-old{animation:none!important;opacity:.96}
 
+/* t597 reteach overlay: sits above the activity so the lesson never wipes the round. Phone-first, calm, no shame, no pink chrome. */
+#rt597.hidden{display:none!important}
+#rt597.rt597-ov{position:fixed;inset:0;z-index:12000;display:flex;align-items:flex-end;justify-content:center;background:rgba(12,40,55,.38);padding:max(12px,env(safe-area-inset-top)) 12px max(16px,env(safe-area-inset-bottom));box-sizing:border-box}
+body.rt597-on{overflow:hidden}
+.rt597-card{width:min(100%,420px);max-height:100%;overflow:auto;background:#f7fbff;color:#163247;border-radius:28px 28px 22px 22px;box-shadow:0 -8px 32px rgba(10,50,70,.18);padding:14px 16px 20px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.rt597-back{align-self:stretch;display:flex;align-items:center;gap:6px;background:none;border:0;color:#0d5c73;font:inherit;padding:4px 2px;min-height:44px;cursor:pointer}
+.rt597-back svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.rt597-back b{font-weight:700}
+.rt597-back .en{font-size:.78rem;opacity:.7;margin-inline-start:4px}
+.rt597-fal{width:132px;height:132px;display:flex;align-items:center;justify-content:center}
+.rt597-fal .rt597-bird,.rt597-fal .mascot,.rt597-fal svg{max-width:132px;max-height:132px}
+.rt597-chip{margin:0;font-size:.95rem;background:#e7f4fa;border-radius:999px;padding:4px 12px;color:#0d5c73}
+.rt597-say{margin:4px 0 0;font-size:1.35rem;line-height:1.7;font-weight:700;color:#123}
+.rt597-say.sm{font-size:1.1rem;font-weight:600}
+.rt597-en{margin:0 0 6px;font-size:.9rem;color:#4a6576}
+.rt597-card .btn{width:100%;min-height:48px;margin-top:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.rt597-skip{display:flex;flex-direction:column;align-items:center;gap:0}
+.rt597-ex.lo{background:#fff;min-height:140px}
+.rt597-ex.lo img,.rt597-ex.lo .rt597-art{width:112px;height:112px;object-fit:contain;display:block}
+.rt597-skip{background:none;border:0;color:#4a6576;text-decoration:underline;padding:10px;min-height:44px;cursor:pointer;font:inherit}
+.rt597-h{margin:0 0 6px;font-size:1.15rem;line-height:1.5}
+.rt597-body{width:100%;display:flex;flex-direction:column;align-items:center;gap:10px}
+.rt597-big{width:112px;height:112px;border-radius:28px;border:0;background:#fff;box-shadow:0 4px 14px rgba(10,50,70,.1);font-size:3.4rem;color:#0d5c73;cursor:pointer}
+.rt597-name{margin:0;font-size:1.05rem}
+.rt597-row{display:flex;gap:8px;width:100%;justify-content:center;flex-wrap:wrap}
+.rt597-snd,.rt597-ex{flex:1;min-width:120px;min-height:64px;border-radius:18px;border:0;background:#fff;box-shadow:0 2px 10px rgba(10,50,70,.08);padding:8px;cursor:pointer;font:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.rt597-ex.big{width:100%;min-height:120px;font-size:1.4rem}
+.rt597-em{font-size:1.8rem}.rt597-em.lg{font-size:3rem}
+.rt597-vowels{display:flex;gap:8px;justify-content:center}
+.rt597-v{width:72px;height:72px;border-radius:18px;border:0;background:#fff;box-shadow:0 2px 10px rgba(10,50,70,.08);cursor:pointer;font:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.rt597-v.on{outline:3px solid #1aa0d8;background:#e7f6fb}
+.rt597-v b{font-size:1.5rem}
+.rt597-rule{margin:0;font-size:1.02rem;line-height:1.7;text-align:right;width:100%}
+.rt597-egs{width:100%;display:flex;flex-direction:column;gap:6px}
+.rt597-eg{background:#fff;border-radius:14px;padding:8px 10px;text-align:right}
+.rt597-q{margin:8px 0 0;font-weight:700}
+.rt597-opts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;width:100%}
+.rt597-opt{min-width:72px;min-height:56px;padding:8px 12px;border-radius:16px;border:0;background:#fff;box-shadow:0 2px 10px rgba(10,50,70,.08);cursor:pointer;font:inherit;font-size:1.3rem}
+.rt597-opt.yay{background:#e7f8ee;outline:3px solid #22a86a}
+.rt597-opt.oops{background:#f3f6f8;opacity:.7}
+.rt597-rep{padding:0;margin:6px 0 12px;list-style:none}
+.rt597-rep li{padding:4px 0;border-bottom:1px solid #e4eef3}
+body.tg-girl .rt597-card{background:#fff8fb}
+body.tg-girl .rt597-chip,body.tg-girl .rt597-v.on{background:#fde8f2;color:#8a3a63;outline-color:#e46f9a}
+/* boy theme stays teal — never pink */
+@media (min-height:700px){#rt597.rt597-ov{align-items:center}}
+
+/* English subtitles stay visible on this short teaching moment (keep-en + explicit rules). */
+#rt597.keep-en .en,#rt597 .en{display:inline;font-family:'Readex Pro',system-ui,sans-serif;font-size:.8rem;font-weight:500;color:#5b7486}
+#rt597.keep-en .en-block,#rt597 .rt597-en,#rt597 .rt597-h .en,#rt597 .rt597-chip .en,#rt597 .rt597-name .en,#rt597 .rt597-rule .en,#rt597 .rt597-q .en,#rt597 .rt597-eg .en,#rt597 .btn .en{display:block!important;margin-top:2px}
+#rt597.keep-en .rt597-back .en,#rt597 .rt597-back .en,#rt597 .rt597-v .en,#rt597 .rt597-snd .en,#rt597 .rt597-opt .en{display:inline!important;margin-inline-start:4px}
+
+#rt597 .rt597-skip .en{display:block!important;margin-top:0;text-decoration:underline}
+/* Primary teal buttons (#1F8A8A): card .en color #5b7486 was nearly invisible on teal.
+   Use white so the English line is readable (same idea as global .btn .en).
+   Solid white is ~4.15:1 on this teal; 4.5:1 is not feasible without darkening the button.
+   85% white matches other primary buttons and stays clearly readable. */
+#rt597 .btn .en,#rt597.keep-en .btn .en{display:block!important;margin-top:0;color:#fff!important;opacity:.85}
+
 </style>
 </head>
 <body>
@@ -6190,6 +6249,6 @@ body:has(#v545-back:not(.hidden)) .wd-top .seg button{padding-left:10px!importan
 <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="نَافِذَة Dialog"><div class="modal-box" id="modal-box"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script defer src="../app.8bea100e8d.js"></script>
+<script defer src="../app.1c728c7dd3.js"></script>
 </body>
 </html>
